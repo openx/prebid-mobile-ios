@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
 
             when { not { branch 'develop' } }
-            agent { label 'mobile' }
+            agent { label 'android-tests' }
 
             steps {
                 sh 'hostname'
@@ -34,7 +34,7 @@ pipeline {
 
                 stage('Unit Tests: GAM EH [iPhone, iOS Previous]') {
 
-                    agent { label 'mobile' }
+                    agent { label 'android-tests' }
 
                     steps {
                         sh 'hostname'
@@ -59,7 +59,7 @@ pipeline {
 
                 stage('Unit Tests: GAM EH [iPhone, iOS Latest]') {
 
-                    agent { label 'mobile' }
+                    agent { label 'android-tests' }
 
                     steps {
                         sh 'hostname'
@@ -90,7 +90,7 @@ pipeline {
             parallel {
                 stage('Unit Tests: Apollo SDK [iPhone, iOS Previous]') {
 
-                    agent { label 'mobile' }
+                    agent { label 'android-tests' }
 
                     steps {
                         sh 'hostname'
@@ -115,7 +115,7 @@ pipeline {
 
                 stage('Unit Tests: Apollo SDK [iPhone, iOS Latest]') {
 
-                    agent { label 'mobile' }
+                    agent { label 'android-tests' }
 
                     environment {
                         GIT_COMMIT_SHORT = sh(script: "printf \$(git rev-parse --short ${GIT_COMMIT})", returnStdout: true).trim()
@@ -151,7 +151,7 @@ pipeline {
 
                 stage('UI Tests: Internal Test App [iPhone, iOS Latest]') {
 
-                    agent { label 'mobile' }
+                    agent { label 'android-tests' }
 
                     environment {
                         GIT_COMMIT_SHORT = sh(script: "printf \$(git rev-parse --short ${GIT_COMMIT})", returnStdout: true).trim()

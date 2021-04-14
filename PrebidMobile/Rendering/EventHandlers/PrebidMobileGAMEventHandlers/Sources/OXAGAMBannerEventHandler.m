@@ -15,7 +15,7 @@
 
 
 
-static NSString * const appEvent = @"OpenXApolloAppEvent";
+static NSString * const appEvent = @"PrebidAppEvent";
 static float const appEventTimeout = 0.6f;
 
 
@@ -196,7 +196,7 @@ static float const appEventTimeout = 0.6f;
         self.isExpectingAppEvent = NO;
         [self recycleCurrentBanner];
         self.oxbProxyBanner = dfpBanner;
-        [self.loadingDelegate apolloDidWin];
+        [self.loadingDelegate prebidDidWin];
     }
 }
 

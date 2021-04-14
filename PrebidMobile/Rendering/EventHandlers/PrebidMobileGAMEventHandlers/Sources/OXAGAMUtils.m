@@ -88,7 +88,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
     }
     OXAGADNativeCustomTemplateAd * const wrappedAd = [[OXAGADNativeCustomTemplateAd alloc] initWithCustomTemplateAd:nativeCustomTemplateAd];
     [self findNativeAdWithFlagLookupBlock:^BOOL{
-        return [self findApolloCreativeFlagInNativeCustomTemplateAd:wrappedAd];
+        return [self findPrebidCreativeFlagInNativeCustomTemplateAd:wrappedAd];
     } localCacheIDExtractor:^NSString * _Nullable{
         return [self localCacheIDFromNativeCustomTemplateAd:wrappedAd];
     } nativeAdDetectionListener:nativeAdDetectionListener];
@@ -104,7 +104,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
     }
     OXAGADUnifiedNativeAd * const wrappedAd = [[OXAGADUnifiedNativeAd alloc] initWithUnifiedNativeAd:unifiedNativeAd];
     [self findNativeAdWithFlagLookupBlock:^BOOL{
-        return [self findApolloCreativeFlagInUnifiedNativeAd:wrappedAd];
+        return [self findPrebidCreativeFlagInUnifiedNativeAd:wrappedAd];
     } localCacheIDExtractor:^NSString * _Nullable{
         return [self localCacheIDFromUnifiedNativeAd:wrappedAd];
     } nativeAdDetectionListener:nativeAdDetectionListener];
@@ -147,9 +147,9 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
 
 // MARK: NativeCustomTemplateAd decomposition
 
-- (BOOL)findApolloCreativeFlagInNativeCustomTemplateAd:(OXAGADNativeCustomTemplateAd *)nativeCustomTemplateAd {
-    NSString * const isApolloCreativeVar = [nativeCustomTemplateAd stringForKey:OXA_GAM_APOLLO_CREATIVE_FLAG_KEY];
-    if ([isApolloCreativeVar isEqualToString:OXA_GAM_APOLLO_CREATIVE_FLAG_VALUE]) {
+- (BOOL)findPrebidCreativeFlagInNativeCustomTemplateAd:(OXAGADNativeCustomTemplateAd *)nativeCustomTemplateAd {
+    NSString * const isPrebidRenderingCreativeVar = [nativeCustomTemplateAd stringForKey:OXA_GAM_APOLLO_CREATIVE_FLAG_KEY];
+    if ([isPrebidRenderingCreativeVar isEqualToString:OXA_GAM_APOLLO_CREATIVE_FLAG_VALUE]) {
         return YES;
     }
     NSString * const isPrebidCreativeVar = [nativeCustomTemplateAd stringForKey:OXA_GAM_PREBID_CREATIVE_FLAG_KEY];
@@ -166,7 +166,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
 
 // MARK: UnifiedNativeAd decomposition
 
-- (BOOL)findApolloCreativeFlagInUnifiedNativeAd:(OXAGADUnifiedNativeAd *)unifiedNativeAd {
+- (BOOL)findPrebidCreativeFlagInUnifiedNativeAd:(OXAGADUnifiedNativeAd *)unifiedNativeAd {
     return [unifiedNativeAd.body isEqualToString:OXA_GAM_APOLLO_CREATIVE_FLAG_KEY];
 }
 

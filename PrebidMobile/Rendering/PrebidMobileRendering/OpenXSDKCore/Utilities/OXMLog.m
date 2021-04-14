@@ -34,7 +34,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.SDKName = @"OpenX Apollo";
+        self.SDKName = @"prebid-mobile-sdk-rendering";
         
         self.loggingQueue = dispatch_queue_create([self.SDKName UTF8String], NULL);
         self.dateFormatter = [NSDateFormatter new];

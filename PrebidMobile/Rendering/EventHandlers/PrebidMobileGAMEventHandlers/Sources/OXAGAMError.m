@@ -52,7 +52,7 @@
 }
 
 + (void)logError:(NSError *)error {
-    NSLog(@"[OpenXApolloGAMEventHandlers] ERROR: %@", error.localizedDescription);
+    NSLog(@"[PrebidMobileGAMEventHandlers] ERROR: %@", error.localizedDescription);
 }
 
 @end

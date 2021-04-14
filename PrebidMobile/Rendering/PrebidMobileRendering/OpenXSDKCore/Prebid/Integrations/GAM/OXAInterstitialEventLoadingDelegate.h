@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  @abstract Call this when the ad server SDK signals about partner bid win
  */
-- (void)apolloDidWin;
+- (void)prebidDidWin;
 
 /*!
  @abstract Call this when the ad server SDK renders its own ad

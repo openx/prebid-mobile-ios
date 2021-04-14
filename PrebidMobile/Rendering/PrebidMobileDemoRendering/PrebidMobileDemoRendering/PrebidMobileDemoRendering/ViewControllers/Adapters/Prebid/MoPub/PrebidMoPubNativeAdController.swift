@@ -23,7 +23,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
     
     private var adUnit: OXAMoPubNativeAdUnit?
     private var theMoPubNativeAd: MPNativeAd?
-    private var theApolloNativeAd: OXANativeAd?
+    private var thePrebidNativeAd: OXANativeAd?
     
     private let fetchDemandSuccessButton = EventReportContainer()
     private let fetchDemandFailedButton = EventReportContainer()
@@ -130,13 +130,13 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
             
             let settings = MPStaticNativeAdRendererSettings();
             settings.renderingViewClass = adRenderingViewClass
-            let apolloConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
+            let prebidConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
             let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
             
             
             OXAMoPubNativeAdUtils.shared().prepareAdObject(targeting!)
             
-            let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId, rendererConfigurations: [apolloConfig, mopubConfig!])
+            let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId, rendererConfigurations: [prebidConfig, mopubConfig!])
             adRequest?.targeting = targeting
             
             adRequest?.start { [weak self] request, response , error in
@@ -160,7 +160,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
                     guard let self = self else {
                         return
                     }
-                    self.setupApolloNativeAd(nativeAd)
+                    self.setupPrebidNativeAd(nativeAd)
                 } onPrimaryAdWin: { [weak self] in
                     guard let self = self else {
                         return
@@ -206,9 +206,9 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
         ])
     }
     
-    private func setupApolloNativeAd(_ nativeAd: OXANativeAd) {
+    private func setupPrebidNativeAd(_ nativeAd: OXANativeAd) {
         self.nativeAdLoadedButton.isEnabled = true
-        self.theApolloNativeAd = nativeAd
+        self.thePrebidNativeAd = nativeAd
         
         guard let bannerView = rootController?.bannerView else {
             return

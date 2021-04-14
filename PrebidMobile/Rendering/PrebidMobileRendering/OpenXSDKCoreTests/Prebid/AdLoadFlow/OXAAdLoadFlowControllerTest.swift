@@ -53,8 +53,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -111,15 +111,15 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testApolloAd_happyPath_fromIdle() {
-        testApolloAd_happyPath(preFailed: false)
+    func testPrebidAd_happyPath_fromIdle() {
+        testPrebidAd_happyPath(preFailed: false)
     }
     
-    func testApolloAd_happyPath_fromFailed() {
-        testApolloAd_happyPath(preFailed: true)
+    func testPrebidAd_happyPath_fromFailed() {
+        testPrebidAd_happyPath(preFailed: true)
     }
     
-    func testApolloAd_happyPath(preFailed: Bool) {
+    func testPrebidAd_happyPath(preFailed: Bool) {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -137,8 +137,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -161,18 +161,18 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertTrue(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertTrue(renderWithPrebid)
                 return true
             }),
-            .adLoader(call: .createApolloAd(handler: { (bid, config, adSaver, adLoadHandler) in
+            .adLoader(call: .createPrebidAd(handler: { (bid, config, adSaver, adLoadHandler) in
                 fakeAdBox[0] = NSObject()
                 adSaver(fakeAd() as Any)
                 adLoadHandler {
                     fakeAdSizeBox[0] = NSValue(cgSize: bid.size)
-                    flowController().adLoaderLoadedApolloAd(compositeMock().mockAdLoader)
+                    flowController().adLoaderLoadedPrebidAd(compositeMock().mockAdLoader)
                 }
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -221,8 +221,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -298,8 +298,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -330,7 +330,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
                 XCTAssertEqual(loader, flowController())
@@ -352,7 +352,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testApolloAd_didFail() {
+    func testPrebidAd_didFail() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -368,8 +368,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -392,18 +392,18 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertTrue(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertTrue(renderWithPrebid)
                 return true
             }),
-            .adLoader(call: .createApolloAd(handler: { (bid, config, adSaver, adLoadHandler) in
+            .adLoader(call: .createPrebidAd(handler: { (bid, config, adSaver, adLoadHandler) in
                 adSaver(NSObject() as Any)
                 adLoadHandler {
-                    enum FakeApolloError: Error { case someError }
-                    fakeErrorBox[0] = FakeApolloError.someError
-                    flowController().adLoader(compositeMock().mockAdLoader, failedWithApolloError: fakeError())
+                    enum FakePrebidError: Error { case someError }
+                    fakeErrorBox[0] = FakePrebidError.someError
+                    flowController().adLoader(compositeMock().mockAdLoader, failedWithPrebidError: fakeError())
                 }
             })),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
@@ -426,7 +426,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testPrimaryAdFail_withBids_fallbackToApollo() {
+    func testPrimaryAdFail_withBids_fallbackToPrebid() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -444,8 +444,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -472,16 +472,16 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
                 flowController().adLoader(compositeMock().mockAdLoader,
                                           failedWithPrimarySDKError: FakePrimarySDKError.someError)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertTrue(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertTrue(renderWithPrebid)
                 return true
             }),
-            .adLoader(call: .createApolloAd(handler: { (bid, config, adSaver, adLoadHandler) in
+            .adLoader(call: .createPrebidAd(handler: { (bid, config, adSaver, adLoadHandler) in
                 fakeAdBox[0] = NSObject()
                 adSaver(fakeAd() as Any)
                 adLoadHandler {
                     fakeAdSizeBox[0] = NSValue(cgSize: bid.size)
-                    flowController().adLoaderLoadedApolloAd(compositeMock().mockAdLoader)
+                    flowController().adLoaderLoadedPrebidAd(compositeMock().mockAdLoader)
                 }
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -526,8 +526,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -596,8 +596,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return false
             }),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
@@ -620,7 +620,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testConfigInvalid_forApollo() {
+    func testConfigInvalid_forPrebid() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -633,8 +633,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -657,10 +657,10 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertTrue(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertTrue(renderWithPrebid)
                 return false
             }),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
@@ -683,7 +683,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testApolloWin_noWinningBidInBidResponse() {
+    func testPrebidWin_noWinningBidInBidResponse() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -696,8 +696,8 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertFalse(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertFalse(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in
@@ -721,10 +721,10 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
-                XCTAssertTrue(renderWithApollo)
+            .configValidation(call: { (adConfig, renderWithPrebid) in
+                XCTAssertTrue(renderWithPrebid)
                 return true
             }),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
@@ -747,7 +747,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testApolloAd_happyPath_spamRefresh() {
+    func testPrebidAd_happyPath_spamRefresh() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -768,7 +768,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
                 flowController().refresh()
                 return adUnitConfig
             })),
-            .configValidation(call: { (adConfig, renderWithApollo) in
+            .configValidation(call: { (adConfig, renderWithPrebid) in
                 flowController().refresh()
                 return true
             }),
@@ -796,19 +796,19 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             })),
             .primaryAdRequester(call: { bidResponse in
                 flowController().refresh()
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in
+            .configValidation(call: { (adConfig, renderWithPrebid) in
                 flowController().refresh()
                 return true
             }),
-            .adLoader(call: .createApolloAd(handler: { (bid, config, adSaver, adLoadHandler) in
+            .adLoader(call: .createPrebidAd(handler: { (bid, config, adSaver, adLoadHandler) in
                 flowController().refresh()
                 fakeAdBox[0] = NSObject()
                 adSaver(fakeAd() as Any)
                 adLoadHandler {
                     fakeAdSizeBox[0] = NSValue(cgSize: bid.size)
-                    flowController().adLoaderLoadedApolloAd(compositeMock().mockAdLoader)
+                    flowController().adLoaderLoadedPrebidAd(compositeMock().mockAdLoader)
                 }
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -834,7 +834,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         compositeMock().checkIsFinished()
     }
     
-    func testApolloAd_happyPath_freezeOnShouldContinue() {
+    func testPrebidAd_happyPath_freezeOnShouldContinue() {
         let adUnitConfig = OXAAdUnitConfig(configId: "configID")
         
         let flowControllerBox = NSMutableArray()
@@ -860,7 +860,7 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
         
         compositeMockBox[0] = CompositeMock(expectedCalls: [
             .flowControllerDelegate(call: .adUnitConfig(provider: { adUnitConfig })),
-            .configValidation(call: { (adConfig, renderWithApollo) in true }),
+            .configValidation(call: { (adConfig, renderWithPrebid) in true }),
             .flowControllerDelegate(call: .willSendBidRequest(handler: { loader in })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
@@ -876,16 +876,16 @@ class OXAAdLoadFlowControllerTest: XCTestCase {
             .adLoader(call: .setFlowDelegate(handler: { delegate in })),
             .adLoader(call: .primaryAdRequester(provider: { compositeMock().mockPrimaryAdRequester })),
             .primaryAdRequester(call: { bidResponse in
-                flowController().adLoaderDidWinApollo(compositeMock().mockAdLoader)
+                flowController().adLoaderDidWinPrebid(compositeMock().mockAdLoader)
             }),
-            .configValidation(call: { (adConfig, renderWithApollo) in true }),
-            .adLoader(call: .createApolloAd(handler: { (bid, config, adSaver, adLoadHandler) in
+            .configValidation(call: { (adConfig, renderWithPrebid) in true }),
+            .adLoader(call: .createPrebidAd(handler: { (bid, config, adSaver, adLoadHandler) in
                 flowController().refresh()
                 fakeAdBox[0] = NSObject()
                 adSaver(fakeAd() as Any)
                 adLoadHandler {
                     fakeAdSizeBox[0] = NSValue(cgSize: bid.size)
-                    flowController().adLoaderLoadedApolloAd(compositeMock().mockAdLoader)
+                    flowController().adLoaderLoadedPrebidAd(compositeMock().mockAdLoader)
                 }
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in

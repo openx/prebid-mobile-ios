@@ -43,7 +43,7 @@ static NSString * const OXA_MOPUB_ADAPTER_VERSION = @"0";
     // OpenX's ads include Open Measurement scripts that sometime require additional time for loading.
     OXASDKConfiguration.singleton.creativeFactoryTimeout = 15;
     
-    MPLogInfo(@"OpenX Apollo SDK initialized succesfully.");
+    MPLogInfo(@"Prebid Mobile Rendering SDK initialized succesfully.");
     
     if (complete != nil) {
         complete(nil);

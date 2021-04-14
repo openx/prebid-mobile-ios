@@ -246,7 +246,7 @@ struct TestCaseManager {
             // MARK: ---- Banner (PPM) ----
             
             TestCase(title: "Banner 320x50 (PPM)",
-                     tags: [.banner, .apollo, .server, .mock],
+                     tags: [.banner, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -268,7 +268,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [noBids]",
-                     tags: [.banner, .apollo, .server, .mock],
+                     tags: [.banner, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -291,7 +291,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [Items]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -307,7 +307,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [New Tab]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -323,7 +323,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [Incorrect VAST]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -339,7 +339,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [DeepLink+]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -355,7 +355,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [Scrollable]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "ScrollableAdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -371,7 +371,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 300x250 (PPM)",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -387,7 +387,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 728x90 (PPM)",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -402,7 +402,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner Multisize (PPM)",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -417,7 +417,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) ATS",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -443,7 +443,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner 320x50 (PPM) [SKAdN]",
-                     tags: [.banner, .apollo, .mock],
+                     tags: [.banner, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -781,7 +781,7 @@ struct TestCaseManager {
             // MARK: ---- Interstitial (PPM) ----
             
             TestCase(title: "Display Interstitial 320x480 (PPM)",
-                     tags: [.interstitial, .apollo, .server, .mock],
+                     tags: [.interstitial, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -801,7 +801,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Display Interstitial 320x480 (PPM) [noBids]",
-                     tags: [.interstitial, .apollo, .server, .mock],
+                     tags: [.interstitial, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -820,7 +820,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Display Interstitial 320x480 (PPM) [Presentation]",
-                     tags: [.interstitial, .apollo, .mock],
+                     tags: [.interstitial, .inapp, .mock],
                      exampleVCStoryboardID: "PrebidPresentationViewController",
                      configurationClosure: { vc in
                 guard let presentationVC = vc as? PrebidPresentationViewController else {
@@ -832,7 +832,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Display Interstitial Multisize (PPM)",
-                     tags: [.interstitial, .apollo, .mock],
+                     tags: [.interstitial, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -846,7 +846,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Display Interstitial 320x480 (PPM) [SKAdN]",
-                     tags: [.interstitial, .apollo, .mock],
+                     tags: [.interstitial, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1039,7 +1039,7 @@ struct TestCaseManager {
             // MARK: ---- Video Interstitial (PPM) ----
             
             TestCase(title: "Video Interstitial 320x480 (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1054,7 +1054,7 @@ struct TestCaseManager {
             }),
 
             TestCase(title: "Video Interstitial 320x480 (PPM) [noBids]",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1074,7 +1074,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 with End Card (PPM)",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1093,7 +1093,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial Vertical (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1108,7 +1108,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 DeepLink+ (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1124,7 +1124,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 SkipOffset (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1140,7 +1140,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 .mp4 (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1156,7 +1156,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 .m4v (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1172,7 +1172,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 .mov (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1188,7 +1188,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Interstitial 320x480 with MRAID End Card (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1204,7 +1204,7 @@ struct TestCaseManager {
             }),
 
             TestCase(title: "Video Interstitial 320x480 (PPM) [SKAdN]",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1374,7 +1374,7 @@ struct TestCaseManager {
             // MARK: ---- Video (PPM) ----
             
             TestCase(title: "Video Outstream (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1391,7 +1391,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Outstream (PPM) [noBids]",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1412,7 +1412,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Outstream with End Card (PPM)",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1435,7 +1435,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Outstream Feed (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "PrebidFeedTableViewController",
                      configurationClosure: { vc in
                         
@@ -1489,7 +1489,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Outstream (PPM) [SKAdN]",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1641,7 +1641,7 @@ struct TestCaseManager {
             // MARK: ---- Video Rewarded (PPM) ----
             
             TestCase(title: "Video Rewarded 320x480 (PPM)",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1661,7 +1661,7 @@ struct TestCaseManager {
             }),
 
             TestCase(title: "Video Rewarded 320x480 (PPM) [noBids]",
-                     tags: [.video, .apollo, .server, .mock],
+                     tags: [.video, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController", configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
                     return
@@ -1679,7 +1679,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Rewarded 320x480 without End Card (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1693,7 +1693,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Video Rewarded 480x320 (PPM)",
-                     tags: [.video, .apollo, .mock],
+                     tags: [.video, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1855,7 +1855,7 @@ struct TestCaseManager {
             // MARK: ---- MRAID (PPM) ----
             
             TestCase(title: "MRAID 2.0: Expand - 1 Part (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1870,7 +1870,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 2.0: Expand - 2 Part (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1886,7 +1886,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 2.0: Resize (PPM)",
-                     tags: [.mraid, .apollo, .server, .mock],
+                     tags: [.mraid, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1908,7 +1908,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 2.0: Resize with Errors (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1923,7 +1923,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 2.0: Fullscreen (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "ScrollableAdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1938,7 +1938,7 @@ struct TestCaseManager {
             }),
 
             TestCase(title: "MRAID 2.0: Video Interstitial (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1952,7 +1952,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 3.0: Viewability Compliance (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "ScrollableAdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1967,7 +1967,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 3.0: Resize Negative Test (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1983,7 +1983,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID 3.0: Load And Events (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -1998,7 +1998,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID OX: Test Properties 3.0 (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2013,7 +2013,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID OX: Test Methods 3.0 (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2028,7 +2028,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID OX: Resize (Expandable) (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2044,7 +2044,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "MRAID OX: Resize (With Scroll) (PPM)",
-                     tags: [.mraid, .apollo, .mock],
+                     tags: [.mraid, .inapp, .mock],
                      exampleVCStoryboardID: "ScrollableAdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2169,7 +2169,7 @@ struct TestCaseManager {
             // MARK: ---- Native Styles (PPM) ----
             
             TestCase(title: "Banner Native Styles (PPM) [MAP]",
-                     tags: [.native, .apollo, .server, .mock],
+                     tags: [.native, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2194,7 +2194,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner Native Styles (PPM) [KEYS]",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2215,7 +2215,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner Native Styles No Assets (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2236,7 +2236,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Banner Native Styles No Creative (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2368,7 +2368,7 @@ struct TestCaseManager {
             // MARK: ---- Native (PPM) ----
             
             TestCase(title: "Native Ad (PPM)",
-                     tags: [.native, .apollo, .server, .mock],
+                     tags: [.native, .inapp, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2396,7 +2396,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Native Ad Links (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2417,7 +2417,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Native Ad Feed (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "PrebidFeedTableViewController",
                      configurationClosure: { vc in
                         
@@ -2442,7 +2442,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Native Ad - Video with End Card (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {
@@ -2464,7 +2464,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Native Ad Feed - Video with End Card (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "PrebidFeedTableViewController",
                      configurationClosure: { vc in
                         
@@ -2490,7 +2490,7 @@ struct TestCaseManager {
             }),
             
             TestCase(title: "Native Ad - All Assets with End Card (PPM)",
-                     tags: [.native, .apollo, .mock],
+                     tags: [.native, .inapp, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
                 guard let adapterVC = vc as? AdapterViewController else {

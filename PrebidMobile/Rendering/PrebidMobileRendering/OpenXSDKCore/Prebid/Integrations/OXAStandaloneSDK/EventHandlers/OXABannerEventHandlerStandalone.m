@@ -14,7 +14,7 @@
 @synthesize adSizes = _adSizes;
 
 - (void)requestAdWithBidResponse:(nullable OXABidResponse *)bidResponse {
-    [self.loadingDelegate apolloDidWin];
+    [self.loadingDelegate prebidDidWin];
 }
 
 - (BOOL)isCreativeRequiredForNativeAds {

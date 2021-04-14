@@ -58,7 +58,7 @@
     OXAInterstitialAdLoader * const interstitialAdLoader = [[OXAInterstitialAdLoader alloc] initWithDelegate:self];
     [self callEventHandler_setLoadingDelegate:interstitialAdLoader];
     
-    OXAAdUnitConfigValidationBlock const configValidator = ^BOOL(OXAAdUnitConfig *adUnitConfig, BOOL renderWithApollo) {
+    OXAAdUnitConfigValidationBlock const configValidator = ^BOOL(OXAAdUnitConfig *adUnitConfig, BOOL renderWithPrebid) {
         return YES;
     };
 

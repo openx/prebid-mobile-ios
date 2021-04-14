@@ -17,7 +17,7 @@
 }
 
 - (void)requestAdWithBidResponse:(nullable OXABidResponse *)bidResponse {
-    [self.loadingDelegate apolloDidWin];
+    [self.loadingDelegate prebidDidWin];
 }
 
 - (void)showFromViewController:(UIViewController *)controller {

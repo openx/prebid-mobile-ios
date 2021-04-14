@@ -211,7 +211,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         
         let bidRequest = OXMORTBBidRequest()
         
-        targeting.addBidder(toAccessControlList: "openx-apollo")
+        targeting.addBidder(toAccessControlList: "prebid-mobile")
         targeting.updateUserData(Set(["red", "orange"]), forKey: "fav_colors")
         targeting.addContextData("wolf", forKey: "last_search_keywords")
         targeting.addContextData("pet", forKey: "last_search_keywords")
@@ -230,7 +230,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             .build(bidRequest)
         
         
-        XCTAssertEqual(bidRequest.extPrebid.dataBidders, ["openx-apollo"])
+        XCTAssertEqual(bidRequest.extPrebid.dataBidders, ["prebid-mobile"])
         XCTAssertEqual(bidRequest.app.extPrebid.data, ["last_search_keywords": ["pet", "wolf"]])
         XCTAssertEqual(bidRequest.user.ext!["data"] as? NSObject, ["fav_colors": ["red", "orange"]] as NSObject)
         

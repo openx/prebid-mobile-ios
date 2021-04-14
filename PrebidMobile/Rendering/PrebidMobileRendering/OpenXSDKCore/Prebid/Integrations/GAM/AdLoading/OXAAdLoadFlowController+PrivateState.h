@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 // _(no relevant properties)_
 
 // State: LoadingDisplayView
-@property (nonatomic, strong, nullable) id apolloAdObject; // Reused in ReadyToDeploy
+@property (nonatomic, strong, nullable) id prebidAdObject; // Reused in ReadyToDeploy
 
 // State: ReadyToDeploy
 @property (nonatomic, strong, nullable) id primaryAdObject;

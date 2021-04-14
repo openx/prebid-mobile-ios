@@ -14,7 +14,7 @@
 #import "OXAGAMError.h"
 
 
-static NSString * const appEvent = @"OpenXApolloAppEvent";
+static NSString * const appEvent = @"PrebidAppEvent";
 static float const appEventTimeout = 0.6f;
 
 
@@ -195,7 +195,7 @@ static float const appEventTimeout = 0.6f;
         self.isExpectingAppEvent = NO;
         [self forgetCurrentInterstitial];
         self.oxbProxyInterstitial = dfpInterstitial;
-        [self.loadingDelegate apolloDidWin];
+        [self.loadingDelegate prebidDidWin];
     }
 }
 

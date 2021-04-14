@@ -40,7 +40,7 @@
     return self.delegate.eventHandler;
 }
 
-- (void)createApolloAdWithBid:(OXABid *)bid
+- (void)createPrebidAdWithBid:(OXABid *)bid
                  adUnitConfig:(OXAAdUnitConfig *)adUnitConfig
                 adObjectSaver:(void (^)(id))adObjectSaver
             loadMethodInvoker:(void (^)(dispatch_block_t))loadMethodInvoker
@@ -86,17 +86,17 @@
 // MARK: - OXAInterstitialControllerLoadingDelegate
 
 - (void)interstitialControllerDidLoadAd:(OXAInterstitialController *)interstitialController {
-    [self.flowDelegate adLoaderLoadedApolloAd:self];
+    [self.flowDelegate adLoaderLoadedPrebidAd:self];
 }
 
 - (void)interstitialController:(OXAInterstitialController *)interstitialController didFailWithError:(NSError *)error {
-    [self.flowDelegate adLoader:self failedWithApolloError:error];
+    [self.flowDelegate adLoader:self failedWithPrebidError:error];
 }
 
 // MARK: - OXAInterstitialEventLoadingDelegate
 
-- (void)apolloDidWin {
-    [self.flowDelegate adLoaderDidWinApollo:self];
+- (void)prebidDidWin {
+    [self.flowDelegate adLoaderDidWinPrebid:self];
 }
 
 - (void)adServerDidWin {

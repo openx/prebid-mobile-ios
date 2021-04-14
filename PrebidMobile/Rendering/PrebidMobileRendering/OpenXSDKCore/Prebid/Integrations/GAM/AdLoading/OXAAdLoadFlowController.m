@@ -73,22 +73,22 @@
     [self enqueueGatedBlock:^{
         @strongify(self);
         if (self.bidResponse.winningBid) {
-            [self loadApolloDisplayView];
+            [self loadPrebidDisplayView];
         } else {
             [self reportLoadingFailedWithError:error];
         }
     }];
 }
 
-- (void)adLoaderDidWinApollo:(id<OXAAdLoaderProtocol>)adLoader {
+- (void)adLoaderDidWinPrebid:(id<OXAAdLoaderProtocol>)adLoader {
     @weakify(self);
     [self enqueueGatedBlock:^{
         @strongify(self);
-        [self loadApolloDisplayView];
+        [self loadPrebidDisplayView];
     }];
 }
 
-- (void)adLoaderLoadedApolloAd:(id<OXAAdLoaderProtocol>)adLoader {
+- (void)adLoaderLoadedPrebidAd:(id<OXAAdLoaderProtocol>)adLoader {
     @weakify(self);
     [self enqueueGatedBlock:^{
         @strongify(self);
@@ -97,11 +97,11 @@
     }];
 }
 
-- (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader failedWithApolloError:(nullable NSError *)error {
+- (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader failedWithPrebidError:(nullable NSError *)error {
     @weakify(self);
     [self enqueueGatedBlock:^{
         @strongify(self);
-        self.apolloAdObject = nil;
+        self.prebidAdObject = nil;
         [self reportLoadingFailedWithError:error];
     }];
 }
@@ -218,7 +218,7 @@
     });
 }
 
-- (void)loadApolloDisplayView {
+- (void)loadPrebidDisplayView {
     if (self.bidRequestError) {
         NSError * const requestError = self.bidRequestError;
         self.bidRequestError = nil;
@@ -243,16 +243,16 @@
     @weakify(self);
     dispatch_sync(dispatch_get_main_queue(), ^{
         @strongify(self);
-        __strong __block id apolloAdObjectBox = nil;
-        [self.adLoader createApolloAdWithBid:bid
+        __strong __block id prebidAdObjectBox = nil;
+        [self.adLoader createPrebidAdWithBid:bid
                                 adUnitConfig:adUnitConfig
-                               adObjectSaver:^(id _Nonnull apolloAdObject) {
-            apolloAdObjectBox = apolloAdObject;
+                               adObjectSaver:^(id _Nonnull prebidAdObject) {
+            prebidAdObjectBox = prebidAdObject;
         } loadMethodInvoker:^(dispatch_block_t _Nonnull loadMethod) {
             @strongify(self);
             [self enqueueGatedBlock:^{
                 @strongify(self);
-                self.apolloAdObject = apolloAdObjectBox;
+                self.prebidAdObject = prebidAdObjectBox;
                 loadMethod();
             }];
         }];
@@ -266,7 +266,7 @@
 
 - (void)deployPendingViewAndSendSuccessReport {
     self.flowState = OXAAdLoadFlowState_Idle;
-    [self.adLoader reportSuccessWithAdObject:(self.primaryAdObject ?: self.apolloAdObject)
+    [self.adLoader reportSuccessWithAdObject:(self.primaryAdObject ?: self.prebidAdObject)
                                       adSize:self.adSize];
 }
 

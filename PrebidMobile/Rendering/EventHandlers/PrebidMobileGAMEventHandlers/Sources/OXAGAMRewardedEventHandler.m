@@ -14,7 +14,7 @@
 #import "OXADFPRequest.h"
 
 
-static NSString * const appEvent = @"OpenXApolloAppEvent";
+static NSString * const appEvent = @"PrebidAppEvent";
 static float const appEventTimeout = 0.6f;
 
 
@@ -200,7 +200,7 @@ static float const appEventTimeout = 0.6f;
         self.oxbProxyRewarded = dfpRewarded;
         id<OXARewardedEventLoadingDelegate> const delegate = self.loadingDelegate;
         delegate.reward = dfpRewarded.reward;
-        [delegate apolloDidWin];
+        [delegate prebidDidWin];
     }
 }
 

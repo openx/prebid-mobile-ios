@@ -168,14 +168,14 @@ class OXMORTBAbstractTest : XCTestCase {
     func testBidRequestExtPrebidToJsonString() {
         let extPrebid = OXMORTBBidRequestExtPrebid()
         extPrebid.storedRequestID = "b4eb1475-4e3d-4186-97b7-25b6a6cf8618"
-        extPrebid.dataBidders = ["openx", "apollo", "thanatos"]
+        extPrebid.dataBidders = ["openx", "prebid", "thanatos"]
         
-        codeAndDecode(abstract: extPrebid, expectedString: "{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"apollo\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}")
+        codeAndDecode(abstract: extPrebid, expectedString: "{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}")
         
         let oxmORTBBidRequest = OXMORTBBidRequest()
         oxmORTBBidRequest.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"apollo\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
     }
     
     func testSourceToJsonString() {

@@ -17,7 +17,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef BOOL(^OXAAdUnitConfigValidationBlock)(OXAAdUnitConfig *adUnitConfig, BOOL renderWithApollo);
+typedef BOOL(^OXAAdUnitConfigValidationBlock)(OXAAdUnitConfig *adUnitConfig, BOOL renderWithPrebid);
 
 @interface OXAAdLoadFlowController : NSObject
 

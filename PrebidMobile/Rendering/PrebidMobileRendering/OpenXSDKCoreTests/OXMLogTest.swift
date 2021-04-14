@@ -47,7 +47,7 @@ class OXMLogTest: XCTestCase {
                                 .split(separator:"=")[1]
                                 .split(separator:",").first?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             
-            XCTAssert(log.contains("OpenX Apollo INFO [\(threadNumber!)]"))
+            XCTAssert(log.contains("prebid-mobile-sdk-rendering INFO [\(threadNumber!)]"))
             XCTAssertFalse(log.contains("[Line "))
         })
     }
@@ -135,7 +135,7 @@ class OXMLogTest: XCTestCase {
         let sdkVersionString = level != "ERROR" ? "" : "v\(sdkVersion) ";
         
         XCTAssert(log.contains(message), file: file, line: line)
-        XCTAssert(log.contains("OpenX Apollo \(sdkVersionString)\(level) [MAIN]"), file: file, line: line)
+        XCTAssert(log.contains("prebid-mobile-sdk-rendering \(sdkVersionString)\(level) [MAIN]"), file: file, line: line)
         XCTAssert(log.contains("[Line ") == withParams, file: file, line: line)
         
         logToFile = nil
@@ -154,7 +154,7 @@ class OXMLogTest: XCTestCase {
         
         OXMLog.singleton.logInternal("MSG", logLevel:.info, file:#file, line:10, function:#function)
         let log = OXMLog.singleton.getLogFileAsString()
-        XCTAssert(log.contains("OpenX Apollo INFO [MAIN]"))
+        XCTAssert(log.contains("prebid-mobile-sdk-rendering INFO [MAIN]"))
         XCTAssert(log.contains("OXMLogTest.swift testLogInternal() [Line 10]: MSG"))
         
         logToFile = nil

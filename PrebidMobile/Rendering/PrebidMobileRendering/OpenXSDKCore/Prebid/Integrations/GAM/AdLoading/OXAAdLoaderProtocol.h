@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) id<OXAPrimaryAdRequesterProtocol> primaryAdRequester;
 
-- (void)createApolloAdWithBid:(OXABid *)bid
+- (void)createPrebidAdWithBid:(OXABid *)bid
                  adUnitConfig:(OXAAdUnitConfig *)adUnitConfig
                 adObjectSaver:(void (^)(id))adObjectSaver
             loadMethodInvoker:(void (^)(dispatch_block_t))loadMethodInvoker;

@@ -223,16 +223,16 @@ extension PrebidGAMNativeAdController: GADUnifiedNativeAdLoaderDelegate {
         unifiedAdRequestSuccessful.isEnabled = true
         customTemplateAd = nil
         
-        let nativeAdDetectionListener = OXANativeAdDetectionListener { [weak self] apolloNativeAd in
+        let nativeAdDetectionListener = OXANativeAdDetectionListener { [weak self] prebidNativeAd in
             guard let self = self else {
                 return
             }
             self.nativeAdLoadedButton.isEnabled = true
-            self.nativeAdViewBox.renderNativeAd(apolloNativeAd)
-            self.nativeAdViewBox.registerViews(apolloNativeAd)
-            self.theNativeAd = apolloNativeAd // Note: RETAIN! or the tracking will not occur!
-            apolloNativeAd.trackingDelegate = self
-            apolloNativeAd.uiDelegate = self
+            self.nativeAdViewBox.renderNativeAd(prebidNativeAd)
+            self.nativeAdViewBox.registerViews(prebidNativeAd)
+            self.theNativeAd = prebidNativeAd // Note: RETAIN! or the tracking will not occur!
+            prebidNativeAd.trackingDelegate = self
+            prebidNativeAd.uiDelegate = self
             
             // TODO: Implement(?)
             // self.customTemplateAd = nativeCustomTemplateAd

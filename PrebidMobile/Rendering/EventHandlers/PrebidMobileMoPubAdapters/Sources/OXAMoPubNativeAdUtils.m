@@ -66,7 +66,7 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
 
 - (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(OXANativeAdDetectionListener *)nativeAdDetectionListener {
     
-    if (![self isApolloAd:nativeAd]) {
+    if (![self isPrebidAd:nativeAd]) {
         if (nativeAdDetectionListener.onPrimaryAdWin != nil) {
             nativeAdDetectionListener.onPrimaryAdWin();
         }
@@ -87,10 +87,10 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
         return;
     }
     
-    [cachedResponse getNativeAdWithCompletion:^(OXANativeAd * apolloNativeAd) {
-        if (apolloNativeAd) {
+    [cachedResponse getNativeAdWithCompletion:^(OXANativeAd * prebidNativeAd) {
+        if (prebidNativeAd) {
             if (nativeAdDetectionListener.onNativeAdLoaded != nil) {
-                nativeAdDetectionListener.onNativeAdLoaded(apolloNativeAd);
+                nativeAdDetectionListener.onNativeAdLoaded(prebidNativeAd);
             }
         } else {
             reportError([OXAMoPubError invalidNativeAd]);
@@ -98,15 +98,15 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
     }];
 }
 
-- (BOOL)isApolloAd:(MPNativeAd *)nativeAd {
+- (BOOL)isPrebidAd:(MPNativeAd *)nativeAd {
     if (![nativeAd respondsToSelector:@selector(properties)] || !(nativeAd.properties)) {
         return NO;
     }
     
     NSDictionary * const properties = nativeAd.properties;
     
-    NSString * const isApolloCreativeFlag = properties[OXA_MOPUB_APOLLO_CREATIVE_FLAG_KEY];
-    if ([isApolloCreativeFlag isEqualToString:OXA_MOPUB_APOLLO_CREATIVE_FLAG_VALUE]) {
+    NSString * const isPrebidRenderingCreativeFlag = properties[OXA_MOPUB_APOLLO_CREATIVE_FLAG_KEY];
+    if ([isPrebidRenderingCreativeFlag isEqualToString:OXA_MOPUB_APOLLO_CREATIVE_FLAG_VALUE]) {
         return YES;
     }
     NSString * const isPrebidCreativeFlag = properties[OXA_MOPUB_PREBID_CREATIVE_FLAG_KEY];

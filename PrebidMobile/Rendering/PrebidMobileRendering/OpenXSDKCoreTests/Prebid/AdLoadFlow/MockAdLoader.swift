@@ -15,7 +15,7 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
         case getFlowDelegate(provider: ()->OXAAdLoaderFlowDelegate?)
         case setFlowDelegate(handler: (OXAAdLoaderFlowDelegate?)->())
         case primaryAdRequester(provider: ()->OXAPrimaryAdRequesterProtocol)
-        case createApolloAd(handler: (OXABid, OXAAdUnitConfig, (Any)->(), (@escaping ()->())->())->())
+        case createPrebidAd(handler: (OXABid, OXAAdUnitConfig, (Any)->(), (@escaping ()->())->())->())
         case reportSuccess(handler: (Any, NSValue?)->())
     }
 
@@ -95,7 +95,7 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
         return provider?() ?? MockPrimaryAdRequester(expectedCalls: [], file: file, line: line)
     }
 
-    func createApolloAd(with bid: OXABid, adUnitConfig: OXAAdUnitConfig, adObjectSaver: @escaping (Any) -> Void, loadMethodInvoker: @escaping (@escaping () -> Void) -> Void) {
+    func createPrebidAd(with bid: OXABid, adUnitConfig: OXAAdUnitConfig, adObjectSaver: @escaping (Any) -> Void, loadMethodInvoker: @escaping (@escaping () -> Void) -> Void) {
         let handler: ((OXABid, OXAAdUnitConfig, (Any)->(), (@escaping ()->())->())->())? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoader] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
@@ -103,11 +103,11 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
                 return nil
             }
             switch expectedCalls[nextCallIndex] {
-            case .createApolloAd(let handler):
+            case .createPrebidAd(let handler):
                 nextCallIndex += 1
                 return handler
             default:
-                XCTFail("[MockAdLoader] 'createApolloAd' called while expecting for '\(expectedCalls[nextCallIndex])'",
+                XCTFail("[MockAdLoader] 'createPrebidAd' called while expecting for '\(expectedCalls[nextCallIndex])'",
                         file: file, line: line)
                 return nil
             }
@@ -142,7 +142,7 @@ extension MockAdLoader.ExpectedCall: CustomStringConvertible {
         case .getFlowDelegate:      return "getFlowDelegate"
         case .setFlowDelegate:      return "setFlowDelegate"
         case .primaryAdRequester:   return "primaryAdRequester"
-        case .createApolloAd:       return "createApolloAd"
+        case .createPrebidAd:       return "createPrebidAd"
         case .reportSuccess:        return "reportSuccess"
         }
     }
@@ -166,8 +166,8 @@ extension MockAdLoader.ExpectedCall {
                 prefixAction()
                 return provider()
             })
-        case .createApolloAd(let handler):
-            return .createApolloAd(handler: {
+        case .createPrebidAd(let handler):
+            return .createPrebidAd(handler: {
                 prefixAction()
                 handler($0, $1, $2, $3)
             })

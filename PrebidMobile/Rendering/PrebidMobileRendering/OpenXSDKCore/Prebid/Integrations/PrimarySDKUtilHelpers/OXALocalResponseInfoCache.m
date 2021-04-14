@@ -40,7 +40,7 @@
 
 - (NSString *)storeResponseInfo:(OXADemandResponseInfo *)responseInfo {
     NSUUID * const uuid = [NSUUID UUID];
-    NSString * const localCacheID = [NSString stringWithFormat:@"Apollo_%@", uuid.UUIDString];
+    NSString * const localCacheID = [NSString stringWithFormat:@"Prebid_%@", uuid.UUIDString];
     @synchronized (self.cacheLock) {
         id<OXATimerInterface> const timer = [self scheduleExpirationTimerForID:localCacheID];
         OXACachedResponseInfo * const cachedResponse = [[OXACachedResponseInfo alloc] initWithResponseInfo:responseInfo

@@ -7,4 +7,4 @@
 
 #import "OXAPublicConstants.h"
 
-const NSErrorDomain OXAErrorDomain = @"com.openx.openXApolloSDK.ErrorDomain";
+const NSErrorDomain OXAErrorDomain = @"org.prebid.mobile.rendering.ErrorDomain";

@@ -19,7 +19,7 @@ class AboutViewController : FormViewController {
     
     private let info = [
         ("Components", [
-            "OpenX Apollo SDK": OXASDKConfiguration.sdkVersion,
+            "Prebid Mobile Rendering SDK": OXASDKConfiguration.sdkVersion,
         ]),
         ("Ad Server SDKs", [
             "GoogleMobileAds SDK": GADMobileAds.sharedInstance().sdkVersion,
@@ -34,7 +34,7 @@ class AboutViewController : FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "OpenX Configuration"
+        title = "PrebidMobileRendering Configuration"
         createForm()
     }
     

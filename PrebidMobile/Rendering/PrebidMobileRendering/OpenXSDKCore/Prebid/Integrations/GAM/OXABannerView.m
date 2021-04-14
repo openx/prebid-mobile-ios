@@ -79,10 +79,10 @@
     }
                              adLoader:bannerAdLoader
                              delegate:self
-                             configValidationBlock:^BOOL(OXAAdUnitConfig * _Nonnull adUnitConfig, BOOL renderWithApollo)
+                             configValidationBlock:^BOOL(OXAAdUnitConfig * _Nonnull adUnitConfig, BOOL renderWithPrebid)
     {
-        if (renderWithApollo) {
-            return [OXABannerView canApolloDisplayAd:adUnitConfig];
+        if (renderWithPrebid) {
+            return [OXABannerView canPrebidDisplayAd:adUnitConfig];
         } else {
             return [OXABannerView canEventHandler:eventHandler displayAd:adUnitConfig];
         }
@@ -424,7 +424,7 @@
     return YES;
 }
 
-+ (BOOL)canApolloDisplayAd:(nonnull OXAAdUnitConfig *)adUnitConfig {
++ (BOOL)canPrebidDisplayAd:(nonnull OXAAdUnitConfig *)adUnitConfig {
     if (adUnitConfig.adConfiguration.adFormat != OXMAdFormatNative) {
         return YES;
     }

@@ -48,7 +48,7 @@
     return eventHandler;
 }
 
-- (void)createApolloAdWithBid:(OXABid *)bid
+- (void)createPrebidAdWithBid:(OXABid *)bid
                  adUnitConfig:(OXAAdUnitConfig *)adUnitConfig
                 adObjectSaver:(void (^)(id))adObjectSaver
             loadMethodInvoker:(void (^)(dispatch_block_t))loadMethodInvoker
@@ -74,17 +74,17 @@
 // MARK: - OXADisplayViewLoadingDelegate
 
 - (void)displayViewDidLoadAd:(OXADisplayView *)displayView {
-    [self.flowDelegate adLoaderLoadedApolloAd:self];
+    [self.flowDelegate adLoaderLoadedPrebidAd:self];
 }
 
 - (void)displayView:(OXADisplayView *)displayView didFailWithError:(NSError *)error {
-    [self.flowDelegate adLoader:self failedWithApolloError:error];
+    [self.flowDelegate adLoader:self failedWithPrebidError:error];
 }
 
 // MARK: - OXABannerEventLoadingDelegate
 
-- (void)apolloDidWin {
-    [self.flowDelegate adLoaderDidWinApollo:self];
+- (void)prebidDidWin {
+    [self.flowDelegate adLoaderDidWinPrebid:self];
 }
 
 - (void)adServerDidWin:(UIView *)view adSize:(CGSize)adSize {

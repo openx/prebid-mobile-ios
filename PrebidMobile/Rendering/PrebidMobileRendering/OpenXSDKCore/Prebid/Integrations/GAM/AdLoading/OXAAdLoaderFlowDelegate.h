@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader loadedPrimaryAd:(id)adObject adSize:(nullable NSValue *)adSize;
 - (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader failedWithPrimarySDKError:(nullable NSError *)error;
 
-- (void)adLoaderDidWinApollo:(id<OXAAdLoaderProtocol>)adLoader;
+- (void)adLoaderDidWinPrebid:(id<OXAAdLoaderProtocol>)adLoader;
 
-- (void)adLoaderLoadedApolloAd:(id<OXAAdLoaderProtocol>)adLoader;
-- (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader failedWithApolloError:(nullable NSError *)error;
+- (void)adLoaderLoadedPrebidAd:(id<OXAAdLoaderProtocol>)adLoader;
+- (void)adLoader:(id<OXAAdLoaderProtocol>)adLoader failedWithPrebidError:(nullable NSError *)error;
 
 @end
 

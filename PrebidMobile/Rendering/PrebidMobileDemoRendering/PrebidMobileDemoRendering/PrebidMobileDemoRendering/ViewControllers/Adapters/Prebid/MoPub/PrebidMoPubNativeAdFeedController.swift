@@ -122,11 +122,11 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
         
             let settings = MPStaticNativeAdRendererSettings();
             settings.renderingViewClass = self.adRenderingViewClass
-            let apolloConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
+            let prebidConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
             let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
             
             let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId,
-                                                   rendererConfigurations: [apolloConfig, mopubConfig!])
+                                                   rendererConfigurations: [prebidConfig, mopubConfig!])
             adRequest?.targeting = targeting
             
             adRequest?.start { [weak self, weak cell] _, response , error in

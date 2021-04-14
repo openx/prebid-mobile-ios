@@ -90,9 +90,9 @@ class OXAAdLoadFlowControllerTest_CompositeMock {
             }
         }
         let configValidationCalls = mappedCalls(\.asConfigValidationCall) { (call, action) in
-            { (config, renderWithApollo) in
+            { (config, renderWithPrebid) in
                 action()
-                return call(config, renderWithApollo)
+                return call(config, renderWithPrebid)
             }
         }
         
@@ -123,14 +123,14 @@ class OXAAdLoadFlowControllerTest_CompositeMock {
         
         let nextValidationCallIndexBox = NSMutableArray(object: NSNumber(0))
         
-        mockConfigValidator = { (adUnitConfig, renderWithApollo) in
+        mockConfigValidator = { (adUnitConfig, renderWithPrebid) in
             let nextValidationCallIndex: Int = syncQueue.sync {
                 let result = (nextValidationCallIndexBox[0] as! NSNumber).intValue
                 nextValidationCallIndexBox[0] = NSNumber(value: result + 1)
                 return result
             }
             if nextValidationCallIndex < configValidationCalls.count {
-                return configValidationCalls[nextValidationCallIndex](adUnitConfig, renderWithApollo)
+                return configValidationCalls[nextValidationCallIndex](adUnitConfig, renderWithPrebid)
             } else {
                 validateCallIndex(-1, method: "configValidation (#\(nextValidationCallIndex))")
                 return true

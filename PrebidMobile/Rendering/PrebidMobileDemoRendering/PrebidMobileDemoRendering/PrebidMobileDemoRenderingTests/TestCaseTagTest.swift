@@ -35,8 +35,8 @@ class TestCaseTagTest: XCTestCase {
         XCTAssertEqual(TestCaseTag.extractIntegrations(from: testEmptyTags)                     , testEmptyTags)
         XCTAssertEqual(TestCaseTag.extractIntegrations(from: TestCaseTag.integrations)          , TestCaseTag.integrations.sorted(by: <=))
         
-        XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.apollo])                          , [.apollo])
-        XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.apollo, .gam])                    , [.apollo, .gam])
+        XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.inapp])                          , [.inapp])
+        XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.inapp, .gam])                    , [.inapp, .gam])
         XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.mopub, .interstitial])            , [.mopub])
         XCTAssertEqual(TestCaseTag.extractIntegrations(from: [.banner, .interstitial])           , testEmptyTags)
     }

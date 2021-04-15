@@ -104,11 +104,6 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
     }
     
     NSDictionary * const properties = nativeAd.properties;
-    
-    NSString * const isPrebidRenderingCreativeFlag = properties[OXA_MOPUB_APOLLO_CREATIVE_FLAG_KEY];
-    if ([isPrebidRenderingCreativeFlag isEqualToString:OXA_MOPUB_APOLLO_CREATIVE_FLAG_VALUE]) {
-        return YES;
-    }
     NSString * const isPrebidCreativeFlag = properties[OXA_MOPUB_PREBID_CREATIVE_FLAG_KEY];
     if ([isPrebidCreativeFlag isEqualToString:OXA_MOPUB_PREBID_CREATIVE_FLAG_VALUE]) {
         return YES;

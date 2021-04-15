@@ -23,7 +23,7 @@
     }
     //_impID = nil;
     _pmp = [OXMORTBPmp new];
-    _displaymanager = @"openx";
+    _displaymanager = @"prebid";
     _instl = @0;
     _clickbrowser = @0;
     _secure = @0;

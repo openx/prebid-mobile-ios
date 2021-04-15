@@ -497,7 +497,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
     };
     [s appendString:@"window.MRAID_ENV = {"];
     nextFeed(); [s appendString:@"version: '3.0'"];
-    nextFeed(); [s appendString:@"sdk: 'openx-ios-sdk'"];
+    nextFeed(); [s appendString:@"sdk: 'prebid-mobile-sdk-rendering'"];
     nextFeed(); [s appendFormat:@"sdkVersion: '%@'", [OXMFunctions sdkVersion]];
     nextFeed(); [s appendFormat:@"appId: '%@'", [NSBundle mainBundle].bundleIdentifier];
     nextFeed(); [s appendFormat:@"ifa: '%@'", [ASIdentifierManager.sharedManager advertisingIdentifier].UUIDString];

@@ -230,7 +230,7 @@ static NSString * const OXMPlistExt = @"plist";
         return nil;
     }
     
-    //Note: If OpenX will be delivered via source files the bundle and plist will be owned by the client app
+    //Note: If PrebidMobileRendering will be delivered via source files the bundle and plist will be owned by the client app
     NSBundle *bundle = [OXMFunctions bundleForSDK];
     NSString* ret = [bundle objectForInfoDictionaryKey:key];
     

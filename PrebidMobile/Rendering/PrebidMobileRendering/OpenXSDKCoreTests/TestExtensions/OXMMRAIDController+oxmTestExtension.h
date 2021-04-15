@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OXMMRAIDController ()
 
-@property (nonatomic, strong, nullable) OXMWebView *openXWebView;
+@property (nonatomic, strong, nullable) OXMWebView *prebidWebView;
 @property (nonatomic, strong, nullable) UIViewController* viewControllerForPresentingModals;
 
 + (CGRect)CGRectForResizeProperties:(OXMMRAIDResizeProperties *)properties fromView:(UIView *)fromView;

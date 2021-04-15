@@ -32,11 +32,11 @@ class OXMORTBAbstractTest : XCTestCase {
     //Check default values of all objects decending from OXMORTBAbstract
     func testDefaultToJsonString() {
 
-        codeAndDecode(abstract:OXMORTBBidRequest(), expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract:OXMORTBBidRequest(), expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
         
         //Source not implemented
         codeAndDecode(abstract:OXMORTBRegs(), expectedString: "{}")
-        codeAndDecode(abstract:OXMORTBImp(), expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}")
+        codeAndDecode(abstract:OXMORTBImp(), expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}")
         
         //Metric not implemented
         codeAndDecode(abstract:OXMORTBBanner(), expectedString: "{\"api\":[]}")
@@ -154,15 +154,15 @@ class OXMORTBAbstractTest : XCTestCase {
         let uuid = UUID().uuidString
         oxmORTBBidRequest.requestID = uuid
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
         
         oxmORTBBidRequest.tmax = 2000
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"tmax\":2000,\"user\":{}}")
+        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"tmax\":2000,\"user\":{}}")
         
         oxmORTBBidRequest.test = 2
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"test\":2,\"tmax\":2000,\"user\":{}}")
+        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"test\":2,\"tmax\":2000,\"user\":{}}")
     }
     
     func testBidRequestExtPrebidToJsonString() {
@@ -175,7 +175,7 @@ class OXMORTBAbstractTest : XCTestCase {
         let oxmORTBBidRequest = OXMORTBBidRequest()
         oxmORTBBidRequest.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
     }
     
     func testSourceToJsonString() {
@@ -256,7 +256,7 @@ class OXMORTBAbstractTest : XCTestCase {
         let oxmORTBImp = OXMORTBImp()
         oxmORTBImp.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"prebid\":{\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
+        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
     }
     
     func testImpExtPrebidToJsonStringRewarded() {
@@ -269,7 +269,7 @@ class OXMORTBAbstractTest : XCTestCase {
         let oxmORTBImp = OXMORTBImp()
         oxmORTBImp.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"openx\",\"ext\":{\"prebid\":{\"is_rewarded_inventory\":1,\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
+        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"is_rewarded_inventory\":1,\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
     }
     
     func testBannerToJsonString() {

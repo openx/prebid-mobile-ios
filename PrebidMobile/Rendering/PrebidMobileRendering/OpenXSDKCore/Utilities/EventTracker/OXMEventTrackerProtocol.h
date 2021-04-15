@@ -13,7 +13,7 @@
 /**
      This protocol defines methods for tracking ad's lifesycle.
  
-     This protocol declares methods that needed for ad tracking in OpenXSDK. For now, we have two implementations:
+     This protocol declares methods that needed for ad tracking in PrebidMobileRendering. For now, we have two implementations:
      - OXMAdModelEventTracker
      - OXMOpenMeasurementEventTracker
  */

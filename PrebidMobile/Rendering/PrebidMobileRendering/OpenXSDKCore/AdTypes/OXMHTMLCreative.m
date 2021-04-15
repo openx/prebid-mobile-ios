@@ -50,7 +50,7 @@
 @interface OXMHTMLCreative()
 
 @property (nonatomic, strong) NSURL *baseURL;
-@property (nonatomic, strong) OXMWebView *openXWebView;
+@property (nonatomic, strong) OXMWebView *prebidWebView;
 @property (nonatomic, strong) OXASDKConfiguration *sdkConfiguration;
 @property (nonatomic, strong) OXMMRAIDController *MRAIDController;
 @property (nonatomic, assign) BOOL isAdChoicesOpened;
@@ -86,7 +86,7 @@
         self.baseURL = nil;
         
         if (webView) {
-            self.openXWebView = webView;
+            self.prebidWebView = webView;
         }
     }
     
@@ -120,8 +120,8 @@
     }
 
     CGRect rect = CGRectMake(0.0, 0.0, self.creativeModel.width, self.creativeModel.height);
-    if (!self.openXWebView) {
-        self.openXWebView = [[OXMWebView alloc] initWithFrame:rect
+    if (!self.prebidWebView) {
+        self.prebidWebView = [[OXMWebView alloc] initWithFrame:rect
                                                 creativeModel:self.creativeModel
                                                     targeting:[OXATargeting shared]];
         
@@ -129,12 +129,12 @@
         
         if (!self.creativeModel.adConfiguration.presentAsInterstitial || isCompanionAdForBuiltInVideo) {
             OXMPosition pos = isCompanionAdForBuiltInVideo ? OXMPositionBottomRight : OXMPositionTopRight;
-            self.openXWebView.legalButtonDecorator = [[OXMLegalButtonDecorator alloc] initWithPosition:pos];
+            self.prebidWebView.legalButtonDecorator = [[OXMLegalButtonDecorator alloc] initWithPosition:pos];
             @weakify(self);
-            self.openXWebView.legalButtonDecorator.buttonTouchUpInsideBlock = ^{
+            self.prebidWebView.legalButtonDecorator.buttonTouchUpInsideBlock = ^{
                 @strongify(self);
                 self.isAdChoicesOpened = YES;
-                OXMClickthroughBrowserView *clickthroughBrowserView = [self.openXWebView.legalButtonDecorator clickthroughBrowserView];
+                OXMClickthroughBrowserView *clickthroughBrowserView = [self.prebidWebView.legalButtonDecorator clickthroughBrowserView];
                 if (clickthroughBrowserView) {
                     @weakify(self);
                     OXMModalState *state = [OXMModalState modalStateWithView:clickthroughBrowserView
@@ -152,11 +152,11 @@
             };
         }
     } else {
-        self.openXWebView.frame = rect;
+        self.prebidWebView.frame = rect;
     }
     
-    self.openXWebView.delegate = self;
-    self.view = self.openXWebView;
+    self.prebidWebView.delegate = self;
+    self.view = self.prebidWebView;
     
     [self loadHTMLToWebView];
 }
@@ -175,8 +175,8 @@
 
 - (void)displayWithRootViewController:(UIViewController*)viewController {
     //Either these constraints are redundant or the initWithFrame is.
-    [self.openXWebView OXMAddCropAndCenterConstraintsWithInitialWidth:self.openXWebView.frame.size.width initialHeight:self.openXWebView.frame.size.height];
-    [self.openXWebView prepareForMRAIDWithRootViewController:viewController];
+    [self.prebidWebView OXMAddCropAndCenterConstraintsWithInitialWidth:self.prebidWebView.frame.size.width initialHeight:self.prebidWebView.frame.size.height];
+    [self.prebidWebView prepareForMRAIDWithRootViewController:viewController];
 
     [super displayWithRootViewController:viewController];
 
@@ -229,10 +229,10 @@
         return;
     }
                     
-    self.transaction.measurementSession = [self.transaction.measurementWrapper initializeWebViewSession:self.openXWebView.internalWebView
+    self.transaction.measurementSession = [self.transaction.measurementWrapper initializeWebViewSession:self.prebidWebView.internalWebView
                                                                                              contentUrl:@""];
     if (self.transaction.measurementSession) {
-        [self.openXWebView addFriendlyObstructionsToMeasurementSession:self.transaction.measurementSession];
+        [self.prebidWebView addFriendlyObstructionsToMeasurementSession:self.transaction.measurementSession];
         [self.transaction.measurementSession start];
     }
 }
@@ -253,13 +253,13 @@
         OXMLogError(@"OXMWebView can't inject Open Measurement JS lib with error: %@", [error localizedDescription]);
     }
     
-    [self.openXWebView loadHTML:htmlWithMeasurementJS ?: htmlWithBodyAndHTMLTags
+    [self.prebidWebView loadHTML:htmlWithMeasurementJS ?: htmlWithBodyAndHTMLTags
                         baseURL:self.baseURL
                   injectMraidJs:YES];
 }
 
 - (void)updateLegalButtonDecorator {
-    [self.openXWebView updateLegalButtonForCreative:self];
+    [self.prebidWebView updateLegalButtonForCreative:self];
 }
 
 #pragma mark - OXMWebViewDelegate
@@ -288,7 +288,7 @@
         if (!self.MRAIDController) {
             self.MRAIDController = [[OXMMRAIDController alloc] initWithCreative:self
                                                     viewControllerForPresenting:self.viewControllerForPresentingModals
-                                                                        webView:self.openXWebView
+                                                                        webView:self.prebidWebView
                                                            creativeViewDelegate:self.creativeViewDelegate
                                                                   downloadBlock:self.downloadBlock];
         }

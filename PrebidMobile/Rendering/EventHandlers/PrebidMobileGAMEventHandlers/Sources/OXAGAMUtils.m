@@ -148,10 +148,6 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
 // MARK: NativeCustomTemplateAd decomposition
 
 - (BOOL)findPrebidCreativeFlagInNativeCustomTemplateAd:(OXAGADNativeCustomTemplateAd *)nativeCustomTemplateAd {
-    NSString * const isPrebidRenderingCreativeVar = [nativeCustomTemplateAd stringForKey:OXA_GAM_APOLLO_CREATIVE_FLAG_KEY];
-    if ([isPrebidRenderingCreativeVar isEqualToString:OXA_GAM_APOLLO_CREATIVE_FLAG_VALUE]) {
-        return YES;
-    }
     NSString * const isPrebidCreativeVar = [nativeCustomTemplateAd stringForKey:OXA_GAM_PREBID_CREATIVE_FLAG_KEY];
     if ([isPrebidCreativeVar isEqualToString:OXA_GAM_PREBID_CREATIVE_FLAG_VALUE]) {
         return YES;
@@ -167,7 +163,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
 // MARK: UnifiedNativeAd decomposition
 
 - (BOOL)findPrebidCreativeFlagInUnifiedNativeAd:(OXAGADUnifiedNativeAd *)unifiedNativeAd {
-    return [unifiedNativeAd.body isEqualToString:OXA_GAM_APOLLO_CREATIVE_FLAG_KEY];
+    return [unifiedNativeAd.body isEqualToString:OXA_GAM_PREBID_CREATIVE_FLAG_KEY];
 }
 
 - (NSString *)localCacheIDFromUnifiedNativeAd:(OXAGADUnifiedNativeAd *)unifiedNativeAd {

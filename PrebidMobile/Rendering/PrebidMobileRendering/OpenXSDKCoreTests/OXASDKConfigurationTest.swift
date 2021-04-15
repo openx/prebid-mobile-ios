@@ -43,7 +43,7 @@ class OXASDKConfigurationTest: XCTestCase {
         
         let log = OXMLog.singleton.getLogFileAsString()
         
-        XCTAssert(log.contains("OpenXSDK \(OXMFunctions.sdkVersion()) Initialized"))
+        XCTAssert(log.contains("prebid-mobile-sdk-rendering \(OXMFunctions.sdkVersion()) Initialized"))
     }
     
     func testLogLevel() {

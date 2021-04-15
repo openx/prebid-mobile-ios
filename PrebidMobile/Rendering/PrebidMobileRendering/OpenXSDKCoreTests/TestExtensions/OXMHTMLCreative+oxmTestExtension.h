@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface OXMHTMLCreative () <OXMWebViewDelegate>
 
-@property (nonatomic, strong) OXMWebView *openXWebView;
+@property (nonatomic, strong) OXMWebView *prebidWebView;
 @property (nonatomic, strong, nullable) OXMMRAIDController *MRAIDController;
 
 - (instancetype)initWithCreativeModel:(OXMCreativeModel *)creativeModel

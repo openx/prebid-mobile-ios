@@ -35,7 +35,7 @@ class OXMUserAgentServiceTest: XCTestCase {
             XCTAssert(userAgentString.OXMdoesMatch("AppleWebKit"))
             
             //Should end with the SDK version
-            XCTAssert(userAgentString.OXMdoesMatch(" OpenXSDK/\(self.sdkVersion)$"))
+            XCTAssert(userAgentString.OXMdoesMatch(" PrebidMobileRendering/\(self.sdkVersion)$"))
             
             self.expectationUserAgentExecuted?.fulfill()
         }
@@ -48,10 +48,10 @@ class OXMUserAgentServiceTest: XCTestCase {
         OXMUserAgentService.singleton().sdkVersion = injectedSDKVersion
         let userAgentString = OXMUserAgentService.singleton().getFullUserAgent()
 
-        let didFindInjectedSDKVersion = userAgentString.OXMdoesMatch("OpenXSDK/\(injectedSDKVersion)")
+        let didFindInjectedSDKVersion = userAgentString.OXMdoesMatch("PrebidMobileRendering/\(injectedSDKVersion)")
         XCTAssert(didFindInjectedSDKVersion)
 
-        let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("OpenXSDK/\(sdkVersion)")
+        let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("PrebidMobileRendering/\(sdkVersion)")
         XCTAssertFalse(didFindDefaultSDKVersion)
         
         OXMUserAgentService.singleton().sdkVersion = OXMFunctions.sdkVersion()
@@ -65,7 +65,7 @@ class OXMUserAgentServiceTest: XCTestCase {
 
     func testSingletonSDKVersion() {
         let userAgentString = OXMUserAgentService.singleton().getFullUserAgent()
-        let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("OpenXSDK/\(sdkVersion)")
+        let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("PrebidMobileRendering/\(sdkVersion)")
         XCTAssert(didFindDefaultSDKVersion)
     }
 
@@ -74,7 +74,7 @@ class OXMUserAgentServiceTest: XCTestCase {
 
         DispatchQueue.global(qos: .background).async {
             let userAgentString = OXMUserAgentService.singleton().getFullUserAgent()
-            let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("OpenXSDK/\(self.sdkVersion)")
+            let didFindDefaultSDKVersion = userAgentString.OXMdoesMatch("PrebidMobileRendering/\(self.sdkVersion)")
             XCTAssert(didFindDefaultSDKVersion)
             
             expectationCheckThread.fulfill()

@@ -852,7 +852,7 @@ class OXMWebViewTest : XCTestCase, OXMWebViewDelegate {
         
         let expectedMraidEnv = [
             "version": "3.0",
-            "sdk": "openx-ios-sdk",
+            "sdk": "prebid-mobile-sdk-rendering",
             "sdkVersion": OXMFunctions.sdkVersion(),
             "appId": "com.apple.dt.xctest.tool",
             "ifa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,

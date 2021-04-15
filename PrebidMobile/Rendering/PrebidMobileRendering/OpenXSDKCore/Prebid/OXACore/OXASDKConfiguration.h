@@ -31,13 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
 //Useful for video interstitials.
 @property (nonatomic, assign) NSTimeInterval creativeFactoryTimeoutPreRenderContent;
 
-//Controls whether to use OpenX's in-app browser or the Safari App for displaying ad clickthrough content.
+//Controls whether to use PrebidMobileRendering's in-app browser or the Safari App for displaying ad clickthrough content.
 @property (nonatomic, assign) BOOL useExternalClickthroughBrowser;
 
-//Controls the verbosity of OpenXSDKCore's internal logger. Options are (from most to least noisy) .info, .warn, .error and .none. Defaults to .info.
+//Controls the verbosity of PrebidMobileRendering's internal logger. Options are (from most to least noisy) .info, .warn, .error and .none. Defaults to .info.
 @property (nonatomic, assign) OXALogLevel logLevel;
 
-//If set to true, the output of OpenXSDKCore's internal logger is written to a text file. This can be helpful for debugging. Defaults to false.
+//If set to true, the output of PrebidMobileRendering's internal logger is written to a text file. This can be helpful for debugging. Defaults to false.
 @property (nonatomic, assign) BOOL debugLogFileEnabled;
 
 //If true, the SDK will periodically try to listen for location updates in order to request location-based ads.

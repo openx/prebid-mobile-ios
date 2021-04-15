@@ -47,7 +47,7 @@
 
 @property Class deviceAccessManagerClass;
 
-@property (nonatomic, weak) OXMWebView *openXWebView;
+@property (nonatomic, weak) OXMWebView *prebidWebView;
 
 @property (nonatomic, assign) BOOL playingMRAIDVideo;
 @property (nonatomic, strong) OXASDKConfiguration* sdkConfiguration;
@@ -97,8 +97,8 @@
     if (self) {
         self.creative = creative;
         self.viewControllerForPresentingModals = viewControllerForPresentingModals;
-        self.openXWebView = webView;
-        self.openXWebView.exposureDelegate = self;
+        self.prebidWebView = webView;
+        self.prebidWebView.exposureDelegate = self;
         self.creativeViewDelegate = creativeViewDelegate;
         self.downloadBlock = downloadBlock;
         self.deviceAccessManagerClass = (deviceAccessManagerClass) ? deviceAccessManagerClass : [OXMDeviceAccessManager class];
@@ -112,7 +112,7 @@
 }
 
 - (void)webView:(OXMWebView *)webView handleMRAIDURL:(NSURL*)url {
-    [self.openXWebView MRAID_nativeCallComplete];
+    [self.prebidWebView MRAID_nativeCallComplete];
     @try {
         [self webView:webView handleMRAIDCommand:url];
     } @catch (NSException *exception) {
@@ -165,9 +165,9 @@
         // When closing a MRAID video interstitial, only need to set the MRAID state to hidden.
         self.playingMRAIDVideo = NO;
         if (self.mraidState == OXMMRAIDStateExpanded) {
-            [self.openXWebView changeToMRAIDState:OXMMRAIDStateExpanded];
+            [self.prebidWebView changeToMRAIDState:OXMMRAIDStateExpanded];
         } else {
-            [self.openXWebView changeToMRAIDState:OXMMRAIDStateHidden];
+            [self.prebidWebView changeToMRAIDState:OXMMRAIDStateHidden];
         }
         return;
     }
@@ -181,12 +181,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         @strongify(self);
 
-        OXMMRAIDState prevState = self.openXWebView.mraidState;
-        [self.openXWebView updateMRAIDLayoutInfoWithForceNotification:NO];
+        OXMMRAIDState prevState = self.prebidWebView.mraidState;
+        [self.prebidWebView updateMRAIDLayoutInfoWithForceNotification:NO];
         if ([prevState isEqualToString:OXMMRAIDStateExpanded] || [prevState isEqualToString:OXMMRAIDStateResized]) {
             self.delayedMraidState = OXMMRAIDStateDefault;
         } else {
-            [self.openXWebView changeToMRAIDState:(isInterstitial ? OXMMRAIDStateHidden : OXMMRAIDStateDefault)];
+            [self.prebidWebView changeToMRAIDState:(isInterstitial ? OXMMRAIDStateHidden : OXMMRAIDStateDefault)];
         }
 
         
@@ -210,7 +210,7 @@
 
 - (void)webView:(OXMWebView *)webView exposureChange:(OXMViewExposure *)viewExposure {
     if (![self.delayedMraidState isEqualToString:OXMMRAIDStateNotEnabled]) {
-        [self.openXWebView changeToMRAIDState:self.delayedMraidState];
+        [self.prebidWebView changeToMRAIDState:self.delayedMraidState];
         self.delayedMraidState = OXMMRAIDStateNotEnabled;
     }
 }
@@ -234,7 +234,7 @@
 
 // If the modal is shown the @viewControllerForPresentingModals would be excluded from the views hierarchy -
 // in this case, the system feature won't be opened with an error:
-// Attempt to present <UIAlertController: 0x7fb49c013a00> on <OpenXInternalTestApp.BannerViewController: 0x7fb499c52f30> whose view is not in the window hierarchy!
+// Attempt to present <UIAlertController: 0x7fb49c013a00> on <PrebidMobileDemoRendering.BannerViewController: 0x7fb499c52f30> whose view is not in the window hierarchy!
 // So we should provide different controllers depending on the particular state.
 - (UIViewController *)viewControllerForSystemFeaturePresentation {
     UIViewController *controller = nil;
@@ -281,8 +281,8 @@
         @throw [NSException oxmException:[NSString stringWithFormat:@"self.viewControllerForPresentingModals is nil for expand: %@", url]];
     }
     
-    OXMWebView *webView = (OXMWebView *)self.openXWebView;
-    OXMMRAIDState mraidState = self.openXWebView.mraidState;
+    OXMWebView *webView = (OXMWebView *)self.prebidWebView;
+    OXMMRAIDState mraidState = self.prebidWebView.mraidState;
     
     NSArray *allowableStatesForResize = @[OXMMRAIDStateDefault, OXMMRAIDStateResized];
     if (![allowableStatesForResize containsObject:mraidState]) {
@@ -317,7 +317,7 @@
             }
             
             OXMWebView *newWebView = [OXMWebView new];
-            newWebView.delegate = self.openXWebView.delegate;
+            newWebView.delegate = self.prebidWebView.delegate;
             [newWebView expand:expandURL];
             
             @weakify(self);
@@ -383,9 +383,9 @@
         @throw [NSException oxmException:[NSString stringWithFormat:@"self.viewControllerForPresentingModals is nil for mraid command %@", command]];
     }
     
-    OXMWebView *webView = self.openXWebView;
+    OXMWebView *webView = self.prebidWebView;
     
-    OXMMRAIDState mraidState = self.openXWebView.mraidState;
+    OXMMRAIDState mraidState = self.prebidWebView.mraidState;
     
     NSArray *allowableStatesForResize = @[OXMMRAIDStateDefault, OXMMRAIDStateResized];
     if (![allowableStatesForResize containsObject:mraidState]) {
@@ -471,7 +471,7 @@
 - (void)handleMRAIDCommandUnload {
     OXMLogWhereAmI();
     OXMAbstractCreative * const creative = self.creative;
-    switch (self.openXWebView.state) {
+    switch (self.prebidWebView.state) {
         case OXMWebViewStateLoaded: {
             if (self.creative.transaction.adConfiguration.presentAsInterstitial) {
                 [self handleMRAIDCommandClose];
@@ -495,7 +495,7 @@
 }
 
 - (void)handleMRAIDCommandStorePicture:(OXMMRAIDCommand *)command {
-    OXMWebView *webView = self.openXWebView;
+    OXMWebView *webView = self.prebidWebView;
     
     NSURL *url = [NSURL URLWithString:[command.arguments firstObject]];
     if (!url) {
@@ -520,7 +520,7 @@
 }
 
 - (void)handleMRAIDCommandCreateCalendarEvent:(OXMMRAIDCommand *)command {
-    OXMWebView *webView = self.openXWebView;
+    OXMWebView *webView = self.prebidWebView;
     
     NSString *theEventString = [command.arguments firstObject];
     if (!theEventString) {

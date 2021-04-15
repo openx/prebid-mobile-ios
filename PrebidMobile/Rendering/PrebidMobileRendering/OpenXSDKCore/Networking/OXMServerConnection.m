@@ -16,7 +16,7 @@
 NSString *const HTTPMethodGET = @"GET";
 NSString *const HTTPMethodHEAD = @"HEAD";
 NSString *const HTTPMethodPOST = @"POST";
-NSString *const OpenXErrorDomain = @"com.openx";
+NSString *const PrebidMobileRenderingErrorDomain = @"org.prebid.mobile.rendering";
 
 
 @interface OXMServerConnection ()

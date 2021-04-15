@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * Service for retrieving OpenX SDK's User-Agent string.
+ * Service for retrieving PrebidMobile SDK's User-Agent string.
  *
  * The `singleton` class property should be used rather than instantiating directly.
  */

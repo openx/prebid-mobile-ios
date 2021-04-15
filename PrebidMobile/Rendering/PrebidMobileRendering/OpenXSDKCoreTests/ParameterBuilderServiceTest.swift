@@ -78,7 +78,7 @@ class ParameterBuilderServiceTest : XCTestCase {
 
         //Verify OXMBasicParameterBuilder
         OXMAssertEq(bidRequest.imp.count, 1)
-        OXMAssertEq(bidRequest.imp.first?.displaymanager, "openx")
+        OXMAssertEq(bidRequest.imp.first?.displaymanager, "prebid")
         OXMAssertEq(bidRequest.imp.first?.displaymanagerver, "MOCK_SDK_VERSION")
         OXMAssertEq(bidRequest.imp.first?.secure, 1)
 
@@ -124,7 +124,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         }
         
         let expectedOrtb = """
-        {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\",\"publisher\":{\"name\":\"Publisher\"},\"storeurl\":\"https:\\/\\/openx.com\"},\"device\":{\"carrier\":\"MOCK_CARRIER_NAME\",\"connectiontype\":2,\(deviceExt)\"geo\":{\"lat\":34.149335,\"lon\":-118.1328249,\"type\":1},\"h\":200,\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"mccmnc\":\"123-456\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"banner\":{\"api\":[3,5,6,7]},\"clickbrowser\":0,\"displaymanager\":\"openx\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":1,\"ext\":{\"gdpr\":0}},\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{\"buyeruid\":\"buyerUID\",\"customdata\":\"customDataString\",\"ext\":{\"consent\":\"consentstring\"},\"gender\":\"M\",\"keywords\":\"keyword1,keyword2\",\"yob\":\(yob)}}
+        {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\",\"publisher\":{\"name\":\"Publisher\"},\"storeurl\":\"https:\\/\\/openx.com\"},\"device\":{\"carrier\":\"MOCK_CARRIER_NAME\",\"connectiontype\":2,\(deviceExt)\"geo\":{\"lat\":34.149335,\"lon\":-118.1328249,\"type\":1},\"h\":200,\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"mccmnc\":\"123-456\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"banner\":{\"api\":[3,5,6,7]},\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":1,\"ext\":{\"gdpr\":0}},\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{\"buyeruid\":\"buyerUID\",\"customdata\":\"customDataString\",\"ext\":{\"consent\":\"consentstring\"},\"gender\":\"M\",\"keywords\":\"keyword1,keyword2\",\"yob\":\(yob)}}
         """
         OXMAssertEq(strORTB, expectedOrtb)
     }

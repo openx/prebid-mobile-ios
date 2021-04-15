@@ -88,9 +88,6 @@ typedef void(^OXMVastAdsBuilderWrapperCompletionBlock)(NSError *);
         OXMVastResponse *parent = vastResponse;
         while (parent) {
             
-            //TODO: noAdsResponseURI is actually a template with an error code that must be plugged in.
-            //Address this in https://jira.corp.openx.com/browse/MOBILE-3613
-            
             if (parent.noAdsResponseURI) {
                 [self.serverConnection fireAndForget: parent.noAdsResponseURI];
             }

@@ -137,7 +137,7 @@ NSString *_serverURL = nil;
     [[OXMOpenMeasurementWrapper singleton] initializeJSLibWithBundle:[OXMFunctions bundleForSDK] completion:nil];
     
     NSString *sdkVersion = [OXMFunctions sdkVersion];
-    NSString *initializationMessage = [NSString stringWithFormat:@"OpenXSDK %@ Initialized", sdkVersion];
+    NSString *initializationMessage = [NSString stringWithFormat:@"prebid-mobile-sdk-rendering %@ Initialized", sdkVersion];
     
     [OXMLog.singleton serialWriteToLog:initializationMessage];
 }

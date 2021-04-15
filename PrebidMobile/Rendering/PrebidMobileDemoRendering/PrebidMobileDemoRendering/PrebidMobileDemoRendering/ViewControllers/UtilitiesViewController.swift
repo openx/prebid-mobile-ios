@@ -21,7 +21,7 @@ class UtilitiesViewController: FormViewController, GMTSMediationTestSuiteDelegat
     private func buildForm() {
         form
             +++ Section()
-            <<< makeActionRow(title: "OpenX SDK Configuration", action: { AboutViewController() }) {
+            <<< makeActionRow(title: "PrebidMobileRendering Configuration", action: { AboutViewController() }) {
                 $0.accessoryType = .detailDisclosureButton
             }
             <<< makeActionRow(title: "Ad Mob Mediation Test Suite", action: {

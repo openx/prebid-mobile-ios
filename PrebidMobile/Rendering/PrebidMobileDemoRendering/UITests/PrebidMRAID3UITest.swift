@@ -10,9 +10,7 @@ import XCTest
 class PrebidMRAID3UITest: RepeatedUITestCase {
 
     private let viewabilityComplianceTitle = "MRAID 3.0: Viewability Compliance (PPM)"
-    // See: https://openxtechinc.atlassian.net/wiki/spaces/MOB/pages/766437/MRAID+Test+Ads#MRAIDTestAds-LoadandEvents
     private let loadAndEventsTitle = "MRAID 3.0: Load And Events (PPM)"
-    // See: https://openxtechinc.atlassian.net/wiki/spaces/MOB/pages/766437/MRAID+Test+Ads#MRAIDTestAds-Resizenegative
     private let resizeNegativeTestTitle = "MRAID 3.0: Resize Negative Test (PPM)"
     private let waitingTimeout = 10.0
     private let timeout = 7.0

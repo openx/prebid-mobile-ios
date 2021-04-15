@@ -27,7 +27,7 @@
 
 + (NSError *)noLocalCacheID {
     NSString * const errorMessage = [NSString stringWithFormat:@"Failed to find local cache ID (expected in '%@').",
-                                     OXA_MOPUB_APOLLO_CREATIVE_FLAG_KEY];
+                                     OXA_MOPUB_PREBID_CREATIVE_FLAG_KEY];
     return [NSError errorWithDomain:[self errorDomain]
                                code:[self baseErrorOffset] + 2
                            userInfo:@{NSLocalizedDescriptionKey: errorMessage}];

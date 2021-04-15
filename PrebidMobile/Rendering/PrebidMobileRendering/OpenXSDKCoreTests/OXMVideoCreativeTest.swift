@@ -92,7 +92,7 @@ class VideoCreativeDelegateTest: XCTestCase, OXMCreativeResolutionDelegate, OXMC
         
         self.videoCreative = OXMVideoCreative(creativeModel:OXMCreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction(), videoData: Data())
         self.videoCreative.creativeResolutionDelegate = self
-        self.videoCreative.videoViewFailedWithError(NSError(domain: "OpenXSDK", code: 123, userInfo: [:]))
+        self.videoCreative.videoViewFailedWithError(NSError(domain: "PrebidMobileRendering", code: 123, userInfo: [:]))
 
         //Create model
         let model = OXMCreativeModel(adConfiguration:OXMAdConfiguration())

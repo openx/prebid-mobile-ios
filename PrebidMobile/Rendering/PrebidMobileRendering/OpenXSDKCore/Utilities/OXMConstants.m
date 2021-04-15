@@ -13,7 +13,7 @@ NSString * const OXM_DOMAIN_KEY                          = @"domain";
 NSString * const OXM_TRANSACTION_STATE_KEY               = @"ts";
 NSString * const OXM_TRACKING_URL_TEMPLATE               = @"record_tmpl";
 NSString * const OXM_ORIGINAL_ADUNIT_KEY                 = @"OriginalAdUnitID";
-NSString * const OXM_MOPUB_INITIALIZATION_OPTIONS_KEY    = @"openx_sdk_initialization_options";
+NSString * const OXM_MOPUB_INITIALIZATION_OPTIONS_KEY    = @"prebid_mobile_sdk_rendering_initialization_options";
 NSString * const OXM_PRECACHE_CONFIGURATION_KEY          = @"precache_configuration";
 
 #pragma mark - OXMAccesibility

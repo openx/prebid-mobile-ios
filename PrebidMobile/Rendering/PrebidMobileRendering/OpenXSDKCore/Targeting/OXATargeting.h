@@ -104,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The IP address of the carrier gateway.
- If this is not present, then OpenX retrieves it from the request header.
+ If this is not present, then PrebidMobileRendering SDK retrieves it from the request header.
  */
 @property (atomic, copy, nullable) NSString *IP
     NS_SWIFT_NAME(IP);
@@ -127,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- This method allows to add new OpenX param by name and set needed value.
+ This method allows to add new PrebidMobileRendering param by name and set needed value.
  If some ad call parameter doesn't exist in this SDK, you can always set it manually using this method.
  */
 - (void)addParam:(NSString *)value withName:(NSString *)name;

@@ -8,7 +8,7 @@
 #import <XCTest/XCTest.h>
 
 #import "OXASDKConfiguration.h"
-#import "OpenXSDKCoreTests-Swift.h"
+#import "PrebidMobileRenderingTests-Swift.h"
 
 @interface OXMMRAIDControllerObjCTest : XCTestCase
 @end

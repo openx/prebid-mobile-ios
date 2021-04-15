@@ -46,6 +46,6 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need Photo Access for MRAID</string>
 	<key>NSPrincipalClass</key>
-	<string>OpenXSDKCoreTests.SetupTests</string>
+	<string>PrebidMobileRenderingTests.SetupTests</string>
 </dict>
 </plist>

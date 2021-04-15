@@ -6,7 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "OpenXSDKCoreTests-Swift.h"
+#import "PrebidMobileRenderingTests-Swift.h"
 
 @interface OXMMacrosTest : XCTestCase
 

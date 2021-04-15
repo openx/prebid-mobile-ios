@@ -1528,7 +1528,7 @@
 		5B67826D2248E35A00CE397D /* OXMURLComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXMURLComponents.m; sourceTree = "<group>"; };
 		5B69CD3A21870CE80033A8EC /* PlistWithout_NSPhotoLibraryAddUsageDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistWithout_NSPhotoLibraryAddUsageDescription.plist; sourceTree = "<group>"; };
 		5B710DF221CA610B00DEC4AB /* OXMAbstractCreative+oxmTestExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OXMAbstractCreative+oxmTestExtension.h"; sourceTree = "<group>"; };
-		5B710DF321CA619C00DEC4AB /* OpenXSDKCoreTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OpenXSDKCoreTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5B710DF321CA619C00DEC4AB /* PrebidMobileRenderingTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PrebidMobileRenderingTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5B7377042072106D00E35620 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = ../Other/UnityAdsCreative/UnityAds.framework; sourceTree = "<group>"; };
 		5B78A8F920F8915A00C9AB27 /* MockMeasurementWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMeasurementWrapper.swift; sourceTree = "<group>"; };
 		5B78A8FF20F89CD800C9AB27 /* MockMeasurementSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMeasurementSession.swift; sourceTree = "<group>"; };
@@ -1655,7 +1655,7 @@
 		5CEFAA25208E9F1B007DBD3E /* OXMHTMLCreativeTest_NoMRAID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXMHTMLCreativeTest_NoMRAID.swift; sourceTree = "<group>"; };
 		5CF31F181F82BFD2004B04E9 /* OXMVideoCreativeTestCloseDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXMVideoCreativeTestCloseDelay.swift; sourceTree = "<group>"; };
 		5CF31F1F1F830747004B04E9 /* OXMAdRequesterVASTTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXMAdRequesterVASTTest.swift; sourceTree = "<group>"; };
-		9319862519A7DD8D007ED468 /* OpenXSDKCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenXSDKCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9319862519A7DD8D007ED468 /* PrebidMobileRenderingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrebidMobileRenderingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9319862819A7DD8D007ED468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		938A611819FB1EDD003E0481 /* BasicParameterBuilderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicParameterBuilderTest.swift; sourceTree = "<group>"; };
 		AC04860D24AB708B000106D4 /* OXAMoPubUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAMoPubUtils.h; sourceTree = "<group>"; };
@@ -3393,7 +3393,7 @@
 				2B98E1C31A803DC8001DBDE7 /* Frameworks and Libraries */,
 				2B7F2FF01B435F09006D0FC8 /* OpenXSDKCore */,
 				34D7113624E580A40048CC78 /* OpenXApolloSDK */,
-				9319862619A7DD8D007ED468 /* OpenXSDKCoreTests */,
+				9319862619A7DD8D007ED468 /* PrebidMobileRenderingTests */,
 				9319861B19A7DD8D007ED468 /* Products */,
 				5BC1447A20FF3E5C00388B00 /* Recovered References */,
 				D532FC7C22A557A700E405F5 /* Frameworks */,
@@ -3403,16 +3403,16 @@
 		9319861B19A7DD8D007ED468 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9319862519A7DD8D007ED468 /* OpenXSDKCoreTests.xctest */,
+				9319862519A7DD8D007ED468 /* PrebidMobileRenderingTests.xctest */,
 				34D7113424E580620048CC78 /* PrebidMobileRendering.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9319862619A7DD8D007ED468 /* OpenXSDKCoreTests */ = {
+		9319862619A7DD8D007ED468 /* PrebidMobileRenderingTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B710DF321CA619C00DEC4AB /* OpenXSDKCoreTests-Bridging-Header.h */,
+				5B710DF321CA619C00DEC4AB /* PrebidMobileRenderingTests-Bridging-Header.h */,
 				5B57DD90205AA53F0013E593 /* TestExtensions */,
 				5B24E2B52046B2C3003F8233 /* TestData */,
 				5C7E8C941F8D86EA00005D61 /* SampleFiles */,
@@ -3425,7 +3425,7 @@
 				9319862719A7DD8D007ED468 /* Supporting Files */,
 				5B414A782182F6B500E2849A /* SetupTests.swift */,
 			);
-			path = OpenXSDKCoreTests;
+			path = PrebidMobileRenderingTests;
 			sourceTree = "<group>";
 		};
 		9319862719A7DD8D007ED468 /* Supporting Files */ = {
@@ -3801,9 +3801,9 @@
 			productReference = 34D7113424E580620048CC78 /* PrebidMobileRendering.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9319862419A7DD8D007ED468 /* OpenXSDKCoreTests */ = {
+		9319862419A7DD8D007ED468 /* PrebidMobileRenderingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9319863019A7DD8D007ED468 /* Build configuration list for PBXNativeTarget "OpenXSDKCoreTests" */;
+			buildConfigurationList = 9319863019A7DD8D007ED468 /* Build configuration list for PBXNativeTarget "PrebidMobileRenderingTests" */;
 			buildPhases = (
 				358A4D8D20499067007C15AB /* Run Script */,
 				9319862119A7DD8D007ED468 /* Sources */,
@@ -3815,9 +3815,9 @@
 			dependencies = (
 				347E72142565855400EC5CC3 /* PBXTargetDependency */,
 			);
-			name = OpenXSDKCoreTests;
+			name = PrebidMobileRenderingTests;
 			productName = OpenXSDKCoreTests;
-			productReference = 9319862519A7DD8D007ED468 /* OpenXSDKCoreTests.xctest */;
+			productReference = 9319862519A7DD8D007ED468 /* PrebidMobileRenderingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -3858,7 +3858,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9319862419A7DD8D007ED468 /* OpenXSDKCoreTests */,
+				9319862419A7DD8D007ED468 /* PrebidMobileRenderingTests */,
 				D0F90EF5223FEE91001C1167 /* OCLint */,
 				34D70F6C24E580620048CC78 /* PrebidMobileRendering */,
 			);
@@ -4698,12 +4698,12 @@
 					"$(inherited)",
 					"TEST=1",
 				);
-				INFOPLIST_FILE = OpenXSDKCoreTests/Info.plist;
+				INFOPLIST_FILE = PrebidMobileRenderingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.prebid.mobile.rendering.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "OpenXSDKCoreTests/OpenXSDKCoreTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PrebidMobileRenderingTests/PrebidMobileRenderingTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -4720,12 +4720,12 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = OpenXSDKCoreTests/Info.plist;
+				INFOPLIST_FILE = PrebidMobileRenderingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.prebid.mobile.rendering.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "OpenXSDKCoreTests/OpenXSDKCoreTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PrebidMobileRenderingTests/PrebidMobileRenderingTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
@@ -4770,7 +4770,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9319863019A7DD8D007ED468 /* Build configuration list for PBXNativeTarget "OpenXSDKCoreTests" */ = {
+		9319863019A7DD8D007ED468 /* Build configuration list for PBXNativeTarget "PrebidMobileRenderingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9319863119A7DD8D007ED468 /* Debug */,

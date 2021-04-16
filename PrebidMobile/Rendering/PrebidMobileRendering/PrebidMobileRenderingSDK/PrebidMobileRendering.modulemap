@@ -8,7 +8,7 @@
 framework module PrebidMobileRendering {
     
     // Versions
-    header "OpenXApolloSDK.h"
+    header "PrebidMobileRenderingSDK.h"
     // Constants
     header "OXAPublicConstants.h"
     // Enums

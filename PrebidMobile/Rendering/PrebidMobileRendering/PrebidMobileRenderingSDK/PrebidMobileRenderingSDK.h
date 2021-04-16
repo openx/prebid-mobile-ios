@@ -3,8 +3,8 @@
 #import <UIKit/UIKit.h>
 
 //! Project version number for OpenXSDKCore.
-FOUNDATION_EXPORT double OpenXApolloSDKVersionNumber;
+FOUNDATION_EXPORT double PrebidMobileRenderingVersionNumber;
 
 //! Project version string for OpenXSDKCore.
-FOUNDATION_EXPORT const unsigned char OpenXApolloSDKVersionString[];
+FOUNDATION_EXPORT const unsigned char PrebidMobileRenderingVersionString[];
 

@@ -5,7 +5,7 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
-#import <PrebidMobileRendering/OpenXApolloSDK.h>
+#import <PrebidMobileRendering/PrebidMobileRenderingSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -78,7 +78,7 @@
 		344B1DBB2594B30D00B9D188 /* OXANativeAdUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 344B1DB92594B30D00B9D188 /* OXANativeAdUnit.m */; };
 		3461833125A5CE8600783A2C /* RawWinningBidFabricator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461833025A5CE8600783A2C /* RawWinningBidFabricator.swift */; };
 		3461833925A5CF4D00783A2C /* WinningBidResponseFabricator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461833825A5CF4D00783A2C /* WinningBidResponseFabricator.swift */; };
-		3461BB1124E58595008148CC /* OpenXApolloSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3461BB1024E58551008148CC /* OpenXApolloSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3461BB1124E58595008148CC /* PrebidMobileRenderingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3461BB1024E58551008148CC /* PrebidMobileRenderingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3469E0DB23EDAC91005F65BE /* OXMViewExposureTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469E0DA23EDAC91005F65BE /* OXMViewExposureTest.swift */; };
 		346E547A256D54500087FAA0 /* OXMVastGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = 346E5479256D54420087FAA0 /* OXMVastGlobals.m */; };
 		346E547F256D57910087FAA0 /* OXAErrorType.m in Sources */ = {isa = PBXBuildFile; fileRef = 346E547E256D57590087FAA0 /* OXAErrorType.m */; };
@@ -1021,7 +1021,7 @@
 		3454878623CCCB7900BCCB4B /* OXMOpenMeasurementFriendlyObstructionPurpose.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXMOpenMeasurementFriendlyObstructionPurpose.h; sourceTree = "<group>"; };
 		3461833025A5CE8600783A2C /* RawWinningBidFabricator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawWinningBidFabricator.swift; sourceTree = "<group>"; };
 		3461833825A5CF4D00783A2C /* WinningBidResponseFabricator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningBidResponseFabricator.swift; sourceTree = "<group>"; };
-		3461BB1024E58551008148CC /* OpenXApolloSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenXApolloSDK.h; sourceTree = "<group>"; };
+		3461BB1024E58551008148CC /* PrebidMobileRenderingSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMobileRenderingSDK.h; sourceTree = "<group>"; };
 		3464DDC8236C713800C7DE46 /* OXMAbstractCreative+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "OXMAbstractCreative+Protected.h"; path = "AdTypes/AdView/OXMAbstractCreative+Protected.h"; sourceTree = "<group>"; };
 		3469E0DA23EDAC91005F65BE /* OXMViewExposureTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXMViewExposureTest.swift; sourceTree = "<group>"; };
 		346C2DCA24DAAAE300B3E40F /* OXMAutoRefreshManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OXMAutoRefreshManager.h; path = AdTypes/AdView/OXMAutoRefreshManager.h; sourceTree = "<group>"; };
@@ -1049,7 +1049,7 @@
 		3484441623A286C900A5AA28 /* OXMUserConsentResolver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OXMUserConsentResolver.m; path = Utilities/OXMUserConsentResolver.m; sourceTree = "<group>"; };
 		34865C9D258B50BD004865BB /* OXANativeAdMarkupTitleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXANativeAdMarkupTitleTest.swift; sourceTree = "<group>"; };
 		3488056E23D887780069847D /* OXMOpenMeasurementFriendlyObstructionTypeBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXMOpenMeasurementFriendlyObstructionTypeBridgeTest.swift; sourceTree = "<group>"; };
-		348A0A4C24EE6F2F00A6659F /* OpenXApolloSDK.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = OpenXApolloSDK.modulemap; sourceTree = "<group>"; };
+		348A0A4C24EE6F2F00A6659F /* PrebidMobileRendering.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = PrebidMobileRendering.modulemap; sourceTree = "<group>"; };
 		348AB3AD2595E9CE0066F33E /* OXADemandResponseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXADemandResponseInfo.h; sourceTree = "<group>"; };
 		348AB3AE2595E9CE0066F33E /* OXADemandResponseInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXADemandResponseInfo.m; sourceTree = "<group>"; };
 		348AB3B42595EAE70066F33E /* OXADemandResponseInfo+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OXADemandResponseInfo+Internal.h"; sourceTree = "<group>"; };
@@ -1251,12 +1251,12 @@
 		34D42CBB25CD6037008EE1D3 /* OXAExternalURLOpenCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAExternalURLOpenCallbacks.h; sourceTree = "<group>"; };
 		34D42CBC25CD6037008EE1D3 /* OXAExternalURLOpenCallbacks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXAExternalURLOpenCallbacks.m; sourceTree = "<group>"; };
 		34D42CC825CD610B008EE1D3 /* OXAURLOpenResultHandlerBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAURLOpenResultHandlerBlock.h; sourceTree = "<group>"; };
-		34D70F5F24E537220048CC78 /* OXAPublicConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OXAPublicConstants.h; path = OpenXSDKCore/OXAPublicConstants.h; sourceTree = SOURCE_ROOT; };
-		34D70F6024E537220048CC78 /* OXAPublicConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OXAPublicConstants.m; path = OpenXSDKCore/OXAPublicConstants.m; sourceTree = SOURCE_ROOT; };
+		34D70F5F24E537220048CC78 /* OXAPublicConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OXAPublicConstants.h; path = PrebidMobileRendering/OXAPublicConstants.h; sourceTree = SOURCE_ROOT; };
+		34D70F6024E537220048CC78 /* OXAPublicConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OXAPublicConstants.m; path = PrebidMobileRendering/OXAPublicConstants.m; sourceTree = SOURCE_ROOT; };
 		34D70F6624E53C850048CC78 /* OXAErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OXAErrorCode.h; path = Utilities/OXAErrorCode.h; sourceTree = "<group>"; };
 		34D70F6724E53C950048CC78 /* OXAErrorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAErrorType.h; sourceTree = "<group>"; };
 		34D7113424E580620048CC78 /* PrebidMobileRendering.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileRendering.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34D7113524E580630048CC78 /* OpenXApolloSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenXApolloSDK-Info.plist"; sourceTree = "<group>"; };
+		34D7113524E580630048CC78 /* PrebidMobileRendering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrebidMobileRendering-Info.plist"; sourceTree = "<group>"; };
 		34D9E887256BE3B200D40497 /* OXAAgeUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAAgeUtils.h; sourceTree = "<group>"; };
 		34D9E888256BE3B200D40497 /* OXAAgeUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXAAgeUtils.m; sourceTree = "<group>"; };
 		34D9E88F256BE5D000D40497 /* OXAGender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAGender.h; sourceTree = "<group>"; };
@@ -1839,7 +1839,7 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		2B7F2FF01B435F09006D0FC8 /* OpenXSDKCore */ = {
+		2B7F2FF01B435F09006D0FC8 /* PrebidMobileRendering */ = {
 			isa = PBXGroup;
 			children = (
 				5B1C15552260ACB80043C0D2 /* Assets */,
@@ -1890,7 +1890,7 @@
 				5BFEF20A20333FC600DCEBCE /* OXMVideoView.h */,
 				5BFEF20B20333FC600DCEBCE /* OXMVideoView.m */,
 			);
-			path = OpenXSDKCore;
+			path = PrebidMobileRendering;
 			sourceTree = "<group>";
 		};
 		2B98E1C31A803DC8001DBDE7 /* Frameworks and Libraries */ = {
@@ -2199,7 +2199,7 @@
 		34BF11C72476C253007A09F1 /* Integrations */ = {
 			isa = PBXGroup;
 			children = (
-				34BF11D12476C2A2007A09F1 /* OXAStandaloneSDK */,
+				34BF11D12476C2A2007A09F1 /* PBMStandaloneSDK */,
 				34BF11D22476C2A9007A09F1 /* GAM */,
 				34BF11D32476C2B2007A09F1 /* MoPub */,
 				34C7963225DD346B0072A898 /* PrimarySDKUtilHelpers */,
@@ -2207,7 +2207,7 @@
 			path = Integrations;
 			sourceTree = "<group>";
 		};
-		34BF11D12476C2A2007A09F1 /* OXAStandaloneSDK */ = {
+		34BF11D12476C2A2007A09F1 /* PBMStandaloneSDK */ = {
 			isa = PBXGroup;
 			children = (
 				348AB3CA2595F87E0066F33E /* EventHandlers */,
@@ -2221,7 +2221,7 @@
 				344B1DB82594B30D00B9D188 /* OXANativeAdUnit.h */,
 				344B1DB92594B30D00B9D188 /* OXANativeAdUnit.m */,
 			);
-			path = OXAStandaloneSDK;
+			path = PBMStandaloneSDK;
 			sourceTree = "<group>";
 		};
 		34BF11D22476C2A9007A09F1 /* GAM */ = {
@@ -2387,14 +2387,14 @@
 			path = Equality;
 			sourceTree = "<group>";
 		};
-		34D7113624E580A40048CC78 /* OpenXApolloSDK */ = {
+		34D7113624E580A40048CC78 /* PrebidMobileRenderingSDK */ = {
 			isa = PBXGroup;
 			children = (
-				3461BB1024E58551008148CC /* OpenXApolloSDK.h */,
-				34D7113524E580630048CC78 /* OpenXApolloSDK-Info.plist */,
-				348A0A4C24EE6F2F00A6659F /* OpenXApolloSDK.modulemap */,
+				3461BB1024E58551008148CC /* PrebidMobileRenderingSDK.h */,
+				34D7113524E580630048CC78 /* PrebidMobileRendering-Info.plist */,
+				348A0A4C24EE6F2F00A6659F /* PrebidMobileRendering.modulemap */,
 			);
-			path = OpenXApolloSDK;
+			path = PrebidMobileRenderingSDK;
 			sourceTree = "<group>";
 		};
 		34D9E88E256BE4A800D40497 /* Targeting */ = {
@@ -2459,14 +2459,14 @@
 		34E3F25D246E7D7C00ADBFC6 /* Prebid */ = {
 			isa = PBXGroup;
 			children = (
-				34E3F25E246E7E8400ADBFC6 /* OXACore */,
-				34E3F26C246EB14100ADBFC6 /* OXACacheRenderers */,
+				34E3F25E246E7E8400ADBFC6 /* PBMCore */,
+				34E3F26C246EB14100ADBFC6 /* PBMCacheRenderers */,
 				34BF11C72476C253007A09F1 /* Integrations */,
 			);
 			path = Prebid;
 			sourceTree = "<group>";
 		};
-		34E3F25E246E7E8400ADBFC6 /* OXACore */ = {
+		34E3F25E246E7E8400ADBFC6 /* PBMCore */ = {
 			isa = PBXGroup;
 			children = (
 				34CAA2112541C3620027A916 /* NativeAssets */,
@@ -2522,10 +2522,10 @@
 				341C0D1325A36310002A1527 /* OXAWinNotifierFactoryBlock.h */,
 				34E2FE2D25AF295C0003C0EA /* NativeEventsTracking */,
 			);
-			path = OXACore;
+			path = PBMCore;
 			sourceTree = "<group>";
 		};
-		34E3F26C246EB14100ADBFC6 /* OXACacheRenderers */ = {
+		34E3F26C246EB14100ADBFC6 /* PBMCacheRenderers */ = {
 			isa = PBXGroup;
 			children = (
 				342908EE24729890001CF27B /* OXADisplayViewLoadingDelegate.h */,
@@ -2542,7 +2542,7 @@
 				34F135C625CAD73F004414D6 /* OXAMediaView.h */,
 				34F135C725CAD73F004414D6 /* OXAMediaView.m */,
 			);
-			path = OXACacheRenderers;
+			path = PBMCacheRenderers;
 			sourceTree = "<group>";
 		};
 		34EF29DD258B4140000E8404 /* JSONDecoding */ = {
@@ -3391,8 +3391,8 @@
 			isa = PBXGroup;
 			children = (
 				2B98E1C31A803DC8001DBDE7 /* Frameworks and Libraries */,
-				2B7F2FF01B435F09006D0FC8 /* OpenXSDKCore */,
-				34D7113624E580A40048CC78 /* OpenXApolloSDK */,
+				2B7F2FF01B435F09006D0FC8 /* PrebidMobileRendering */,
+				34D7113624E580A40048CC78 /* PrebidMobileRenderingSDK */,
 				9319862619A7DD8D007ED468 /* PrebidMobileRenderingTests */,
 				9319861B19A7DD8D007ED468 /* Products */,
 				5BC1447A20FF3E5C00388B00 /* Recovered References */,
@@ -3738,7 +3738,7 @@
 				348E114925B1A552000085BF /* OXANativeImpressionsTracker.h in Headers */,
 				34F135B225CAA66C004414D6 /* OXADisplayTransactionFactory.h in Headers */,
 				34D0AA8F258CBBFD001D5447 /* OXANativeAdTitle.h in Headers */,
-				3461BB1124E58595008148CC /* OpenXApolloSDK.h in Headers */,
+				3461BB1124E58595008148CC /* PrebidMobileRenderingSDK.h in Headers */,
 				34D7111024E580620048CC78 /* OXMLocationManagerProtocol.h in Headers */,
 				34D7111224E580620048CC78 /* OXMOpenMeasurementEventTracker.h in Headers */,
 				34D7111324E580620048CC78 /* OXMORTBBidRequestExtPrebid.h in Headers */,
@@ -4493,7 +4493,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "OpenXApolloSDK/OpenXApolloSDK-Info.plist";
+				INFOPLIST_FILE = "PrebidMobileRenderingSDK/PrebidMobileRendering-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -4503,12 +4503,12 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				MODULEMAP_FILE = OpenXApolloSDK/OpenXApolloSDK.modulemap;
+				MODULEMAP_FILE = PrebidMobileRenderingSDK/PrebidMobileRendering.modulemap;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.prebid.mobile.rendering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/OpenXSDKCore/ProjectModule";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/PrebidMobileRendering/ProjectModule";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -4534,7 +4534,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = "OpenXApolloSDK/OpenXApolloSDK-Info.plist";
+				INFOPLIST_FILE = "PrebidMobileRenderingSDK/PrebidMobileRendering-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -4544,12 +4544,12 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				MODULEMAP_FILE = OpenXApolloSDK/OpenXApolloSDK.modulemap;
+				MODULEMAP_FILE = PrebidMobileRenderingSDK/PrebidMobileRendering.modulemap;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.prebid.mobile.rendering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/OpenXSDKCore/ProjectModule";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/PrebidMobileRendering/ProjectModule";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 			};

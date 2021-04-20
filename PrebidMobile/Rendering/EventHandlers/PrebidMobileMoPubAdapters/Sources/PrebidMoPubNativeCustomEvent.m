@@ -1,17 +1,17 @@
 //
-//  OXAMoPubNativeCustomEvent.m
+//  PBMMoPubNativeCustomEvent.m
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXANativeAd.h>
+#import <PrebidMobileRendering/PBMNativeAd.h>
 
-#import "OXAMoPubNativeAdAdapter.h"
-#import "OXAMoPubNativeCustomEvent.h"
+#import "PrebidMoPubNativeAdAdapter.h"
+#import "PrebidMoPubNativeCustomEvent.h"
 
-@implementation OXAMoPubNativeCustomEvent
+@implementation PrebidMoPubNativeCustomEvent
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
     [self requestAdWithCustomEventInfo:info adMarkup:nil];
@@ -19,8 +19,8 @@
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
     if (self.localExtras.count == 0) {
-        NSError *error = [NSError errorWithDomain:OXAErrorDomain
-                                             code:OXAErrorCodeGeneral
+        NSError *error = [NSError errorWithDomain:PBMErrorDomain
+                                             code:PBMErrorCodeGeneral
                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"The local extras is empty", nil)}];
         MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], @"");
         [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
@@ -28,7 +28,7 @@
     }
     
     __weak __typeof__(self) weakSelf = self;
-    [OXAMoPubUtils findNativeAd:self.localExtras callback:^(OXANativeAd *nativeAd, NSError *error){
+    [PBMMoPubUtils findNativeAd:self.localExtras callback:^(PBMNativeAd *nativeAd, NSError *error){
         __typeof__(self) strongSelf = weakSelf;
         if (strongSelf == nil) {
             return;
@@ -46,7 +46,7 @@
 #pragma mark - Private methods
 
 - (void)nativeAdDidLoad:(PBMNativeAd *)nativeAd{
-    OXAMoPubNativeAdAdapter *adAdapter = [[OXAMoPubNativeAdAdapter alloc] initWithOXANativeAd:nativeAd];
+    PrebidMoPubNativeAdAdapter *adAdapter = [[PrebidMoPubNativeAdAdapter alloc] initWithPBMNativeAd:nativeAd];
     
     MPNativeAd *interfaceAd = [[MPNativeAd alloc] initWithAdAdapter:adAdapter];
     

@@ -1,5 +1,5 @@
 //
-//  OXAMoPubNativeAdRenderer.h
+//  PBMMoPubNativeAdRenderer.h
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class MPNativeAdRendererConfiguration;
 @class MPStaticNativeAdRendererSettings;
 
-@interface OXAMoPubNativeAdRenderer : NSObject <MPNativeAdRenderer>
+@interface PrebidMoPubNativeAdRenderer : NSObject <MPNativeAdRenderer>
 
 @property (nonatomic, readonly) MPNativeViewSizeHandler viewSizeHandler;
 

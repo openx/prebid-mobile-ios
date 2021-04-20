@@ -1,24 +1,24 @@
 //
-//  OXAMoPubAdapterConfiguration.m
-//  OXAMoPubTestAppObjC
+//  PBMMoPubAdapterConfiguration.m
+//  PBMMoPubTestAppObjC
 //
 //  Copyright © 2019 OpenX, Inc. All rights reserved.
 //
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXASDKConfiguration.h>
-#import <PrebidMobileRendering/OXALogLevel.h>
+#import <PrebidMobileRendering/PBMSDKConfiguration.h>
+#import <PrebidMobileRendering/PBMLogLevel.h>
 
-#import "OXAMoPubAdapterConfiguration.h"
+#import "PrebidMoPubAdapterConfiguration.h"
 
-static NSString * const OXA_MOPUB_ADAPTER_VERSION = @"0";
+static NSString * const PREBID_MOPUB_ADAPTER_VERSION = @"0";
 
-@implementation OXAMoPubAdapterConfiguration
+@implementation PrebidMoPubAdapterConfiguration
 
 #pragma mark - MPAdapterConfiguration
 
 - (NSString *)adapterVersion {
-    return [NSString stringWithFormat:@"%@.%@", OXASDKConfiguration.sdkVersion, OXA_MOPUB_ADAPTER_VERSION];
+    return [NSString stringWithFormat:@"%@.%@", PBMSDKConfiguration.sdkVersion, PREBID_MOPUB_ADAPTER_VERSION];
 }
 
 - (NSString *)biddingToken {
@@ -30,18 +30,18 @@ static NSString * const OXA_MOPUB_ADAPTER_VERSION = @"0";
 }
 
 - (NSString *)networkSdkVersion {
-    return OXASDKConfiguration.sdkVersion;
+    return PBMSDKConfiguration.sdkVersion;
 }
 
 -(void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration complete:(void (^)(NSError * _Nullable))complete {
     
-    [OXASDKConfiguration initializeSDK];
+    [PBMSDKConfiguration initializeSDK];
     
-    OXASDKConfiguration.singleton.logLevel = OXALogLevelInfo;
-    OXASDKConfiguration.singleton.locationUpdatesEnabled = YES;
+    PBMSDKConfiguration.singleton.logLevel = PBMLogLevelInfo;
+    PBMSDKConfiguration.singleton.locationUpdatesEnabled = YES;
     
     // OpenX's ads include Open Measurement scripts that sometime require additional time for loading.
-    OXASDKConfiguration.singleton.creativeFactoryTimeout = 15;
+    PBMSDKConfiguration.singleton.creativeFactoryTimeout = 15;
     
     MPLogInfo(@"Prebid Mobile Rendering SDK initialized succesfully.");
     

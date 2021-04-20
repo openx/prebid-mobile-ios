@@ -1,59 +1,59 @@
 //
-//  OXAMoPubBannerAdapter.m
+//  PBMMoPubBannerAdapter.m
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXADisplayView.h>
+#import <PrebidMobileRendering/PBMDisplayView.h>
 
-#import "OXAMoPubBannerAdapter.h"
+#import "PrebidMoPubBannerAdapter.h"
 
 /**
- OXA SDK passes to the localExtras two objects: OXABid, configId
+ PBM SDK passes to the localExtras two objects: PBMBid, configId
  */
 
-@interface OXAMoPubBannerAdapter () <OXADisplayViewLoadingDelegate, OXADisplayViewInteractionDelegate>
+@interface PrebidMoPubBannerAdapter () <PBMDisplayViewLoadingDelegate, PBMDisplayViewInteractionDelegate>
 
 @property (nonatomic, copy) NSString *configId;
-@property (strong, nonatomic) OXADisplayView *displayView;
+@property (strong, nonatomic) PBMDisplayView *displayView;
 
 @end
 
-@implementation OXAMoPubBannerAdapter
+@implementation PrebidMoPubBannerAdapter
 
 - (void)requestAdWithSize:(CGSize)size adapterInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
     if (self.localExtras.count == 0) {
-        NSError *error = [NSError errorWithDomain:OXAErrorDomain
-                                             code:OXAErrorCodeGeneral
+        NSError *error = [NSError errorWithDomain:PBMErrorDomain
+                                             code:PBMErrorCodeGeneral
                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"The local extras is empty", nil)}];
         MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], @"");
         [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
         return;
     }
     
-    OXABid *bid = self.localExtras[OXAMoPubAdUnitBidKey];
+    PBMBid *bid = self.localExtras[PBMMoPubAdUnitBidKey];
     if (!bid) {
-        NSError *error = [NSError errorWithDomain:OXAErrorDomain
-                                             code:OXAErrorCodeGeneral
+        NSError *error = [NSError errorWithDomain:PBMErrorDomain
+                                             code:PBMErrorCodeGeneral
                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"The Bid object is absent in the extras", nil)}];
         MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdUnitId]);
         [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
         return;
     }
     
-    self.configId = self.localExtras[OXAMoPubConfigIdKey];
+    self.configId = self.localExtras[PBMMoPubConfigIdKey];
     if (!self.configId) {
-        NSError *error = [NSError errorWithDomain:OXAErrorDomain
-                                             code:OXAErrorCodeGeneral
+        NSError *error = [NSError errorWithDomain:PBMErrorDomain
+                                             code:PBMErrorCodeGeneral
                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"The Config ID absent in the extras", nil)}];
         MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdUnitId]);
         [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
         return;
     }
     
-    self.displayView = [[OXADisplayView alloc] initWithFrame:(CGRect){.origin = CGPointZero, .size = bid.size} bid:bid configId:self.configId];
+    self.displayView = [[PBMDisplayView alloc] initWithFrame:(CGRect){.origin = CGPointZero, .size = bid.size} bid:bid configId:self.configId];
     self.displayView.loadingDelegate = self;
     self.displayView.interactionDelegate = self;
     
@@ -65,25 +65,25 @@
     return self.configId ?: @"";
 }
 
-#pragma mark - OXADisplayViewDelegate handlers
+#pragma mark - PBMDisplayViewDelegate handlers
 
 
-- (void)didLeaveAppFromDisplayView:(nonnull OXADisplayView *)displayView {
+- (void)didLeaveAppFromDisplayView:(nonnull PBMDisplayView *)displayView {
     MPLogAdEvent([MPLogEvent adWillLeaveApplicationForAdapter:NSStringFromClass(self.class)], [self getAdUnitId]);
     [self.delegate inlineAdAdapterWillLeaveApplication:self];
 }
 
-- (void)displayView:(nonnull OXADisplayView *)displayView didFailWithError:(nonnull NSError *)error {
+- (void)displayView:(nonnull PBMDisplayView *)displayView didFailWithError:(nonnull NSError *)error {
     MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdUnitId]);
     [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
 }
 
-- (void)displayViewDidLoadAd:(nonnull OXADisplayView *)displayView {
+- (void)displayViewDidLoadAd:(nonnull PBMDisplayView *)displayView {
     MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], [self getAdUnitId]);
     [self.delegate inlineAdAdapter:self didLoadAdWithAdView:self.displayView];
 }
 
-- (void)trackImpressionForDisplayView:(nonnull OXADisplayView *)displayView {
+- (void)trackImpressionForDisplayView:(nonnull PBMDisplayView *)displayView {
     //Impressions will be tracked automatically
     //unless enableAutomaticImpressionAndClickTracking = NO
     //In this case you have to override the didDisplayAd method
@@ -91,16 +91,16 @@
     //in this method to ensure correct metrics
 }
 
-- (nonnull UIViewController *)viewControllerForModalPresentationFrom:(nonnull OXADisplayView *)displayView {
+- (nonnull UIViewController *)viewControllerForModalPresentationFrom:(nonnull PBMDisplayView *)displayView {
     return [self.delegate inlineAdAdapterViewControllerForPresentingModalView:self];
 }
 
-- (void)displayViewWillPresentModal:(OXADisplayView *)displayView {
+- (void)displayViewWillPresentModal:(PBMDisplayView *)displayView {
     MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], [self getAdUnitId]);
     [self.delegate inlineAdAdapterWillBeginUserAction:self];
 }
 
-- (void)displayViewDidDismissModal:(OXADisplayView *)displayView {
+- (void)displayViewDidDismissModal:(PBMDisplayView *)displayView {
     MPLogInfo(@"Banner's clickthrough did close");
     [self.delegate inlineAdAdapterDidEndUserAction:self];
 }

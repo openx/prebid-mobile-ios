@@ -1,5 +1,5 @@
 //
-//  OXAMoPubError.h
+//  PBMMoPubError.h
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXAMoPubError : NSObject
+@interface PrebidMoPubError : NSObject
 
 @property (nonatomic, class, readonly) NSError *noLocalCacheID;
 @property (nonatomic, class, readonly) NSError *invalidLocalCacheID;

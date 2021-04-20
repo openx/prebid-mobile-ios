@@ -1,5 +1,5 @@
 //
-//  OXAMoPubNativeAdUtils.h
+//  PBMMoPubNativeAdUtils.h
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -9,11 +9,11 @@
 
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXANativeAdDetectionListener.h>
+#import <PrebidMobileRendering/PBMNativeAdDetectionListener.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXAMoPubNativeAdUtils : NSObject
+@interface PrebidMoPubNativeAdUtils : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)prepareAdObject:(id)adObject;
 
-- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(OXANativeAdDetectionListener *)nativeAdDetectionListener;
+- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener;
 
 @end
 

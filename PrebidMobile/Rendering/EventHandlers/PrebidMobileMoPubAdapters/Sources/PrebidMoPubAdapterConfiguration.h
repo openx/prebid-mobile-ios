@@ -1,6 +1,6 @@
 //
-//  OXAMoPubAdapterConfiguration.h
-//  OXAMoPubTestAppObjC
+//  PBMMoPubAdapterConfiguration.h
+//  PBMMoPubTestAppObjC
 //
 //  Copyright © 2019 OpenX, Inc. All rights reserved.
 //
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXAMoPubAdapterConfiguration : MPBaseAdapterConfiguration
+@interface PrebidMoPubAdapterConfiguration : MPBaseAdapterConfiguration
 
 @end
 

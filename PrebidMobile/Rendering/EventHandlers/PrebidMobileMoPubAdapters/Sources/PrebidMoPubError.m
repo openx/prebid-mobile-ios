@@ -1,24 +1,24 @@
 //
-//  OXAMoPubError.m
+//  PBMMoPubError.m
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 
-#import <PrebidMobileRendering/OXAErrorCode.h>
-#import "OXAMoPubConstants.h"
+#import <PrebidMobileRendering/PBMErrorCode.h>
+#import "PrebidMoPubConstants.h"
 
-#import "OXAMoPubError.h"
+#import "PrebidMoPubError.h"
 
-@interface OXAMoPubError ()
+@interface PrebidMoPubError ()
 @property (nonatomic, class, readonly) NSErrorDomain errorDomain;
 @property (nonatomic, class, readonly) NSInteger baseErrorOffset;
 @end
 
-@implementation OXAMoPubError
+@implementation PrebidMoPubError
 
 + (NSErrorDomain)errorDomain {
-    return OXAErrorDomain;
+    return PBMErrorDomain;
 }
 
 + (NSInteger)baseErrorOffset {
@@ -27,7 +27,7 @@
 
 + (NSError *)noLocalCacheID {
     NSString * const errorMessage = [NSString stringWithFormat:@"Failed to find local cache ID (expected in '%@').",
-                                     OXA_MOPUB_PREBID_CREATIVE_FLAG_KEY];
+                                     PREBID_MOPUB_PREBID_CREATIVE_FLAG_KEY];
     return [NSError errorWithDomain:[self errorDomain]
                                code:[self baseErrorOffset] + 2
                            userInfo:@{NSLocalizedDescriptionKey: errorMessage}];

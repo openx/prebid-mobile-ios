@@ -1,5 +1,5 @@
 //
-//  OXAMoPubRewardedVideoAdapter.h
+//  PBMMoPubInterstitialAdapter.h
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXAMoPubRewardedVideoAdapter : MPFullscreenAdAdapter
+@interface PrebidMoPubInterstitialAdapter : MPFullscreenAdAdapter
 
 @end
 

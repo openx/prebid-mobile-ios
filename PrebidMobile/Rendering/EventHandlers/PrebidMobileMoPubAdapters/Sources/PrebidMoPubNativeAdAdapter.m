@@ -1,5 +1,5 @@
 //
-//  OXAApolloNativeAdAdapter.m
+//  PBMApolloNativeAdAdapter.m
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -7,21 +7,21 @@
 
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXANativeAd.h>
+#import <PrebidMobileRendering/PBMNativeAd.h>
 
-#import "OXAMoPubNativeAdAdapter.h"
+#import "PrebidMoPubNativeAdAdapter.h"
 
-@interface OXAMoPubNativeAdAdapter () <OXANativeAdUIDelegate, OXANativeAdTrackingDelegate>
+@interface PrebidMoPubNativeAdAdapter () <PBMNativeAdUIDelegate, PBMNativeAdTrackingDelegate>
 
-@property (nonatomic, readonly) OXAMediaView *mediaView;
+@property (nonatomic, readonly) PBMMediaView *mediaView;
 
 @end
 
-@implementation OXAMoPubNativeAdAdapter
+@implementation PrebidMoPubNativeAdAdapter
 
 @synthesize properties = _properties;
 
-- (instancetype)initWithOXANativeAd:(PBMNativeAd *)nativeAd {
+- (instancetype)initWithPBMNativeAd:(PBMNativeAd *)nativeAd {
     if (!(self = [super init])) {
         return nil;
     }
@@ -34,7 +34,7 @@
     
     properties[kAdTitleKey] = nativeAd.title;
     properties[kAdTextKey] = nativeAd.text;
-    NSString * const sponsored = [nativeAd dataObjectsOfType:OXADataAssetType_Sponsored].firstObject.value;
+    NSString * const sponsored = [nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject.value;
     properties[kAdSponsoredByCompanyKey] = sponsored;
     properties[kAdCTATextKey] = nativeAd.callToAction;
     
@@ -48,7 +48,7 @@
         properties[kAdMainImageKey] = imageUrl;
     }
     
-    NSString * const ratingString = [nativeAd dataObjectsOfType:OXADataAssetType_Rating].firstObject.value;
+    NSString * const ratingString = [nativeAd dataObjectsOfType:PBMDataAssetType_Rating].firstObject.value;
     if (ratingString) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -56,10 +56,10 @@
         properties[kAdStarRatingKey] = ratingNum;
     }
     
-    OXAMediaData *mediaData = nativeAd.videoAd.mediaData;
+    PBMMediaData *mediaData = nativeAd.videoAd.mediaData;
     
     if (mediaData) {
-        _mediaView = [[OXAMediaView alloc] init];
+        _mediaView = [[PBMMediaView alloc] init];
         properties[kAdMainMediaViewKey] = _mediaView;
         [_mediaView loadMedia:mediaData];
     }
@@ -83,7 +83,7 @@
     return self.mediaView;
 }
 
-#pragma mark - OXANativeAdUIDelegate
+#pragma mark - PBMNativeAdUIDelegate
 
 - (nullable UIViewController *)viewPresentationControllerForNativeAd:(nonnull PBMNativeAd *)nativeAd {
     return [self.delegate viewControllerForPresentingModalView];
@@ -104,7 +104,7 @@
     [self.delegate nativeAdDidDismissModalForAdapter:self];
 }
 
-#pragma mark - OXANativeAdTrackingDelegate
+#pragma mark - PBMNativeAdTrackingDelegate
 
 - (void)nativeAdDidLogClick:(PBMNativeAd *)nativeAd {
     if ([self.delegate respondsToSelector:@selector(nativeAdDidClick:)]) {
@@ -115,8 +115,8 @@
     }
 }
 
-- (void)nativeAd:(PBMNativeAd *)nativeAd didLogEvent:(OXANativeEventType)nativeEvent {
-    if (nativeEvent == OXANativeEventType_Impression) {
+- (void)nativeAd:(PBMNativeAd *)nativeAd didLogEvent:(PBMNativeEventType)nativeEvent {
+    if (nativeEvent == PBMNativeEventType_Impression) {
         if ([self.delegate respondsToSelector:@selector(nativeAdWillLogImpression:)]) {
             MPLogEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)]);
             MPLogEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)]);

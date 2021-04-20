@@ -1,5 +1,5 @@
 //
-//  OXAMoPubNativeCustomEvent.h
+//  PBMMoPubNativeCustomEvent.h
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXAMoPubNativeCustomEvent : MPNativeCustomEvent
+@interface PrebidMoPubNativeCustomEvent : MPNativeCustomEvent
 
 @end
 

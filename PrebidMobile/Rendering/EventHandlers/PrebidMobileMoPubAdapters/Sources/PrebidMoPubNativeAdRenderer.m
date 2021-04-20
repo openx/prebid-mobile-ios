@@ -1,29 +1,29 @@
 //
-//  OXAMoPubNativeAdRenderer.m
+//  PBMMoPubNativeAdRenderer.m
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 #import <MoPub/MoPub.h>
 
-#import <PrebidMobileRendering/OXANativeAd.h>
+#import <PrebidMobileRendering/PBMNativeAd.h>
 
-#import "OXAMoPubNativeAdRenderer.h"
+#import "PrebidMoPubNativeAdRenderer.h"
 
-#import "OXAMoPubNativeAdAdapter.h"
-#import "OXAMoPubNativeCustomEvent.h"
+#import "PrebidMoPubNativeAdAdapter.h"
+#import "PrebidMoPubNativeCustomEvent.h"
 
-@interface OXAMoPubNativeAdRenderer() <MPNativeAdRendererImageHandlerDelegate>
+@interface PrebidMoPubNativeAdRenderer() <MPNativeAdRendererImageHandlerDelegate>
 
 @property (nonatomic, strong) UIView<MPNativeAdRendering> *adView;
-@property (nonatomic, strong) OXAMoPubNativeAdAdapter *adapter;
+@property (nonatomic, strong) PrebidMoPubNativeAdAdapter *adapter;
 @property (nonatomic, strong) Class renderingViewClass;
 @property (nonatomic, strong) MPNativeAdRendererImageHandler *rendererImageHandler;
 @property (nonatomic, assign) BOOL adViewInViewHierarchy;
 
 @end
 
-@implementation OXAMoPubNativeAdRenderer
+@implementation PrebidMoPubNativeAdRenderer
 
 - (instancetype)initWithRendererSettings:(id<MPNativeAdRendererSettings>)rendererSettings {
     if (!(self = [super init])) {
@@ -43,13 +43,13 @@
     MPNativeAdRendererConfiguration *config = [[MPNativeAdRendererConfiguration alloc] init];
     config.rendererClass = [self class];
     config.rendererSettings = rendererSettings;
-    config.supportedCustomEvents = @[NSStringFromClass(OXAMoPubNativeCustomEvent.class)];
+    config.supportedCustomEvents = @[NSStringFromClass(PrebidMoPubNativeCustomEvent.class)];
         
     return config;
 }
 
 - (UIView *)retrieveViewWithAdapter:(id<MPNativeAdAdapter>)adapter error:(NSError * _Nullable __autoreleasing *)error {
-    if (!adapter || ![adapter isKindOfClass:[OXAMoPubNativeAdAdapter class]]) {
+    if (!adapter || ![adapter isKindOfClass:[PrebidMoPubNativeAdAdapter class]]) {
         if (error) {
             *error = MPNativeAdNSErrorForRenderValueTypeError();
         }
@@ -78,7 +78,7 @@
         self.adView.nativeCallToActionTextLabel) {
         UILabel * const ctaLabel = self.adView.nativeCallToActionTextLabel;
         ctaLabel.text = [adapter.properties objectForKey:kAdCTATextKey];
-        [self.adapter.nativeAd registerClickView:ctaLabel nativeAdElementType:OXANativeAdElementType_CallToAction];
+        [self.adapter.nativeAd registerClickView:ctaLabel nativeAdElementType:PBMNativeAdElementType_CallToAction];
     }
     
     if (adapter.properties[kAdSponsoredByCompanyKey] &&
@@ -87,14 +87,14 @@
         UILabel * const sponsoredLabel = self.adView.nativeSponsoredByCompanyTextLabel;
         sponsoredLabel.text = adapter.properties[kAdSponsoredByCompanyKey];
         
-        OXANativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOfType:OXADataAssetType_Sponsored].firstObject;
+        PBMNativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject;
         [self.adapter.nativeAd registerClickView:sponsoredLabel nativeAdAsset:brandAsset];
     }
     
     if (self.adapter.properties[kAdIconImageKey] &&
         [self.adView respondsToSelector:@selector(nativeIconImageView)]) {
         [self.adapter.nativeAd registerClickView:self.adView.nativeIconImageView
-                             nativeAdElementType:OXANativeAdElementType_Icon];
+                             nativeAdElementType:PBMNativeAdElementType_Icon];
     }
     
     if ([self.adView respondsToSelector:@selector(layoutStarRating:)]) {

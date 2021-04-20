@@ -1,5 +1,5 @@
 //
-//  OXAApolloNativeAdAdapter.h
+//  PBMApolloNativeAdAdapter.h
 //  OpenXApolloMoPubAdapters
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -11,13 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class PBMNativeAd;
 
-@interface OXAMoPubNativeAdAdapter : NSObject <MPNativeAdAdapter>
+@interface PrebidMoPubNativeAdAdapter : NSObject <MPNativeAdAdapter>
 
 @property (nonatomic, weak) id<MPNativeAdAdapterDelegate> delegate;
 
 @property (nonatomic, strong, readonly) PBMNativeAd *nativeAd;
 
-- (instancetype)initWithOXANativeAd:(PBMNativeAd *)nativeAd;
+- (instancetype)initWithPBMNativeAd:(PBMNativeAd *)nativeAd;
 
 @end
 

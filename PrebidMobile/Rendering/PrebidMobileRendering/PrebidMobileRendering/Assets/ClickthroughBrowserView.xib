@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OXMClickthroughBrowserView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PBMClickthroughBrowserView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ6-uA-WDI" userLabel="Controls View">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-cd-Mj8" userLabel="Back Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-cd-Mj8" userLabel="Back Button">
                             <rect key="frame" x="45.5" y="12" width="17" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="FqK-d0-ios"/>
@@ -27,7 +25,7 @@
                                 <action selector="backButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="8Se-eE-ny7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZO-Aa-9vI" userLabel="Forward Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZO-Aa-9vI" userLabel="Forward Button">
                             <rect key="frame" x="107" y="12" width="18" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Gao-EB-wDE"/>
@@ -38,7 +36,7 @@
                                 <action selector="forwardButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="Ym8-ea-lVE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-tH-z0t" userLabel="Refresh Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-tH-z0t" userLabel="Refresh Button">
                             <rect key="frame" x="168.5" y="12" width="19" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="19" id="NrD-cf-xiV"/>
@@ -49,7 +47,7 @@
                                 <action selector="refreshButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="oGs-Qn-wTV"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei8-ut-CAU" userLabel="ExternalBroswer Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei8-ut-CAU" userLabel="ExternalBroswer Button">
                             <rect key="frame" x="226" y="13" width="24" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="YlP-Dj-Fmd"/>
@@ -60,7 +58,7 @@
                                 <action selector="externalBrowserButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="byI-qC-OS8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-ZZ-Zfh" userLabel="Close Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-ZZ-Zfh" userLabel="Close Button">
                             <rect key="frame" x="298.5" y="15" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="14" id="Khh-fO-KDv"/>

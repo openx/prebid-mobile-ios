@@ -1,14 +1,14 @@
 //
-//  OXMAdFormat.h
+//  PBMAdFormat.h
 //  OpenXSDKCore
 //
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <PrebidMobileRendering/OXAAdFormat.h>
+#import <PrebidMobileRendering/PBMAdFormat.h>
 
-#pragma mark - OXMAdFormat
+#pragma mark - PBMAdFormatInternal
 
 /**
  Determines the type of an AdIndentifier Object
@@ -17,8 +17,8 @@
  - OXMAdFormatVideo: use vastURL
  */
 typedef NS_ENUM(NSInteger, OXMAdFormat) {
-    OXMAdFormatDisplay = OXAAdFormatDisplay,
-    OXMAdFormatVideo = OXAAdFormatVideo,
+    OXMAdFormatDisplay = PBMAdFormatDisplay,
+    OXMAdFormatVideo = PBMAdFormatVideo,
     OXMAdFormatNative,
-    //OXMAdFormatMultiformat,
+    //PBMAdFormatMultiformat,
 };

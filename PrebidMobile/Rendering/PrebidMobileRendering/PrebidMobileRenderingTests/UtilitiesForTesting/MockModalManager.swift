@@ -9,10 +9,10 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockModalManager: OXMModalManager {
+class MockModalManager: PBMModalManager {
     
-    var mock_pushModalClosure: ((OXMModalState, UIViewController, Bool, Bool, OXMVoidBlock?) -> Void)?
-    override func pushModal(_ state:OXMModalState, fromRootViewController:UIViewController, animated:Bool, shouldReplace:Bool, completionHandler:OXMVoidBlock?) -> OXMVoidBlock? {
+    var mock_pushModalClosure: ((PBMModalState, UIViewController, Bool, Bool, PBMVoidBlock?) -> Void)?
+    override func pushModal(_ state:PBMModalState, fromRootViewController:UIViewController, animated:Bool, shouldReplace:Bool, completionHandler:PBMVoidBlock?) -> PBMVoidBlock? {
         modalStateStack.add(state)
         mock_pushModalClosure?(state, fromRootViewController, animated, shouldReplace, completionHandler)
         return { [weak self, weak state] in

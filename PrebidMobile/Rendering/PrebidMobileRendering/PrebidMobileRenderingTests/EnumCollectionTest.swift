@@ -4,23 +4,23 @@ import XCTest
 //This is a test of EnumSequence, NOT neccessarily a test of TrackingEvent (which was the first enum to implement EnumSequence)
 class EnumSequenceTest: XCTestCase {
 
-    func testOXMTrackingEvent() {
+    func testPBMTrackingEvent() {
         
-        let lastEvent = OXMTrackingEvent.error.rawValue
+        let lastEvent = PBMTrackingEvent.error.rawValue
         XCTAssertEqual(lastEvent, 26)
         
-        var allEvents = [OXMTrackingEvent]()
+        var allEvents = [PBMTrackingEvent]()
         for i in 0...lastEvent {
-            allEvents.append(OXMTrackingEvent(rawValue: i)!)
+            allEvents.append(PBMTrackingEvent(rawValue: i)!)
         }
         
         //Some spot checking of contained values
-        XCTAssert(allEvents.contains(OXMTrackingEvent.request))
-        XCTAssert(allEvents.contains(OXMTrackingEvent.impression))
-        XCTAssert(allEvents.contains(OXMTrackingEvent.error))
+        XCTAssert(allEvents.contains(PBMTrackingEvent.request))
+        XCTAssert(allEvents.contains(PBMTrackingEvent.impression))
+        XCTAssert(allEvents.contains(PBMTrackingEvent.error))
         
         for event in allEvents {
-            OXMLog.info(OXMTrackingEventDescription.getDescription(event))
+            PBMLog.info(PBMTrackingEventDescription.getDescription(event))
         }
     }
 }

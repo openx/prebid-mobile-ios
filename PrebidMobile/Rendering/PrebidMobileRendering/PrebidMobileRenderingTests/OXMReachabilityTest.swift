@@ -1,5 +1,5 @@
 //
-//  OXMReachabilityTest.swift
+//  PBMReachabilityTest.swift
 //  OpenXSDKCoreTests
 //
 //  Created by Gene Dahilig on 2/22/18.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import OpenXSDKCore
 
-class OXMReachabilityTest: XCTestCase {
+class PBMReachabilityTest: XCTestCase {
     
     func testConnected() {
         // the Reachability request is a sync call, expectations not needed. bool flag used instead.

@@ -21,7 +21,7 @@
 
 @synthesize properties = _properties;
 
-- (instancetype)initWithOXANativeAd:(OXANativeAd *)nativeAd {
+- (instancetype)initWithOXANativeAd:(PBMNativeAd *)nativeAd {
     if (!(self = [super init])) {
         return nil;
     }
@@ -85,28 +85,28 @@
 
 #pragma mark - OXANativeAdUIDelegate
 
-- (nullable UIViewController *)viewPresentationControllerForNativeAd:(nonnull OXANativeAd *)nativeAd {
+- (nullable UIViewController *)viewPresentationControllerForNativeAd:(nonnull PBMNativeAd *)nativeAd {
     return [self.delegate viewControllerForPresentingModalView];
 }
 
-- (void)nativeAdWillLeaveApplication:(OXANativeAd *)nativeAd {
+- (void)nativeAdWillLeaveApplication:(PBMNativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adWillLeaveApplicationForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdWillLeaveApplicationFromAdapter:self];
 }
 
-- (void)nativeAdWillPresentModal:(OXANativeAd *)nativeAd {
+- (void)nativeAdWillPresentModal:(PBMNativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adWillPresentModalForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdWillPresentModalForAdapter:self];
 }
 
-- (void)nativeAdDidDismissModal:(OXANativeAd *)nativeAd {
+- (void)nativeAdDidDismissModal:(PBMNativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adDidDismissModalForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdDidDismissModalForAdapter:self];
 }
 
 #pragma mark - OXANativeAdTrackingDelegate
 
-- (void)nativeAdDidLogClick:(OXANativeAd *)nativeAd {
+- (void)nativeAdDidLogClick:(PBMNativeAd *)nativeAd {
     if ([self.delegate respondsToSelector:@selector(nativeAdDidClick:)]) {
         [self.delegate nativeAdDidClick:self];
         MPLogEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)]);
@@ -115,7 +115,7 @@
     }
 }
 
-- (void)nativeAd:(OXANativeAd *)nativeAd didLogEvent:(OXANativeEventType)nativeEvent {
+- (void)nativeAd:(PBMNativeAd *)nativeAd didLogEvent:(OXANativeEventType)nativeEvent {
     if (nativeEvent == OXANativeEventType_Impression) {
         if ([self.delegate respondsToSelector:@selector(nativeAdWillLogImpression:)]) {
             MPLogEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)]);

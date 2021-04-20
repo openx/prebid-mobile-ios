@@ -13,7 +13,7 @@ import CoreGraphics
 fileprivate let advertisingTrackingEnabledDefault = true
 fileprivate let defaultUserLanguageCode = "ml"
 
-class MockDeviceAccessManager : OXMDeviceAccessManager {
+class MockDeviceAccessManager : PBMDeviceAccessManager {
 
     static let nullUUID = "00000000-0000-0000-0000-000000000000"
     static let mockIdentifierForVendor = "B78D99E3-5BD1-49AF-A669-0D77B464C5B9"

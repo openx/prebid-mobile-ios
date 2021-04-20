@@ -1,5 +1,5 @@
 //
-//  MockOXMAdLoadManager.swift
+//  MockPBMAdLoadManager.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2019 OpenX. All rights reserved.
@@ -9,10 +9,10 @@ import UIKit
 
 @testable import PrebidMobileRendering
 
-class MockOXMAdLoadManagerVAST: OXMAdLoadManagerVAST {
+class MockPBMAdLoadManagerVAST: PBMAdLoadManagerVAST {
     
-    var mock_requestCompletedSuccess: ((OXMAdRequestResponseVAST) -> Void)?
-    override func requestCompletedSuccess(_ adRequestResponse: OXMAdRequestResponseVAST) {
+    var mock_requestCompletedSuccess: ((PBMAdRequestResponseVAST) -> Void)?
+    override func requestCompletedSuccess(_ adRequestResponse: PBMAdRequestResponseVAST) {
         self.mock_requestCompletedSuccess?(adRequestResponse)
     }
     

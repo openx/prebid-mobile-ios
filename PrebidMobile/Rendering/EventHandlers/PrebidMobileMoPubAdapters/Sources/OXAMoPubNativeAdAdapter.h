@@ -9,15 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OXANativeAd;
+@class PBMNativeAd;
 
 @interface OXAMoPubNativeAdAdapter : NSObject <MPNativeAdAdapter>
 
 @property (nonatomic, weak) id<MPNativeAdAdapterDelegate> delegate;
 
-@property (nonatomic, strong, readonly) OXANativeAd *nativeAd;
+@property (nonatomic, strong, readonly) PBMNativeAd *nativeAd;
 
-- (instancetype)initWithOXANativeAd:(OXANativeAd *)nativeAd;
+- (instancetype)initWithOXANativeAd:(PBMNativeAd *)nativeAd;
 
 @end
 

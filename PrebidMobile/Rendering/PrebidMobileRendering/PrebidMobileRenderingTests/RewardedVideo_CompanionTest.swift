@@ -15,7 +15,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
     
     var vastRequestSuccessfulExpectation:XCTestExpectation!
     
-    var vastServerResponse: OXMAdRequestResponseVAST?
+    var vastServerResponse: PBMAdRequestResponseVAST?
     
     var expectationCreativeWasClicked:XCTestExpectation!
     var expectationCreativeClickthroughDidClose:XCTestExpectation!
@@ -24,7 +24,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
     var expectationDidFetchVideo:XCTestExpectation!
     
     
-    var oxmRewardedVideoCreative:OXMVideoCreative!
+    var oxmRewardedVideoCreative:PBMVideoCreative!
     
     var expectationTrackingEventCreativeView:XCTestExpectation!
     let trackingUrlCreativeView = "http://myTrackingURL/inline/firstCompanionCreativeView"
@@ -50,7 +50,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
         
         //Create CreativeModel
         
-        let adLoadManager = MockOXMAdLoadManagerVAST(connection:connection, adConfiguration: adConfiguration)
+        let adLoadManager = MockPBMAdLoadManagerVAST(connection:connection, adConfiguration: adConfiguration)
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerResponse = response
@@ -61,7 +61,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = OXMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -75,21 +75,21 @@ class RewardedVideo_CompanionTest: XCTestCase  {
             return // to avoid crash on force unwrap
         }
         
-        let modelMaker = OXMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
         modelMaker.makeModels(self.vastServerResponse!,
             successCallback: { models in
                 // count should include 1 video creative and 1 html creative (end card) for a total of 2.
                 XCTAssertEqual(models.count, 2)
 
-                guard let _:OXMCreativeModel = models.first else {
+                guard let _:PBMCreativeModel = models.first else {
                     XCTFail("Models is empty")
                     return
                 }
 
                 // Verify that the 2nd item is a Companion Model
                 if models.count == 2 {
-                    let companionModel:OXMCreativeModel = models[1]
+                    let companionModel:PBMCreativeModel = models[1]
                     XCTAssertTrue(companionModel.isCompanionAd)
                     XCTAssertFalse(companionModel.hasCompanionAd)
 
@@ -107,15 +107,15 @@ class RewardedVideo_CompanionTest: XCTestCase  {
                     XCTAssertEqual(actual, expected, "Invalid tracking url")
 
                     // Generate a tracking event.
-                    let eventTracker = OXMAdModelEventTracker(creativeModel: companionModel, serverConnection: connection)
-                    eventTracker.trackEvent(OXMTrackingEvent.creativeView)
+                    let eventTracker = PBMAdModelEventTracker(creativeModel: companionModel, serverConnection: connection)
+                    eventTracker.trackEvent(PBMTrackingEvent.creativeView)
                     
                     // Companion ClickTracking
                     expected = self.trackingUrlCompanionClickTracking
                     actual = companionModel.trackingURLs["creativeModelTrackingKey_CompanionClick"]?[0]
                     XCTAssertEqual(actual, expected, "Invalid companion click tracking url")
                     // Generate companion click tracking
-                    eventTracker.trackEvent(OXMTrackingEvent.companionClick)
+                    eventTracker.trackEvent(PBMTrackingEvent.companionClick)
                 }
                 else {
                     XCTFail("Unexpected number of models.");
@@ -166,9 +166,9 @@ class RewardedVideo_CompanionTest: XCTestCase  {
         }
     }
     
-    func initAdConfiguration() -> OXMAdConfiguration {
+    func initAdConfiguration() -> PBMAdConfiguration {
         //Create adConfiguration
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
 
         adConfiguration.isInterstitialAd = true

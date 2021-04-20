@@ -9,15 +9,15 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockMeasurementSession : OXMOpenMeasurementSession {
+class MockMeasurementSession : PBMOpenMeasurementSession {
     
     var setupWebViewClosure: ((UIView) -> Void)?
     var startClosure: (() -> Void)?
     var stopClosure: (() -> Void)?
     var notifyImpressionOccurredClosure: (() -> Void)?
     
-    override var eventTracker: OXMEventTrackerProtocol {
-        return OXMOpenMeasurementEventTracker()
+    override var eventTracker: PBMEventTrackerProtocol {
+        return PBMOpenMeasurementEventTracker()
     }
     
     func setupWebView(_ webView: UIView) {
@@ -32,6 +32,6 @@ class MockMeasurementSession : OXMOpenMeasurementSession {
         stopClosure?()
     }
     
-    override func addFriendlyObstruction(_ view: UIView, purpose:OXMOpenMeasurementFriendlyObstructionPurpose) {
+    override func addFriendlyObstruction(_ view: UIView, purpose:PBMOpenMeasurementFriendlyObstructionPurpose) {
     }
 }

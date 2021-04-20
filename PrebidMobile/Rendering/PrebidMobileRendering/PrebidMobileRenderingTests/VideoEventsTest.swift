@@ -9,11 +9,11 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegate {
+class VideoEventsTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegate {
    
     let viewController = MockViewController()
-    let modalManager = OXMModalManager()
-    var oxmVideoCreative:OXMVideoCreative!
+    let modalManager = PBMModalManager()
+    var oxmVideoCreative:PBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationCreativeDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
@@ -28,27 +28,27 @@ class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegat
     override func tearDown() {
         MockServer.singleton().reset()
         
-        OXASDKConfiguration.resetSingleton()
+        PBMSDKConfiguration.resetSingleton()
         
         super.tearDown()
     }
     
     func testTypes() {
         self.continueAfterFailure = true
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
 
         self.expectationDownloadCompleted = self.expectation(description: "expectationCreativeReady")
         self.expectationVideoDidComplete = self.expectation(description: "expectationCreativeDidComplete")
         self.expectationCreativeDidDisplay = self.expectation(description: "expectationCreativeDidDisplay")
         
-        //Make an OXMServerConnection and redirect its network requests to the Mock Server
+        //Make an PBMServerConnection and redirect its network requests to the Mock Server
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         
         //Change the inline response to claim that it will respond with m4v
         var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("document_with_one_inline_ad.xml")!
         let needle = MockServerMimeType.MP4.rawValue
         let replaceWith = MockServerMimeType.MP4.rawValue
-        inlineResponse = inlineResponse.OXMstringByReplacingRegex(needle, replaceWith:replaceWith)
+        inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
         
         //Rule for VAST
         let ruleVAST =  MockServerRule(urlNeedle: "foo.com/inline", mimeType:  MockServerMimeType.XML.rawValue, connectionID: connection.internalID, strResponse: inlineResponse)
@@ -58,15 +58,15 @@ class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegat
         MockServer.singleton().resetRules([ruleVAST, ruleVideo])
         
         //Create adConfiguration
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
 //        adConfiguration.domain = "foo.com/inline"
         
         //Create CreativeModel
-        let creativeModel = OXMCreativeModel(adConfiguration:adConfiguration)
+        let creativeModel = PBMCreativeModel(adConfiguration:adConfiguration)
         creativeModel.videoFileURL = "http://get_video_file"
         
-        let eventTracker = MockOXMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
+        let eventTracker = MockPBMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
         
         let expectationTrackEvent = expectation(description:"expectationTrackEvent")
         var trackEventCalled = false // Need to check general usage. Testing of particular events is performed by another test.
@@ -103,7 +103,7 @@ class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegat
 
         //Get a Creative
         
-        let creativeFactory = OXMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creatives, error in
+        let creativeFactory = PBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creatives, error in
             
             if (error != nil) {
                 XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -111,8 +111,8 @@ class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegat
                 
             self.expectationDownloadCompleted.fulfill()
             expectationVideoAdLoaded.fulfill()
-            guard let oxmVideoCreative = creatives?.first as? OXMVideoCreative else {
-                XCTFail("Could not cast creative as OXMVideoCreative")
+            guard let oxmVideoCreative = creatives?.first as? PBMVideoCreative else {
+                XCTFail("Could not cast creative as PBMVideoCreative")
                 return
             }
             
@@ -135,28 +135,28 @@ class VideoEventsTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegat
     
     
     //MARK: - CreativeViewDelegate
-    func creativeDidComplete(_ creative: OXMAbstractCreative) {
+    func creativeDidComplete(_ creative: PBMAbstractCreative) {
         self.expectationCreativeDidComplete.fulfill()
     }
-    func videoCreativeDidComplete(_ creative: OXMAbstractCreative) {}
-    func creativeWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeClickthroughDidClose(_ creative: OXMAbstractCreative) {}
-    func creativeInterstitialDidClose(_ creative: OXMAbstractCreative) {}
-    func creativeReady(toReimplant creative: OXMAbstractCreative) {}
-    func creativeMraidDidCollapse(_ creative: OXMAbstractCreative) {}
-    func creativeMraidDidExpand(_ creative: OXMAbstractCreative) {}
-    func creativeInterstitialDidLeaveApp(_ creative: OXMAbstractCreative) {}
+    func videoCreativeDidComplete(_ creative: PBMAbstractCreative) {}
+    func creativeWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeClickthroughDidClose(_ creative: PBMAbstractCreative) {}
+    func creativeInterstitialDidClose(_ creative: PBMAbstractCreative) {}
+    func creativeReady(toReimplant creative: PBMAbstractCreative) {}
+    func creativeMraidDidCollapse(_ creative: PBMAbstractCreative) {}
+    func creativeMraidDidExpand(_ creative: PBMAbstractCreative) {}
+    func creativeInterstitialDidLeaveApp(_ creative: PBMAbstractCreative) {}
     
-    func creativeDidDisplay(_ creative: OXMAbstractCreative) {
+    func creativeDidDisplay(_ creative: PBMAbstractCreative) {
         self.expectationCreativeDidDisplay.fulfill()
     }
     
     func videoViewWasTapped() {}
     func learnMoreWasClicked() {}
-    func creativeViewWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeFullScreenDidFinish(_ creative: OXMAbstractCreative) {}
+    func creativeViewWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeFullScreenDidFinish(_ creative: PBMAbstractCreative) {}
     
-    // MARK: - OXMVideoViewDelegate
+    // MARK: - PBMVideoViewDelegate
     
     func videoViewFailedWithError(_ error: Error) {}
     func videoViewReadyToDisplay() {}

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import XCTest
 
-class MockOXMModalViewController : OXMModalViewController {
+class MockPBMModalViewController : PBMModalViewController {
 
     override func dismiss(animated flag: Bool, completion: (() -> Swift.Void)? = nil) {
         if flag {

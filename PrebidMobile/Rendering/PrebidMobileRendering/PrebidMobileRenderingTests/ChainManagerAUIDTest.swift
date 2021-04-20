@@ -25,19 +25,19 @@ class ChainManagerAUIDTestCaseBase: XCTestCase {
     /*
     Initialize the Server connection with a Mock.
      */
-    func initServerConnection() -> OXMServerConnection { 
+    func initServerConnection() -> PBMServerConnection { 
         MockServer.singleton().reset()
         let rule = MockServerRule(urlNeedle: "mockserver.com", mimeType: MockServerMimeType.JSON.rawValue, fileName: "ACJSingleAdWithoutSDKParams.json")
         MockServer.singleton().add(rule)
         
-        let ret = OXMServerConnection()
+        let ret = PBMServerConnection()
         ret.protocolClasses.add(MockServerURLProtocol.self)
         
         return ret
     }
 }
 
-class ChainManagerAUIDTestCreativesLoaded: ChainManagerAUIDTestCaseBase, OXMChainManagerDelegate {
+class ChainManagerAUIDTestCreativesLoaded: ChainManagerAUIDTestCaseBase, PBMChainManagerDelegate {
 
     /*
      Test for success.  If the creativeLoaded() delegate is called, then the test succeeds.
@@ -52,7 +52,7 @@ class ChainManagerAUIDTestCreativesLoaded: ChainManagerAUIDTestCaseBase, OXMChai
         adConfiguration.domain = "mockserver.com"
         adConfiguration.auid = "12345"
         
-        let chainManager = OXMChainManager(oxmServerConnection:self.initServerConnection(), modalManager:OXMModalManager())
+        let chainManager = PBMChainManager(oxmServerConnection:self.initServerConnection(), modalManager:PBMModalManager())
         
         chainManager.chainManagerDelegate = self
         
@@ -60,7 +60,7 @@ class ChainManagerAUIDTestCreativesLoaded: ChainManagerAUIDTestCaseBase, OXMChai
         self.waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func chainManagerLoaded(creative:OXMAbstractCreative, chainInfo:OXMChainInfo?) {
+    func chainManagerLoaded(creative:PBMAbstractCreative, chainInfo:PBMChainInfo?) {
         expectation?.fulfill()
     }
     
@@ -72,11 +72,11 @@ class ChainManagerAUIDTestCreativesLoaded: ChainManagerAUIDTestCaseBase, OXMChai
 }
 
 
-class ChainManagerAUIDTestCreative_NoDomain_Error: ChainManagerAUIDTestCaseBase, OXMChainManagerDelegate {
+class ChainManagerAUIDTestCreative_NoDomain_Error: ChainManagerAUIDTestCaseBase, PBMChainManagerDelegate {
     /*
-     This test verifies that the OXMChainManager generates an error if NO Domain is defined before calling loadAdChain().
-     If the creativesLoaded() delegate is called then the OXMChainManager did not generated the expected error.
-     if the creativesFailedToLoad() delegate is called then the OXMChainManager generated the expected error.
+     This test verifies that the PBMChainManager generates an error if NO Domain is defined before calling loadAdChain().
+     If the creativesLoaded() delegate is called then the PBMChainManager did not generated the expected error.
+     if the creativesFailedToLoad() delegate is called then the PBMChainManager generated the expected error.
     */
     func testChainManagerAUIDCreative_NoDomain_Error() {
         
@@ -85,13 +85,13 @@ class ChainManagerAUIDTestCreative_NoDomain_Error: ChainManagerAUIDTestCaseBase,
         let adConfiguration = AdConfiguration()
         adConfiguration.auid = "12345"
 
-        let chainManager = OXMChainManager(oxmServerConnection:self.initServerConnection(), modalManager:OXMModalManager())
+        let chainManager = PBMChainManager(oxmServerConnection:self.initServerConnection(), modalManager:PBMModalManager())
         chainManager.chainManagerDelegate = self
         chainManager.loadAdChain(adConfiguration)
         self.waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func chainManagerLoaded(creative:OXMAbstractCreative, chainInfo:OXMChainInfo?) {
+    func chainManagerLoaded(creative:PBMAbstractCreative, chainInfo:PBMChainInfo?) {
         // should not succeed.
         XCTFail("Failed")
         expectation?.fulfill()
@@ -104,7 +104,7 @@ class ChainManagerAUIDTestCreative_NoDomain_Error: ChainManagerAUIDTestCaseBase,
     
 }
     
-class ChainManagerAUIDTestCreative_NoAUID_Error: ChainManagerAUIDTestCaseBase, OXMChainManagerDelegate {
+class ChainManagerAUIDTestCreative_NoAUID_Error: ChainManagerAUIDTestCaseBase, PBMChainManagerDelegate {
     /*
      This test verifies the error handling when NO AUID is assiged.
      If the creativesLoaded() delegate is called then the expected error has not been generated.
@@ -120,14 +120,14 @@ class ChainManagerAUIDTestCreative_NoAUID_Error: ChainManagerAUIDTestCaseBase, O
         
         let oxmServerConnection = self.initServerConnection()
         
-        let chainManager = OXMChainManager(oxmServerConnection:oxmServerConnection, modalManager:OXMModalManager())
+        let chainManager = PBMChainManager(oxmServerConnection:oxmServerConnection, modalManager:PBMModalManager())
         chainManager.chainManagerDelegate = self
         
         chainManager.loadAdChain(adConfiguration)
         self.waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func chainManagerLoaded(creative:OXMAbstractCreative, chainInfo:OXMChainInfo?) {
+    func chainManagerLoaded(creative:PBMAbstractCreative, chainInfo:PBMChainInfo?) {
         // should not succeed.
         XCTFail("Failed")
         expectation?.fulfill()

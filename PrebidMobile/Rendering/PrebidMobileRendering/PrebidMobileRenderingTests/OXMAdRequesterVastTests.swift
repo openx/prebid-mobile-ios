@@ -8,11 +8,11 @@
 @testable import OpenXSDKCore
 import XCTest
 
-class OXMAdRequesterVastTests: XCTestCase, OXMAdRequestDelegate {
+class PBMAdRequesterVastTests: XCTestCase, PBMAdRequestDelegate {
     
     var successfulExpectation:XCTestExpectation!
     var failedExpectation:XCTestExpectation!
-    var vastServerResponse: OXMAdRequestResponseAbstract?
+    var vastServerResponse: PBMAdRequestResponseAbstract?
 
     func testSuccess() {
         
@@ -26,13 +26,13 @@ class OXMAdRequesterVastTests: XCTestCase, OXMAdRequestDelegate {
         rule = MockServerRule(urlNeedle: "foo.com/wrapper/vast", mimeType: MockServerMimeType.XML.rawValue, fileName: "document_with_one_wrapper_ad.xml")
         MockServer.singleton().add(rule)
         
-        let conn = OXMServerConnection()
+        let conn = PBMServerConnection()
         conn.protocolClasses.add(MockServerURLProtocol.self)
         
         let adConfiguration = AdConfiguration()
         adConfiguration.vastURL = "foo.com/wrapper/vast"
         
-        let requester = OXMAdRequesterVast(oxmServerConnection:conn, adConfiguration: adConfiguration)
+        let requester = PBMAdRequesterVast(oxmServerConnection:conn, adConfiguration: adConfiguration)
         requester.adRequestDelegate = self
         requester.load()
         
@@ -49,12 +49,12 @@ class OXMAdRequesterVastTests: XCTestCase, OXMAdRequestDelegate {
         vastServerResponse = nil
         
         MockServer.singleton().reset()
-        let conn = OXMServerConnection()
+        let conn = PBMServerConnection()
         conn.protocolClasses.add(MockServerURLProtocol.self)
         
         let adConfiguration = AdConfiguration()
         
-        let requester = OXMAdRequesterVast(oxmServerConnection:conn, adConfiguration: adConfiguration)
+        let requester = PBMAdRequesterVast(oxmServerConnection:conn, adConfiguration: adConfiguration)
         requester.adRequestDelegate = self
         requester.load()
         
@@ -65,9 +65,9 @@ class OXMAdRequesterVastTests: XCTestCase, OXMAdRequestDelegate {
         self.waitForExpectations(timeout: 3, handler: nil)
     }
     
-    // MARK: OXMAdRequestDelegate
+    // MARK: PBMAdRequestDelegate
     
-    func requestCompletedSuccess(_ mediatedAdResult: OXMAdRequestResponseAbstract) {
+    func requestCompletedSuccess(_ mediatedAdResult: PBMAdRequestResponseAbstract) {
         self.vastServerResponse = mediatedAdResult
         successfulExpectation.fulfill()
     }

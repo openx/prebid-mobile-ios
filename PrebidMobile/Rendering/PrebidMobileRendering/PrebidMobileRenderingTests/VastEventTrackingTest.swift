@@ -12,19 +12,19 @@ import CoreFoundation
 
 @testable import PrebidMobileRendering
 
-class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
+class VastEventTrackingTest : XCTestCase, PBMCreativeViewDelegate {
   
     let vc = UIViewController()
-    let modalManager = OXMModalManager()
+    let modalManager = PBMModalManager()
     
-    var creativeFactory: OXMCreativeFactory?
+    var creativeFactory: PBMCreativeFactory?
     
     var vastRequestSuccessfulExpectation: XCTestExpectation?
     
     var expectations = [XCTestExpectation]()
 
-    var vastServerRespose: OXMAdRequestResponseVAST?
-    var videoCreative: OXMVideoCreative!
+    var vastServerRespose: PBMAdRequestResponseVAST?
+    var videoCreative: PBMVideoCreative!
     
     override func setUp() {
         super.setUp()
@@ -36,22 +36,22 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
         self.creativeFactory = nil
         self.expectations.removeAll()
         
-        OXASDKConfiguration.resetSingleton()
+        PBMSDKConfiguration.resetSingleton()
         
         super.tearDown()
     }
     
     func testEvents() {
-        OXASDKConfiguration.singleton.forcedIsViewable = true
-        modalManager.modalViewControllerClass = MockOXMModalViewController.self
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        modalManager.modalViewControllerClass = MockPBMModalViewController.self
     
-        //Make an OXMServerConnection and redirect its network requests to the Mock Server
+        //Make an PBMServerConnection and redirect its network requests to the Mock Server
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         
         prepareMockServer(connectionID: connection.internalID)
         
         //Create adConfiguration
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
 
         adConfiguration.isInterstitialAd = true
@@ -61,11 +61,11 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
         self.wait(for: self.expectations, timeout: 15, enforceOrder: false)
     }
 
-    private func loadAndRun(connection: OXMServerConnectionProtocol, adConfiguration: OXMAdConfiguration, modalManager: OXMModalManager) {
+    private func loadAndRun(connection: PBMServerConnectionProtocol, adConfiguration: PBMAdConfiguration, modalManager: PBMModalManager) {
        
         self.vastRequestSuccessfulExpectation = self.expectation(description: "Expected VAST Load to be successful")
         
-        let adLoadManager = MockOXMAdLoadManagerVAST(connection:connection, adConfiguration: adConfiguration)
+        let adLoadManager = MockPBMAdLoadManagerVAST(connection:connection, adConfiguration: adConfiguration)
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerRespose = response
@@ -76,7 +76,7 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = OXMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -92,7 +92,7 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
         
         let inlineVastRequestSuccessfulExpectation = self.expectation(description: "Expected Inline VAST Load to be successful")
         
-        let modelMaker = OXMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
         modelMaker.makeModels(self.vastServerRespose!, successCallback: { models in
             let totalModels = 2     // For video interstitials with End Card, count is 2. Includes all companions.
@@ -107,14 +107,14 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
             let transaction = UtilitiesForTesting.createTransactionWithHTMLCreative()
             transaction.creativeModels = [creativeModel]
             
-            self.creativeFactory = OXMCreativeFactory(serverConnection: connection, transaction: transaction,
+            self.creativeFactory = PBMCreativeFactory(serverConnection: connection, transaction: transaction,
                 finishedCallback: { creatives, error in
                     if (error != nil) {
                         XCTFail("error: \(error?.localizedDescription ?? "")")
                     }
                     
-                    guard let creative = creatives?.first as? OXMVideoCreative else {
-                        XCTFail("Could not cast creative as OXMVideoCreative")
+                    guard let creative = creatives?.first as? PBMVideoCreative else {
+                        XCTFail("Could not cast creative as PBMVideoCreative")
                         return
                     }
                     
@@ -141,18 +141,18 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
     }
     
     //MARK: - CreativeViewDelegate
-    func videoCreativeDidComplete(_ creative: OXMAbstractCreative) {}
-    func creativeDidComplete(_ creative:OXMAbstractCreative) {}
-    func creativeWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeClickthroughDidClose(_ creative:OXMAbstractCreative) {}
-    func creativeInterstitialDidClose(_ creative:OXMAbstractCreative) {}
-    func creativeReady(toReimplant creative: OXMAbstractCreative) {}
-    func creativeMraidDidCollapse(_ creative:OXMAbstractCreative) {}
-    func creativeMraidDidExpand(_ creative:OXMAbstractCreative) {}
-    func creativeInterstitialDidLeaveApp(_ creative:OXMAbstractCreative) {}
-    func creativeDidDisplay(_ creative: OXMAbstractCreative) {}
-    func creativeViewWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeFullScreenDidFinish(_ creative: OXMAbstractCreative) {}
+    func videoCreativeDidComplete(_ creative: PBMAbstractCreative) {}
+    func creativeDidComplete(_ creative:PBMAbstractCreative) {}
+    func creativeWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeClickthroughDidClose(_ creative:PBMAbstractCreative) {}
+    func creativeInterstitialDidClose(_ creative:PBMAbstractCreative) {}
+    func creativeReady(toReimplant creative: PBMAbstractCreative) {}
+    func creativeMraidDidCollapse(_ creative:PBMAbstractCreative) {}
+    func creativeMraidDidExpand(_ creative:PBMAbstractCreative) {}
+    func creativeInterstitialDidLeaveApp(_ creative:PBMAbstractCreative) {}
+    func creativeDidDisplay(_ creative: PBMAbstractCreative) {}
+    func creativeViewWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeFullScreenDidFinish(_ creative: PBMAbstractCreative) {}
     
     //MARK: - Utility
     
@@ -242,7 +242,7 @@ class VastEventTrackingTest : XCTestCase, OXMCreativeViewDelegate {
             //Once we've reached the midpoint, force a tap on the Learn More Button.
             //This should pause the video and summon the clickthrough.
             DispatchQueue.main.async {
-                guard let videoView = self.videoCreative.view as? OXMVideoView else {
+                guard let videoView = self.videoCreative.view as? PBMVideoView else {
                     XCTFail("Couldn't get Video View")
                     return
                 }

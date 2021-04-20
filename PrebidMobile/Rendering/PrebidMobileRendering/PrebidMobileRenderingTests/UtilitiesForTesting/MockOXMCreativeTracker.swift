@@ -9,15 +9,15 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockOXMAdModelEventTracker: OXMAdModelEventTracker {
+class MockPBMAdModelEventTracker: PBMAdModelEventTracker {
     
-    var mock_trackEvent: ((OXMTrackingEvent) -> Void)?
-    override func trackEvent(_ event: OXMTrackingEvent) {
+    var mock_trackEvent: ((PBMTrackingEvent) -> Void)?
+    override func trackEvent(_ event: PBMTrackingEvent) {
         mock_trackEvent?(event)
     }
     
-    var mock_trackVideoAdLoaded: ((OXMVideoVerificationParameters) -> Void)?
-    override func trackVideoAdLoaded(_ parameters: OXMVideoVerificationParameters)  {
+    var mock_trackVideoAdLoaded: ((PBMVideoVerificationParameters) -> Void)?
+    override func trackVideoAdLoaded(_ parameters: PBMVideoVerificationParameters)  {
         mock_trackVideoAdLoaded?(parameters)
     }
     

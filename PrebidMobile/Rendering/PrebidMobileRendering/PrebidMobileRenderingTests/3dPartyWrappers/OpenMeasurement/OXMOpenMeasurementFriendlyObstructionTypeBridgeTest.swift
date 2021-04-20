@@ -1,5 +1,5 @@
 //
-//  OXMOpenMeasurementFriendlyObstructionTypeBridgeTest.swift
+//  PBMOpenMeasurementFriendlyObstructionTypeBridgeTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -8,14 +8,14 @@
 import Foundation
 import XCTest
 
-class OXMOpenMeasurementFriendlyObstructionTypeBridgeTest: XCTestCase {
+class PBMOpenMeasurementFriendlyObstructionTypeBridgeTest: XCTestCase {
     
     func testDetailedPurposeStrings() {
-        for i: UInt in 0..<OXMOpenMeasurementFriendlyObstructionPurpose._PurposesCount.rawValue {
-            guard let purpose = OXMOpenMeasurementFriendlyObstructionPurpose(rawValue: i) else {
+        for i: UInt in 0..<PBMOpenMeasurementFriendlyObstructionPurpose._PurposesCount.rawValue {
+            guard let purpose = PBMOpenMeasurementFriendlyObstructionPurpose(rawValue: i) else {
                 break
             }
-            guard let detailedPurpose = (OXMOpenMeasurementFriendlyObstructionTypeBridge.describe(purpose) as String?), !detailedPurpose.isEmpty else {
+            guard let detailedPurpose = (PBMOpenMeasurementFriendlyObstructionTypeBridge.describe(purpose) as String?), !detailedPurpose.isEmpty else {
                 XCTFail("No detailedPurpose for purpose \(i)");
                 continue
             }

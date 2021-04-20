@@ -1,25 +1,25 @@
 //
-//  OXADemandResponseInfo.m
+//  PBMDemandResponseInfo.m
 //  OpenXApolloSDK
 //
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
-#import "OXADemandResponseInfo.h"
-#import "OXADemandResponseInfo+Internal.h"
+#import "PBMDemandResponseInfo.h"
+#import "PBMDemandResponseInfo+Internal.h"
 
-#import "OXANativeAd+FromMarkup.h"
-#import "OXANativeAdMarkup.h"
+#import "PBMNativeAd+FromMarkup.h"
+#import "PBMNativeAdMarkup.h"
 
-#import "OXMLog.h"
-#import "OXMMacros.h"
+#import "PBMLog.h"
+#import "PBMMacros.h"
 
-@implementation OXADemandResponseInfo
+@implementation PBMDemandResponseInfo
 
-- (instancetype)initWithFetchDemandResult:(OXAFetchDemandResult)fetchDemandResult
-                                      bid:(nullable OXABid *)bid
+- (instancetype)initWithFetchDemandResult:(PBMFetchDemandResult)fetchDemandResult
+                                      bid:(nullable PBMBid *)bid
                                  configId:(nullable NSString *)configId
-                         winNotifierBlock:(OXAWinNotifierBlock)winNotifierBlock
+                         winNotifierBlock:(PBMWinNotifierBlock)winNotifierBlock
 {
     if (!(self = [super init])) {
         return nil;
@@ -31,7 +31,7 @@
     return self;
 }
 
-- (void)getAdMarkupStringWithCompletion:(OXAAdMarkupStringHandler)completion {
+- (void)getAdMarkupStringWithCompletion:(PBMAdMarkupStringHandler)completion {
     if (!self.bid) {
         completion(nil);
         return;
@@ -39,7 +39,7 @@
     self.winNotifierBlock(self.bid, completion);
 }
 
-- (void)getNativeAdWithCompletion:(OXANativeAdHandler)completion {
+- (void)getNativeAdWithCompletion:(PBMNativeAdHandler)completion {
     [self getAdMarkupStringWithCompletion:^(NSString * _Nullable adMarkupString) {
         if (!adMarkupString) {
             completion(nil);
@@ -47,17 +47,17 @@
         }
         
         NSError *markupParsingError = nil;
-        OXANativeAdMarkup * const nativeAdMarkup = [[OXANativeAdMarkup alloc] initWithJsonString:adMarkupString
+        PBMNativeAdMarkup * const nativeAdMarkup = [[PBMNativeAdMarkup alloc] initWithJsonString:adMarkupString
                                                                                            error:&markupParsingError];
         if (!nativeAdMarkup) {
             if (markupParsingError) {
-                OXMLogError(@"%@", markupParsingError.localizedDescription);
+                PBMLogError(@"%@", markupParsingError.localizedDescription);
             }
             completion(nil);
             return;
         }
         
-        completion([[OXANativeAd alloc] initWithNativeAdMarkup:nativeAdMarkup]);
+        completion([[PBMNativeAd alloc] initWithNativeAdMarkup:nativeAdMarkup]);
     }];
 }
 

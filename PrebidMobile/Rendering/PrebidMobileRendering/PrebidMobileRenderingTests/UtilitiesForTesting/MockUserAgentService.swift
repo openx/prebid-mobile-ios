@@ -9,7 +9,7 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockUserAgentService : OXMUserAgentService {
+class MockUserAgentService : PBMUserAgentService {
     
     static let mockUserAgent = "TEST-USER-AGENT"
     

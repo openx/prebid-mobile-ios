@@ -41,7 +41,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        OXAScheduledTimerFactory const timerFactory = [NSTimer oxaScheduledTimerFactory];
+        PBMScheduledTimerFactory const timerFactory = [NSTimer pbmScheduledTimerFactory];
         OXALocalResponseInfoCache * const localCache = [[OXALocalResponseInfoCache alloc] initWithScheduledTimerFactory:timerFactory
                                                                                                      expirationInterval:LOCAL_CACHE_EXPIRATION_INTERVAL];
         singleton = [[OXAGAMUtils alloc] initWithLocalCache:localCache];

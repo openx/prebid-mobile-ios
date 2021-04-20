@@ -58,66 +58,66 @@ typealias JsonDictionary = [String:Any]
         return plistDict
     }
     
-    class func createConnectionForMockedTest() -> OXMServerConnection {
-        let connection = OXMServerConnection()
+    class func createConnectionForMockedTest() -> PBMServerConnection {
+        let connection = PBMServerConnection()
         connection.protocolClasses.add(MockServerURLProtocol.self)
         
         return connection
     }
     
-    class func createEmptyTransaction() -> OXMTransaction {
-        let connection = OXMServerConnection()
-        let adConfiguration = OXMAdConfiguration()
+    class func createEmptyTransaction() -> PBMTransaction {
+        let connection = PBMServerConnection()
+        let adConfiguration = PBMAdConfiguration()
         
-        let transaction = OXMTransaction(serverConnection:connection,
+        let transaction = PBMTransaction(serverConnection:connection,
                                          adConfiguration:adConfiguration,
                                          models:[])
         
         return transaction;
     }
     
-    class func createHTMLCreative(with model: OXMCreativeModel) -> OXMAbstractCreative {
-        return OXMHTMLCreative(creativeModel: model,
+    class func createHTMLCreative(with model: PBMCreativeModel) -> PBMAbstractCreative {
+        return PBMHTMLCreative(creativeModel: model,
                                transaction:UtilitiesForTesting.createEmptyTransaction())
     }
 
-    class func createHTMLCreative(withView: Bool = true) -> OXMAbstractCreative {
-        let model = OXMCreativeModel(adConfiguration:OXMAdConfiguration())
+    class func createHTMLCreative(withView: Bool = true) -> PBMAbstractCreative {
+        let model = PBMCreativeModel(adConfiguration:PBMAdConfiguration())
         model.html = "<html>test html</html>"
         
         let creative = UtilitiesForTesting.createHTMLCreative(with: model)
-        let modalManager = OXMModalManager()
+        let modalManager = PBMModalManager()
         creative.modalManager = modalManager
 
         if withView {
-            let webView = OXMWebView()
+            let webView = PBMWebView()
             creative.view = webView
         }
         
         return creative
     }
 
-    class func createHTMLCreative(withModel model: OXMCreativeModel, withView:Bool = true) -> OXMHTMLCreative {
-        let creative = OXMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
+    class func createHTMLCreative(withModel model: PBMCreativeModel, withView:Bool = true) -> PBMHTMLCreative {
+        let creative = PBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
         
         if withView {
-            let webView = OXMWebView()
+            let webView = PBMWebView()
             creative.view = webView
         }
         
         return creative
     }
 
-    class func createTransactionWithHTMLCreative(withView:Bool = false) -> OXMTransaction {
-        let connection = OXMServerConnection()
-        let adConfiguration = OXMAdConfiguration()
+    class func createTransactionWithHTMLCreative(withView:Bool = false) -> PBMTransaction {
+        let connection = PBMServerConnection()
+        let adConfiguration = PBMAdConfiguration()
         
-        let model = OXMCreativeModel(adConfiguration:adConfiguration)
+        let model = PBMCreativeModel(adConfiguration:adConfiguration)
         model.html = "<html>test html</html>"
         model.revenue = "1234"
         let creative = UtilitiesForTesting.createHTMLCreative(withModel: model, withView: withView)
 
-        let transaction = OXMTransaction(serverConnection:connection,
+        let transaction = PBMTransaction(serverConnection:connection,
                                           adConfiguration:adConfiguration,
                                                    models:[model])
         
@@ -127,16 +127,16 @@ typealias JsonDictionary = [String:Any]
     }
     
     class func createTransactionWithHTMLCreativeWithParams(
-                                        connection: OXMServerConnectionProtocol,
-                                        configuration: OXMAdConfiguration) -> OXMTransaction {
-        let model = OXMCreativeModel(adConfiguration:configuration)
+                                        connection: PBMServerConnectionProtocol,
+                                        configuration: PBMAdConfiguration) -> PBMTransaction {
+        let model = PBMCreativeModel(adConfiguration:configuration)
         
         model.html = "<html>test html</html>"
         model.revenue = "1234"
         
-        let creative = OXMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
+        let creative = PBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
         
-        let transaction = OXMTransaction(serverConnection:connection,
+        let transaction = PBMTransaction(serverConnection:connection,
                                           adConfiguration:configuration,
                                                    models:[model])
         
@@ -145,15 +145,15 @@ typealias JsonDictionary = [String:Any]
         return transaction;
     }
     
-    class func createDummyTransaction(for adConfiguration: OXMAdConfiguration) -> OXMTransaction {
+    class func createDummyTransaction(for adConfiguration: PBMAdConfiguration) -> PBMTransaction {
         let connection = getMockedServerConnection()
-        let model = OXMCreativeModel(adConfiguration: adConfiguration)
+        let model = PBMCreativeModel(adConfiguration: adConfiguration)
         
-        let transaction = OXMTransaction(serverConnection:connection,
+        let transaction = PBMTransaction(serverConnection:connection,
                                          adConfiguration:adConfiguration,
                                          models:[model])
         
-        let creative = OXMHTMLCreative(creativeModel: model, transaction: transaction)
+        let creative = PBMHTMLCreative(creativeModel: model, transaction: transaction)
 
         transaction.creatives.add(creative)
         
@@ -172,10 +172,10 @@ typealias JsonDictionary = [String:Any]
     class func compareJSON(expected:String, actual:String, file:StaticString = #file, line:UInt = #line) {
     
         do {
-            let dictExpected = try OXMFunctions.dictionaryFromJSONString(expected)
+            let dictExpected = try PBMFunctions.dictionaryFromJSONString(expected)
             let nsDictExpected = NSDictionary(dictionary: dictExpected)
             
-            let dictActual = try OXMFunctions.dictionaryFromJSONString(actual)
+            let dictActual = try PBMFunctions.dictionaryFromJSONString(actual)
             let nsDictActual = NSDictionary(dictionary: dictActual)
             
             XCTAssertEqual(nsDictExpected, nsDictActual, file:file, line:line)
@@ -184,7 +184,7 @@ typealias JsonDictionary = [String:Any]
         }
     }
     
-    class func compareRawResponse(acjFileName:String, adDetails:OXMAdDetails, file:StaticString = #file, line:UInt = #line) {
+    class func compareRawResponse(acjFileName:String, adDetails:PBMAdDetails, file:StaticString = #file, line:UInt = #line) {
 
         guard let strExpected = UtilitiesForTesting.loadFileAsStringFromBundle(acjFileName) else {
             XCTFail("Could not open file \(acjFileName)", file:file, line:line)
@@ -201,17 +201,17 @@ typealias JsonDictionary = [String:Any]
     
     // MARK - Log
     @objc class func prepareLogFile() {
-        OXMLog.singleton.clearLogFile()
-        OXMLog.singleton.logToFile = true;
+        PBMLog.singleton.clearLogFile()
+        PBMLog.singleton.logToFile = true;
     }
     
     @objc class func releaseLogFile() {
-        OXMLog.singleton.logToFile = false;
-        OXMLog.singleton.clearLogFile()
+        PBMLog.singleton.logToFile = false;
+        PBMLog.singleton.clearLogFile()
     }
     
     class func checkLogContains(_ log: String, cleanFile: Bool = true, file:StaticString = #file, line:UInt = #line) {
-        let log = OXMLog.singleton.getLogFileAsString()
+        let log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains(log), file: file, line: line)
         
         if cleanFile {
@@ -225,7 +225,7 @@ typealias JsonDictionary = [String:Any]
      - testClosure: Run code that will generate log messages here
      - checkLogFor: XCTAssert that the log will contain the following messages
      */
-    class func executeTestClosure(_ testClosure:() -> Void, checkLogFor:[String], logger: OXMLog = OXMLog.singleton, file:StaticString = #file, line:UInt = #line) {
+    class func executeTestClosure(_ testClosure:() -> Void, checkLogFor:[String], logger: PBMLog = PBMLog.singleton, file:StaticString = #file, line:UInt = #line) {
 
         let log = UtilitiesForTesting.executeTestClosure(testClosure)
         
@@ -242,7 +242,7 @@ typealias JsonDictionary = [String:Any]
      
      - returns: The log file as a String
      */
-    class func executeTestClosure(_ testClosure:() -> Void, logger: OXMLog = OXMLog.singleton, file:StaticString = #file, line:UInt = #line) -> String {
+    class func executeTestClosure(_ testClosure:() -> Void, logger: PBMLog = PBMLog.singleton, file:StaticString = #file, line:UInt = #line) -> String {
         
         logger.clearLogFile()
         

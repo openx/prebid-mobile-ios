@@ -4,7 +4,7 @@ import UIKit
 import XCTest
 @testable import OpenXSDKCore
 
-class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
+class PBMAdViewTest: XCTestCase, PBMAdViewDelegate {
     
     // MARK: - Test Properties
     
@@ -19,12 +19,12 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     var expectationAdDidCollapseCalled:XCTestExpectation!
     var expectationAdDidExpandCalled:XCTestExpectation!
     
-    var adDidLoadedCompletion: ((OXMAdDetails) -> Void)?
+    var adDidLoadedCompletion: ((PBMAdDetails) -> Void)?
     
     // MARK: - Initialization
     
     override func tearDown() {
-        OXMLog.whereAmI()
+        PBMLog.whereAmI()
         
         self.expectationAdDidLoadCalled = nil
         self.expectationAdDidFailToLoadCalled = nil
@@ -39,8 +39,8 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     // MARK: - Tests
     
-    func testOXMConfiguration() {
-        let config = OXMSDKConfiguration()
+    func testPBMConfiguration() {
+        let config = PBMSDKConfiguration()
         let ExpectedValue = 99.0
         config.creativeFactoryTimeout = ExpectedValue
         XCTAssertEqual(ExpectedValue, config.creativeFactoryTimeout)
@@ -52,18 +52,18 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testDefaultInitialization() {
         
-        let config = OXMSDKConfiguration()
+        let config = PBMSDKConfiguration()
         config.defaultDomain = "foo.com"
         config.defaultAdUnitId = "abc123"
         config.defaultAutoRefreshDelay = -100
         
-        let adView = OXMAdView(connection: OXMServerConnection(), config:config)
+        let adView = PBMAdView(connection: PBMServerConnection(), config:config)
         
         XCTAssert(adView.adUnitId == "abc123", "Expected adUnitId to be nil string, but it was \(String(describing: adView.adUnitId))")
         XCTAssert(adView.domain == "foo.com", "Expected domain to be nil string, but it was \(String(describing: adView.domain))")
         XCTAssert(adView.vastURL == nil, "Expected vastURL to be nil string, but it was \(String(describing: adView.vastURL))")
         XCTAssert(adView.delegate == nil, "Expected delegate to not be nil (because we set it in setup)")
-        XCTAssert(adView.autoRefreshDelay == OXMAutoRefresh.AUTO_REFRESH_DELAY_MIN, "Expected autorefreshDelay to be clamped to Min")
+        XCTAssert(adView.autoRefreshDelay == PBMAutoRefresh.AUTO_REFRESH_DELAY_MIN, "Expected autorefreshDelay to be clamped to Min")
         XCTAssert(adView.autoRefreshMax == 0)
     }
     
@@ -79,12 +79,12 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         }
         MockServer.singleton().add(rule)
         
-        let oxmServerConnection = OXMServerConnection()
+        let oxmServerConnection = PBMServerConnection()
         oxmServerConnection.protocolClasses.add(MockServerURLProtocol.self)
         
         
         //Create the ad view
-        let adView = OXMAdView(connection: oxmServerConnection, config:OXMSDKConfiguration.singleton)
+        let adView = PBMAdView(connection: oxmServerConnection, config:PBMSDKConfiguration.singleton)
         adView.adUnitId = "abc123"
         adView.domain = "mockserver.com"
         adView.delegate = self
@@ -111,8 +111,8 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testAutoRefreshMax() {
         
-        let adView = OXMAdView()
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection())
+        let adView = PBMAdView()
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection())
         
         adView.adViewManager = adViewManager
         
@@ -134,12 +134,12 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         
         //Mock a connection
         MockServer.singleton().reset()
-        let oxmServerConnection = OXMServerConnection()
+        let oxmServerConnection = PBMServerConnection()
         oxmServerConnection.protocolClasses.add(MockServerURLProtocol.self)
         
         //Create the ad view
-        let adView = OXMAdView(connection: oxmServerConnection, config:OXMSDKConfiguration.singleton)
-        OXMLog.info("adView: \(adView)")
+        let adView = PBMAdView(connection: oxmServerConnection, config:PBMSDKConfiguration.singleton)
+        PBMLog.info("adView: \(adView)")
         adView.adUnitId = "abc123"
         adView.domain = "mockserver.com"
         adView.delegate = self
@@ -154,27 +154,27 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     //TODO: Expand this to be a more "natural" example of replaceWithCreative being used.
     func testReplaceWithCreative() {
         
-        let adView = OXMAdView()
-        OXMLog.info("adView: \(adView)")
+        let adView = PBMAdView()
+        PBMLog.info("adView: \(adView)")
         adView.delegate = self
         
-        XCTAssert(adView.subviews.count == 0, "Expected OXMAdView to have no subviews initially")
+        XCTAssert(adView.subviews.count == 0, "Expected PBMAdView to have no subviews initially")
         
         let creative = UtilitiesForTesting.createHTMLCreative()
         
         adView.replaceWithCreative(creative)
         
-        XCTAssert(adView.subviews.count == 1, "Expected OXMAdView to have exactly one subview after replaceWithCreative")
+        XCTAssert(adView.subviews.count == 1, "Expected PBMAdView to have exactly one subview after replaceWithCreative")
         XCTAssert(adView.subviews.contains(creative.view!), "Expected the subview to be the webview from the creative")
     }
     
     func testReplaceWithCreativeWithoutView() {
         
-        let adView = OXMAdView()
-        OXMLog.info("adView: \(adView)")
+        let adView = PBMAdView()
+        PBMLog.info("adView: \(adView)")
         adView.delegate = self
         
-        XCTAssert(adView.subviews.count == 0, "Expected OXMAdView to have no subviews initially")
+        XCTAssert(adView.subviews.count == 0, "Expected PBMAdView to have no subviews initially")
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
         
@@ -184,21 +184,21 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         XCTAssertEqual(adView.subviews.count, 0)
     }
     
-    // MARK: - OXMAdInterface
+    // MARK: - PBMAdInterface
     
     func testAdInterfaceGetters() {
         
-        let adView = OXMAdView()
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection())
+        let adView = PBMAdView()
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection())
         
         // Test data
         let auid = "test auid"
         let domain = "test domain"
-        let adUnitType: OXMAdUnitIdentifierType = .vast
+        let adUnitType: PBMAdUnitIdentifierType = .vast
         let htmlToLoad = "test htmlToLoad"
         let autoDisplayOnLoad = !adViewManager.autoDisplayOnLoad
         let connectionTimeoutInSeconds: TimeInterval = 777
-        let userParameters = OXMUserParameters()
+        let userParameters = PBMUserParameters()
         let flexAdSize = "test flexAdSize"
         let revenue = "1234"
 
@@ -232,17 +232,17 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testAdInterfaceSetters() {
         
-        let adView = OXMAdView()
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection())
+        let adView = PBMAdView()
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection())
         
         // Test data
         let auid = "test auid"
         let domain = "test domain"
-        let adUnitType: OXMAdUnitIdentifierType = .vast
+        let adUnitType: PBMAdUnitIdentifierType = .vast
         let htmlToLoad = "test htmlToLoad"
         let autoDisplayOnLoad = !adViewManager.autoDisplayOnLoad
         let connectionTimeoutInSeconds: TimeInterval = 777
-        let userParameters = OXMUserParameters()
+        let userParameters = PBMUserParameters()
         let flexAdSize = "test flexAdSize"
         
         // Prepare
@@ -274,11 +274,11 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         
         // Prepare
         
-        var adView: OXMAdView? = OXMAdView()
+        var adView: PBMAdView? = PBMAdView()
         XCTAssertFalse(adView!.autoDetectLocation)
         
         let mockCLLocationManager = MockCLLocationManager(enableLocationServices: true, authorizationStatus: .authorizedAlways)
-        let locationManager = OXMLocationManager(clLocationManager: mockCLLocationManager, geoCoder: MockGeoCoder(), reachability: MockReachability.self)
+        let locationManager = PBMLocationManager(clLocationManager: mockCLLocationManager, geoCoder: MockGeoCoder(), reachability: MockReachability.self)
         let initialLocationClientsCount = locationManager.clientsCount
         
         adView!.locationManager = locationManager
@@ -298,8 +298,8 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     // MARK: - Tests Interstitial-Specific
     
     func testInterstitialSpecificProperiesGetters() {
-        let adView = OXMAdView()
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection())
+        let adView = PBMAdView()
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection())
         
         // Test data
         let isInterstitial = !adViewManager.adLoadManager!.adConfiguration.isInterstitial
@@ -322,8 +322,8 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testInterstitialSpecificProperiesSetters() {
-        let adView = OXMAdView()
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection())
+        let adView = PBMAdView()
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection())
         
         // Test data
         let isInterstitial = !adViewManager.adLoadManager!.adConfiguration.isInterstitial
@@ -344,10 +344,10 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         XCTAssertEqual(adView.vastURL, vastURL)
     }
     
-    // MARK: - Tests OXMAdViewManagerDelegate
+    // MARK: - Tests PBMAdViewManagerDelegate
     
     func testAdDidComplete() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         self.expectationAdDidCompleteCalled = expectation(description: "expectationAdClickthroughDidCloseCalled")
@@ -358,18 +358,18 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testAdLoaded() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         self.expectationAdDidLoadCalled = expectation(description: "expectationAdDidLoadCalled")
         
-        adView.adLoaded(OXMAdDetails())
+        adView.adLoaded(PBMAdDetails())
         
         waitForExpectations(timeout: 1)
     }
     
     func testCreativeClickthroughDidClose() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -381,7 +381,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeInterstitialDidClose() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -393,7 +393,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeInterstitialDidLeaveApp() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -405,7 +405,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeMraidDidCollapse() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -417,7 +417,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeMraidDidExpand() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -430,7 +430,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testCreativeReadyForImmediateDisplay() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative()
@@ -446,7 +446,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testCreativeReadyForImmediateDisplayGlobalQueue() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
 
         let creative = UtilitiesForTesting.createHTMLCreative()
@@ -464,14 +464,14 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testCreativeReadyForImmediateDisplayWithoutView() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
         
         UtilitiesForTesting.prepareLogFile()
         defer {
-            OXMLog.singleton.logToFile = false
+            PBMLog.singleton.logToFile = false
         }
         
         self.expectationAdDidDisplayCalled = expectation(description: "expectationAdDidDisplayCalled")
@@ -479,7 +479,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         
         adView.creativeReadyForImmediateDisplay(creative)
         
-        let log = OXMLog.singleton.getLogFileAsString()
+        let log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains("Creative \(creative) has no view"))
         
         waitForExpectations(timeout: 1, handler: { _ in
@@ -488,7 +488,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeWasClickedWithoutURL() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -500,7 +500,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeWasClickedWithoutViewController() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:false)
@@ -509,12 +509,12 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         
         UtilitiesForTesting.prepareLogFile()
         defer {
-            OXMLog.singleton.logToFile = false
+            PBMLog.singleton.logToFile = false
         }
         
         adView.creativeWasClicked(creative, displayClickthrough: URL(string:"openx.com"))
         
-        let log = OXMLog.singleton.getLogFileAsString()
+        let log = PBMLog.singleton.getLogFileAsString()
         
         XCTAssert(log.contains("Could not determine a root view controller"))
         
@@ -522,7 +522,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     }
     
     func testCreativeWasClicked() {
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         let creative = UtilitiesForTesting.createHTMLCreative(withView:true)
@@ -543,10 +543,10 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testInterstitialAdClosed() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
-        let creative = OXMAbstractCreative(oxmCreativeModel: OXMCreativeModel())
+        let creative = PBMAbstractCreative(oxmCreativeModel: PBMCreativeModel())
         
         adView.currentCreative = creative
         
@@ -562,7 +562,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testClickthroughBrowserClosed() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         self.expectationAdClickthroughDidCloseCalled = expectation(description:"expectationAdClickthroughDidCloseCalled")
@@ -574,7 +574,7 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
     
     func testInterstitialDidLeaveApp() {
         
-        let adView = OXMAdView()
+        let adView = PBMAdView()
         adView.delegate = self
         
         expectationAdDidLeaveApplication = expectation(description:"expectationAdDidLeaveApplication")
@@ -584,72 +584,72 @@ class OXMAdViewTest: XCTestCase, OXMAdViewDelegate {
         waitForExpectations(timeout: 1)
     }
 
-    //MARK: - OXMAdViewDelegate
+    //MARK: - PBMAdViewDelegate
     
     // Called every time an ad had loaded and is ready for display
-    func adDidLoad(adView:OXMAdView, adDetails:OXMAdDetails) {
-        OXMLog.info("adView: \(adView)")
+    func adDidLoad(adView:PBMAdView, adDetails:PBMAdDetails) {
+        PBMLog.info("adView: \(adView)")
         adDidLoadedCompletion?(adDetails)
         self.expectationAdDidLoadCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
     // Called whenever the load process fails to produce a viable ad
-    func adDidFailToLoad(adView:OXMAdView, error:Error) {
-        OXMLog.info("adView: \(adView), error: \(error)")
+    func adDidFailToLoad(adView:PBMAdView, error:Error) {
+        PBMLog.info("adView: \(adView), error: \(error)")
         fulfillOrFail(expectationAdDidFailToLoadCalled, "expectationAdDidFailToLoadCalled")
         XCTAssert(Thread.isMainThread)
     }
     
     // Called after an ad has rendered to the device's screen
-    func adDidDisplay(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adDidDisplay(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdDidDisplayCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
     // Called once an ad has finished displaying all of it's creatives
-    func adDidComplete(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adDidComplete(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdDidCompleteCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
     // Called when the user clicks on an ad and a clickthrough is about to occur
-    func adWasClicked(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adWasClicked(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdWasClickedCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
     // Called when the user closes a clickthrough
-    func adClickthroughDidClose(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adClickthroughDidClose(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdClickthroughDidCloseCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
     // Called when a user has closed an interstitial
-    func adInterstitialDidClose(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adInterstitialDidClose(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdInterstitialDidCloseCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
-    func adDidExpand(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adDidExpand(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdDidExpandCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
-    func adDidCollapse(adView:OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adDidCollapse(adView:PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdDidCollapseCalled.fulfill()
         XCTAssert(Thread.isMainThread)
     }
     
-    func adDidLeaveApplication(adView: OXMAdView) {
-        OXMLog.info("adView: \(adView)")
+    func adDidLeaveApplication(adView: PBMAdView) {
+        PBMLog.info("adView: \(adView)")
         self.expectationAdDidLeaveApplication.fulfill()
         XCTAssert(Thread.isMainThread)
     }

@@ -62,7 +62,7 @@
 		AC4733CB25D56A400041EEBA /* OXAMoPubNativeAdRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = AC4733AC25D55BD50041EEBA /* OXAMoPubNativeAdRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC4733D225D56A5D0041EEBA /* OXAMoPubNativeAdAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = AC4733AD25D55BD60041EEBA /* OXAMoPubNativeAdAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC707B022625BD3E00FACDF0 /* NSTimer+OXAScheduledTimerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3826725EFCA50000A071B /* NSTimer+OXAScheduledTimerFactory.h */; };
-		AC707B062625BD5700FACDF0 /* OXAScheduledTimerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3825F25EFCA1B000A071B /* OXAScheduledTimerFactory.h */; };
+		AC707B062625BD5700FACDF0 /* PBMScheduledTimerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3825F25EFCA1B000A071B /* PBMScheduledTimerFactory.h */; };
 		ACF3824225EFBD8A000A071B /* OXAMoPubConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3824025EFBD89000A071B /* OXAMoPubConstants.h */; };
 		ACF3824325EFBD8A000A071B /* OXAMoPubConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF3824125EFBD89000A071B /* OXAMoPubConstants.m */; };
 		ACF3824C25EFC147000A071B /* OXAMoPubNativeAdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3824A25EFC147000A071B /* OXAMoPubNativeAdUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,7 +162,7 @@
 		ACF3824B25EFC147000A071B /* OXAMoPubNativeAdUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXAMoPubNativeAdUtils.m; sourceTree = "<group>"; };
 		ACF3825525EFC86D000A071B /* DO_NOT_MOVE_THESE_FILES.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DO_NOT_MOVE_THESE_FILES.txt; sourceTree = "<group>"; };
 		ACF3825A25EFC8E5000A071B /* OXALocalResponseInfoCache+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OXALocalResponseInfoCache+Internal.h"; path = "../../../../PrebidMobileRendering/PrebidMobileRendering/Prebid/Integrations/PrimarySDKUtilHelpers/OXALocalResponseInfoCache+Internal.h"; sourceTree = "<group>"; };
-		ACF3825F25EFCA1B000A071B /* OXAScheduledTimerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OXAScheduledTimerFactory.h; path = ../../../../PrebidMobileRendering/PrebidMobileRendering/ExtensionsAndWrappers/NSTimer/OXAScheduledTimerFactory.h; sourceTree = "<group>"; };
+		ACF3825F25EFCA1B000A071B /* PBMScheduledTimerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBMScheduledTimerFactory.h; path = ../../../../PrebidMobileRendering/PrebidMobileRendering/ExtensionsAndWrappers/NSTimer/PBMScheduledTimerFactory.h; sourceTree = "<group>"; };
 		ACF3826725EFCA50000A071B /* NSTimer+OXAScheduledTimerFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSTimer+OXAScheduledTimerFactory.h"; path = "../../../../PrebidMobileRendering/PrebidMobileRendering/ExtensionsAndWrappers/NSTimer/NSTimer+OXAScheduledTimerFactory.h"; sourceTree = "<group>"; };
 		ACF3826825EFCAD9000A071B /* OXAMoPubNativeAdUtils+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OXAMoPubNativeAdUtils+Internal.h"; sourceTree = "<group>"; };
 		ACF3831A25F0F91C000A071B /* OXAMoPubError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAMoPubError.h; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 			children = (
 				ACF3825525EFC86D000A071B /* DO_NOT_MOVE_THESE_FILES.txt */,
 				ACF3825A25EFC8E5000A071B /* OXALocalResponseInfoCache+Internal.h */,
-				ACF3825F25EFCA1B000A071B /* OXAScheduledTimerFactory.h */,
+				ACF3825F25EFCA1B000A071B /* PBMScheduledTimerFactory.h */,
 				ACF3826725EFCA50000A071B /* NSTimer+OXAScheduledTimerFactory.h */,
 			);
 			path = InternalAPIExtensions;
@@ -447,7 +447,7 @@
 			files = (
 				ACF3831C25F0F91D000A071B /* OXAMoPubError.h in Headers */,
 				AC47330825D3F6F20041EEBA /* OXAMoPubNativeCustomEvent.h in Headers */,
-				AC707B062625BD5700FACDF0 /* OXAScheduledTimerFactory.h in Headers */,
+				AC707B062625BD5700FACDF0 /* PBMScheduledTimerFactory.h in Headers */,
 				ACF3824225EFBD8A000A071B /* OXAMoPubConstants.h in Headers */,
 				34B64DA224F7EF2E00FDD9F4 /* OXAMoPubVideoInterstitialAdapter.h in Headers */,
 				AC4733D225D56A5D0041EEBA /* OXAMoPubNativeAdAdapter.h in Headers */,

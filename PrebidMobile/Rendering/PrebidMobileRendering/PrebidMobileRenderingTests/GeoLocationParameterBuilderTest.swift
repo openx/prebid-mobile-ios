@@ -9,13 +9,13 @@ class GeoLocationParameterBuilderTest : XCTestCase {
     func testBasic() {
         let mockLocationManagerSuccessful: MockLocationManagerSuccessful = MockLocationManagerSuccessful.singleton
         let builder = GeoLocationParameterBuilder(locationManager:mockLocationManagerSuccessful)
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         
         builder.build(bidRequest)
         
-        OXMAssertEq(bidRequest.device.geo.type, 1)
-        OXMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
-        OXMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
+        PBMAssertEq(bidRequest.device.geo.type, 1)
+        PBMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
+        PBMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
     }
     
     //Show that user values do not interact with GPS values.
@@ -25,7 +25,7 @@ class GeoLocationParameterBuilderTest : XCTestCase {
         let builder = GeoLocationParameterBuilder(locationManager:mockLocationManagerSuccessful)
         
     
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         bidRequest.user.geo.type = 3
         bidRequest.user.geo.lat = 123.0
         bidRequest.user.geo.lon = 456.0
@@ -36,16 +36,16 @@ class GeoLocationParameterBuilderTest : XCTestCase {
         
         builder.build(bidRequest)
         
-        OXMAssertEq(bidRequest.device.geo.type, 1)
-        OXMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
-        OXMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
+        PBMAssertEq(bidRequest.device.geo.type, 1)
+        PBMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
+        PBMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
         
-        OXMAssertEq(bidRequest.user.geo.type, 3)
-        OXMAssertEq(bidRequest.user.geo.lat, 123.0)
-        OXMAssertEq(bidRequest.user.geo.lon, 456.0)
-        OXMAssertEq(bidRequest.user.geo.city, "UserCity")
-        OXMAssertEq(bidRequest.user.geo.region, "UserRegion")
-        OXMAssertEq(bidRequest.user.geo.zip, "UserZip")
-        OXMAssertEq(bidRequest.user.geo.country, "UserCountry")
+        PBMAssertEq(bidRequest.user.geo.type, 3)
+        PBMAssertEq(bidRequest.user.geo.lat, 123.0)
+        PBMAssertEq(bidRequest.user.geo.lon, 456.0)
+        PBMAssertEq(bidRequest.user.geo.city, "UserCity")
+        PBMAssertEq(bidRequest.user.geo.region, "UserRegion")
+        PBMAssertEq(bidRequest.user.geo.zip, "UserZip")
+        PBMAssertEq(bidRequest.user.geo.country, "UserCountry")
     }
 }

@@ -1,7 +1,7 @@
 import CoreLocation
 //@testable mport OpenXApolloSDK
 
-class MockLocationManagerSuccessful : OXMLocationManager {
+class MockLocationManagerSuccessful : PBMLocationManager {
     static let testCoord = CLLocationCoordinate2D(latitude: 34.149335, longitude: -118.1328249)
     static let testCoordsAreValid = true
     static let testCity = "Pasadena"
@@ -26,7 +26,7 @@ class MockLocationManagerSuccessful : OXMLocationManager {
     }
 }
 
-class MockLocationManagerUnSuccessful : OXMLocationManager {
+class MockLocationManagerUnSuccessful : PBMLocationManager {
     
 
 }

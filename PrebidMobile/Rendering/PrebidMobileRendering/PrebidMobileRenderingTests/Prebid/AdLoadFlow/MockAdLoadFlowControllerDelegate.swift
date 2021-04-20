@@ -10,13 +10,13 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegate {
+class MockAdLoadFlowControllerDelegate: NSObject, PBMAdLoadFlowControllerDelegate {
     enum ExpectedCall {
-        case adUnitConfig(provider: ()->OXAAdUnitConfig)
-        case failedWithError(handler: (OXAAdLoadFlowController, Error?)->())
-        case willSendBidRequest(handler: (OXAAdLoadFlowController)->())
-        case willRequestPrimaryAd(handler: (OXAAdLoadFlowController)->())
-        case shouldContinue(handler: (OXAAdLoadFlowController)->Bool)
+        case adUnitConfig(provider: ()->PBMAdUnitConfig)
+        case failedWithError(handler: (PBMAdLoadFlowController, Error?)->())
+        case willSendBidRequest(handler: (PBMAdLoadFlowController)->())
+        case willRequestPrimaryAd(handler: (PBMAdLoadFlowController)->())
+        case shouldContinue(handler: (PBMAdLoadFlowController)->Bool)
     }
     
     private let expectedCalls: [ExpectedCall]
@@ -32,10 +32,10 @@ class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegat
         self.line = line
     }
     
-    // MARK: - OXAAdLoadFlowControllerDelegate
+    // MARK: - PBMAdLoadFlowControllerDelegate
     
-    var adUnitConfig: OXAAdUnitConfig {
-        let provider: (()->OXAAdUnitConfig)? = syncQueue.sync {
+    var adUnitConfig: PBMAdUnitConfig {
+        let provider: (()->PBMAdUnitConfig)? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoadFlowControllerDelegate] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)
@@ -51,11 +51,11 @@ class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegat
                 return nil
             }
         }
-        return provider?() ?? OXAAdUnitConfig()
+        return provider?() ?? PBMAdUnitConfig()
     }
     
-    func adLoadFlowController(_ adLoadFlowController: OXAAdLoadFlowController, failedWithError error: Error?) {
-        let handler: ((OXAAdLoadFlowController, Error?)->())? = syncQueue.sync {
+    func adLoadFlowController(_ adLoadFlowController: PBMAdLoadFlowController, failedWithError error: Error?) {
+        let handler: ((PBMAdLoadFlowController, Error?)->())? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoadFlowControllerDelegate] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)
@@ -74,8 +74,8 @@ class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegat
         handler?(adLoadFlowController, error)
     }
     
-    func adLoadFlowControllerWillSendBidRequest(_ adLoadFlowController: OXAAdLoadFlowController) {
-        let handler: ((OXAAdLoadFlowController)->())? = syncQueue.sync {
+    func adLoadFlowControllerWillSendBidRequest(_ adLoadFlowController: PBMAdLoadFlowController) {
+        let handler: ((PBMAdLoadFlowController)->())? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoadFlowControllerDelegate] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)
@@ -94,8 +94,8 @@ class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegat
         handler?(adLoadFlowController)
     }
     
-    func adLoadFlowControllerWillRequestPrimaryAd(_ adLoadFlowController: OXAAdLoadFlowController) {
-        let handler: ((OXAAdLoadFlowController)->())? = syncQueue.sync {
+    func adLoadFlowControllerWillRequestPrimaryAd(_ adLoadFlowController: PBMAdLoadFlowController) {
+        let handler: ((PBMAdLoadFlowController)->())? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoadFlowControllerDelegate] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)
@@ -114,8 +114,8 @@ class MockAdLoadFlowControllerDelegate: NSObject, OXAAdLoadFlowControllerDelegat
         handler?(adLoadFlowController)
     }
     
-    func adLoadFlowControllerShouldContinue(_ adLoadFlowController: OXAAdLoadFlowController) -> Bool {
-        let handler: ((OXAAdLoadFlowController)->Bool)? = syncQueue.sync {
+    func adLoadFlowControllerShouldContinue(_ adLoadFlowController: PBMAdLoadFlowController) -> Bool {
+        let handler: ((PBMAdLoadFlowController)->Bool)? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoadFlowControllerDelegate] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)

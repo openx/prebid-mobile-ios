@@ -9,10 +9,10 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDelegate {
+class VideoFileTypeTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegate {
     
     let viewController = MockViewController()
-    var oxmVideoCreative:OXMVideoCreative!
+    var oxmVideoCreative:PBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationCreativeDidDisplay:XCTestExpectation!
@@ -26,13 +26,13 @@ class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDeleg
     override func tearDown() {
         MockServer.singleton().reset()
         
-        OXASDKConfiguration.resetSingleton()
+        PBMSDKConfiguration.resetSingleton()
         
         super.tearDown()
     }
     
     func testTypes() {
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
         self.continueAfterFailure = true
         
         let typesToTest: [(MockServerMimeType, String)] = [
@@ -56,9 +56,9 @@ class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDeleg
             var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("document_with_one_inline_ad.xml")!
             let needle = MockServerMimeType.MP4.rawValue
             let replaceWith = mimeType.rawValue
-            inlineResponse = inlineResponse.OXMstringByReplacingRegex(needle, replaceWith:replaceWith)
+            inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
             
-            //Make an OXMServerConnection and redirect its network requests to the Mock Server
+            //Make an PBMServerConnection and redirect its network requests to the Mock Server
             let connection = UtilitiesForTesting.createConnectionForMockedTest()
             
             //Rule for VAST
@@ -69,19 +69,19 @@ class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDeleg
             MockServer.singleton().resetRules([ruleVAST, ruleVideo])
             
             //Create adConfiguration
-            let adConfiguration = OXMAdConfiguration()
+            let adConfiguration = PBMAdConfiguration()
             adConfiguration.adFormat = .video
 //            adConfiguration.domain = "foo.com/inline"
             
             //Create CreativeModel
-            let creativeModel = OXMCreativeModel(adConfiguration:adConfiguration)
+            let creativeModel = PBMCreativeModel(adConfiguration:adConfiguration)
             creativeModel.videoFileURL = "http://get_video_file"
             
             let transaction = UtilitiesForTesting.createEmptyTransaction()
             transaction.creativeModels = [creativeModel]
 
             //Get a Creative
-            let creativeFactory = OXMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creativesArray, error in
+            let creativeFactory = PBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creativesArray, error in
                 
                     if (error != nil) {
                         XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -89,8 +89,8 @@ class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDeleg
                     
                     self.expectationDownloadCompleted.fulfill()
                     
-                    guard let oxmVideoCreative = creativesArray?.first as? OXMVideoCreative else {
-                        XCTFail("Could not cast creative as OXMVideoCreative")
+                    guard let oxmVideoCreative = creativesArray?.first as? PBMVideoCreative else {
+                        XCTFail("Could not cast creative as PBMVideoCreative")
                         return
                     }
                     
@@ -114,26 +114,26 @@ class VideoFileTypeTest : XCTestCase, OXMCreativeViewDelegate, OXMVideoViewDeleg
     
     
     //MARK: - CreativeViewDelegate
-    func creativeDidComplete(_ creative: OXMAbstractCreative) {}
-    func videoCreativeDidComplete(_ creative: OXMAbstractCreative) {}
-    func creativeWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeClickthroughDidClose(_ creative: OXMAbstractCreative) {}
-    func creativeInterstitialDidClose(_ creative: OXMAbstractCreative) {}
-    func creativeReady(toReimplant creative: OXMAbstractCreative) {}
-    func creativeMraidDidCollapse(_ creative: OXMAbstractCreative) {}
-    func creativeMraidDidExpand(_ creative: OXMAbstractCreative) {}
-    func creativeInterstitialDidLeaveApp(_ creative: OXMAbstractCreative) {}
+    func creativeDidComplete(_ creative: PBMAbstractCreative) {}
+    func videoCreativeDidComplete(_ creative: PBMAbstractCreative) {}
+    func creativeWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeClickthroughDidClose(_ creative: PBMAbstractCreative) {}
+    func creativeInterstitialDidClose(_ creative: PBMAbstractCreative) {}
+    func creativeReady(toReimplant creative: PBMAbstractCreative) {}
+    func creativeMraidDidCollapse(_ creative: PBMAbstractCreative) {}
+    func creativeMraidDidExpand(_ creative: PBMAbstractCreative) {}
+    func creativeInterstitialDidLeaveApp(_ creative: PBMAbstractCreative) {}
     
-    func creativeDidDisplay(_ creative: OXMAbstractCreative) {
+    func creativeDidDisplay(_ creative: PBMAbstractCreative) {
         self.expectationCreativeDidDisplay.fulfill()
     }
     
     func videoViewWasTapped() {}
     func learnMoreWasClicked() {}
-    func creativeViewWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeFullScreenDidFinish(_ creative: OXMAbstractCreative) {}
+    func creativeViewWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeFullScreenDidFinish(_ creative: PBMAbstractCreative) {}
     
-    // MARK: - OXMVideoViewDelegate
+    // MARK: - PBMVideoViewDelegate
     
     func videoViewFailedWithError(_ error: Error) {}
     func videoViewReadyToDisplay() {}

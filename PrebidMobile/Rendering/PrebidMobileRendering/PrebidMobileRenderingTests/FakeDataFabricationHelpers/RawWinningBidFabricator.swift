@@ -12,8 +12,8 @@ protocol RawWinningBidFabricator {
 }
 
 extension RawWinningBidFabricator {
-    func makeRawWinningBid(price: Double, bidder: String, cacheID: String) -> OXMORTBBid<OXAORTBBidExt> {
-        let rawBid = OXMORTBBid<OXAORTBBidExt>()
+    func makeRawWinningBid(price: Double, bidder: String, cacheID: String) -> PBMORTBBid<PBMORTBBidExt> {
+        let rawBid = PBMORTBBid<PBMORTBBidExt>()
         rawBid.price = NSNumber(value: price)
         rawBid.ext = .init()
         rawBid.ext.prebid = .init()

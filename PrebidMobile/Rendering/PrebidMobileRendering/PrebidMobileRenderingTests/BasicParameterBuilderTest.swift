@@ -3,11 +3,11 @@ import UIKit
 import XCTest
 @testable import PrebidMobileRendering
 
-class OXMBasicParameterBuilderTest: XCTestCase {
+class PBMBasicParameterBuilderTest: XCTestCase {
     
     private var logToFile: LogToFileLock?
     
-    private var targeting: OXATargeting!
+    private var targeting: PBMTargeting!
     
     override func setUp() {
         super.setUp()
@@ -26,32 +26,32 @@ class OXMBasicParameterBuilderTest: XCTestCase {
     func testParameterBuilderBannerAUID() {
         
         //Create Builder
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.isInterstitialAd = false
         
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
         //Check Impression
-        OXMAssertEq(bidRequest.imp.count, 1)
+        PBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No imp object")
             return
         }
         
-        OXMAssertEq(imp.instl, 0)
-        OXMAssertEq(imp.displaymanager, "openx")
-        OXMAssertEq(imp.displaymanagerver, "MOCK_SDK_VERSION")
-        OXMAssertEq(imp.secure, 1)
-        OXMAssertEq(imp.clickbrowser, 0)
+        PBMAssertEq(imp.instl, 0)
+        PBMAssertEq(imp.displaymanager, "prebid")
+        PBMAssertEq(imp.displaymanagerver, "MOCK_SDK_VERSION")
+        PBMAssertEq(imp.secure, 1)
+        PBMAssertEq(imp.clickbrowser, 0)
         
         //Check banner
         guard let banner = imp.banner else {
@@ -59,23 +59,23 @@ class OXMBasicParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(banner.api, [])
+        PBMAssertEq(banner.api, [])
         
         //Check Regs
         XCTAssertNil(bidRequest.regs.coppa)
     }
     
     func testParameterBuilderExternalBrowser() {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         
-        let sdkConfiguration = OXASDKConfiguration()
+        let sdkConfiguration = PBMSDKConfiguration()
         sdkConfiguration.useExternalClickthroughBrowser = true
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
         guard let imp = bidRequest.imp.first else {
@@ -83,92 +83,92 @@ class OXMBasicParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(imp.clickbrowser, 1)
+        PBMAssertEq(imp.clickbrowser, 1)
     }
     
     func testParameterBuilderInterstitialVAST() {
-        let adUnit = OXAInterstitialAdUnit.init(configId: "configId")
+        let adUnit = PBMInterstitialAdUnit.init(configId: "configId")
         adUnit.adFormat = .video
         let adConfiguration = adUnit.adUnitConfig.adConfiguration
         
         //Run the Builder
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
       
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
               
         //Check that this is counted as an interstitial
-        OXMAssertEq(bidRequest.imp.count, 1)
+        PBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
         }
         
-        OXMAssertEq(imp.instl, 1)
+        PBMAssertEq(imp.instl, 1)
         
         guard let video = imp.video else {
             XCTFail("No video object!")
             return
         }
         
-        OXMAssertEq(video.mimes, OXMConstants.supportedVideoMimeTypes)
-        OXMAssertEq(video.protocols, [2,5])
-        OXMAssertEq(video.placement, 5)
-        OXMAssertEq(video.delivery!, [3])
-        OXMAssertEq(video.pos, 7)
+        PBMAssertEq(video.mimes, PBMConstants.supportedVideoMimeTypes)
+        PBMAssertEq(video.protocols, [2,5])
+        PBMAssertEq(video.placement, 5)
+        PBMAssertEq(video.delivery!, [3])
+        PBMAssertEq(video.pos, 7)
     }
     
     func testParameterBuilderOutstream() {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
         adConfiguration.size = CGSize(width: 300, height: 250)
         
         //Run the Builder
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
-        OXMAssertEq(bidRequest.imp.count, 1)
+        PBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
         }
-        OXMAssertEq(imp.instl, 0)
+        PBMAssertEq(imp.instl, 0)
         
         guard let video = imp.video else {
             XCTFail("No video object!")
             return
         }
         
-        OXMAssertEq(video.mimes, OXMConstants.supportedVideoMimeTypes)
-        OXMAssertEq(video.protocols, [2,5])
+        PBMAssertEq(video.mimes, PBMConstants.supportedVideoMimeTypes)
+        PBMAssertEq(video.protocols, [2,5])
         XCTAssertNil(video.placement)
         
-        OXMAssertEq(video.delivery!, [3])
-        OXMAssertEq(video.pos, 7)
+        PBMAssertEq(video.delivery!, [3])
+        PBMAssertEq(video.pos, 7)
     }
     
     func testParameterBuilderCOPPANotSet() {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.isInterstitialAd = false
         
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
         XCTAssertNil(bidRequest.regs.coppa)
@@ -182,34 +182,34 @@ class OXMBasicParameterBuilderTest: XCTestCase {
     }
     
     func testParameterBuilderCOPPA(value: NSNumber?, expectedRegValue: NSNumber?) {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.isInterstitialAd = false
         
         if let coppa = value {
             targeting.coppa = coppa
         }
         
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
-        OXMAssertEq(bidRequest.regs.coppa, expectedRegValue)
+        PBMAssertEq(bidRequest.regs.coppa, expectedRegValue)
     }
     
     func testInvalidProperties() {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         
-        let sdkConfiguration = OXASDKConfiguration()
-        let bidRequest = OXMORTBBidRequest()
+        let sdkConfiguration = PBMSDKConfiguration()
+        let bidRequest = PBMORTBBidRequest()
         
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                   sdkVersion:"MOCK_SDK_VERSION",
                                                   targeting: targeting)
@@ -221,7 +221,7 @@ class OXMBasicParameterBuilderTest: XCTestCase {
         
         builder.adConfiguration = nil
         builder.build(bidRequest)
-        var log = OXMLog.singleton.getLogFileAsString()
+        var log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains("Invalid properties"))
         
         logToFile = nil
@@ -230,7 +230,7 @@ class OXMBasicParameterBuilderTest: XCTestCase {
         builder.adConfiguration = adConfiguration
         builder.sdkConfiguration = nil
         builder.build(bidRequest)
-        log = OXMLog.singleton.getLogFileAsString()
+        log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains("Invalid properties"))
         
         logToFile = nil
@@ -239,7 +239,7 @@ class OXMBasicParameterBuilderTest: XCTestCase {
         builder.sdkConfiguration = sdkConfiguration
         builder.sdkVersion = nil
         builder.build(bidRequest)
-        log = OXMLog.singleton.getLogFileAsString()
+        log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains("Invalid properties"))
     }
     
@@ -257,17 +257,17 @@ class OXMBasicParameterBuilderTest: XCTestCase {
                                        expectedPlacement: 5)
     }
     
-    func testParameterBuilderVideo(placement: OXAVideoPlacementType,
+    func testParameterBuilderVideo(placement: PBMVideoPlacementType,
                                    isInterstitial: Bool,
                                    expectedPlacement:Int) {
         
-        var adConfiguration: OXMAdConfiguration
+        var adConfiguration: PBMAdConfiguration
         if (isInterstitial) {
-            let adUnit = OXAInterstitialAdUnit.init(configId: "configId")
+            let adUnit = PBMInterstitialAdUnit.init(configId: "configId")
             adUnit.adFormat = .video
             adConfiguration = adUnit.adUnitConfig.adConfiguration
         } else {
-            let adUnit = OXABannerView.init(frame: CGRect.zero, configId: "configId", adSize: CGSize.zero)
+            let adUnit = PBMBannerView.init(frame: CGRect.zero, configId: "configId", adSize: CGSize.zero)
             adUnit.adFormat = .video
             if (placement != .undefined) {
                 adUnit.videoPlacementType = placement
@@ -275,12 +275,12 @@ class OXMBasicParameterBuilderTest: XCTestCase {
             adConfiguration = adUnit.adUnitConfig.adConfiguration
         }
 
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
         guard let video = bidRequest.imp.first?.video else {
@@ -291,7 +291,7 @@ class OXMBasicParameterBuilderTest: XCTestCase {
         if (expectedPlacement == 0) {
             XCTAssertNil(video.placement)
         } else {
-            OXMAssertEq(video.placement?.intValue, expectedPlacement)
+            PBMAssertEq(video.placement?.intValue, expectedPlacement)
         }
         
     }
@@ -299,19 +299,19 @@ class OXMBasicParameterBuilderTest: XCTestCase {
     func testParameterBuilderDeprecatedProperties() {
             
         //Create Builder
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
     
         targeting.addParam("rab", withName: "foo")
         adConfiguration.isInterstitialAd = false
         
-        let sdkConfiguration = OXASDKConfiguration()
-        let builder = OXMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let sdkConfiguration = PBMSDKConfiguration()
+        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                   sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         //Run Builder
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
         //Check Regs

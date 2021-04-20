@@ -12,24 +12,24 @@ import XCTest
 class SupportedProtocolsParameterBuilderTest : XCTestCase {
 
     func testParameterBuilder() {
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .display
         
         //Run the Builder
-        let sdkConfig = OXASDKConfiguration()
-        let targeting = OXATargeting.withDisabledLock
-        let builder = OXMBasicParameterBuilder(adConfiguration: adConfiguration,
+        let sdkConfig = PBMSDKConfiguration()
+        let targeting = PBMTargeting.withDisabledLock
+        let builder = PBMBasicParameterBuilder(adConfiguration: adConfiguration,
                                                   sdkConfiguration: sdkConfig,
                                                sdkVersion: "MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
      
         //Test with MRAID (default)
-        let supportedProtocolsParameterBuilder = OXMSupportedProtocolsParameterBuilder(sdkConfiguration: sdkConfig)
+        let supportedProtocolsParameterBuilder = PBMSupportedProtocolsParameterBuilder(sdkConfiguration: sdkConfig)
         supportedProtocolsParameterBuilder.build(bidRequest)
 
-        OXMAssertEq(bidRequest.imp.first!.banner!.api, [3,5,6,7])
+        PBMAssertEq(bidRequest.imp.first!.banner!.api, [3,5,6,7])
     }
 }

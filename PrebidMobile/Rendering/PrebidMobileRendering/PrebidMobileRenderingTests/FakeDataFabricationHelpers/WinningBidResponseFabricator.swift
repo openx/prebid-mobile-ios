@@ -13,12 +13,12 @@ protocol WinningBidResponseFabricator: RawWinningBidFabricator {
 }
 
 extension WinningBidResponseFabricator {
-    func makeWinningBidResponse(bidPrice: Double) -> OXABidResponse {
-        let rawBidResponse = OXMORTBBidResponse<OXAORTBBidResponseExt, NSDictionary, OXAORTBBidExt>()
+    func makeWinningBidResponse(bidPrice: Double) -> PBMBidResponse {
+        let rawBidResponse = PBMORTBBidResponse<PBMORTBBidResponseExt, NSDictionary, PBMORTBBidExt>()
         rawBidResponse.seatbid = [.init()]
         let rawWinningBid = makeRawWinningBid(price: bidPrice, bidder: "some bidder", cacheID: "some-cache-id")
         rawBidResponse.seatbid![0].bid = [rawWinningBid]
-        let bidResponse = OXABidResponse(rawBidResponse: rawBidResponse)
+        let bidResponse = PBMBidResponse(rawBidResponse: rawBidResponse)
         XCTAssertNotNil(bidResponse.winningBid)
         return bidResponse
     }

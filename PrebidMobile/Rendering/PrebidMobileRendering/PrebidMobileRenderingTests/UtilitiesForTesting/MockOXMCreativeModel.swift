@@ -9,10 +9,10 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockOXMCreativeModel: OXMCreativeModel {
+class MockPBMCreativeModel: PBMCreativeModel {
 
-//    var mock_trackEvent: ((OXMTrackingEvent) -> Void)?
-//    override func trackEvent(_ event: OXMTrackingEvent) {
+//    var mock_trackEvent: ((PBMTrackingEvent) -> Void)?
+//    override func trackEvent(_ event: PBMTrackingEvent) {
 //        self.mock_trackEvent?(event)
 //    }
 

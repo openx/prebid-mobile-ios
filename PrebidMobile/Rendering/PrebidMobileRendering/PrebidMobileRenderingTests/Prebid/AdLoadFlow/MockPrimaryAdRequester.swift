@@ -10,8 +10,8 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class MockPrimaryAdRequester: NSObject, OXAPrimaryAdRequesterProtocol {
-    typealias ExpectedCall = (OXABidResponse?)->()
+class MockPrimaryAdRequester: NSObject, PBMPrimaryAdRequesterProtocol {
+    typealias ExpectedCall = (PBMBidResponse?)->()
     
     private let expectedCalls: [ExpectedCall]
     private var nextCallIndex = 0
@@ -26,7 +26,7 @@ class MockPrimaryAdRequester: NSObject, OXAPrimaryAdRequesterProtocol {
         self.line = line
     }
     
-    func requestAd(with bidResponse: OXABidResponse?) {
+    func requestAd(with bidResponse: PBMBidResponse?) {
         let handler: ExpectedCall? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockPrimaryAdRequester] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",

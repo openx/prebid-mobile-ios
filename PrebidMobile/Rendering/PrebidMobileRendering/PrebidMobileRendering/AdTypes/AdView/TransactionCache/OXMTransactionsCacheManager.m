@@ -1,35 +1,35 @@
 //
-//  OXMTransactionsCacheManager.m
+//  PBMTransactionsCacheManager.m
 //  OpenXSDKCore
 //
 //  Copyright © 2018 OpenX. All rights reserved.
 //
 
-#import "OXMAdConfiguration.h"
-#import "OXMTransactionsCacheManager.h"
-#import "OXMAdLoadManagerFactory.h"
-#import "OXMAdLoadManagerProtocol.h"
-#import "OXMTransaction.h"
-#import "OXMTransactionsCache.h"
-#import "OXMFunctions+Private.h"
-#import "OXMLog.h"
+#import "PBMAdConfiguration.h"
+#import "PBMTransactionsCacheManager.h"
+#import "PBMAdLoadManagerFactory.h"
+#import "PBMAdLoadManagerProtocol.h"
+#import "PBMTransaction.h"
+#import "PBMTransactionsCache.h"
+#import "PBMFunctions+Private.h"
+#import "PBMLog.h"
 
 #pragma mark - Private Category
 
-@interface OXMTransactionsCacheManager ()
+@interface PBMTransactionsCacheManager ()
 
-@property (nonatomic, strong) OXMVoidBlock preloadingCompletedBlock;
+@property (nonatomic, strong) PBMVoidBlock preloadingCompletedBlock;
 
-@property (nonatomic, assign) OXMTransactionsCache* transactionsCache;
-@property (nonatomic, strong) NSMutableArray<id<OXMAdLoadManagerProtocol>> *loaders;
+@property (nonatomic, assign) PBMTransactionsCache* transactionsCache;
+@property (nonatomic, strong) NSMutableArray<id<PBMAdLoadManagerProtocol>> *loaders;
 
 @end
 
 #pragma mark - Implementation
 
-@implementation OXMTransactionsCacheManager
+@implementation PBMTransactionsCacheManager
 
-- (instancetype)initWithTransactionsCache:(OXMTransactionsCache *)transactionsCache {
+- (instancetype)initWithTransactionsCache:(PBMTransactionsCache *)transactionsCache {
     self = [super init];
     if (self) {
         self.transactionsCache = transactionsCache;
@@ -39,34 +39,34 @@
     return self;
 }
 
-#pragma mark - OXMAdLoadManagerDelegate
+#pragma mark - PBMAdLoadManagerDelegate
 
-- (void)loadManager:(id<OXMAdLoadManagerProtocol>)loadManager didLoadTransaction:(OXMTransaction *)transaction {
+- (void)loadManager:(id<PBMAdLoadManagerProtocol>)loadManager didLoadTransaction:(PBMTransaction *)transaction {
     [self.transactionsCache addTransaction:transaction];
     
     [self dismissLoadManager:loadManager];
 }
 
-- (void)loadManager:(id<OXMAdLoadManagerProtocol>)loadManager failedToLoadTransaction:(OXMTransaction *) transaction error:(NSError *) error {
-    OXMLogError(@"Failed to preload video ad with error: %@", [error localizedDescription]);
+- (void)loadManager:(id<PBMAdLoadManagerProtocol>)loadManager failedToLoadTransaction:(PBMTransaction *) transaction error:(NSError *) error {
+    PBMLogError(@"Failed to preload video ad with error: %@", [error localizedDescription]);
     
     [self dismissLoadManager:loadManager];
 }
 
 #pragma mark - Public Methods
 
-- (void)preloadAdsWithConfigurations:(NSArray<OXMAdConfiguration *> *)configurations
-          serverConnection:(id<OXMServerConnectionProtocol>)serverConnection
-                completion:(OXMVoidBlock)completion {
+- (void)preloadAdsWithConfigurations:(NSArray<PBMAdConfiguration *> *)configurations
+          serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
+                completion:(PBMVoidBlock)completion {
     self.preloadingCompletedBlock = completion;
-    [configurations enumerateObjectsUsingBlock:^(OXMAdConfiguration *config, NSUInteger idx, BOOL *stop) {
+    [configurations enumerateObjectsUsingBlock:^(PBMAdConfiguration *config, NSUInteger idx, BOOL *stop) {
         [self preloadAdWithConfiguration:config withServerConnection:serverConnection];
     }];
 }
 
-- (void)preloadAdWithConfiguration:(OXMAdConfiguration *)adConfiguration
-                  serverConnection:(id<OXMServerConnectionProtocol>)serverConnection
-                        completion:(OXMVoidBlock)completion {
+- (void)preloadAdWithConfiguration:(PBMAdConfiguration *)adConfiguration
+                  serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
+                        completion:(PBMVoidBlock)completion {
     self.preloadingCompletedBlock = completion;
 
     [self preloadAdWithConfiguration:adConfiguration withServerConnection:serverConnection];
@@ -74,10 +74,10 @@
 
 #pragma mark - Internal Methods
 
-- (void)preloadAdWithConfiguration:(OXMAdConfiguration *)adConfiguration
-              withServerConnection:(id<OXMServerConnectionProtocol>)serverConnection {
+- (void)preloadAdWithConfiguration:(PBMAdConfiguration *)adConfiguration
+              withServerConnection:(id<PBMServerConnectionProtocol>)serverConnection {
     
-    id<OXMAdLoadManagerProtocol> loadManager = [OXMAdLoadManagerFactory createLoader:serverConnection
+    id<PBMAdLoadManagerProtocol> loadManager = [PBMAdLoadManagerFactory createLoader:serverConnection
                                                                      adConfiguration:adConfiguration];
     loadManager.adLoadManagerDelegate = self;
 
@@ -87,9 +87,9 @@
    //  [loadManager load];
 }
 
-- (void)dismissLoadManager:(id<OXMAdLoadManagerProtocol>)loadManager {
+- (void)dismissLoadManager:(id<PBMAdLoadManagerProtocol>)loadManager {
     if (![self.loaders containsObject:loadManager]) {
-        OXMLogError(@"The load manager could be aready dismissed");
+        PBMLogError(@"The load manager could be aready dismissed");
         return;
     }
     

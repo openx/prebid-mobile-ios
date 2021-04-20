@@ -1,5 +1,5 @@
 //
-//  MockOXMVideoCreative.swift
+//  MockPBMVideoCreative.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2019 OpenX. All rights reserved.
@@ -9,7 +9,7 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockOXMVideoCreative: OXMVideoCreative {
+class MockPBMVideoCreative: PBMVideoCreative {
     
     var closurePause: (() -> Void)?
     var closureResume: (() -> Void)?

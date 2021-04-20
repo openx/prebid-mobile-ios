@@ -1,14 +1,14 @@
 //
-//  OXMWKScriptMessagerLeakAvoider.m
+//  PBMWKScriptMessagerLeakAvoider.m
 //  OpenXSDKCore
 //
 //  Created by Yuriy Velichko on 4/4/19.
 //  Copyright © 2019 OpenX. All rights reserved.
 //
 
-#import "OXMWKScriptMessageHandlerLeakAvoider.h"
+#import "PBMWKScriptMessageHandlerLeakAvoider.h"
 
-@implementation OXMWKScriptMessageHandlerLeakAvoider
+@implementation PBMWKScriptMessageHandlerLeakAvoider
 
 - (instancetype)initWithDelegate:(id<WKScriptMessageHandler>)delegate {
     self = [super init];

@@ -12,13 +12,13 @@ import CoreFoundation
 
 @testable import PrebidMobileRendering
 
-class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
+class RewardedVideoEventsTest : XCTestCase, PBMCreativeViewDelegate {
     
     let vc = UIViewController()
     
     var vastRequestSuccessfulExpectation:XCTestExpectation!
     
-    var vastServerResponse: OXMAdRequestResponseVAST?
+    var vastServerResponse: PBMAdRequestResponseVAST?
     
     var expectationCreativeWasClicked:XCTestExpectation!
     var expectationCreativeClickthroughDidClose:XCTestExpectation!
@@ -30,7 +30,7 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationTrackingEventMidpoint:XCTestExpectation!
 
-    var oxmVideoCreative:OXMVideoCreative!
+    var oxmVideoCreative:PBMVideoCreative!
     
     override func setUp() {
         MockServer.singleton().reset()
@@ -39,14 +39,14 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
     override func tearDown() {
         MockServer.singleton().reset()
         
-        OXASDKConfiguration.resetSingleton()
+        PBMSDKConfiguration.resetSingleton()
         
         super.tearDown()
     }
     
     func testEvents() {
         self.initExpectations()
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
 
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         let adConfiguration = self.initAdConfiguration()
@@ -61,7 +61,7 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
         
         //Create CreativeModel
         
-        let adLoadManager = MockOXMAdLoadManagerVAST(connection:connection, adConfiguration: self.initAdConfiguration())
+        let adLoadManager = MockPBMAdLoadManagerVAST(connection:connection, adConfiguration: self.initAdConfiguration())
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerResponse = response
@@ -72,7 +72,7 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = OXMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -86,15 +86,15 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
             return // to avoid crash on force unwrap
         }
         
-        let modelMaker = OXMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
-        var creativeFactory: OXMCreativeFactory?
+        var creativeFactory: PBMCreativeFactory?
         
         modelMaker.makeModels(self.vastServerResponse!, successCallback: { models in
             // count should include 1 video creative and 1 html creative (end card) for a total of 2.
             XCTAssertEqual(models.count, 2)
             
-            guard let creativeModel: OXMCreativeModel = models.first else {
+            guard let creativeModel: PBMCreativeModel = models.first else {
                 XCTFail("Models is empty")
                 return
             }
@@ -103,7 +103,7 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
             transaction.creativeModels = [creativeModel]
 
             //Get a Creative
-            creativeFactory = OXMCreativeFactory(serverConnection: connection,
+            creativeFactory = PBMCreativeFactory(serverConnection: connection,
                                                      transaction: transaction, finishedCallback: { creatives, error in
                     if (error != nil) {
                         XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -111,8 +111,8 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
 
                     self.expectationDownloadCompleted.fulfill()
 
-                    guard let oxmVideoCreative = creatives?.first as? OXMVideoCreative else {
-                        XCTFail("Could not cast creative as OXMRewardedVideoCreative")
+                    guard let oxmVideoCreative = creatives?.first as? PBMVideoCreative else {
+                        XCTFail("Could not cast creative as PBMRewardedVideoCreative")
                         return
                     }
 
@@ -138,22 +138,22 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
     }
     
     //MARK: - CreativeViewDelegate
-    func creativeWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeClickthroughDidClose(_ creative:OXMAbstractCreative) {}
+    func creativeWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeClickthroughDidClose(_ creative:PBMAbstractCreative) {}
     
-    func creativeDidDisplay(_ creative: OXMAbstractCreative) {
+    func creativeDidDisplay(_ creative: PBMAbstractCreative) {
         self.expectationCreativeDidDisplay.fulfill()
     }
 
-    func creativeDidComplete(_ creative:OXMAbstractCreative) {}
-    func videoCreativeDidComplete(_ creative: OXMAbstractCreative) {}
-    func creativeInterstitialDidClose(_ creative:OXMAbstractCreative) {}
-    func creativeReady(toReimplant creative:OXMAbstractCreative) {}
-    func creativeMraidDidCollapse(_ creative:OXMAbstractCreative) {}
-    func creativeMraidDidExpand(_ creative:OXMAbstractCreative) {}
-    func creativeInterstitialDidLeaveApp(_ creative:OXMAbstractCreative) {}
-    func creativeViewWasClicked(_ creative: OXMAbstractCreative) {}
-    func creativeFullScreenDidFinish(_ creative: OXMAbstractCreative) {}
+    func creativeDidComplete(_ creative:PBMAbstractCreative) {}
+    func videoCreativeDidComplete(_ creative: PBMAbstractCreative) {}
+    func creativeInterstitialDidClose(_ creative:PBMAbstractCreative) {}
+    func creativeReady(toReimplant creative:PBMAbstractCreative) {}
+    func creativeMraidDidCollapse(_ creative:PBMAbstractCreative) {}
+    func creativeMraidDidExpand(_ creative:PBMAbstractCreative) {}
+    func creativeInterstitialDidLeaveApp(_ creative:PBMAbstractCreative) {}
+    func creativeViewWasClicked(_ creative: PBMAbstractCreative) {}
+    func creativeFullScreenDidFinish(_ creative: PBMAbstractCreative) {}
     
     //MARK: - Utility
     
@@ -161,7 +161,7 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
         let expectation = self.expectation(description: fireAndForgetUrlNeedle)
         let rule = MockServerRule(fireAndForgetURLNeedle: fireAndForgetUrlNeedle, connectionID: connectionID)
         rule.mockServerReceivedRequestHandler = { (urlRequest:URLRequest) in
-            OXMLog.info("VAST Event: \(urlRequest.description)")
+            PBMLog.info("VAST Event: \(urlRequest.description)")
             expectation.fulfill()
         }
         
@@ -245,20 +245,20 @@ class RewardedVideoEventsTest : XCTestCase, OXMCreativeViewDelegate {
         ]
     }
     
-    func initAdConfiguration() -> OXMAdConfiguration {
+    func initAdConfiguration() -> PBMAdConfiguration {
         //Create adConfiguration
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
         adConfiguration.isInterstitialAd = true
         adConfiguration.isOptIn = true
         return adConfiguration
     }
     
-    func creativeFactorySuccess(creative:OXMAbstractCreative)->() {
+    func creativeFactorySuccess(creative:PBMAbstractCreative)->() {
         self.expectationDownloadCompleted.fulfill()
     
-        guard let oxmVideoCreative = creative as? OXMVideoCreative else {
-            XCTFail("Could not cast \(creative) as OXMVideoCreative")
+        guard let oxmVideoCreative = creative as? PBMVideoCreative else {
+            XCTFail("Could not cast \(creative) as PBMVideoCreative")
             return
         }
         

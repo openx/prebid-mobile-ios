@@ -1,32 +1,32 @@
 //
-//  OXMTransactionsCacheManager.h
+//  PBMTransactionsCacheManager.h
 //  OpenXSDKCore
 //
 //  Copyright © 2018 OpenX. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "OXMAdLoadManagerDelegate.h"
-#import "OXMVoidBlock.h"
+#import "PBMAdLoadManagerDelegate.h"
+#import "PBMVoidBlock.h"
 
-@class OXMAdConfiguration;
-@class OXMTransactionsCache;
+@class PBMAdConfiguration;
+@class PBMTransactionsCache;
 
-@protocol OXMServerConnectionProtocol;
+@protocol PBMServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
-@interface OXMTransactionsCacheManager : NSObject <OXMAdLoadManagerDelegate>
+@interface PBMTransactionsCacheManager : NSObject <PBMAdLoadManagerDelegate>
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithTransactionsCache:(OXMTransactionsCache *)transactionsCache NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTransactionsCache:(PBMTransactionsCache *)transactionsCache NS_DESIGNATED_INITIALIZER;
 
-- (void)preloadAdsWithConfigurations:(NSArray<OXMAdConfiguration *> *)configurations
-          serverConnection:(id<OXMServerConnectionProtocol>)serverConnection
-                completion:(OXMVoidBlock)completion;
+- (void)preloadAdsWithConfigurations:(NSArray<PBMAdConfiguration *> *)configurations
+          serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
+                completion:(PBMVoidBlock)completion;
 
-- (void)preloadAdWithConfiguration:(OXMAdConfiguration *)adConfiguration
-                  serverConnection:(id<OXMServerConnectionProtocol>)serverConnection
-                        completion:(OXMVoidBlock)completion;
+- (void)preloadAdWithConfiguration:(PBMAdConfiguration *)adConfiguration
+                  serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
+                        completion:(PBMVoidBlock)completion;
 
 @end
 NS_ASSUME_NONNULL_END

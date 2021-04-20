@@ -10,29 +10,29 @@ import XCTest
 
 class PrebidParameterBuilderTest: XCTestCase {
     
-    private let sdkConfiguration = OXASDKConfiguration()
-    private var targeting: OXATargeting!
+    private let sdkConfiguration = PBMSDKConfiguration()
+    private var targeting: PBMTargeting!
     
     override func setUp() {
         super.setUp()
         
-        targeting = OXATargeting.withDisabledLock
+        targeting = PBMTargeting.withDisabledLock
     }
     
     func testAdPositionHeader() {
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let adUnitConfig = OXAAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
+        let adUnitConfig = PBMAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         adUnitConfig.adFormat = .display
         
-        let builder = OXMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
+        let builder = PBMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
                                                sdkConfiguration: sdkConfiguration,
                                                sdkVersion: "MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -43,7 +43,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(imp.instl, 0)
+        PBMAssertEq(imp.instl, 0)
         
         guard let banner = imp.banner else {
             XCTFail("No Banner object!")
@@ -53,28 +53,28 @@ class PrebidParameterBuilderTest: XCTestCase {
         
         adUnitConfig.adPosition = .header
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
             .build(bidRequest)
         
-        XCTAssertEqual(banner.pos?.intValue, OXAAdPosition.header.rawValue)
+        XCTAssertEqual(banner.pos?.intValue, PBMAdPosition.header.rawValue)
     }
     
     func testAdPositionFullScreen() {
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let interstitialAdUnit =  OXAInterstitialAdUnit(configId: configId)
+        let interstitialAdUnit =  PBMInterstitialAdUnit(configId: configId)
         
-        let builder = OXMBasicParameterBuilder(adConfiguration: interstitialAdUnit.adUnitConfig.adConfiguration,
+        let builder = PBMBasicParameterBuilder(adConfiguration: interstitialAdUnit.adUnitConfig.adConfiguration,
                                                sdkConfiguration: sdkConfiguration,
                                                sdkVersion: "MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         builder.build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: interstitialAdUnit.adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: interstitialAdUnit.adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -85,29 +85,29 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(imp.instl, 1)
+        PBMAssertEq(imp.instl, 1)
         
         guard let banner = imp.banner else {
             XCTFail("No Banner object!")
             return
         }
-        XCTAssertEqual(banner.pos?.intValue, OXAAdPosition.fullScreen.rawValue)
+        XCTAssertEqual(banner.pos?.intValue, PBMAdPosition.fullScreen.rawValue)
     }
     
     func testAdditionalSizes() {
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let adUnitConfig = OXAAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
+        let adUnitConfig = PBMAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         adUnitConfig.adFormat = .display
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         
-        OXMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
+        PBMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
                                  sdkConfiguration: sdkConfiguration,
                                  sdkVersion: "MOCK_SDK_VERSION",
                                  targeting: targeting)
             .build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -119,36 +119,36 @@ class PrebidParameterBuilderTest: XCTestCase {
         }
         
         XCTAssertEqual(banner.format.count, 1)
-        OXMAssertEq(banner.format.first?.w, 320)
-        OXMAssertEq(banner.format.first?.h, 50)
+        PBMAssertEq(banner.format.first?.w, 320)
+        PBMAssertEq(banner.format.first?.h, 50)
         
         adUnitConfig.additionalSizes = [NSValue.init(cgSize:CGSize(width: 728, height: 90))]
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
             .build(bidRequest)
         
         XCTAssertEqual(banner.format.count, 2)
-        OXMAssertEq(banner.format[1].w, 728)
-        OXMAssertEq(banner.format[1].h, 90)
+        PBMAssertEq(banner.format[1].w, 728)
+        PBMAssertEq(banner.format[1].h, 90)
     }
     
     func testVideo() {
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let adUnitConfig = OXAAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
+        let adUnitConfig = PBMAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         adUnitConfig.adFormat = .video
         adUnitConfig.adPosition = .header
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         
-        OXMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
+        PBMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
                                  sdkConfiguration: sdkConfiguration,
                                  sdkVersion: "MOCK_SDK_VERSION",
                                  targeting: targeting)
             .build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -159,32 +159,32 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(video.linearity, 1)
-        OXMAssertEq(video.w, 320)
-        OXMAssertEq(video.h, 50)
-        XCTAssertEqual(video.pos.intValue, OXAAdPosition.header.rawValue)
+        PBMAssertEq(video.linearity, 1)
+        PBMAssertEq(video.w, 320)
+        PBMAssertEq(video.h, 50)
+        XCTAssertEqual(video.pos.intValue, PBMAdPosition.header.rawValue)
     }
     
     func testNative() {
         let nativeVer = "1.2"
-        let desc = OXANativeAssetData(dataType: .desc)
-        let nativeAdConfig = OXANativeAdConfiguration.init(assets:[desc])
+        let desc = PBMNativeAssetData(dataType: .desc)
+        let nativeAdConfig = PBMNativeAdConfiguration.init(assets:[desc])
         nativeAdConfig.context = .socialCentric
         
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let adUnitConfig = OXAAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
+        let adUnitConfig = PBMAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         adUnitConfig.adFormat = .display
         adUnitConfig.nativeAdConfig = nativeAdConfig
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         
-        OXMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
+        PBMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
                                  sdkConfiguration: sdkConfiguration,
                                  sdkVersion: "MOCK_SDK_VERSION",
                                  targeting: targeting)
             .build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -195,21 +195,21 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(imp.native?.ver, nativeVer)
-        OXMAssertEq(imp.native?.request,
+        PBMAssertEq(imp.native?.ver, nativeVer)
+        PBMAssertEq(imp.native?.request,
                     "{\"assets\":[{\"data\":{\"type\":2}}],\"context\":2,\"ver\":\"\(nativeVer)\"}")
     }
     
     func testFirstPartyData() {
-        let nativeAdConfig = OXANativeAdConfiguration.init(assets: [
-            OXANativeAssetData(dataType: .desc),
+        let nativeAdConfig = PBMNativeAdConfiguration.init(assets: [
+            PBMNativeAssetData(dataType: .desc),
         ])
         
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
-        let adUnitConfig = OXAAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
+        let adUnitConfig = PBMAdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         adUnitConfig.nativeAdConfig = nativeAdConfig
         
-        let bidRequest = OXMORTBBidRequest()
+        let bidRequest = PBMORTBBidRequest()
         
         targeting.addBidder(toAccessControlList: "prebid-mobile")
         targeting.updateUserData(Set(["red", "orange"]), forKey: "fav_colors")
@@ -217,13 +217,13 @@ class PrebidParameterBuilderTest: XCTestCase {
         targeting.addContextData("pet", forKey: "last_search_keywords")
         adUnitConfig.addContextData("mushrooms", forKey: "buy")
         
-        OXMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
+        PBMBasicParameterBuilder(adConfiguration: adUnitConfig.adConfiguration,
                                  sdkConfiguration: sdkConfiguration,
                                  sdkVersion: "MOCK_SDK_VERSION",
                                  targeting: targeting)
             .build(bidRequest)
         
-        OXAPrebidParameterBuilder(adConfiguration: adUnitConfig,
+        PBMPrebidParameterBuilder(adConfiguration: adUnitConfig,
                                   sdkConfiguration: sdkConfiguration,
                                   targeting: targeting,
                                   userAgentService: MockUserAgentService())
@@ -239,7 +239,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        OXMAssertEq(imp.native?.request, try! nativeAdConfig.markupRequestObject.toJsonString())
+        PBMAssertEq(imp.native?.request, try! nativeAdConfig.markupRequestObject.toJsonString())
         
         XCTAssertEqual(imp.extContextData, ["buy": ["mushrooms"]])
     }

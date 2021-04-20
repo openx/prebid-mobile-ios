@@ -3,7 +3,7 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
+class PBMAdViewManagerTest: XCTestCase, PBMAdViewManagerDelegate {
 
     weak var displayViewExpectation: XCTestExpectation?
     weak var interstitialDisplayPropertiesExpectation: XCTestExpectation?
@@ -19,8 +19,8 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
     weak var adDidExpandExpectation: XCTestExpectation?
     weak var adDidLeaveAppExpectation: XCTestExpectation?
 
-    var adViewManager:OXMAdViewManager!
-    var adLoadManager:OXMAdLoadManagerBase!
+    var adViewManager:PBMAdViewManager!
+    var adLoadManager:PBMAdLoadManagerBase!
     
     var currentlyDisplaying = false
     var loadError:NSError?
@@ -30,10 +30,10 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
     override func setUp() {
         super.setUp()
         
-        adViewManager = OXMAdViewManager(connection: OXMServerConnection(), modalManagerDelegate: nil)
+        adViewManager = PBMAdViewManager(connection: PBMServerConnection(), modalManagerDelegate: nil)
         
         adViewManager.adViewManagerDelegate = self
-        OXASDKConfiguration.singleton.forcedIsViewable = false
+        PBMSDKConfiguration.singleton.forcedIsViewable = false
         loadError = nil;
     }
     
@@ -60,7 +60,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         
         nilExpectations()
         
-        OXASDKConfiguration.resetSingleton()
+        PBMSDKConfiguration.resetSingleton()
         
         super.tearDown()
     }
@@ -71,7 +71,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
     }
     
     func testInitDefaults() {
-        let adViewManager = OXMAdViewManager(connection: OXMServerConnection(), modalManagerDelegate: nil)
+        let adViewManager = PBMAdViewManager(connection: PBMServerConnection(), modalManagerDelegate: nil)
         XCTAssertNil(adViewManager.externalTransaction)
         XCTAssert(adViewManager.autoDisplayOnLoad == true)
     }
@@ -89,7 +89,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         adDidDisplayExpectation = expectation(description: "adDidDisplayExpectation")
         
         //Force viewability
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
         
         let transaction = UtilitiesForTesting.createTransactionWithHTMLCreative(withView: true)
         adViewManager.handleExternalTransaction(transaction)
@@ -103,7 +103,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         adLoadedExpectation = expectation(description: "Expected a delegate function adLoaded to fire")
         
         //Force viewability
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
 
         // turn off autoDisplay and then alert the adViewManager that the ad is ready
         adViewManager.autoDisplayOnLoad = false
@@ -130,7 +130,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         adDidDisplayExpectation = expectation(description: "adDidDisplayExpectation")
         
         //Force viewability
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
         
         // create an ad with one creative
         adViewManager.handleExternalTransaction(UtilitiesForTesting.createTransactionWithHTMLCreative(withView: true))
@@ -150,8 +150,8 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         
         adDidCompleteExpectation = expectation(description: "adDidCompleteExpectation")
 
-        guard let testCreative = adViewManager.externalTransaction?.creatives.firstObject as? OXMHTMLCreative else {
-            XCTFail("Could not get OXMHTMLCreative")
+        guard let testCreative = adViewManager.externalTransaction?.creatives.firstObject as? PBMHTMLCreative else {
+            XCTFail("Could not get PBMHTMLCreative")
             return
         }
         testCreative.creativeViewDelegate?.creativeDidComplete(testCreative)
@@ -166,7 +166,7 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         adDidDisplayExpectation = expectation(description: "adDidDisplayExpectation")
         
         //Force viewability
-        OXASDKConfiguration.singleton.forcedIsViewable = true
+        PBMSDKConfiguration.singleton.forcedIsViewable = true
         
         adViewManager.handleExternalTransaction(UtilitiesForTesting.createTransactionWithHTMLCreative(withView: true))
         XCTAssertNotNil(adViewManager.externalTransaction)
@@ -176,8 +176,8 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         // setup expectations
         displayViewExpectation = expectation(description: "displayViewExpectation #2")
         
-        guard let testCreative = adViewManager.externalTransaction?.creatives.firstObject as? OXMHTMLCreative else {
-            XCTFail("Could not get OXMHTMLCreative")
+        guard let testCreative = adViewManager.externalTransaction?.creatives.firstObject as? PBMHTMLCreative else {
+            XCTFail("Could not get PBMHTMLCreative")
             return
         }
         adViewManager.creativeReady(toReimplant: testCreative)
@@ -282,14 +282,14 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
     func testSetupCreativeNotMainThread() {
         logToFile = .init()
         
-        let creative = OXMAbstractCreative(creativeModel:OXMCreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
+        let creative = PBMAbstractCreative(creativeModel:PBMCreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
         let thread = MockNSThread(mockIsMainThread: false)
         
         adViewManager.setupCreative(creative, withThread: thread)
         UtilitiesForTesting.checkLogContains("setupCreative must be called on the main thread")
     }
     
-    //MARK: OXMAdViewManagerDelegate
+    //MARK: PBMAdViewManagerDelegate
     
     func viewControllerForModalPresentation() -> UIViewController {
         return UIViewController()
@@ -300,12 +300,12 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
         return UIView();
     }
     
-    func interstitialDisplayProperties() -> OXMInterstitialDisplayProperties {
+    func interstitialDisplayProperties() -> PBMInterstitialDisplayProperties {
         fulfillOrFail(interstitialDisplayPropertiesExpectation, "interstitialDisplayPropertiesExpectation")
-        return OXMInterstitialDisplayProperties()
+        return PBMInterstitialDisplayProperties()
     }
     
-    func adLoaded(_ oxmAdDetails:OXMAdDetails) {
+    func adLoaded(_ oxmAdDetails:PBMAdDetails) {
         fulfillOrFail(adLoadedExpectation, "adLoadedExpectation")
     }
     
@@ -353,12 +353,12 @@ class OXMAdViewManagerTest: XCTestCase, OXMAdViewManagerDelegate {
 
     
     //MARK: Utility methods
-    @discardableResult private func setUpDelegateTests () -> OXMHTMLCreative {
+    @discardableResult private func setUpDelegateTests () -> PBMHTMLCreative {
         // create an ad with one creative
-        let model = OXMCreativeModel(adConfiguration:OXMAdConfiguration())
+        let model = PBMCreativeModel(adConfiguration:PBMAdConfiguration())
         model.html = "<html>test html</html>"
-        let testCreative = OXMHTMLCreative(creativeModel:model, transaction:UtilitiesForTesting.createEmptyTransaction())
-        testCreative.view = OXMWebView()
+        let testCreative = PBMHTMLCreative(creativeModel:model, transaction:UtilitiesForTesting.createEmptyTransaction())
+        testCreative.view = PBMWebView()
         return testCreative
     }
 }

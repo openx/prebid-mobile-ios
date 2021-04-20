@@ -10,6 +10,6 @@ import UIKit
 class SetupTests: NSObject {
     
     override init() {
-        MockServer.singleton().connectionIDHeaderKey = OXMServerConnection.internalIDKey
+        MockServer.singleton().connectionIDHeaderKey = PBMServerConnection.internalIDKey
     }
 }

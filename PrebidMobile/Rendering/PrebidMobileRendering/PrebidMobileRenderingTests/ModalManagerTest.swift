@@ -15,12 +15,12 @@ import UIKit
 class ModalManagerTestDisplayInInterstitial : XCTestCase {
     
     var expectationModalManagerDidFinishPop:XCTestExpectation!
-    func modalManagerDidFinishPop(_ state: OXMModalState!) {
+    func modalManagerDidFinishPop(_ state: PBMModalState!) {
         expectationModalManagerDidFinishPop.fulfill()
     }
     
     var expectationModalManagerDidLeaveApp:XCTestExpectation!
-    func modalManagerDidLeaveApp(_ state: OXMModalState!) {
+    func modalManagerDidLeaveApp(_ state: PBMModalState!) {
         expectationModalManagerDidLeaveApp.fulfill()
     }
     
@@ -34,13 +34,13 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
     func testPushPop() {
         logToFile = .init()
         
-        let modalManager = OXMModalManager()
-        OXMAssertEq(modalManager.modalViewController, nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        let modalManager = PBMModalManager()
+        PBMAssertEq(modalManager.modalViewController, nil)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         
         //ViewControllers are picky about being presented in a windowless environment.
         //This Mock simulates a dismiss.
-        modalManager.modalViewControllerClass = MockOXMModalViewController.self
+        modalManager.modalViewControllerClass = MockPBMModalViewController.self
         
         //Create a MockVC to present from. This will prevent complaints that we don't have an Application or keyWindow.
         let mockVC = MockViewController()
@@ -49,7 +49,7 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
         //Push a view. Expect that the mock VC will be asked to present a ModalViewController and that afterwards the stack will be size 1
         var expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
         
-        var state = OXMModalState(view: OXMWebView(), adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(), onStatePopFinished: { [weak self] poppedState in
+        var state = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: { [weak self] poppedState in
             self?.modalManagerDidFinishPop(poppedState)
             }, onStateHasLeftApp: { [weak self] leavingState in
                 self?.modalManagerDidLeaveApp(leavingState)
@@ -60,11 +60,11 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
         })
         
         self.waitForExpectations(timeout: 4.0, handler: nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 1)
+        PBMAssertEq(modalManager.modalStateStack.count, 1)
         
         //Push another view. Expect stack size to be 2
         expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
-        state = OXMModalState(view: OXMWebView(),adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(), onStatePopFinished: { [weak self] poppedState in
+        state = PBMModalState(view: PBMWebView(),adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: { [weak self] poppedState in
             self?.modalManagerDidFinishPop(poppedState)
             }, onStateHasLeftApp: { [weak self] leavingState in
                 self?.modalManagerDidLeaveApp(leavingState)
@@ -74,44 +74,44 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
             expectationPushModalCompletionManager.fulfill()
         })
         self.waitForExpectations(timeout: 4.0, handler: nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 2)
+        PBMAssertEq(modalManager.modalStateStack.count, 2)
         
         //Pop once
         self.expectationModalManagerDidFinishPop = self.expectation(description: "expectationModalManagerDidFinishPop")
         modalManager.popModal()
         self.waitForExpectations(timeout: 3.0, handler:nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 1)
+        PBMAssertEq(modalManager.modalStateStack.count, 1)
         
         //Pop again
         self.expectationModalManagerDidFinishPop = self.expectation(description: "expectationModalManagerDidFinishPop")
         modalManager.popModal()
         self.waitForExpectations(timeout: 3.0, handler:nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         
         //Pop again with empty stack
         modalManager.popModal()
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute:{
-            let log = OXMLog.singleton.getLogFileAsString()
+            let log = PBMLog.singleton.getLogFileAsString()
             XCTAssert(log.contains("popModal called on empty modalStateStack!"))
         })
     }
     
     func testDismissAllInterstitialsIfAny() {
-        let modalManager = OXMModalManager()
-        OXMAssertEq(modalManager.modalViewController, nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        let modalManager = PBMModalManager()
+        PBMAssertEq(modalManager.modalViewController, nil)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         
         //ViewControllers are picky about being presented in a windowless environment.
         //This Mock simulates a dismiss.
-        modalManager.modalViewControllerClass = MockOXMModalViewController.self
+        modalManager.modalViewControllerClass = MockPBMModalViewController.self
         let mockVC = MockViewController()
         
         //Push a view.
         var expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
-        var state = OXMModalState(view: OXMWebView(),
-                                  adConfiguration:OXMAdConfiguration(),
-                                  displayProperties:OXMInterstitialDisplayProperties(),
+        var state = PBMModalState(view: PBMWebView(),
+                                  adConfiguration:PBMAdConfiguration(),
+                                  displayProperties:PBMInterstitialDisplayProperties(),
                                   onStatePopFinished: { [weak self] poppedState in
                                       self?.modalManagerDidFinishPop(poppedState)
                                       }, onStateHasLeftApp: { [weak self] leavingState in
@@ -126,13 +126,13 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
             expectationPushModalCompletionManager.fulfill()
         })
         self.waitForExpectations(timeout: 4.0, handler: nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 1)
+        PBMAssertEq(modalManager.modalStateStack.count, 1)
         
         //Push another view. Expect stack size to be 2
         expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
-        state = OXMModalState(view: OXMWebView(),
-                              adConfiguration:OXMAdConfiguration(),
-                              displayProperties:OXMInterstitialDisplayProperties(),
+        state = PBMModalState(view: PBMWebView(),
+                              adConfiguration:PBMAdConfiguration(),
+                              displayProperties:PBMInterstitialDisplayProperties(),
                               onStatePopFinished: { [weak self] poppedState in
                                   self?.modalManagerDidFinishPop(poppedState)
                                   }, onStateHasLeftApp: { [weak self] leavingState in
@@ -147,23 +147,23 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
             expectationPushModalCompletionManager.fulfill()
         })
         self.waitForExpectations(timeout: 4.0, handler: nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 2)
+        PBMAssertEq(modalManager.modalStateStack.count, 2)
         
         self.expectationModalManagerDidFinishPop = self.expectation(description: "expectationModalManagerDidFinishPop")
         modalManager.dismissAllInterstitialsIfAny()
         self.waitForExpectations(timeout: 4.0, handler: nil)
-        OXMAssertEq(modalManager.modalViewController, nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        PBMAssertEq(modalManager.modalViewController, nil)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
     }
     
     func testHideShow() {
-        let modalManager = OXMModalManager()
-        OXMAssertEq(modalManager.modalViewController, nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        let modalManager = PBMModalManager()
+        PBMAssertEq(modalManager.modalViewController, nil)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         
         //ViewControllers are picky about being presented in a windowless environment.
         //This Mock simulates a dismiss.
-        modalManager.modalViewControllerClass = MockOXMModalViewController.self
+        modalManager.modalViewControllerClass = MockPBMModalViewController.self
         
         //Create a MockVC to present from. This will prevent complaints that we don't have an Application or keyWindow.
         let mockVC = MockViewController()
@@ -172,7 +172,7 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
         //Push a view. Expect that the mock VC will be asked to present a ModalViewController and that afterwards the stack will be size 1
         var expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
         
-        let state = OXMModalState(view: OXMWebView(), adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(),
+        let state = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(),
         onStatePopFinished: { [weak self] poppedState in
             self?.modalManagerDidFinishPop(poppedState)
             }, onStateHasLeftApp: { [weak self] leavingState in
@@ -197,22 +197,22 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
         // Back Modal
         mockVC.expectationDidPresentViewController = self.expectation(description: "expectationDidPresentViewController")        
         modalManager.backModal(animated: true, fromRootViewController: mockVC, completionHandler: {
-            OXMAssertEq(modalManager.modalStateStack.count, 1)
+            PBMAssertEq(modalManager.modalStateStack.count, 1)
         })
         
         self.waitForExpectations(timeout: 4.0, handler: nil)
     }
     
     func testModalViewControllerDidLeaveApp() {
-        let modalManager = OXMModalManager()
-        modalManager.modalViewControllerClass = MockOXMModalViewController.self
+        let modalManager = PBMModalManager()
+        modalManager.modalViewControllerClass = MockPBMModalViewController.self
 
         let mockVC = MockViewController()
         mockVC.expectationDidPresentViewController = self.expectation(description: "expectationDidPresentViewController")
         
         let expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
         
-        let state = OXMModalState(view: OXMWebView(), adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(),
+        let state = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(),
         onStatePopFinished: { [weak self] poppedState in
             self?.modalManagerDidFinishPop(poppedState)
             }, onStateHasLeftApp: { [weak self] leavingState in
@@ -236,35 +236,35 @@ class ModalManagerTestDisplayInInterstitial : XCTestCase {
 class ModalManagerTestPresentationType : XCTestCase {
     
     func testPresentModalViewController() {
-        let defaultState = OXMModalState(view: OXMWebView(), adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
+        let defaultState = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
         XCTAssertEqual(defaultState.mraidState, .notEnabled)
         presentationFrom(defaultState) { controller in
-            XCTAssertTrue(controller!.isMember(of: OXMModalViewController.self))
+            XCTAssertTrue(controller!.isMember(of: PBMModalViewController.self))
         }
     }
     
     func testPresentNonModalViewController() {
-        let resizedState = OXMModalState(view: OXMWebView(), adConfiguration:OXMAdConfiguration(), displayProperties:OXMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
-        resizedState.mraidState = OXMMRAIDState.resized
+        let resizedState = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
+        resizedState.mraidState = PBMMRAIDState.resized
         XCTAssertEqual(resizedState.mraidState, .resized)
         presentationFrom(resizedState) { controller in
-            XCTAssertTrue(controller!.isMember(of: OXMNonModalViewController.self))
+            XCTAssertTrue(controller!.isMember(of: PBMNonModalViewController.self))
         }
     }
     
-    func presentationFrom(_ state: OXMModalState, completion: ((UIViewController?) -> Void)?)  {
+    func presentationFrom(_ state: PBMModalState, completion: ((UIViewController?) -> Void)?)  {
         let mockVC = MockViewController()
         mockVC.expectationDidPresentViewController = self.expectation(description: "expectationDidPresentViewController")
         
-        let modalManager = OXMModalManager()
-        OXMAssertEq(modalManager.modalViewController, nil)
-        OXMAssertEq(modalManager.modalStateStack.count, 0)
+        let modalManager = PBMModalManager()
+        PBMAssertEq(modalManager.modalViewController, nil)
+        PBMAssertEq(modalManager.modalStateStack.count, 0)
         
-        //Push OXMNonModalViewController
+        //Push PBMNonModalViewController
         let expectationPushModalCompletionManager = self.expectation(description: "expectationPushModalCompletionManager")
         modalManager.pushModal(state, fromRootViewController:mockVC, animated:true, shouldReplace:false, completionHandler:{
             expectationPushModalCompletionManager.fulfill()
-            OXMAssertEq(modalManager.modalStateStack.count, 1)            
+            PBMAssertEq(modalManager.modalStateStack.count, 1)            
             completion?(modalManager.modalViewController)
         })
         
@@ -284,12 +284,12 @@ class ModalManagerTestOther : XCTestCase {
     //TODO: This is currently a "doesn't crash" test. Once UIDevice can be injected, this can change
     //to one that verifies that UIDevice is receiving the proper instruction.
     func testForceOrientation() {
-        let modalManager = OXMModalManager()
+        let modalManager = PBMModalManager()
         modalManager.forceOrientation(UIInterfaceOrientation.portrait)
     }
     
     func testOxmDescription() {
-        let modalManager = OXMModalManager()
+        let modalManager = PBMModalManager()
         
         let expectationOrientation = expectation(description: "UIInterfaceOrientation.portrait")
         

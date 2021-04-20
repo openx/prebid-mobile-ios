@@ -1,5 +1,5 @@
 //
-//  MockOXMDeviceAccessManager.swift
+//  MockPBMDeviceAccessManager.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -9,18 +9,18 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-typealias OXMDeviceAccessManagerCompletionHandler = (Bool, String) -> Void
+typealias PBMDeviceAccessManagerCompletionHandler = (Bool, String) -> Void
 
-class MockOXMDeviceAccessManager: OXMDeviceAccessManager {
+class MockPBMDeviceAccessManager: PBMDeviceAccessManager {
 
-    static var mock_createCalendarEventFromString_completion: ((String, OXMDeviceAccessManagerCompletionHandler) -> Void)?
-    override func createCalendarEventFromString(_ eventString: String, completion: @escaping OXMDeviceAccessManagerCompletionHandler) {
-        MockOXMDeviceAccessManager.mock_createCalendarEventFromString_completion?(eventString, completion)
+    static var mock_createCalendarEventFromString_completion: ((String, PBMDeviceAccessManagerCompletionHandler) -> Void)?
+    override func createCalendarEventFromString(_ eventString: String, completion: @escaping PBMDeviceAccessManagerCompletionHandler) {
+        MockPBMDeviceAccessManager.mock_createCalendarEventFromString_completion?(eventString, completion)
     }
 
-    static var mock_savePhotoWithUrlToAsset_completion: ((URL, OXMDeviceAccessManagerCompletionHandler) -> Void)?
-    override func savePhotoWithUrlToAsset(_ url: URL, completion: @escaping OXMDeviceAccessManagerCompletionHandler) {
-        MockOXMDeviceAccessManager.mock_savePhotoWithUrlToAsset_completion?(url, completion)
+    static var mock_savePhotoWithUrlToAsset_completion: ((URL, PBMDeviceAccessManagerCompletionHandler) -> Void)?
+    override func savePhotoWithUrlToAsset(_ url: URL, completion: @escaping PBMDeviceAccessManagerCompletionHandler) {
+        MockPBMDeviceAccessManager.mock_savePhotoWithUrlToAsset_completion?(url, completion)
     }
 
     static func reset() {

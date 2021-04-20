@@ -11,7 +11,7 @@ class CreativeModelTest: XCTestCase {
     
     func testTrackEvent() {
         
-        self.fireAndForgetExpectation = self.expectation(description: "Expected OXMServerConnection to talk to the server")
+        self.fireAndForgetExpectation = self.expectation(description: "Expected PBMServerConnection to talk to the server")
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         
         //Set Up Mock Server
@@ -23,11 +23,11 @@ class CreativeModelTest: XCTestCase {
         MockServer.singleton().resetRules([rule])
 
         //Track an event
-        let creativeModel = OXMCreativeModel(adConfiguration:OXMAdConfiguration())
-        creativeModel.trackingURLs[OXMTrackingEventDescription.getDescription(OXMTrackingEvent.impression)] = ["foo://bar.com"]
+        let creativeModel = PBMCreativeModel(adConfiguration:PBMAdConfiguration())
+        creativeModel.trackingURLs[PBMTrackingEventDescription.getDescription(PBMTrackingEvent.impression)] = ["foo://bar.com"]
 
-        let eventTracker = OXMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
-        eventTracker.trackEvent(OXMTrackingEvent.impression)
+        let eventTracker = PBMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
+        eventTracker.trackEvent(PBMTrackingEvent.impression)
         //Wait up to 5 seconds for mockTrackingManager to call fireEventTrackingURL
         self.waitForExpectations(timeout: 5, handler:nil)
     }

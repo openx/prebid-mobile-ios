@@ -8,7 +8,7 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockBundle : OXMBundleProtocol {
+class MockBundle : PBMBundleProtocol {
     
     var mockBundleIdentifier: String? = "Mock.Bundle.Identifier"
     var mockBundleName: String? = "MockBundleName"
@@ -29,11 +29,11 @@ class MockBundle : OXMBundleProtocol {
         var dict = [String: Any]()
 
         if let mockBundleName = mockBundleName {
-            dict[OXMAppInfoParameterBuilder.bundleNameKey] = mockBundleName
+            dict[PBMAppInfoParameterBuilder.bundleNameKey] = mockBundleName
         }
 
         if let mockBundleDisplayName = mockBundleDisplayName {
-            dict[OXMAppInfoParameterBuilder.bundleDisplayNameKey] = mockBundleDisplayName
+            dict[PBMAppInfoParameterBuilder.bundleDisplayNameKey] = mockBundleDisplayName
         }
 
         return dict

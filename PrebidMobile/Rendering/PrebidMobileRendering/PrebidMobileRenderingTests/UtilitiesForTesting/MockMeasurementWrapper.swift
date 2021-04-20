@@ -9,16 +9,16 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockMeasurementWrapper : OXMOpenMeasurementWrapper {
+class MockMeasurementWrapper : PBMOpenMeasurementWrapper {
 
     var injectJSLibClosure: ((String) -> Void)?
-    var initializeSessionClosure: ((OXMOpenMeasurementSession) -> Void)?
+    var initializeSessionClosure: ((PBMOpenMeasurementSession) -> Void)?
     
     override init() {
         
     }
     
-    override func initializeJSLib(with bundle: Bundle, completion: OXMVoidBlock? = nil) {
+    override func initializeJSLib(with bundle: Bundle, completion: PBMVoidBlock? = nil) {
         assertionFailure("Unsued in tests for now")
     }
     
@@ -27,14 +27,14 @@ class MockMeasurementWrapper : OXMOpenMeasurementWrapper {
         throw OXMError.error(description:"PrebidMobileRenderingTests: do nothing")
     }
     
-    override func initializeWebViewSession(_ webView: UIView, contentUrl: String?) -> OXMOpenMeasurementSession? {
+    override func initializeWebViewSession(_ webView: UIView, contentUrl: String?) -> PBMOpenMeasurementSession? {
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
         
         return session
     }
     
-    override func initializeNativeVideoSession(_ videoView: UIView, verificationParameters:OXMVideoVerificationParameters?) -> OXMOpenMeasurementSession? {
+    override func initializeNativeVideoSession(_ videoView: UIView, verificationParameters:PBMVideoVerificationParameters?) -> PBMOpenMeasurementSession? {
         // TODO: The same for tests?
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
@@ -45,7 +45,7 @@ class MockMeasurementWrapper : OXMOpenMeasurementWrapper {
     override func initializeNativeDisplaySession(_ view: UIView,
                                                  omidJSUrl omidJS: String,
                                                  vendorKey: String?,
-                                                 parameters verificationParameters: String?) -> OXMOpenMeasurementSession? {
+                                                 parameters verificationParameters: String?) -> PBMOpenMeasurementSession? {
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
         

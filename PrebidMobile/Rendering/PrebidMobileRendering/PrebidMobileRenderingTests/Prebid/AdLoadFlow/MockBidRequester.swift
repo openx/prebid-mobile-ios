@@ -10,8 +10,8 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class MockBidRequester: NSObject, OXABidRequesterProtocol {
-    typealias ExpectedCall = (@escaping (OXABidResponse?, Error?)->())->()
+class MockBidRequester: NSObject, PBMBidRequesterProtocol {
+    typealias ExpectedCall = (@escaping (PBMBidResponse?, Error?)->())->()
     
     private let expectedCalls: [ExpectedCall]
     private var nextCallIndex = 0
@@ -26,7 +26,7 @@ class MockBidRequester: NSObject, OXABidRequesterProtocol {
         self.line = line
     }
     
-    func requestBids(completion: @escaping (OXABidResponse?, Error?) -> Void) {
+    func requestBids(completion: @escaping (PBMBidResponse?, Error?) -> Void) {
         let handler: ExpectedCall? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockBidRequester] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",

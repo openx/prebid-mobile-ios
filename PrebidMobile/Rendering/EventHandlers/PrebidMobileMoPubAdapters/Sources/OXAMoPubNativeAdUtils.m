@@ -35,7 +35,7 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        OXAScheduledTimerFactory const timerFactory = [NSTimer oxaScheduledTimerFactory];
+        PBMScheduledTimerFactory const timerFactory = [NSTimer pbmScheduledTimerFactory];
         OXALocalResponseInfoCache * const localCache = [[OXALocalResponseInfoCache alloc] initWithScheduledTimerFactory:timerFactory
                                                                                                      expirationInterval:MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL];
         singleton = [[OXAMoPubNativeAdUtils alloc] initWithLocalCache:localCache];

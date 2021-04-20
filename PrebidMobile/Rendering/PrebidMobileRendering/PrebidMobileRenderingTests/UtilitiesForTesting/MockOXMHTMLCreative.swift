@@ -1,5 +1,5 @@
 //
-//  MockOXMHTMLCreative.swift
+//  MockPBMHTMLCreative.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2019 OpenX. All rights reserved.
@@ -9,10 +9,10 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockOXMHTMLCreative: OXMHTMLCreative {
-    var mockUIApplication: OXMUIApplicationProtocol?
+class MockPBMHTMLCreative: PBMHTMLCreative {
+    var mockUIApplication: PBMUIApplicationProtocol?
     
-    override func getApplication() -> OXMUIApplicationProtocol {
+    override func getApplication() -> PBMUIApplicationProtocol {
         return mockUIApplication ?? MockUIApplication()
     }
 }

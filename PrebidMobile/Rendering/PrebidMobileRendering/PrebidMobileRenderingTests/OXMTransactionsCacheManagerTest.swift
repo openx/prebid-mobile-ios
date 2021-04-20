@@ -1,5 +1,5 @@
 //
-//  OXMTransactionsCacheManagerTest.swift
+//  PBMTransactionsCacheManagerTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class OXMTransactionsCacheManagerTest: XCTestCase {
+class PBMTransactionsCacheManagerTest: XCTestCase {
     
     var expectationPreloadCompleted: XCTestExpectation?
     var expectationTransaction1: XCTestExpectation?
@@ -26,7 +26,7 @@ class OXMTransactionsCacheManagerTest: XCTestCase {
         var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("openx_vast_response.xml")!
         let needle = MockServerMimeType.MP4.rawValue
         let replaceWith = MockServerMimeType.MP4.rawValue
-        inlineResponse = inlineResponse.OXMstringByReplacingRegex(needle, replaceWith:replaceWith)
+        inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
         
         let ruleVAST1 = MockServerRule(urlNeedle: vastURL1, mimeType:  MockServerMimeType.XML.rawValue, connectionID: connection.internalID, strResponse: inlineResponse)
         let ruleVAST2 = MockServerRule(urlNeedle: vastURL2, mimeType:  MockServerMimeType.XML.rawValue, connectionID: connection.internalID, strResponse: inlineResponse)
@@ -51,18 +51,18 @@ class OXMTransactionsCacheManagerTest: XCTestCase {
 //            }
         }
         
-        let config1 = OXMAdConfiguration()
+        let config1 = PBMAdConfiguration()
 //        config1.domain = vastURL1
 //        config1.auid = "12345"
         config1.adFormat = .video
-        let config2 = OXMAdConfiguration()
+        let config2 = PBMAdConfiguration()
 //        config2.domain = vastURL2
 //        config2.auid = "67890"
         config2.adFormat = .video
 
         let vastTags = [config1, config2]
         
-        let cacheManager = OXMTransactionsCacheManager(transactionsCache: cache)
+        let cacheManager = PBMTransactionsCacheManager(transactionsCache: cache)
         cacheManager.preloadAds(with: vastTags, serverConnection: connection, completion: {
             self.expectationPreloadCompleted?.fulfill()
         })
@@ -76,14 +76,14 @@ class OXMTransactionsCacheManagerTest: XCTestCase {
 
         let vastURL = "foo.com/inline1"
         
-        //Make an OXMServerConnection and redirect its network requests to the Mock Server
+        //Make an PBMServerConnection and redirect its network requests to the Mock Server
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         
         //Change the inline response to claim that it will respond with m4v
         var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("openx_vast_response.xml")!
         let needle = MockServerMimeType.MP4.rawValue
         let replaceWith = MockServerMimeType.MP4.rawValue
-        inlineResponse = inlineResponse.OXMstringByReplacingRegex(needle, replaceWith:replaceWith)
+        inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
         
         let ruleVAST = MockServerRule(urlNeedle: vastURL, mimeType:  MockServerMimeType.XML.rawValue, connectionID: connection.internalID, strResponse: inlineResponse)
         
@@ -102,12 +102,12 @@ class OXMTransactionsCacheManagerTest: XCTestCase {
             self.expectationTransaction1?.fulfill()
         }
         
-        let adConfiguration = OXMAdConfiguration()
+        let adConfiguration = PBMAdConfiguration()
         adConfiguration.adFormat = .video
 //        adConfiguration.domain = vastURL
 //        adConfiguration.auid = "12345"
 
-        let cacheManager = OXMTransactionsCacheManager(transactionsCache: cache)
+        let cacheManager = PBMTransactionsCacheManager(transactionsCache: cache)
         cacheManager.preloadAd(with: adConfiguration, serverConnection: connection, completion: {
             self.expectationPreloadCompleted?.fulfill()
         })

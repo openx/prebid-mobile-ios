@@ -1,5 +1,5 @@
 //
-//  OXMTransactionsCacheTest.swift
+//  PBMTransactionsCacheTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class OXMTransactionsCacheTest: XCTestCase {
+class PBMTransactionsCacheTest: XCTestCase {
     
     // MARK: - Initialization
     
@@ -28,7 +28,7 @@ class OXMTransactionsCacheTest: XCTestCase {
     
     func testCacheTransaction() {
         
-        let cache = OXMTransactionsCache()
+        let cache = PBMTransactionsCache()
         
         let (adConfig1, transaction1) = adTestTransaction(to: cache)
         let (adConfig2, transaction2) = adTestTransaction(to: cache)
@@ -74,7 +74,7 @@ class OXMTransactionsCacheTest: XCTestCase {
     
     func testNextExpirationDate() {
         
-        let cache = OXMTransactionsCache()
+        let cache = PBMTransactionsCache()
 
         let (adConfig1, _) = adTestTransaction(to: cache)
         Thread.sleep(forTimeInterval: 1)
@@ -207,8 +207,8 @@ class OXMTransactionsCacheTest: XCTestCase {
     
     // MARK: - Helper Methods
     
-    private func adTestTransaction(to cache: OXMTransactionsCache, file: StaticString = #file, line: UInt = #line) -> (OXMAdConfiguration, OXMTransaction) {
-        let adConfiguration = OXMAdConfiguration()
+    private func adTestTransaction(to cache: PBMTransactionsCache, file: StaticString = #file, line: UInt = #line) -> (PBMAdConfiguration, PBMTransaction) {
+        let adConfiguration = PBMAdConfiguration()
         
         let transaction = UtilitiesForTesting.createDummyTransaction(for: adConfiguration)
         
@@ -217,11 +217,11 @@ class OXMTransactionsCacheTest: XCTestCase {
         return (adConfiguration, transaction)
     }
     
-    private func getTransactionsTags(from cache: OXMTransactionsCache) -> [OXMTransactionTag] {
-        return cache.cache.allKeys.map{ $0 as? OXMTransactionTag }.compactMap{ $0 }
+    private func getTransactionsTags(from cache: PBMTransactionsCache) -> [PBMTransactionTag] {
+        return cache.cache.allKeys.map{ $0 as? PBMTransactionTag }.compactMap{ $0 }
     }
     
-    private func getTransactionsExpirationDates(from cache: OXMTransactionsCache) -> [Date] {
+    private func getTransactionsExpirationDates(from cache: PBMTransactionsCache) -> [Date] {
         return getTransactionsTags(from: cache).map{ $0.expirationDate }.compactMap{ $0 }
     }
 }

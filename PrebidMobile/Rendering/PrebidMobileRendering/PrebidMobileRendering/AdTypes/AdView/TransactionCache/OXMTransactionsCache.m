@@ -1,38 +1,38 @@
 //
-//  OXMTransactionsCache.m
+//  PBMTransactionsCache.m
 //  OpenXSDKCore
 //
 //  Copyright © 2018 OpenX. All rights reserved.
 //
 
-#import "OXMTransactionsCache.h"
-#import "OXMTransaction.h"
-#import "OXMTransactionTag.h"
-#import "OXMFunctions+Private.h"
+#import "PBMTransactionsCache.h"
+#import "PBMTransaction.h"
+#import "PBMTransactionTag.h"
+#import "PBMFunctions+Private.h"
 
 #pragma mark - Constants
 
-static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
+static NSTimeInterval const PBMExpirationInterval = 60 * 60; // 1 hour
 
 #pragma mark - Private Interface
 
-@interface OXMTransactionsCache ()
+@interface PBMTransactionsCache ()
 
-@property (nonatomic, strong) NSMutableDictionary<OXMTransactionTag *, OXMTransaction *> *cache;
+@property (nonatomic, strong) NSMutableDictionary<PBMTransactionTag *, PBMTransaction *> *cache;
 @property (nonatomic, readonly) NSTimeInterval expirationPeriod; // The property is used for mocking in unit tests
 
 @end
 
 #pragma mark - Implementation
 
-@implementation OXMTransactionsCache
+@implementation PBMTransactionsCache
 
 + (nonnull instancetype)singleton {
-    static OXMTransactionsCache *singleton;
+    static PBMTransactionsCache *singleton;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        singleton = [OXMTransactionsCache new];
+        singleton = [PBMTransactionsCache new];
     });
     
     return singleton;
@@ -49,8 +49,8 @@ static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
 
 #pragma mark - Public Methods
 
-- (void)addTransaction:(OXMTransaction *)transaction {
-    OXMTransactionTag *tag = [[OXMTransactionTag alloc] initWithAdConfiguration:transaction.adConfiguration];
+- (void)addTransaction:(PBMTransaction *)transaction {
+    PBMTransactionTag *tag = [[PBMTransactionTag alloc] initWithAdConfiguration:transaction.adConfiguration];
     tag.expirationDate = [NSDate dateWithTimeIntervalSinceNow:self.expirationPeriod];
     
     if (self.cache.count == 0) {
@@ -60,10 +60,10 @@ static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
     self.cache[tag] = transaction;
 }
 
-- (OXMTransaction *)extractTransactionForConfiguration:(OXMAdConfiguration *)adConfiguration {
-    OXMTransactionTag *tag = [[OXMTransactionTag alloc] initWithAdConfiguration:adConfiguration];
+- (PBMTransaction *)extractTransactionForConfiguration:(PBMAdConfiguration *)adConfiguration {
+    PBMTransactionTag *tag = [[PBMTransactionTag alloc] initWithAdConfiguration:adConfiguration];
 
-    OXMTransaction *transaction = self.cache[tag];
+    PBMTransaction *transaction = self.cache[tag];
     
     if (transaction) {
         [self.cache removeObjectForKey:tag];
@@ -78,14 +78,14 @@ static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
 
 #pragma mark - Internal Methods
 
-- (NSArray<OXMTransactionTag *> *)tags {
+- (NSArray<PBMTransactionTag *> *)tags {
     return [self.cache allKeys];
 }
 
 #pragma mark - Expiration Methods
 
 - (NSTimeInterval)expirationPeriod {
-    return OXMExpirationInterval;
+    return PBMExpirationInterval;
 }
 
 - (void)startExpirationTimer {
@@ -94,7 +94,7 @@ static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
 
 - (void)onExpirationFired {
     NSDate *currentDate = [NSDate date];
-    for (OXMTransactionTag *tag in self.tags) {
+    for (PBMTransactionTag *tag in self.tags) {
         NSComparisonResult datesComparisionResult = [tag.expirationDate compare:currentDate];
         if (datesComparisionResult == NSOrderedAscending || datesComparisionResult == NSOrderedSame) {
             [self.cache removeObjectForKey:tag];
@@ -123,7 +123,7 @@ static NSTimeInterval const OXMExpirationInterval = 60 * 60; // 1 hour
     }
     
     // Sort tags by expiration date and return the earliest one.
-    NSArray<OXMTransactionTag *> *sorted = [self.tags sortedArrayUsingComparator:^NSComparisonResult(OXMTransactionTag *obj1, OXMTransactionTag *obj2) {
+    NSArray<PBMTransactionTag *> *sorted = [self.tags sortedArrayUsingComparator:^NSComparisonResult(PBMTransactionTag *obj1, PBMTransactionTag *obj2) {
         return [obj1.expirationDate compare:obj2.expirationDate];
     }];
     

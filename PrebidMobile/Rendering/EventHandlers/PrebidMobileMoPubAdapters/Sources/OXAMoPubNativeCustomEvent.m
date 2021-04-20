@@ -45,7 +45,7 @@
 
 #pragma mark - Private methods
 
-- (void)nativeAdDidLoad:(OXANativeAd *)nativeAd{
+- (void)nativeAdDidLoad:(PBMNativeAd *)nativeAd{
     OXAMoPubNativeAdAdapter *adAdapter = [[OXAMoPubNativeAdAdapter alloc] initWithOXANativeAd:nativeAd];
     
     MPNativeAd *interfaceAd = [[MPNativeAd alloc] initWithAdAdapter:adAdapter];

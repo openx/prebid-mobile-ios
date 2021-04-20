@@ -10,12 +10,12 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class MockAdLoader: NSObject, OXAAdLoaderProtocol {
+class MockAdLoader: NSObject, PBMAdLoaderProtocol {
     enum ExpectedCall {
-        case getFlowDelegate(provider: ()->OXAAdLoaderFlowDelegate?)
-        case setFlowDelegate(handler: (OXAAdLoaderFlowDelegate?)->())
-        case primaryAdRequester(provider: ()->OXAPrimaryAdRequesterProtocol)
-        case createPrebidAd(handler: (OXABid, OXAAdUnitConfig, (Any)->(), (@escaping ()->())->())->())
+        case getFlowDelegate(provider: ()->PBMAdLoaderFlowDelegate?)
+        case setFlowDelegate(handler: (PBMAdLoaderFlowDelegate?)->())
+        case primaryAdRequester(provider: ()->PBMPrimaryAdRequesterProtocol)
+        case createPrebidAd(handler: (PBMBid, PBMAdUnitConfig, (Any)->(), (@escaping ()->())->())->())
         case reportSuccess(handler: (Any, NSValue?)->())
     }
 
@@ -32,11 +32,11 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
         self.line = line
     }
 
-    // MARK: - OXAAdLoaderProtocol
+    // MARK: - PBMAdLoaderProtocol
 
-    var flowDelegate: OXAAdLoaderFlowDelegate? {
+    var flowDelegate: PBMAdLoaderFlowDelegate? {
         get {
-            let provider: (()->OXAAdLoaderFlowDelegate?)? = syncQueue.sync {
+            let provider: (()->PBMAdLoaderFlowDelegate?)? = syncQueue.sync {
                 guard nextCallIndex < expectedCalls.count else {
                     XCTFail("[MockAdLoader] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                             file: file, line: line)
@@ -55,7 +55,7 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
             return provider?()
         }
         set {
-            let handler: ((OXAAdLoaderFlowDelegate?)->())? = syncQueue.sync {
+            let handler: ((PBMAdLoaderFlowDelegate?)->())? = syncQueue.sync {
                 guard nextCallIndex < expectedCalls.count else {
                     XCTFail("[MockAdLoader] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                             file: file, line: line)
@@ -75,8 +75,8 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
         }
     }
 
-    var primaryAdRequester: OXAPrimaryAdRequesterProtocol {
-        let provider: (()->OXAPrimaryAdRequesterProtocol)? = syncQueue.sync {
+    var primaryAdRequester: PBMPrimaryAdRequesterProtocol {
+        let provider: (()->PBMPrimaryAdRequesterProtocol)? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoader] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)
@@ -95,8 +95,8 @@ class MockAdLoader: NSObject, OXAAdLoaderProtocol {
         return provider?() ?? MockPrimaryAdRequester(expectedCalls: [], file: file, line: line)
     }
 
-    func createPrebidAd(with bid: OXABid, adUnitConfig: OXAAdUnitConfig, adObjectSaver: @escaping (Any) -> Void, loadMethodInvoker: @escaping (@escaping () -> Void) -> Void) {
-        let handler: ((OXABid, OXAAdUnitConfig, (Any)->(), (@escaping ()->())->())->())? = syncQueue.sync {
+    func createPrebidAd(with bid: PBMBid, adUnitConfig: PBMAdUnitConfig, adObjectSaver: @escaping (Any) -> Void, loadMethodInvoker: @escaping (@escaping () -> Void) -> Void) {
+        let handler: ((PBMBid, PBMAdUnitConfig, (Any)->(), (@escaping ()->())->())->())? = syncQueue.sync {
             guard nextCallIndex < expectedCalls.count else {
                 XCTFail("[MockAdLoader] Call index out of bounds: \(nextCallIndex) < \(expectedCalls.count)",
                         file: file, line: line)

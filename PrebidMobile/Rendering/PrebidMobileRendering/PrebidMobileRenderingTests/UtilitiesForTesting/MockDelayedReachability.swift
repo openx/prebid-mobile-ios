@@ -9,7 +9,7 @@ import Foundation
 
 @testable import PrebidMobileRendering
 
-class MockDelayedReachability: OXMReachability {
+class MockDelayedReachability: PBMReachability {
     
     var isReachable = false
     
@@ -17,7 +17,7 @@ class MockDelayedReachability: OXMReachability {
         return isReachable
     }
     
-    override func onNetworkRestored(_ reachableBlock: OXMNetworkReachableBlock!) {
+    override func onNetworkRestored(_ reachableBlock: PBMNetworkReachableBlock!) {
         isReachable = true
         reachableBlock(self)
     }

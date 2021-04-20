@@ -1,5 +1,5 @@
 //
-//  OXMTransactionsCache.h
+//  PBMTransactionsCache.h
 //  OpenXSDKCore
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -7,23 +7,23 @@
 
 #import <Foundation/Foundation.h>
 
-@class OXMTransaction;
-@class OXMAdConfiguration;
+@class PBMTransaction;
+@class PBMAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
-@interface OXMTransactionsCache : NSObject
+@interface PBMTransactionsCache : NSObject
 
-@property (class, readonly, nonnull) OXMTransactionsCache *singleton;
+@property (class, readonly, nonnull) PBMTransactionsCache *singleton;
 
 /** Adds a given transaction to the cache. Saves the new list of tags. */
-- (void)addTransaction:(OXMTransaction *)transaction;
+- (void)addTransaction:(PBMTransaction *)transaction;
 
 /**
  Reterns transaction for a given configuration.
  Returns nil if there is no corespondent transaction in the cache.
  Returned transaction is removed from the cache.
 */
-- (nullable OXMTransaction *)extractTransactionForConfiguration:(OXMAdConfiguration *)adConfiguration;
+- (nullable PBMTransaction *)extractTransactionForConfiguration:(PBMAdConfiguration *)adConfiguration;
 
 /**
  Removes all transactions from the cache.

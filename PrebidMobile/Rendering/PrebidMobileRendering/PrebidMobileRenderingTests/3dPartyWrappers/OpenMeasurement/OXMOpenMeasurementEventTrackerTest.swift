@@ -1,5 +1,5 @@
 //
-//  OXMOpenMeasurementEventTrackerTest.swift
+//  PBMOpenMeasurementEventTrackerTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class OXMOpenMeasurementEventTrackerTest: XCTestCase {
+class PBMOpenMeasurementEventTrackerTest: XCTestCase {
     
     private var logToFile: LogToFileLock?
     
@@ -17,7 +17,7 @@ class OXMOpenMeasurementEventTrackerTest: XCTestCase {
     }
     
     func testEventsForWebViewSession() {
-        let measurement = OXMOpenMeasurementWrapper()
+        let measurement = PBMOpenMeasurementWrapper()
         
         measurement.jsLib = "{}"
         
@@ -26,7 +26,7 @@ class OXMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(webViewSession)
         XCTAssertNotNil(webViewSession?.eventTracker)
         
-        let oxmTracker = webViewSession?.eventTracker as? OXMOpenMeasurementEventTracker
+        let oxmTracker = webViewSession?.eventTracker as? PBMOpenMeasurementEventTracker
         XCTAssertNotNil(oxmTracker)
         XCTAssertNotNil(oxmTracker?.adEvents)
         
@@ -34,12 +34,12 @@ class OXMOpenMeasurementEventTrackerTest: XCTestCase {
     }
     
     func testEventsForNativeVideoSession() {
-        let measurement = OXMOpenMeasurementWrapper()
+        let measurement = PBMOpenMeasurementWrapper()
         
         measurement.jsLib = "{}"
         
-        let verificationParams = OXMVideoVerificationParameters()
-        let resource = OXMVideoVerificationResource()
+        let verificationParams = PBMVideoVerificationParameters()
+        let resource = PBMVideoVerificationResource()
         resource.url = "openx.com"
         resource.vendorKey = "OpenX"
         resource.params = "no params"
@@ -50,7 +50,7 @@ class OXMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(nativeVideoSession)
         XCTAssertNotNil(nativeVideoSession?.eventTracker)
         
-        let oxmTracker = nativeVideoSession?.eventTracker as? OXMOpenMeasurementEventTracker
+        let oxmTracker = nativeVideoSession?.eventTracker as? PBMOpenMeasurementEventTracker
         XCTAssertNotNil(oxmTracker)
         XCTAssertNotNil(oxmTracker?.adEvents)
         XCTAssertNotNil(oxmTracker?.mediaEvents)
@@ -59,19 +59,19 @@ class OXMOpenMeasurementEventTrackerTest: XCTestCase {
     func testInvalidSession() {
         logToFile = .init()
         
-        var oxmTracker = OXMOpenMeasurementEventTracker(session: OMIDOpenxAdSession())
+        var oxmTracker = PBMOpenMeasurementEventTracker(session: OMIDOpenxAdSession())
         XCTAssertNotNil(oxmTracker)
         XCTAssertNotNil(oxmTracker.session)
         UtilitiesForTesting.checkLogContains("Open Measurement can't create ad events with error")
         
-        oxmTracker = OXMOpenMeasurementEventTracker()
+        oxmTracker = PBMOpenMeasurementEventTracker()
         XCTAssertNotNil(oxmTracker)
         XCTAssertNil(oxmTracker.session)
         
         logToFile = nil
         logToFile = .init()
         
-        oxmTracker.trackEvent(OXMTrackingEvent.request)        
+        oxmTracker.trackEvent(PBMTrackingEvent.request)        
         UtilitiesForTesting.checkLogContains("Measurement Session is missed")
     }
 }

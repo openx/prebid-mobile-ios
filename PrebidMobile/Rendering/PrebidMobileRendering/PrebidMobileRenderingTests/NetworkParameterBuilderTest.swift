@@ -18,16 +18,16 @@ class NetworkParameterBuilderTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.forInternetConnection()!
         let networkParameterBuilder = NetworkParameterBuilder(ctTelephonyNetworkInfo:mockCTTelephonyNetworkInfo, reachability: mockReachability)
-        let bidRequest = OXMORTBBidRequest()        
+        let bidRequest = PBMORTBBidRequest()        
         
         networkParameterBuilder.build(bidRequest)
         
         let actualMccmnc = bidRequest.device.mccmnc
         let expectedMccmnc = "\(MockCTCarrier.mockMobileCountryCode)-\(MockCTCarrier.mockMobileNetworkCode)"
-        OXMAssertEq(actualMccmnc, expectedMccmnc)
+        PBMAssertEq(actualMccmnc, expectedMccmnc)
         
         let expectedCarrierName = MockCTCarrier.mockCarrierName
         let actualCarrierName = bidRequest.device.carrier
-        OXMAssertEq(actualCarrierName, expectedCarrierName)
+        PBMAssertEq(actualCarrierName, expectedCarrierName)
     }
 }

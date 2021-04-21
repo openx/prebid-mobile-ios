@@ -160,15 +160,15 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
             return
         }
         
-        guard let adView = try? nativeAd.retrieveAdView(), let oxaAdView = adView.subviews.first else {
+        guard let adView = try? nativeAd.retrieveAdView(), let pbmAdView = adView.subviews.first else {
             return
         }
         
         cell?.adView = adView
         
         adView.addConstraints([
-            adView.widthAnchor.constraint(equalTo: oxaAdView.widthAnchor),
-            adView.heightAnchor.constraint(equalTo: oxaAdView.heightAnchor),
+            adView.widthAnchor.constraint(equalTo: pbmAdView.widthAnchor),
+            adView.heightAnchor.constraint(equalTo: pbmAdView.heightAnchor),
         ])
         adView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.addSubview(adView)

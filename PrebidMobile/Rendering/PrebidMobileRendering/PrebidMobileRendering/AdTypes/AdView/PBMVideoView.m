@@ -380,10 +380,10 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
     }
     
     UIButton * const muteButton = [self createButtonWithImageName:@"mute_disabled"
-                                               accessibilityLabel:@"oxmMute"
+                                               accessibilityLabel:@"pbmMute"
                                                            action:@selector(btnMuteClick:)];
     UIButton * const unmuteButton = [self createButtonWithImageName:@"mute_enabled"
-                                                 accessibilityLabel:@"oxmUnmute"
+                                                 accessibilityLabel:@"pbmUnmute"
                                                              action:@selector(btnUnmuteClick:)];
     
     muteButton.translatesAutoresizingMaskIntoConstraints = NO;

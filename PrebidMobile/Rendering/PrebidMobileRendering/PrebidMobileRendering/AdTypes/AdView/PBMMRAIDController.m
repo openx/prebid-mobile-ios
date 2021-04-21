@@ -122,8 +122,8 @@
 
 - (void)webView:(PBMWebView *)webView handleMRAIDCommand:(NSURL*)url{
     
-    PBMMRAIDCommand *oxmMRAIDCommand = [self commandFromURL:url];
-    PBMMRAIDAction command = oxmMRAIDCommand.command;
+    PBMMRAIDCommand *pbmMRAIDCommand = [self commandFromURL:url];
+    PBMMRAIDAction command = pbmMRAIDCommand.command;
 
     // 'unload' is the only command allowed to happen when webView is not viewable
     if ([command isEqualToString:PBMMRAIDActionUnload]) {
@@ -137,23 +137,23 @@
     }
     
     if ([command isEqualToString:PBMMRAIDActionOpen]) {
-        [self handleMRAIDCommandOpen:oxmMRAIDCommand];
+        [self handleMRAIDCommandOpen:pbmMRAIDCommand];
     } else if ([command isEqualToString:PBMMRAIDActionExpand]) {
-        [self handleMRAIDCommandExpand:oxmMRAIDCommand originURL:url];
+        [self handleMRAIDCommandExpand:pbmMRAIDCommand originURL:url];
     } else if ([command isEqualToString:PBMMRAIDActionResize]) {
-        [self handleMRAIDCommandResize:oxmMRAIDCommand];
+        [self handleMRAIDCommandResize:pbmMRAIDCommand];
     } else if ([command isEqualToString:PBMMRAIDActionClose]) {
         [self handleMRAIDCommandClose];
     } else if ([command isEqualToString:PBMMRAIDActionStorePicture]) {
-        [self handleMRAIDCommandStorePicture:oxmMRAIDCommand];
+        [self handleMRAIDCommandStorePicture:pbmMRAIDCommand];
     } else if ([command isEqualToString:PBMMRAIDActionCreateCalendarEvent]) {
-        [self handleMRAIDCommandCreateCalendarEvent:oxmMRAIDCommand];
+        [self handleMRAIDCommandCreateCalendarEvent:pbmMRAIDCommand];
     } else if ([command isEqualToString:PBMMRAIDActionPlayVideo]) {
-        [self handleMRAIDCommandPlayVideo:oxmMRAIDCommand];
+        [self handleMRAIDCommandPlayVideo:pbmMRAIDCommand];
     } else if ([command isEqualToString:PBMMRAIDActionOnOrientationPropertiesChanged]) {
-        [self handleMRAIDCommandOnOrientationPropertiesChanged:oxmMRAIDCommand];
+        [self handleMRAIDCommandOnOrientationPropertiesChanged:pbmMRAIDCommand];
     } else {
-        NSString *message = [NSString stringWithFormat:@"MRAID COMMAND: %@ is not supported", oxmMRAIDCommand.command];
+        NSString *message = [NSString stringWithFormat:@"MRAID COMMAND: %@ is not supported", pbmMRAIDCommand.command];
         @throw [NSException pbmException:message];
     }
 }
@@ -224,12 +224,12 @@
     }
     
     NSError *error = nil;
-    PBMMRAIDCommand *oxmMRAIDCommand = [[PBMMRAIDCommand alloc] initWithURL:[url absoluteString] error:&error];
-    if (!oxmMRAIDCommand) {
+    PBMMRAIDCommand *pbmMRAIDCommand = [[PBMMRAIDCommand alloc] initWithURL:[url absoluteString] error:&error];
+    if (!pbmMRAIDCommand) {
         @throw [NSException pbmException:error.localizedDescription];
     }
     
-    return oxmMRAIDCommand;
+    return pbmMRAIDCommand;
 }
 
 // If the modal is shown the @viewControllerForPresentingModals would be excluded from the views hierarchy -
@@ -321,7 +321,7 @@
             [newWebView expand:expandURL];
             
             @weakify(self);
-            PBMModalState* oxmModalState = [PBMModalState modalStateWithView:newWebView
+            PBMModalState* pbmModalState = [PBMModalState modalStateWithView:newWebView
                                                              adConfiguration:self.creative.creativeModel.adConfiguration
                                                            displayProperties:displayProperties
                                                           onStatePopFinished:^(PBMModalState * _Nonnull poppedState) {
@@ -332,7 +332,7 @@
                 [self modalManagerDidLeaveApp:leavingState];
             }];
             
-            self.dismissExpandedModalState = [self.creative.modalManager pushModal:oxmModalState fromRootViewController:self.viewControllerForPresentingModals animated:YES shouldReplace:shouldReplace completionHandler:^{
+            self.dismissExpandedModalState = [self.creative.modalManager pushModal:pbmModalState fromRootViewController:self.viewControllerForPresentingModals animated:YES shouldReplace:shouldReplace completionHandler:^{
                 @strongify(self);
                 // ALSO set the first part (banner) to Expanded per MRAID spec
                 self.delayedMraidState = PBMMRAIDStateExpanded;
@@ -344,7 +344,7 @@
         else {
             //Expand existing content.
             @weakify(self);
-            PBMModalState* oxmModalState = [PBMModalState modalStateWithView:webView
+            PBMModalState* pbmModalState = [PBMModalState modalStateWithView:webView
                                                              adConfiguration:self.creative.creativeModel.adConfiguration
                                                            displayProperties:displayProperties
                                                           onStatePopFinished:^(PBMModalState * _Nonnull poppedState) {
@@ -355,7 +355,7 @@
                 [self modalManagerDidLeaveApp:leavingState];
             }];
             
-            self.dismissExpandedModalState = [self.creative.modalManager pushModal:oxmModalState fromRootViewController:self.viewControllerForPresentingModals animated:YES shouldReplace:shouldReplace completionHandler:^{
+            self.dismissExpandedModalState = [self.creative.modalManager pushModal:pbmModalState fromRootViewController:self.viewControllerForPresentingModals animated:YES shouldReplace:shouldReplace completionHandler:^{
                 @strongify(self);
                 
                 self.delayedMraidState = PBMMRAIDStateExpanded;
@@ -424,7 +424,7 @@
         BOOL shouldReplace = [mraidState isEqualToString:PBMMRAIDStateResized];
         
         @weakify(self);
-        PBMModalState* oxmModalState = [PBMModalState modalStateWithView:webView
+        PBMModalState* pbmModalState = [PBMModalState modalStateWithView:webView
                                                          adConfiguration:self.creative.creativeModel.adConfiguration
                                                        displayProperties:displayProperties
                                                       onStatePopFinished:^(PBMModalState * _Nonnull poppedState) {
@@ -434,9 +434,9 @@
             @strongify(self);
             [self modalManagerDidLeaveApp:leavingState];
         }];
-        oxmModalState.mraidState = PBMMRAIDStateResized;
+        pbmModalState.mraidState = PBMMRAIDStateResized;
         
-        self.dismissResizedModalState = [self.creative.modalManager pushModal:oxmModalState
+        self.dismissResizedModalState = [self.creative.modalManager pushModal:pbmModalState
               fromRootViewController:self.viewControllerForPresentingModals
                             animated:NO
                        shouldReplace:shouldReplace

@@ -17,7 +17,7 @@
 #pragma mark - URLs
 
 + (void) attemptToOpen:(nonnull NSURL*)url;
-+ (void) attemptToOpen:(nonnull NSURL*)url oxmUIApplication:(nonnull id<PBMUIApplicationProtocol>)oxmUIApplication;
++ (void) attemptToOpen:(nonnull NSURL*)url pbmUIApplication:(nonnull id<PBMUIApplicationProtocol>)pbmUIApplication;
 
 #pragma mark - Time
 

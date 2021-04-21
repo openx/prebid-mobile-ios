@@ -88,9 +88,9 @@ static NSString * const PBMPlistExt = @"plist";
 
 #pragma mark - URLs
 + (void) attemptToOpen:(nonnull NSURL*)url {
-    id<PBMUIApplicationProtocol> oxmUIApplication;
+    id<PBMUIApplicationProtocol> pbmUIApplication;
     if (self.application) {
-        oxmUIApplication = self.application;
+        pbmUIApplication = self.application;
     } else {
         UIApplication* uiApplication = [UIApplication sharedApplication];
         if (!uiApplication) {
@@ -104,19 +104,19 @@ static NSString * const PBMPlistExt = @"plist";
             PBMLogError(@"[UIApplication sharedApplication] does not conform to PBMUIApplicationProtocol.");
             return;
         }
-        oxmUIApplication = (id<PBMUIApplicationProtocol>)uiApplication;
+        pbmUIApplication = (id<PBMUIApplicationProtocol>)uiApplication;
     } 
     
-    [PBMFunctions attemptToOpen:url oxmUIApplication:oxmUIApplication];
+    [PBMFunctions attemptToOpen:url pbmUIApplication:pbmUIApplication];
 }
 
-+ (void) attemptToOpen:(nonnull NSURL*)url oxmUIApplication:(nonnull id<PBMUIApplicationProtocol>)oxmUIApplication {
++ (void) attemptToOpen:(nonnull NSURL*)url pbmUIApplication:(nonnull id<PBMUIApplicationProtocol>)pbmUIApplication {
     
     //iOS 10 makes available a new version of openURL and deprecates the old one.
     if (@available(iOS 10, *)) {
-        [oxmUIApplication openURL:url options:@{} completionHandler:nil];
+        [pbmUIApplication openURL:url options:@{} completionHandler:nil];
     } else {
-        [oxmUIApplication openURL:url];
+        [pbmUIApplication openURL:url];
     }
 }
 
@@ -248,8 +248,8 @@ static NSString * const PBMPlistExt = @"plist";
     
     UIApplication* application = [UIApplication sharedApplication];
     if ([application conformsToProtocol:@protocol(PBMUIApplicationProtocol)]) {
-        id<PBMUIApplicationProtocol> oxmApplication = (id<PBMUIApplicationProtocol>)application;
-        ret = [PBMFunctions statusBarHeightForApplication:oxmApplication];
+        id<PBMUIApplicationProtocol> pbmApplication = (id<PBMUIApplicationProtocol>)application;
+        ret = [PBMFunctions statusBarHeightForApplication:pbmApplication];
     }
     
     return ret;

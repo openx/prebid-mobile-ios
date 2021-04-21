@@ -305,7 +305,7 @@ class PBMAdViewManagerTest: XCTestCase, PBMAdViewManagerDelegate {
         return PBMInterstitialDisplayProperties()
     }
     
-    func adLoaded(_ oxmAdDetails:PBMAdDetails) {
+    func adLoaded(_ pbmAdDetails:PBMAdDetails) {
         fulfillOrFail(adLoadedExpectation, "adLoadedExpectation")
     }
     

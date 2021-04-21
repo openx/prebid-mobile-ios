@@ -23,13 +23,13 @@ class PBMTouchDownRecognizerTests : XCTestCase {
         //http://blog.lazerwalker.com/objective-c/code/2013/10/16/faking-touch-events-on-ios-for-fun-and-profit.html
         
         //Should start as Possible
-        let oxmTouchDownRecognizer = PBMTouchDownRecognizer()
-        PBMAssertEq(oxmTouchDownRecognizer.state, UIGestureRecognizer.State.possible)
+        let pbmTouchDownRecognizer = PBMTouchDownRecognizer()
+        PBMAssertEq(pbmTouchDownRecognizer.state, UIGestureRecognizer.State.possible)
         
         //If you touch down onto the view it should immediately count as ended.
         //This will not fire the associated selector, though.
         let touches = Set<UITouch>([UITouch()])
-        oxmTouchDownRecognizer.touchesBegan(touches, with: UIEvent())
-        PBMAssertEq(oxmTouchDownRecognizer.state.rawValue, UIGestureRecognizer.State.ended.rawValue)
+        pbmTouchDownRecognizer.touchesBegan(touches, with: UIEvent())
+        PBMAssertEq(pbmTouchDownRecognizer.state.rawValue, UIGestureRecognizer.State.ended.rawValue)
     }
 }

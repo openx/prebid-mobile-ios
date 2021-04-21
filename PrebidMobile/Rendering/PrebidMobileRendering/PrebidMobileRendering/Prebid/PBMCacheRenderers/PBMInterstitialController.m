@@ -104,7 +104,7 @@
     return [self.interactionDelegate viewControllerForModalPresentationFrom:self];
 }
 
-- (void)adLoaded:(PBMAdDetails *)oxmAdDetails {
+- (void)adLoaded:(PBMAdDetails *)pbmAdDetails {
     [self reportSuccess];
 }
 

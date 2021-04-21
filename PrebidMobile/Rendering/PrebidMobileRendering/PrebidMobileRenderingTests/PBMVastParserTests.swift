@@ -25,24 +25,24 @@ class PBMVastParserTests: XCTestCase {
         ad.creatives = [PBMVastCreativeAbstract()]
         
         //Set up an PBMVastParser
-        let oxmVastParser = PBMVastParser()
-        oxmVastParser.parsedResponse = PBMVastResponse()
-        oxmVastParser.ad = ad
-        oxmVastParser.adAttributes = ["id":"12345"]
+        let pbmVastParser = PBMVastParser()
+        pbmVastParser.parsedResponse = PBMVastResponse()
+        pbmVastParser.ad = ad
+        pbmVastParser.adAttributes = ["id":"12345"]
         
         //Force the end of an "Ad" element
-        oxmVastParser.parser(XMLParser(), didEndElement: "Ad", namespaceURI: nil, qualifiedName:nil)
+        pbmVastParser.parser(XMLParser(), didEndElement: "Ad", namespaceURI: nil, qualifiedName:nil)
         
         //The parser's PBMVastResponse should contain the ad we created with an appropriate sequence number.
-        XCTAssert(oxmVastParser.parsedResponse!.vastAbstractAds.count == 1)
-        XCTAssert(oxmVastParser.parsedResponse!.vastAbstractAds.firstObject as! PBMVastAbstractAd === ad)
+        XCTAssert(pbmVastParser.parsedResponse!.vastAbstractAds.count == 1)
+        XCTAssert(pbmVastParser.parsedResponse!.vastAbstractAds.firstObject as! PBMVastAbstractAd === ad)
         XCTAssert(ad.sequence == 0)
         
         //The parser should tidy up after the Ad tag is done parsing.
-        XCTAssert(oxmVastParser.ad == nil)
-        XCTAssert(oxmVastParser.inlineAd == nil)
-        XCTAssert(oxmVastParser.wrapperAd == nil)
-        XCTAssert(oxmVastParser.adAttributes == nil)
+        XCTAssert(pbmVastParser.ad == nil)
+        XCTAssert(pbmVastParser.inlineAd == nil)
+        XCTAssert(pbmVastParser.wrapperAd == nil)
+        XCTAssert(pbmVastParser.adAttributes == nil)
     }
 
     //Confirm we can parse a VAST 3.0 response
@@ -52,9 +52,9 @@ class PBMVastParserTests: XCTestCase {
             XCTFail("Could not load video")
             return
         }
-        let oxmVastParser = PBMVastParser()
+        let pbmVastParser = PBMVastParser()
         
-        XCTAssertNotNil(oxmVastParser.parseAdsResponse(xmlData))
+        XCTAssertNotNil(pbmVastParser.parseAdsResponse(xmlData))
     }
     
     // MARK: - Test Parse Resource

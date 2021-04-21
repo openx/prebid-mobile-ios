@@ -44,35 +44,35 @@ class PBMTargetingTest: XCTestCase {
     
     func testUserAge() {
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.userAge == 0)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.userAge == 0)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let age = 30
-        oxaTargeting.userAge = age
-        XCTAssert(oxaTargeting.userAge == age)
-        XCTAssert(oxaTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userAge = age
+        XCTAssert(pbmTargeting.userAge == age)
+        XCTAssert(pbmTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.userAge = 0
-        XCTAssert(oxaTargeting.userAge == 0)
-        XCTAssert(oxaTargeting.parameterDictionary == ["age":"0"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userAge = 0
+        XCTAssert(pbmTargeting.userAge == 0)
+        XCTAssert(pbmTargeting.parameterDictionary == ["age":"0"], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testUserAgeReset() {
         //Init
         let age = 42
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        oxaTargeting.userAge = age
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        pbmTargeting.userAge = age
 
-        XCTAssert(oxaTargeting.userAge == age)
-        XCTAssert(oxaTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(oxaTargeting.parameterDictionary)")
+        XCTAssert(pbmTargeting.userAge == age)
+        XCTAssert(pbmTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         // Test reset
-        oxaTargeting.resetUserAge()
-        XCTAssert(oxaTargeting.userAge == 0)
-        XCTAssert(oxaTargeting.parameterDictionary["age"] == nil)
+        pbmTargeting.resetUserAge()
+        XCTAssert(pbmTargeting.userAge == 0)
+        XCTAssert(pbmTargeting.parameterDictionary["age"] == nil)
     }
 }
 
@@ -101,13 +101,13 @@ extension PBMTargetingTest {
     func testUserGender() {
         
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.userGender == .unknown)
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.userGender == .unknown)
         
         //Set
         for gender in PBMGender.allCases {
-            oxaTargeting.userGender = gender
-            XCTAssertEqual(oxaTargeting.userGender, gender)
+            pbmTargeting.userGender = gender
+            XCTAssertEqual(pbmTargeting.userGender, gender)
             
             let expectedDic: [String: String]
             if let letter = gender.paramsDicLetter {
@@ -115,259 +115,259 @@ extension PBMTargetingTest {
             } else {
                 expectedDic = [:]
             }
-            XCTAssertEqual(oxaTargeting.parameterDictionary, expectedDic as NSDictionary, "Dict is \(oxaTargeting.parameterDictionary)")
+            XCTAssertEqual(pbmTargeting.parameterDictionary, expectedDic as NSDictionary, "Dict is \(pbmTargeting.parameterDictionary)")
         }
         
         //Unset
-        oxaTargeting.userGender = .unknown
-        XCTAssert(oxaTargeting.userGender == .unknown)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userGender = .unknown
+        XCTAssert(pbmTargeting.userGender == .unknown)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
 
     func testUserID() {
 
         //Init
         //Note: on init, the default is nil but it doesn't send a value.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.userID == nil)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.userID == nil)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
-        oxaTargeting.userID = "abc123"
-        XCTAssert(oxaTargeting.parameterDictionary == ["xid":"abc123"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userID = "abc123"
+        XCTAssert(pbmTargeting.parameterDictionary == ["xid":"abc123"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.userID = nil
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userID = nil
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testBuyerUID() {
         //Init
         //Note: on init, and it never sends a value via an odinary ad request params.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.buyerUID)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.buyerUID)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let buyerUID = "abc123"
-        oxaTargeting.buyerUID = buyerUID
-        XCTAssertEqual(oxaTargeting.buyerUID, buyerUID)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.buyerUID = buyerUID
+        XCTAssertEqual(pbmTargeting.buyerUID, buyerUID)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.buyerUID = nil
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.buyerUID = nil
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testUserCustomData() {
 
         //Init
         //Note: on init, and it never sends a value via an odinary ad request params.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.userCustomData)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.userCustomData)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let customData = "123"
-        oxaTargeting.userCustomData = customData
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userCustomData = customData
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.userCustomData = nil
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.userCustomData = nil
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testUserExt() {
         //Init
         //Note: on init, and it never sends a value via an odinary ad request params.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.userExt)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.userExt)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
 
         //Set
         let userExt:NSMutableDictionary = ["consent": "dummyConsentString"]
-        oxaTargeting.userExt = userExt
-        XCTAssertEqual(oxaTargeting.userExt?.count, 1)
+        pbmTargeting.userExt = userExt
+        XCTAssertEqual(pbmTargeting.userExt?.count, 1)
     }
     
     func testUserEids() {
         //Init
         //Note: on init, and it never sends a value via an odinary ad request params.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.eids)
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.eids)
 
         //Set
         let eids: NSArray = [["key" : "value"], ["key" : "value"]]
-        oxaTargeting.eids = eids as? [[String : Any]]
-        XCTAssertEqual(oxaTargeting.eids?.count, 2)
+        pbmTargeting.eids = eids as? [[String : Any]]
+        XCTAssertEqual(pbmTargeting.eids?.count, 2)
     }
     
     func testPublisherName() {
         //Init
         //Note: on init, and it never doesn't send a value via an ad request params.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.publisherName)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.publisherName)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let publisherName = "abc123"
-        oxaTargeting.publisherName = publisherName
-        XCTAssertEqual(oxaTargeting.publisherName, publisherName)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.publisherName = publisherName
+        XCTAssertEqual(pbmTargeting.publisherName, publisherName)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.publisherName = nil
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.publisherName = nil
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testAppStoreMarketURL() {
         
         //Init
         //Note: on init, the default is nil but it doesn't send a value.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.appStoreMarketURL)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.appStoreMarketURL)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let storeUrl = "foo.com"
-        oxaTargeting.appStoreMarketURL = storeUrl
-        XCTAssertEqual(oxaTargeting.appStoreMarketURL, storeUrl)
-        XCTAssert(oxaTargeting.parameterDictionary == ["url":storeUrl], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.appStoreMarketURL = storeUrl
+        XCTAssertEqual(pbmTargeting.appStoreMarketURL, storeUrl)
+        XCTAssert(pbmTargeting.parameterDictionary == ["url":storeUrl], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.appStoreMarketURL = nil
-        XCTAssertNil(oxaTargeting.appStoreMarketURL)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.appStoreMarketURL = nil
+        XCTAssertNil(pbmTargeting.appStoreMarketURL)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
 
     func testLatitudeLongitude() {
         //Init
         //Note: on init, the default is nil but it doesn't send a value.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.coordinate)
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.coordinate)
         
         let lat = 123.0
         let lon = 456.0
-        oxaTargeting.setLatitude(lat, longitude: lon)
-        XCTAssertEqual(oxaTargeting.coordinate?.mkCoordinateValue.latitude, lat)
-        XCTAssertEqual(oxaTargeting.coordinate?.mkCoordinateValue.longitude, lon)
+        pbmTargeting.setLatitude(lat, longitude: lon)
+        XCTAssertEqual(pbmTargeting.coordinate?.mkCoordinateValue.latitude, lat)
+        XCTAssertEqual(pbmTargeting.coordinate?.mkCoordinateValue.longitude, lon)
     }
     
     //MARK: - Network
     func testCarrier() {
         
         //Init (the default is nil but it doesn't send a value)
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.carrier)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.carrier)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
         let carrier = "AT&T"
-        oxaTargeting.carrier = carrier
-        XCTAssertEqual(oxaTargeting.carrier, carrier)
-        XCTAssert(oxaTargeting.parameterDictionary == ["crr":carrier], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.carrier = carrier
+        XCTAssertEqual(pbmTargeting.carrier, carrier)
+        XCTAssert(pbmTargeting.parameterDictionary == ["crr":carrier], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.carrier = nil
-        XCTAssertNil(oxaTargeting.carrier)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.carrier = nil
+        XCTAssertNil(pbmTargeting.carrier)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testIP() {
 
         //Init
         //Note: on init, the default is nil but it doesn't send a value.
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.IP)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.IP)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
-        oxaTargeting.IP = "127.0.0.1"
-        XCTAssertEqual(oxaTargeting.IP, "127.0.0.1")
-        XCTAssert(oxaTargeting.parameterDictionary == ["ip":"127.0.0.1"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.IP = "127.0.0.1"
+        XCTAssertEqual(pbmTargeting.IP, "127.0.0.1")
+        XCTAssert(pbmTargeting.parameterDictionary == ["ip":"127.0.0.1"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.IP = nil
-        XCTAssertNil(oxaTargeting.IP)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.IP = nil
+        XCTAssertNil(pbmTargeting.IP)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     //Note: no way to currently un-set networkType
     func testNetworkType() {
-        let oxaTargeting = PBMTargeting.withDisabledLock
+        let pbmTargeting = PBMTargeting.withDisabledLock
         
         //Note: on init, the default is cell but it doesn't send a value.
-        XCTAssert(oxaTargeting.networkType == .unknown)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        XCTAssert(pbmTargeting.networkType == .unknown)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
 
-        oxaTargeting.networkType = .cell
-        XCTAssert(oxaTargeting.parameterDictionary == ["net":"cell"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.networkType = .cell
+        XCTAssert(pbmTargeting.parameterDictionary == ["net":"cell"], "Dict is \(pbmTargeting.parameterDictionary)")
 
-        oxaTargeting.networkType = .wifi
-        XCTAssert(oxaTargeting.parameterDictionary == ["net":"wifi"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.networkType = .wifi
+        XCTAssert(pbmTargeting.parameterDictionary == ["net":"wifi"], "Dict is \(pbmTargeting.parameterDictionary)")
  
-        oxaTargeting.networkType = .offline
-        XCTAssert(oxaTargeting.parameterDictionary == ["net":"offline"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.networkType = .offline
+        XCTAssert(pbmTargeting.parameterDictionary == ["net":"offline"], "Dict is \(pbmTargeting.parameterDictionary)")
 
-        oxaTargeting.networkType = .unknown
-        XCTAssert(oxaTargeting.networkType == .unknown)
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.networkType = .unknown
+        XCTAssert(pbmTargeting.networkType == .unknown)
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     //MARK: - Custom Params
     func testAddParam() {
         
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
-        oxaTargeting.addParam("value", withName: "name")
-        XCTAssert(oxaTargeting.parameterDictionary == ["name":"value"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.addParam("value", withName: "name")
+        XCTAssert(pbmTargeting.parameterDictionary == ["name":"value"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.addParam("", withName: "name")
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.addParam("", withName: "name")
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
 
     func testAddCustomParam() {
         
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
-        oxaTargeting.addCustomParam("value", withName: "name")
-        XCTAssert(oxaTargeting.parameterDictionary == ["c.name":"value"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.addCustomParam("value", withName: "name")
+        XCTAssert(pbmTargeting.parameterDictionary == ["c.name":"value"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Unset
-        oxaTargeting.addCustomParam("", withName: "name")
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.addCustomParam("", withName: "name")
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testSetCustomParams() {
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssert(oxaTargeting.parameterDictionary == [:], "Dict is \(oxaTargeting.parameterDictionary)")
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssert(pbmTargeting.parameterDictionary == [:], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Set
-        oxaTargeting.setCustomParams(["name1":"value1", "name2":"value2"])
-        XCTAssert(oxaTargeting.parameterDictionary == ["c.name1":"value1", "c.name2":"value2"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.setCustomParams(["name1":"value1", "name2":"value2"])
+        XCTAssert(pbmTargeting.parameterDictionary == ["c.name1":"value1", "c.name2":"value2"], "Dict is \(pbmTargeting.parameterDictionary)")
         
         //Not currently possible to unset
-        oxaTargeting.setCustomParams([:])
-        XCTAssert(oxaTargeting.parameterDictionary == ["c.name1":"value1", "c.name2":"value2"], "Dict is \(oxaTargeting.parameterDictionary)")
+        pbmTargeting.setCustomParams([:])
+        XCTAssert(pbmTargeting.parameterDictionary == ["c.name1":"value1", "c.name2":"value2"], "Dict is \(pbmTargeting.parameterDictionary)")
     }
     
     func testKeywords() {
         //Init
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        XCTAssertNil(oxaTargeting.keywords)
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        XCTAssertNil(pbmTargeting.keywords)
         
         let keywords = "Key, words"
-        oxaTargeting.keywords = keywords
-        XCTAssertEqual(oxaTargeting.keywords, keywords)
+        pbmTargeting.keywords = keywords
+        XCTAssertEqual(pbmTargeting.keywords, keywords)
     }
     
     func testCopy() {
@@ -381,22 +381,22 @@ extension PBMTargetingTest {
         let userExt:NSMutableDictionary = ["consent": "dummyConsentString"]
         
         
-        let oxaTargeting = PBMTargeting.withDisabledLock
-        oxaTargeting.buyerUID = buyerUID
-        oxaTargeting.coppa = NSNumber(value: 1)
-        oxaTargeting.keywords = keywords
-        oxaTargeting.userCustomData = userCustomData
-        oxaTargeting.contentUrl = contentUrl
-        oxaTargeting.publisherName = publisherName
-        oxaTargeting.networkType = .wifi
-        oxaTargeting.sourceapp = sourceApp
+        let pbmTargeting = PBMTargeting.withDisabledLock
+        pbmTargeting.buyerUID = buyerUID
+        pbmTargeting.coppa = NSNumber(value: 1)
+        pbmTargeting.keywords = keywords
+        pbmTargeting.userCustomData = userCustomData
+        pbmTargeting.contentUrl = contentUrl
+        pbmTargeting.publisherName = publisherName
+        pbmTargeting.networkType = .wifi
+        pbmTargeting.sourceapp = sourceApp
         
-        oxaTargeting.eids = eids as? [[String : Any]]
-        oxaTargeting.userExt = userExt
-        XCTAssertEqual(oxaTargeting.coppa, 1)
-        XCTAssertEqual(oxaTargeting.sourceapp, sourceApp)
+        pbmTargeting.eids = eids as? [[String : Any]]
+        pbmTargeting.userExt = userExt
+        XCTAssertEqual(pbmTargeting.coppa, 1)
+        XCTAssertEqual(pbmTargeting.sourceapp, sourceApp)
         
-        let copyTargering = oxaTargeting.copy() as! PBMTargeting
+        let copyTargering = pbmTargeting.copy() as! PBMTargeting
         XCTAssertEqual(copyTargering.networkType, .wifi)
         XCTAssertEqual(copyTargering.coppa, 1)
         XCTAssertEqual(copyTargering.sourceapp, sourceApp)

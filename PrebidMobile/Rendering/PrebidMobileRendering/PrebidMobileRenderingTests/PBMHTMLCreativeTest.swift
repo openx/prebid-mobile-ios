@@ -155,9 +155,9 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             expectationSessionStart,
         ]
         
-        let oxmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
-        oxmCreativeModel.displayDurationInSeconds = 30
-        oxmCreativeModel.html = "<html>test html</html>"
+        let pbmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
+        pbmCreativeModel.displayDurationInSeconds = 30
+        pbmCreativeModel.html = "<html>test html</html>"
         
         self.transaction = UtilitiesForTesting.createEmptyTransaction()
         transaction.measurementWrapper = measurement
@@ -250,15 +250,15 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
         
         PBMJSLibraryManager.shared().clearData()
         
-        let oxmServerConnection = PBMServerConnection()
-        oxmServerConnection.protocolClasses.add(MockServerURLProtocol.self)
+        let pbmServerConnection = PBMServerConnection()
+        pbmServerConnection.protocolClasses.add(MockServerURLProtocol.self)
         
         //Test
-        let oxmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
-        oxmCreativeModel.displayDurationInSeconds = 30
-        oxmCreativeModel.html = "<html>test html</html>"
+        let pbmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
+        pbmCreativeModel.displayDurationInSeconds = 30
+        pbmCreativeModel.html = "<html>test html</html>"
 
-        self.htmlCreative = MockPBMHTMLCreative(creativeModel:oxmCreativeModel, transaction:UtilitiesForTesting.createEmptyTransaction())
+        self.htmlCreative = MockPBMHTMLCreative(creativeModel:pbmCreativeModel, transaction:UtilitiesForTesting.createEmptyTransaction())
         self.htmlCreative.creativeResolutionDelegate = self
         self.htmlCreative.creativeViewDelegate = self
     }
@@ -346,10 +346,10 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
             return true
         }
         
-        let oxmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
+        let pbmCreativeModel = PBMCreativeModel(adConfiguration: PBMAdConfiguration())
         let mockWebView = MockPBMWebView()
         htmlCreative = MockPBMHTMLCreative(
-            creativeModel: oxmCreativeModel,
+            creativeModel: pbmCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: mockWebView,
                sdkConfiguration: sdkConfiguration
@@ -363,8 +363,8 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
 
     func testHasVastTag() {
         let adConfiguration = PBMAdConfiguration()
-        let oxmCreativeModel = PBMCreativeModel(adConfiguration: adConfiguration)
-        self.htmlCreative = MockPBMHTMLCreative(creativeModel: oxmCreativeModel, transaction: UtilitiesForTesting.createEmptyTransaction())
+        let pbmCreativeModel = PBMCreativeModel(adConfiguration: adConfiguration)
+        self.htmlCreative = MockPBMHTMLCreative(creativeModel: pbmCreativeModel, transaction: UtilitiesForTesting.createEmptyTransaction())
 
         let validXML1 = "<VAST version=\"123\""
         XCTAssertTrue(self.htmlCreative.hasVastTag(validXML1))

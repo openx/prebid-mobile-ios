@@ -131,35 +131,35 @@ class PBMVastLoaderTestWrapperPlusInline: XCTestCase {
         PBMAssertEq(ad.creatives.count, 3)
         
         //Creative 1  - Linear
-        let oxmVastCreativeLinear = ad.creatives[0] as! PBMVastCreativeLinear
-        PBMAssertEq(oxmVastCreativeLinear.AdId, "601364")
-        PBMAssertEq(oxmVastCreativeLinear.id, "6012")
-        PBMAssertEq(oxmVastCreativeLinear.sequence, 1)
-        PBMAssertEq(oxmVastCreativeLinear.duration, 6)
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["creativeView"], ["http://myTrackingURL/inline/creativeView", "http://myTrackingURL/wrapper/creativeView"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["start"], ["http://myTrackingURL/inline/start1", "http://myTrackingURL/inline/start2", "http://myTrackingURL/wrapper/start1", "http://myTrackingURL/wrapper/start2"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["midpoint"], ["http://myTrackingURL/inline/midpoint", "http://myTrackingURL/wrapper/midpoint"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["firstQuartile"], ["http://myTrackingURL/inline/firstQuartile", "http://myTrackingURL/wrapper/firstQuartile"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["thirdQuartile"], ["http://myTrackingURL/inline/thirdQuartile", "http://myTrackingURL/wrapper/thirdQuartile"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["complete"], ["http://myTrackingURL/inline/complete", "http://myTrackingURL/wrapper/complete"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["mute"], ["http://myTrackingURL/inline/mute", "http://myTrackingURL/wrapper/mute"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["unmute"], ["http://myTrackingURL/inline/unmute", "http://myTrackingURL/wrapper/unmute"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["pause"], ["http://myTrackingURL/inline/pause", "http://myTrackingURL/wrapper/pause"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["rewind"], ["http://myTrackingURL/inline/rewind", "http://myTrackingURL/wrapper/rewind"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["resume"], ["http://myTrackingURL/inline/resume", "http://myTrackingURL/wrapper/resume"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["fullscreen"], ["http://myTrackingURL/inline/fullscreen", "http://myTrackingURL/wrapper/fullscreen"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["expand"], ["http://myTrackingURL/inline/expand", "http://myTrackingURL/wrapper/expand"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["collapse"], ["http://myTrackingURL/inline/collapse", "http://myTrackingURL/wrapper/collapse"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["acceptInvitation"], ["http://myTrackingURL/inline/acceptInvitation", "http://myTrackingURL/wrapper/acceptInvitation"])
-        PBMAssertEq(oxmVastCreativeLinear.vastTrackingEvents.trackingEvents["close"], ["http://myTrackingURL/inline/close", "http://myTrackingURL/wrapper/close"])
+        let pbmVastCreativeLinear = ad.creatives[0] as! PBMVastCreativeLinear
+        PBMAssertEq(pbmVastCreativeLinear.AdId, "601364")
+        PBMAssertEq(pbmVastCreativeLinear.id, "6012")
+        PBMAssertEq(pbmVastCreativeLinear.sequence, 1)
+        PBMAssertEq(pbmVastCreativeLinear.duration, 6)
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["creativeView"], ["http://myTrackingURL/inline/creativeView", "http://myTrackingURL/wrapper/creativeView"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["start"], ["http://myTrackingURL/inline/start1", "http://myTrackingURL/inline/start2", "http://myTrackingURL/wrapper/start1", "http://myTrackingURL/wrapper/start2"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["midpoint"], ["http://myTrackingURL/inline/midpoint", "http://myTrackingURL/wrapper/midpoint"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["firstQuartile"], ["http://myTrackingURL/inline/firstQuartile", "http://myTrackingURL/wrapper/firstQuartile"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["thirdQuartile"], ["http://myTrackingURL/inline/thirdQuartile", "http://myTrackingURL/wrapper/thirdQuartile"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["complete"], ["http://myTrackingURL/inline/complete", "http://myTrackingURL/wrapper/complete"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["mute"], ["http://myTrackingURL/inline/mute", "http://myTrackingURL/wrapper/mute"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["unmute"], ["http://myTrackingURL/inline/unmute", "http://myTrackingURL/wrapper/unmute"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["pause"], ["http://myTrackingURL/inline/pause", "http://myTrackingURL/wrapper/pause"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["rewind"], ["http://myTrackingURL/inline/rewind", "http://myTrackingURL/wrapper/rewind"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["resume"], ["http://myTrackingURL/inline/resume", "http://myTrackingURL/wrapper/resume"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["fullscreen"], ["http://myTrackingURL/inline/fullscreen", "http://myTrackingURL/wrapper/fullscreen"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["expand"], ["http://myTrackingURL/inline/expand", "http://myTrackingURL/wrapper/expand"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["collapse"], ["http://myTrackingURL/inline/collapse", "http://myTrackingURL/wrapper/collapse"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["acceptInvitation"], ["http://myTrackingURL/inline/acceptInvitation", "http://myTrackingURL/wrapper/acceptInvitation"])
+        PBMAssertEq(pbmVastCreativeLinear.vastTrackingEvents.trackingEvents["close"], ["http://myTrackingURL/inline/close", "http://myTrackingURL/wrapper/close"])
         
-        PBMAssertEq(oxmVastCreativeLinear.adParameters, "params=for&request=gohere")
-        PBMAssertEq(oxmVastCreativeLinear.clickThroughURI, "http://www.openx.com")
-        PBMAssertEq(oxmVastCreativeLinear.clickTrackingURIs, ["http://myTrackingURL/inline/click1", "http://myTrackingURL/inline/click2", "http://myTrackingURL/inline/custom1", "http://myTrackingURL/inline/custom2", "http://myTrackingURL/wrapper/click1", "http://myTrackingURL/wrapper/click2", "http://myTrackingURL/wrapper/custom1", "http://myTrackingURL/wrapper/custom2"])
+        PBMAssertEq(pbmVastCreativeLinear.adParameters, "params=for&request=gohere")
+        PBMAssertEq(pbmVastCreativeLinear.clickThroughURI, "http://www.openx.com")
+        PBMAssertEq(pbmVastCreativeLinear.clickTrackingURIs, ["http://myTrackingURL/inline/click1", "http://myTrackingURL/inline/click2", "http://myTrackingURL/inline/custom1", "http://myTrackingURL/inline/custom2", "http://myTrackingURL/wrapper/click1", "http://myTrackingURL/wrapper/click2", "http://myTrackingURL/wrapper/custom1", "http://myTrackingURL/wrapper/custom2"])
         
-        PBMAssertEq(oxmVastCreativeLinear.mediaFiles.count, 1)
+        PBMAssertEq(pbmVastCreativeLinear.mediaFiles.count, 1)
         
-        let mediaFile = oxmVastCreativeLinear.mediaFiles.firstObject as! PBMVastMediaFile
+        let mediaFile = pbmVastCreativeLinear.mediaFiles.firstObject as! PBMVastMediaFile
         PBMAssertEq(mediaFile.id, "firstFile")
         PBMAssertEq(mediaFile.streamingDeliver, false)
         PBMAssertEq(mediaFile.type, "video/mp4")
@@ -173,24 +173,24 @@ class PBMVastLoaderTestWrapperPlusInline: XCTestCase {
         
         
         //Creative 2 - CompanionAds
-        let oxmVastCreativeCompanionAds = ad.creatives[1] as! PBMVastCreativeCompanionAds
-        PBMAssertEq(oxmVastCreativeCompanionAds.companions.count, 2)
+        let pbmVastCreativeCompanionAds = ad.creatives[1] as! PBMVastCreativeCompanionAds
+        PBMAssertEq(pbmVastCreativeCompanionAds.companions.count, 2)
         
         //First Companion
-        let oxmVastCreativeCompanionAdsCompanion = oxmVastCreativeCompanionAds.companions[0] as! PBMVastCreativeCompanionAdsCompanion
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.companionIdentifier, "big_box")
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.width, 300)
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.height, 250)
+        let pbmVastCreativeCompanionAdsCompanion = pbmVastCreativeCompanionAds.companions[0] as! PBMVastCreativeCompanionAdsCompanion
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.companionIdentifier, "big_box")
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.width, 300)
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.height, 250)
         //Should we support expandedWidth="600" expandedHeight="500" apiFramework="VPAID" ??
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.resource, "http://demo.tremormedia.com/proddev/vast/Blistex1.jpg")
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.resource, "http://demo.tremormedia.com/proddev/vast/Blistex1.jpg")
         
         //TODO: change from "staticResource" to "jpeg" or something?
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.resourceType, PBMVastResourceType.staticResource)
-        let trackingEvents = oxmVastCreativeCompanionAdsCompanion.trackingEvents.trackingEvents
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.resourceType, PBMVastResourceType.staticResource)
+        let trackingEvents = pbmVastCreativeCompanionAdsCompanion.trackingEvents.trackingEvents
         PBMAssertEq(trackingEvents.count, 2)
         PBMAssertEq(trackingEvents["creativeView"], ["http://myTrackingURL/inline/firstCompanionCreativeView"])
         PBMAssertEq(trackingEvents["creativeViewFromWrapper"], ["http://myTrackingURL/wrapper/firstCompanionCreativeView"])
-        PBMAssertEq(oxmVastCreativeCompanionAdsCompanion.clickThroughURI, "http://www.openx.com")
+        PBMAssertEq(pbmVastCreativeCompanionAdsCompanion.clickThroughURI, "http://www.openx.com")
 
     }
 }

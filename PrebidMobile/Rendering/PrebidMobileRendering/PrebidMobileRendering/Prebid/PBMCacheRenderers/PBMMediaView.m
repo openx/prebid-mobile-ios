@@ -238,7 +238,7 @@ static BOOL const IGNORE_CLICKS_IF_UNREGISTERED = YES;
     return (provider != nil) ? provider() : nil;
 }
 
-- (void)adLoaded:(PBMAdDetails *)oxmAdDetails {
+- (void)adLoaded:(PBMAdDetails *)pbmAdDetails {
     self.state = PBMMediaViewState_PlaybackNotStarted;
     [self reportSuccess];
 }

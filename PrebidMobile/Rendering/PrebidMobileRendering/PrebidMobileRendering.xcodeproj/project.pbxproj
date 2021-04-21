@@ -458,7 +458,7 @@
 		34D710AD24E580620048CC78 /* PBMORTBDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B58E61248122DA00DF4CA1 /* PBMORTBDevice.h */; };
 		34D710AE24E580620048CC78 /* PBMMRAIDJavascriptCommands.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B23893C203D596F00DFB7B3 /* PBMMRAIDJavascriptCommands.h */; };
 		34D710AF24E580620048CC78 /* PBMNSThreadProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B44C50C20F61AFB006F3CBC /* PBMNSThreadProtocol.h */; };
-		34D710B024E580620048CC78 /* OXAORTB.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D17892248631BC009DF0A2 /* OXAORTB.h */; };
+		34D710B024E580620048CC78 /* PBMORTBPrebid.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D17892248631BC009DF0A2 /* PBMORTBPrebid.h */; };
 		34D710B124E580620048CC78 /* PBMORTBDeviceExtPrebidInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = 34BA960D249CF9F1006AE372 /* PBMORTBDeviceExtPrebidInterstitial.h */; };
 		34D710B224E580620048CC78 /* PBMAdDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B7E8A062043F96200E93B82 /* PBMAdDetails.h */; };
 		34D710B324E580620048CC78 /* PBMORTBAbstract.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B58E3424811BAF00DF4CA1 /* PBMORTBAbstract.h */; };
@@ -1243,7 +1243,7 @@
 		34D0AAF0258CF74E001D5447 /* PBMNativeAdEventTrackerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdEventTrackerTest.swift; sourceTree = "<group>"; };
 		34D0AAFB258CFA27001D5447 /* PBMNativeAdTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdTest.swift; sourceTree = "<group>"; };
 		34D0AB03258D01BB001D5447 /* JSONDecoding_DefaultValuePropertyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoding_DefaultValuePropertyCheck.swift; sourceTree = "<group>"; };
-		34D17892248631BC009DF0A2 /* OXAORTB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXAORTB.h; sourceTree = "<group>"; };
+		34D17892248631BC009DF0A2 /* PBMORTBPrebid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMORTBPrebid.h; sourceTree = "<group>"; };
 		34D1789624863B75009DF0A2 /* PBMORTBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMORTBTest.swift; sourceTree = "<group>"; };
 		34D2B35825667960000F2A37 /* PBMAutoRefreshManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMAutoRefreshManagerTest.swift; sourceTree = "<group>"; };
 		34D2B3B025667CC9000F2A37 /* PBMAutoRefreshCountConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAutoRefreshCountConfig.h; sourceTree = "<group>"; };
@@ -1985,7 +1985,7 @@
 		343DA1972485331A00D25D44 /* Prebid */ = {
 			isa = PBXGroup;
 			children = (
-				34D17892248631BC009DF0A2 /* OXAORTB.h */,
+				34D17892248631BC009DF0A2 /* PBMORTBPrebid.h */,
 				343DA1982485338500D25D44 /* PBMORTBBidResponseExt.h */,
 				343DA1992485338500D25D44 /* PBMORTBBidResponseExt.m */,
 				343DA19C2485364B00D25D44 /* PBMORTBBidExt.h */,
@@ -3624,7 +3624,7 @@
 				34D0AA9D258CBCD7001D5447 /* PBMNativeAdEventTracker.h in Headers */,
 				34D710AF24E580620048CC78 /* PBMNSThreadProtocol.h in Headers */,
 				34A023AF25822CE0004EBB0C /* PBMWinNotifier.h in Headers */,
-				34D710B024E580620048CC78 /* OXAORTB.h in Headers */,
+				34D710B024E580620048CC78 /* PBMORTBPrebid.h in Headers */,
 				34E2FE4225AF2AAC0003C0EA /* PBMViewabilityEvent.h in Headers */,
 				34D710B124E580620048CC78 /* PBMORTBDeviceExtPrebidInterstitial.h in Headers */,
 				34D710B224E580620048CC78 /* PBMAdDetails.h in Headers */,

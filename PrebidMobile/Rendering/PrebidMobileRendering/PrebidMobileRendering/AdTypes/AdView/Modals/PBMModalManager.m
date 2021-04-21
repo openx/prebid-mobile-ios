@@ -71,7 +71,7 @@ static NSString * const PBMInterstitialStoryboardName  = @"Interstitial";
     }
 }
 
--(NSString *)oxmDescription:(UIInterfaceOrientation)orientation {
+-(NSString *)pbmDescription:(UIInterfaceOrientation)orientation {
     switch (orientation) {
         case UIInterfaceOrientationUnknown : return @"unknown";
         case UIInterfaceOrientationPortrait : return @"portrait";
@@ -86,7 +86,7 @@ static NSString * const PBMInterstitialStoryboardName  = @"Interstitial";
     @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
         @strongify(self);
-        PBMLogInfo(@"Forcing orientation to %@", [self oxmDescription:forcedOrientation]);
+        PBMLogInfo(@"Forcing orientation to %@", [self pbmDescription:forcedOrientation]);
         [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: forcedOrientation] forKey:@"orientation"];
     });
 }

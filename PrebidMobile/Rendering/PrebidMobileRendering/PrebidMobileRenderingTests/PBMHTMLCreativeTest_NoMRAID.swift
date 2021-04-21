@@ -28,24 +28,24 @@ class PBMHTMLCreativeTest_NoMRAID : PBMHTMLCreativeTest_Base {
         serverConnection.protocolClasses.add(MockServerURLProtocol.self)
 
         let mockWebView = MockPBMWebView()
-        let oxmHTMLCreative = PBMHTMLCreative(
+        let pbmHTMLCreative = PBMHTMLCreative(
             creativeModel: MockPBMCreativeModel(),
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: mockWebView,
                sdkConfiguration:sdkConfiguration
         )
-        let mockMRAIDController = PBMMRAIDController(creative:oxmHTMLCreative,
+        let mockMRAIDController = PBMMRAIDController(creative:pbmHTMLCreative,
                                                      viewControllerForPresenting:UIViewController(),
                                                      webView:mockWebView,
                                                      creativeViewDelegate:self,
                                                      downloadBlock:createLoader(connection: serverConnection),
                                                      deviceAccessManagerClass: MockPBMDeviceAccessManager.self,
                                                         sdkConfiguration: sdkConfiguration)
-        oxmHTMLCreative.mraidController = mockMRAIDController
-        oxmHTMLCreative.view = mockWebView
+        pbmHTMLCreative.mraidController = mockMRAIDController
+        pbmHTMLCreative.view = mockWebView
         
         //non-mraid command
-        oxmHTMLCreative.webView(mockWebView, receivedMRAIDLink:URL(string: "mraid:non_cmd")!)
+        pbmHTMLCreative.webView(mockWebView, receivedMRAIDLink:URL(string: "mraid:non_cmd")!)
         let log = PBMLog.singleton.getLogFileAsString()
         XCTAssert(log.contains("Unrecognized MRAID command non_cmd"))
     }

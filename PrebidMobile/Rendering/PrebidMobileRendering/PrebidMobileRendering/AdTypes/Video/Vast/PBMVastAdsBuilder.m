@@ -265,8 +265,8 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
     for (PBMVastInlineAd *ad in ads) {
         for (PBMVastCreativeAbstract *creative in ad.creatives) {
             if ([creative isKindOfClass:[PBMVastCreativeLinear class]]) {
-                PBMVastCreativeLinear *oxmVastCreativeLinear = (PBMVastCreativeLinear*) creative;
-                if ([oxmVastCreativeLinear bestMediaFile]) {
+                PBMVastCreativeLinear *pbmVastCreativeLinear = (PBMVastCreativeLinear*) creative;
+                if ([pbmVastCreativeLinear bestMediaFile]) {
                     return true;
                 }
             }

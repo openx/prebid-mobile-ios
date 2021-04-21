@@ -9,7 +9,7 @@
 
 #import "PBMBid+Internal.h"
 
-#import "OXAORTB.h"
+#import "PBMORTBPrebid.h"
 #import "PBMORTBMacrosHelper.h"
 
 @implementation PBMBid

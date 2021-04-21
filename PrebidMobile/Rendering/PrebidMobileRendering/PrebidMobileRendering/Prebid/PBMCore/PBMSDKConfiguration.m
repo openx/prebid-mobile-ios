@@ -19,7 +19,7 @@
 static NSString * const prodURL = @"https://prebid.openx.net/openrtb2/auction";
 static const NSInteger defaultTimeoutMillis = 2000;
 
-static PBMSDKConfiguration *_oxaSdkConfigurationSingleton = nil;
+static PBMSDKConfiguration *_pbmSdkConfigurationSingleton = nil;
 
 
 @interface PBMSDKConfiguration()
@@ -63,14 +63,14 @@ NSString *_serverURL = nil;
 + (PBMSDKConfiguration *)singleton {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _oxaSdkConfigurationSingleton = [[PBMSDKConfiguration alloc] init];
+        _pbmSdkConfigurationSingleton = [[PBMSDKConfiguration alloc] init];
     });
-    return _oxaSdkConfigurationSingleton;
+    return _pbmSdkConfigurationSingleton;
 }
 
 #ifdef DEBUG
 + (void)resetSingleton {
-    _oxaSdkConfigurationSingleton = [[PBMSDKConfiguration alloc] init];
+    _pbmSdkConfigurationSingleton = [[PBMSDKConfiguration alloc] init];
 }
 #endif
 

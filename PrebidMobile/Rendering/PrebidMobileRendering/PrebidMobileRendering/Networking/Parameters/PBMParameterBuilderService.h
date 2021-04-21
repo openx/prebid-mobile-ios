@@ -30,13 +30,13 @@
 //DI Version
 + (nonnull NSDictionary<NSString* , NSString *> *)buildParamsDictWithAdConfiguration:(nonnull PBMAdConfiguration *)adConfiguration
                                                                               bundle:(nonnull id<PBMBundleProtocol>)bundle
-                                                                  oxmLocationManager:(nonnull PBMLocationManager *)oxmLocationManager
-                                                              oxmDeviceAccessManager:(nonnull PBMDeviceAccessManager *)oxmDeviceAccessManager
+                                                                  pbmLocationManager:(nonnull PBMLocationManager *)pbmLocationManager
+                                                              pbmDeviceAccessManager:(nonnull PBMDeviceAccessManager *)pbmDeviceAccessManager
                                                               ctTelephonyNetworkInfo:(nonnull CTTelephonyNetworkInfo *)ctTelephonyNetworkInfo
                                                                         reachability:(nonnull PBMReachability *)reachability
                                                                     sdkConfiguration:(nonnull PBMSDKConfiguration *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
-                                                               oxmUserConsentManager:(nonnull PBMUserConsentDataManager *)oxmUserConsentManager
+                                                               pbmUserConsentManager:(nonnull PBMUserConsentDataManager *)pbmUserConsentManager
                                                                            targeting:(nonnull PBMTargeting *)targeting
                                                               extraParameterBuilders:(nullable NSArray<id<PBMParameterBuilder> > *)extraParameterBuilders;
 @end

@@ -24,12 +24,12 @@
 
 @implementation PBMCreativeModelCollectionMakerVAST
 
-- (instancetype)initWithServerConnection:(id<PBMServerConnectionProtocol>)oxmServerConnection
+- (instancetype)initWithServerConnection:(id<PBMServerConnectionProtocol>)pbmServerConnection
                             adConfiguration:(PBMAdConfiguration *)adConfiguration {
     self = [super init];
     if (self) {
         self.adConfiguration = adConfiguration;
-        self.serverConnection = oxmServerConnection;
+        self.serverConnection = pbmServerConnection;
     }
     
     return self;

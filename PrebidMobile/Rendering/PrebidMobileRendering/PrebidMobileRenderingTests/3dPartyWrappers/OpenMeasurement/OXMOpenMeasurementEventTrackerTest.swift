@@ -26,11 +26,11 @@ class PBMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(webViewSession)
         XCTAssertNotNil(webViewSession?.eventTracker)
         
-        let oxmTracker = webViewSession?.eventTracker as? PBMOpenMeasurementEventTracker
-        XCTAssertNotNil(oxmTracker)
-        XCTAssertNotNil(oxmTracker?.adEvents)
+        let pbmTracker = webViewSession?.eventTracker as? PBMOpenMeasurementEventTracker
+        XCTAssertNotNil(pbmTracker)
+        XCTAssertNotNil(pbmTracker?.adEvents)
         
-        XCTAssertNil(oxmTracker?.mediaEvents)
+        XCTAssertNil(pbmTracker?.mediaEvents)
     }
     
     func testEventsForNativeVideoSession() {
@@ -50,28 +50,28 @@ class PBMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(nativeVideoSession)
         XCTAssertNotNil(nativeVideoSession?.eventTracker)
         
-        let oxmTracker = nativeVideoSession?.eventTracker as? PBMOpenMeasurementEventTracker
-        XCTAssertNotNil(oxmTracker)
-        XCTAssertNotNil(oxmTracker?.adEvents)
-        XCTAssertNotNil(oxmTracker?.mediaEvents)
+        let pbmTracker = nativeVideoSession?.eventTracker as? PBMOpenMeasurementEventTracker
+        XCTAssertNotNil(pbmTracker)
+        XCTAssertNotNil(pbmTracker?.adEvents)
+        XCTAssertNotNil(pbmTracker?.mediaEvents)
     }
     
     func testInvalidSession() {
         logToFile = .init()
         
-        var oxmTracker = PBMOpenMeasurementEventTracker(session: OMIDOpenxAdSession())
-        XCTAssertNotNil(oxmTracker)
-        XCTAssertNotNil(oxmTracker.session)
+        var pbmTracker = PBMOpenMeasurementEventTracker(session: OMIDOpenxAdSession())
+        XCTAssertNotNil(pbmTracker)
+        XCTAssertNotNil(pbmTracker.session)
         UtilitiesForTesting.checkLogContains("Open Measurement can't create ad events with error")
         
-        oxmTracker = PBMOpenMeasurementEventTracker()
-        XCTAssertNotNil(oxmTracker)
-        XCTAssertNil(oxmTracker.session)
+        pbmTracker = PBMOpenMeasurementEventTracker()
+        XCTAssertNotNil(pbmTracker)
+        XCTAssertNil(pbmTracker.session)
         
         logToFile = nil
         logToFile = .init()
         
-        oxmTracker.trackEvent(PBMTrackingEvent.request)        
+        pbmTracker.trackEvent(PBMTrackingEvent.request)        
         UtilitiesForTesting.checkLogContains("Measurement Session is missed")
     }
 }

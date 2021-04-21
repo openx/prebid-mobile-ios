@@ -186,17 +186,17 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
             return
         }
         
-        guard let adView = try? nativeAd.retrieveAdView(), let oxaAdView = adView.subviews.first else {
+        guard let adView = try? nativeAd.retrieveAdView(), let pbmAdView = adView.subviews.first else {
             return
         }
         
-        if let videoAdView = oxaAdView as? MoPubNativeVideoAdView {
+        if let videoAdView = pbmAdView as? MoPubNativeVideoAdView {
             videoAdView.setupMediaControls()
         }
         
         adView.addConstraints([
-            adView.widthAnchor.constraint(equalTo: oxaAdView.widthAnchor),
-            adView.heightAnchor.constraint(equalTo: oxaAdView.heightAnchor),
+            adView.widthAnchor.constraint(equalTo: pbmAdView.widthAnchor),
+            adView.heightAnchor.constraint(equalTo: pbmAdView.heightAnchor),
         ])
         adView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.addSubview(adView)

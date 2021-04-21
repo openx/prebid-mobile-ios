@@ -24,7 +24,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
     var expectationDidFetchVideo:XCTestExpectation!
     
     
-    var oxmRewardedVideoCreative:PBMVideoCreative!
+    var pbmRewardedVideoCreative:PBMVideoCreative!
     
     var expectationTrackingEventCreativeView:XCTestExpectation!
     let trackingUrlCreativeView = "http://myTrackingURL/inline/firstCompanionCreativeView"

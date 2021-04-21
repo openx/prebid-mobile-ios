@@ -223,7 +223,7 @@
 #import "PBMNativeClickableViewRegistry.h"
 
 // PBMORTB
-#import "OXAORTB.h"
+#import "PBMORTBPrebid.h"
 #import "PBMORTBAbstractResponse+Protected.h"
 #import "PBMORTBBidResponse+Internal.h"
 #import "PBMORTBSeatBid+Internal.h"

@@ -13,7 +13,7 @@ class VideoEventsTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegat
    
     let viewController = MockViewController()
     let modalManager = PBMModalManager()
-    var oxmVideoCreative:PBMVideoCreative!
+    var pbmVideoCreative:PBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationCreativeDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
@@ -111,18 +111,18 @@ class VideoEventsTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegat
                 
             self.expectationDownloadCompleted.fulfill()
             expectationVideoAdLoaded.fulfill()
-            guard let oxmVideoCreative = creatives?.first as? PBMVideoCreative else {
+            guard let pbmVideoCreative = creatives?.first as? PBMVideoCreative else {
                 XCTFail("Could not cast creative as PBMVideoCreative")
                 return
             }
             
-            oxmVideoCreative.creativeViewDelegate = self
-            oxmVideoCreative.videoView.videoViewDelegate = self
-            self.oxmVideoCreative = oxmVideoCreative
+            pbmVideoCreative.creativeViewDelegate = self
+            pbmVideoCreative.videoView.videoViewDelegate = self
+            self.pbmVideoCreative = pbmVideoCreative
             
             DispatchQueue.main.async {
-                self.oxmVideoCreative.display(withRootViewController: self.viewController)
-                self.oxmVideoCreative.videoView.avPlayer.volume = 0.33
+                self.pbmVideoCreative.display(withRootViewController: self.viewController)
+                self.pbmVideoCreative.videoView.avPlayer.volume = 0.33
             }
         })
         

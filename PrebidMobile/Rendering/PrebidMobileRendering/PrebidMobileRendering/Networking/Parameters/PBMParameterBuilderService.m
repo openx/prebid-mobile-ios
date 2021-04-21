@@ -42,13 +42,13 @@
     targetingClone.disableLockUsage = YES;
     return [self buildParamsDictWithAdConfiguration:adConfiguration
                                              bundle:NSBundle.mainBundle
-                                 oxmLocationManager:PBMLocationManager.singleton
-                             oxmDeviceAccessManager:[[PBMDeviceAccessManager alloc] initWithRootViewController: nil]
+                                 pbmLocationManager:PBMLocationManager.singleton
+                             pbmDeviceAccessManager:[[PBMDeviceAccessManager alloc] initWithRootViewController: nil]
                              ctTelephonyNetworkInfo:[CTTelephonyNetworkInfo new]
                                        reachability:[PBMReachability reachabilityForInternetConnection]
                                    sdkConfiguration:PBMSDKConfiguration.singleton
                                          sdkVersion:[PBMFunctions sdkVersion]
-                              oxmUserConsentManager:[PBMUserConsentDataManager singleton]
+                              pbmUserConsentManager:[PBMUserConsentDataManager singleton]
                                           targeting:targetingClone
                              extraParameterBuilders:extraParameterBuilders];
 }
@@ -57,13 +57,13 @@
 // In such case, even if some parameter is invalid all other builders will work.
 + (nonnull NSDictionary<NSString* , NSString *> *)buildParamsDictWithAdConfiguration:(nonnull PBMAdConfiguration *)adConfiguration
                                                                               bundle:(nonnull id<PBMBundleProtocol>)bundle
-                                                                  oxmLocationManager:(nonnull PBMLocationManager *)oxmLocationManager
-                                                              oxmDeviceAccessManager:(nonnull PBMDeviceAccessManager *)oxmDeviceAccessManager
+                                                                  pbmLocationManager:(nonnull PBMLocationManager *)pbmLocationManager
+                                                              pbmDeviceAccessManager:(nonnull PBMDeviceAccessManager *)pbmDeviceAccessManager
                                                               ctTelephonyNetworkInfo:(nonnull CTTelephonyNetworkInfo *)ctTelephonyNetworkInfo
                                                                         reachability:(nonnull PBMReachability *)reachability
                                                                     sdkConfiguration:(nonnull PBMSDKConfiguration *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
-                                                               oxmUserConsentManager:(nonnull PBMUserConsentDataManager *) oxmUserConsentManager
+                                                               pbmUserConsentManager:(nonnull PBMUserConsentDataManager *) pbmUserConsentManager
                                                                            targeting:(nonnull PBMTargeting *)targeting
                                                               extraParameterBuilders:(nullable NSArray<id<PBMParameterBuilder> > *)extraParameterBuilders{
   
@@ -75,12 +75,12 @@
                                                  sdkConfiguration:sdkConfiguration
                                                        sdkVersion:sdkVersion
                                                         targeting:targeting],
-        [[PBMGeoLocationParameterBuilder alloc] initWithLocationManager:oxmLocationManager],
+        [[PBMGeoLocationParameterBuilder alloc] initWithLocationManager:pbmLocationManager],
         [[PBMAppInfoParameterBuilder alloc] initWithBundle:bundle targeting:targeting],
-        [[PBMDeviceInfoParameterBuilder alloc] initWithDeviceAccessManager:oxmDeviceAccessManager],
+        [[PBMDeviceInfoParameterBuilder alloc] initWithDeviceAccessManager:pbmDeviceAccessManager],
         [[PBMNetworkParameterBuilder alloc] initWithCtTelephonyNetworkInfo:ctTelephonyNetworkInfo reachability:reachability],
         [[PBMSupportedProtocolsParameterBuilder alloc] initWithSDKConfiguration:sdkConfiguration],
-        [[PBMUserConsentParameterBuilder alloc] initWithUserConsentManager:oxmUserConsentManager],
+        [[PBMUserConsentParameterBuilder alloc] initWithUserConsentManager:pbmUserConsentManager],
         [[PBMSKAdNetworksParameterBuilder alloc] initWithBundle:bundle targeting:targeting],
     ]];
     

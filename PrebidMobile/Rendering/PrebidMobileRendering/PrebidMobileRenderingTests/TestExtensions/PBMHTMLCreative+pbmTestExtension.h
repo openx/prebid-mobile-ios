@@ -8,7 +8,7 @@
 #import "PBMHTMLCreative.h"
 #import "PBMUIApplicationProtocol.h"
 
-@protocol OXMMeasurementProtocol;
+@protocol PBMMeasurementProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 @interface PBMHTMLCreative () <PBMWebViewDelegate>

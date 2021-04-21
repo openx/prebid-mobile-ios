@@ -150,19 +150,19 @@ class PBMORTBAbstractTest : XCTestCase {
     }
     
     func testBidRequestToJsonString() {
-        let oxmORTBBidRequest = PBMORTBBidRequest()
+        let pbmORTBBidRequest = PBMORTBBidRequest()
         let uuid = UUID().uuidString
-        oxmORTBBidRequest.requestID = uuid
+        pbmORTBBidRequest.requestID = uuid
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract: pbmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
         
-        oxmORTBBidRequest.tmax = 2000
+        pbmORTBBidRequest.tmax = 2000
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"tmax\":2000,\"user\":{}}")
+        codeAndDecode(abstract: pbmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"tmax\":2000,\"user\":{}}")
         
-        oxmORTBBidRequest.test = 2
+        pbmORTBBidRequest.test = 2
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"test\":2,\"tmax\":2000,\"user\":{}}")
+        codeAndDecode(abstract: pbmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"id\":\"\(uuid)\",\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"test\":2,\"tmax\":2000,\"user\":{}}")
     }
     
     func testBidRequestExtPrebidToJsonString() {
@@ -172,78 +172,78 @@ class PBMORTBAbstractTest : XCTestCase {
         
         codeAndDecode(abstract: extPrebid, expectedString: "{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}")
         
-        let oxmORTBBidRequest = PBMORTBBidRequest()
-        oxmORTBBidRequest.extPrebid = extPrebid
+        let pbmORTBBidRequest = PBMORTBBidRequest()
+        pbmORTBBidRequest.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
+        codeAndDecode(abstract: pbmORTBBidRequest, expectedString: "{\"app\":{},\"device\":{\"geo\":{}},\"ext\":{\"prebid\":{\"cache\":{\"bids\":{},\"vastxml\":{}},\"data\":{\"bidders\":[\"openx\",\"prebid\",\"thanatos\"]},\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"},\"targeting\":{}}},\"imp\":[{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":0}],\"source\":{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"}},\"user\":{}}")
     }
     
     func testSourceToJsonString() {
-        let oxmORTBSource = PBMORTBSource()
+        let pbmORTBSource = PBMORTBSource()
         
         let tid = UUID().uuidString
         let pchain = "some_pchain_string"
         
-        oxmORTBSource.fd = 0
-        oxmORTBSource.tid = tid
-        oxmORTBSource.pchain = pchain
+        pbmORTBSource.fd = 0
+        pbmORTBSource.tid = tid
+        pbmORTBSource.pchain = pchain
         
-        codeAndDecode(abstract: oxmORTBSource, expectedString: "{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"},\"fd\":0,\"pchain\":\"\(pchain)\",\"tid\":\"\(tid)\"}")
+        codeAndDecode(abstract: pbmORTBSource, expectedString: "{\"ext\":{\"omidpn\":\"Openx\",\"omidpv\":\"\(omidVersion)\"},\"fd\":0,\"pchain\":\"\(pchain)\",\"tid\":\"\(tid)\"}")
     }
     
     func testRegsToJsonString() {
-        let oxmORTBRegs = PBMORTBRegs()
-        oxmORTBRegs.coppa = 1
-        XCTAssertEqual(oxmORTBRegs.coppa, 1)
-        codeAndDecode(abstract:oxmORTBRegs, expectedString:"{\"coppa\":1}")
+        let pbmORTBRegs = PBMORTBRegs()
+        pbmORTBRegs.coppa = 1
+        XCTAssertEqual(pbmORTBRegs.coppa, 1)
+        codeAndDecode(abstract:pbmORTBRegs, expectedString:"{\"coppa\":1}")
         
-        oxmORTBRegs.coppa = 0
-        XCTAssertEqual(oxmORTBRegs.coppa, 0)
-        codeAndDecode(abstract:oxmORTBRegs, expectedString:"{\"coppa\":0}")
+        pbmORTBRegs.coppa = 0
+        XCTAssertEqual(pbmORTBRegs.coppa, 0)
+        codeAndDecode(abstract:pbmORTBRegs, expectedString:"{\"coppa\":0}")
 
-        oxmORTBRegs.coppa = -1
-        XCTAssertEqual(oxmORTBRegs.coppa, nil)
-        codeAndDecode(abstract:oxmORTBRegs, expectedString:"{}")
+        pbmORTBRegs.coppa = -1
+        XCTAssertEqual(pbmORTBRegs.coppa, nil)
+        codeAndDecode(abstract:pbmORTBRegs, expectedString:"{}")
 
-        oxmORTBRegs.coppa = 1.5
-        XCTAssertEqual(oxmORTBRegs.coppa, nil)
-        codeAndDecode(abstract:oxmORTBRegs, expectedString:"{}")
+        pbmORTBRegs.coppa = 1.5
+        XCTAssertEqual(pbmORTBRegs.coppa, nil)
+        codeAndDecode(abstract:pbmORTBRegs, expectedString:"{}")
     }
 
     func testImpToJsonString() {
-        let oxmORTBImp = PBMORTBImp()
+        let pbmORTBImp = PBMORTBImp()
         
         let uuid = UUID().uuidString
-        oxmORTBImp.impID = uuid
-        oxmORTBImp.banner = PBMORTBBanner()
-        oxmORTBImp.video = PBMORTBVideo()
-        oxmORTBImp.native = PBMORTBNative()
-        oxmORTBImp.pmp = PBMORTBPmp()
-        oxmORTBImp.displaymanager = "MOCK_SDK_NAME"
-        oxmORTBImp.displaymanagerver = "MOCK_SDK_VERSION"
-        oxmORTBImp.instl = 1
-        oxmORTBImp.tagid = "tagid"
-        oxmORTBImp.secure = 1
-        oxmORTBImp.extContextData = ["lookup_words": ["dragon", "flame"]]
+        pbmORTBImp.impID = uuid
+        pbmORTBImp.banner = PBMORTBBanner()
+        pbmORTBImp.video = PBMORTBVideo()
+        pbmORTBImp.native = PBMORTBNative()
+        pbmORTBImp.pmp = PBMORTBPmp()
+        pbmORTBImp.displaymanager = "MOCK_SDK_NAME"
+        pbmORTBImp.displaymanagerver = "MOCK_SDK_VERSION"
+        pbmORTBImp.instl = 1
+        pbmORTBImp.tagid = "tagid"
+        pbmORTBImp.secure = 1
+        pbmORTBImp.extContextData = ["lookup_words": ["dragon", "flame"]]
         
-        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"banner\":{\"api\":[]},\"clickbrowser\":0,\"displaymanager\":\"MOCK_SDK_NAME\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"context\":{\"data\":{\"lookup_words\":[\"dragon\",\"flame\"]}},\"dlp\":1},\"id\":\"\(uuid)\",\"instl\":1,\"native\":{\"ver\":\"1.2\"},\"secure\":1,\"tagid\":\"tagid\",\"video\":{\"delivery\":[3],\"mimes\":[\"video\\/mp4\",\"video\\/quicktime\",\"video\\/x-m4v\",\"video\\/3gpp\",\"video\\/3gpp2\"],\"playbackend\":2,\"pos\":7,\"protocols\":[2,5]}}")
+        codeAndDecode(abstract: pbmORTBImp, expectedString: "{\"banner\":{\"api\":[]},\"clickbrowser\":0,\"displaymanager\":\"MOCK_SDK_NAME\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"context\":{\"data\":{\"lookup_words\":[\"dragon\",\"flame\"]}},\"dlp\":1},\"id\":\"\(uuid)\",\"instl\":1,\"native\":{\"ver\":\"1.2\"},\"secure\":1,\"tagid\":\"tagid\",\"video\":{\"delivery\":[3],\"mimes\":[\"video\\/mp4\",\"video\\/quicktime\",\"video\\/x-m4v\",\"video\\/3gpp\",\"video\\/3gpp2\"],\"playbackend\":2,\"pos\":7,\"protocols\":[2,5]}}")
     }
     
     func testNativeToJsonString() {
-        let oxmORTBNative = PBMORTBNative()
+        let pbmORTBNative = PBMORTBNative()
         
-        XCTAssertEqual(oxmORTBNative.ver, "1.2")
-        XCTAssertNil(oxmORTBNative.request as NSString?)
-        XCTAssertNil(oxmORTBNative.api)
-        XCTAssertNil(oxmORTBNative.battr)
+        XCTAssertEqual(pbmORTBNative.ver, "1.2")
+        XCTAssertNil(pbmORTBNative.request as NSString?)
+        XCTAssertNil(pbmORTBNative.api)
+        XCTAssertNil(pbmORTBNative.battr)
         
-        codeAndDecode(abstract: oxmORTBNative, expectedString: "{\"ver\":\"1.2\"}")
+        codeAndDecode(abstract: pbmORTBNative, expectedString: "{\"ver\":\"1.2\"}")
         
-        oxmORTBNative.request = "some request string goes here"
-        oxmORTBNative.api = [42]
-        oxmORTBNative.battr = [1, 3, 13]
+        pbmORTBNative.request = "some request string goes here"
+        pbmORTBNative.api = [42]
+        pbmORTBNative.battr = [1, 3, 13]
         
-        codeAndDecode(abstract: oxmORTBNative, expectedString: "{\"api\":[42],\"battr\":[1,3,13],\"request\":\"some request string goes here\",\"ver\":\"1.2\"}")
+        codeAndDecode(abstract: pbmORTBNative, expectedString: "{\"api\":[42],\"battr\":[1,3,13],\"request\":\"some request string goes here\",\"ver\":\"1.2\"}")
     }
     
     func testImpExtPrebidToJsonString() {
@@ -253,10 +253,10 @@ class PBMORTBAbstractTest : XCTestCase {
         
         codeAndDecode(abstract: extPrebid, expectedString: "{\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}")
         
-        let oxmORTBImp = PBMORTBImp()
-        oxmORTBImp.extPrebid = extPrebid
+        let pbmORTBImp = PBMORTBImp()
+        pbmORTBImp.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
+        codeAndDecode(abstract: pbmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
     }
     
     func testImpExtPrebidToJsonStringRewarded() {
@@ -266,97 +266,97 @@ class PBMORTBAbstractTest : XCTestCase {
         
         codeAndDecode(abstract: extPrebid, expectedString: "{\"is_rewarded_inventory\":1,\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}")
         
-        let oxmORTBImp = PBMORTBImp()
-        oxmORTBImp.extPrebid = extPrebid
+        let pbmORTBImp = PBMORTBImp()
+        pbmORTBImp.extPrebid = extPrebid
         
-        codeAndDecode(abstract: oxmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"is_rewarded_inventory\":1,\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
+        codeAndDecode(abstract: pbmORTBImp, expectedString: "{\"clickbrowser\":0,\"displaymanager\":\"prebid\",\"ext\":{\"prebid\":{\"is_rewarded_inventory\":1,\"storedrequest\":{\"id\":\"b4eb1475-4e3d-4186-97b7-25b6a6cf8618\"}}},\"instl\":0,\"secure\":0}")
     }
     
     func testBannerToJsonString() {
-        let oxmORTBBanner = PBMORTBBanner()
-        oxmORTBBanner.pos = 1                   //Above the fold
-        oxmORTBBanner.api = [2,5]
+        let pbmORTBBanner = PBMORTBBanner()
+        pbmORTBBanner.pos = 1                   //Above the fold
+        pbmORTBBanner.api = [2,5]
 
-        codeAndDecode(abstract: oxmORTBBanner, expectedString: "{\"api\":[2,5],\"pos\":1}")
+        codeAndDecode(abstract: pbmORTBBanner, expectedString: "{\"api\":[2,5],\"pos\":1}")
         
-        oxmORTBBanner.format = [PBMORTBFormat()]
-        oxmORTBBanner.format[0].w = 728
-        oxmORTBBanner.format[0].h = 90
+        pbmORTBBanner.format = [PBMORTBFormat()]
+        pbmORTBBanner.format[0].w = 728
+        pbmORTBBanner.format[0].h = 90
 
-        codeAndDecode(abstract: oxmORTBBanner, expectedString: "{\"api\":[2,5],\"format\":[{\"h\":90,\"w\":728}],\"pos\":1}")
+        codeAndDecode(abstract: pbmORTBBanner, expectedString: "{\"api\":[2,5],\"format\":[{\"h\":90,\"w\":728}],\"pos\":1}")
     }
     
     func testVideoToJsonString() {
-        let oxmORTBVideo = PBMORTBVideo()
+        let pbmORTBVideo = PBMORTBVideo()
         
-        oxmORTBVideo.minduration = 10
-        oxmORTBVideo.maxduration = 100
-        oxmORTBVideo.w = 100
-        oxmORTBVideo.h = 200
-        oxmORTBVideo.startdelay = 5
-        oxmORTBVideo.linearity = 1
-        oxmORTBVideo.minbitrate = 20
-        oxmORTBVideo.maxbitrate = 40
+        pbmORTBVideo.minduration = 10
+        pbmORTBVideo.maxduration = 100
+        pbmORTBVideo.w = 100
+        pbmORTBVideo.h = 200
+        pbmORTBVideo.startdelay = 5
+        pbmORTBVideo.linearity = 1
+        pbmORTBVideo.minbitrate = 20
+        pbmORTBVideo.maxbitrate = 40
  
-        codeAndDecode(abstract: oxmORTBVideo, expectedString: "{\"delivery\":[3],\"h\":200,\"linearity\":1,\"maxbitrate\":40,\"maxduration\":100,\"mimes\":[\"video\\/mp4\",\"video\\/quicktime\",\"video\\/x-m4v\",\"video\\/3gpp\",\"video\\/3gpp2\"],\"minbitrate\":20,\"minduration\":10,\"playbackend\":2,\"pos\":7,\"protocols\":[2,5],\"startdelay\":5,\"w\":100}")
+        codeAndDecode(abstract: pbmORTBVideo, expectedString: "{\"delivery\":[3],\"h\":200,\"linearity\":1,\"maxbitrate\":40,\"maxduration\":100,\"mimes\":[\"video\\/mp4\",\"video\\/quicktime\",\"video\\/x-m4v\",\"video\\/3gpp\",\"video\\/3gpp2\"],\"minbitrate\":20,\"minduration\":10,\"playbackend\":2,\"pos\":7,\"protocols\":[2,5],\"startdelay\":5,\"w\":100}")
     }
     
     func testFormatToJsonString() {
-        let oxmORTBFormat = PBMORTBFormat()
-        oxmORTBFormat.w = 320
-        oxmORTBFormat.h = 50
-        codeAndDecode(abstract: oxmORTBFormat, expectedString: "{\"h\":50,\"w\":320}")
+        let pbmORTBFormat = PBMORTBFormat()
+        pbmORTBFormat.w = 320
+        pbmORTBFormat.h = 50
+        codeAndDecode(abstract: pbmORTBFormat, expectedString: "{\"h\":50,\"w\":320}")
         
-        oxmORTBFormat.w = nil
-        oxmORTBFormat.h = nil
-        oxmORTBFormat.wratio = 16
-        oxmORTBFormat.hratio = 9
-        oxmORTBFormat.wmin = 60
-        codeAndDecode(abstract: oxmORTBFormat, expectedString: "{\"hratio\":9,\"wmin\":60,\"wratio\":16}")
+        pbmORTBFormat.w = nil
+        pbmORTBFormat.h = nil
+        pbmORTBFormat.wratio = 16
+        pbmORTBFormat.hratio = 9
+        pbmORTBFormat.wmin = 60
+        codeAndDecode(abstract: pbmORTBFormat, expectedString: "{\"hratio\":9,\"wmin\":60,\"wratio\":16}")
     }
 
     func testPmpToJsonString() {
-        let oxmORTBPmp = PBMORTBPmp()
-        oxmORTBPmp.private_auction = 1
-        oxmORTBPmp.deals.append(PBMORTBDeal())
-        oxmORTBPmp.deals.first?.bidfloor = 1.0
+        let pbmORTBPmp = PBMORTBPmp()
+        pbmORTBPmp.private_auction = 1
+        pbmORTBPmp.deals.append(PBMORTBDeal())
+        pbmORTBPmp.deals.first?.bidfloor = 1.0
         
-        codeAndDecode(abstract: oxmORTBPmp, expectedString: "{\"deals\":[{\"bidfloor\":1,\"bidfloorcur\":\"USD\",\"wadomain\":[],\"wseat\":[]}],\"private_auction\":1}")
+        codeAndDecode(abstract: pbmORTBPmp, expectedString: "{\"deals\":[{\"bidfloor\":1,\"bidfloorcur\":\"USD\",\"wadomain\":[],\"wseat\":[]}],\"private_auction\":1}")
     }
     
     func testDealToJsonString() {
-        let oxmORTBDeal = PBMORTBDeal()
+        let pbmORTBDeal = PBMORTBDeal()
         
-        oxmORTBDeal.id = "id"
-        oxmORTBDeal.bidfloor = 100.0
-        oxmORTBDeal.bidfloorcur = "GBP"
-        oxmORTBDeal.at = 1
-        oxmORTBDeal.wseat = ["seat1", "seat2", "seat3"]
-        oxmORTBDeal.wadomain = ["advertiser1.com", "advertiser2.com", "advertiser3.com"]
+        pbmORTBDeal.id = "id"
+        pbmORTBDeal.bidfloor = 100.0
+        pbmORTBDeal.bidfloorcur = "GBP"
+        pbmORTBDeal.at = 1
+        pbmORTBDeal.wseat = ["seat1", "seat2", "seat3"]
+        pbmORTBDeal.wadomain = ["advertiser1.com", "advertiser2.com", "advertiser3.com"]
         
-        codeAndDecode(abstract: oxmORTBDeal, expectedString: "{\"at\":1,\"bidfloor\":100,\"bidfloorcur\":\"GBP\",\"id\":\"id\",\"wadomain\":[\"advertiser1.com\",\"advertiser2.com\",\"advertiser3.com\"],\"wseat\":[\"seat1\",\"seat2\",\"seat3\"]}")
+        codeAndDecode(abstract: pbmORTBDeal, expectedString: "{\"at\":1,\"bidfloor\":100,\"bidfloorcur\":\"GBP\",\"id\":\"id\",\"wadomain\":[\"advertiser1.com\",\"advertiser2.com\",\"advertiser3.com\"],\"wseat\":[\"seat1\",\"seat2\",\"seat3\"]}")
     }
     
     func testAppToJsonString() {
         
-        let oxmORTBApp = PBMORTBApp()
+        let pbmORTBApp = PBMORTBApp()
         
-        oxmORTBApp.id = "foo"
-        oxmORTBApp.name = "PubApp"
-        oxmORTBApp.bundle = "com.PubApp"
-        oxmORTBApp.domain = "pubapp.com"
-        oxmORTBApp.storeurl = "itunes.com?pubapp"
-        oxmORTBApp.ver = "1.2"
-        oxmORTBApp.privacypolicy = 1
-        oxmORTBApp.paid = 1
-        oxmORTBApp.keywords = "foo,bar,baz"
+        pbmORTBApp.id = "foo"
+        pbmORTBApp.name = "PubApp"
+        pbmORTBApp.bundle = "com.PubApp"
+        pbmORTBApp.domain = "pubapp.com"
+        pbmORTBApp.storeurl = "itunes.com?pubapp"
+        pbmORTBApp.ver = "1.2"
+        pbmORTBApp.privacypolicy = 1
+        pbmORTBApp.paid = 1
+        pbmORTBApp.keywords = "foo,bar,baz"
         
-        codeAndDecode(abstract: oxmORTBApp, expectedString: "{\"bundle\":\"com.PubApp\",\"domain\":\"pubapp.com\",\"id\":\"foo\",\"keywords\":\"foo,bar,baz\",\"name\":\"PubApp\",\"paid\":1,\"privacypolicy\":1,\"storeurl\":\"itunes.com?pubapp\",\"ver\":\"1.2\"}")
+        codeAndDecode(abstract: pbmORTBApp, expectedString: "{\"bundle\":\"com.PubApp\",\"domain\":\"pubapp.com\",\"id\":\"foo\",\"keywords\":\"foo,bar,baz\",\"name\":\"PubApp\",\"paid\":1,\"privacypolicy\":1,\"storeurl\":\"itunes.com?pubapp\",\"ver\":\"1.2\"}")
     }
     
     func testAppExtPrebidToJsonString() {
-        let oxmORTBApp = PBMORTBApp()
-        let appExtPrebid = oxmORTBApp.extPrebid
+        let pbmORTBApp = PBMORTBApp()
+        let appExtPrebid = pbmORTBApp.extPrebid
         
         codeAndDecode(abstract: appExtPrebid, expectedString: "{}")
         
@@ -366,63 +366,63 @@ class PBMORTBAbstractTest : XCTestCase {
         
         codeAndDecode(abstract: appExtPrebid, expectedString: "{\"data\":{\"app_categories\":[\"news\",\"movies\"]},\"source\":\"openx\",\"version\":\"\(sdkVersion)\"}")
         
-        codeAndDecode(abstract: oxmORTBApp, expectedString: "{\"ext\":{\"prebid\":{\"data\":{\"app_categories\":[\"news\",\"movies\"]},\"source\":\"openx\",\"version\":\"\(sdkVersion)\"}}}")
+        codeAndDecode(abstract: pbmORTBApp, expectedString: "{\"ext\":{\"prebid\":{\"data\":{\"app_categories\":[\"news\",\"movies\"]},\"source\":\"openx\",\"version\":\"\(sdkVersion)\"}}}")
     }
     
     func testDeviceWithIfaToJsonString() {
-        let oxmORTBPDevice = initORTBDevice(ifa: "ifa")
-        oxmORTBPDevice.ua = userAgent
+        let pbmORTBPDevice = initORTBDevice(ifa: "ifa")
+        pbmORTBPDevice.ua = userAgent
         let userAgentEscaped = userAgent.replacingOccurrences(of: "/", with: "\\/")
-        codeAndDecode(abstract: oxmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"geo\":{},\"geofetch\":1,\"h\":100,\"ifa\":\"ifa\",\"js\":1,\"language\":\"en\",\"lmt\":1,\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
+        codeAndDecode(abstract: pbmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"geo\":{},\"geofetch\":1,\"h\":100,\"ifa\":\"ifa\",\"js\":1,\"language\":\"en\",\"lmt\":1,\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
     }
     
     func testDeviceWithoutIfaToJsonString() {
-        let oxmORTBPDevice = initORTBDevice(ifa: nil)
-        oxmORTBPDevice.ua = userAgent
+        let pbmORTBPDevice = initORTBDevice(ifa: nil)
+        pbmORTBPDevice.ua = userAgent
         let userAgentEscaped = userAgent.replacingOccurrences(of: "/", with: "\\/")
-        codeAndDecode(abstract: oxmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"dpidmd5\":\"dpidmd5\",\"dpidsha1\":\"dpidsha1\",\"geo\":{},\"geofetch\":1,\"h\":100,\"js\":1,\"language\":\"en\",\"lmt\":1,\"macmd5\":\"macmd5\",\"macsha1\":\"macsha1\",\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
+        codeAndDecode(abstract: pbmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"dpidmd5\":\"dpidmd5\",\"dpidsha1\":\"dpidsha1\",\"geo\":{},\"geofetch\":1,\"h\":100,\"js\":1,\"language\":\"en\",\"lmt\":1,\"macmd5\":\"macmd5\",\"macsha1\":\"macsha1\",\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
     }
     
     func testDeviceWithExtAttsToJsonString() {
-        let oxmORTBPDevice = initORTBDevice(ifa: nil)
-        oxmORTBPDevice.ua = userAgent
-        oxmORTBPDevice.extAtts.atts = 3
-        oxmORTBPDevice.extAtts.ifv = "ifv"
+        let pbmORTBPDevice = initORTBDevice(ifa: nil)
+        pbmORTBPDevice.ua = userAgent
+        pbmORTBPDevice.extAtts.atts = 3
+        pbmORTBPDevice.extAtts.ifv = "ifv"
         
         let userAgentEscaped = userAgent.replacingOccurrences(of: "/", with: "\\/")
-        codeAndDecode(abstract: oxmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"dpidmd5\":\"dpidmd5\",\"dpidsha1\":\"dpidsha1\",\"ext\":{\"atts\":3,\"ifv\":\"ifv\"},\"geo\":{},\"geofetch\":1,\"h\":100,\"js\":1,\"language\":\"en\",\"lmt\":1,\"macmd5\":\"macmd5\",\"macsha1\":\"macsha1\",\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
+        codeAndDecode(abstract: pbmORTBPDevice, expectedString: "{\"carrier\":\"AT&T\",\"connectiontype\":6,\"devicetype\":1,\"didmd5\":\"didmd5\",\"didsha1\":\"didsha1\",\"dpidmd5\":\"dpidmd5\",\"dpidsha1\":\"dpidsha1\",\"ext\":{\"atts\":3,\"ifv\":\"ifv\"},\"geo\":{},\"geofetch\":1,\"h\":100,\"js\":1,\"language\":\"en\",\"lmt\":1,\"macmd5\":\"macmd5\",\"macsha1\":\"macsha1\",\"make\":\"Apple\",\"mccmnc\":\"310-680\",\"model\":\"iPhone\",\"os\":\"iOS\",\"osv\":\"11.1\",\"ppi\":100,\"pxratio\":1.5,\"ua\":\"\(userAgentEscaped)\",\"w\":200}")
     }
     
     func testGeoToJsonString() {
-        let oxmORTBGeo = PBMORTBGeo()
+        let pbmORTBGeo = PBMORTBGeo()
         
-        oxmORTBGeo.lat = 34.1477849
-        oxmORTBGeo.lon = -118.1445155
-        oxmORTBGeo.type = 1
-        oxmORTBGeo.accuracy = 200
-        oxmORTBGeo.lastfix = 5
-        oxmORTBGeo.country = "USA"
-        oxmORTBGeo.region = "CA"
-        oxmORTBGeo.regionfips104 = "US"
-        oxmORTBGeo.metro = "foo"
-        oxmORTBGeo.city = "Pasadena"
-        oxmORTBGeo.zip = "91101"
-        oxmORTBGeo.utcoffset = -480
+        pbmORTBGeo.lat = 34.1477849
+        pbmORTBGeo.lon = -118.1445155
+        pbmORTBGeo.type = 1
+        pbmORTBGeo.accuracy = 200
+        pbmORTBGeo.lastfix = 5
+        pbmORTBGeo.country = "USA"
+        pbmORTBGeo.region = "CA"
+        pbmORTBGeo.regionfips104 = "US"
+        pbmORTBGeo.metro = "foo"
+        pbmORTBGeo.city = "Pasadena"
+        pbmORTBGeo.zip = "91101"
+        pbmORTBGeo.utcoffset = -480
         
-        codeAndDecode(abstract: oxmORTBGeo, expectedString: "{\"accuracy\":200,\"city\":\"Pasadena\",\"country\":\"USA\",\"lastfix\":5,\"lat\":34.1477849,\"lon\":-118.1445155,\"metro\":\"foo\",\"region\":\"CA\",\"regionfips104\":\"US\",\"type\":1,\"utcoffset\":-480,\"zip\":\"91101\"}")
+        codeAndDecode(abstract: pbmORTBGeo, expectedString: "{\"accuracy\":200,\"city\":\"Pasadena\",\"country\":\"USA\",\"lastfix\":5,\"lat\":34.1477849,\"lon\":-118.1445155,\"metro\":\"foo\",\"region\":\"CA\",\"regionfips104\":\"US\",\"type\":1,\"utcoffset\":-480,\"zip\":\"91101\"}")
     }
     
     func testUserToJsonString() {
-        let oxmORTBUser = PBMORTBUser()
+        let pbmORTBUser = PBMORTBUser()
         
-        oxmORTBUser.yob = 1981
-        oxmORTBUser.gender = "M"
-        oxmORTBUser.keywords = "key1,key2,key3"
-        oxmORTBUser.geo.lat = 34.1477849
-        oxmORTBUser.geo.lon = -118.1445155
-        oxmORTBUser.ext!["data"] = ["registration_date": "31.02.2021"]
+        pbmORTBUser.yob = 1981
+        pbmORTBUser.gender = "M"
+        pbmORTBUser.keywords = "key1,key2,key3"
+        pbmORTBUser.geo.lat = 34.1477849
+        pbmORTBUser.geo.lon = -118.1445155
+        pbmORTBUser.ext!["data"] = ["registration_date": "31.02.2021"]
         
-        codeAndDecode(abstract:oxmORTBUser, expectedString:"{\"ext\":{\"data\":{\"registration_date\":\"31.02.2021\"}},\"gender\":\"M\",\"geo\":{\"lat\":34.1477849,\"lon\":-118.1445155},\"keywords\":\"key1,key2,key3\",\"yob\":1981}")
+        codeAndDecode(abstract:pbmORTBUser, expectedString:"{\"ext\":{\"data\":{\"registration_date\":\"31.02.2021\"}},\"gender\":\"M\",\"geo\":{\"lat\":34.1477849,\"lon\":-118.1445155},\"keywords\":\"key1,key2,key3\",\"yob\":1981}")
     }
     
     func testUserEidsToJsonString() {
@@ -466,32 +466,32 @@ class PBMORTBAbstractTest : XCTestCase {
     //MARK: - Utility
     
     func initORTBDevice(ifa: String?) -> PBMORTBDevice {
-        let oxmORTBPDevice = PBMORTBDevice()
-        oxmORTBPDevice.lmt = 1
-        oxmORTBPDevice.devicetype = 1
-        oxmORTBPDevice.make = "Apple"
-        oxmORTBPDevice.model = "iPhone"
-        oxmORTBPDevice.os = "iOS"
-        oxmORTBPDevice.osv = "11.1"
-        oxmORTBPDevice.hwv = "X"
-        oxmORTBPDevice.h = 100
-        oxmORTBPDevice.w = 200
-        oxmORTBPDevice.ppi = 100
-        oxmORTBPDevice.pxratio = 1.5
-        oxmORTBPDevice.js = 1
-        oxmORTBPDevice.geofetch = 1
-        oxmORTBPDevice.language = "en"
-        oxmORTBPDevice.carrier = "AT&T"
-        oxmORTBPDevice.mccmnc = "310-680"
-        oxmORTBPDevice.connectiontype = 6
-        oxmORTBPDevice.ifa = ifa
-        oxmORTBPDevice.didsha1 = "didsha1"
-        oxmORTBPDevice.didmd5 = "didmd5"
-        oxmORTBPDevice.dpidsha1 = "dpidsha1"
-        oxmORTBPDevice.dpidmd5 = "dpidmd5"
-        oxmORTBPDevice.macsha1 = "macsha1"
-        oxmORTBPDevice.macmd5 = "macmd5"
-        return oxmORTBPDevice
+        let pbmORTBPDevice = PBMORTBDevice()
+        pbmORTBPDevice.lmt = 1
+        pbmORTBPDevice.devicetype = 1
+        pbmORTBPDevice.make = "Apple"
+        pbmORTBPDevice.model = "iPhone"
+        pbmORTBPDevice.os = "iOS"
+        pbmORTBPDevice.osv = "11.1"
+        pbmORTBPDevice.hwv = "X"
+        pbmORTBPDevice.h = 100
+        pbmORTBPDevice.w = 200
+        pbmORTBPDevice.ppi = 100
+        pbmORTBPDevice.pxratio = 1.5
+        pbmORTBPDevice.js = 1
+        pbmORTBPDevice.geofetch = 1
+        pbmORTBPDevice.language = "en"
+        pbmORTBPDevice.carrier = "AT&T"
+        pbmORTBPDevice.mccmnc = "310-680"
+        pbmORTBPDevice.connectiontype = 6
+        pbmORTBPDevice.ifa = ifa
+        pbmORTBPDevice.didsha1 = "didsha1"
+        pbmORTBPDevice.didmd5 = "didmd5"
+        pbmORTBPDevice.dpidsha1 = "dpidsha1"
+        pbmORTBPDevice.dpidmd5 = "dpidmd5"
+        pbmORTBPDevice.macsha1 = "macsha1"
+        pbmORTBPDevice.macmd5 = "macmd5"
+        return pbmORTBPDevice
     }
     
     func codeAndDecode<T : PBMORTBAbstract>(abstract:T, expectedString:String, file: StaticString = #file, line: UInt = #line) {

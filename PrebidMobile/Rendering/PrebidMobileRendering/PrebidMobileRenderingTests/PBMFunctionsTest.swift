@@ -21,7 +21,7 @@ class TestPBMFunctions: XCTestCase {
             return true
         }
         
-        PBMFunctions.attempt(toOpen:url, oxmUIApplication:mockUIApplication)
+        PBMFunctions.attempt(toOpen:url, pbmUIApplication:mockUIApplication)
         
         self.waitForExpectations(timeout: 1.0, handler:nil)
     }

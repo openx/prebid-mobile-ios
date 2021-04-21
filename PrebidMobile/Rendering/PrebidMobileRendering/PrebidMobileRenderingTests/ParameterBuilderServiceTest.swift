@@ -46,18 +46,18 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockReachability = MockReachability.forInternetConnection()!
 
         let mockUserDefaults = MockUserDefaults()
-        let oxmUserConsentManager = PBMUserConsentDataManager(userDefaults: mockUserDefaults)
+        let pbmUserConsentManager = PBMUserConsentDataManager(userDefaults: mockUserDefaults)
 
         let paramsDict = PBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            oxmLocationManager: mockLocationManagerSuccessful,
-            oxmDeviceAccessManager: mockDeviceAccessManager,
+            pbmLocationManager: mockLocationManagerSuccessful,
+            pbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
             sdkVersion: "MOCK_SDK_VERSION",
-            oxmUserConsentManager: oxmUserConsentManager,
+            pbmUserConsentManager: pbmUserConsentManager,
             targeting: oxbTargeting,
             extraParameterBuilders: nil
         )

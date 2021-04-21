@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong)id<PBMServerConnectionProtocol> serverConnection;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithServerConnection:(id<PBMServerConnectionProtocol>)oxmServer
+- (instancetype)initWithServerConnection:(id<PBMServerConnectionProtocol>)pbmServer
                             adConfiguration:(PBMAdConfiguration *)adConfiguration;
 
 - (void)makeModels:(PBMAdRequestResponseVAST *)requestResponse

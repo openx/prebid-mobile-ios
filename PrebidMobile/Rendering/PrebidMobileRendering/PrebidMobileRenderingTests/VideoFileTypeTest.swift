@@ -12,7 +12,7 @@ import XCTest
 class VideoFileTypeTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegate {
     
     let viewController = MockViewController()
-    var oxmVideoCreative:PBMVideoCreative!
+    var pbmVideoCreative:PBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationCreativeDidDisplay:XCTestExpectation!
@@ -89,17 +89,17 @@ class VideoFileTypeTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDeleg
                     
                     self.expectationDownloadCompleted.fulfill()
                     
-                    guard let oxmVideoCreative = creativesArray?.first as? PBMVideoCreative else {
+                    guard let pbmVideoCreative = creativesArray?.first as? PBMVideoCreative else {
                         XCTFail("Could not cast creative as PBMVideoCreative")
                         return
                     }
                     
-                    oxmVideoCreative.creativeViewDelegate = self
-                    oxmVideoCreative.videoView.videoViewDelegate = self
-                    self.oxmVideoCreative = oxmVideoCreative
+                    pbmVideoCreative.creativeViewDelegate = self
+                    pbmVideoCreative.videoView.videoViewDelegate = self
+                    self.pbmVideoCreative = pbmVideoCreative
                     
                     DispatchQueue.main.async {
-                        self.oxmVideoCreative.display(withRootViewController: self.viewController)
+                        self.pbmVideoCreative.display(withRootViewController: self.viewController)
                     }
                 }
             )

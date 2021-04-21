@@ -288,7 +288,7 @@ class ModalManagerTestOther : XCTestCase {
         modalManager.forceOrientation(UIInterfaceOrientation.portrait)
     }
     
-    func testOxmDescription() {
+    func testPBMDescription() {
         let modalManager = PBMModalManager()
         
         let expectationOrientation = expectation(description: "UIInterfaceOrientation.portrait")

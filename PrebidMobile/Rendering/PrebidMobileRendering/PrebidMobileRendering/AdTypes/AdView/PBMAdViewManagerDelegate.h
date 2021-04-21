@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (UIViewController *)viewControllerForModalPresentation;
 
-- (void)adLoaded:(PBMAdDetails *)oxmAdDetails;
+- (void)adLoaded:(PBMAdDetails *)pbmAdDetails;
 - (void)failedToLoad:(NSError *)error;
 
 - (void)adDidComplete;

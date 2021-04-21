@@ -30,7 +30,7 @@ class RewardedVideoEventsTest : XCTestCase, PBMCreativeViewDelegate {
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationTrackingEventMidpoint:XCTestExpectation!
 
-    var oxmVideoCreative:PBMVideoCreative!
+    var pbmVideoCreative:PBMVideoCreative!
     
     override func setUp() {
         MockServer.singleton().reset()
@@ -111,18 +111,18 @@ class RewardedVideoEventsTest : XCTestCase, PBMCreativeViewDelegate {
 
                     self.expectationDownloadCompleted.fulfill()
 
-                    guard let oxmVideoCreative = creatives?.first as? PBMVideoCreative else {
+                    guard let pbmVideoCreative = creatives?.first as? PBMVideoCreative else {
                         XCTFail("Could not cast creative as PBMRewardedVideoCreative")
                         return
                     }
 
 
-                    self.oxmVideoCreative = oxmVideoCreative
-                    oxmVideoCreative.creativeViewDelegate = self
+                    self.pbmVideoCreative = pbmVideoCreative
+                    pbmVideoCreative.creativeViewDelegate = self
 
                     DispatchQueue.main.async {
-                        self.vc.view.addSubview(self.oxmVideoCreative.view!)
-                        self.oxmVideoCreative.display(withRootViewController: self.vc)
+                        self.vc.view.addSubview(self.pbmVideoCreative.view!)
+                        self.pbmVideoCreative.display(withRootViewController: self.vc)
                     }
                 })
 
@@ -257,17 +257,17 @@ class RewardedVideoEventsTest : XCTestCase, PBMCreativeViewDelegate {
     func creativeFactorySuccess(creative:PBMAbstractCreative)->() {
         self.expectationDownloadCompleted.fulfill()
     
-        guard let oxmVideoCreative = creative as? PBMVideoCreative else {
+        guard let pbmVideoCreative = creative as? PBMVideoCreative else {
             XCTFail("Could not cast \(creative) as PBMVideoCreative")
             return
         }
         
-        self.oxmVideoCreative = oxmVideoCreative
-        oxmVideoCreative.creativeViewDelegate = self
+        self.pbmVideoCreative = pbmVideoCreative
+        pbmVideoCreative.creativeViewDelegate = self
         
         DispatchQueue.main.async {
-            self.vc.view.addSubview(self.oxmVideoCreative.view!)
-            self.oxmVideoCreative.display(withRootViewController: self.vc)
+            self.vc.view.addSubview(self.pbmVideoCreative.view!)
+            self.pbmVideoCreative.display(withRootViewController: self.vc)
         }
     }
     

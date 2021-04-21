@@ -11,7 +11,7 @@
 #import "PBMAdUnitConfig.h"
 #import "PBMAdUnitConfig+Internal.h"
 #import "PBMError.h"
-#import "OXAORTB.h"
+#import "PBMORTBPrebid.h"
 #import "PBMPrebidParameterBuilder.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMSDKConfiguration+InternalState.h"

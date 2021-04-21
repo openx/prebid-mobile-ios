@@ -12,32 +12,32 @@ import XCTest
 class PBMAbstractCreativeTest: XCTestCase, PBMCreativeResolutionDelegate {
     
     var expectation:XCTestExpectation?
-    var oxmAbstractCreative: PBMAbstractCreative!
+    var pbmAbstractCreative: PBMAbstractCreative!
     let msgAbstractFunctionCalled = "Abstract function called"
     
     private var logToFile: LogToFileLock?
     
     override func setUp() {
         super.setUp()
-        self.oxmAbstractCreative = PBMAbstractCreative(creativeModel:PBMCreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
-        self.oxmAbstractCreative.creativeResolutionDelegate = self
+        self.pbmAbstractCreative = PBMAbstractCreative(creativeModel:PBMCreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
+        self.pbmAbstractCreative.creativeResolutionDelegate = self
     }
     
     override func tearDown() {
         logToFile = nil
-        self.oxmAbstractCreative = nil;
+        self.pbmAbstractCreative = nil;
         
         super.tearDown()
     }
     
     func testIsOpened() {
-        XCTAssertFalse(self.oxmAbstractCreative.isOpened)
+        XCTAssertFalse(self.pbmAbstractCreative.isOpened)
     }
     
     func testSetupViewBackground() {
         logToFile = .init()
         
-        self.oxmAbstractCreative.setupView(withThread: MockNSThread(mockIsMainThread: false))
+        self.pbmAbstractCreative.setupView(withThread: MockNSThread(mockIsMainThread: false))
         
         UtilitiesForTesting.checkLogContains("Attempting to set up view on background thread")
     }
@@ -45,7 +45,7 @@ class PBMAbstractCreativeTest: XCTestCase, PBMCreativeResolutionDelegate {
     func testModalManagerDidFinishPop() {
         logToFile = .init()
         let state = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
-        self.oxmAbstractCreative.modalManagerDidFinishPop(state)
+        self.pbmAbstractCreative.modalManagerDidFinishPop(state)
 		let log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains(msgAbstractFunctionCalled))
     }
@@ -53,26 +53,26 @@ class PBMAbstractCreativeTest: XCTestCase, PBMCreativeResolutionDelegate {
     func testModalManagerDidLeaveApp() {
         logToFile = .init()
         let state = PBMModalState(view: PBMWebView(), adConfiguration:PBMAdConfiguration(), displayProperties:PBMInterstitialDisplayProperties(), onStatePopFinished: nil, onStateHasLeftApp: nil)
-        oxmAbstractCreative.modalManagerDidLeaveApp(state)
+        pbmAbstractCreative.modalManagerDidLeaveApp(state)
         let log = PBMLog.singleton.getLogFileAsString()
         XCTAssertTrue(log.contains(msgAbstractFunctionCalled))
     }
     
     func testOnResolutionCompleted() {
         expectation = self.expectation(description: "Expected downloadCompleted to be called")
-        oxmAbstractCreative.isDownloaded = false
-        oxmAbstractCreative.onResolutionCompleted()
+        pbmAbstractCreative.isDownloaded = false
+        pbmAbstractCreative.onResolutionCompleted()
         waitForExpectations(timeout: 4, handler: { _ in
-            XCTAssertTrue(self.oxmAbstractCreative.isDownloaded)
+            XCTAssertTrue(self.pbmAbstractCreative.isDownloaded)
         })
     }
     
     func testOnResolutionFailed() {        
         self.expectation = self.expectation(description: "Expected downloadFailed to be called")
-        oxmAbstractCreative.isDownloaded = false
-        oxmAbstractCreative.onResolutionFailed(NSError(domain: "OpenXSDK", code: 123, userInfo: [:]))
+        pbmAbstractCreative.isDownloaded = false
+        pbmAbstractCreative.onResolutionFailed(NSError(domain: "OpenXSDK", code: 123, userInfo: [:]))
         waitForExpectations(timeout: 4, handler: { _ in
-            XCTAssertTrue(self.oxmAbstractCreative.isDownloaded)
+            XCTAssertTrue(self.pbmAbstractCreative.isDownloaded)
         })
     }
     
@@ -85,14 +85,14 @@ class PBMAbstractCreativeTest: XCTestCase, PBMCreativeResolutionDelegate {
     
     func creativeFailed(_ error: Error) {
         expectation?.fulfill()
-        XCTAssertTrue(self.oxmAbstractCreative.isDownloaded)
+        XCTAssertTrue(self.pbmAbstractCreative.isDownloaded)
     }
     
     //MARK - Open Measurement
 
     func testOpenMeasurement() {
         logToFile = .init()
-        self.oxmAbstractCreative.createOpenMeasurementSession()
+        self.pbmAbstractCreative.createOpenMeasurementSession()
         UtilitiesForTesting.checkLogContains("Abstract function called")
     }
 }

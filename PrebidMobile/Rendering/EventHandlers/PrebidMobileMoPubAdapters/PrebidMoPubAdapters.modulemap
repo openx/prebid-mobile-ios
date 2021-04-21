@@ -7,9 +7,9 @@
 
 framework module PrebidMobileMoPubAdapters {
     
-    header "PrebidPubAdapters.h"
+    header "PrebidMobileMoPubAdapters.h"
     
-    header "PrebidPubAdapterConfiguration.h"
+    header "PrebidMoPubAdapterConfiguration.h"
     header "PrebidMoPubBannerAdapter.h"
     header "PrebidMoPubInterstitialAdapter.h"
     header "PrebidMoPubRewardedVideoAdapter.h"

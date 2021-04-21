@@ -6,10 +6,12 @@
 //
 
 import Foundation
-import OpenXMockServer
 import UIKit
+
 import GoogleMobileAds
 import PrebidMobileGAMEventHandlers
+
+import OpenXMockServer
 
 let nativeStylesCreative = """
 <html><body>
@@ -190,7 +192,7 @@ struct TestCaseManager {
     EXTRA_OPEN_RTB "[ { "auid":"537454411","openRtb":{ "auid":"537454411", "age":23, "url":"https://url.com", "crr":"carrier",  "ip":"127.0.0.1", "xid":"007", "gen":"MALE", "buyerid":"buyerid", "publisherName": "publisherName", "customdata":"customdata", "keywords":"keyword1,keyword2", "geo":{ "lat":1.0, "lon":2.0 }, "ext":{ "key1":"string", "key2":1, "object":{ "inner":"value" } } } } ]"
     */
     static func updateUserData(_ openRtb: [String: Any]) {
-        let targeting = OXATargeting.shared()
+        let targeting = PBMTargeting.shared()
         
         if let age = openRtb["age"] as? Int {
             targeting.userAge = age
@@ -281,7 +283,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     oxbBannerController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     oxbBannerController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                         
@@ -424,7 +426,7 @@ struct TestCaseManager {
                     return
                 }
                                                 
-                OXATargeting.shared().eids = [
+                PBMTargeting.shared().eids = [
                     [
                         "source" : "liveramp.com",
                         "uids" : [
@@ -510,7 +512,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     gamBannerController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     gamBannerController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 gamBannerController.gamAdUnitId = "/21808260008/prebid_oxb_320x50_banner_static"
@@ -544,11 +546,11 @@ struct TestCaseManager {
                     return
                 }
                         
-                let mockServer = OXMMockServer()
+                let mockServer = PBMMockServer()
                 mockServer.setRandomNoBids();
                         
                 adapterVC.postActionClosure = {
-                    let mockServer = OXMMockServer()
+                    let mockServer = PBMMockServer()
                     mockServer.cancelRandomNoBids();
                 }
                         
@@ -678,7 +680,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     mopubBannerController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     mopubBannerController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 mopubBannerController.moPubAdUnitId = "2b664935d41c4f4f8b8148ae39d22c99"
@@ -696,11 +698,11 @@ struct TestCaseManager {
                     return
                 }
                         
-                let mockServer = OXMMockServer()
+                let mockServer = PBMMockServer()
                 mockServer.setRandomNoBids();
                         
                 adapterVC.postActionClosure = {
-                    let mockServer = OXMMockServer()
+                    let mockServer = PBMMockServer()
                     mockServer.cancelRandomNoBids();
                 }
 
@@ -811,7 +813,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     oxbInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     oxbInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 adapterVC.setup(adapter: oxbInterstitialController)
@@ -909,7 +911,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     gamInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     gamInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 gamInterstitialController.gamAdUnitId = "/21808260008/prebid_oxb_320x480_html_interstitial_static"
@@ -997,7 +999,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     mopubInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     mopubInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 mopubInterstitialController.moPubAdUnitId = "caa0c9304d6145da86bdc0e4d79e966b"
@@ -1064,7 +1066,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     oxbInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     oxbInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 oxbInterstitialController.adFormat = .video
@@ -1268,7 +1270,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     gamInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     gamInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 gamInterstitialController.adFormat = .video
@@ -1344,7 +1346,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     mopubInterstitialController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     mopubInterstitialController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 mopubInterstitialController.adFormat = .video
@@ -1401,7 +1403,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     oxbBannerController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     oxbBannerController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 oxbBannerController.adSizes = [CGSize(width: 300, height: 250)]
@@ -1460,13 +1462,13 @@ struct TestCaseManager {
                         
                         var prebidConfigId = "mock-video-outstream"
                         let adSize = CGSize(width: 300, height: 250)
-                        let adBannerView = OXABannerView(frame: CGRect(origin: .zero, size: adSize),
+                        let adBannerView = PBMBannerView(frame: CGRect(origin: .zero, size: adSize),
                                                          configId: prebidConfigId,
                                                          adSize: adSize)
                         adBannerView.adFormat = .video
                         adBannerView.videoPlacementType = .inFeed
                         adBannerView.delegate = feedVC
-                        adBannerView.accessibilityIdentifier = "OXABannerView"
+                        adBannerView.accessibilityIdentifier = "PBMBannerView"
                         
                         if let adUnitContext = AppConfiguration.shared.adUnitContext {
                             for dataPair in adUnitContext {
@@ -1571,7 +1573,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     gamBannerController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     gamBannerController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 gamBannerController.gamAdUnitId = "/21808260008/prebid_oxb_outsream_video"
@@ -1611,12 +1613,12 @@ struct TestCaseManager {
                         let gamAdUnitId = "/21808260008/prebid_oxb_outstream_video_reandom"
                         let validAdSize = kGADAdSizeMediumRectangle
                         let adSize = validAdSize.size
-                        let adEventHandler = OXAGAMBannerEventHandler(adUnitID: gamAdUnitId, validGADAdSizes: [NSValueFromGADAdSize(validAdSize)])
-                        let adBannerView = OXABannerView(configId: prebidConfigId,
+                        let adEventHandler = PBMGAMBannerEventHandler(adUnitID: gamAdUnitId, validGADAdSizes: [NSValueFromGADAdSize(validAdSize)])
+                        let adBannerView = PBMBannerView(configId: prebidConfigId,
                                                          eventHandler: adEventHandler)
                         adBannerView.adFormat = .video
                         adBannerView.delegate = feedVC
-                        adBannerView.accessibilityIdentifier = "OXABannerView"
+                        adBannerView.accessibilityIdentifier = "PBMBannerView"
                         
                         if let adUnitContext = AppConfiguration.shared.adUnitContext {
                             for dataPair in adUnitContext {
@@ -1670,7 +1672,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     oxbRewardedAdController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     oxbRewardedAdController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 adapterVC.setup(adapter: oxbRewardedAdController)
@@ -1755,7 +1757,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     gamRewardedAdController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     gamRewardedAdController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 gamRewardedAdController.gamAdUnitId = "/21808260008/prebid_oxb_rewarded_video_static"
@@ -1828,7 +1830,7 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     mopubRewardedAdController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     mopubRewardedAdController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
                 mopubRewardedAdController.moPubAdUnitId = "cf3f015774b148ea9979d27da8c4f8ed"
@@ -2184,7 +2186,7 @@ struct TestCaseManager {
                     oxbBannerController.prebidConfigId = "621da6c1-6ab6-464d-a955-b4e447eaedcb"
                 }
                  
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbBannerController.nativeAdConfig = nativeAdConfig
                         
@@ -2205,7 +2207,7 @@ struct TestCaseManager {
                 oxbBannerController.prebidConfigId = "mock-banner-native-styles"
                 oxbBannerController.adSizes = [CGSize(width: 320, height: 240)]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreativeKeys
                 oxbBannerController.nativeAdConfig = nativeAdConfig
                         
@@ -2226,7 +2228,7 @@ struct TestCaseManager {
                 oxbBannerController.prebidConfigId = "mock-banner-native-styles"
                 oxbBannerController.adSizes = [CGSize(width: 320, height: 240)]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(assets: [])
+                let nativeAdConfig = PBMNativeAdConfiguration(assets: [])
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreativeKeys
                 oxbBannerController.nativeAdConfig = nativeAdConfig
                         
@@ -2246,7 +2248,7 @@ struct TestCaseManager {
                 oxbBannerController.prebidConfigId = "mock-banner-native-styles"       
                 oxbBannerController.adSizes = [CGSize(width: 320, height: 240)]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 //NOTE: there is no `nativeStylesCreative` in the nativeConfig
                 oxbBannerController.nativeAdConfig = nativeAdConfig
                         
@@ -2274,7 +2276,7 @@ struct TestCaseManager {
                  
                 gamBannerController.gamAdUnitId = "/21808260008/prebid_native_fixed"
                 gamBannerController.validAdSizes = [kGADAdSizeMediumRectangle]
-                gamBannerController.nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                gamBannerController.nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                         
                 adapterVC.setup(adapter: gamBannerController)
                         
@@ -2293,7 +2295,7 @@ struct TestCaseManager {
                 gamBannerController.prebidConfigId = "mock-banner-native-styles"
                 gamBannerController.gamAdUnitId = "/21808260008/prebid_native_fixed"
                 gamBannerController.validAdSizes = [kGADAdSizeMediumRectangle]
-                gamBannerController.nativeAdConfig = OXANativeAdConfiguration(assets: [])
+                gamBannerController.nativeAdConfig = PBMNativeAdConfiguration(assets: [])
                         
                 adapterVC.setup(adapter: gamBannerController)
                         
@@ -2312,7 +2314,7 @@ struct TestCaseManager {
                 gamBannerController.prebidConfigId = "mock-banner-native-styles"
                 gamBannerController.gamAdUnitId = "/21808260008/prebid_native"
                 gamBannerController.validAdSizes = [kGADAdSizeFluid]
-                gamBannerController.nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                gamBannerController.nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                         
                 adapterVC.setup(adapter: gamBannerController)
                         
@@ -2339,7 +2341,7 @@ struct TestCaseManager {
                         
                 mopubBannerController.moPubAdUnitId = "76936a9fe0cb4801b193e4f263511ca4"
                 mopubBannerController.adUnitSize = CGSize(width: 300, height: 250);
-                mopubBannerController.nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                mopubBannerController.nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                         
                 adapterVC.setup(adapter: mopubBannerController)
                         
@@ -2358,7 +2360,7 @@ struct TestCaseManager {
                 mopubBannerController.prebidConfigId = "mock-banner-native-styles"
                 mopubBannerController.moPubAdUnitId = "76936a9fe0cb4801b193e4f263511ca4"
                 mopubBannerController.adUnitSize = CGSize(width: 300, height: 250);
-                mopubBannerController.nativeAdConfig = OXANativeAdConfiguration(assets: [])
+                mopubBannerController.nativeAdConfig = PBMNativeAdConfiguration(assets: [])
                         
                 adapterVC.setup(adapter: mopubBannerController)
                         
@@ -2381,12 +2383,12 @@ struct TestCaseManager {
                     oxbNativeAdController.prebidConfigId = "mock-banner-native-styles"
                 } else {
                     // FIXME: Switch the example from QA to the Prod server
-                    OXASDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
-                    OXASDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
+                    PBMSDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
+                    PBMSDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
                     oxbNativeAdController.prebidConfigId = "51fe68ba-aff2-401e-9e15-f3ed89d5c036"
                 }
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2407,7 +2409,7 @@ struct TestCaseManager {
                 
                 oxbNativeAdController.prebidConfigId = "mock-native-links"
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2429,7 +2431,7 @@ struct TestCaseManager {
                         
                 oxbNativeAdFeedController.prebidConfigId = "mock-banner-native-styles"
                                 
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdFeedController.nativeAdConfig = nativeAdConfig
                         
@@ -2454,7 +2456,7 @@ struct TestCaseManager {
                         
                 oxbNativeAdController.prebidConfigId = "mock-native-video-with-end-card"
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2477,7 +2479,7 @@ struct TestCaseManager {
                         
                 oxbNativeAdFeedController.prebidConfigId = "mock-native-video-with-end-card"
                                 
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdFeedController.nativeAdConfig = nativeAdConfig
                         
@@ -2501,7 +2503,7 @@ struct TestCaseManager {
                         
                 oxbNativeAdController.prebidConfigId = "mock-native-video-with-end-card"
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 oxbNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2512,7 +2514,7 @@ struct TestCaseManager {
 
             // MARK: ---- Native (MoPub) ----
             
-            TestCase(title: "Native Ad (MoPub) [OK, OXA Native AdAdapter]",
+            TestCase(title: "Native Ad (MoPub) [OK, PBM Native AdAdapter]",
                      tags: [.native, .mopub, .server, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
@@ -2525,14 +2527,14 @@ struct TestCaseManager {
                     mopubNativeAdController.prebidConfigId = "mock-banner-native-styles"
                 } else {
                     // FIXME: Switch the example from QA to the Prod server
-                    OXASDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
-                    OXASDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
+                    PBMSDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
+                    PBMSDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
                     mopubNativeAdController.prebidConfigId = "51fe68ba-aff2-401e-9e15-f3ed89d5c036"
                 }
                 mopubNativeAdController.moPubAdUnitId = "dc125bad5c124b0b896ef1407b9dfd86"
                 mopubNativeAdController.adRenderingViewClass = MoPubNativeAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdController.nativeAdConfig = nativeAdConfig
                         
                 adapterVC.setup(adapter: mopubNativeAdController)
@@ -2540,7 +2542,7 @@ struct TestCaseManager {
                 setupCustomParams(for: mopubNativeAdController.prebidConfigId)
             }),
             
-            TestCase(title: "Native Ad (MoPub) [OK, OXA Native AdAdapter, Nib]",
+            TestCase(title: "Native Ad (MoPub) [OK, PBM Native AdAdapter, Nib]",
                      tags: [.native, .mopub, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
@@ -2553,7 +2555,7 @@ struct TestCaseManager {
                 mopubNativeAdController.moPubAdUnitId = "dc125bad5c124b0b896ef1407b9dfd86"
                 mopubNativeAdController.adRenderingViewClass = MoPubNativeAdViewWithNib.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdController.nativeAdConfig = nativeAdConfig
                         
                 adapterVC.setup(adapter: mopubNativeAdController)
@@ -2561,7 +2563,7 @@ struct TestCaseManager {
                 setupCustomParams(for: mopubNativeAdController.prebidConfigId)
             }),
             
-            TestCase(title: "Native Ad Feed (MoPub) [OK, OXA Native AdAdapter]",
+            TestCase(title: "Native Ad Feed (MoPub) [OK, PBM Native AdAdapter]",
                      tags: [.native, .mopub, .mock],
                      exampleVCStoryboardID: "PrebidFeedTableViewController",
                      configurationClosure: { vc in
@@ -2574,7 +2576,7 @@ struct TestCaseManager {
                 mopubNativeAdFeedController.moPubAdUnitId = "dc125bad5c124b0b896ef1407b9dfd86"
                 mopubNativeAdFeedController.adRenderingViewClass = MoPubNativeAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdFeedController.nativeAdConfig = nativeAdConfig
                         
                 feedVC.adapter = mopubNativeAdFeedController
@@ -2597,7 +2599,7 @@ struct TestCaseManager {
                 mopubNativeAdController.moPubAdUnitId = "fcd2188bcce74b63859b663ed1334763"
                 mopubNativeAdController.adRenderingViewClass = MoPubNativeAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdController.nativeAdConfig = nativeAdConfig
                         
                 adapterVC.setup(adapter: mopubNativeAdController)
@@ -2617,14 +2619,14 @@ struct TestCaseManager {
                 if AppConfiguration.shared.useMockServer {
                     mopubNativeAdController.prebidConfigId = "mock-no-bids"
                 } else {
-                    OXASDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
+                    PBMSDKConfiguration.singleton.accountID = "1768035c-74d3-4786-b056-13bd41f34bde"
                     mopubNativeAdController.prebidConfigId = "28259226-68de-49f8-88d6-f0f2fab846e3"
                 }
  
                 mopubNativeAdController.moPubAdUnitId = "3c7add479268476394a1aeae88ee426f"
                 mopubNativeAdController.adRenderingViewClass = MoPubNativeAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdController.nativeAdConfig = nativeAdConfig
                         
                 adapterVC.setup(adapter: mopubNativeAdController)
@@ -2645,7 +2647,7 @@ struct TestCaseManager {
                 mopubNativeAdFeedController.moPubAdUnitId = "3c7add479268476394a1aeae88ee426f"
                 mopubNativeAdFeedController.adRenderingViewClass = MoPubNativeAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdFeedController.nativeAdConfig = nativeAdConfig
                         
                 feedVC.adapter = mopubNativeAdFeedController
@@ -2656,7 +2658,7 @@ struct TestCaseManager {
                 setupCustomParams(for: mopubNativeAdFeedController.prebidConfigId)
             }),
             
-            TestCase(title: "Native Ad Video (MoPub) [OK, OXA Native AdAdapter]",
+            TestCase(title: "Native Ad Video (MoPub) [OK, PBM Native AdAdapter]",
                      tags: [.native, .mopub, .mock],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
@@ -2668,7 +2670,7 @@ struct TestCaseManager {
                 mopubNativeAdController.moPubAdUnitId = "dc125bad5c124b0b896ef1407b9dfd86"
                 mopubNativeAdController.adRenderingViewClass = MoPubNativeVideoAdView.self
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 mopubNativeAdController.nativeAdConfig = nativeAdConfig
                         
                 adapterVC.setup(adapter: mopubNativeAdController)
@@ -2678,7 +2680,7 @@ struct TestCaseManager {
             
             // MARK: ---- Native (GAM, CustomTemplate) ----
 
-            TestCase(title: "Native Ad (GAM) [OK, OXANativeAd]",
+            TestCase(title: "Native Ad (GAM) [OK, PBMNativeAd]",
                      tags: [.native, .gam, .mock, .server],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
@@ -2691,15 +2693,15 @@ struct TestCaseManager {
                     gamNativeAdController.prebidConfigId = "mock-banner-native-styles"
                 } else {
                     // FIXME: Switch the example from QA to the Prod server
-                    OXASDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
-                    OXASDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
+                    PBMSDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
+                    PBMSDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
                     gamNativeAdController.prebidConfigId = "51fe68ba-aff2-401e-9e15-f3ed89d5c036"
                 }
                 gamNativeAdController.gamAdUnitId = "/21808260008/apollo_custom_template_native_ad_unit"
                 gamNativeAdController.adTypes = [.nativeCustomTemplate]
                 gamNativeAdController.gamCustomTemplateIDs = ["11934135"]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2722,7 +2724,7 @@ struct TestCaseManager {
                 gamNativeAdController.adTypes = [.nativeCustomTemplate]
                 gamNativeAdController.gamCustomTemplateIDs = ["11982639"]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2745,7 +2747,7 @@ struct TestCaseManager {
                 gamNativeAdController.adTypes = [.nativeCustomTemplate]
                 gamNativeAdController.gamCustomTemplateIDs = ["11982639"]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2754,7 +2756,7 @@ struct TestCaseManager {
                 setupCustomParams(for: gamNativeAdController.prebidConfigId)
             }),
             
-            TestCase(title: "Native Ad Feed (GAM) [OK, OXANativeAd]",
+            TestCase(title: "Native Ad Feed (GAM) [OK, PBMNativeAd]",
                      tags: [.native, .gam, .mock],
                      exampleVCStoryboardID: "PrebidFeedTableViewController",
                      configurationClosure: { vc in
@@ -2769,7 +2771,7 @@ struct TestCaseManager {
                 gamNativeAdController.adTypes = [.nativeCustomTemplate]
                 gamNativeAdController.gamCustomTemplateIDs = ["11934135"]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2783,7 +2785,7 @@ struct TestCaseManager {
             
             // MARK: ---- Native (GAM, Unified) ----
 
-            TestCase(title: "Native Ad (GAM) [OK, OXANativeAd]",
+            TestCase(title: "Native Ad (GAM) [OK, PBMNativeAd]",
                      tags: [.native, .gam, .mock, .server],
                      exampleVCStoryboardID: "AdapterViewController",
                      configurationClosure: { vc in
@@ -2796,14 +2798,14 @@ struct TestCaseManager {
                     gamNativeAdController.prebidConfigId = "mock-banner-native-styles"
                 } else {
                     // FIXME: Switch the example from QA to the Prod server
-                    OXASDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
-                    OXASDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
+                    PBMSDKConfiguration.singleton.serverURL = "https://prebid.qa.openx.net/openrtb2/auction"
+                    PBMSDKConfiguration.singleton.accountID = "08efa38c-b6b4-48c4-adc0-bcb791caa791"
                     gamNativeAdController.prebidConfigId = "51fe68ba-aff2-401e-9e15-f3ed89d5c036"
                 }
                 gamNativeAdController.gamAdUnitId = "/21808260008/unified_native_ad_unit"
                 gamNativeAdController.adTypes = [.unifiedNative]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2825,7 +2827,7 @@ struct TestCaseManager {
                 gamNativeAdController.gamAdUnitId = "/21808260008/unified_native_ad_unit_static"
                 gamNativeAdController.adTypes = [.unifiedNative]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2847,7 +2849,7 @@ struct TestCaseManager {
                 gamNativeAdController.gamAdUnitId = "/21808260008/unified_native_ad_unit_static"
                 gamNativeAdController.adTypes = [.unifiedNative]
                         
-                let nativeAdConfig = OXANativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
+                let nativeAdConfig = PBMNativeAdConfiguration(testConfigWithAssets: .defaultNativeRequestAssets)
                 nativeAdConfig.nativeStylesCreative = nativeStylesCreative
                 gamNativeAdController.nativeAdConfig = nativeAdConfig
                         
@@ -2871,8 +2873,8 @@ struct TestCaseManager {
         });
     }
     
-    // MALE, FEMALE, OTHER to OXAGender {
-    private static func strToGender(_ gender: String) -> OXAGender {
+    // MALE, FEMALE, OTHER to PBMGender {
+    private static func strToGender(_ gender: String) -> PBMGender {
         switch gender {
             case "MALE":
                 return .male

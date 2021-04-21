@@ -9,9 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSError (oxmError)
+@interface NSError (pbmError)
 
-+ (NSError *)oxmErrorWithDescription:(NSString *)description NS_SWIFT_NAME(oxmError(description:));
++ (NSError *)pbmErrorWithDescription:(NSString *)description NS_SWIFT_NAME(pbmError(description:));
 
 @end
 

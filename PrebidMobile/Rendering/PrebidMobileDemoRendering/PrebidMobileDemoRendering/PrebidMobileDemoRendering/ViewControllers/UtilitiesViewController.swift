@@ -94,7 +94,7 @@ class UtilitiesViewController: FormViewController, GMTSMediationTestSuiteDelegat
     
     private func editNativeAdConfig() {
         if AppConfiguration.shared.nativeAdConfig == nil {
-            AppConfiguration.shared.nativeAdConfig = OXANativeAdConfiguration(assets: [])
+            AppConfiguration.shared.nativeAdConfig = PBMNativeAdConfiguration(assets: [])
             updateNativeAdConfigRow(nativeAdConfigRow)
         }
         let editor = NativeAdConfigController()

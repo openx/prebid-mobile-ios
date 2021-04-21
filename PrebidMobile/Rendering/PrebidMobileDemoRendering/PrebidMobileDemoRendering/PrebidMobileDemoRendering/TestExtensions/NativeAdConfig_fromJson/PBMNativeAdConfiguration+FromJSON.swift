@@ -1,5 +1,5 @@
 //
-//  OXANativeAdConfiguration+FromJSON.swift
+//  PBMNativeAdConfiguration+FromJSON.swift
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-extension OXANativeAdConfiguration {
+extension PBMNativeAdConfiguration {
     convenience init?(json: [String: Any]) {
         guard let rawAssets = json["assets"] as? [[String: Any]] else {
             return nil
         }
-        self.init(assets: rawAssets.compactMap(OXANativeAsset.parse(json:)))
+        self.init(assets: rawAssets.compactMap(PBMNativeAsset.parse(json:)))
         version = json["ver"] as? String
         
         context = enumValue(json["context"])
@@ -24,7 +24,7 @@ extension OXANativeAdConfiguration {
 //        aurlsupport = json["aurlsupport"] as? NSNumber
 //        durlsupport = json["durlsupport"] as? NSNumber
         if let rawTrackers = json["eventtrackers"] as? [[String: Any]] {
-            eventtrackers = rawTrackers.compactMap(OXANativeEventTracker.init(json:))
+            eventtrackers = rawTrackers.compactMap(PBMNativeEventTracker.init(json:))
         }
         privacy = json["privacy"] as? NSNumber
         try? setExt(json["ext"] as? [String: Any])

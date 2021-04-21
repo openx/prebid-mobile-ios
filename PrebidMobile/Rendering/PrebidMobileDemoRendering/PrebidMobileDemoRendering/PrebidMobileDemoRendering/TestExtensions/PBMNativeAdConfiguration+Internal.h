@@ -6,11 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PrebidMobileRendering/OXANativeAdConfiguration.h>
+#import <PrebidMobileRendering/PBMNativeAdConfiguration.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXANativeAdConfiguration()
+@interface PBMNativeAdConfiguration()
 
 @property (nonatomic, copy, nullable, readwrite) NSString *version;
 

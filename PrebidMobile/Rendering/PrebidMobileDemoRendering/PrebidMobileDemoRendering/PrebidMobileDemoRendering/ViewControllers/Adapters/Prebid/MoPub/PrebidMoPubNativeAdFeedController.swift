@@ -13,10 +13,10 @@ import PrebidMobileMoPubAdapters
 class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCompatibleController {
     var prebidConfigId = ""
     var moPubAdUnitId = ""
-    var nativeAdConfig = OXANativeAdConfiguration?.none
+    var nativeAdConfig = PBMNativeAdConfiguration?.none
     var adRenderingViewClass: AnyClass?
     
-    private var adUnit: OXAMoPubNativeAdUnit?
+    private var adUnit: PBMMoPubNativeAdUnit?
     private var theNativeAd: MPNativeAd?
     
     private var adLoadingAllowed = false
@@ -106,7 +106,7 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
         
         self.cleanUp(cell: cell)
         
-        adUnit = OXAMoPubNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        adUnit = PBMMoPubNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {
                 adUnit?.addContextData(dataPair.value, forKey: dataPair.key)
@@ -122,7 +122,7 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
         
             let settings = MPStaticNativeAdRendererSettings();
             settings.renderingViewClass = self.adRenderingViewClass
-            let prebidConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
+            let prebidConfig = PrebidMoPubNativeAdRenderer.rendererConfiguration(with: settings);
             let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
             
             let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId,
@@ -179,8 +179,8 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
     }
 }
 
-extension PrebidMoPubNativeAdFeedController: OXANativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: OXANativeAd) -> UIViewController? {
+extension PrebidMoPubNativeAdFeedController: PBMNativeAdUIDelegate {
+    func viewPresentationController(for nativeAd: PBMNativeAd) -> UIViewController? {
         return rootTableViewController
     }
 }

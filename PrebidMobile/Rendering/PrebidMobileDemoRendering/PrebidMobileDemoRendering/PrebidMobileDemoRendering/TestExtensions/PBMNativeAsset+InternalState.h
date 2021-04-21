@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OXANativeAsset (InternalState)
+@interface PBMNativeAsset (InternalState)
 
 @property (nonatomic, strong, nullable, readwrite) NSNumber *assetID;
 @property (nonatomic, strong) NSString *childType;

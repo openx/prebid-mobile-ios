@@ -1,5 +1,5 @@
 //
-//  OXASDKConfigurationViewController.swift
+//  PBMSDKConfigurationViewController.swift
 //  OpenXInternalTestApp
 //
 //  Copyright © 2018 OpenX. All rights reserved.
@@ -10,8 +10,8 @@ import Eureka
 
 final class OpenXSDKConfigurationController : FormViewController {
     
-    var sdkConfig: OXASDKConfiguration {
-        return OXASDKConfiguration.singleton
+    var sdkConfig: PBMSDKConfiguration {
+        return PBMSDKConfiguration.singleton
     }
     
     override func viewDidLoad() {

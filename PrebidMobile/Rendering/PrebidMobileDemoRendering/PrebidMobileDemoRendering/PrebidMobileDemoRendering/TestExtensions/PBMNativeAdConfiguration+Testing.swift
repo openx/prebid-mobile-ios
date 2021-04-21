@@ -1,5 +1,5 @@
 //
-//  OXANativeAdConfiguration+Testing.swift
+//  PBMNativeAdConfiguration+Testing.swift
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -7,41 +7,41 @@
 
 import Foundation
 
-extension Array where Self.Element == OXANativeAsset {
-    static let defaultNativeRequestAssets: [OXANativeAsset] = [
+extension Array where Self.Element == PBMNativeAsset {
+    static let defaultNativeRequestAssets: [PBMNativeAsset] = [
         {
-            let title = OXANativeAssetTitle(length: 90)
+            let title = PBMNativeAssetTitle(length: 90)
             title.required = true
             return title
         }(),
         {
-            let icon = OXANativeAssetImage()
+            let icon = PBMNativeAssetImage()
             icon.widthMin = 50
             icon.heightMin = 50
             icon.required = true
-            icon.imageType = NSNumber(value: OXAImageAssetType.icon.rawValue)
+            icon.imageType = NSNumber(value: PBMImageAssetType.icon.rawValue)
             return icon
         }(),
         {
-            let image = OXANativeAssetImage()
+            let image = PBMNativeAssetImage()
             image.widthMin = 150
             image.heightMin = 50
             image.required = true
-            image.imageType = NSNumber(value: OXAImageAssetType.main.rawValue)
+            image.imageType = NSNumber(value: PBMImageAssetType.main.rawValue)
             return image
         }(),
         {
-            let desc = OXANativeAssetData(dataType: .desc)
+            let desc = PBMNativeAssetData(dataType: .desc)
             desc.required = true
             return desc
         }(),
         {
-            let cta = OXANativeAssetData(dataType: .ctaText)
+            let cta = PBMNativeAssetData(dataType: .ctaText)
             cta.required = true
             return cta
         }(),
         {
-            let sponsored = OXANativeAssetData(dataType: .sponsored)
+            let sponsored = PBMNativeAssetData(dataType: .sponsored)
             sponsored.required = true
             return sponsored
         }(),
@@ -49,14 +49,14 @@ extension Array where Self.Element == OXANativeAsset {
 }
 
 // TODO: additional parameters for trackers, context, etc. (?)
-extension OXANativeAdConfiguration {
-    convenience init(testConfigWithAssets assets: [OXANativeAsset]) {
+extension PBMNativeAdConfiguration {
+    convenience init(testConfigWithAssets assets: [PBMNativeAsset]) {
         self.init(assets: assets)
         
         self.eventtrackers = [
-            OXANativeEventTracker(event: .impression,
+            PBMNativeEventTracker(event: .impression,
                                   methods: [
-                                    OXANativeEventTrackingMethod.img,
+                                    PBMNativeEventTrackingMethod.img,
                                     .JS,
                                   ].map { NSNumber(value: $0.rawValue) }),
         ]

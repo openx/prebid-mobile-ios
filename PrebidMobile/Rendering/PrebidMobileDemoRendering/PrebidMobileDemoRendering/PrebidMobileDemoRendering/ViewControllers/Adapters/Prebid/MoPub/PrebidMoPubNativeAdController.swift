@@ -14,16 +14,16 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
     
     var prebidConfigId = ""
     var moPubAdUnitId = ""
-    var nativeAdConfig = OXANativeAdConfiguration?.none
+    var nativeAdConfig = PBMNativeAdConfiguration?.none
     var adRenderingViewClass: AnyClass?
     
     private weak var rootController: AdapterViewController?
     
     private let nativeAdViewBox = NativeAdViewBox()
     
-    private var adUnit: OXAMoPubNativeAdUnit?
+    private var adUnit: PBMMoPubNativeAdUnit?
     private var theMoPubNativeAd: MPNativeAd?
-    private var thePrebidNativeAd: OXANativeAd?
+    private var thePrebidNativeAd: PBMNativeAd?
     
     private let fetchDemandSuccessButton = EventReportContainer()
     private let fetchDemandFailedButton = EventReportContainer()
@@ -36,7 +36,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
     private let nativeAdDidDismissModalButton = EventReportContainer()
     private let nativeAdWillLeaveAppButton = EventReportContainer()
     private let nativeAdDidTrackImpressionButton = EventReportContainer()
-    private let nativeAdDidLogEventButtons: [(event: OXANativeEventType, name: String, button: EventReportContainer)] = [
+    private let nativeAdDidLogEventButtons: [(event: PBMNativeEventType, name: String, button: EventReportContainer)] = [
         (.impression, "impression", .init()),
         (.MRC50, "MRC50", .init()),
         (.MRC100, "MRC100", .init()),
@@ -108,7 +108,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
             return
         }
         
-        adUnit = OXAMoPubNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        adUnit = PBMMoPubNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {
                 adUnit?.addContextData(dataPair.value, forKey: dataPair.key)
@@ -130,11 +130,11 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
             
             let settings = MPStaticNativeAdRendererSettings();
             settings.renderingViewClass = adRenderingViewClass
-            let prebidConfig = OXAMoPubNativeAdRenderer.rendererConfiguration(with: settings);
+            let prebidConfig = PrebidMoPubNativeAdRenderer.rendererConfiguration(with: settings);
             let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
             
             
-            OXAMoPubNativeAdUtils.shared().prepareAdObject(targeting!)
+            PrebidMoPubNativeAdUtils.shared().prepareAdObject(targeting!)
             
             let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId, rendererConfigurations: [prebidConfig, mopubConfig!])
             adRequest?.targeting = targeting
@@ -156,7 +156,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
                 
                 self.getNativeAdSuccessButton.isEnabled = true
                 
-                let nativeAdDetectionListener = OXANativeAdDetectionListener { [weak self] nativeAd in
+                let nativeAdDetectionListener = PBMNativeAdDetectionListener { [weak self] nativeAd in
                     guard let self = self else {
                         return
                     }
@@ -170,7 +170,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
                     self?.nativeAdInvalidButton.isEnabled = true
                 }
                 
-                OXAMoPubNativeAdUtils.shared().findNativeAd(in: moPubNativeAd,
+                PrebidMoPubNativeAdUtils.shared().findNativeAd(in: moPubNativeAd,
                                                             nativeAdDetectionListener: nativeAdDetectionListener)
             }
         }
@@ -206,7 +206,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
         ])
     }
     
-    private func setupPrebidNativeAd(_ nativeAd: OXANativeAd) {
+    private func setupPrebidNativeAd(_ nativeAd: PBMNativeAd) {
         self.nativeAdLoadedButton.isEnabled = true
         self.thePrebidNativeAd = nativeAd
         
@@ -244,29 +244,29 @@ extension PrebidMoPubNativeAdController: MPNativeAdDelegate {
     }
 }
 
-extension PrebidMoPubNativeAdController: OXANativeAdTrackingDelegate {
-    func nativeAd(_ nativeAd: OXANativeAd, didLogEvent nativeEvent: OXANativeEventType) {
+extension PrebidMoPubNativeAdController: PBMNativeAdTrackingDelegate {
+    func nativeAd(_ nativeAd: PBMNativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }
-    func nativeAdDidLogClick(_ nativeAd: OXANativeAd) {
+    func nativeAdDidLogClick(_ nativeAd: PBMNativeAd) {
         nativeAdDidClickButton.isEnabled = true
     }
-    func nativeAdDidExpire(_ nativeAd: OXANativeAd) {
+    func nativeAdDidExpire(_ nativeAd: PBMNativeAd) {
         nativeAdDidExpireButton.isEnabled = true
     }
 }
 
-extension PrebidMoPubNativeAdController: OXANativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: OXANativeAd) -> UIViewController? {
+extension PrebidMoPubNativeAdController: PBMNativeAdUIDelegate {
+    func viewPresentationController(for nativeAd: PBMNativeAd) -> UIViewController? {
         return rootController
     }
-    func nativeAdWillLeaveApplication(_ nativeAd: OXANativeAd) {
+    func nativeAdWillLeaveApplication(_ nativeAd: PBMNativeAd) {
         nativeAdWillLeaveAppButton.isEnabled = true
     }
-    func nativeAdWillPresentModal(_ nativeAd: OXANativeAd) {
+    func nativeAdWillPresentModal(_ nativeAd: PBMNativeAd) {
         nativeAdWillPresentModalButton.isEnabled = true
     }
-    func nativeAdDidDismissModal(_ nativeAd: OXANativeAd) {
+    func nativeAdDidDismissModal(_ nativeAd: PBMNativeAd) {
         nativeAdDidDismissModalButton.isEnabled = true
     }
 }

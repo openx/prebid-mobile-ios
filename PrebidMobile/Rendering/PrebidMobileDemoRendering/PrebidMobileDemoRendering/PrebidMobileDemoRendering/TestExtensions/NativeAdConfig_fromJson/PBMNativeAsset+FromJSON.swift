@@ -1,5 +1,5 @@
 //
-//  OXANativeAsset+FromJSON.swift
+//  PBMNativeAsset+FromJSON.swift
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-extension OXANativeAsset {
-    class func parse(json: [String:Any]) -> OXANativeAsset? {
-        var asset: OXANativeAsset!
+extension PBMNativeAsset {
+    class func parse(json: [String:Any]) -> PBMNativeAsset? {
+        var asset: PBMNativeAsset!
         var childDic: [String: Any]!
-        let parsers: [String: ([String: Any])->OXANativeAsset?] = [
-            "data": OXANativeAssetData.init(childJson:),
-            "img": OXANativeAssetImage.init(childJson:),
-            "title": OXANativeAssetTitle.init(childJson:),
-            "video": OXANativeAssetVideo.init(childJson:),
+        let parsers: [String: ([String: Any])->PBMNativeAsset?] = [
+            "data": PBMNativeAssetData.init(childJson:),
+            "img": PBMNativeAssetImage.init(childJson:),
+            "title": PBMNativeAssetTitle.init(childJson:),
+            "video": PBMNativeAssetVideo.init(childJson:),
         ]
         for (key, builder) in parsers {
             if let dic = json[key] as? [String: Any], let result = builder(dic) {
@@ -32,7 +32,7 @@ extension OXANativeAsset {
     }
 }
 
-fileprivate extension OXANativeAssetTitle {
+fileprivate extension PBMNativeAssetTitle {
     convenience init?(childJson: [String: Any]) {
         guard let length = childJson["len"] as? NSNumber else {
             return nil
@@ -41,10 +41,10 @@ fileprivate extension OXANativeAssetTitle {
     }
 }
 
-fileprivate extension OXANativeAssetData {
+fileprivate extension PBMNativeAssetData {
     convenience init?(childJson: [String: Any]) {
         guard let rawDataType = childJson["type"] as? NSNumber,
-              let dataType = OXADataAssetType(rawValue: rawDataType.intValue)
+              let dataType = PBMDataAssetType(rawValue: rawDataType.intValue)
         else {
             return nil
         }
@@ -53,7 +53,7 @@ fileprivate extension OXANativeAssetData {
     }
 }
 
-fileprivate extension OXANativeAssetImage {
+fileprivate extension PBMNativeAssetImage {
     convenience init?(childJson: [String: Any]) {
         self.init()
         imageType = childJson["type"] as? NSNumber
@@ -65,7 +65,7 @@ fileprivate extension OXANativeAssetImage {
     }
 }
 
-fileprivate extension OXANativeAssetVideo {
+fileprivate extension PBMNativeAssetVideo {
     convenience init?(childJson: [String: Any]) {
         guard let mimes = childJson["mimes"] as? [String],
               let minDuration = childJson["minDuration"] as? NSNumber,

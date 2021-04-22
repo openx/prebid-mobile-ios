@@ -8,7 +8,7 @@
 #import "PBMAdUnitConfig.h"
 
 #import "PBMAdConfiguration.h"
-#import "OXMAdFormat.h"
+#import "PBMAdFormatInternal.h"
 
 @interface PBMAdUnitConfig ()
 

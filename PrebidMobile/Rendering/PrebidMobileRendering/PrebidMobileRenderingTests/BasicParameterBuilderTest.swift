@@ -124,7 +124,7 @@ class PBMBasicParameterBuilderTest: XCTestCase {
     
     func testParameterBuilderOutstream() {
         let adConfiguration = PBMAdConfiguration()
-        adConfiguration.adFormat = .video
+        adConfiguration.adFormat = .videoInternal
         adConfiguration.size = CGSize(width: 300, height: 250)
         
         //Run the Builder

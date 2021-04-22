@@ -13,7 +13,7 @@ class SupportedProtocolsParameterBuilderTest : XCTestCase {
 
     func testParameterBuilder() {
         let adConfiguration = PBMAdConfiguration()
-        adConfiguration.adFormat = .display
+        adConfiguration.adFormat = .displayInternal
         
         //Run the Builder
         let sdkConfig = PBMSDKConfiguration()

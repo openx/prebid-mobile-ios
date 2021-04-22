@@ -586,7 +586,7 @@
 		34DBD6E52551AD0B004A07A1 /* PBMORTBNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DBD6E32551AD0B004A07A1 /* PBMORTBNative.m */; };
 		34DE25FE23705CE200622AA0 /* PBMDeepLinkPlusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DE25FD23705CE200622AA0 /* PBMDeepLinkPlusTest.swift */; };
 		34DF6CD925CC4EF600167598 /* PBMNativeAdMediaHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DF6CD125CC4C1500167598 /* PBMNativeAdMediaHooks.m */; };
-		34DFF3B12552F66F00385A40 /* OXMAdFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DFF3592552EFEA00385A40 /* OXMAdFormat.h */; };
+		34DFF3B12552F66F00385A40 /* PBMAdFormatInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DFF3592552EFEA00385A40 /* PBMAdFormatInternal.h */; };
 		34E2FE3B25AF29BA0003C0EA /* PBMViewabilityEventDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E2FE3925AF29BA0003C0EA /* PBMViewabilityEventDetector.h */; };
 		34E2FE3C25AF29BA0003C0EA /* PBMViewabilityEventDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2FE3A25AF29BA0003C0EA /* PBMViewabilityEventDetector.m */; };
 		34E2FE4225AF2AAC0003C0EA /* PBMViewabilityEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E2FE4025AF2AAC0003C0EA /* PBMViewabilityEvent.h */; };
@@ -1278,7 +1278,7 @@
 		34DF8FEC247C0C890091D6E5 /* PBMSDKConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMSDKConfiguration.m; sourceTree = "<group>"; };
 		34DF8FEF247C18340091D6E5 /* PBMPrebidParameterBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMPrebidParameterBuilder.h; sourceTree = "<group>"; };
 		34DF8FF0247C18340091D6E5 /* PBMPrebidParameterBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMPrebidParameterBuilder.m; sourceTree = "<group>"; };
-		34DFF3592552EFEA00385A40 /* OXMAdFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OXMAdFormat.h; path = AdTypes/AdView/OXMAdFormat.h; sourceTree = "<group>"; };
+		34DFF3592552EFEA00385A40 /* PBMAdFormatInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMAdFormatInternal.h; path = AdTypes/AdView/PBMAdFormatInternal.h; sourceTree = "<group>"; };
 		34E2FE3925AF29BA0003C0EA /* PBMViewabilityEventDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMViewabilityEventDetector.h; sourceTree = "<group>"; };
 		34E2FE3A25AF29BA0003C0EA /* PBMViewabilityEventDetector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMViewabilityEventDetector.m; sourceTree = "<group>"; };
 		34E2FE4025AF2AAC0003C0EA /* PBMViewabilityEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMViewabilityEvent.h; sourceTree = "<group>"; };
@@ -3000,7 +3000,7 @@
 				1024D0AF2024563F008F0E40 /* PBMAdConfiguration.h */,
 				1024D0B02024563F008F0E40 /* PBMAdConfiguration.m */,
 				34C48AAD24E148D600B86664 /* PBMAdFormat.h */,
-				34DFF3592552EFEA00385A40 /* OXMAdFormat.h */,
+				34DFF3592552EFEA00385A40 /* PBMAdFormatInternal.h */,
 				AC616E72258B9CAF0010DBBB /* PBMAdPosition.h */,
 				AC616E5E258A3CF30010DBBB /* PBMVideoPlacementType.h */,
 				5B27B67020A068840086F469 /* PBMAdRefreshOptions.h */,
@@ -3527,7 +3527,7 @@
 				34D7106824E580620048CC78 /* PBMInterstitialEventInteractionDelegate.h in Headers */,
 				34D7106924E580620048CC78 /* PBMORTBPmp.h in Headers */,
 				34D7106A24E580620048CC78 /* PBMAdLoadManagerProtocol.h in Headers */,
-				34DFF3B12552F66F00385A40 /* OXMAdFormat.h in Headers */,
+				34DFF3B12552F66F00385A40 /* PBMAdFormatInternal.h in Headers */,
 				34D7106C24E580620048CC78 /* PBMDownloadDataHelper.h in Headers */,
 				34D7106D24E580620048CC78 /* PBMViewExposure.h in Headers */,
 				34D7106E24E580620048CC78 /* UIWindow+PBMExtensions.h in Headers */,

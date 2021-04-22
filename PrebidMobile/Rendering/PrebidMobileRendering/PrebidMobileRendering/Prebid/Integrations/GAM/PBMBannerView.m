@@ -415,7 +415,7 @@
 // MARK: - Static Helpers
 
 + (BOOL)canEventHandler:(id<PBMBannerEventHandler>)eventHandler displayAd:(nonnull PBMAdUnitConfig *)adUnitConfig {
-    if (adUnitConfig.adConfiguration.adFormat != OXMAdFormatNative) {
+    if (adUnitConfig.adConfiguration.adFormat != PBMAdFormatNativeInternal) {
         return YES;
     }
     if (eventHandler.isCreativeRequiredForNativeAds) {
@@ -425,7 +425,7 @@
 }
 
 + (BOOL)canPrebidDisplayAd:(nonnull PBMAdUnitConfig *)adUnitConfig {
-    if (adUnitConfig.adConfiguration.adFormat != OXMAdFormatNative) {
+    if (adUnitConfig.adConfiguration.adFormat != PBMAdFormatNativeInternal) {
         return YES;
     }
     return (adUnitConfig.nativeAdConfig.nativeStylesCreative.length > 0);

@@ -37,7 +37,7 @@ class PBMVastLoaderMultiWrapperTest: XCTestCase {
         
         //Make an PBMAdConfiguration
         let adConfiguration = PBMAdConfiguration()
-        adConfiguration.adFormat = .video
+        adConfiguration.adFormat = .videoInternal
         
         let adLoadManager = MockPBMAdLoadManagerVAST(connection:conn, adConfiguration: adConfiguration)
         

@@ -55,7 +55,7 @@ static NSString * const PBMSSCKeyRotatable = @"rotatable";
 - (nonnull instancetype)init {
     self = [super init];
     if (self) {
-        self.adFormat = OXMAdFormatDisplay;
+        self.adFormat = PBMAdFormatDisplayInternal;
         self.isNative = NO;
         self.isInterstitialAd = NO;
         self.interstitialLayout = PBMInterstitialLayoutUndefined;
@@ -75,7 +75,7 @@ static NSString * const PBMSSCKeyRotatable = @"rotatable";
     self = [self init];
     if (self) {
         NSString *adFormat = dict[PBMSSCKeyAdKind];
-        self.adFormat = [adFormat isEqualToString:PBMSSCKeyVideo] ? OXMAdFormatVideo : OXMAdFormatDisplay;
+        self.adFormat = [adFormat isEqualToString:PBMSSCKeyVideo] ? PBMAdFormatVideoInternal : PBMAdFormatDisplayInternal;
         NSString *interstitialLayout = dict[PBMSSCKeyInterstitialLayout];
         if (interstitialLayout && interstitialLayout.length > 0) {
             self.isInterstitialAd = YES;

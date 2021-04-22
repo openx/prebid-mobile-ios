@@ -9,7 +9,7 @@
 
 #import "PBMCreativeClickHandlerBlock.h"
 #import "PBMVideoPlacementType.h"
-#import "OXMAdFormat.h"
+#import "PBMAdFormatInternal.h"
 #import "PBMAutoRefreshCountConfig.h"
 #import "PBMInterstitialLayout.h"
 
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Request
 
-@property (nonatomic, assign) OXMAdFormat adFormat;
+@property (nonatomic, assign) PBMAdFormatInternal adFormat;
 
 /**
  Indicates whether the ad is native.

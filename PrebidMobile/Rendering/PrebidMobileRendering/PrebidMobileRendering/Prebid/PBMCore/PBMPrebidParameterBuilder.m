@@ -45,8 +45,8 @@
 
 - (void)buildBidRequest:(nonnull PBMORTBBidRequest *)bidRequest {
     
-    OXMAdFormat const adFormat = self.adConfiguration.adConfiguration.adFormat;
-    BOOL const isHTML = (adFormat == OXMAdFormatDisplay);
+    PBMAdFormatInternal const adFormat = self.adConfiguration.adConfiguration.adFormat;
+    BOOL const isHTML = (adFormat == PBMAdFormatDisplayInternal);
     BOOL const isInterstitial = self.adConfiguration.isInterstitial;
     
     bidRequest.requestID = [NSUUID UUID].UUIDString;
@@ -98,7 +98,7 @@
         nextImp.extPrebid.isRewardedInventory = self.adConfiguration.isOptIn;
         nextImp.extContextData = self.adConfiguration.contextDataDictionary;
         switch (adFormat) {
-            case OXMAdFormatDisplay: {
+            case PBMAdFormatDisplayInternal: {
                 PBMORTBBanner * const nextBanner = nextImp.banner;
                 if (formats) {
                     nextBanner.format = formats;
@@ -109,7 +109,7 @@
                 break;
             }
                 
-            case OXMAdFormatVideo: {
+            case PBMAdFormatVideoInternal: {
                 PBMORTBVideo * const nextVideo = nextImp.video;
                 nextVideo.linearity = @(1); // -> linear/in-steam
                 if (formats.count) {
@@ -123,7 +123,7 @@
                 break;
             }
                 
-            case OXMAdFormatNative: {
+            case PBMAdFormatNativeInternal: {
                 PBMORTBNative * const nextNative = nextImp.native;
                 nextNative.request = [self.adConfiguration.nativeAdConfig.markupRequestObject toJsonStringWithError:nil];
                 NSString * const ver = self.adConfiguration.nativeAdConfig.version;

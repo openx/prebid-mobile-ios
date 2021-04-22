@@ -70,7 +70,7 @@ class VideoFileTypeTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDeleg
             
             //Create adConfiguration
             let adConfiguration = PBMAdConfiguration()
-            adConfiguration.adFormat = .video
+            adConfiguration.adFormat = .videoInternal
 //            adConfiguration.domain = "foo.com/inline"
             
             //Create CreativeModel

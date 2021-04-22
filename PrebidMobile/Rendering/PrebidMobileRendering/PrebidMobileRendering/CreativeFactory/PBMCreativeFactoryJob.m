@@ -110,10 +110,10 @@
             return;
         }
         
-        OXMAdFormat adType = self.creativeModel.adConfiguration.adFormat;
-        if (adType == OXMAdFormatVideo) {
+        PBMAdFormatInternal adType = self.creativeModel.adConfiguration.adFormat;
+        if (adType == PBMAdFormatVideoInternal) {
             [self attemptVASTCreative];
-        } else if (adType == OXMAdFormatDisplay || adType == OXMAdFormatNative) {
+        } else if (adType == PBMAdFormatDisplayInternal || adType == PBMAdFormatNativeInternal) {
             [self attemptAUIDCreative];
         }
     });
@@ -190,7 +190,7 @@
 
 - (NSTimeInterval)getTimeInterval {
     PBMAdConfiguration *adConfig = self.creativeModel.adConfiguration;
-    if (adConfig.adFormat == OXMAdFormatVideo || adConfig.presentAsInterstitial) {
+    if (adConfig.adFormat == PBMAdFormatVideoInternal || adConfig.presentAsInterstitial) {
         return PBMSDKConfiguration.singleton.creativeFactoryTimeoutPreRenderContent;
     } else {
         return PBMSDKConfiguration.singleton.creativeFactoryTimeout;

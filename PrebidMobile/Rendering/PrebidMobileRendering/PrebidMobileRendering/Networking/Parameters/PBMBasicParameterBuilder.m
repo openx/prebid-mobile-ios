@@ -114,15 +114,15 @@
 
 - (void)appendFormatSpecificParametersForRequest:(PBMORTBBidRequest *)bidRequest {
     switch (self.adConfiguration.adFormat) {
-        case OXMAdFormatDisplay:
+        case PBMAdFormatDisplayInternal:
             [self appendDisplayParametersForRequest:bidRequest];
             break;
             
-        case OXMAdFormatVideo:
+        case PBMAdFormatVideoInternal:
             [self appendVideoParametersForRequest:bidRequest];
             break;
             
-        case OXMAdFormatNative: {
+        case PBMAdFormatNativeInternal: {
             [self appendNativeParametersForRequest:bidRequest];
             break;
         }

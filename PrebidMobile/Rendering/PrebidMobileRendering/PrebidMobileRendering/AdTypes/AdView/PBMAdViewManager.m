@@ -202,7 +202,7 @@
         if (self.currentCreative.view && self.currentCreative.view.superview) {
             [self.currentCreative.view removeFromSuperview];
         }
-    } else if (self.adConfiguration.adFormat == OXMAdFormatVideo) {
+    } else if (self.adConfiguration.adFormat == PBMAdFormatVideoInternal) {
         self.videoInterstitialDidClose = YES;
     }
     

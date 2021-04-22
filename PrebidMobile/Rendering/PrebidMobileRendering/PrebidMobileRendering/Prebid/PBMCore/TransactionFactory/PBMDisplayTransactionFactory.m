@@ -104,7 +104,7 @@
                                adConfiguration:(PBMAdUnitConfig *)adConfiguration {
     PBMCreativeModel * const model = [[PBMCreativeModel alloc] init];
     NSString *html = nil;
-    if (adConfiguration.adFormat != OXMAdFormatNative) {
+    if (adConfiguration.adFormat != PBMAdFormatNativeInternal) {
         model.html = adMarkup;
     } else {
         if (adConfiguration.nativeAdConfig.nativeStylesCreative.length == 0) {

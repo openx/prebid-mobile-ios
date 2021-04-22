@@ -87,7 +87,7 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
             
             let resultExtras: [AnyHashable : Any] = adObject.localExtras!
             XCTAssertEqual(resultExtras.count, 2)
-            XCTAssertEqual(resultExtras[PBMMoPubConfigIdKey] as! String, configId)
+            XCTAssertEqual(resultExtras[PBMMoPubConfigIdKey] as? String, configId)
             let bid = resultExtras[PBMMoPubAdUnitBidKey] as! NSObject
             XCTAssertTrue(bid.isKind(of: PBMBid.self))
             

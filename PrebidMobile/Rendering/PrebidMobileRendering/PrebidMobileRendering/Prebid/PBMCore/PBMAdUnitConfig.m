@@ -125,11 +125,11 @@ const NSTimeInterval PBMAdPrefetchTime = 3;
 
 // MARK: - Proxied properties
 
-- (OXMAdFormat)internalAdFormat {
+- (PBMAdFormatInternal)internalAdFormat {
     if (self.nativeAdConfig) {
-        return OXMAdFormatNative;
+        return PBMAdFormatNativeInternal;
     } else {
-        return (OXMAdFormat) self.adFormat;
+        return (PBMAdFormatInternal) self.adFormat;
     }
 }
 
@@ -145,12 +145,12 @@ const NSTimeInterval PBMAdPrefetchTime = 3;
 }
 
 - (void)updateAdFormat {
-    const OXMAdFormat newAdFormat = self.internalAdFormat;
+    const PBMAdFormatInternal newAdFormat = self.internalAdFormat;
     if (self.adConfiguration.adFormat == newAdFormat) {
         return;
     }
     self.adConfiguration.adFormat = newAdFormat;
-    self.refreshInterval = ((newAdFormat == OXMAdFormatVideo) ? 0 : PBMDefaultRefreshInterval);
+    self.refreshInterval = ((newAdFormat == PBMAdFormatVideoInternal) ? 0 : PBMDefaultRefreshInterval);
 }
 
 - (void)setIsInterstitial:(BOOL)isInterstitial {

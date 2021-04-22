@@ -307,7 +307,7 @@
     if ([self.displayView isKindOfClass:[PBMClickthroughBrowserView class]]) {
         [self.legalButtonDecorator sendSubviewToBack];
         return; // Must be hidden
-    } else if (self.modalState.adConfiguration.adFormat == OXMAdFormatVideo) {
+    } else if (self.modalState.adConfiguration.adFormat == PBMAdFormatVideoInternal) {
         [self.legalButtonDecorator sendSubviewToBack];
         return; // Must be hidden for opt-in and insterstitial videos
     } else {

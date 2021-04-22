@@ -8,7 +8,7 @@
 #import "PBMConstants.h"
 #import "PBMVideoCreative.h"
 #import "PBMDownloadDataHelper.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMServerResponse.h"
 #import "PBMServerConnectionProtocol.h"
 #import "PBMMacros.h"
@@ -60,13 +60,13 @@
         
         if (!sizeInBytes) {
             NSString *description = [NSString stringWithFormat:@"Unable to determine video file size: %@", url];
-            completionClosure(nil, [OXMError errorWithDescription:description]);
+            completionClosure(nil, [PBMError errorWithDescription:description]);
             return;
         }
         
         if (sizeInBytes.integerValue > maxSize) {
             NSString *description = [NSString stringWithFormat:@"Cannot preRender video at %@. Size of %ld bytes is greater than the maximum size for preloading of %ld bytes.", url, (long)sizeInBytes.integerValue, (long)maxSize];
-            completionClosure(nil, [OXMError errorWithDescription:description]);
+            completionClosure(nil, [PBMError errorWithDescription:description]);
             return;
         }
         
@@ -81,7 +81,7 @@
     
     [self.pbmServerConnection download:url.absoluteString callback:^(PBMServerResponse * _Nonnull response) {
         if (!response) {
-            completionClosure(nil, [OXMError errorWithDescription:[NSString stringWithFormat:@"The response is empty for loading data from %@ ", url]]);
+            completionClosure(nil, [PBMError errorWithDescription:[NSString stringWithFormat:@"The response is empty for loading data from %@ ", url]]);
             return;
         }
         

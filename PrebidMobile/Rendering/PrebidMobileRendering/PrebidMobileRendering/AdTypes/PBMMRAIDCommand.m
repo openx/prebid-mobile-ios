@@ -6,7 +6,7 @@
 //
 
 #import "PBMMRAIDCommand.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "NSString+PBMExtensions.h"
 
 #pragma mark - Private Extension
@@ -28,14 +28,14 @@
     
     if (!url) {
         NSString *message = [NSString stringWithFormat:@"URL is nil"];
-        [OXMError createError:error description:message];
+        [PBMError createError:error description:message];
         return nil;
     }
     
     NSString *mraidPath = [url PBMsubstringFromString:[PBMMRAIDConstants mraidURLScheme]];
     if (!mraidPath) {
         NSString *message = [NSString stringWithFormat:@"URL does not contain MRAID scheme: %@", url];
-        [OXMError createError:error description:message];
+        [PBMError createError:error description:message];
         return nil;
     }
     
@@ -43,7 +43,7 @@
     NSString *commandString = [[components firstObject] lowercaseString];
     if (!commandString || [commandString isEqualToString:@""]) {
         NSString *message = [NSString stringWithFormat:@"Command not found in MRAID url: %@", url];
-        [OXMError createError:error description:message];
+        [PBMError createError:error description:message];
         return nil;
     }
     
@@ -57,7 +57,7 @@
     
     if (!parsedCommandString) {
         NSString *message = [NSString stringWithFormat:@"Unrecognized MRAID command %@", commandString];
-        [OXMError createError:error description:message];
+        [PBMError createError:error description:message];
         return nil;
     }
     
@@ -73,7 +73,7 @@
         }
         else {
             NSString *message = [NSString stringWithFormat:@"Unable to parse MRAID command argument: %@ on url: %@", component, url];
-            [OXMError createError:error description:message];
+            [PBMError createError:error description:message];
             return nil;
         }
     }

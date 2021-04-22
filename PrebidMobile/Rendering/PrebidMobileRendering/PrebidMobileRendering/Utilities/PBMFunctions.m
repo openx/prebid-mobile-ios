@@ -10,7 +10,7 @@
 #import "PBMFunctions+Testing.h"
 
 #import "PBMConstants.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMServerResponse.h"
 #import "PBMLog.h"
 
@@ -156,7 +156,7 @@ static NSString * const PBMPlistExt = @"plist";
 + (nullable PBMJsonDictionary *)dictionaryFromJSONString:(nonnull NSString *)jsonString error:(NSError* _Nullable __autoreleasing * _Nullable)error {
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     if (!jsonData) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Could not convert jsonString to data: %@", jsonString]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Could not convert jsonString to data: %@", jsonString]];
         return nil;
     }
     
@@ -165,18 +165,18 @@ static NSString * const PBMPlistExt = @"plist";
 
 + (nullable PBMJsonDictionary *)dictionaryFromData:(nonnull NSData *)jsonData error:(NSError* _Nullable __autoreleasing * _Nullable)error {
     if (!jsonData) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Invalid JSON data: %@", jsonData]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Invalid JSON data: %@", jsonData]];
         return nil;
     }
     
     id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:error];
     if (!jsonObject) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Could not convert json data to jsonObject: %@", jsonData]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Could not convert json data to jsonObject: %@", jsonData]];
         return nil;
     }
     
     if (![jsonObject isKindOfClass:[PBMJsonDictionary class]]) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Could not cast jsonObject to JsonDictionary: %@", jsonData]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Could not cast jsonObject to JsonDictionary: %@", jsonData]];
         return nil;
     }
     
@@ -185,7 +185,7 @@ static NSString * const PBMPlistExt = @"plist";
 
 + (nullable NSString *)toStringJsonDictionary:(nonnull PBMJsonDictionary *)jsonDictionary error:(NSError* _Nullable __autoreleasing * _Nullable)error {
     if (![NSJSONSerialization isValidJSONObject:jsonDictionary]) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Not valid JSON object: %@", jsonDictionary]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Not valid JSON object: %@", jsonDictionary]];
         return nil;
     }
     
@@ -197,13 +197,13 @@ static NSString * const PBMPlistExt = @"plist";
     }
     
     if (!data) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Could not convert JsonDictionary: %@", jsonDictionary]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Could not convert JsonDictionary: %@", jsonDictionary]];
         return nil;
     }
     
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if (!jsonString) {
-        [OXMError createError:error description:[NSString stringWithFormat:@"Could not convert JsonDictionary: %@", jsonDictionary]];
+        [PBMError createError:error description:[NSString stringWithFormat:@"Could not convert JsonDictionary: %@", jsonDictionary]];
         return nil;
     }
     

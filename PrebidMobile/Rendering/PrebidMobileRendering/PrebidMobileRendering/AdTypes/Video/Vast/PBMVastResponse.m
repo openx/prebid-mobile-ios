@@ -7,7 +7,7 @@
 
 #import "PBMVastResponse.h"
 
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMVastInlineAd.h"
 #import "PBMVastWrapperAd.h"
 #import "PBMVastCreativeLinear.h"
@@ -52,7 +52,7 @@
 
             PBMVastResponse *unwrappedVastResponse = wrapper.vastResponse;
             if (!unwrappedVastResponse) {
-                [OXMError createError:error message:@"No nextResponse on a wrapper" type:PBMErrorTypeServerError];
+                [PBMError createError:error message:@"No nextResponse on a wrapper" type:PBMErrorTypeServerError];
                 return nil;
             }
             
@@ -69,14 +69,14 @@
         }
         else {
             NSString *message = [NSString stringWithFormat:@"Encountered unexpected class type: %@", ad];
-            [OXMError createError:error message:message type:PBMErrorTypeInternalError];
+            [PBMError createError:error message:message type:PBMErrorTypeInternalError];
             return nil;
         }
     }
     
     //Post-flattening, we should have at least 1 ad
     if (inlineAdAccumulator.count == 0) {
-        [OXMError createError:error message:@"No Inline Ads found during wrapper flattening" type:PBMErrorTypeInternalError];
+        [PBMError createError:error message:@"No Inline Ads found during wrapper flattening" type:PBMErrorTypeInternalError];
         return nil;
     }
     

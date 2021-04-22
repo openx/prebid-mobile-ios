@@ -7,7 +7,7 @@
 
 #import "PBMVastAdsBuilder.h"
 
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMError.h"
 #import "PBMLog.h"
 #import "PBMAdDetails.h"
@@ -130,7 +130,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
 - (void)buildAds:(nonnull NSData *)data wrapperAd:(PBMVastWrapperAd *)wrapperAd completion:(PBMVastAdsBuilderWrapperCompletionBlock)completionBlock {
     
     if (wrapperAd && (wrapperAd.depth > self.maximumWrapperDepth)) {
-        NSError *error = [OXMError errorWithDescription:@"Wrapper limit reached, as defined by the video player. Too many Wrapper responses have been received with no InLine response." statusCode:PBMErrorCodeUndefined];
+        NSError *error = [PBMError errorWithDescription:@"Wrapper limit reached, as defined by the video player. Too many Wrapper responses have been received with no InLine response." statusCode:PBMErrorCodeUndefined];
         completionBlock(error);
         return;
     }
@@ -140,7 +140,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
     if (!parsedResponse) {
         NSString *strVast = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSString *message = [NSString stringWithFormat:@"VAST Parsing failed. XML was:  %@", strVast];
-        completionBlock([OXMError errorWithDescription:message statusCode:PBMErrorCodeUndefined]);
+        completionBlock([PBMError errorWithDescription:message statusCode:PBMErrorCodeUndefined]);
         return;
     }
 
@@ -148,7 +148,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
     [self handleResponse:parsedResponse forWrapperAd:wrapperAd completion:^(NSError *error) {
         @strongify(self);
         if (!self) {
-            completionBlock([OXMError errorWithDescription:@"VAST error: the ads builder is failed" statusCode:PBMErrorCodeUndefined]);
+            completionBlock([PBMError errorWithDescription:@"VAST error: the ads builder is failed" statusCode:PBMErrorCodeUndefined]);
             return;
         }
         
@@ -177,7 +177,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
     dispatch_sync(self.dispatchQueue, ^{
         @strongify(self);
         if (!self) {
-            completion([OXMError errorWithDescription:@"VAST error: the ads builder is failed" statusCode:PBMErrorCodeUndefined]);
+            completion([PBMError errorWithDescription:@"VAST error: the ads builder is failed" statusCode:PBMErrorCodeUndefined]);
             return;
         }
         
@@ -192,7 +192,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
         
         if (serverResponse.statusCode != 200) {
             NSString *message = [NSString stringWithFormat:@"Server responded with status code %li", (long)serverResponse.statusCode];
-            completion([OXMError errorWithDescription:message statusCode:serverResponse.statusCode]);
+            completion([PBMError errorWithDescription:message statusCode:serverResponse.statusCode]);
             return;
         }
         
@@ -277,13 +277,13 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
 
 - (NSArray<PBMVastAbstractAd *> *)extractAdsWithError:(NSError *__autoreleasing  _Nullable *)error {
     if (!self.rootResponse) {
-        [OXMError createError:error description:@"No Root Response" statusCode:PBMErrorCodeFileNotFound];
+        [PBMError createError:error description:@"No Root Response" statusCode:PBMErrorCodeFileNotFound];
         return nil;
     }
     
     // check for ads & media and fire appropriate URIs
     if ([self checkHasNoAdsAndFireURIs: self.rootResponse]) {
-        [OXMError createError:error description:@"One or more responses had no ads" statusCode:PBMErrorCodeGeneralLinear];
+        [PBMError createError:error description:@"One or more responses had no ads" statusCode:PBMErrorCodeGeneralLinear];
         return nil;
     }
     
@@ -297,7 +297,7 @@ typedef void(^PBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
     }
     
     if (![self hasValidMedia:ads]) {
-        [OXMError createError:error description:@"No Valid Media" statusCode:PBMErrorCodeFileNotFound];
+        [PBMError createError:error description:@"No Valid Media" statusCode:PBMErrorCodeFileNotFound];
         return nil;
     }
     

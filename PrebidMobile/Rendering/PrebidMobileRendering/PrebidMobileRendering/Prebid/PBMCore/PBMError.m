@@ -6,13 +6,63 @@
 //
 
 #import "PBMError.h"
+#import "PBMPublicConstants.h"
 #import "PBMErrorFamily.h"
+#import "PBMLog.h"
 
 static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 
 @implementation PBMError
 
 // MARK: - Setup errors
+
++ (nonnull PBMError *)errorWithDescription:(nonnull NSString *)description {
+    return [PBMError errorWithDescription:description statusCode:PBMErrorCodeGeneral];
+}
+
++ (PBMError *)errorWithDescription:(NSString *)description statusCode:(PBMErrorCode)code {
+    NSDictionary *userInfo = @{
+                               NSLocalizedDescriptionKey: NSLocalizedString(description, nil)
+                               };
+    
+    return [PBMError errorWithDomain:PBMErrorDomain
+                                code:code
+                            userInfo:userInfo];
+}
+
++ (PBMError *)errorWithMessage:(NSString *)message type:(PBMErrorType)type {
+    NSString *desc = [NSString stringWithFormat:@"%@: %@", type, message];
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey:desc};
+    return [PBMError errorWithDomain:PBMErrorDomain code:0 userInfo:userInfo];
+}
+
++ (BOOL)createError:(NSError *__autoreleasing  _Nullable *)error description:(NSString *)description {
+    if (error != NULL) {
+        *error = [PBMError errorWithDescription:description];
+        PBMLogError(@"%@", *error);
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)createError:(NSError *__autoreleasing  _Nullable *)error description:(NSString *)description statusCode:(PBMErrorCode)code {
+    if (error != NULL) {
+        *error = [PBMError errorWithDescription:description statusCode:code];
+        PBMLogError(@"%@", *error);
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)createError:(NSError *__autoreleasing  _Nullable *)error message:(NSString *)message type:(PBMErrorType)type {
+    if (error != NULL) {
+        *error = [PBMError errorWithMessage:message type:type];
+        PBMLogError(@"%@", *error);
+        return YES;
+    }
+    return NO;
+}
+
 
 + (NSError *)requestInProgress {
     return [NSError errorWithDomain:pbmErrorDomain
@@ -180,6 +230,19 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
         return PBMFetchDemandResult_DemandTimedOut;
     }
     return PBMFetchDemandResult_NetworkError;
+}
+
+- (instancetype)init:(nonnull NSString*)msg {
+    NSDictionary *userInfo = @{
+                               NSLocalizedDescriptionKey: NSLocalizedString(msg, nil)
+                               };
+    
+    self = [super initWithDomain:PBMErrorDomain code:PBMErrorCodeGeneral userInfo:userInfo];
+    if (self) {
+        self.message = msg;
+    }
+
+    return self;
 }
 
 // MARK: - Private Helpers

@@ -17,7 +17,7 @@
 #import "PBMCreativeModel.h"
 #import "PBMCreativeResolutionDelegate.h"
 #import "PBMDeviceAccessManager.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMEventManager.h"
 #import "PBMFunctions+Private.h"
 #import "PBMInterstitialDisplayProperties.h"
@@ -486,7 +486,7 @@
         }
         case PBMWebViewStateLoading: {
             id<PBMCreativeResolutionDelegate> const delegate = creative.creativeResolutionDelegate;
-            [delegate creativeFailed:[OXMError errorWithDescription:@"The Ad called 'mraid.unload();'"]];
+            [delegate creativeFailed:[PBMError errorWithDescription:@"The Ad called 'mraid.unload();'"]];
             break;
         }
         default:

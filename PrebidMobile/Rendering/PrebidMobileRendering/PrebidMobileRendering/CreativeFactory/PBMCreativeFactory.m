@@ -8,7 +8,7 @@
 #import "PBMCreativeFactory.h"
 #import "PBMCreativeFactoryJob.h"
 #import "PBMMacros.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMServerConnectionProtocol.h"
 #import "PBMTransaction.h"
 #import "PBMAbstractCreative.h"
@@ -46,7 +46,7 @@
     self.jobs = [self convertCreativeModels];
     
     if (self.jobs.count < 1) {
-        NSError *error = [OXMError errorWithMessage:@"PBMCreativeFactory: There were no jobs for processing" type:PBMErrorTypeInternalError];
+        NSError *error = [PBMError errorWithMessage:@"PBMCreativeFactory: There were no jobs for processing" type:PBMErrorTypeInternalError];
         self.finishedCallback(NULL, error);
         return;
     }

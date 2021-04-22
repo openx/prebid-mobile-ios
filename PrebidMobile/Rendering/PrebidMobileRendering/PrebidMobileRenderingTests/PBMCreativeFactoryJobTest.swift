@@ -116,7 +116,7 @@ class PBMCreativeFactoryJobTest: XCTestCase {
         let job = PBMCreativeFactoryJob(from: model, transaction: transaction, serverConnection: connection, finishedCallback: finishedCallback)
         
         job.state = PBMCreativeFactoryJobStateRunning
-        job.failWithError(OXMError.error(description: ""))
+        job.failWithError(PBMError.error(description: ""))
         
         waitForExpectations(timeout: 5, handler: { _ in
             XCTAssertEqual(job.state, PBMCreativeFactoryJobStateError)

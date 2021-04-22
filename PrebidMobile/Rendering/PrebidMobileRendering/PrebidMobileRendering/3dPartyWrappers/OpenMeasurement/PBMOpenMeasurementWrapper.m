@@ -5,7 +5,7 @@
 //  Copyright © 2018 OpenX. All rights reserved.
 //
 
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMFunctions.h"
 #import "PBMFunctions+Private.h"
 #import "PBMMacros.h"
@@ -86,12 +86,12 @@ static NSString * const PBMOpenMeasurementCustomRefId   = @"";
 
 - (nullable NSString *)injectJSLib:(NSString *)html error:(NSError **)error {
     if (!html) {
-        [OXMError createError:error description:@"Empty ad's html"];
+        [PBMError createError:error description:@"Empty ad's html"];
         return nil;
     }
     
     if (!self.jsLib) {
-        [OXMError createError:error description:@"The js lib for Open Measurement is not loaded."];
+        [PBMError createError:error description:@"The js lib for Open Measurement is not loaded."];
         return nil;
     }
     

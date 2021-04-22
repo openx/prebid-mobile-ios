@@ -9,7 +9,7 @@
 #import "PBMServerConnectionProtocol.h"
 #import "PBMServerResponse.h"
 #import "PBMFunctions+Private.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMError.h"
 
 #import "PBMMacros.h"
@@ -73,7 +73,7 @@ static NSString * const PBMJSLibraryFileDirectory = @"PBMJSLibraries";
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
     
     if (error) {
-        [OXMError createError:&error message:@"Could not remove jslibrary file" type:PBMErrorTypeInternalError];
+        [PBMError createError:&error message:@"Could not remove jslibrary file" type:PBMErrorTypeInternalError];
     }
 }
 
@@ -82,14 +82,14 @@ static NSString * const PBMJSLibraryFileDirectory = @"PBMJSLibraries";
     
     NSError *error = nil;
     if (!jsPath) {
-        [OXMError createError:&error message:[NSString stringWithFormat:@"Could not find %@ script; it will not function", name] type:PBMErrorTypeInternalError];
+        [PBMError createError:&error message:[NSString stringWithFormat:@"Could not find %@ script; it will not function", name] type:PBMErrorTypeInternalError];
         return nil;
     }
 
     NSString *jsScript = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];
     
     if (!jsScript) {
-        [OXMError createError:&error message:[NSString stringWithFormat:@"Could not load %@.js from file", name] type:PBMErrorTypeInternalError];
+        [PBMError createError:&error message:[NSString stringWithFormat:@"Could not load %@.js from file", name] type:PBMErrorTypeInternalError];
         return nil;
     }
     

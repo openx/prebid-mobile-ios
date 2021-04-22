@@ -11,7 +11,7 @@
 #import "PBMServerConnectionProtocol.h"
 #import "PBMServerResponse.h"
 #import "PBMURLComponents.h"
-#import "OXMError.h"
+#import "PBMError.h"
 
 static NSString *vastContentType = @"application/x-www-form-urlencoded";
 
@@ -21,14 +21,14 @@ static NSString *vastContentType = @"application/x-www-form-urlencoded";
     
     PBMURLComponents *urlComponents = [[PBMURLComponents alloc] initWithUrl:url paramsDict:@{}];
     if (!urlComponents) {
-        NSError *error = [OXMError errorWithDescription:@"Failed to create PBMURLComponents" statusCode:PBMErrorCodeUndefined];
+        NSError *error = [PBMError errorWithDescription:@"Failed to create PBMURLComponents" statusCode:PBMErrorCodeUndefined];
         completion(nil, error);
         return;
     }
     
     NSData *data = [[urlComponents argumentsString] dataUsingEncoding:NSUTF8StringEncoding];
     if (!data) {
-        NSError *error = [OXMError errorWithDescription:@"Unable to create Data from PBMURLComponents.argumentsString" statusCode:PBMErrorCodeUndefined];
+        NSError *error = [PBMError errorWithDescription:@"Unable to create Data from PBMURLComponents.argumentsString" statusCode:PBMErrorCodeUndefined];
         completion(nil, error);
         return;
     }
@@ -44,13 +44,13 @@ static NSString *vastContentType = @"application/x-www-form-urlencoded";
         
         if (serverResponse.statusCode != 200) {
             NSString *message = [NSString stringWithFormat:@"Server responded with status code %li", (long)serverResponse.statusCode];
-            completion(nil, [OXMError errorWithDescription:message statusCode:serverResponse.statusCode]);
+            completion(nil, [PBMError errorWithDescription:message statusCode:serverResponse.statusCode]);
             return;
         }
         
         NSData *vastData = serverResponse.rawData;
         if (!vastData) {
-            completion(nil, [OXMError errorWithDescription:@"No Data From Server" statusCode:PBMErrorCodeFileNotFound]);
+            completion(nil, [PBMError errorWithDescription:@"No Data From Server" statusCode:PBMErrorCodeFileNotFound]);
             return;
         }
         

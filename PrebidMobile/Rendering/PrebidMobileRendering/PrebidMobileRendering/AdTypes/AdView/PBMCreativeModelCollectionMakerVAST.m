@@ -18,7 +18,7 @@
 #import "PBMAdRequestResponseVAST.h"
 #import "PBMVastCreativeCompanionAds.h"
 #import "PBMFunctions+Private.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMAdModelEventTracker.h"
 
 
@@ -61,28 +61,28 @@
     PBMVastInlineAd *vastAd = (PBMVastInlineAd *)ads.firstObject;
     
     if (vastAd.creatives == nil || vastAd.creatives.count == 0) {
-        [OXMError createError:error description:errorMessage statusCode:PBMErrorCodeGeneralLinear];
+        [PBMError createError:error description:errorMessage statusCode:PBMErrorCodeGeneralLinear];
         return nil;
     }
     
     // Create the Linear Creative Model
     PBMVastCreativeLinear *creative = (PBMVastCreativeLinear*)vastAd.creatives.firstObject;
     if (creative == nil) {
-        [OXMError createError:error description:errorMessage statusCode:PBMErrorCodeGeneralLinear];
+        [PBMError createError:error description:errorMessage statusCode:PBMErrorCodeGeneralLinear];
         return nil;
     }
     
     PBMVastMediaFile *bestMediaFile = [creative bestMediaFile];
     if (bestMediaFile == nil) {
         errorMessage = @"No suitable media file";
-        [OXMError createError:error description:errorMessage statusCode:PBMErrorCodeFileNotFound];
+        [PBMError createError:error description:errorMessage statusCode:PBMErrorCodeFileNotFound];
         return nil;
     }
     
     PBMCreativeModel *creativeModel = [self createCreativeModelWithAd:vastAd creative:creative mediaFile:bestMediaFile];
     if (creativeModel == nil) {
         errorMessage = @"Error creating CreativeModel";
-        [OXMError createError:error description:errorMessage statusCode:PBMErrorCodeUndefined];
+        [PBMError createError:error description:errorMessage statusCode:PBMErrorCodeUndefined];
         return nil;
     }
     [creatives addObject:creativeModel];

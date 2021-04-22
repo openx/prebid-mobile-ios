@@ -11,7 +11,7 @@
 #import "PBMUserAgentService.h"
 #import "PBMConstants.h"
 #import "PBMMacros.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMError.h"
 
 NSString *const HTTPMethodGET = @"GET";
@@ -191,7 +191,7 @@ static NSString *PBMIsPBMRequestKey = @"PBMIsPBMRequest";
     // Get HTTPURLResponse-specific fields
     NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse *)urlResponse;
     if (httpURLResponse == nil || ![httpURLResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-        serverResponse.error = [OXMError errorWithMessage:@"Response not an HTTPURLResponse" type:PBMErrorTypeServerError];
+        serverResponse.error = [PBMError errorWithMessage:@"Response not an HTTPURLResponse" type:PBMErrorTypeServerError];
         fullServerCallback(serverResponse);
         return;
     }
@@ -208,7 +208,7 @@ static NSString *PBMIsPBMRequestKey = @"PBMIsPBMRequest";
     // Body should be ignored if HEAD method was used
     if (request && ![request.HTTPMethod isEqualToString:HTTPMethodHEAD]) {
         if (!responseData) {
-            serverResponse.error = [OXMError errorWithMessage:@"No data from server" type:PBMErrorTypeServerError];
+            serverResponse.error = [PBMError errorWithMessage:@"No data from server" type:PBMErrorTypeServerError];
             fullServerCallback(serverResponse);
             return;
         }
@@ -221,7 +221,7 @@ static NSString *PBMIsPBMRequestKey = @"PBMIsPBMRequest";
             NSDictionary *json = [PBMFunctions dictionaryFromData:serverResponse.rawData error:&parseError];
             if (!json) {
                 NSString *errorMessage = [NSString stringWithFormat:@"JSON Parsing Error: %@", parseError.localizedDescription];
-                serverResponse.error = [OXMError errorWithMessage:errorMessage type:PBMErrorTypeInternalError];
+                serverResponse.error = [PBMError errorWithMessage:errorMessage type:PBMErrorTypeInternalError];
             } else {
                 serverResponse.jsonDict = json;
             }

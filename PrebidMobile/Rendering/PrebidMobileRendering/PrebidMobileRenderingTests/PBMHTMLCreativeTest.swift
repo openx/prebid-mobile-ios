@@ -303,7 +303,7 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
         logToFile = .init()
 
         let webView = self.htmlCreative.view as! PBMWebView
-        self.htmlCreative.webView(webView, failedToLoadWithError:OXMError.error(message: "Failed to load html", type: .internalError))
+        self.htmlCreative.webView(webView, failedToLoadWithError:PBMError.error(message: "Failed to load html", type: .internalError))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute:{
             let log = PBMLog.singleton.getLogFileAsString()

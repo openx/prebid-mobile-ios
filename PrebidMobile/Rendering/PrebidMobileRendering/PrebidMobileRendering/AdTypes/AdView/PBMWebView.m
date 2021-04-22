@@ -13,7 +13,7 @@
 #import "PBMAbstractCreative.h"
 #import "PBMAdConfiguration.h"
 #import "PBMCreativeModel.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMFunctions+Private.h"
 #import "PBMInterstitialDisplayProperties.h"
 #import "PBMJSLibraryManager.h"
@@ -363,7 +363,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
     PBMLogWhereAmI();
     self.state = PBMWebViewStateUnloaded;
     NSString *errorMessage = [NSString stringWithFormat:@"WebView failed to load. Error description: %@, domain: %@, code: %li, userInfo: %@", error.localizedDescription, error.domain, (long)error.code, error.userInfo];
-    OXMError *oxmError = [OXMError errorWithMessage:PBMErrorTypeInternalError type:errorMessage];
+    PBMError *oxmError = [PBMError errorWithMessage:PBMErrorTypeInternalError type:errorMessage];
     
     @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -438,7 +438,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
     [PBMJSLibraryManager sharedManager].bundle = self.bundle;
     NSString *mraidScript = [[PBMJSLibraryManager sharedManager] getMRAIDLibrary];
     if (!mraidScript) {
-        [OXMError createError:error message:@"Could not load mraid.js from library manager" type:PBMErrorTypeInternalError];
+        [PBMError createError:error message:@"Could not load mraid.js from library manager" type:PBMErrorTypeInternalError];
         return false;
     }
     

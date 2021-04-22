@@ -16,7 +16,7 @@
 #import "PBMTransaction.h"
 #import "PBMMacros.h"
 #import "PBMError.h"
-#import "OXMError.h"
+#import "PBMError.h"
 
 @interface PBMCreativeFactoryJob ()
 
@@ -87,7 +87,7 @@
 - (void)startJobWithTimeInterval:(NSTimeInterval)timeInterval {
     PBMAssert(self.creativeModel);
     if (!self.creativeModel) {
-        [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
+        [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
         return;
     }
     
@@ -97,7 +97,7 @@
     dispatch_async(_dispatchQueue, ^{
         @strongify(self);
         if (self.state != PBMCreativeFactoryJobStateInitialized) {
-            [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Tried to start PBMCreativeFactory twice" type:PBMErrorTypeInternalError]];
+            [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Tried to start PBMCreativeFactory twice" type:PBMErrorTypeInternalError]];
             return;
         }
         
@@ -106,7 +106,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!(self.creativeModel && self.creativeModel.adConfiguration)) {
-            [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
+            [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
             return;
         }
         
@@ -126,7 +126,7 @@
         dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(time, dispatch_get_main_queue(), ^(void){
             @strongify(self);
-            [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Failed to complete in specified time interval" type:PBMErrorTypeInternalError]];
+            [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Failed to complete in specified time interval" type:PBMErrorTypeInternalError]];
         });
     };
     
@@ -135,7 +135,7 @@
 
 - (void)attemptAUIDCreative {
     if (!(self.creativeModel && self.creativeModel.adConfiguration)) {
-        [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
+        [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
         return;
     }
     
@@ -153,19 +153,19 @@
 
 - (void)attemptVASTCreative {
     if (!self.creativeModel) {
-        [self failWithError:[OXMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
+        [self failWithError:[PBMError errorWithMessage:@"PBMCreativeFactoryJob: Undefined creative model" type:PBMErrorTypeInternalError]];
         return;
     }
     
     NSString *strUrl = self.creativeModel.videoFileURL;
     if (!strUrl) {
-        [self failWithError:[OXMError errorWithDescription:@"PBMCreativeFactoryJob: Could not initialize VideoCreative without videoFileURL"]];
+        [self failWithError:[PBMError errorWithDescription:@"PBMCreativeFactoryJob: Could not initialize VideoCreative without videoFileURL"]];
         return;
     }
     
     NSURL *url = [NSURL URLWithString:strUrl];
     if (!url) {
-        [self failWithError:[OXMError errorWithDescription:[NSString stringWithFormat:@"Could not create URL from url string: %@", strUrl]]];
+        [self failWithError:[PBMError errorWithDescription:[NSString stringWithFormat:@"Could not create URL from url string: %@", strUrl]]];
         return;
     }
     

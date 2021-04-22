@@ -24,7 +24,7 @@ class MockMeasurementWrapper : PBMOpenMeasurementWrapper {
     
     override func injectJSLib(_ html: String) throws -> String {
         injectJSLibClosure?(html)
-        throw OXMError.error(description:"PrebidMobileRenderingTests: do nothing")
+        throw PBMError.error(description:"PrebidMobileRenderingTests: do nothing")
     }
     
     override func initializeWebViewSession(_ webView: UIView, contentUrl: String?) -> PBMOpenMeasurementSession? {

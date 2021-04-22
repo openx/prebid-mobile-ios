@@ -22,7 +22,7 @@
 #import "PBMCreativeModel.h"
 #import "PBMDeviceAccessManager.h"
 #import "PBMDownloadDataHelper.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMFunctions+Private.h"
 #import "PBMHTMLCreative.h"
 #import "PBMHTMLFormatter.h"
@@ -108,14 +108,14 @@
     
     NSString *html = self.creativeModel.html;
     if (!html) {
-        [self onResolutionFailed:[OXMError errorWithDescription:@"No HTML in creative data"]];
+        [self onResolutionFailed:[PBMError errorWithDescription:@"No HTML in creative data"]];
         return;
     }
     
     //check if we receive vast data instead of banner
     //https://openxtechinc.atlassian.net/browse/MOBILE-5783
     if (html && [self hasVastTag:html]) {
-        [self onResolutionFailed:[OXMError errorWithDescription:@"Wrong data format (VAST) detected for display ad request"]];
+        [self onResolutionFailed:[PBMError errorWithDescription:@"Wrong data format (VAST) detected for display ad request"]];
         return;
     }
 

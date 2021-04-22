@@ -10,7 +10,7 @@
 
 #import "PBMAdConfiguration.h"
 #import "PBMCreativeModel.h"
-#import "OXMError.h"
+#import "PBMError.h"
 #import "PBMEventManager.h"
 #import "PBMFunctions+Private.h"
 #import "PBMLegalButtonDecorator.h"
@@ -238,19 +238,19 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
 
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest {
     if (!self.preloadedData) {
-        [loadingRequest finishLoadingWithError:[OXMError errorWithDescription:@"data was not pre-fetched"]];
+        [loadingRequest finishLoadingWithError:[PBMError errorWithDescription:@"data was not pre-fetched"]];
         return false;
     }
     
     AVAssetResourceLoadingDataRequest *dataRequest = loadingRequest.dataRequest;
     if (!dataRequest) {
-        [loadingRequest finishLoadingWithError:[OXMError errorWithDescription:@"No data request"]];
+        [loadingRequest finishLoadingWithError:[PBMError errorWithDescription:@"No data request"]];
         return false;
     }
     
     NSUInteger dataLength = self.preloadedData ? self.preloadedData.length : 0;
     if (dataLength == 0) {
-        [loadingRequest finishLoadingWithError:[OXMError errorWithDescription:@"preloadedData is empty!"]];
+        [loadingRequest finishLoadingWithError:[PBMError errorWithDescription:@"preloadedData is empty!"]];
         return false;
     }
     
@@ -262,7 +262,7 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
     
     if (end > dataLength) {
         NSString *message = [NSString stringWithFormat:@"Requested range of %@ goes past the end of preloadedData (length is %ld)", NSStringFromRange(range), (unsigned long)dataLength];
-        [loadingRequest finishLoadingWithError:[OXMError errorWithDescription:message]];
+        [loadingRequest finishLoadingWithError:[PBMError errorWithDescription:message]];
         return false;
     }
     
@@ -832,7 +832,7 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
                 break;
                     
                 case AVPlayerStatusFailed: {
-                    NSError *error = self.avPlayer.currentItem.error ?: [OXMError errorWithDescription:@"Unknown Error"];
+                    NSError *error = self.avPlayer.currentItem.error ?: [PBMError errorWithDescription:@"Unknown Error"];
                     [self.videoViewDelegate videoViewFailedWithError:error];
                 }
                 break;

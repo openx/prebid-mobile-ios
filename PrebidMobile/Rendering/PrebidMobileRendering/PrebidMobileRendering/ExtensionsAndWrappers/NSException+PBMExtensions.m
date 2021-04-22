@@ -6,7 +6,7 @@
 //
 
 #import "NSException+PBMExtensions.h"
-#import "OXMError.h"
+#import "PBMError.h"
 
 @implementation NSException (PBMExtensions)
 

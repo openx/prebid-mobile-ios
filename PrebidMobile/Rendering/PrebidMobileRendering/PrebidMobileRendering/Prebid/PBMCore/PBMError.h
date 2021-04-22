@@ -7,15 +7,19 @@
 
 @import Foundation;
 
+#import "PBMErrorCode.h"
+#import "PBMErrorType.h"
 #import "PBMFetchDemandResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMError : NSObject
+@interface PBMError : NSError
 
-- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)init: (NSString*)message NS_SWIFT_NAME(init(message:));
 
 // MARK: - Setup errors
+@property (nonatomic, copy, nullable) NSString* message;
 
 @property (nonatomic, class, readonly) NSError *requestInProgress;
 
@@ -48,6 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - SDK Misuse Errors
 @property (nonatomic, class, readonly) NSError *replacingMediaDataInMediaView;
+
++ (PBMError *)errorWithDescription:(NSString *)description NS_SWIFT_NAME(error(description:));
++ (PBMError *)errorWithDescription:(NSString *)description statusCode:(PBMErrorCode)code NS_SWIFT_NAME(error(description:statusCode:));
++ (PBMError *)errorWithMessage:(NSString *)message type:(PBMErrorType)type NS_SWIFT_NAME(error(message:type:));
+
++ (BOOL)createError:(NSError* _Nullable __autoreleasing * _Nullable)error description:(NSString *)description;
++ (BOOL)createError:(NSError* _Nullable __autoreleasing * _Nullable)error description:(NSString *)description statusCode:(PBMErrorCode)code;
++ (BOOL)createError:(NSError* _Nullable __autoreleasing * _Nullable)error message:(NSString *)message type:(PBMErrorType)type;
 
 // MARK: - PBMFetchDemandResult parsing
 

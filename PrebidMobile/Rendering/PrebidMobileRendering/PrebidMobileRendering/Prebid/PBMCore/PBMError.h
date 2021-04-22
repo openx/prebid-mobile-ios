@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMError : NSError
 
-//- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)init: (NSString*)message NS_SWIFT_NAME(init(message:));
 
 // MARK: - Setup errors

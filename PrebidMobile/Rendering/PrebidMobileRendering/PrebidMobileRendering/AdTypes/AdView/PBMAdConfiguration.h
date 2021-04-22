@@ -95,10 +95,5 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, nullable) PBMCreativeClickHandlerBlock clickHandlerOverride;
 
-/**
- Init from JSON dictionary
- */
-- (instancetype)initFromSSCDict:(NSDictionary *)dict;
-
 @end
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,7 @@
 
 @implementation PBMAdConfiguration
 
+/*
 static NSString * const PBMSSCKeyAdKind = @"ad_kind";
 static NSString * const PBMSSCKeyVideo = @"video";
 static NSString * const PBMSSCKeyAdUnitID = @"ad_unit_id";
@@ -24,7 +25,7 @@ static NSString * const PBMSSCKeyInterstitialLayout = @"interstitial_layout";
 static NSString * const PBMSSCKeyPortrait = @"portrait";
 static NSString * const PBMSSCKeyLandscape = @"landscape";
 static NSString * const PBMSSCKeyRotatable = @"rotatable";
-
+*/
 #pragma mark - Properties
 
 @synthesize autoRefreshDelay = _autoRefreshDelay;
@@ -69,36 +70,6 @@ static NSString * const PBMSSCKeyRotatable = @"rotatable";
     }
     
     return self;
-}
-
-- (instancetype)initFromSSCDict:(NSDictionary *)dict {
-    self = [self init];
-    if (self) {
-        NSString *adFormat = dict[PBMSSCKeyAdKind];
-        self.adFormat = [adFormat isEqualToString:PBMSSCKeyVideo] ? PBMAdFormatVideoInternal : PBMAdFormatDisplayInternal;
-        NSString *interstitialLayout = dict[PBMSSCKeyInterstitialLayout];
-        if (interstitialLayout && interstitialLayout.length > 0) {
-            self.isInterstitialAd = YES;
-            self.interstitialLayout = [self calculateLayoutFromString:interstitialLayout];
-        }
-    }
-    
-    return self;
-}
-
-- (PBMInterstitialLayout)calculateLayoutFromString:(NSString *)string {
-    NSArray *interstitialTypes = @[PBMSSCKeyPortrait, PBMSSCKeyLandscape, PBMSSCKeyRotatable];
-    NSUInteger item = [interstitialTypes indexOfObject:string];
-    switch (item) {
-        case 0:
-            return PBMInterstitialLayoutPortrait;
-        case 1:
-            return PBMInterstitialLayoutLandscape;
-        case 2:
-            return PBMInterstitialLayoutAspectRatio;
-        default:
-            return PBMInterstitialLayoutUndefined;
-    }
 }
 
 - (BOOL)isEqual:(id)object {

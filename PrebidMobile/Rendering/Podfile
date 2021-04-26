@@ -19,7 +19,6 @@ def event_handlers_project
 end
 
 target 'PrebidMobileGAMEventHandlers' do
-  platform :ios, '9.0'
   event_handlers_project
   gma_pods
 end

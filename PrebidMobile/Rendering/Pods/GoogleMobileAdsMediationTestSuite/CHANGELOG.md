@@ -1,5 +1,11 @@
 # Mediation Test Suite for Google Mobile Ads SDK for iOS
 
+### 1.4.0
+- Add support for Ad Manager with
+  `GoogleMobileAdsMediationTestSuite presentForAdManagerOnViewController:delegate` API.
+- Add ability to register test devices for AdMob via the AdMob UI.
+- Updated MaterialComponents dependency version to 119.0.
+
 ### 1.3.0
 - Minor design updates.
 - Updated MaterialComponents dependency version to 111.0.
@@ -35,7 +41,7 @@
 - Add Native Assets view for Native Ads loading.
 - Add support for legacy 'Banner,Interstitial' ad units.
 - Add safeguards against launching the test suite in production.
-Mediation Test Suite will no longer launch in App Store builds, unless running on a device whose AdMob device ID is explicitly whitelisted. See https://developers.google.com/admob/ios/mediation-test-suite#enabling_testing_in_production for details.
+Mediation Test Suite will no longer launch in App Store builds, unless running on a device whose AdMob device ID is explicitly added to Test Devices. See https://developers.google.com/admob/ios/mediation-test-suite#enabling_testing_in_production for details.
 - Added localization of test suite for JA, KO, VI, ZH-CN.
 - Update Material Components dependency to 76.0.
 

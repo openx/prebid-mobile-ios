@@ -10,9 +10,9 @@
 #import <PrebidMobileRendering/PBMDemandResponseInfo.h>
 #import <PrebidMobileRendering/PBMNativeAdDetectionListener.h>
 
-@class DFPRequest;
-@class GADNativeCustomTemplateAd;
-@class GADUnifiedNativeAd;
+@class GAMRequest;
+@class GADCustomNativeAd;
+@class GADNativeAd;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,10 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedUtils;
 
-- (void)prepareRequest:(DFPRequest *)request demandResponseInfo:(PBMDemandResponseInfo *)demandResponseInfo;
-- (void)findNativeAdInCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd
+- (void)prepareRequest:(GAMRequest *)request
+    demandResponseInfo:(PBMDemandResponseInfo *)demandResponseInfo;
+
+- (void)findNativeAdInCustomTemplateAd:(GADCustomNativeAd *)nativeCustomTemplateAd
              nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener;
-- (void)findNativeAdInUnifiedNativeAd:(GADUnifiedNativeAd *)unifiedNativeAd
+
+- (void)findNativeAdInUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd
             nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener;
 
 @end

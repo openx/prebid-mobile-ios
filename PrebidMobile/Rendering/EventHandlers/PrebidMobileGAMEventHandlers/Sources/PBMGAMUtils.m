@@ -50,7 +50,8 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
     return singleton;
 }
     
-- (void)prepareRequest:(DFPRequest *)request demandResponseInfo:(PBMDemandResponseInfo *)demandResponseInfo {
+- (void)prepareRequest:(GAMRequest *)request
+    demandResponseInfo:(PBMDemandResponseInfo *)demandResponseInfo {
     if (![PBMDFPRequest classesFound]) {
         return;
     }
@@ -78,7 +79,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
     return result;
 }
 
-- (void)findNativeAdInCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd
+- (void)findNativeAdInCustomTemplateAd:(GADCustomNativeAd *)nativeCustomTemplateAd
              nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener
 {
     PBMInvalidNativeAdHandler const reportError = nativeAdDetectionListener.onNativeAdInvalid ?: ^(NSError *error) {};
@@ -94,7 +95,7 @@ static NSString * const PREBID_KEYWORD_PREFIX = @"hb_";
     } nativeAdDetectionListener:nativeAdDetectionListener];
 }
 
-- (void)findNativeAdInUnifiedNativeAd:(GADUnifiedNativeAd *)unifiedNativeAd
+- (void)findNativeAdInUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd
             nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener
 {
     PBMInvalidNativeAdHandler const reportError = nativeAdDetectionListener.onNativeAdInvalid ?: ^(NSError *error) {};

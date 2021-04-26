@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #import "MDCFloatingButton+Animation.h"
+#import "MDCFloatingButton.h"
 
 #if TARGET_IPHONE_SIMULATOR
 float UIAnimationDragCoefficient(void);  // Private API for simulator animation speed
@@ -94,12 +95,16 @@ static const NSTimeInterval kMDCFloatingButtonOpacityExitOffset = 0.150;
 // Because of this, we instead temporarily disable pointer interaction for the button while it
 // animates and reenable (if previously enabled) once the animation has ended.
 #ifdef __IPHONE_13_4
+#if !TARGET_OS_TV
   BOOL wasPointerInteractionEnabled = NO;
   if (@available(iOS 13.4, *)) {
-    wasPointerInteractionEnabled = self.pointerInteractionEnabled;
-    self.pointerInteractionEnabled = NO;
+    if ([self respondsToSelector:@selector(isPointerInteractionEnabled)]) {
+      wasPointerInteractionEnabled = self.pointerInteractionEnabled;
+      self.pointerInteractionEnabled = NO;
+    }
   }
-#endif
+#endif  // !TARGET_OS_TV
+#endif  // __IPHONE_13_4
   void (^expandActions)(void) = ^{
     self.layer.transform =
         CATransform3DConcat(self.layer.transform, [MDCFloatingButton expandTransform]);
@@ -110,10 +115,14 @@ static const NSTimeInterval kMDCFloatingButtonOpacityExitOffset = 0.150;
     [self.layer removeAnimationForKey:kMDCFloatingButtonOpacityKey];
     [self.imageView.layer removeAnimationForKey:kMDCFloatingButtonTransformKey];
 #ifdef __IPHONE_13_4
+#if !TARGET_OS_TV
     if (@available(iOS 13.4, *)) {
-      self.pointerInteractionEnabled = wasPointerInteractionEnabled;
+      if ([self respondsToSelector:@selector(isPointerInteractionEnabled)]) {
+        self.pointerInteractionEnabled = wasPointerInteractionEnabled;
+      }
     }
-#endif
+#endif  // !TARGET_OS_TV
+#endif  // __IPHONE_13_4
     if (completion) {
       completion();
     }
@@ -186,12 +195,16 @@ static const NSTimeInterval kMDCFloatingButtonOpacityExitOffset = 0.150;
 // Because of this, we instead temporarily disable pointer interaction for the button while it
 // animates and reenable (if previously enabled) once the animation has ended.
 #ifdef __IPHONE_13_4
+#if !TARGET_OS_TV
   BOOL wasPointerInteractionEnabled = NO;
   if (@available(iOS 13.4, *)) {
-    wasPointerInteractionEnabled = self.pointerInteractionEnabled;
-    self.pointerInteractionEnabled = NO;
+    if ([self respondsToSelector:@selector(isPointerInteractionEnabled)]) {
+      wasPointerInteractionEnabled = self.pointerInteractionEnabled;
+      self.pointerInteractionEnabled = NO;
+    }
   }
-#endif
+#endif  // !TARGET_OS_TV
+#endif  // __IPHONE_13_4
 
   void (^collapseActions)(void) = ^{
     self.layer.transform =
@@ -203,10 +216,14 @@ static const NSTimeInterval kMDCFloatingButtonOpacityExitOffset = 0.150;
     [self.layer removeAnimationForKey:kMDCFloatingButtonOpacityKey];
     [self.imageView.layer removeAnimationForKey:kMDCFloatingButtonTransformKey];
 #ifdef __IPHONE_13_4
+#if !TARGET_OS_TV
     if (@available(iOS 13.4, *)) {
-      self.pointerInteractionEnabled = wasPointerInteractionEnabled;
+      if ([self respondsToSelector:@selector(isPointerInteractionEnabled)]) {
+        self.pointerInteractionEnabled = wasPointerInteractionEnabled;
+      }
     }
-#endif
+#endif  // !TARGET_OS_TV
+#endif  // __IPHONE_13_4
     if (completion) {
       completion();
     }

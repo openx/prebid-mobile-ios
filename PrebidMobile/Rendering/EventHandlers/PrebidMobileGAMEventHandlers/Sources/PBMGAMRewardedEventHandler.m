@@ -156,14 +156,6 @@ static float const appEventTimeout = 0.6f;
     [self.interactionDelegate didDismissAd];
 }
 
-// MARK: - PBMGADRewardedAdMetadataDelegate protocol
-
-- (void)rewardedAdMetadataDidChange:(nonnull PBMGADRewardedAd *)rewardedAd {
-    if (self.requestRewarded.boxedRewardedAd == rewardedAd && [rewardedAd.adMetadata[@"AdTitle"] isEqual:appEvent]) {
-        [self appEventDetected];
-    }
-}
-
 // MARK: - Private Helpers
 
 - (void)primaryAdReceived {
@@ -223,6 +215,14 @@ static float const appEventTimeout = 0.6f;
     } else if (self.oxbProxyRewarded) {
         self.oxbProxyRewarded = nil;
         // self.recycledRewarded.enableManualImpressions = NO;  // FIXME: (PB-X) Implement impressions
+    }
+}
+
+// MARK: GADAdMetadataDelegate>
+
+- (void)adMetadataDidChange:(nonnull id<GADAdMetadataProvider>)ad {
+    if (self.requestRewarded.boxedRewardedAd == ad && [ad.adMetadata[@"AdTitle"] isEqual:appEvent]) {
+        [self appEventDetected];
     }
 }
 

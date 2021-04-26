@@ -23,6 +23,14 @@
 + (void)presentOnViewController:(nonnull UIViewController *)controller
                        delegate:(nullable id<GMTSMediationTestSuiteDelegate>)delegate;
 
+/// Present the mediation test suite using the Ad Manager application ID from your Info.plist.
+///
+/// \param controller the view controller to present on.
+///
+/// \param delegate an optional test suite delegate.
++ (void)presentForAdManagerOnViewController:(nonnull UIViewController *)controller
+                                   delegate:(nullable id<GMTSMediationTestSuiteDelegate>)delegate;
+
 /// Present the mediation test suite.
 ///
 /// \param appID Your AdMob application ID.

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Boxed properties
 @property (nonatomic, readonly, getter=isReady) BOOL ready;
-@property (nonatomic, weak, nullable) id<GADRewardedAdMetadataDelegate> adMetadataDelegate;
+@property (nonatomic, weak, nullable) id<GADAdMetadataDelegate> adMetadataDelegate;
 @property (nonatomic, readonly, nullable) NSDictionary<GADAdMetadataKey, id> *adMetadata;
 @property (nonatomic, readonly, nullable) NSObject *reward;
 
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
     completionHandler:(nullable GADRewardedAdLoadCompletionHandler)completionHandler;
 
 - (void)presentFromRootViewController:(UIViewController *)viewController
-                             delegate:(id<GADRewardedAdDelegate>)delegate;
+                             delegate:(id<GADFullScreenContentDelegate>)delegate;
 
 @end
 

@@ -7,7 +7,7 @@
 
 @import Foundation;
 
-@class GADUnifiedNativeAd;
+@class GADNativeAd;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 // @property(nonatomic, readonly, nonnull) GADMediaContent *mediaContent;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithUnifiedNativeAd:(GADUnifiedNativeAd *)unifiedNativeAd NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd NS_DESIGNATED_INITIALIZER;
 
 @end
 

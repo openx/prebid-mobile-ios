@@ -14,14 +14,14 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMGADUnifiedNativeAd ()
-@property (nonatomic, strong, readonly) GADUnifiedNativeAd *unifiedNativeAd;
+@property (nonatomic, strong, readonly) GADNativeAd *unifiedNativeAd;
 @end
 
 
 
 @implementation PBMGADUnifiedNativeAd
 
-- (instancetype)initWithUnifiedNativeAd:(GADUnifiedNativeAd *)unifiedNativeAd {
+- (instancetype)initWithUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd {
     if (!(self = [super init])) {
         return nil;
     }
@@ -124,7 +124,7 @@ static NSNumber *classesCheckResult = nil;
         if (!NSClassFromString(@"GADUnifiedNativeAd")) {
             return NO;
         }
-        Class const testClass = [GADUnifiedNativeAd class];
+        Class const testClass = [GADNativeAd class];
         SEL selectors[] = {
             @selector(headline),
             @selector(callToAction),

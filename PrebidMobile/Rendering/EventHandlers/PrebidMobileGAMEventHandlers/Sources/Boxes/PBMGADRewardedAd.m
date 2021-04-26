@@ -12,8 +12,11 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMGADRewardedAd ()
+
 @property (nonatomic, strong, readonly) GADRewardedAd *rewardedAd;
+
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
 @end
 
 
@@ -26,7 +29,9 @@ static NSNumber *classesCheckResult = nil;
     if (!(self = [super init])) {
         return nil;
     }
-    _rewardedAd = [[GADRewardedAd alloc] initWithAdUnitID:adUnitID];
+    
+    // _rewardedAd = [[GADRewardedAd alloc] initWithAdUnitID:adUnitID];
+    
     return self;
 }
 
@@ -61,18 +66,18 @@ static NSNumber *classesCheckResult = nil;
     return result;
 }
 
-- (void)setAdMetadataDelegate:(id<GADRewardedAdMetadataDelegate>)adMetadataDelegate {
+- (void)setAdMetadataDelegate:(id<GADAdMetadataDelegate>)adMetadataDelegate {
     [PBMInvocationHelper invokeVoidSelector:@selector(setAdMetadataDelegate:)
                                  withObject:adMetadataDelegate
                                    onTarget:self.rewardedAd
                                 onException:nil];
 }
 
-- (id<GADRewardedAdMetadataDelegate>)adMetadataDelegate {
-    __block id<GADRewardedAdMetadataDelegate> result = nil;
+- (id<GADAdMetadataDelegate>)adMetadataDelegate {
+    __block id<GADAdMetadataDelegate> result = nil;
     [PBMInvocationHelper invokeProtocolResultSelector:@selector(adMetadataDelegate)
                                              onTarget:self.rewardedAd
-                                       resultProtocol:@protocol(GADRewardedAdMetadataDelegate)
+                                       resultProtocol:@protocol(GADAdMetadataDelegate)
                                             outResult:&result
                                           onException:nil];
     return result;
@@ -108,7 +113,7 @@ static NSNumber *classesCheckResult = nil;
                                 onException:nil];
 }
 
-- (void)presentFromRootViewController:(UIViewController *)viewController delegate:(id<GADRewardedAdDelegate>)delegate {
+- (void)presentFromRootViewController:(UIViewController *)viewController delegate:(id<GADFullScreenContentDelegate>)delegate {
     [PBMInvocationHelper invokeVoidSelector:@selector(loadRequest:completionHandler:)
                                  withObject:viewController
                                 otherObject:delegate

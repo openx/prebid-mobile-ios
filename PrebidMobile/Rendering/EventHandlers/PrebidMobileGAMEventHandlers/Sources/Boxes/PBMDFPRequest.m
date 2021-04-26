@@ -13,17 +13,17 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMDFPRequest ()
-@property (nonatomic, strong, readonly) DFPRequest *request;
+@property (nonatomic, strong, readonly) GAMRequest *request;
 @end
 
 
 @implementation PBMDFPRequest
 
 - (instancetype)init {
-    return (self = [self initWithDFPRequest:[[DFPRequest alloc] init]]);
+    return (self = [self initWithDFPRequest:[[GAMRequest alloc] init]]);
 }
 
-- (instancetype)initWithDFPRequest:(DFPRequest *)dfpRequest {
+- (instancetype)initWithDFPRequest:(GAMRequest *)dfpRequest {
     if (!(self = [super init])) {
         return nil;
     }
@@ -75,7 +75,7 @@ static NSNumber *classesCheckResult = nil;
         if (!NSClassFromString(@"DFPRequest")) {
             return NO;
         }
-        Class const testClass = [DFPRequest class];
+        Class const testClass = [GAMRequest class];
         SEL selectors[] = {
             @selector(customTargeting),
             @selector(setCustomTargeting:),

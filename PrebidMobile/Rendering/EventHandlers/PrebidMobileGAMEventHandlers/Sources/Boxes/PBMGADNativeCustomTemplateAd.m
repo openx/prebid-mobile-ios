@@ -14,14 +14,16 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMGADNativeCustomTemplateAd ()
-@property (nonatomic, strong, readonly) GADNativeCustomTemplateAd *customTemplateAd;
+
+@property (nonatomic, strong, readonly) GADCustomNativeAd *customTemplateAd;
+
 @end
 
 
 
 @implementation PBMGADNativeCustomTemplateAd
 
-- (instancetype)initWithCustomTemplateAd:(GADNativeCustomTemplateAd *)customTemplateAd {
+- (instancetype)initWithCustomTemplateAd:(GADCustomNativeAd *)customTemplateAd {
     if (!(self = [super init])) {
         return nil;
     }
@@ -65,7 +67,7 @@ static NSNumber *classesCheckResult = nil;
         if (!NSClassFromString(@"GADNativeCustomTemplateAd")) {
             return NO;
         }
-        Class const testClass = [GADNativeCustomTemplateAd class];
+        Class const testClass = [GADCustomNativeAd class];
         SEL selectors[] = {
             @selector(stringForKey:),
         };

@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class DFPRequest;
+@class GAMRequest;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, nullable) NSDictionary *customTargeting;
 
 - (instancetype)init; // convenience
-- (instancetype)initWithDFPRequest:(DFPRequest *)dfpRequest NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDFPRequest:(GAMRequest *)dfpRequest NS_DESIGNATED_INITIALIZER;
 
 @end
 

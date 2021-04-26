@@ -12,9 +12,10 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMDFPBanner ()
-@property (nonatomic, strong, readonly) DFPBannerView *banner;
-@end
 
+@property (nonatomic, strong, readonly) GAMBannerView *banner;
+
+@end
 
 
 @implementation PBMDFPBanner
@@ -25,10 +26,12 @@ static NSNumber *classesCheckResult = nil;
     if (!(self = [super init])) {
         return nil;
     }
-    _banner = [[DFPBannerView alloc] init];
-    if (![_banner isKindOfClass:[UIView class]]) {
-        return nil;
-    }
+   
+//    _banner = [[GAMBannerView alloc] init];
+//    if (![_banner isKindOfClass:[UIView class]]) {
+//        return nil;
+//    }
+    
     return self;
 }
 
@@ -229,7 +232,7 @@ static NSNumber *classesCheckResult = nil;
         if (!NSProtocolFromString(@"GADAdSizeDelegate")) {
             return NO;
         }
-        Class const testClass = [DFPBannerView class];
+        Class const testClass = [GAMBannerView class];
         SEL selectors[] = {
             @selector(adUnitID),
             @selector(setAdUnitID:),

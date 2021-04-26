@@ -115,7 +115,8 @@ static float const appEventTimeout = 0.6f;
     }
 }
 
-- (void)adView:(nonnull GADBannerView *)bannerView didFailToReceiveAdWithError:(nonnull GADRequestError *)error {
+- (void)adView:(nonnull GADBannerView *)bannerView
+didFailToReceiveAdWithError:(nonnull NSError *)error {
     if (self.requestBanner.view == bannerView) {
         self.requestBanner = nil;
         [self recycleCurrentBanner];
@@ -150,7 +151,7 @@ static float const appEventTimeout = 0.6f;
     }
 }
 
-- (void)interstitial:(nonnull GADInterstitial *)interstitial
+- (void)interstitial:(nonnull GADInterstitialAd *)interstitial
     didReceiveAppEvent:(nonnull NSString *)name
               withInfo:(nullable NSString *)info
 {

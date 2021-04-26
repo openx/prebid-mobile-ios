@@ -7,7 +7,7 @@
 
 @import Foundation;
 
-@class GADNativeCustomTemplateAd;
+@class GADCustomNativeAd;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSObject *boxedAd;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithCustomTemplateAd:(GADNativeCustomTemplateAd *)customTemplateAd NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCustomTemplateAd:(GADCustomNativeAd *)customTemplateAd NS_DESIGNATED_INITIALIZER;
 
 /// Returns the string corresponding to the specified key or nil if the string is not available.
 - (nullable NSString *)stringForKey:(nonnull NSString *)key;

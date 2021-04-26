@@ -18,7 +18,7 @@ static NSString * const appEvent = @"PrebidAppEvent";
 static float const appEventTimeout = 0.6f;
 
 
-@interface PBMGAMRewardedEventHandler () <GADRewardedAdDelegate, GADRewardedAdMetadataDelegate>
+@interface PBMGAMRewardedEventHandler () <GADFullScreenContentDelegate, GADAdMetadataDelegate>
 
 @property (nonatomic, strong, nullable) PBMGADRewardedAd *requestRewarded;
 @property (nonatomic, strong, nullable) PBMGADRewardedAd *oxbProxyRewarded;
@@ -94,7 +94,8 @@ static float const appEventTimeout = 0.6f;
     // self.requestRewarded.enableManualImpressions = YES; // FIXME: (PB-X) Implement impressions
     
     __weak PBMGAMRewardedEventHandler * const weakSelf = self;
-    [currentRequestRearded loadRequest:dfpRequest completionHandler:^(GADRequestError * _Nullable error) {
+    [currentRequestRearded loadRequest:dfpRequest
+                     completionHandler:^(GADRewardedAd *_Nullable rewardedAd, NSError * _Nullable error) {
         PBMGAMRewardedEventHandler * const strongSelf = weakSelf;
         if (error != nil) {
             [strongSelf rewardedAd:currentRequestRearded didFailToReceiveAdWithError:error];
@@ -123,7 +124,7 @@ static float const appEventTimeout = 0.6f;
 }
 
 - (void)rewardedAd:(nonnull PBMGADRewardedAd *)ad
-    didFailToReceiveAdWithError:(nonnull GADRequestError *)error
+    didFailToReceiveAdWithError:(nonnull NSError *)error
 {
     if (self.requestRewarded == ad) {
         self.requestRewarded = nil;

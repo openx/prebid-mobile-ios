@@ -12,27 +12,24 @@
 static NSNumber *classesCheckResult = nil;
 
 @interface PBMDFPInterstitial ()
-@property (nonatomic, strong, readonly) DFPInterstitial *interstitial;
+
+@property (nonatomic, strong, readonly) GAMInterstitialAd *interstitial;
+
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation PBMDFPInterstitial
 
 // MARK: - Lifecycle
 
-- (instancetype)init {
-    if(!(self = [super init])) {
-        return nil;
-    }
-    _interstitial = [[DFPInterstitial alloc] init];
-    return self;
-}
-
 - (instancetype)initWithAdUnitID:(NSString *)adUnitID {
     if (!(self = [super init])) {
         return nil;
     }
-    _interstitial = [[DFPInterstitial alloc] initWithAdUnitID:adUnitID];
+    
+    // _interstitial = [[DFPInterstitial alloc] initWithAdUnitID:adUnitID];
+    
     return self;
 }
 
@@ -67,18 +64,18 @@ static NSNumber *classesCheckResult = nil;
     return result;
 }
 
-- (void)setDelegate:(id<GADInterstitialDelegate>)delegate {
+- (void)setDelegate:(id<GADFullScreenContentDelegate>)delegate {
     [PBMInvocationHelper invokeVoidSelector:@selector(setDelegate:)
                                  withObject:delegate
                                    onTarget:self.interstitial
                                 onException:nil];
 }
 
-- (id<GADInterstitialDelegate>)delegate {
-    __block id<GADInterstitialDelegate> result = nil;
+- (id<GADFullScreenContentDelegate>)delegate {
+    __block id<GADFullScreenContentDelegate> result = nil;
     [PBMInvocationHelper invokeProtocolResultSelector:@selector(delegate)
                                              onTarget:self.interstitial
-                                       resultProtocol:@protocol(GADInterstitialDelegate)
+                                       resultProtocol:@protocol(GADFullScreenContentDelegate)
                                             outResult:&result
                                           onException:nil];
     return result;
@@ -131,7 +128,7 @@ static NSNumber *classesCheckResult = nil;
         if (!NSProtocolFromString(@"GADAppEventDelegate")) {
             return NO;
         }
-        Class const testClass = [DFPInterstitial class];
+        Class const testClass = [GADInterstitialAd class];
         SEL selectors[] = {
             @selector(isReady),
             @selector(delegate),

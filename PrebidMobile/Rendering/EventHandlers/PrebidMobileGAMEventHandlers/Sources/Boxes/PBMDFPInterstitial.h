@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Boxed properties
 @property (nonatomic, readonly) BOOL isReady;
-@property (nonatomic, weak, nullable) id<GADInterstitialDelegate> delegate;
+@property (nonatomic, weak, nullable) id<GADFullScreenContentDelegate> delegate;
 @property (nonatomic, weak, nullable) id<GADAppEventDelegate> appEventDelegate;
 
 - (instancetype)init NS_UNAVAILABLE;

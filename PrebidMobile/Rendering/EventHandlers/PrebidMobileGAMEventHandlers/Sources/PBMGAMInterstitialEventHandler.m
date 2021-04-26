@@ -18,7 +18,7 @@ static NSString * const appEvent = @"PrebidAppEvent";
 static float const appEventTimeout = 0.6f;
 
 
-@interface PBMGAMInterstitialEventHandler () <GADInterstitialDelegate, GADAppEventDelegate>
+@interface PBMGAMInterstitialEventHandler () <GADFullScreenContentDelegate, GADAppEventDelegate>
 
 @property (nonatomic, strong, nullable) PBMDFPInterstitial *requestInterstitial;
 @property (nonatomic, strong, nullable) PBMDFPInterstitial *oxbProxyInterstitial;
@@ -108,14 +108,14 @@ static float const appEventTimeout = 0.6f;
 
 // MARK: - GADInterstitialDelegate protocol
 
-- (void)interstitialDidReceiveAd:(nonnull GADInterstitial *)ad {
+- (void)interstitialDidReceiveAd:(nonnull GAMInterstitialAd *)ad {
     if (self.requestInterstitial.boxedInterstitial == ad) {
         [self primaryAdReceived];
     }
 }
 
-- (void)interstitial:(nonnull GADInterstitial *)ad
-    didFailToReceiveAdWithError:(nonnull GADRequestError *)error
+- (void)interstitial:(nonnull GAMInterstitialAd *)ad
+    didFailToReceiveAdWithError:(nonnull NSError *)error
 {
     if (self.requestInterstitial.boxedInterstitial == ad) {
         self.requestInterstitial = nil;
@@ -124,23 +124,23 @@ static float const appEventTimeout = 0.6f;
     }
 }
 
-- (void)interstitialWillPresentScreen:(nonnull GADInterstitial *)ad {
+- (void)interstitialWillPresentScreen:(nonnull GAMInterstitialAd *)ad {
     [self.interactionDelegate willPresentAd];
 }
 
-- (void)interstitialDidFailToPresentScreen:(nonnull GADInterstitial *)ad {
+- (void)interstitialDidFailToPresentScreen:(nonnull GAMInterstitialAd *)ad {
     // nop?
 }
 
-- (void)interstitialWillDismissScreen:(nonnull GADInterstitial *)ad {
+- (void)interstitialWillDismissScreen:(nonnull GAMInterstitialAd *)ad {
     // nop?
 }
 
-- (void)interstitialDidDismissScreen:(nonnull GADInterstitial *)ad {
+- (void)interstitialDidDismissScreen:(nonnull GAMInterstitialAd *)ad {
     [self.interactionDelegate didDismissAd];
 }
 
-- (void)interstitialWillLeaveApplication:(nonnull GADInterstitial *)ad {
+- (void)interstitialWillLeaveApplication:(nonnull GAMInterstitialAd *)ad {
     [self.interactionDelegate willLeaveApp];
 }
 
@@ -153,7 +153,7 @@ static float const appEventTimeout = 0.6f;
     // nop
 }
 
-- (void)interstitial:(nonnull GADInterstitial *)interstitial
+- (void)interstitial:(nonnull GAMInterstitialAd *)interstitial
     didReceiveAppEvent:(nonnull NSString *)name
               withInfo:(nullable NSString *)info
 {

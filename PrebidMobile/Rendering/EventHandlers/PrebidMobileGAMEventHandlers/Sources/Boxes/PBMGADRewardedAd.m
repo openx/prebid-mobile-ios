@@ -132,18 +132,22 @@ static NSNumber *classesCheckResult = nil;
         if (!NSClassFromString(@"GADAdReward")) {
             return NO;
         }
-        if (!NSProtocolFromString(@"GADRewardedAdMetadataDelegate")) {
+        if (!NSProtocolFromString(@"GADAdMetadataDelegate")) {
             return NO;
         }
+        
+        // Check static method
+        [GADRewardedAd loadWithAdUnitID:@""
+                                request:nil
+                      completionHandler:nil];
+        
         Class const testClass = [GADRewardedAd class];
         SEL selectors[] = {
-            @selector(isReady),
             @selector(adMetadataDelegate),
             @selector(setAdMetadataDelegate:),
             @selector(adMetadata),
-            @selector(reward),
-            @selector(loadRequest:completionHandler:),
-            @selector(presentFromRootViewController:delegate:),
+            @selector(adReward),
+            @selector(presentFromRootViewController:userDidEarnRewardHandler:),
         };
         const size_t selectorsCount = sizeof(selectors) / sizeof(selectors[0]);
         for(size_t i = 0; i < selectorsCount; i++) {

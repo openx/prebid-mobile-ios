@@ -9,7 +9,7 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import <PrebidMobileRendering/PBMBid.h>
-#import "PBMDFPBanner.h"
+#import "PBMGAMBanner.h"
 #import "PBMGAMRequest.h"
 #import "PBMGAMError.h"
 
@@ -21,9 +21,9 @@ static float const appEventTimeout = 0.6f;
 
 @interface PBMGAMBannerEventHandler () <GADBannerViewDelegate, GADAppEventDelegate, GADAdSizeDelegate>
 
-@property (nonatomic, strong, nullable) PBMDFPBanner *requestBanner;
-@property (nonatomic, strong, nullable) PBMDFPBanner *oxbProxyBanner;
-@property (nonatomic, strong, nullable) PBMDFPBanner *embeddedBanner;
+@property (nonatomic, strong, nullable) PBMGAMBanner *requestBanner;
+@property (nonatomic, strong, nullable) PBMGAMBanner *oxbProxyBanner;
+@property (nonatomic, strong, nullable) PBMGAMBanner *embeddedBanner;
 @property (nonatomic, assign) BOOL isExpectingAppEvent;
 
 @property (nonatomic, strong, readonly, nonnull) NSArray<NSValue *> *validGADSizes;
@@ -61,7 +61,7 @@ static float const appEventTimeout = 0.6f;
 // MARK: - PBMBannerEventHandler protocol
 
 - (void)requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
-    if (!([PBMDFPBanner classesFound] && [PBMGAMRequest classesFound])) {
+    if (!([PBMGAMBanner classesFound] && [PBMGAMRequest classesFound])) {
         NSError * const error = [PBMGAMError gamClassesNotFound];
         [PBMGAMError logError:error];
         [self.loadingDelegate failedWithError:error];
@@ -71,7 +71,7 @@ static float const appEventTimeout = 0.6f;
         // request to primaryAdServer in progress
         return;
     }
-    self.requestBanner = [[PBMDFPBanner alloc] init];
+    self.requestBanner = [[PBMGAMBanner alloc] init];
     self.requestBanner.adUnitID = self.adUnitID;
     self.requestBanner.validAdSizes = self.validGADSizes;
     self.requestBanner.rootViewController = self.interactionDelegate.viewControllerForPresentingModal;
@@ -178,7 +178,7 @@ didFailToReceiveAdWithError:(nonnull NSError *)error {
                                                              repeats:NO];
     } else {
         // no bids were present in prebid response -- no need to wait for app event
-        PBMDFPBanner * const dfpBanner = self.requestBanner;
+        PBMGAMBanner * const dfpBanner = self.requestBanner;
         self.requestBanner = nil;
         [self recycleCurrentBanner];
         self.embeddedBanner = dfpBanner;
@@ -187,7 +187,7 @@ didFailToReceiveAdWithError:(nonnull NSError *)error {
 }
 
 - (void)appEventDetected {
-    PBMDFPBanner * const dfpBanner = self.requestBanner;
+    PBMGAMBanner * const dfpBanner = self.requestBanner;
     self.requestBanner = nil;
     if (self.isExpectingAppEvent) {
         if (self.appEventTimer) {
@@ -202,7 +202,7 @@ didFailToReceiveAdWithError:(nonnull NSError *)error {
 }
 
 - (void)appEventTimedOut {
-    PBMDFPBanner * const dfpBanner = self.requestBanner;
+    PBMGAMBanner * const dfpBanner = self.requestBanner;
     self.requestBanner = nil;
     [self recycleCurrentBanner];
     self.embeddedBanner = dfpBanner;

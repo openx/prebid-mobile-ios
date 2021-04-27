@@ -5,20 +5,20 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
-#import "PBMDFPBanner.h"
+#import "PBMGAMBanner.h"
 #import "PBMInvocationHelper.h"
 
 
 static NSNumber *classesCheckResult = nil;
 
-@interface PBMDFPBanner ()
+@interface PBMGAMBanner ()
 
 @property (nonatomic, strong, readonly) GAMBannerView *banner;
 
 @end
 
 
-@implementation PBMDFPBanner
+@implementation PBMGAMBanner
 
 // MARK: - Lifecycle
 
@@ -27,10 +27,10 @@ static NSNumber *classesCheckResult = nil;
         return nil;
     }
    
-//    _banner = [[GAMBannerView alloc] init];
-//    if (![_banner isKindOfClass:[UIView class]]) {
-//        return nil;
-//    }
+    _banner = [[GAMBannerView alloc] init];
+    if (![_banner isKindOfClass:[UIView class]]) {
+        return nil;
+    }
     
     return self;
 }
@@ -220,7 +220,7 @@ static NSNumber *classesCheckResult = nil;
 + (BOOL)findClasses {
     BOOL result = NO;
     @try {
-        if (!NSClassFromString(@"DFPBannerView")) {
+        if (!NSClassFromString(@"GAMBannerView")) {
             return NO;
         }
         if (!NSProtocolFromString(@"GADBannerViewDelegate")) {

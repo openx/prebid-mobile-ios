@@ -21,9 +21,9 @@ class PBMDFPBannerTest: XCTestCase {
     }
     
     func testProperties() {
-        XCTAssertTrue(PBMDFPBanner.classesFound)
+        XCTAssertTrue(PBMGAMBanner.classesFound)
         
-        let propTests: [BasePropTest<PBMDFPBanner>] = [
+        let propTests: [BasePropTest<PBMGAMBanner>] = [
             PropTest(keyPath: \.adUnitID, value: "144"),
             PropTest(keyPath: \.validAdSizes, value: [NSValueFromGADAdSize(kGADAdSizeBanner)]),
             PropTest(keyPath: \.rootViewController, value: UIViewController()),
@@ -34,7 +34,7 @@ class PBMDFPBannerTest: XCTestCase {
             PropTest(keyPath: \.adSize, value: kGADAdSizeBanner),
         ]
         
-        let banner = PBMDFPBanner()
+        let banner = PBMGAMBanner()
         
         for nextTest in propTests {
             nextTest.run(object: banner)

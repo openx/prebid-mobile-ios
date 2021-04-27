@@ -119,23 +119,27 @@ static NSNumber *classesCheckResult = nil;
 + (BOOL)findClasses {
     BOOL result = NO;
     @try {
-        if (!NSClassFromString(@"DFPInterstitial")) {
+        if (!NSClassFromString(@"GAMInterstitialAd")) {
             return NO;
         }
-        if (!NSProtocolFromString(@"GADInterstitialDelegate")) {
+        if (!NSProtocolFromString(@"GADFullScreenContentDelegate")) {
             return NO;
         }
         if (!NSProtocolFromString(@"GADAppEventDelegate")) {
             return NO;
         }
+        
+        // Check static method
+        [GADInterstitialAd loadWithAdUnitID:@""
+                                    request:nil
+                          completionHandler:nil];
+        
         Class const testClass = [GADInterstitialAd class];
         SEL selectors[] = {
-            @selector(isReady),
-            @selector(delegate),
-            @selector(setDelegate:),
+            @selector(fullScreenContentDelegate),
+            @selector(setFullScreenContentDelegate:),
             @selector(appEventDelegate),
             @selector(setAppEventDelegate:),
-            @selector(loadRequest:),
             @selector(presentFromRootViewController:),
         };
         const size_t selectorsCount = sizeof(selectors) / sizeof(selectors[0]);

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMDFPBanner : NSObject
+@interface PBMGAMBanner : NSObject
 
 @property (nonatomic, class, readonly) BOOL classesFound;
 @property (nonatomic, strong, readonly) UIView *view;

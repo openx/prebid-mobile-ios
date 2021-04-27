@@ -12,11 +12,11 @@ class PBMDFPRequestTest: XCTestCase {
     func testProperties() {
         XCTAssertTrue(PBMDFPBanner.classesFound)
         
-        let propTests: [BasePropTest<PBMDFPRequest>] = [
+        let propTests: [BasePropTest<PBMGAMRequest>] = [
             DicPropTest(keyPath: \.customTargeting, value: ["key": "unknown"]),
         ]
         
-        let request = PBMDFPRequest()
+        let request = PBMGAMRequest()
         
         for nextTest in propTests {
             nextTest.run(object: request)

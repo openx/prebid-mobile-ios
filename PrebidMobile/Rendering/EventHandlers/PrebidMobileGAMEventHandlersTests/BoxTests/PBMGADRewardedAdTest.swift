@@ -9,11 +9,17 @@ import XCTest
 @testable import PrebidMobileGAMEventHandlers
 
 class PBMGADRewardedAdTest: XCTestCase {
-    private class DummyDelegate: NSObject, GADRewardedAdDelegate {
+    
+    private class DummyDelegate: NSObject, GADFullScreenContentDelegate {
         func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         }
     }
-    private class DummyMetadataDelegate: NSObject, GADRewardedAdMetadataDelegate {
+    
+    private class DummyMetadataDelegate: NSObject, GADAdMetadataDelegate {
+        func adMetadataDidChange(_ ad: GADAdMetadataProvider) {
+            
+        }
+        
     }
     
     func testProperties() {

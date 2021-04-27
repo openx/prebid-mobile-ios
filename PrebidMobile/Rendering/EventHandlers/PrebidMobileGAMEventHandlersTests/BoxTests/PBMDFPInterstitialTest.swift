@@ -10,7 +10,7 @@ import XCTest
 
 class PBMDFPInterstitialTest: XCTestCase {
     
-    private class DummyDelegate: NSObject, GADInterstitialDelegate {
+    private class DummyDelegate: NSObject, GADFullScreenContentDelegate {
     }
     private class DummyEventDelegate: NSObject, GADAppEventDelegate {
     }

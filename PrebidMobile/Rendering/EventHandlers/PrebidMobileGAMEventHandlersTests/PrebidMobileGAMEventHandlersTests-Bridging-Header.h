@@ -3,7 +3,7 @@
 //
 
 #import "PBMDFPBanner.h"
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 #import "PBMDFPInterstitial.h"
 #import "PBMGADRewardedAd.h"
 

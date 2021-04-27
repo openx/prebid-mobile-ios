@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 
-- (void)loadRequest:(nullable PBMDFPRequest *)request;
+- (void)loadRequest:(nullable PBMGAMRequest *)request;
 - (void)recordImpression;
 
 @end

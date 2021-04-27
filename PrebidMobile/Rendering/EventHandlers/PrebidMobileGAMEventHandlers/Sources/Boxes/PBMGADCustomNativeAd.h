@@ -11,13 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMGADNativeCustomTemplateAd : NSObject
+@interface PBMGADCustomNativeAd : NSObject
 
 @property (nonatomic, class, readonly) BOOL classesFound;
 @property (nonatomic, strong, readonly) NSObject *boxedAd;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithCustomTemplateAd:(GADCustomNativeAd *)customTemplateAd NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCustomNativeAd:(GADCustomNativeAd *)customNativeAd NS_DESIGNATED_INITIALIZER;
 
 /// Returns the string corresponding to the specified key or nil if the string is not available.
 - (nullable NSString *)stringForKey:(nonnull NSString *)key;

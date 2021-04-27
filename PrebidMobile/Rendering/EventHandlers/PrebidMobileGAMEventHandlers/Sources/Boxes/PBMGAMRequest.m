@@ -5,19 +5,19 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "PBMInvocationHelper.h"
 
 
 static NSNumber *classesCheckResult = nil;
 
-@interface PBMDFPRequest ()
+@interface PBMGAMRequest ()
 @property (nonatomic, strong, readonly) GAMRequest *request;
 @end
 
 
-@implementation PBMDFPRequest
+@implementation PBMGAMRequest
 
 - (instancetype)init {
     return (self = [self initWithDFPRequest:[[GAMRequest alloc] init]]);

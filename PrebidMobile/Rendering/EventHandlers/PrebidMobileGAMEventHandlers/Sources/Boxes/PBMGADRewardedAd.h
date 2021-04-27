@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAdUnitID:(nonnull NSString *)adUnitID NS_DESIGNATED_INITIALIZER;
 
-- (void)loadRequest:(nullable PBMDFPRequest *)request
+- (void)loadRequest:(nullable PBMGAMRequest *)request
     completionHandler:(nullable GADRewardedAdLoadCompletionHandler)completionHandler;
 
 - (void)presentFromRootViewController:(UIViewController *)viewController

@@ -5,7 +5,7 @@
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 
-#import "PBMGADNativeCustomTemplateAd.h"
+#import "PBMGADCustomNativeAd.h"
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "PBMInvocationHelper.h"
@@ -13,7 +13,7 @@
 
 static NSNumber *classesCheckResult = nil;
 
-@interface PBMGADNativeCustomTemplateAd ()
+@interface PBMGADCustomNativeAd ()
 
 @property (nonatomic, strong, readonly) GADCustomNativeAd *customTemplateAd;
 
@@ -21,9 +21,9 @@ static NSNumber *classesCheckResult = nil;
 
 
 
-@implementation PBMGADNativeCustomTemplateAd
+@implementation PBMGADCustomNativeAd
 
-- (instancetype)initWithCustomTemplateAd:(GADCustomNativeAd *)customTemplateAd {
+- (instancetype)initWithCustomNativeAd:(GADCustomNativeAd *)customTemplateAd {
     if (!(self = [super init])) {
         return nil;
     }

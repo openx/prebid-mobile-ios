@@ -10,7 +10,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import <PrebidMobileRendering/PBMBid.h>
 #import "PBMDFPBanner.h"
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 #import "PBMGAMError.h"
 
 
@@ -61,7 +61,7 @@ static float const appEventTimeout = 0.6f;
 // MARK: - PBMBannerEventHandler protocol
 
 - (void)requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
-    if (!([PBMDFPBanner classesFound] && [PBMDFPRequest classesFound])) {
+    if (!([PBMDFPBanner classesFound] && [PBMGAMRequest classesFound])) {
         NSError * const error = [PBMGAMError gamClassesNotFound];
         [PBMGAMError logError:error];
         [self.loadingDelegate failedWithError:error];
@@ -75,7 +75,7 @@ static float const appEventTimeout = 0.6f;
     self.requestBanner.adUnitID = self.adUnitID;
     self.requestBanner.validAdSizes = self.validGADSizes;
     self.requestBanner.rootViewController = self.interactionDelegate.viewControllerForPresentingModal;
-    PBMDFPRequest * const dfpRequest = [[PBMDFPRequest alloc] init];
+    PBMGAMRequest * const dfpRequest = [[PBMGAMRequest alloc] init];
     if (bidResponse) {
         self.isExpectingAppEvent = bidResponse.winningBid;
         NSMutableDictionary * const targeting = [[NSMutableDictionary alloc] init];

@@ -105,7 +105,7 @@ static NSNumber *classesCheckResult = nil;
 
 // MARK: - Public methods
 
-- (void)loadRequest:(PBMDFPRequest *)request completionHandler:(GADRewardedAdLoadCompletionHandler)completionHandler {
+- (void)loadRequest:(PBMGAMRequest *)request completionHandler:(GADRewardedAdLoadCompletionHandler)completionHandler {
     [PBMInvocationHelper invokeVoidSelector:@selector(loadRequest:completionHandler:)
                                  withObject:request.boxedRequest
                                 otherObject:completionHandler

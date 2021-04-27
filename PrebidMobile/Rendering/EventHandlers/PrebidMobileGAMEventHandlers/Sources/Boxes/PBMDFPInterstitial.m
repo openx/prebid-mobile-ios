@@ -100,7 +100,7 @@ static NSNumber *classesCheckResult = nil;
 
 // MARK: - Public methods
 
-- (void)loadRequest:(PBMDFPRequest *)request {
+- (void)loadRequest:(PBMGAMRequest *)request {
     [PBMInvocationHelper invokeVoidSelector:@selector(loadRequest:)
                                  withObject:request.boxedRequest
                                    onTarget:self.interstitial

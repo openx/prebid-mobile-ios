@@ -5,7 +5,7 @@
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 
-#import "PBMGADUnifiedNativeAd.h"
+#import "PBMGADNativeAd.h"
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "PBMInvocationHelper.h"
@@ -13,15 +13,15 @@
 
 static NSNumber *classesCheckResult = nil;
 
-@interface PBMGADUnifiedNativeAd ()
+@interface PBMGADNativeAd ()
 @property (nonatomic, strong, readonly) GADNativeAd *unifiedNativeAd;
 @end
 
 
 
-@implementation PBMGADUnifiedNativeAd
+@implementation PBMGADNativeAd
 
-- (instancetype)initWithUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd {
+- (instancetype)initWithNativeAd:(GADNativeAd *)unifiedNativeAd {
     if (!(self = [super init])) {
         return nil;
     }

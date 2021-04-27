@@ -11,7 +11,7 @@
 #import <PrebidMobileRendering/PBMBid.h>
 #import "PBMGADRewardedAd.h"
 #import "PBMGAMError.h"
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 
 
 static NSString * const appEvent = @"PrebidAppEvent";
@@ -60,7 +60,7 @@ static float const appEventTimeout = 0.6f;
 // MARK: - PBMRewardedEventHandler protocol
 
 - (void)requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
-    if (!([PBMGADRewardedAd classesFound] && [PBMDFPRequest classesFound])) {
+    if (!([PBMGADRewardedAd classesFound] && [PBMGAMRequest classesFound])) {
         NSError * const error = [PBMGAMError gamClassesNotFound];
         [PBMGAMError logError:error];
         [self.loadingDelegate failedWithError:error];
@@ -76,7 +76,7 @@ static float const appEventTimeout = 0.6f;
     }
     PBMGADRewardedAd * const currentRequestRearded = [[PBMGADRewardedAd alloc] initWithAdUnitID:self.adUnitID];
     self.requestRewarded = currentRequestRearded;
-    PBMDFPRequest * const dfpRequest = [[PBMDFPRequest alloc] init];
+    PBMGAMRequest * const dfpRequest = [[PBMGAMRequest alloc] init];
     if (bidResponse) {
         self.isExpectingAppEvent = bidResponse.winningBid;
         NSMutableDictionary * const targeting = [[NSMutableDictionary alloc] init];

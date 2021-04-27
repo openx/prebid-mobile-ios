@@ -10,7 +10,7 @@
 
 #import <PrebidMobileRendering/PBMBid.h>
 #import "PBMDFPInterstitial.h"
-#import "PBMDFPRequest.h"
+#import "PBMGAMRequest.h"
 #import "PBMGAMError.h"
 
 
@@ -60,7 +60,7 @@ static float const appEventTimeout = 0.6f;
 // MARK: - PBMInterstitialEventHandler protocol
 
 - (void)requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
-    if (!([PBMDFPInterstitial classesFound] && [PBMDFPRequest classesFound])) {
+    if (!([PBMDFPInterstitial classesFound] && [PBMGAMRequest classesFound])) {
         NSError * const error = [PBMGAMError gamClassesNotFound];
         [PBMGAMError logError:error];
         [self.loadingDelegate failedWithError:error];
@@ -75,7 +75,7 @@ static float const appEventTimeout = 0.6f;
         return;
     }
     self.requestInterstitial = [[PBMDFPInterstitial alloc] initWithAdUnitID:self.adUnitID];
-    PBMDFPRequest * const dfpRequest = [[PBMDFPRequest alloc] init];
+    PBMGAMRequest * const dfpRequest = [[PBMGAMRequest alloc] init];
     if (bidResponse) {
         self.isExpectingAppEvent = bidResponse.winningBid;
         NSMutableDictionary * const targeting = [[NSMutableDictionary alloc] init];

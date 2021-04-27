@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMGADUnifiedNativeAd : NSObject
+@interface PBMGADNativeAd : NSObject
 
 @property (nonatomic, class, readonly) BOOL classesFound;
 @property (nonatomic, strong, readonly) NSObject *boxedAd;
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 // @property(nonatomic, readonly, nonnull) GADMediaContent *mediaContent;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithUnifiedNativeAd:(GADNativeAd *)unifiedNativeAd NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithNativeAd:(GADNativeAd *)nativeAd NS_DESIGNATED_INITIALIZER;
 
 @end
 

@@ -13,4 +13,13 @@ framework module PrebidMobileGAMEventHandlers {
     header "PBMGAMInterstitialEventHandler.h"
     header "PBMGAMRewardedEventHandler.h"
     header "PBMGAMUtils.h"
+    
+    header "PBMGAMRequest.h"
+    header "PBMLocalResponseInfoCache+Internal.h"
+    header "PBMScheduledTimerFactory.h"
+    header "PBMTimerInterface.h"
+    
+    header "PBMGADNativeAd.h"
+    header "PBMGAMError.h"
+    header "PBMGADCustomNativeAd.h"
 }

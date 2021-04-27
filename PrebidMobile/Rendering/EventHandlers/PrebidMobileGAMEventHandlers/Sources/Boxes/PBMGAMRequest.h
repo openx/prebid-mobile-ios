@@ -1,5 +1,5 @@
 //
-//  PBMDFPRequest.h
+//  PBMGAMRequest.h
 //  OpenXApolloGAMEventHandlers
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMDFPRequest : NSObject
+@interface PBMGAMRequest : NSObject
 
 @property (nonatomic, class, readonly) BOOL classesFound;
 @property (nonatomic, strong, readonly) NSObject *boxedRequest;
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, nullable) NSDictionary *customTargeting;
 
 - (instancetype)init; // convenience
-- (instancetype)initWithDFPRequest:(GAMRequest *)dfpRequest NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDFPRequest:(GAMRequest *)gamRequest NS_DESIGNATED_INITIALIZER;
 
 @end
 

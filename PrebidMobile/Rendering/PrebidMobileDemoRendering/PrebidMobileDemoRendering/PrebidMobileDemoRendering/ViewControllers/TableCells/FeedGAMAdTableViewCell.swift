@@ -50,7 +50,7 @@ class FeedGAMAdTableViewCell: UITableViewCell {
             }
             
             let dfpRequest = GAMRequest()
-            PBMGAMUtils.shared().prepare(dfpRequest, demandResponseInfo: demandResponseInfo)
+            GAMUtils.shared.prepareRequest(dfpRequest, demandResponseInfo: demandResponseInfo)
             self.adLoader = GADAdLoader(adUnitID: GAMAdUnitID,
                                         rootViewController: rootViewController,
                                         adTypes: adTypes,
@@ -94,8 +94,8 @@ extension FeedGAMAdTableViewCell: GADCustomNativeAdLoaderDelegate {
 
         }
 
-        PBMGAMUtils.shared().findNativeAd(inCustomTemplateAd: nativeCustomTemplateAd,
-                                          nativeAdDetectionListener: nativeAdDetectionListener)
+        GAMUtils.shared.findCustomNativeAd(for: nativeCustomTemplateAd,
+                                           nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: Error) {

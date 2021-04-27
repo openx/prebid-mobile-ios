@@ -12,7 +12,7 @@ import PrebidMobileRendering
 fileprivate let LOCAL_CACHE_EXPIRATION_INTERVAL: TimeInterval = 3600;
 fileprivate let PREBID_KEYWORD_PREFIX = "hb_"
 
-class GAMUtils {
+public class GAMUtils {
     
     private let localCache: PBMLocalResponseInfoCache!
     
@@ -20,9 +20,9 @@ class GAMUtils {
         localCache = PBMLocalResponseInfoCache(expirationInterval: LOCAL_CACHE_EXPIRATION_INTERVAL)
     }
     
-    static let shared = GAMUtils()
+    public static let shared = GAMUtils()
     
-    func prepareRequest(_ request: GAMRequest,
+    public func prepareRequest(_ request: GAMRequest,
                         demandResponseInfo: PBMDemandResponseInfo)  {
         if !PBMGAMRequest.classesFound {
             return
@@ -42,7 +42,7 @@ class GAMUtils {
         boxedRequest.customTargeting = mergedTargeting
     }
     
-    func findNativeAd(for nativeAd: GADNativeAd,
+    public func findNativeAd(for nativeAd: GADNativeAd,
                       nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
         if PBMGADNativeAd.classesFound == false {
@@ -59,7 +59,7 @@ class GAMUtils {
         }, nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
-    func findCustomNativeAd(for customNativeAd: GADCustomNativeAd,
+    public func findCustomNativeAd(for customNativeAd: GADCustomNativeAd,
                             nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
         if PBMGADCustomNativeAd.classesFound == false {

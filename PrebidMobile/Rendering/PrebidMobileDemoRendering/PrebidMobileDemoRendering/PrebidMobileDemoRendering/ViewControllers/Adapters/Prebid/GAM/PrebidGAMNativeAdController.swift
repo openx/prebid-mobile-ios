@@ -132,7 +132,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
             }
             
             let dfpRequest = GAMRequest()
-            PBMGAMUtils.shared().prepare(dfpRequest, demandResponseInfo: demandResponseInfo)
+            GAMUtils.shared.prepareRequest(dfpRequest, demandResponseInfo: demandResponseInfo)
             self.adLoader = GADAdLoader(adUnitID: self.gamAdUnitId,
                                         rootViewController: self.rootController,
                                         adTypes: self.adTypes,
@@ -202,9 +202,9 @@ extension PrebidGAMNativeAdController: GADCustomNativeAdLoaderDelegate {
         } onNativeAdInvalid: { [weak self] error in
             self?.nativeAdInvalidButton.isEnabled = true
         }
-
-        PBMGAMUtils.shared().findNativeAd(inCustomTemplateAd: nativeCustomTemplateAd,
-                                          nativeAdDetectionListener: nativeAdDetectionListener)
+        
+        GAMUtils.shared.findCustomNativeAd(for: nativeCustomTemplateAd,
+                                           nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
     func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
@@ -263,8 +263,8 @@ extension PrebidGAMNativeAdController: GADNativeAdLoaderDelegate {
             self?.nativeAdInvalidButton.isEnabled = true
         }
 
-        PBMGAMUtils.shared().findNativeAd(inUnifiedNativeAd: nativeAd,
-                                          nativeAdDetectionListener: nativeAdDetectionListener)
+        GAMUtils.shared.findNativeAd(for: nativeAd,
+                                     nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
     private func setAdView(_ view: GADNativeAdView) {

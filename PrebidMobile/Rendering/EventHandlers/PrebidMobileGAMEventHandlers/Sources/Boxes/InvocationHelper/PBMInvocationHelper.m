@@ -166,6 +166,16 @@ NSExceptionName const PBMVoidSelectorReturnedValueException = @"PBMVoidSelectorR
     };
 }
 
+
++ (void)invokeVoidSelector:(SEL)selector
+                   onClass:(Class)targetClass
+              withArgument:(void *)firstArgument
+                withObject:(NSObject *)target
+                completion:(id)otherObject {
+    
+    
+}
+
 // MARK: - C-type-result methods
 
 + (void)invokeCResultSelector:(SEL)selector

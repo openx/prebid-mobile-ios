@@ -6,7 +6,6 @@
 //
 
 #import "PBMLocalResponseInfoCache.h"
-#import "PBMLocalResponseInfoCache+Internal.h"
 
 #import "PBMCachedResponseInfo.h"
 #import "PBMWeakTimerTargetBox.h"

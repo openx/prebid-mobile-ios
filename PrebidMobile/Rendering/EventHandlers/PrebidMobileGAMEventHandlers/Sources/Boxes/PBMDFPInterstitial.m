@@ -129,10 +129,10 @@ static NSNumber *classesCheckResult = nil;
             return NO;
         }
         
-        // Check static method
-        [GADInterstitialAd loadWithAdUnitID:@""
-                                    request:nil
-                          completionHandler:nil];
+        SEL selector = NSSelectorFromString(@"loadWithAdUnitID:request:completionHandler:");
+        if(![GADInterstitialAd respondsToSelector:selector]) {
+            return NO;
+        }
         
         Class const testClass = [GADInterstitialAd class];
         SEL selectors[] = {

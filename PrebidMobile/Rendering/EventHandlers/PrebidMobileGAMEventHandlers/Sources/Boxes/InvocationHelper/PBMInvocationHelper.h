@@ -53,6 +53,12 @@ extern NSExceptionName const PBMVoidSelectorReturnedValueException;
                   onTarget:(NSObject *)target
                onException:(void (^ _Nullable)(NSException * _Nullable))exceptionHandlerBlock; // no exception -- selector not found
 
++ (void)invokeVoidSelector:(SEL)selector
+                   onClass:(Class)targetClass
+              withArgument:(void *)firstArgument
+                withObject:(NSObject *)target
+                completion:(id)otherObject;
+
 // MARK: - C-type-result methods
 
 + (void)invokeCResultSelector:(SEL)selector

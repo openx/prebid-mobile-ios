@@ -98,7 +98,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdTitle.h"
     header "PBMNativeAdVideo.h"
     // PBM Native Ads (rendering)
-    header "PBMMediaData.h"
     header "PBMMediaView.h"
     header "PBMMediaViewDelegate.h"
     // PBM Native Ads (for Primary SDK Utils)
@@ -112,4 +111,21 @@ framework module PrebidMobileRendering {
     header "PBMMoPubRewardedAdUnit.h"
     header "PBMMoPubUtils.h"
     header "PBMMoPubNativeAdUnit.h"
+    
+    // ===
+    //Temp. for converting
+    header "PBMNativeAdMediaHooks.h"
+    header "PBMViewControllerProvider.h"
+    header "PBMCreativeClickHandlerBlock.h"
+    header "PBMVoidBlock.h"
+    header "PBMNativeAdMarkupAsset.h"
+    
+    header "PBMNativeAdMarkupData.h"
+    header "PBMNativeAdMarkupImage.h"
+    header "PBMNativeAdMarkupLink.h"
+    header "PBMNativeAdMarkupTitle.h"
+    header "PBMNativeAdMarkupVideo.h"
+
+    header "PBMJsonDecodable.h"
+    header "PBMConstants.h"
 }

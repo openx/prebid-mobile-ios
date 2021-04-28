@@ -5,6 +5,8 @@
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 #import "PBMMediaView.h"
 #import "PBMMediaView+Internal.h"
 
@@ -12,8 +14,8 @@
 #import "PBMAdUnitConfig.h"
 #import "PBMAdUnitConfig+Internal.h"
 #import "PBMError.h"
-#import "PBMMediaData.h"
-#import "PBMMediaData+Internal.h"
+#import "PBMNativeAdMarkupAsset.h"
+#import "PBMNativeAdMediaHooks.h"
 #import "PBMVastTransactionFactory.h"
 #import "PBMViewabilityPlaybackBinder.h"
 #import "PBMViewExposureProviders.h"
@@ -115,6 +117,7 @@ static BOOL const IGNORE_CLICKS_IF_UNREGISTERED = YES;
         [self reportFailureWithError:[PBMError replacingMediaDataInMediaView] markLoadingStopped:NO];
         return;
     }
+    
     if (self.vastTransactionFactory || self.mediaDataToLoad != nil) {
         // the Ad is being loaded
         return;

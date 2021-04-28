@@ -5,13 +5,12 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 #import "PBMNativeAdVideo.h"
 #import "PBMNativeAdVideo+Internal.h"
 #import "PBMNativeAdAsset+Protected.h"
 #import "PBMNativeAdAssetBoxingError.h"
-
-#import "PBMMediaData.h"
-#import "PBMMediaData+Internal.h"
 
 @implementation PBMNativeAdVideo
 

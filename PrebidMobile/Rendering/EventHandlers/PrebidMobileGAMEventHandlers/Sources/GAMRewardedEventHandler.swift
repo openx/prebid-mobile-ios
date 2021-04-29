@@ -18,9 +18,9 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     
     public let adUnitID: String
     
-    var requestRewarded: PrebidGADRewardedAd?
-    var oxbProxyRewarded: PrebidGADRewardedAd?
-    var embeddedRewarded: PrebidGADRewardedAd?
+    var requestRewarded: GADRewardedAdWrapper?
+    var oxbProxyRewarded: GADRewardedAdWrapper?
+    var embeddedRewarded: GADRewardedAdWrapper?
     
     var isExpectingAppEvent = false
     
@@ -72,7 +72,7 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(PrebidGADRewardedAd.classesFound && PBMGAMRequest.classesFound) {
+        if !(GADRewardedAdWrapper.classesFound && PBMGAMRequest.classesFound) {
             let error = PBMGAMError.gamClassesNotFound
             PBMGAMError.logError(error)
             loadingDelegate?.failedWithError(error)
@@ -89,7 +89,7 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
             return;
         }
         
-        let currentRequestRewarded = PrebidGADRewardedAd(with: adUnitID)
+        let currentRequestRewarded = GADRewardedAdWrapper(adUnitID: adUnitID)
         requestRewarded = currentRequestRewarded
         
         let request = PBMGAMRequest()
@@ -127,13 +127,13 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     
     // MARK: - PBMGADRewardedAd loading callbacks
 
-    func rewardedAd(didReceive ad: PrebidGADRewardedAd) {
+    func rewardedAd(didReceive ad: GADRewardedAdWrapper) {
         if requestRewarded === ad {
             primaryAdRecieved()
         }
     }
     
-    func rewardedAdDidFail(_ ad: PrebidGADRewardedAd, error: Error) {
+    func rewardedAdDidFail(_ ad: GADRewardedAdWrapper, error: Error) {
         if requestRewarded === ad {
             requestRewarded = nil
             forgetCurrentRewarded()

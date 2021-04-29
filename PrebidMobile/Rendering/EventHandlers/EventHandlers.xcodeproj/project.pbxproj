@@ -45,7 +45,7 @@
 		5B3617FC2638131A00AFA1C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3617FB2638131A00AFA1C2 /* Constants.swift */; };
 		5B36180326381A4B00AFA1C2 /* PBMGADNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 3459DF4B25E8D87F004EC761 /* PBMGADNativeAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B36182326384C7D00AFA1C2 /* GAMRewardedEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */; };
-		5BF8E65B26396DB900341EE4 /* PrebidGADRewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */; };
+		5BF8E65B26396DB900341EE4 /* GADRewardedAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */; };
 		5BF8E6B7263AC32800341EE4 /* GAMInterstitialEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */; };
 		5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */; };
 		5BF8E6CE263AE68800341EE4 /* PBMGADCustomNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -129,7 +129,7 @@
 		5B36172526370A8700AFA1C2 /* GAMUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMUtils.swift; sourceTree = "<group>"; };
 		5B3617FB2638131A00AFA1C2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMRewardedEventHandler.swift; sourceTree = "<group>"; };
-		5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidGADRewardedAd.swift; sourceTree = "<group>"; };
+		5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADRewardedAdWrapper.swift; sourceTree = "<group>"; };
 		5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMInterstitialEventHandler.swift; sourceTree = "<group>"; };
 		5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAMInterstitialAdWrapper.swift; sourceTree = "<group>"; };
 		5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMGADCustomNativeAd.h; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				3459DF4B25E8D87F004EC761 /* PBMGADNativeAd.h */,
 				3459DF4C25E8D8B4004EC761 /* PBMGADNativeAd.m */,
 				5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */,
-				5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */,
+				5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */,
 			);
 			path = Boxes;
 			sourceTree = "<group>";
@@ -707,7 +707,7 @@
 				5B3617FC2638131A00AFA1C2 /* Constants.swift in Sources */,
 				5BF8E6B7263AC32800341EE4 /* GAMInterstitialEventHandler.swift in Sources */,
 				344A7F03250B6C4E00743A93 /* PBMGAMRequest.m in Sources */,
-				5BF8E65B26396DB900341EE4 /* PrebidGADRewardedAd.swift in Sources */,
+				5BF8E65B26396DB900341EE4 /* GADRewardedAdWrapper.swift in Sources */,
 				5B36172626370A8700AFA1C2 /* GAMUtils.swift in Sources */,
 				34B64D6C24F7E51300FDD9F4 /* PBMGAMBannerEventHandler.m in Sources */,
 				3459DF4D25E8D8B4004EC761 /* PBMGADNativeAd.m in Sources */,

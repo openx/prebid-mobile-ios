@@ -25,7 +25,7 @@ class GAMInterstitialAdWrapper {
         return classesValidated ?? false
     }
     
-    init(with adUnitID: String) {
+    init(adUnitID: String) {
         self.adUnitID = adUnitID
     }
     

@@ -76,7 +76,7 @@ public class GAMInterstitialEventHandler :
             return;
         }
 
-        requestInterstitial = GAMInterstitialAdWrapper(with: adUnitID)
+        requestInterstitial = GAMInterstitialAdWrapper(adUnitID: adUnitID)
         
         let request = PBMGAMRequest()
         
@@ -170,6 +170,8 @@ public class GAMInterstitialEventHandler :
             if let _ = appEventTimer {
                 return
             }
+            
+            requestInterstitial?.appEventDelegate = self
             
             appEventTimer = Timer.scheduledTimer(timeInterval: appEventTimeout,
                                                  target: self,

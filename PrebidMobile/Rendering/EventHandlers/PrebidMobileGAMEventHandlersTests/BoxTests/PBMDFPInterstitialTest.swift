@@ -17,17 +17,15 @@ class PBMDFPInterstitialTest: XCTestCase {
     }
     
     func testProperties() {
-        XCTAssertTrue(PBMDFPInterstitial.classesFound)
+        XCTAssertTrue(GAMInterstitialAdWrapper.classesFound)
         
-        let propTests: [BasePropTest<PBMDFPInterstitial>] = [
-            RefPropTest(keyPath: \.delegate, value: DummyDelegate()),
-            RefPropTest(keyPath: \.appEventDelegate, value: DummyEventDelegate()),
+        let propTests: [BasePropTest<GAMInterstitialAdWrapper>] = [
+            RefProxyPropTest(keyPath: \.fullScreenContentDelegate, value: DummyDelegate()),
+            RefProxyPropTest(keyPath: \.appEventDelegate, value: DummyEventDelegate()),
         ]
         
-        let interstitial = PBMDFPInterstitial(adUnitID: "/21808260008/prebid_oxb_html_interstitial")
-        
-        XCTAssertFalse(interstitial.isReady)
-        
+        let interstitial = GAMInterstitialAdWrapper(adUnitID: "/21808260008/prebid_oxb_html_interstitial")
+                
         for nextTest in propTests {
             nextTest.run(object: interstitial)
         }

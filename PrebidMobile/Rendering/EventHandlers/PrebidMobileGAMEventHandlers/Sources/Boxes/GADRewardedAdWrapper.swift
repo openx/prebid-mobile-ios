@@ -8,7 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
-class PrebidGADRewardedAd {
+class GADRewardedAdWrapper {
     
     static var classesValidated: Bool?
     
@@ -21,11 +21,11 @@ class PrebidGADRewardedAd {
             return res;
         }
         
-        classesValidated = PrebidGADRewardedAd.findClasses()
+        classesValidated = GADRewardedAdWrapper.findClasses()
         return classesValidated ?? false
     }
     
-    init(with adUnitID: String) {
+    init(adUnitID: String) {
         self.adUnitID = adUnitID
     }
     
@@ -52,7 +52,7 @@ class PrebidGADRewardedAd {
     // MARK: Public Methods
     
     public func load(request: PBMGAMRequest,
-                     completion: @escaping (PrebidGADRewardedAd?, Error?) -> Void) {
+                     completion: @escaping (GADRewardedAdWrapper?, Error?) -> Void) {
         GADRewardedAd.load(withAdUnitID: adUnitID, request:
                             request.boxedRequest as? GADRequest,
                            completionHandler: { [weak self] (ad, error)  in

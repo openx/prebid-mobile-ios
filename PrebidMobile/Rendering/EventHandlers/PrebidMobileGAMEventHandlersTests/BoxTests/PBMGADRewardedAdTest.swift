@@ -23,15 +23,14 @@ class PBMGADRewardedAdTest: XCTestCase {
     }
     
     func testProperties() {
-        XCTAssertTrue(PBMGADRewardedAd.classesFound)
+        XCTAssertTrue(GADRewardedAdWrapper.classesFound)
         
-        let propTests: [BasePropTest<PBMGADRewardedAd>] = [
-            RefPropTest(keyPath: \.adMetadataDelegate, value: DummyMetadataDelegate()),
+        let propTests: [BasePropTest<GADRewardedAdWrapper>] = [
+            RefProxyPropTest(keyPath: \.adMetadataDelegate, value: DummyMetadataDelegate()),
         ]
         
-        let rewardedAd = PBMGADRewardedAd(adUnitID: "/21808260008/prebid_oxb_rewarded_video_test")
+        let rewardedAd = GADRewardedAdWrapper(adUnitID: "/21808260008/prebid_oxb_rewarded_video_test")
         
-        XCTAssertFalse(rewardedAd.isReady)
         XCTAssertNil(rewardedAd.adMetadata)
         XCTAssertNil(rewardedAd.reward)
         

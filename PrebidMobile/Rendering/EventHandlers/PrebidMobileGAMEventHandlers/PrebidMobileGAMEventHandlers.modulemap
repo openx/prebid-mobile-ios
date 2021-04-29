@@ -10,11 +10,11 @@ framework module PrebidMobileGAMEventHandlers {
     header "PrebidMobileGAMEventHandlers.h"
     
     header "PBMGAMBannerEventHandler.h"
-    header "PBMGAMInterstitialEventHandler.h"
     
     header "PBMGAMRequest.h"
     
     header "PBMGADNativeAd.h"
     header "PBMGAMError.h"
     header "PBMGADCustomNativeAd.h"
+    header "PBMDFPInterstitial.h"
 }

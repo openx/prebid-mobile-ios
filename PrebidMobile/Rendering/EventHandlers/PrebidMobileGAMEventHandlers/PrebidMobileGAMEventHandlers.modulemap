@@ -16,5 +16,4 @@ framework module PrebidMobileGAMEventHandlers {
     header "PBMGADNativeAd.h"
     header "PBMGAMError.h"
     header "PBMGADCustomNativeAd.h"
-    header "PBMDFPInterstitial.h"
 }

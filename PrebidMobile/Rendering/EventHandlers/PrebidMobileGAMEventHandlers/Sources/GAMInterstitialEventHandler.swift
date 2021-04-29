@@ -18,9 +18,9 @@ public class GAMInterstitialEventHandler :
     GADFullScreenContentDelegate,
     GADAppEventDelegate {
     
-    var requestInterstitial: PBMDFPInterstitial?
-    var oxbProxyInterstitial: PBMDFPInterstitial?
-    var embeddedInterstitial: PBMDFPInterstitial?
+    var requestInterstitial: PrebidGADInterstitialAd?
+    var oxbProxyInterstitial: PrebidGADInterstitialAd?
+    var embeddedInterstitial: PrebidGADInterstitialAd?
    
     var adSizes = [CGSize]()
     var isExpectingAppEvent = false
@@ -42,20 +42,19 @@ public class GAMInterstitialEventHandler :
             return false
         }
         
-        guard let loadedInterstitial = embeddedInterstitial ?? oxbProxyInterstitial else {
+        guard let _ = embeddedInterstitial ?? oxbProxyInterstitial else {
             return false
         }
         
-        return loadedInterstitial.isReady
+        return true
     }
         
   // MARK: PBMPrimaryAdRequesterProtocol
     
     public func show(from controller: UIViewController?) {
         if let controller = controller,
-           let interstitial = embeddedInterstitial,
-           interstitial.isReady {
-            interstitial.present(fromRootViewController: controller)
+           let interstitial = embeddedInterstitial {
+            interstitial.present(from: controller)
         }
     }
     
@@ -79,24 +78,31 @@ public class GAMInterstitialEventHandler :
             }
         }
         
-        requestInterstitial?.delegate = self
+        requestInterstitial?.fullScreenContentDelegate = self
         requestInterstitial?.appEventDelegate = self
         
-        requestInterstitial?.load(request)
+        requestInterstitial?.load(request: request, completion:{ [weak self] ad, error in
+            if let error = error {
+                self?.interstitialdidReceive(didFailToReceive: ad, error: error)
+                return
+            }
+            
+            self?.interstitial(didReceive: ad)
+        })
     }
     
     // MARK: GADAppEventDelegate
     
-    func interstitial(didReceive ad:PBMDFPInterstitial) {
-        if requestInterstitial == ad {
+    func interstitial(didReceive ad: PrebidGADInterstitialAd) {
+        if requestInterstitial === ad {
             primaryAdReceived()
         }
     }
 
-    func interstitialdidReceive(didFailToReceive ad:PBMDFPInterstitial,
+    func interstitialdidReceive(didFailToReceive ad:PrebidGADInterstitialAd,
                                 error: Error)
     {
-        if requestInterstitial == ad {
+        if requestInterstitial === ad {
             requestInterstitial = nil;
             forgetCurrentInterstitial()
             loadingDelegate?.failedWithError(error)
@@ -107,7 +113,7 @@ public class GAMInterstitialEventHandler :
     public func interstitialAd(_ interstitialAd: GADInterstitialAd,
                                didReceiveAppEvent name: String,
                                withInfo info: String?) {
-        if requestInterstitial?.boxedInterstitial === interstitialAd &&
+        if requestInterstitial?.interstitialAd === interstitialAd &&
             name == appEvent {
             appEventDetected()
         }

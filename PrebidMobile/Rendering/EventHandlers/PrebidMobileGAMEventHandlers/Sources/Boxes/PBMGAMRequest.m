@@ -72,7 +72,7 @@ static NSNumber *classesCheckResult = nil;
 + (BOOL)findClasses {
     BOOL result = NO;
     @try {
-        if (!NSClassFromString(@"DFPRequest")) {
+        if (!NSClassFromString(@"GAMRequest")) {
             return NO;
         }
         Class const testClass = [GAMRequest class];

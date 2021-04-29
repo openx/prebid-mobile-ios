@@ -47,7 +47,7 @@
 		5B36182326384C7D00AFA1C2 /* GAMRewardedEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */; };
 		5BF8E65B26396DB900341EE4 /* PrebidGADRewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */; };
 		5BF8E6B7263AC32800341EE4 /* GAMInterstitialEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */; };
-		5BF8E6C2263AE1B400341EE4 /* PrebidGADInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6C1263AE1B400341EE4 /* PrebidGADInterstitialAd.swift */; };
+		5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */; };
 		5BF8E6CE263AE68800341EE4 /* PBMGADCustomNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF8E6CF263AE68800341EE4 /* PBMGADCustomNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6CD263AE68800341EE4 /* PBMGADCustomNativeAd.m */; };
 		92F182B3E3AC2C869402CDEE /* Pods_PrebidMobileGAMEventHandlersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E16D3B90411A699792B3D /* Pods_PrebidMobileGAMEventHandlersTests.framework */; };
@@ -131,7 +131,7 @@
 		5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMRewardedEventHandler.swift; sourceTree = "<group>"; };
 		5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidGADRewardedAd.swift; sourceTree = "<group>"; };
 		5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMInterstitialEventHandler.swift; sourceTree = "<group>"; };
-		5BF8E6C1263AE1B400341EE4 /* PrebidGADInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrebidGADInterstitialAd.swift; sourceTree = "<group>"; };
+		5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAMInterstitialAdWrapper.swift; sourceTree = "<group>"; };
 		5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMGADCustomNativeAd.h; sourceTree = "<group>"; };
 		5BF8E6CD263AE68800341EE4 /* PBMGADCustomNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMGADCustomNativeAd.m; sourceTree = "<group>"; };
 		914C447D75BBE960CE43225D /* Pods-PrebidMobileGAMEventHandlers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; path = "Target Support Files/Pods-PrebidMobileGAMEventHandlers/Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 				344A7F01250B6C4E00743A93 /* PBMGAMRequest.m */,
 				3459DF4B25E8D87F004EC761 /* PBMGADNativeAd.h */,
 				3459DF4C25E8D8B4004EC761 /* PBMGADNativeAd.m */,
-				5BF8E6C1263AE1B400341EE4 /* PrebidGADInterstitialAd.swift */,
+				5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */,
 				5BF8E65A26396DB900341EE4 /* PrebidGADRewardedAd.swift */,
 			);
 			path = Boxes;
@@ -699,7 +699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C7C9EC2509018B0021C6D0 /* PBMGAMBanner.m in Sources */,
-				5BF8E6C2263AE1B400341EE4 /* PrebidGADInterstitialAd.swift in Sources */,
+				5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */,
 				34C7967C25DE52CD0072A898 /* PBMGAMConstants.m in Sources */,
 				5B36182326384C7D00AFA1C2 /* GAMRewardedEventHandler.swift in Sources */,
 				5BF8E6CF263AE68800341EE4 /* PBMGADCustomNativeAd.m in Sources */,

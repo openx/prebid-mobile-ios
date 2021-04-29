@@ -1,5 +1,5 @@
 //
-//  PrebidGADRewardedAd.swift
+//  GAMInterstitialAdWrapper.swift
 //  PrebidMobileGAMEventHandlers
 //
 //  Copyright © 2021 Prebid. All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
-class PrebidGADInterstitialAd {
+class GAMInterstitialAdWrapper {
     
     static var classesValidated: Bool?
     
@@ -21,7 +21,7 @@ class PrebidGADInterstitialAd {
             return res;
         }
         
-        classesValidated = PrebidGADRewardedAd.findClasses()
+        classesValidated = GAMInterstitialAdWrapper.findClasses()
         return classesValidated ?? false
     }
     
@@ -54,7 +54,7 @@ class PrebidGADInterstitialAd {
     // MARK: Public Methods
     
     public func load(request: PBMGAMRequest,
-                     completion: @escaping (PrebidGADInterstitialAd, Error?) -> Void) {
+                     completion: @escaping (GAMInterstitialAdWrapper, Error?) -> Void) {
         
         GAMInterstitialAd.load(withAdManagerAdUnitID: adUnitID,
                                request: request.boxedRequest as? GAMRequest,
@@ -84,12 +84,15 @@ class PrebidGADInterstitialAd {
             return false;
         }
         
-        let selector = NSSelectorFromString("withAdManagerAdUnitID:request:completionHandler:")
-        if GADRewardedAd.responds(to: selector) == false {
+        
+        let selector = NSSelectorFromString("loadWithAdManagerAdUnitID:request:completionHandler:")
+            //#selector(GAMInterstitialAd.load(withAdManagerAdUnitID:request:completionHandler:))
+            //=
+        if GAMInterstitialAd.responds(to: selector) == false {
             return false
         }
         
-        let testClass = GADRewardedAd.self
+        let testClass = GAMInterstitialAd.self
         
         let selectors = [
             #selector(getter: GAMInterstitialAd.fullScreenContentDelegate),

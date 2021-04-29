@@ -18,9 +18,9 @@ public class GAMInterstitialEventHandler :
     GADFullScreenContentDelegate,
     GADAppEventDelegate {
     
-    var requestInterstitial: PrebidGADInterstitialAd?
-    var oxbProxyInterstitial: PrebidGADInterstitialAd?
-    var embeddedInterstitial: PrebidGADInterstitialAd?
+    var requestInterstitial:    GAMInterstitialAdWrapper?
+    var proxyInterstitial:      GAMInterstitialAdWrapper?
+    var embeddedInterstitial:   GAMInterstitialAdWrapper?
    
     var adSizes = [CGSize]()
     var isExpectingAppEvent = false
@@ -42,7 +42,7 @@ public class GAMInterstitialEventHandler :
             return false
         }
         
-        guard let _ = embeddedInterstitial ?? oxbProxyInterstitial else {
+        guard let _ = embeddedInterstitial ?? proxyInterstitial else {
             return false
         }
         
@@ -59,7 +59,27 @@ public class GAMInterstitialEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
+        if !(GAMInterstitialAdWrapper.classesFound && PBMGAMRequest.classesFound) {
+            let error = PBMGAMError.gamClassesNotFound
+            PBMGAMError.logError(error)
+            loadingDelegate?.failedWithError(error)
+            return
+        }
+        
+        if let _ = requestInterstitial {
+            // request to primaryAdServer in progress
+            return;
+        }
+        
+        if proxyInterstitial != nil || proxyInterstitial != nil {
+            // rewarded already loaded
+            return;
+        }
+
+        requestInterstitial = GAMInterstitialAdWrapper(with: adUnitID)
+        
         let request = PBMGAMRequest()
+        
         if let bidResponse = bidResponse {
             isExpectingAppEvent = bidResponse.winningBid != nil
             
@@ -93,13 +113,13 @@ public class GAMInterstitialEventHandler :
     
     // MARK: GADAppEventDelegate
     
-    func interstitial(didReceive ad: PrebidGADInterstitialAd) {
+    func interstitial(didReceive ad: GAMInterstitialAdWrapper) {
         if requestInterstitial === ad {
             primaryAdReceived()
         }
     }
 
-    func interstitialdidReceive(didFailToReceive ad:PrebidGADInterstitialAd,
+    func interstitialdidReceive(didFailToReceive ad:GAMInterstitialAdWrapper,
                                 error: Error)
     {
         if requestInterstitial === ad {
@@ -129,7 +149,7 @@ public class GAMInterstitialEventHandler :
             isExpectingAppEvent = false
             forgetCurrentInterstitial()
             
-            oxbProxyInterstitial = interstitial
+            proxyInterstitial = interstitial
             
             loadingDelegate?.prebidDidWin()
         }
@@ -140,8 +160,8 @@ public class GAMInterstitialEventHandler :
     func forgetCurrentInterstitial() {
         if let _ = embeddedInterstitial {
             embeddedInterstitial = nil
-        }  else if let _ = oxbProxyInterstitial {
-            oxbProxyInterstitial = nil
+        }  else if let _ = proxyInterstitial {
+            proxyInterstitial = nil
         }
     }
     

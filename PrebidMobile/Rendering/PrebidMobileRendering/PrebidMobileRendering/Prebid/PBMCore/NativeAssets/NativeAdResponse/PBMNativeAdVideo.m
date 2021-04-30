@@ -5,6 +5,9 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
+#import "PBMPlayable.h"
+#import "PBMAdViewManagerDelegate.h"
+
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #import "PBMNativeAdVideo.h"

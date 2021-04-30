@@ -8,7 +8,7 @@
 framework module PrebidMobileRendering {
     
     // Versions
-    header "PrebidMobileRenderingSDK.h"
+    header "PrebidMobileRendering.h"
     // Constants
     header "PBMPublicConstants.h"
     // Enums
@@ -98,8 +98,9 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdTitle.h"
     header "PBMNativeAdVideo.h"
     // PBM Native Ads (rendering)
-    header "PBMMediaView.h"
-    header "PBMMediaViewDelegate.h"
+//    header "PBMMediaView.h"
+//    header "PBMMediaViewDelegate.h"
+
     // PBM Native Ads (for Primary SDK Utils)
     header "PBMLocalResponseInfoCache.h"
     header "PBMNativeAdDetectionListener.h"

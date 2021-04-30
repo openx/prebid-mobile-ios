@@ -10,50 +10,12 @@ import UIKit
  let DEFAULT_VIEWABILITY_POLLING_INTERVAL: TimeInterval = 0.2
  let IGNORE_CLICKS_IF_UNREGISTERED = true
 
- enum PBMMediaViewStateT {
+ enum MediaViewState {
     case undefined, playbackNotStarted, playing, pausedByUser, pausedAuto, playbackFinished
 }
 
-@objc public protocol PPProto {
-    func protomethod()
-}
-
-@objc public class TTView: UIView, PPProto {
-    public func protomethod() {
-        print("TEST!")
-    }
-}
-
-@objc class TTT: UIView, PBMPlayable {
-    public func canPlay() -> Bool {
-        true
-    }
+@objcMembers public class PBMMediaView: UIView, PBMPlayable, PBMAdViewManagerDelegate {
     
-    public func play() {
-        
-    }
-    
-    public func pause() {
-        
-    }
-    
-    public func autoPause() {
-        
-    }
-    
-    public func canAutoResume() -> Bool {
-        true
-    }
-    
-    public func resume() {
-        
-    }
-    
-    
-}
-
-@objcMembers public class PBMMediaViewT: UIView/*, PBMPlayable, PBMAdViewManagerDelegate*/ {
-
     @IBInspectable public var autoPlayOnVisible: Bool {
         get { rawAutoPlayOnVisible }
         set {
@@ -106,10 +68,10 @@ import UIKit
             let exposureProvider = PBMViewExposureProviders.visibilityAsExposure(for: self)
             let pollingInterval = self.pollingInterval?.doubleValue ?? DEFAULT_VIEWABILITY_POLLING_INTERVAL
             let timerFactory = self.scheduledTimerFactory ?? Timer.pbmScheduledTimerFactory()
-//            self.viewabilityPlaybackBinder = PBMViewabilityPlaybackBinder.init(exposureProvider: exposureProvider,
-//                                                                               pollingInterval: pollingInterval,
-//                                                                               scheduledTimerFactory: timerFactory,
-//                                                                               playable: self)
+            self.viewabilityPlaybackBinder = PBMViewabilityPlaybackBinder.init(exposureProvider: exposureProvider,
+                                                                               pollingInterval: pollingInterval,
+                                                                               scheduledTimerFactory: timerFactory,
+                                                                               playable: self)
         }
     }
     
@@ -118,7 +80,7 @@ import UIKit
     }
     // }
     
-    var state: PBMMediaViewStateT = .undefined
+    var state: MediaViewState = .undefined
     
     public func loadMedia(_ mediaData: PBMMediaData) {
         
@@ -174,14 +136,19 @@ import UIKit
     }
     
     public func mute() {
-        guard let adViewManager = adViewManager, isActive && adViewManager.isMuted == false else {
+        guard let adViewManager = self.adViewManager, isActive && !adViewManager.isMuted else {
             return
         }
         adViewManager.mute()
-//        delegate.onMediaPlaybackMuted(self)
+        delegate?.onMediaPlaybackMuted(self)
     }
     
     public func unmute() {
+        guard let adViewManager = self.adViewManager, isActive && adViewManager.isMuted else {
+            return
+        }
+        adViewManager.unmute()
+        delegate?.onMediaPlaybackUnmuted(self)
     }
     
     // MARK: - PBMPlayable protocol
@@ -189,20 +156,43 @@ import UIKit
         state == .playbackNotStarted
     }
     
+    public func play() {
+        guard canPlay(), let adViewManager = self.adViewManager  else {
+            return
+        }
+        state = .playing
+        adViewManager.show()
+        delegate?.onMediaPlaybackStarted(self)
+    }
+
+    public func pause() {
+        self.pauseWith(state: .pausedByUser)
+    }
+    
     public func autoPause() {
+        self.pauseWith(state: .pausedAuto)
+    }
+    
+    func pauseWith(state: MediaViewState) {
+        guard state == .playing, let adViewManager = self.adViewManager  else {
+            return
+        }
+        self.state = state
+        adViewManager.pause()
+        delegate?.onMediaPlaybackPaused(self)
     }
     
     public func canAutoResume() -> Bool {
         state == .pausedAuto
     }
-
-    public func play() {
-    }
-
-    public func pause() {
-    }
     
     public func resume() {
+        guard isPaused, let adViewManager = self.adViewManager  else {
+            return
+        }
+        state = .playing
+        adViewManager.resume()
+        delegate?.onMediaPlaybackResumed(self)
     }
     
     var isPaused: Bool { state == .pausedAuto || state == .pausedByUser }
@@ -210,10 +200,15 @@ import UIKit
     
     // MARK: - PBMAdViewManagerDelegate protocol
     
-    public func viewControllerForModalPresentation() -> UIViewController? {
+    public func viewControllerForModalPresentation() -> UIViewController {
         let mediaData = self.mediaData ?? mediaDataToLoad
         let provider = mediaData?.nativeAdHooks.viewControllerProvider
-        return provider != nil ? provider?() : nil
+//        return provider != nil ? provider?() : nil
+//        return (provider != nil ?
+//            provider?() :
+//            UIViewController()) as! UIViewController
+        
+        return provider?() ?? UIViewController()
     }
     
     public func adLoaded(_ pbmAdDetails: PBMAdDetails) {
@@ -231,15 +226,15 @@ import UIKit
 
     public func videoAdDidFinish() {
         state = .playbackFinished
-//        delegate.onMediaPlaybackFinished(self)
+        delegate?.onMediaPlaybackFinished(self)
     }
 
     public func videoAdWasMuted() {
-//        delegate.onMediaPlaybackMuted(self)
+        delegate?.onMediaPlaybackMuted(self)
     }
 
     public func videoAdWasUnmuted() {
-//        delegate.onMediaPlaybackUnmuted(self)
+        delegate?.onMediaPlaybackUnmuted(self)
     }
 
     public func adDidDisplay() {
@@ -289,7 +284,7 @@ import UIKit
         mediaData = mediaDataToLoad
         vastTransactionFactory = nil
         bindPlaybackToViewability = shouldBindPlaybackToViewability
-//        delegate.onMediaLoadingFinished(self)
+        delegate?.onMediaLoadingFinished(self)
     }
 
     func display(transaction: PBMTransaction?) {
@@ -298,7 +293,7 @@ import UIKit
         }
         let connection = self.connection ?? PBMServerConnection.singleton()
         adViewManager = PBMAdViewManager(connection: connection, modalManagerDelegate: nil)
-//        adViewManager?.adViewManagerDelegate = self
+        adViewManager?.adViewManagerDelegate = self
         adViewManager?.adConfiguration = adConfiguration
         adViewManager?.autoDisplayOnLoad = false
         adViewManager?.handleExternalTransaction(transaction)

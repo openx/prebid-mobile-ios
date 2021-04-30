@@ -21,7 +21,7 @@ class GADNativeAdWrapper {
             return res;
         }
         
-        classesValidated = GAMBannerViewWrapper.findClasses()
+        classesValidated = GADNativeAdWrapper.findClasses()
         return classesValidated ?? false
     }
     

@@ -62,12 +62,12 @@ public class GAMUtils {
     public func findCustomNativeAd(for customNativeAd: GADCustomNativeAd,
                             nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
-        if PBMGADCustomNativeAd.classesFound == false {
+        if GADCustomNativeAdWrapper.classesFound == false {
             nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.gamClassesNotFound)
             return
         }
         
-        let wrappedAd = PBMGADCustomNativeAd(customNativeAd: customNativeAd)
+        let wrappedAd = GADCustomNativeAdWrapper(customNativeAd: customNativeAd)
         findNativeAd(flagLookupBlock: {
             findCreativeFlagInCustomNativeAd(wrappedAd)
         }, localCacheIDExtractor: {
@@ -126,7 +126,7 @@ public class GAMUtils {
 
     // MARK: NativeCustomTemplateAd decomposition
 
-    private func findCreativeFlagInCustomNativeAd(_ customNativeAd: PBMGADCustomNativeAd) -> Bool {
+    private func findCreativeFlagInCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> Bool {
         if let isPrebidCreativeVar = customNativeAd.string(forKey: Constantns.PREBID_CREATIVE_FLAG_KEY),
            isPrebidCreativeVar == Constantns.CREATIVE_FLAG_VALUE {
             return true;
@@ -135,7 +135,7 @@ public class GAMUtils {
         return false;
     }
 
-    private func localCacheIDFromCustomNativeAd(_ customNativeAd: PBMGADCustomNativeAd) -> String? {
+    private func localCacheIDFromCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> String? {
         customNativeAd.string(forKey: Constantns.LOCAL_CACHE_ID_TARGETING_KEY)
     }
 }

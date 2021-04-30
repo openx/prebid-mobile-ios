@@ -47,7 +47,8 @@ static float const appEventTimeout = 0.6f;
 
 // MARK: - Public API
 
-- (instancetype)initWithAdUnitID:(NSString *)adUnitID validGADAdSizes:(NSArray<NSValue *> *)adSizes {
+- (instancetype)initWithAdUnitID:(NSString *)adUnitID
+                 validGADAdSizes:(NSArray<NSValue *> *)adSizes {
     if (!(self = [super init])) {
         return nil;
     }

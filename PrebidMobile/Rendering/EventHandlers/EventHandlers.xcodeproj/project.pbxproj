@@ -37,7 +37,7 @@
 		34B64DAE24F7FD8100FDD9F4 /* PrebidMobileRendering.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B64D7024F7E8A100FDD9F4 /* PrebidMobileRendering.framework */; };
 		34C7967B25DE52CD0072A898 /* PBMGAMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7967925DE52CD0072A898 /* PBMGAMConstants.h */; };
 		34C7967C25DE52CD0072A898 /* PBMGAMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7967A25DE52CD0072A898 /* PBMGAMConstants.m */; };
-		34C7C9EB2509018B0021C6D0 /* PBMGAMBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7C9E92509018B0021C6D0 /* PBMGAMBanner.h */; };
+		34C7C9EB2509018B0021C6D0 /* PBMGAMBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7C9E92509018B0021C6D0 /* PBMGAMBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34C7C9EC2509018B0021C6D0 /* PBMGAMBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7C9EA2509018B0021C6D0 /* PBMGAMBanner.m */; };
 		34C7C9F3250A1B610021C6D0 /* PBMInvocationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7C9F1250A1B610021C6D0 /* PBMInvocationHelper.h */; };
 		34C7C9F4250A1B610021C6D0 /* PBMInvocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7C9F2250A1B610021C6D0 /* PBMInvocationHelper.m */; };

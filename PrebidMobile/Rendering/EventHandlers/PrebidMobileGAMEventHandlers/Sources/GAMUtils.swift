@@ -24,12 +24,12 @@ public class GAMUtils {
     
     public func prepareRequest(_ request: GAMRequest,
                         demandResponseInfo: PBMDemandResponseInfo)  {
-        if !PBMGAMRequest.classesFound {
+        if !GAMRequestWrapper.classesFound {
             return
         }
         
         let localCacheID = localCache.store(demandResponseInfo)
-        let boxedRequest = PBMGAMRequest(dfpRequest: request)
+        let boxedRequest = GAMRequestWrapper(gamRequest: request)
         
         var mergedTargeting = getPrebidTargeting(from: boxedRequest)
         
@@ -77,8 +77,8 @@ public class GAMUtils {
     
     // MARK: Private Methods
     
-    private func getPrebidTargeting(from request: PBMGAMRequest) -> [String: String] {
-        if let requestTargeting = request.customTargeting as? [String : String] {
+    private func getPrebidTargeting(from request: GAMRequestWrapper) -> [String: String] {
+        if let requestTargeting = request.customTargeting {
             return requestTargeting.filter { $0.key.hasPrefix(PREBID_KEYWORD_PREFIX)}
         }
         

@@ -53,11 +53,11 @@ class GAMInterstitialAdWrapper {
     
     // MARK: Public Methods
     
-    public func load(request: PBMGAMRequest,
+    public func load(request: GAMRequestWrapper,
                      completion: @escaping (GAMInterstitialAdWrapper, Error?) -> Void) {
         
         GAMInterstitialAd.load(withAdManagerAdUnitID: adUnitID,
-                               request: request.boxedRequest as? GAMRequest,
+                               request: request.boxedRequest,
                                completionHandler: { [weak self] ad, error in
             guard let self = self else {
                 return

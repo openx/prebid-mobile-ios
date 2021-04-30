@@ -53,7 +53,7 @@ public class GAMBannerEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(GAMBannerViewWrapper.classesFound && PBMGAMRequest.classesFound) {
+        if !(GAMBannerViewWrapper.classesFound && GAMRequestWrapper.classesFound) {
             let error = PBMGAMError.gamClassesNotFound
             PBMGAMError.logError(error)
             loadingDelegate?.failedWithError(error)
@@ -70,11 +70,11 @@ public class GAMBannerEventHandler :
         requestBanner?.validAdSizes = validAdSizes
         requestBanner?.rootViewController = interactionDelegate?.viewControllerForPresentingModal
         
-        let request = PBMGAMRequest()
+        let request = GAMRequestWrapper()
         if let bidResponse = bidResponse {
             isExpectingAppEvent = bidResponse.winningBid != nil
             
-            var targeting = [AnyHashable : Any]()
+            var targeting = [String : String]()
               
             if let requestTargeting = request.customTargeting {
                 targeting.merge(requestTargeting) { $1 }

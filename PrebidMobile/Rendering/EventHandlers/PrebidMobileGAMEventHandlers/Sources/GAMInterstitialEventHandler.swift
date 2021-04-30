@@ -59,7 +59,7 @@ public class GAMInterstitialEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(GAMInterstitialAdWrapper.classesFound && PBMGAMRequest.classesFound) {
+        if !(GAMInterstitialAdWrapper.classesFound && GAMRequestWrapper.classesFound) {
             let error = PBMGAMError.gamClassesNotFound
             PBMGAMError.logError(error)
             loadingDelegate?.failedWithError(error)
@@ -78,12 +78,12 @@ public class GAMInterstitialEventHandler :
 
         requestInterstitial = GAMInterstitialAdWrapper(adUnitID: adUnitID)
         
-        let request = PBMGAMRequest()
+        let request = GAMRequestWrapper()
         
         if let bidResponse = bidResponse {
             isExpectingAppEvent = bidResponse.winningBid != nil
             
-            var targeting = [AnyHashable : Any]()
+            var targeting = [String : String]()
               
             if let requestTargeting = request.customTargeting {
                 targeting.merge(requestTargeting) { $1 }

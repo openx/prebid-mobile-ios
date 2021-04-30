@@ -24,6 +24,7 @@ class GAMBannerViewWrapper {
             banner.adUnitID
         }
     }
+    
     public var validAdSizes: [NSValue]? {
         set {
             banner.validAdSizes = newValue
@@ -110,8 +111,8 @@ class GAMBannerViewWrapper {
     
     // MARK: - Public methods
 
-    public func load(_ request: PBMGAMRequest) {
-        banner.load(request.boxedRequest as? GADRequest)
+    public func load(_ request: GAMRequestWrapper) {
+        banner.load(request.boxedRequest)
     }
 
     public func recordImpression() {

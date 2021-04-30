@@ -109,15 +109,14 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
             if !targeting.isEmpty {
                 request.customTargeting = targeting
             }
-            
-            requestRewarded?.adMetadataDelegate = self
-            
+                        
             currentRequestRewarded.load(request: request) { [weak self] (prebidGADRewardedAd, error) in
                 if let error = error {
                     self?.rewardedAdDidFail(currentRequestRewarded, error: error)
                 }
                 
                 if let ad = prebidGADRewardedAd {
+                    self?.requestRewarded?.adMetadataDelegate = self
                     self?.rewardedAd(didReceive: ad)
                 }
             }

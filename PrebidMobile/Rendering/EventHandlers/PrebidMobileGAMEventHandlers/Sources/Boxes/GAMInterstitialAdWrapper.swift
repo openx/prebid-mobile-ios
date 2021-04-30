@@ -84,10 +84,7 @@ class GAMInterstitialAdWrapper {
             return false;
         }
         
-        
         let selector = NSSelectorFromString("loadWithAdManagerAdUnitID:request:completionHandler:")
-            //#selector(GAMInterstitialAd.load(withAdManagerAdUnitID:request:completionHandler:))
-            //=
         if GAMInterstitialAd.responds(to: selector) == false {
             return false
         }

@@ -45,12 +45,12 @@ public class GAMUtils {
     public func findNativeAd(for nativeAd: GADNativeAd,
                       nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
-        if PBMGADNativeAd.classesFound == false {
+        if GADNativeAdWrapper.classesFound == false {
             nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.gamClassesNotFound)
             return
         }
        
-        let wrappedAd = PBMGADNativeAd(nativeAd: nativeAd)
+        let wrappedAd = GADNativeAdWrapper(nativeAd: nativeAd)
         
         findNativeAd(flagLookupBlock: {
             findPrebidFlagInNativeAd(wrappedAd)
@@ -116,11 +116,11 @@ public class GAMUtils {
     
     // MARK: UnifiedNativeAd decomposition
 
-    private func findPrebidFlagInNativeAd(_ nativeAd: PBMGADNativeAd) -> Bool {
+    private func findPrebidFlagInNativeAd(_ nativeAd: GADNativeAdWrapper) -> Bool {
         nativeAd.body == Constantns.PREBID_CREATIVE_FLAG_KEY
     }
     
-    private func localCacheIDFromNativeAd(_ nativeAd: PBMGADNativeAd) -> String? {
+    private func localCacheIDFromNativeAd(_ nativeAd: GADNativeAdWrapper) -> String? {
         nativeAd.callToAction;
     }
 

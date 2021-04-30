@@ -128,4 +128,35 @@ framework module PrebidMobileRendering {
 
     header "PBMJsonDecodable.h"
     header "PBMConstants.h"
+    
+    
+    header "PBMAdViewManagerDelegate.h"
+    header "PBMAdDetails.h"
+    header "PBMTransaction.h"
+    header "PBMAdConfiguration.h"
+    header "PBMAdFormatInternal.h"
+    header "PBMAutoRefreshCountConfig.h"
+    header "PBMInterstitialLayout.h"
+    header "PBMServerConnectionProtocol.h"
+    
+    header "PBMScheduledTimerFactory.h"
+    header "NSTimer+PBMScheduledTimerFactory.h"
+    header "NSTimer+PBMTimerInterface.h"
+    header "PBMTimerInterface.h"
+    
+    header "PBMVastTransactionFactory.h"
+    header "PBMTransactionFactoryCallback.h"
+    header "PBMPlayable.h"
+    header "PBMError.h"
+    header "PBMServerConnection.h"
+    header "PBMModalManagerDelegate.h"
+    header "PBMAdLoadManagerDelegate.h"
+    header "PBMCreativeViewDelegate.h"
+    header "PBMAbstractCreative.h"
+    header "PBMAdViewManager.h"
+    header "PBMViewExposureProvider.h"
+    header "PBMViewExposure.h"
+    
+    header "PBMViewabilityPlaybackBinder.h"
+    header "PBMViewExposureProviders.h"
 }

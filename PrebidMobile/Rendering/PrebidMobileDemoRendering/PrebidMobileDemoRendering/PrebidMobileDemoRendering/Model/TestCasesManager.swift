@@ -1613,7 +1613,7 @@ struct TestCaseManager {
                         let gamAdUnitId = "/21808260008/prebid_oxb_outstream_video_reandom"
                         let validAdSize = kGADAdSizeMediumRectangle
                         let adSize = validAdSize.size
-                        let adEventHandler = PBMGAMBannerEventHandler(adUnitID: gamAdUnitId, validGADAdSizes: [NSValueFromGADAdSize(validAdSize)])
+                        let adEventHandler = GAMBannerEventHandler(adUnitID: gamAdUnitId, validGADAdSizes: [NSValueFromGADAdSize(validAdSize)])
                         let adBannerView = PBMBannerView(configId: prebidConfigId,
                                                          eventHandler: adEventHandler)
                         adBannerView.adFormat = .video

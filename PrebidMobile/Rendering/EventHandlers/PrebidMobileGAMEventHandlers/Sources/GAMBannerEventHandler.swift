@@ -13,7 +13,7 @@ import PrebidMobileRendering
 fileprivate let appEvent = "PrebidAppEvent"
 fileprivate let appEventTimeout = 0.6;
 
-class GAMBannerEventHandler :
+public class GAMBannerEventHandler :
     NSObject,
     PBMBannerEventHandler,
     GADBannerViewDelegate,
@@ -33,26 +33,26 @@ class GAMBannerEventHandler :
     
     let adUnitID: String
     
-    init(adUnitID: String, adSizes: [NSValue]) {
+    public init(adUnitID: String, validGADAdSizes: [NSValue]) {
         self.adUnitID = adUnitID
-        self.adSizes = GAMBannerEventHandler.convertGADSizes(adSizes)
+        self.adSizes = GAMBannerEventHandler.convertGADSizes(validGADAdSizes)
         
-        validAdSizes = adSizes
+        validAdSizes = validGADAdSizes
     }
     
     // MARK: PBMBannerEventHandler
     
-    var loadingDelegate: PBMBannerEventLoadingDelegate?
+    public var loadingDelegate: PBMBannerEventLoadingDelegate?
     
-    var interactionDelegate: PBMBannerEventInteractionDelegate?
+    public var interactionDelegate: PBMBannerEventInteractionDelegate?
     
-    var adSizes: [NSValue]
+    public var adSizes: [NSValue]
     
-    var isCreativeRequiredForNativeAds: Bool {
+    public var isCreativeRequiredForNativeAds: Bool {
         false
     }
     
-    func requestAd(with bidResponse: PBMBidResponse?) {
+    public func requestAd(with bidResponse: PBMBidResponse?) {
         if !(PBMGAMBanner.classesFound && PBMGAMRequest.classesFound) {
             let error = PBMGAMError.gamClassesNotFound
             PBMGAMError.logError(error)
@@ -101,13 +101,13 @@ class GAMBannerEventHandler :
     
     // MARK: - GADBannerViewDelegate
     
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+    public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         if requestBanner?.view == bannerView {
             primaryAdReceived()
         }
     }
     
-    func bannerView(_ bannerView: GADBannerView,
+    public func bannerView(_ bannerView: GADBannerView,
                     didFailToReceiveAdWithError error: Error) {
         if requestBanner?.view == bannerView {
             requestBanner = nil
@@ -116,39 +116,39 @@ class GAMBannerEventHandler :
         }
     }
     
-    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+    public func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
         // TODO
     }
     
-    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+    public func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
         interactionDelegate?.willPresentModal()
     }
     
-    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+    public func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
         // TODO
     }
     
-    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+    public func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         interactionDelegate?.didDismissModal()
     }
     
     // MARK: - GADAppEventDelegate
     
-    func adView(_ banner: GADBannerView,
+    public func adView(_ banner: GADBannerView,
                 didReceiveAppEvent name: String, withInfo info: String?) {
         if requestBanner?.view == banner && name == appEvent {
             appEventDeected()
         }
     }
     
-    func interstitialAd(_ interstitialAd: GADInterstitialAd,
+    public func interstitialAd(_ interstitialAd: GADInterstitialAd,
                         didReceiveAppEvent name: String, withInfo info: String?) {
         // TODO
     }
     
     // MARK: - GADAdSizeDelegate
     
-    func adView(_ bannerView: GADBannerView,
+    public func adView(_ bannerView: GADBannerView,
                 willChangeAdSizeTo size: GADAdSize) {
         lastGADSize = size.size
     }

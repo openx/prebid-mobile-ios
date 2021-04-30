@@ -35,8 +35,6 @@
 		34B64DAE24F7FD8100FDD9F4 /* PrebidMobileRendering.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B64D7024F7E8A100FDD9F4 /* PrebidMobileRendering.framework */; };
 		34C7967B25DE52CD0072A898 /* PBMGAMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7967925DE52CD0072A898 /* PBMGAMConstants.h */; };
 		34C7967C25DE52CD0072A898 /* PBMGAMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7967A25DE52CD0072A898 /* PBMGAMConstants.m */; };
-		34C7C9EB2509018B0021C6D0 /* PBMGAMBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7C9E92509018B0021C6D0 /* PBMGAMBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34C7C9EC2509018B0021C6D0 /* PBMGAMBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7C9EA2509018B0021C6D0 /* PBMGAMBanner.m */; };
 		34C7C9F3250A1B610021C6D0 /* PBMInvocationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7C9F1250A1B610021C6D0 /* PBMInvocationHelper.h */; };
 		34C7C9F4250A1B610021C6D0 /* PBMInvocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C7C9F2250A1B610021C6D0 /* PBMInvocationHelper.m */; };
 		5B36172626370A8700AFA1C2 /* GAMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36172526370A8700AFA1C2 /* GAMUtils.swift */; };
@@ -49,6 +47,7 @@
 		5BF8E6CE263AE68800341EE4 /* PBMGADCustomNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF8E6CF263AE68800341EE4 /* PBMGADCustomNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6CD263AE68800341EE4 /* PBMGADCustomNativeAd.m */; };
 		5BF8E76E263BF4E000341EE4 /* GAMBannerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E76D263BF4DF00341EE4 /* GAMBannerEventHandler.swift */; };
+		5BF8E779263C291300341EE4 /* GAMBannerViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E778263C291300341EE4 /* GAMBannerViewWrapper.swift */; };
 		92F182B3E3AC2C869402CDEE /* Pods_PrebidMobileGAMEventHandlersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E16D3B90411A699792B3D /* Pods_PrebidMobileGAMEventHandlersTests.framework */; };
 		AC47330825D3F6F20041EEBA /* PrebidMoPubNativeCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = AC47330625D3F6F20041EEBA /* PrebidMoPubNativeCustomEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC47330925D3F6F20041EEBA /* PrebidMoPubNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AC47330725D3F6F20041EEBA /* PrebidMoPubNativeCustomEvent.m */; };
@@ -118,8 +117,6 @@
 		34C7966325DD69160072A898 /* DO_NOT_MOVE_THESE_FILES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DO_NOT_MOVE_THESE_FILES.txt; sourceTree = "<group>"; };
 		34C7967925DE52CD0072A898 /* PBMGAMConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMGAMConstants.h; sourceTree = "<group>"; };
 		34C7967A25DE52CD0072A898 /* PBMGAMConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMGAMConstants.m; sourceTree = "<group>"; };
-		34C7C9E92509018B0021C6D0 /* PBMGAMBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMGAMBanner.h; sourceTree = "<group>"; };
-		34C7C9EA2509018B0021C6D0 /* PBMGAMBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMGAMBanner.m; sourceTree = "<group>"; };
 		34C7C9F1250A1B610021C6D0 /* PBMInvocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInvocationHelper.h; sourceTree = "<group>"; };
 		34C7C9F2250A1B610021C6D0 /* PBMInvocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMInvocationHelper.m; sourceTree = "<group>"; };
 		492E16D3B90411A699792B3D /* Pods_PrebidMobileGAMEventHandlersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrebidMobileGAMEventHandlersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +129,7 @@
 		5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMGADCustomNativeAd.h; sourceTree = "<group>"; };
 		5BF8E6CD263AE68800341EE4 /* PBMGADCustomNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMGADCustomNativeAd.m; sourceTree = "<group>"; };
 		5BF8E76D263BF4DF00341EE4 /* GAMBannerEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMBannerEventHandler.swift; sourceTree = "<group>"; };
+		5BF8E778263C291300341EE4 /* GAMBannerViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMBannerViewWrapper.swift; sourceTree = "<group>"; };
 		914C447D75BBE960CE43225D /* Pods-PrebidMobileGAMEventHandlers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; path = "Target Support Files/Pods-PrebidMobileGAMEventHandlers/Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; sourceTree = "<group>"; };
 		9258904A9C1DF637C07F290B /* Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig"; path = "Target Support Files/Pods-PrebidMobileGAMEventHandlersTests/Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC47330625D3F6F20041EEBA /* PrebidMoPubNativeCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubNativeCustomEvent.h; sourceTree = "<group>"; };
@@ -344,14 +342,13 @@
 				5BF8E6CC263AE68800341EE4 /* PBMGADCustomNativeAd.h */,
 				5BF8E6CD263AE68800341EE4 /* PBMGADCustomNativeAd.m */,
 				34C7C9F5250A1B680021C6D0 /* InvocationHelper */,
-				34C7C9E92509018B0021C6D0 /* PBMGAMBanner.h */,
-				34C7C9EA2509018B0021C6D0 /* PBMGAMBanner.m */,
 				344A7F00250B6C4E00743A93 /* PBMGAMRequest.h */,
 				344A7F01250B6C4E00743A93 /* PBMGAMRequest.m */,
 				3459DF4B25E8D87F004EC761 /* PBMGADNativeAd.h */,
 				3459DF4C25E8D8B4004EC761 /* PBMGADNativeAd.m */,
 				5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */,
 				5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */,
+				5BF8E778263C291300341EE4 /* GAMBannerViewWrapper.swift */,
 			);
 			path = Boxes;
 			sourceTree = "<group>";
@@ -401,7 +398,6 @@
 				34C7C9F3250A1B610021C6D0 /* PBMInvocationHelper.h in Headers */,
 				5B36180326381A4B00AFA1C2 /* PBMGADNativeAd.h in Headers */,
 				34C7967B25DE52CD0072A898 /* PBMGAMConstants.h in Headers */,
-				34C7C9EB2509018B0021C6D0 /* PBMGAMBanner.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +690,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C7C9EC2509018B0021C6D0 /* PBMGAMBanner.m in Sources */,
 				5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */,
 				34C7967C25DE52CD0072A898 /* PBMGAMConstants.m in Sources */,
 				5BF8E76E263BF4E000341EE4 /* GAMBannerEventHandler.swift in Sources */,
@@ -708,6 +703,7 @@
 				5B36172626370A8700AFA1C2 /* GAMUtils.swift in Sources */,
 				3459DF4D25E8D8B4004EC761 /* PBMGADNativeAd.m in Sources */,
 				346C50ED250BC05A00435A73 /* PBMGAMError.m in Sources */,
+				5BF8E779263C291300341EE4 /* GAMBannerViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

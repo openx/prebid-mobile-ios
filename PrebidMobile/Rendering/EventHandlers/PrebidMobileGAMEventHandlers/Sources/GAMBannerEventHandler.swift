@@ -20,9 +20,9 @@ public class GAMBannerEventHandler :
     GADAppEventDelegate,
     GADAdSizeDelegate
 {
-    var requestBanner: PBMGAMBanner?
-    var oxbProxyBanner: PBMGAMBanner?
-    var embeddedBanner: PBMGAMBanner?
+    var requestBanner: GAMBannerViewWrapper?
+    var oxbProxyBanner: GAMBannerViewWrapper?
+    var embeddedBanner: GAMBannerViewWrapper?
     
     var validAdSizes: [NSValue]
     
@@ -53,7 +53,7 @@ public class GAMBannerEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(PBMGAMBanner.classesFound && PBMGAMRequest.classesFound) {
+        if !(GAMBannerViewWrapper.classesFound && PBMGAMRequest.classesFound) {
             let error = PBMGAMError.gamClassesNotFound
             PBMGAMError.logError(error)
             loadingDelegate?.failedWithError(error)
@@ -65,7 +65,7 @@ public class GAMBannerEventHandler :
             return;
         }
         
-        requestBanner = PBMGAMBanner()
+        requestBanner = GAMBannerViewWrapper()
         requestBanner?.adUnitID = adUnitID
         requestBanner?.validAdSizes = validAdSizes
         requestBanner?.rootViewController = interactionDelegate?.viewControllerForPresentingModal

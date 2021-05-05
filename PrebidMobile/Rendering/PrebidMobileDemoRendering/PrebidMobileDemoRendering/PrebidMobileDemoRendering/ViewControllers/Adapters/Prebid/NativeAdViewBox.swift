@@ -15,7 +15,7 @@ class NativeAdViewBox: NativeAdViewBoxProtocol {
     let ctaButton = UIButton(type: .system)
     let mainImage = UIImageView()
     let iconImage = UIImageView()
-    let mediaView = PBMMediaView()
+    let mediaView = MediaView()
     
     let contentView: UIView
     private let mediaViewContainer: UIView
@@ -86,11 +86,11 @@ class NativeAdViewBox: NativeAdViewBoxProtocol {
         let muteMedia = UIButton(type: .system)
         let unmuteMedia = UIButton(type: .system)
         
-        playMedia.addTarget(mediaView, action: #selector(PBMMediaView.play), for: .touchUpInside)
-        pauseMedia.addTarget(mediaView, action: #selector(PBMMediaView.pause), for: .touchUpInside)
-        resumeMedia.addTarget(mediaView, action: #selector(PBMMediaView.resume), for: .touchUpInside)
-        muteMedia.addTarget(mediaView, action: #selector(PBMMediaView.mute), for: .touchUpInside)
-        unmuteMedia.addTarget(mediaView, action: #selector(PBMMediaView.unmute), for: .touchUpInside)
+        playMedia.addTarget(mediaView, action: #selector(MediaView.play), for: .touchUpInside)
+        pauseMedia.addTarget(mediaView, action: #selector(MediaView.pause), for: .touchUpInside)
+        resumeMedia.addTarget(mediaView, action: #selector(MediaView.resume), for: .touchUpInside)
+        muteMedia.addTarget(mediaView, action: #selector(MediaView.mute), for: .touchUpInside)
+        unmuteMedia.addTarget(mediaView, action: #selector(MediaView.unmute), for: .touchUpInside)
         
         playMedia.setTitle("[play]", for: .normal)
         pauseMedia.setTitle("[pause]", for: .normal)

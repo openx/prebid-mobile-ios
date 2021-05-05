@@ -8,14 +8,14 @@
 import Foundation
 
 @objc public protocol PBMMediaViewDelegate {
-    func onMediaPlaybackStarted(_ mediaView: PBMMediaView)
-    func onMediaPlaybackFinished(_ mediaView: PBMMediaView)
+    func onMediaPlaybackStarted(_ mediaView: MediaView)
+    func onMediaPlaybackFinished(_ mediaView: MediaView)
     
-    func onMediaPlaybackPaused(_ mediaView: PBMMediaView)
-    func onMediaPlaybackResumed(_ mediaView: PBMMediaView)
+    func onMediaPlaybackPaused(_ mediaView: MediaView)
+    func onMediaPlaybackResumed(_ mediaView: MediaView)
     
-    func onMediaPlaybackMuted(_ mediaView: PBMMediaView)
-    func onMediaPlaybackUnmuted(_ mediaView: PBMMediaView)
+    func onMediaPlaybackMuted(_ mediaView: MediaView)
+    func onMediaPlaybackUnmuted(_ mediaView: MediaView)
     
-    func onMediaLoadingFinished(_ mediaView: PBMMediaView)
+    func onMediaLoadingFinished(_ mediaView: MediaView)
 }

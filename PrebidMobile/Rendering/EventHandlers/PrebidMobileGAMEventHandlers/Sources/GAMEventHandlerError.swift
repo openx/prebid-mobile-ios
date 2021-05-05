@@ -16,7 +16,7 @@ enum GAMEventHandlerError : Error {
 }
 
 fileprivate let errDescrClassNotFound   = "GoogleMobileAds SDK does not provide the required classes."
-fileprivate let errDescrNoCacheID       = "Failed to find local cache ID (expected in \(Constantns.LOCAL_CACHE_ID_TARGETING_KEY)."
+fileprivate let errDescrNoCacheID       = "Failed to find local cache ID (expected in \(Constantns.targetingKeyLocalCacheID)."
 fileprivate let errDescrInvalidCacheID  = "Invalid local cache ID or the Ad already expired."
 fileprivate let errDescrInvalidNativeAd = "Failed to load Native Ad from cached bid response."
 

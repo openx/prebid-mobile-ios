@@ -6,31 +6,31 @@
 //
 
 import Foundation
-import os
 import GoogleMobileAds
 import PrebidMobileRendering
 
-fileprivate let LOCAL_CACHE_EXPIRATION_INTERVAL: TimeInterval = 3600;
-fileprivate let PREBID_KEYWORD_PREFIX = "hb_"
+fileprivate let localCacheExpirationInterval: TimeInterval = 3600
+fileprivate let prebidKeywordPrefix = "hb_"
 
 public class GAMUtils {
+    
+    // MARK: - Private Properties
     
     private let localCache: PBMLocalResponseInfoCache!
     
     private init() {
-        localCache = PBMLocalResponseInfoCache(expirationInterval: LOCAL_CACHE_EXPIRATION_INTERVAL)
+        localCache = PBMLocalResponseInfoCache(expirationInterval: localCacheExpirationInterval)
     }
+    
+    // MARK: - Public
     
     public static let shared = GAMUtils()
     
     public func prepareRequest(_ request: GAMRequest,
-                        demandResponseInfo: PBMDemandResponseInfo)  {
-        if !GAMRequestWrapper.classesFound {
+                               demandResponseInfo: PBMDemandResponseInfo)  {
+        guard let boxedRequest = GAMRequestWrapper(request: request) else {
             return
         }
-        
-        let localCacheID = localCache.store(demandResponseInfo)
-        let boxedRequest = GAMRequestWrapper(gamRequest: request)
         
         var mergedTargeting = getPrebidTargeting(from: boxedRequest)
         
@@ -38,64 +38,62 @@ public class GAMUtils {
             mergedTargeting.merge(bidTargeting) { $1 }
         }
         
-        mergedTargeting[Constantns.LOCAL_CACHE_ID_TARGETING_KEY] = localCacheID
+        mergedTargeting[Constantns.targetingKeyLocalCacheID] = localCache.store(demandResponseInfo)
         
         boxedRequest.customTargeting = mergedTargeting
     }
     
     public func findNativeAd(for nativeAd: GADNativeAd,
-                      nativeAdDetectionListener: PBMNativeAdDetectionListener) {
-        
-        if GADNativeAdWrapper.classesFound == false {
+                             nativeAdDetectionListener: PBMNativeAdDetectionListener) {
+        guard let wrappedAd = GADNativeAdWrapper(nativeAd: nativeAd) else {
             nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.gamClassesNotFound)
             return
         }
-       
-        let wrappedAd = GADNativeAdWrapper(nativeAd: nativeAd)
         
-        findNativeAd(flagLookupBlock: {
-            findPrebidFlagInNativeAd(wrappedAd)
+        findNativeAd(flagLookupClosure: {
+            GAMUtils.findPrebidFlagInNativeAd(wrappedAd)
         }, localCacheIDExtractor: {
-            localCacheIDFromNativeAd(wrappedAd)
+            GAMUtils.localCacheIDFromNativeAd(wrappedAd)
         }, nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
     public func findCustomNativeAd(for customNativeAd: GADCustomNativeAd,
                             nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
-        if GADCustomNativeAdWrapper.classesFound == false {
+        guard let wrappedAd = GADCustomNativeAdWrapper(customNativeAd: customNativeAd) else {
             nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.gamClassesNotFound)
             return
         }
         
-        let wrappedAd = GADCustomNativeAdWrapper(customNativeAd: customNativeAd)
-        findNativeAd(flagLookupBlock: {
-            findCreativeFlagInCustomNativeAd(wrappedAd)
+        findNativeAd(flagLookupClosure: {
+            GAMUtils.findCreativeFlagInCustomNativeAd(wrappedAd)
         }, localCacheIDExtractor: {
-            localCacheIDFromCustomNativeAd(wrappedAd)
+            GAMUtils.localCacheIDFromCustomNativeAd(wrappedAd)
         }, nativeAdDetectionListener: nativeAdDetectionListener)
     }
     
     class func log(error: GAMEventHandlerError) {
-        // TODO: use unified Loging system from the Rendering SDK
+        // TODO: use unified Loging system from the Rendering or Prebid SDK
         NSLog(error.localizedDescription)
     }
     
     // MARK: Private Methods
     
     private func getPrebidTargeting(from request: GAMRequestWrapper) -> [String: String] {
-        if let requestTargeting = request.customTargeting {
-            return requestTargeting.filter { $0.key.hasPrefix(PREBID_KEYWORD_PREFIX)}
+        guard let requestTargeting = request.customTargeting else {
+            return [:]
         }
         
-        return [String : String]()
+        return requestTargeting.filter {
+            $0.key.hasPrefix(prebidKeywordPrefix)
+        }
     }
     
-    private func findNativeAd(flagLookupBlock: () -> Bool,
+    private func findNativeAd(flagLookupClosure: () -> Bool,
                               localCacheIDExtractor: () -> String?,
                               nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
-        if flagLookupBlock() == false {
+        if flagLookupClosure() == false {
             nativeAdDetectionListener.onPrimaryAdWin?()
             return
         }
@@ -110,8 +108,8 @@ public class GAMUtils {
             return
         }
         
-        cacheResponse.getNativeAd { ad in
-            guard let nativeAd = ad else {
+        cacheResponse.getNativeAd {
+            guard let nativeAd = $0 else {
                 nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.invalidNativeAd)
                 return
             }
@@ -122,26 +120,26 @@ public class GAMUtils {
     
     // MARK: UnifiedNativeAd decomposition
 
-    private func findPrebidFlagInNativeAd(_ nativeAd: GADNativeAdWrapper) -> Bool {
-        nativeAd.body == Constantns.PREBID_CREATIVE_FLAG_KEY
+    private class func findPrebidFlagInNativeAd(_ nativeAd: GADNativeAdWrapper) -> Bool {
+        nativeAd.body == Constantns.creativeDataKeyIsPrebid
     }
     
-    private func localCacheIDFromNativeAd(_ nativeAd: GADNativeAdWrapper) -> String? {
+    private class func localCacheIDFromNativeAd(_ nativeAd: GADNativeAdWrapper) -> String? {
         nativeAd.callToAction;
     }
 
     // MARK: NativeCustomTemplateAd decomposition
 
-    private func findCreativeFlagInCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> Bool {
-        if let isPrebidCreativeVar = customNativeAd.string(forKey: Constantns.PREBID_CREATIVE_FLAG_KEY),
-           isPrebidCreativeVar == Constantns.CREATIVE_FLAG_VALUE {
+    private class func findCreativeFlagInCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> Bool {
+        if let isPrebidCreativeVar = customNativeAd.string(forKey: Constantns.creativeDataKeyIsPrebid),
+           isPrebidCreativeVar == Constantns.creativeDataValueIsPrebid {
             return true;
         }
 
         return false;
     }
 
-    private func localCacheIDFromCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> String? {
-        customNativeAd.string(forKey: Constantns.LOCAL_CACHE_ID_TARGETING_KEY)
+    private class func localCacheIDFromCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> String? {
+        customNativeAd.string(forKey: Constantns.targetingKeyLocalCacheID)
     }
 }

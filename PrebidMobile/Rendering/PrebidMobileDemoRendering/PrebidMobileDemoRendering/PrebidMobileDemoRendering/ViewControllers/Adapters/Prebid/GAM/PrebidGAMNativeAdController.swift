@@ -133,6 +133,9 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
             
             let dfpRequest = GAMRequest()
             GAMUtils.shared.prepareRequest(dfpRequest, demandResponseInfo: demandResponseInfo)
+            
+            print(">>> \(String(describing: dfpRequest.customTargeting))")
+            
             self.adLoader = GADAdLoader(adUnitID: self.gamAdUnitId,
                                         rootViewController: self.rootController,
                                         adTypes: self.adTypes,

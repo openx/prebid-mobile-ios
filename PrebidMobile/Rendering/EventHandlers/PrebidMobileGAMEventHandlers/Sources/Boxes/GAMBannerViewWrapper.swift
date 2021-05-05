@@ -9,6 +9,7 @@ import Foundation
 import GoogleMobileAds
 
 class GAMBannerViewWrapper {
+    
     static var classesValidated: Bool?
     
     let banner = GAMBannerView()
@@ -110,6 +111,13 @@ class GAMBannerViewWrapper {
     }
     
     // MARK: - Public methods
+        
+    public init?() {
+        if !Self.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+    }
 
     public func load(_ request: GAMRequestWrapper) {
         banner.load(request.boxedRequest)

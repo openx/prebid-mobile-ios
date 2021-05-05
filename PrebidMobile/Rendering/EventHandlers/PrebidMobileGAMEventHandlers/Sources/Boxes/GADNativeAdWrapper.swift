@@ -61,7 +61,12 @@ class GADNativeAdWrapper {
     
     // MARK: - Public Methods
     
-    init(nativeAd: GADNativeAd) {
+    init?(nativeAd: GADNativeAd) {
+        if !Self.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+        
         self.nativeAd = nativeAd
     }
 

@@ -72,13 +72,14 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(GADRewardedAdWrapper.classesFound && GAMRequestWrapper.classesFound) {
+        guard let currentRequestRewarded = GADRewardedAdWrapper(adUnitID: adUnitID),
+              let request = GAMRequestWrapper() else {
             let error = GAMEventHandlerError.gamClassesNotFound
             GAMUtils.log(error: error)
             loadingDelegate?.failedWithError(error)
             return
         }
-        
+
         if let _ = requestRewarded {
             // request to primaryAdServer in progress
             return;
@@ -89,10 +90,8 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
             return;
         }
         
-        let currentRequestRewarded = GADRewardedAdWrapper(adUnitID: adUnitID)
         requestRewarded = currentRequestRewarded
         
-        let request = GAMRequestWrapper()
         if let bidResponse = bidResponse {
             isExpectingAppEvent = (bidResponse.winningBid != nil)
             

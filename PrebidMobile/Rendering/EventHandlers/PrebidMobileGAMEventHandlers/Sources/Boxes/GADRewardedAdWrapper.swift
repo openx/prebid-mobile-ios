@@ -25,7 +25,12 @@ class GADRewardedAdWrapper {
         return classesValidated ?? false
     }
     
-    init(adUnitID: String) {
+    init?(adUnitID: String) {
+        if !Self.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+        
         self.adUnitID = adUnitID
     }
     

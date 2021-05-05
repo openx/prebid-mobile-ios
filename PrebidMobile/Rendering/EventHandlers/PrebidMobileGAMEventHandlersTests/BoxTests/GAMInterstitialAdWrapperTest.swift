@@ -25,7 +25,10 @@ class GAMInterstitialAdWrapperTest: XCTestCase {
             RefProxyPropTest(keyPath: \.appEventDelegate, value: DummyEventDelegate()),
         ]
         
-        let interstitial = GAMInterstitialAdWrapper(adUnitID: "/21808260008/prebid_oxb_html_interstitial")
+        guard let interstitial = GAMInterstitialAdWrapper(adUnitID: "/21808260008/prebid_oxb_html_interstitial") else {
+            XCTFail()
+            return
+        }
                 
         for nextTest in propTests {
             nextTest.run(object: interstitial)

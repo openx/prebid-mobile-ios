@@ -53,7 +53,10 @@ public class GAMBannerEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(GAMBannerViewWrapper.classesFound && GAMRequestWrapper.classesFound) {
+       
+        guard let bannerViewWrapper = GAMBannerViewWrapper(),
+              let request = GAMRequestWrapper() else {
+            
             let error = GAMEventHandlerError.gamClassesNotFound
             GAMUtils.log(error: error)
             loadingDelegate?.failedWithError(error)
@@ -65,12 +68,11 @@ public class GAMBannerEventHandler :
             return;
         }
         
-        requestBanner = GAMBannerViewWrapper()
+        requestBanner = bannerViewWrapper
         requestBanner?.adUnitID = adUnitID
         requestBanner?.validAdSizes = validAdSizes
         requestBanner?.rootViewController = interactionDelegate?.viewControllerForPresentingModal
         
-        let request = GAMRequestWrapper()
         if let bidResponse = bidResponse {
             isExpectingAppEvent = bidResponse.winningBid != nil
             

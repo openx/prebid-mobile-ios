@@ -43,12 +43,22 @@ class GAMRequestWrapper {
     
     // MARK: - Public Methods
     
-    init() {
+    init?() {
+        if !GAMRequestWrapper.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+        
         request = GAMRequest()
     }
     
-    init(gamRequest: GAMRequest){
-        request = gamRequest
+    init?(request: GAMRequest) {
+        if !Self.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+        
+        self.request = request
     }
  
     // MARK: - Private Methods

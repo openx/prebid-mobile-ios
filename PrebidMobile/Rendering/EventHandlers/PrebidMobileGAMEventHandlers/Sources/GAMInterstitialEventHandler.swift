@@ -59,7 +59,8 @@ public class GAMInterstitialEventHandler :
     }
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
-        if !(GAMInterstitialAdWrapper.classesFound && GAMRequestWrapper.classesFound) {
+        guard let currentInterstitialAd = GAMInterstitialAdWrapper(adUnitID: adUnitID),
+              let request = GAMRequestWrapper() else {
             let error = GAMEventHandlerError.gamClassesNotFound
             GAMUtils.log(error: error)
             loadingDelegate?.failedWithError(error)
@@ -76,10 +77,8 @@ public class GAMInterstitialEventHandler :
             return;
         }
 
-        requestInterstitial = GAMInterstitialAdWrapper(adUnitID: adUnitID)
-        
-        let request = GAMRequestWrapper()
-        
+        requestInterstitial = currentInterstitialAd
+            
         if let bidResponse = bidResponse {
             isExpectingAppEvent = bidResponse.winningBid != nil
             
@@ -98,10 +97,10 @@ public class GAMInterstitialEventHandler :
             }
         }
         
-        requestInterstitial?.fullScreenContentDelegate = self
-        requestInterstitial?.appEventDelegate = self
+        currentInterstitialAd.fullScreenContentDelegate = self
+        currentInterstitialAd.appEventDelegate = self
         
-        requestInterstitial?.load(request: request, completion:{ [weak self] ad, error in
+        currentInterstitialAd.load(request: request, completion:{ [weak self] ad, error in
             if let error = error {
                 self?.interstitialdidReceive(didFailToReceive: ad, error: error)
                 return
@@ -123,7 +122,7 @@ public class GAMInterstitialEventHandler :
                                 error: Error)
     {
         if requestInterstitial === ad {
-            requestInterstitial = nil;
+            requestInterstitial = nil
             forgetCurrentInterstitial()
             loadingDelegate?.failedWithError(error)
         }

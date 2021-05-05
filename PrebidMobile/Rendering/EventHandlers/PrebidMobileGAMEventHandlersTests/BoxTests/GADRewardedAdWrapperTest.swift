@@ -30,7 +30,10 @@ class GADRewardedAdWrapperTest: XCTestCase {
             RefProxyPropTest(keyPath: \.adMetadataDelegate, value: DummyMetadataDelegate()),
         ]
         
-        let rewardedAd = GADRewardedAdWrapper(adUnitID: "/21808260008/prebid_oxb_rewarded_video_test")
+        guard let rewardedAd = GADRewardedAdWrapper(adUnitID: "/21808260008/prebid_oxb_rewarded_video_test") else {
+            XCTFail()
+            return
+        }
         
         XCTAssertNil(rewardedAd.adMetadata)
         XCTAssertNil(rewardedAd.reward)

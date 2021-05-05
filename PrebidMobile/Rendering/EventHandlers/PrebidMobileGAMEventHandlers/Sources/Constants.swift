@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct Constantns {
+enum Constantns {
     
-    static let LOCAL_CACHE_ID_TARGETING_KEY = "hb_cache_id_local"
-    static let PREBID_CREATIVE_FLAG_KEY     = "isPrebid"
-    static let CREATIVE_FLAG_VALUE          = "1"
+    static let targetingKeyLocalCacheID     = "hb_cache_id_local"
+    
+    static let creativeDataKeyIsPrebid      = "isPrebid"
+    
+    static let creativeDataValueIsPrebid    = "1"
 }

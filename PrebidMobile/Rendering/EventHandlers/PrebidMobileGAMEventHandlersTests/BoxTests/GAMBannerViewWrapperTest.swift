@@ -35,7 +35,10 @@ class GAMBannerViewWrapperTest: XCTestCase {
             PropTest(keyPath: \.adSize, value: kGADAdSizeBanner),
         ]
         
-        let banner = GAMBannerViewWrapper()
+        guard let banner = GAMBannerViewWrapper() else {
+            XCTFail()
+            return
+        }
         
         for nextTest in propTests {
             nextTest.run(object: banner)

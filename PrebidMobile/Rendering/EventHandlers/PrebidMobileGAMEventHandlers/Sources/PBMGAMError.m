@@ -8,7 +8,6 @@
 #import "PBMGAMError.h"
 
 #import <PrebidMobileRendering/PBMErrorCode.h>
-#import "PBMGAMConstants.h"
 
 @interface PBMGAMError ()
 @property (nonatomic, class, readonly) NSErrorDomain errorDomain;
@@ -32,8 +31,9 @@
 }
 
 + (NSError *)noLocalCacheID {
+    // TODO: Use constant insead of "isPrebid"
     NSString * const errorMessage = [NSString stringWithFormat:@"Failed to find local cache ID (expected in '%@').",
-                                     PREBID_GAM_PREBID_CREATIVE_FLAG_KEY];
+                                     @"isPrebid"];
     return [NSError errorWithDomain:[self errorDomain]
                                code:[self baseErrorOffset] + 2
                            userInfo:@{NSLocalizedDescriptionKey: errorMessage}];

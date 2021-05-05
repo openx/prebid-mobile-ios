@@ -6,9 +6,10 @@
 //
 
 import XCTest
+import GoogleMobileAds
 @testable import PrebidMobileGAMEventHandlers
 
-class PBMDFPInterstitialTest: XCTestCase {
+class GAMInterstitialAdWrapperTest: XCTestCase {
     
     private class DummyDelegate: NSObject, GADFullScreenContentDelegate {
     }

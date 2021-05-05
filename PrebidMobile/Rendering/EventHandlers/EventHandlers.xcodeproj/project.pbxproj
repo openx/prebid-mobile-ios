@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3405F94A250A555800268A77 /* PrebidMobileGAMEventHandlers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B64D5C24F7E41600FDD9F4 /* PrebidMobileGAMEventHandlers.framework */; };
-		3405F951250A55AE00268A77 /* PBMDFPBannerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3405F950250A55AE00268A77 /* PBMDFPBannerTest.swift */; };
+		3405F951250A55AE00268A77 /* GAMBannerViewWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3405F950250A55AE00268A77 /* GAMBannerViewWrapperTest.swift */; };
 		344A7F09250B73FA00743A93 /* PropertyTestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F08250B73FA00743A93 /* PropertyTestModels.swift */; };
 		344A7F0C250B744D00743A93 /* GADAdSize+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F0B250B744D00743A93 /* GADAdSize+Equatable.swift */; };
-		344A7F0E250B749600743A93 /* PBMDFPRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F0D250B749600743A93 /* PBMDFPRequestTest.swift */; };
-		344A7F14250B823F00743A93 /* PBMDFPInterstitialTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F13250B823F00743A93 /* PBMDFPInterstitialTest.swift */; };
-		344A7F1A250B8E5400743A93 /* PBMGADRewardedAdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F19250B8E5400743A93 /* PBMGADRewardedAdTest.swift */; };
+		344A7F0E250B749600743A93 /* GAMRequestWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F0D250B749600743A93 /* GAMRequestWrapperTest.swift */; };
+		344A7F14250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F13250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift */; };
+		344A7F1A250B8E5400743A93 /* GADRewardedAdWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A7F19250B8E5400743A93 /* GADRewardedAdWrapperTest.swift */; };
 		346A9C9824F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 346A9C9624F8F4CE002892BC /* PrebidMoPubAdapterConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		346A9C9924F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 346A9C9724F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.m */; };
 		34B64D7124F7E8A100FDD9F4 /* PrebidMobileRendering.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B64D7024F7E8A100FDD9F4 /* PrebidMobileRendering.framework */; };
@@ -73,13 +73,13 @@
 		22D54DBD4A18A8BDA6235BEB /* Pods-PrebidMobileMoPubAdapters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileMoPubAdapters.release.xcconfig"; path = "Target Support Files/Pods-PrebidMobileMoPubAdapters/Pods-PrebidMobileMoPubAdapters.release.xcconfig"; sourceTree = "<group>"; };
 		3405F945250A555800268A77 /* PrebidMobileGAMEventHandlersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrebidMobileGAMEventHandlersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3405F949250A555800268A77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3405F950250A55AE00268A77 /* PBMDFPBannerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMDFPBannerTest.swift; sourceTree = "<group>"; };
+		3405F950250A55AE00268A77 /* GAMBannerViewWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMBannerViewWrapperTest.swift; sourceTree = "<group>"; };
 		3405F952250A5A5800268A77 /* PrebidMobileGAMEventHandlersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrebidMobileGAMEventHandlersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		344A7F08250B73FA00743A93 /* PropertyTestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTestModels.swift; sourceTree = "<group>"; };
 		344A7F0B250B744D00743A93 /* GADAdSize+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GADAdSize+Equatable.swift"; sourceTree = "<group>"; };
-		344A7F0D250B749600743A93 /* PBMDFPRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMDFPRequestTest.swift; sourceTree = "<group>"; };
-		344A7F13250B823F00743A93 /* PBMDFPInterstitialTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMDFPInterstitialTest.swift; sourceTree = "<group>"; };
-		344A7F19250B8E5400743A93 /* PBMGADRewardedAdTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMGADRewardedAdTest.swift; sourceTree = "<group>"; };
+		344A7F0D250B749600743A93 /* GAMRequestWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMRequestWrapperTest.swift; sourceTree = "<group>"; };
+		344A7F13250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMInterstitialAdWrapperTest.swift; sourceTree = "<group>"; };
+		344A7F19250B8E5400743A93 /* GADRewardedAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADRewardedAdWrapperTest.swift; sourceTree = "<group>"; };
 		346A9C9624F8F4CE002892BC /* PrebidMoPubAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubAdapterConfiguration.h; sourceTree = "<group>"; };
 		346A9C9724F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrebidMoPubAdapterConfiguration.m; sourceTree = "<group>"; };
 		34B64D5C24F7E41600FDD9F4 /* PrebidMobileGAMEventHandlers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileGAMEventHandlers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,10 +190,10 @@
 		344A7F06250B73A700743A93 /* BoxTests */ = {
 			isa = PBXGroup;
 			children = (
-				3405F950250A55AE00268A77 /* PBMDFPBannerTest.swift */,
-				344A7F0D250B749600743A93 /* PBMDFPRequestTest.swift */,
-				344A7F13250B823F00743A93 /* PBMDFPInterstitialTest.swift */,
-				344A7F19250B8E5400743A93 /* PBMGADRewardedAdTest.swift */,
+				3405F950250A55AE00268A77 /* GAMBannerViewWrapperTest.swift */,
+				344A7F0D250B749600743A93 /* GAMRequestWrapperTest.swift */,
+				344A7F13250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift */,
+				344A7F19250B8E5400743A93 /* GADRewardedAdWrapperTest.swift */,
 			);
 			path = BoxTests;
 			sourceTree = "<group>";
@@ -626,11 +626,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				344A7F09250B73FA00743A93 /* PropertyTestModels.swift in Sources */,
-				344A7F0E250B749600743A93 /* PBMDFPRequestTest.swift in Sources */,
-				344A7F1A250B8E5400743A93 /* PBMGADRewardedAdTest.swift in Sources */,
-				344A7F14250B823F00743A93 /* PBMDFPInterstitialTest.swift in Sources */,
+				344A7F0E250B749600743A93 /* GAMRequestWrapperTest.swift in Sources */,
+				344A7F1A250B8E5400743A93 /* GADRewardedAdWrapperTest.swift in Sources */,
+				344A7F14250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift in Sources */,
 				344A7F0C250B744D00743A93 /* GADAdSize+Equatable.swift in Sources */,
-				3405F951250A55AE00268A77 /* PBMDFPBannerTest.swift in Sources */,
+				3405F951250A55AE00268A77 /* GAMBannerViewWrapperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +702,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "PrebidMobileGAMEventHandlersTests/PrebidMobileGAMEventHandlersTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -729,7 +729,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "PrebidMobileGAMEventHandlersTests/PrebidMobileGAMEventHandlersTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

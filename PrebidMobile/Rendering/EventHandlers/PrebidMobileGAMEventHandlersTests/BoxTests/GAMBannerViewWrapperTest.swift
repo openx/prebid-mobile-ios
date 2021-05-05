@@ -6,9 +6,10 @@
 //
 
 import XCTest
+import GoogleMobileAds
 @testable import PrebidMobileGAMEventHandlers
 
-class PBMDFPBannerTest: XCTestCase {
+class GAMBannerViewWrapperTest: XCTestCase {
     
     private class DummyDelegate: NSObject, GADBannerViewDelegate {
     }
@@ -21,9 +22,9 @@ class PBMDFPBannerTest: XCTestCase {
     }
     
     func testProperties() {
-        XCTAssertTrue(PBMGAMBanner.classesFound)
+        XCTAssertTrue(GAMBannerViewWrapper.classesFound)
         
-        let propTests: [BasePropTest<PBMGAMBanner>] = [
+        let propTests: [BasePropTest<GAMBannerViewWrapper>] = [
             PropTest(keyPath: \.adUnitID, value: "144"),
             PropTest(keyPath: \.validAdSizes, value: [NSValueFromGADAdSize(kGADAdSizeBanner)]),
             PropTest(keyPath: \.rootViewController, value: UIViewController()),
@@ -34,7 +35,7 @@ class PBMDFPBannerTest: XCTestCase {
             PropTest(keyPath: \.adSize, value: kGADAdSizeBanner),
         ]
         
-        let banner = PBMGAMBanner()
+        let banner = GAMBannerViewWrapper()
         
         for nextTest in propTests {
             nextTest.run(object: banner)

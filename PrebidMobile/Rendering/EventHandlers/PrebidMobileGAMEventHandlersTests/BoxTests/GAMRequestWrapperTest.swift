@@ -8,15 +8,15 @@
 import XCTest
 @testable import PrebidMobileGAMEventHandlers
 
-class PBMDFPRequestTest: XCTestCase {
+class GAMRequestWrapperTest: XCTestCase {
     func testProperties() {
-        XCTAssertTrue(PBMGAMBanner.classesFound)
+        XCTAssertTrue(GAMBannerViewWrapper.classesFound)
         
-        let propTests: [BasePropTest<PBMGAMRequest>] = [
+        let propTests: [BasePropTest<GAMRequestWrapper>] = [
             DicPropTest(keyPath: \.customTargeting, value: ["key": "unknown"]),
         ]
         
-        let request = PBMGAMRequest()
+        let request = GAMRequestWrapper()
         
         for nextTest in propTests {
             nextTest.run(object: request)

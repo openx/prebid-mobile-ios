@@ -6,9 +6,10 @@
 //
 
 import XCTest
+import GoogleMobileAds
 @testable import PrebidMobileGAMEventHandlers
 
-class PBMGADRewardedAdTest: XCTestCase {
+class GADRewardedAdWrapperTest: XCTestCase {
     
     private class DummyDelegate: NSObject, GADFullScreenContentDelegate {
         func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {

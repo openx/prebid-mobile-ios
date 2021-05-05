@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os
 import GoogleMobileAds
 import PrebidMobileRendering
 
@@ -46,7 +47,7 @@ public class GAMUtils {
                       nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
         if GADNativeAdWrapper.classesFound == false {
-            nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.gamClassesNotFound)
+            nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.gamClassesNotFound)
             return
         }
        
@@ -63,7 +64,7 @@ public class GAMUtils {
                             nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
         if GADCustomNativeAdWrapper.classesFound == false {
-            nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.gamClassesNotFound)
+            nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.gamClassesNotFound)
             return
         }
         
@@ -73,6 +74,11 @@ public class GAMUtils {
         }, localCacheIDExtractor: {
             localCacheIDFromCustomNativeAd(wrappedAd)
         }, nativeAdDetectionListener: nativeAdDetectionListener)
+    }
+    
+    class func log(error: GAMEventHandlerError) {
+        // TODO: use unified Loging system from the Rendering SDK
+        NSLog(error.localizedDescription)
     }
     
     // MARK: Private Methods
@@ -95,18 +101,18 @@ public class GAMUtils {
         }
         
         guard let localCacheID = localCacheIDExtractor() else {
-            nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.noLocalCacheID)
+            nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.noLocalCacheID)
             return
         }
         
         guard let cacheResponse = localCache.getStoredResponseInfo(localCacheID) else {
-            nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.invalidLocalCacheID)
+            nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.invalidLocalCacheID)
             return
         }
         
         cacheResponse.getNativeAd { ad in
             guard let nativeAd = ad else {
-                nativeAdDetectionListener.onNativeAdInvalid?(PBMGAMError.invalidNativeAd)
+                nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.invalidNativeAd)
                 return
             }
             

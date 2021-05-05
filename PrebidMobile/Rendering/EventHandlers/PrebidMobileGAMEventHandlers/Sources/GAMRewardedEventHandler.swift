@@ -73,8 +73,8 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
         if !(GADRewardedAdWrapper.classesFound && GAMRequestWrapper.classesFound) {
-            let error = PBMGAMError.gamClassesNotFound
-            PBMGAMError.logError(error)
+            let error = GAMEventHandlerError.gamClassesNotFound
+            GAMUtils.log(error: error)
             loadingDelegate?.failedWithError(error)
             return
         }

@@ -54,8 +54,8 @@ public class GAMBannerEventHandler :
     
     public func requestAd(with bidResponse: PBMBidResponse?) {
         if !(GAMBannerViewWrapper.classesFound && GAMRequestWrapper.classesFound) {
-            let error = PBMGAMError.gamClassesNotFound
-            PBMGAMError.logError(error)
+            let error = GAMEventHandlerError.gamClassesNotFound
+            GAMUtils.log(error: error)
             loadingDelegate?.failedWithError(error)
             return
         }

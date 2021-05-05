@@ -9,52 +9,55 @@ import Foundation
 import GoogleMobileAds
 import PrebidMobileRendering
 
-fileprivate let appEvent = "PrebidAppEvent"
-
-fileprivate let appEventTimeout = 0.6
-
-
-public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADFullScreenContentDelegate, GADAdMetadataDelegate {
+public class GAMRewardedAdEventHandler :
+    NSObject,
+    PBMRewardedEventHandler,
+    GADFullScreenContentDelegate,
+    GADAdMetadataDelegate {
     
-    public let adUnitID: String
+    // MARK: - Internal Properties
     
-    var requestRewarded: GADRewardedAdWrapper?
-    var oxbProxyRewarded: GADRewardedAdWrapper?
+    var requestRewarded : GADRewardedAdWrapper?
+    var proxyRewarded   : GADRewardedAdWrapper?
     var embeddedRewarded: GADRewardedAdWrapper?
     
     var isExpectingAppEvent = false
     
     var appEventTimer: Timer?
     
+    // MARK: - Public Properties
+    
+    public let adUnitID: String
+
+    // MARK: - Public Methods
+    
     public init(adUnitID: String) {
         self.adUnitID = adUnitID
     }
     
-    
-    
-    // MARK: GADAdMetadataDelegate
+    // MARK: - GADAdMetadataDelegate
     
     public func adMetadataDidChange(_ ad: GADAdMetadataProvider) {
         let metadata = ad.adMetadata?[GADAdMetadataKey(rawValue: "AdTitle")] as? String
-        if requestRewarded?.rewardedAd === ad && metadata == appEvent {
+        if requestRewarded?.rewardedAd === ad && metadata == Constants.appEventValue {
             appEventDetected()
         }
     }
     
-    // MARK: PBMRewardedEventHandler
+    // MARK: - PBMRewardedEventHandler
     
     public var loadingDelegate: PBMRewardedEventLoadingDelegate?
     
     public var interactionDelegate: PBMRewardedEventInteractionDelegate?
     
-    // MARK: PBMInterstitialAd
+    // MARK: - Public Methods
     
     public var isReady: Bool {
         if requestRewarded != nil {
             return false
         }
         
-        if let _ = embeddedRewarded ?? oxbProxyRewarded {
+        if let _ = embeddedRewarded ?? proxyRewarded {
             return true
         }
         
@@ -70,7 +73,6 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
         }
     }
     
-    
     public func requestAd(with bidResponse: PBMBidResponse?) {
         guard let currentRequestRewarded = GADRewardedAdWrapper(adUnitID: adUnitID),
               let request = GAMRequestWrapper() else {
@@ -85,7 +87,7 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
             return;
         }
         
-        if oxbProxyRewarded != nil || embeddedRewarded != nil {
+        if proxyRewarded != nil || embeddedRewarded != nil {
             // rewarded already loaded
             return;
         }
@@ -119,7 +121,6 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
                     self?.rewardedAd(didReceive: ad)
                 }
             }
-            
         }
     }
     
@@ -127,7 +128,7 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
 
     func rewardedAd(didReceive ad: GADRewardedAdWrapper) {
         if requestRewarded === ad {
-            primaryAdRecieved()
+            primaryAdReceived()
         }
     }
     
@@ -139,13 +140,13 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
         }
     }
     
-    func primaryAdRecieved() {
+    func primaryAdReceived() {
         if isExpectingAppEvent {
             if appEventTimer != nil {
                 return
             }
             
-            appEventTimer = Timer.scheduledTimer(timeInterval: appEventTimeout,
+            appEventTimer = Timer.scheduledTimer(timeInterval: Constants.appEventTimeout,
                                                  target: self,
                                                  selector: #selector(appEventTimedOut),
                                                  userInfo: nil,
@@ -164,8 +165,8 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
     func forgetCurrentRewarded() {
         if embeddedRewarded != nil {
             embeddedRewarded = nil;
-        } else if oxbProxyRewarded != nil {
-            oxbProxyRewarded = nil;
+        } else if proxyRewarded != nil {
+            proxyRewarded = nil;
         }
     }
     
@@ -196,7 +197,7 @@ public class GAMRewardedAdEventHandler : NSObject, PBMRewardedEventHandler, GADF
             isExpectingAppEvent = false
             
             forgetCurrentRewarded()
-            oxbProxyRewarded = rewarded
+            proxyRewarded = rewarded
             
             loadingDelegate?.reward = rewarded?.reward
             loadingDelegate?.prebidDidWin()

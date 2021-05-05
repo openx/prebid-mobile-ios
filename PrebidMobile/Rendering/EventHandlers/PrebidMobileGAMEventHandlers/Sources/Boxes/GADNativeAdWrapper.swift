@@ -10,27 +10,16 @@ import GoogleMobileAds
 
 class GADNativeAdWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: - Private Properties
+    
+    public static var classesFound = GADNativeAdWrapper.findClasses()
+
+    // MARK: - Public Properties
     
     let nativeAd: GADNativeAd
+           
+    // MARK: - Public Wrappers (Properties)
 
-    // MARK: - Public (own) properties
-
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GADNativeAdWrapper.findClasses()
-        return classesValidated ?? false
-    }
-    
-    public var boxedAd: GADNativeAd?  {
-        nativeAd
-    }
-    
-    // MARK: - Public (Boxed) Properties
-    
     public var headline: String? {
         nativeAd.headline
     }
@@ -59,8 +48,8 @@ class GADNativeAdWrapper {
         nativeAd.advertiser
     }
     
-    // MARK: - Public Methods
-    
+    // MARK: - Public Wrappers (Methods)
+
     init?(nativeAd: GADNativeAd) {
         if !Self.classesFound {
             GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)

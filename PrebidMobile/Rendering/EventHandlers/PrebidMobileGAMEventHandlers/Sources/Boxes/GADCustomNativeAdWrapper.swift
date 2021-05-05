@@ -10,7 +10,11 @@ import GoogleMobileAds
 
 class GADCustomNativeAdWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: - Private Properties
+    
+    public static var classesFound = GADCustomNativeAdWrapper.findClasses()
+    
+    // MARK: - Public Properties
     
     let customNativeAd: GADCustomNativeAd
     
@@ -24,24 +28,9 @@ class GADCustomNativeAdWrapper {
         
         self.customNativeAd = customNativeAd
     }
+    
+    // MARK: - Public Wrappers (Methods)
 
-    // MARK: - Public (own) properties
-
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GADCustomNativeAdWrapper.findClasses()
-        return classesValidated ?? false
-    }
-    
-    public var boxedAd: GADCustomNativeAd?  {
-        customNativeAd
-    }
-    
-    // MARK: - Public (Boxed) Methods
-    
     public func string(forKey: String) -> String? {
         customNativeAd.string(forKey: forKey)
     }

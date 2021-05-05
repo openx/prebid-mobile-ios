@@ -9,10 +9,6 @@ import Foundation
 import GoogleMobileAds
 import PrebidMobileRendering
 
-
-fileprivate let appEvent = "PrebidAppEvent"
-fileprivate let appEventTimeout = 0.6;
-
 public class GAMBannerEventHandler :
     NSObject,
     PBMBannerEventHandler,
@@ -20,9 +16,11 @@ public class GAMBannerEventHandler :
     GADAppEventDelegate,
     GADAdSizeDelegate
 {
-    var requestBanner: GAMBannerViewWrapper?
-    var oxbProxyBanner: GAMBannerViewWrapper?
-    var embeddedBanner: GAMBannerViewWrapper?
+    // MARK: - Internal Properties
+    
+    var requestBanner   : GAMBannerViewWrapper?
+    var proxyBanner     : GAMBannerViewWrapper?
+    var embeddedBanner  : GAMBannerViewWrapper?
     
     var validAdSizes: [NSValue]
     
@@ -33,6 +31,8 @@ public class GAMBannerEventHandler :
     
     let adUnitID: String
     
+    // MARK: - Public Methods
+    
     public init(adUnitID: String, validGADAdSizes: [NSValue]) {
         self.adUnitID = adUnitID
         self.adSizes = GAMBannerEventHandler.convertGADSizes(validGADAdSizes)
@@ -40,7 +40,7 @@ public class GAMBannerEventHandler :
         validAdSizes = validGADAdSizes
     }
     
-    // MARK: PBMBannerEventHandler
+    // MARK: - PBMBannerEventHandler
     
     public var loadingDelegate: PBMBannerEventLoadingDelegate?
     
@@ -104,14 +104,14 @@ public class GAMBannerEventHandler :
     // MARK: - GADBannerViewDelegate
     
     public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        if requestBanner?.view == bannerView {
+        if requestBanner?.banner == bannerView {
             primaryAdReceived()
         }
     }
     
     public func bannerView(_ bannerView: GADBannerView,
                     didFailToReceiveAdWithError error: Error) {
-        if requestBanner?.view == bannerView {
+        if requestBanner?.banner == bannerView {
             requestBanner = nil
             recycleCurrentBanner()
             loadingDelegate?.failedWithError(error)
@@ -138,20 +138,21 @@ public class GAMBannerEventHandler :
     
     public func adView(_ banner: GADBannerView,
                 didReceiveAppEvent name: String, withInfo info: String?) {
-        if requestBanner?.view == banner && name == appEvent {
-            appEventDeected()
+        if requestBanner?.banner == banner && name == Constants.appEventValue {
+            appEventDetected()
         }
     }
     
     public func interstitialAd(_ interstitialAd: GADInterstitialAd,
-                        didReceiveAppEvent name: String, withInfo info: String?) {
+                               didReceiveAppEvent name: String,
+                               withInfo info: String?) {
         // TODO
     }
     
     // MARK: - GADAdSizeDelegate
     
     public func adView(_ bannerView: GADBannerView,
-                willChangeAdSizeTo size: GADAdSize) {
+                       willChangeAdSizeTo size: GADAdSize) {
         lastGADSize = size.size
     }
     
@@ -173,7 +174,7 @@ public class GAMBannerEventHandler :
                 return
             }
             
-            appEventTimer = Timer.scheduledTimer(timeInterval: appEventTimeout,
+            appEventTimer = Timer.scheduledTimer(timeInterval: Constants.appEventTimeout,
                                                  target: self,
                                                  selector: #selector(appEventTimedOut),
                                                  userInfo: nil,
@@ -187,12 +188,12 @@ public class GAMBannerEventHandler :
             
             if  let banner = banner,
                 let adSize = dfpAdSize {
-                loadingDelegate?.adServerDidWin(banner.view, adSize: adSize)
+                loadingDelegate?.adServerDidWin(banner.banner, adSize: adSize)
             }
         }
     }
     
-    func appEventDeected() {
+    func appEventDetected() {
         let banner = requestBanner
         requestBanner = nil
         if isExpectingAppEvent {
@@ -204,7 +205,7 @@ public class GAMBannerEventHandler :
             isExpectingAppEvent = false
             recycleCurrentBanner()
             
-            oxbProxyBanner = banner
+            proxyBanner = banner
             
             loadingDelegate?.prebidDidWin()
         }
@@ -223,13 +224,13 @@ public class GAMBannerEventHandler :
         
         if  let banner = banner,
             let adSize = dfpAdSize {
-            loadingDelegate?.adServerDidWin(banner.view, adSize: adSize)
+            loadingDelegate?.adServerDidWin(banner.banner, adSize: adSize)
         }
     }
     
     func recycleCurrentBanner() {
         embeddedBanner = nil
-        oxbProxyBanner = nil
+        proxyBanner = nil
     }
     
     class func convertGADSizes(_ inSizes: [NSValue]) -> [NSValue] {

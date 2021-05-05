@@ -10,12 +10,27 @@ import GoogleMobileAds
 
 class GAMBannerViewWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: - Private Properties
+    
+    private static var classesValidated: Bool?
+    
+    private static var classesFound = GAMBannerViewWrapper.findClasses()
+    
+    // MARK: - Public Properties
     
     let banner = GAMBannerView()
     
-    // MARK: - Public (boxed) properties
+    // MARK: - Public Methods
+        
+    public init?() {
+        if !Self.classesFound {
+            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
+            return nil
+        }
+    }
     
+    // MARK: - Public Wrappers (Properties)
+
     public var adUnitID: String? {
         set {
             banner.adUnitID = newValue
@@ -95,32 +110,10 @@ class GAMBannerViewWrapper {
         }
     }
         
-    // MARK: - Public (own) properties
-
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GAMBannerViewWrapper.findClasses()
-        return classesValidated ?? false
-    }
-    
-    public var view: UIView  {
-        banner
-    }
-    
-    // MARK: - Public methods
-        
-    public init?() {
-        if !Self.classesFound {
-            GAMUtils.log(error: GAMEventHandlerError.gamClassesNotFound)
-            return nil
-        }
-    }
+    // MARK: - Public Wrappers (Properties)
 
     public func load(_ request: GAMRequestWrapper) {
-        banner.load(request.boxedRequest)
+        banner.load(request.request)
     }
 
     public func recordImpression() {

@@ -10,36 +10,13 @@ import GoogleMobileAds
 
 class GAMRequestWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: Private Properties
+        
+    private static let classesFound = GAMRequestWrapper.findClasses()
+    
+    // MARK: - Public Properties
     
     let request: GAMRequest
-    
-    // MARK: - Public (boxed) properties
-    
-    var customTargeting: [String : String]? {
-        set {
-            request.customTargeting = newValue
-        }
-        
-        get {
-            request.customTargeting
-        }
-    }
-
-    // MARK: - Public (own) properties
-
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GAMBannerViewWrapper.findClasses()
-        return classesValidated ?? false
-    }
-    
-    public var boxedRequest: GAMRequest?  {
-        request
-    }
     
     // MARK: - Public Methods
     
@@ -59,6 +36,18 @@ class GAMRequestWrapper {
         }
         
         self.request = request
+    }
+    
+    // MARK: - Public Wrappers (Properties)
+
+    var customTargeting: [String : String]? {
+        set {
+            request.customTargeting = newValue
+        }
+        
+        get {
+            request.customTargeting
+        }
     }
  
     // MARK: - Private Methods

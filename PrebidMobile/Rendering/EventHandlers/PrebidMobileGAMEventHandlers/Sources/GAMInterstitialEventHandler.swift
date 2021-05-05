@@ -9,14 +9,13 @@ import Foundation
 import GoogleMobileAds
 import PrebidMobileRendering
 
-fileprivate let appEvent = "PrebidAppEvent"
-fileprivate let appEventTimeout = 0.6
-
 public class GAMInterstitialEventHandler :
     NSObject,
     PBMInterstitialEventHandler,
     GADFullScreenContentDelegate,
     GADAppEventDelegate {
+    
+    // MARK: - Internal Properties
     
     var requestInterstitial:    GAMInterstitialAdWrapper?
     var proxyInterstitial:      GAMInterstitialAdWrapper?
@@ -27,11 +26,17 @@ public class GAMInterstitialEventHandler :
     
     var appEventTimer: Timer?
     
+    // MARK: - Public Properties
+    
     public let adUnitID: String
+    
+    // MARK: - Public Methods
 
     public init(adUnitID: String) {
         self.adUnitID = adUnitID
     }
+    
+    // MARK: - PBMInterstitialAd
     
     public var loadingDelegate: PBMInterstitialEventLoadingDelegate?
     
@@ -48,9 +53,7 @@ public class GAMInterstitialEventHandler :
         
         return true
     }
-        
-  // MARK: PBMPrimaryAdRequesterProtocol
-    
+            
     public func show(from controller: UIViewController?) {
         if let controller = controller,
            let interstitial = embeddedInterstitial {
@@ -102,7 +105,7 @@ public class GAMInterstitialEventHandler :
         
         currentInterstitialAd.load(request: request, completion:{ [weak self] ad, error in
             if let error = error {
-                self?.interstitialdidReceive(didFailToReceive: ad, error: error)
+                self?.interstitialDidReceive(didFailToReceive: ad, error: error)
                 return
             }
             
@@ -110,7 +113,7 @@ public class GAMInterstitialEventHandler :
         })
     }
     
-    // MARK: GADAppEventDelegate
+    // MARK: - GADAppEventDelegate
     
     func interstitial(didReceive ad: GAMInterstitialAdWrapper) {
         if requestInterstitial === ad {
@@ -118,7 +121,7 @@ public class GAMInterstitialEventHandler :
         }
     }
 
-    func interstitialdidReceive(didFailToReceive ad:GAMInterstitialAdWrapper,
+    func interstitialDidReceive(didFailToReceive ad:GAMInterstitialAdWrapper,
                                 error: Error)
     {
         if requestInterstitial === ad {
@@ -133,7 +136,7 @@ public class GAMInterstitialEventHandler :
                                didReceiveAppEvent name: String,
                                withInfo info: String?) {
         if requestInterstitial?.interstitialAd === interstitialAd &&
-            name == appEvent {
+            name == Constants.appEventValue {
             appEventDetected()
         }
     }
@@ -172,7 +175,7 @@ public class GAMInterstitialEventHandler :
             
             requestInterstitial?.appEventDelegate = self
             
-            appEventTimer = Timer.scheduledTimer(timeInterval: appEventTimeout,
+            appEventTimer = Timer.scheduledTimer(timeInterval: Constants.appEventTimeout,
                                                  target: self,
                                                  selector: #selector(appEventTimedOut),
                                                  userInfo: nil,

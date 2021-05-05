@@ -23,9 +23,7 @@ class GADRewardedAdWrapperTest: XCTestCase {
         
     }
     
-    func testProperties() {
-        XCTAssertTrue(GADRewardedAdWrapper.classesFound)
-        
+    func testProperties() {        
         let propTests: [BasePropTest<GADRewardedAdWrapper>] = [
             RefProxyPropTest(keyPath: \.adMetadataDelegate, value: DummyMetadataDelegate()),
         ]

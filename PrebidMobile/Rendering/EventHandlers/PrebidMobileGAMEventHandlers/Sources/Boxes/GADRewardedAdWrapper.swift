@@ -10,20 +10,17 @@ import GoogleMobileAds
 
 class GADRewardedAdWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: Private Properties
+        
+    private let adUnitID: String
+    
+    private static var classesFound = GADRewardedAdWrapper.findClasses()
+
+    // MARK: Public Properties
     
     var rewardedAd: GADRewardedAd?
     
-    let adUnitID: String
-    
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GADRewardedAdWrapper.findClasses()
-        return classesValidated ?? false
-    }
+    // MARK: Public Methods
     
     init?(adUnitID: String) {
         if !Self.classesFound {
@@ -34,8 +31,8 @@ class GADRewardedAdWrapper {
         self.adUnitID = adUnitID
     }
     
-    // MARK: Public Properties
-    
+    // MARK: - Public Wrappers (Properties)
+
     public var adMetadata: [GADAdMetadataKey : Any]? {
         rewardedAd?.adMetadata
     }
@@ -54,12 +51,12 @@ class GADRewardedAdWrapper {
         rewardedAd?.adReward
     }
     
-    // MARK: Public Methods
-    
+    // MARK: - Public Wrappers (Methods)
+
     public func load(request: GAMRequestWrapper,
                      completion: @escaping (GADRewardedAdWrapper?, Error?) -> Void) {
         GADRewardedAd.load(withAdUnitID: adUnitID,
-                           request:request.boxedRequest,
+                           request:request.request,
                            completionHandler: { [weak self] (ad, error)  in
                             guard let self = self else {
                                 return
@@ -84,7 +81,9 @@ class GADRewardedAdWrapper {
                             userDidEarnRewardHandler: userDidEarnRewardHandler)
     }
     
-    static func findClasses() -> Bool {
+    // MARK: - Private methods
+    
+    private static func findClasses() -> Bool {
         
         guard let _ = NSClassFromString("GADRewardedAd"),
               let _ = NSClassFromString("GADAdReward"),

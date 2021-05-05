@@ -18,8 +18,6 @@ class GAMInterstitialAdWrapperTest: XCTestCase {
     }
     
     func testProperties() {
-        XCTAssertTrue(GAMInterstitialAdWrapper.classesFound)
-        
         let propTests: [BasePropTest<GAMInterstitialAdWrapper>] = [
             RefProxyPropTest(keyPath: \.fullScreenContentDelegate, value: DummyDelegate()),
             RefProxyPropTest(keyPath: \.appEventDelegate, value: DummyEventDelegate()),

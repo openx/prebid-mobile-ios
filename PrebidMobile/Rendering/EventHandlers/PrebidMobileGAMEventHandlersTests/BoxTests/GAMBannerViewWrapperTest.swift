@@ -21,9 +21,7 @@ class GAMBannerViewWrapperTest: XCTestCase {
         }
     }
     
-    func testProperties() {
-        XCTAssertTrue(GAMBannerViewWrapper.classesFound)
-        
+    func testProperties() {        
         let propTests: [BasePropTest<GAMBannerViewWrapper>] = [
             PropTest(keyPath: \.adUnitID, value: "144"),
             PropTest(keyPath: \.validAdSizes, value: [NSValueFromGADAdSize(kGADAdSizeBanner)]),

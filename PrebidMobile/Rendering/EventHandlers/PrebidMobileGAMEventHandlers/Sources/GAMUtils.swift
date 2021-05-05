@@ -38,7 +38,7 @@ public class GAMUtils {
             mergedTargeting.merge(bidTargeting) { $1 }
         }
         
-        mergedTargeting[Constantns.targetingKeyLocalCacheID] = localCache.store(demandResponseInfo)
+        mergedTargeting[Constants.targetingKeyLocalCacheID] = localCache.store(demandResponseInfo)
         
         boxedRequest.customTargeting = mergedTargeting
     }
@@ -73,7 +73,7 @@ public class GAMUtils {
     }
     
     class func log(error: GAMEventHandlerError) {
-        // TODO: use unified Loging system from the Rendering or Prebid SDK
+        // TODO: use unified Logging system from the Rendering or Prebid SDK
         NSLog(error.localizedDescription)
     }
     
@@ -121,7 +121,7 @@ public class GAMUtils {
     // MARK: UnifiedNativeAd decomposition
 
     private class func findPrebidFlagInNativeAd(_ nativeAd: GADNativeAdWrapper) -> Bool {
-        nativeAd.body == Constantns.creativeDataKeyIsPrebid
+        nativeAd.body == Constants.creativeDataKeyIsPrebid
     }
     
     private class func localCacheIDFromNativeAd(_ nativeAd: GADNativeAdWrapper) -> String? {
@@ -131,8 +131,8 @@ public class GAMUtils {
     // MARK: NativeCustomTemplateAd decomposition
 
     private class func findCreativeFlagInCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> Bool {
-        if let isPrebidCreativeVar = customNativeAd.string(forKey: Constantns.creativeDataKeyIsPrebid),
-           isPrebidCreativeVar == Constantns.creativeDataValueIsPrebid {
+        if let isPrebidCreativeVar = customNativeAd.string(forKey: Constants.creativeDataKeyIsPrebid),
+           isPrebidCreativeVar == Constants.creativeDataValueIsPrebid {
             return true;
         }
 
@@ -140,6 +140,6 @@ public class GAMUtils {
     }
 
     private class func localCacheIDFromCustomNativeAd(_ customNativeAd: GADCustomNativeAdWrapper) -> String? {
-        customNativeAd.string(forKey: Constantns.targetingKeyLocalCacheID)
+        customNativeAd.string(forKey: Constants.targetingKeyLocalCacheID)
     }
 }

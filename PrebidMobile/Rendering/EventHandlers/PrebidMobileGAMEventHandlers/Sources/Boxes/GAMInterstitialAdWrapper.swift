@@ -10,20 +10,17 @@ import GoogleMobileAds
 
 class GAMInterstitialAdWrapper {
     
-    static var classesValidated: Bool?
+    // MARK: - Internal properties
+    
+    private static var classesFound = GAMInterstitialAdWrapper.findClasses()
+
+    private let adUnitID: String
+    
+    // MARK: Public Properties
     
     var interstitialAd: GAMInterstitialAd?
-    
-    let adUnitID: String
-    
-    public static var classesFound: Bool {
-        if let res = classesValidated {
-            return res;
-        }
-        
-        classesValidated = GAMInterstitialAdWrapper.findClasses()
-        return classesValidated ?? false
-    }
+
+    // MARK: Public Methods
     
     init?(adUnitID: String) {
         if !Self.classesFound {
@@ -34,7 +31,7 @@ class GAMInterstitialAdWrapper {
         self.adUnitID = adUnitID
     }
     
-    // MARK: Public Properties
+    // MARK: - Public Wrappers (Properties)
     
     public var fullScreenContentDelegate: GADFullScreenContentDelegate? {
         set {
@@ -56,13 +53,13 @@ class GAMInterstitialAdWrapper {
         }
     }
     
-    // MARK: Public Methods
-    
+    // MARK: - Public Wrappers (Methods)
+
     public func load(request: GAMRequestWrapper,
                      completion: @escaping (GAMInterstitialAdWrapper, Error?) -> Void) {
         
         GAMInterstitialAd.load(withAdManagerAdUnitID: adUnitID,
-                               request: request.boxedRequest,
+                               request: request.request,
                                completionHandler: { [weak self] ad, error in
             guard let self = self else {
                 return
@@ -81,6 +78,8 @@ class GAMInterstitialAdWrapper {
     public func present(from rootViewController: UIViewController) {
         interstitialAd?.present(fromRootViewController: rootViewController)
     }
+    
+    // MARK: - Private Methods
     
     static func findClasses() -> Bool {
         

@@ -9,9 +9,7 @@ import XCTest
 @testable import PrebidMobileGAMEventHandlers
 
 class GAMRequestWrapperTest: XCTestCase {
-    func testProperties() {
-        XCTAssertTrue(GAMBannerViewWrapper.classesFound)
-        
+    func testProperties() {        
         let propTests: [BasePropTest<GAMRequestWrapper>] = [
             DicPropTest(keyPath: \.customTargeting, value: ["key": "unknown"]),
         ]

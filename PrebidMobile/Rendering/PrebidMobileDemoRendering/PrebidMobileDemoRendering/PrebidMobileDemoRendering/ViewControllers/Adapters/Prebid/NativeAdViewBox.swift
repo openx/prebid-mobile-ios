@@ -43,7 +43,7 @@ class NativeAdViewBox: NativeAdViewBoxProtocol {
         }
     }
     
-    weak var mediaViewDelegate: PBMMediaViewDelegate? {
+    weak var mediaViewDelegate: MediaViewDelegate? {
         get { mediaView.delegate }
         set { mediaView.delegate = newValue }
     }
@@ -224,7 +224,7 @@ extension NativeAdViewBox {
         }
         if let mediaData = nativeAd.videoAd?.mediaData {
             mediaViewContainer.isHidden = false
-            mediaView.loadMedia(mediaData)
+            mediaView.load(mediaData)
         }
      }
     

@@ -32,7 +32,7 @@
     if (!(self = [super initWithNativeAdMarkupAsset:nativeAdMarkupAsset error:error])) {
         return nil;
     }
-    _mediaData = [[PBMMediaData alloc] initWithMediaAsset:nativeAdMarkupAsset nativeAdHooks:nativeAdHooks];
+    _mediaData = [[MediaData alloc] initWithMediaAsset:nativeAdMarkupAsset nativeAdHooks:nativeAdHooks];
     return self;
 }
 

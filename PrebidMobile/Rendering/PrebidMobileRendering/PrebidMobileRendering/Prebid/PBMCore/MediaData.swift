@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc(PBMMediaData) public class MediaData: NSObject {
+public class MediaData: NSObject {
     
     @objc public let mediaAsset: PBMNativeAdMarkupAsset
     @objc public let nativeAdHooks: PBMNativeAdMediaHooks

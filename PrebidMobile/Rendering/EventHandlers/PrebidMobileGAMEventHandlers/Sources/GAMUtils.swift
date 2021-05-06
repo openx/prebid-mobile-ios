@@ -45,6 +45,7 @@ public class GAMUtils {
     
     public func findNativeAd(for nativeAd: GADNativeAd,
                              nativeAdDetectionListener: PBMNativeAdDetectionListener) {
+        
         guard let wrappedAd = GADNativeAdWrapper(nativeAd: nativeAd) else {
             nativeAdDetectionListener.onNativeAdInvalid?(GAMEventHandlerError.gamClassesNotFound)
             return

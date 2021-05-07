@@ -79,7 +79,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAsset.h"
     header "PBMNativeAssetData.h"
     header "PBMNativeAssetImage.h"
-    header "PBMNativeAssetTitle.h"
     header "PBMNativeAssetVideo.h"
     header "PBMNativeContextType.h"
     header "PBMNativeContextSubtype.h"
@@ -110,7 +109,7 @@ framework module PrebidMobileRendering {
     header "PBMMoPubUtils.h"
     header "PBMMoPubNativeAdUnit.h"
     
-    // ===
+    // ======================
     //Temp. for converting
     header "PBMNativeAdMediaHooks.h"
     header "PBMViewControllerProvider.h"
@@ -157,4 +156,7 @@ framework module PrebidMobileRendering {
     
     header "PBMViewabilityPlaybackBinder.h"
     header "PBMViewExposureProviders.h"
+    
+    // PBM Native Ads (response)
+    header "PBMNativeAsset+Protected.h"
 }

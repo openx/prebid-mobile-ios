@@ -10,7 +10,7 @@ import Foundation
 extension Array where Self.Element == PBMNativeAsset {
     static let defaultNativeRequestAssets: [PBMNativeAsset] = [
         {
-            let title = PBMNativeAssetTitle(length: 90)
+            let title = NativeAssetTitle(length: 90)
             title.required = true
             return title
         }(),

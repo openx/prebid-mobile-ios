@@ -7,6 +7,8 @@
 
 #import "PBMPlayable.h"
 #import "PBMAdViewManagerDelegate.h"
+#import "PBMNativeAsset.h"
+#import "PBMConstants.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

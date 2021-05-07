@@ -57,7 +57,7 @@
 		342BF99A258BA74400745F96 /* PBMNativeAdMarkupLinkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342BF999258BA74400745F96 /* PBMNativeAdMarkupLinkTest.swift */; };
 		3437324F2542D2D20050E74A /* PBMNativeAssetImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3437324D2542D2D20050E74A /* PBMNativeAssetImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		343732502542D2D20050E74A /* PBMNativeAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3437324E2542D2D20050E74A /* PBMNativeAssetImage.m */; };
-		343732802542EBCF0050E74A /* PBMNativeAssetTitleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3437327F2542EBCF0050E74A /* PBMNativeAssetTitleTest.swift */; };
+		343732802542EBCF0050E74A /* NativeAssetTitleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3437327F2542EBCF0050E74A /* NativeAssetTitleTest.swift */; };
 		343732922542EC610050E74A /* PBMImageAssetType.h in Headers */ = {isa = PBXBuildFile; fileRef = 343732422542D0900050E74A /* PBMImageAssetType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		343732C52542EFFE0050E74A /* PBMNativeAssetImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343732C42542EFFE0050E74A /* PBMNativeAssetImageTest.swift */; };
 		34431E8525B5C5B700596FA7 /* PBMNativeClickTrackingEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 34431E8325B5C5B700596FA7 /* PBMNativeClickTrackingEntry.h */; };
@@ -146,8 +146,6 @@
 		34C7963C25DD58CB0072A898 /* PBMLocalResponseInfoCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C7962C25DD333C0072A898 /* PBMLocalResponseInfoCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34CAA2142541C3860027A916 /* PBMNativeAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CAA2122541C3860027A916 /* PBMNativeAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34CAA2152541C3860027A916 /* PBMNativeAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CAA2132541C3860027A916 /* PBMNativeAsset.m */; };
-		34CAA2222541CA4A0027A916 /* PBMNativeAssetTitle.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CAA2202541CA4A0027A916 /* PBMNativeAssetTitle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34CAA2232541CA4A0027A916 /* PBMNativeAssetTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CAA2212541CA4A0027A916 /* PBMNativeAssetTitle.m */; };
 		34D0AA48258BBCB2001D5447 /* Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA47258BBCB2001D5447 /* Equality.swift */; };
 		34D0AA50258BBCD0001D5447 /* Equality_AppliedValueIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA4F258BBCD0001D5447 /* Equality_AppliedValueIndex.swift */; };
 		34D0AA55258BBCEC001D5447 /* Equality_BaseCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA54258BBCEC001D5447 /* Equality_BaseCheck.swift */; };
@@ -833,6 +831,10 @@
 		ACE5AFE0256BDCFE004121BA /* PBMNativeMarkupRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = ACE5AFDE256BDCFE004121BA /* PBMNativeMarkupRequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACE5AFE1256BDCFE004121BA /* PBMNativeMarkupRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5AFDF256BDCFE004121BA /* PBMNativeMarkupRequestObject.m */; };
 		ACF6F0992281B36D00FB22F4 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1C155A2260ACB80043C0D2 /* images.xcassets */; };
+		ACF93E03264434DA008E43D1 /* NativeAssetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF93E02264434DA008E43D1 /* NativeAssetTitle.swift */; };
+		ACF93E0A26443AB1008E43D1 /* PBMNativeAsset+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CAA21F2541C5770027A916 /* PBMNativeAsset+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACF9E2182638AB5C00418732 /* MediaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9E2172638AB5C00418732 /* MediaData.swift */; };
+		ACF9E2212638B35800418732 /* PBMNativeAdMediaHooks.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DF6CD025CC4C1500167598 /* PBMNativeAdMediaHooks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D06BEB9622B3EA7F007EB6BE /* SSC_test_with_libs.json in Resources */ = {isa = PBXBuildFile; fileRef = D06BEB9522B3EA7F007EB6BE /* SSC_test_with_libs.json */; };
 		D06BEB9D22B8D0A6007EB6BE /* SSC_test_empty_fields.json in Resources */ = {isa = PBXBuildFile; fileRef = D06BEB9C22B8D0A6007EB6BE /* SSC_test_empty_fields.json */; };
 		D06BEBAB22BA475B007EB6BE /* SSC_test_empty_file.json in Resources */ = {isa = PBXBuildFile; fileRef = D06BEBAA22BA475B007EB6BE /* SSC_test_empty_file.json */; };
@@ -988,7 +990,7 @@
 		343732422542D0900050E74A /* PBMImageAssetType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMImageAssetType.h; sourceTree = "<group>"; };
 		3437324D2542D2D20050E74A /* PBMNativeAssetImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeAssetImage.h; sourceTree = "<group>"; };
 		3437324E2542D2D20050E74A /* PBMNativeAssetImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeAssetImage.m; sourceTree = "<group>"; };
-		3437327F2542EBCF0050E74A /* PBMNativeAssetTitleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAssetTitleTest.swift; sourceTree = "<group>"; };
+		3437327F2542EBCF0050E74A /* NativeAssetTitleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetTitleTest.swift; sourceTree = "<group>"; };
 		343732C42542EFFE0050E74A /* PBMNativeAssetImageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAssetImageTest.swift; sourceTree = "<group>"; };
 		343DA18F2484F57B00D25D44 /* PBMORTBAbstractResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMORTBAbstractResponse.h; sourceTree = "<group>"; };
 		343DA1902484F57B00D25D44 /* PBMORTBAbstractResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMORTBAbstractResponse.m; sourceTree = "<group>"; };
@@ -1214,8 +1216,6 @@
 		34CAA2132541C3860027A916 /* PBMNativeAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeAsset.m; sourceTree = "<group>"; };
 		34CAA21A2541C3B20027A916 /* PBMNativeAsset+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeAsset+Internal.h"; sourceTree = "<group>"; };
 		34CAA21F2541C5770027A916 /* PBMNativeAsset+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeAsset+Protected.h"; sourceTree = "<group>"; };
-		34CAA2202541CA4A0027A916 /* PBMNativeAssetTitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeAssetTitle.h; sourceTree = "<group>"; };
-		34CAA2212541CA4A0027A916 /* PBMNativeAssetTitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeAssetTitle.m; sourceTree = "<group>"; };
 		34D0AA47258BBCB2001D5447 /* Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equality.swift; sourceTree = "<group>"; };
 		34D0AA4F258BBCD0001D5447 /* Equality_AppliedValueIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equality_AppliedValueIndex.swift; sourceTree = "<group>"; };
 		34D0AA54258BBCEC001D5447 /* Equality_BaseCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equality_BaseCheck.swift; sourceTree = "<group>"; };
@@ -1723,6 +1723,8 @@
 		ACE5AFDF256BDCFE004121BA /* PBMNativeMarkupRequestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeMarkupRequestObject.m; sourceTree = "<group>"; };
 		ACE5AFEA256BDD5F004121BA /* PBMNativeMarkupRequestObject+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeMarkupRequestObject+Internal.h"; sourceTree = "<group>"; };
 		ACF6ECCA24E676B40094DE33 /* PBMMoPubBaseInterstitialAdUnit+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubBaseInterstitialAdUnit+Protected.h"; sourceTree = "<group>"; };
+		ACF93E02264434DA008E43D1 /* NativeAssetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetTitle.swift; sourceTree = "<group>"; };
+		ACF9E2172638AB5C00418732 /* MediaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaData.swift; sourceTree = "<group>"; };
 		D016891223631FED00139680 /* PBMCreativeViewabilityTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMCreativeViewabilityTracker.h; sourceTree = "<group>"; };
 		D016891323631FED00139680 /* PBMCreativeViewabilityTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMCreativeViewabilityTracker.m; sourceTree = "<group>"; };
 		D03EE75322A00F9C000A9D16 /* PBMJSLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMJSLibrary.h; sourceTree = "<group>"; };
@@ -1983,7 +1985,7 @@
 				34B10A7825503D1500B5FE09 /* PBMNativeMarkupRequestObjectTest.swift */,
 				34E5459D2546C97B00E1681E /* PBMNativeAssetDataTest.swift */,
 				343732C42542EFFE0050E74A /* PBMNativeAssetImageTest.swift */,
-				3437327F2542EBCF0050E74A /* PBMNativeAssetTitleTest.swift */,
+				3437327F2542EBCF0050E74A /* NativeAssetTitleTest.swift */,
 				34E5465A25470A4400E1681E /* PBMNativeAssetVideoTest.swift */,
 				34DBD6C82551962B004A07A1 /* PBMNativeEventTrackerTest.swift */,
 			);
@@ -2366,8 +2368,7 @@
 				34E545822546C58300E1681E /* PBMNativeAssetData.m */,
 				3437324D2542D2D20050E74A /* PBMNativeAssetImage.h */,
 				3437324E2542D2D20050E74A /* PBMNativeAssetImage.m */,
-				34CAA2202541CA4A0027A916 /* PBMNativeAssetTitle.h */,
-				34CAA2212541CA4A0027A916 /* PBMNativeAssetTitle.m */,
+				ACF93E02264434DA008E43D1 /* NativeAssetTitle.swift */,
 				34E546132546F8CF00E1681E /* PBMNativeAssetVideo.h */,
 				34E546142546F8D000E1681E /* PBMNativeAssetVideo.m */,
 				34DBD68925519186004A07A1 /* PBMNativeContextType.h */,
@@ -3501,6 +3502,7 @@
 				5B2FB11D26442C7600912342 /* PBMNativeAdMarkupEventTracker.h in Headers */,
 				34D7104324E580620048CC78 /* PBMInterstitialControllerInteractionDelegate.h in Headers */,
 				34D7104524E580620048CC78 /* PBMDeviceInfoParameterBuilder.h in Headers */,
+				ACF93E0A26443AB1008E43D1 /* PBMNativeAsset+Protected.h in Headers */,
 				34D7104624E580620048CC78 /* PBMDeepLinkPlusHelper.h in Headers */,
 				34D7104724E580620048CC78 /* PBMVastWrapperAd.h in Headers */,
 				34D7104824E580620048CC78 /* PBMInterstitialAdUnit.h in Headers */,
@@ -3618,7 +3620,6 @@
 				5BF8E67526398F5900341EE4 /* PBMScheduledTimerFactory.h in Headers */,
 				34C7963825DD35440072A898 /* PBMCachedResponseInfo.h in Headers */,
 				34C65231257E535600E26ABA /* PBMInterstitialEventLoadingDelegate.h in Headers */,
-				34CAA2222541CA4A0027A916 /* PBMNativeAssetTitle.h in Headers */,
 				34D710A724E580620048CC78 /* PBMVastCreativeNonLinearAdsNonLinear.h in Headers */,
 				34D710A824E580620048CC78 /* PBMCreativeFactoryJob.h in Headers */,
 				34C6527C257E62ED00E26ABA /* PBMPrimaryAdRequesterProtocol.h in Headers */,
@@ -4114,6 +4115,7 @@
 				34D70FCE24E580620048CC78 /* PBMCreativeFactoryJob.m in Sources */,
 				34D70FCF24E580620048CC78 /* PBMAdViewButtonDecorator.m in Sources */,
 				34D70FD024E580620048CC78 /* PBMVastMediaFile.m in Sources */,
+				ACF93E03264434DA008E43D1 /* NativeAssetTitle.swift in Sources */,
 				34CAA2152541C3860027A916 /* PBMNativeAsset.m in Sources */,
 				34D70FD124E580620048CC78 /* PBMLog.m in Sources */,
 				340B98ED258A07110051F45D /* PBMNativeAdMarkupLink.m in Sources */,
@@ -4199,7 +4201,6 @@
 				34D7100624E580620048CC78 /* PBMTransaction.m in Sources */,
 				34B2E23D254AECF800BC1222 /* NSDictionary+PBMORTBNativeExt.m in Sources */,
 				348AB3D6259601140066F33E /* PBMBidRequesterFactory.m in Sources */,
-				34CAA2232541CA4A0027A916 /* PBMNativeAssetTitle.m in Sources */,
 				34D0AA89258CBB73001D5447 /* PBMNativeAdImage.m in Sources */,
 				34D0AA9E258CBCD7001D5447 /* PBMNativeAdEventTracker.m in Sources */,
 				34C7962E25DD335C0072A898 /* PBMLocalResponseInfoCache.m in Sources */,
@@ -4467,7 +4468,7 @@
 				34BF11EF2476C6DF007A09F1 /* PBMBannerViewTest.swift in Sources */,
 				5CA3BEE81CCFEAE000E855C9 /* DeviceInfoParameterBuilderTest.swift in Sources */,
 				5C90DF3420E2DD8B00A02A33 /* UIDevice+TestExtension.swift in Sources */,
-				343732802542EBCF0050E74A /* PBMNativeAssetTitleTest.swift in Sources */,
+				343732802542EBCF0050E74A /* NativeAssetTitleTest.swift in Sources */,
 				5B91DD7F205688A300EBD34F /* PBMLogObjCTest.m in Sources */,
 				108E02C8202D8912006AE20F /* PBMUIViewTests.swift in Sources */,
 				5C44B8BC204886FD00DA2EC5 /* PBMTouchDownRecognizerTest.swift in Sources */,

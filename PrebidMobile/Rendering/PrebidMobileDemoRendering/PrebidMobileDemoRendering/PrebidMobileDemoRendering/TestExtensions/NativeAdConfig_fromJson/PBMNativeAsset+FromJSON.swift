@@ -14,7 +14,7 @@ extension PBMNativeAsset {
         let parsers: [String: ([String: Any])->PBMNativeAsset?] = [
             "data": PBMNativeAssetData.init(childJson:),
             "img": PBMNativeAssetImage.init(childJson:),
-            "title": PBMNativeAssetTitle.init(childJson:),
+            "title": NativeAssetTitle.init(childJson:),
             "video": PBMNativeAssetVideo.init(childJson:),
         ]
         for (key, builder) in parsers {
@@ -32,7 +32,7 @@ extension PBMNativeAsset {
     }
 }
 
-fileprivate extension PBMNativeAssetTitle {
+fileprivate extension NativeAssetTitle {
     convenience init?(childJson: [String: Any]) {
         guard let length = childJson["len"] as? NSNumber else {
             return nil

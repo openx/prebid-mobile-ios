@@ -70,13 +70,8 @@ public class GAMInterstitialEventHandler :
             return
         }
         
-        if let _ = requestInterstitial {
-            // request to primaryAdServer in progress
-            return;
-        }
-        
-        if proxyInterstitial != nil || proxyInterstitial != nil {
-            // rewarded already loaded
+        guard let _ = requestInterstitial,
+              let _ = proxyInterstitial else {
             return;
         }
 
@@ -105,7 +100,7 @@ public class GAMInterstitialEventHandler :
         
         currentInterstitialAd.load(request: request, completion:{ [weak self] ad, error in
             if let error = error {
-                self?.interstitialDidReceive(didFailToReceive: ad, error: error)
+                self?.interstitial(didFailToReceive: ad, error: error)
                 return
             }
             
@@ -121,7 +116,7 @@ public class GAMInterstitialEventHandler :
         }
     }
 
-    func interstitialDidReceive(didFailToReceive ad:GAMInterstitialAdWrapper,
+    func interstitial(didFailToReceive ad:GAMInterstitialAdWrapper,
                                 error: Error)
     {
         if requestInterstitial === ad {
@@ -160,11 +155,8 @@ public class GAMInterstitialEventHandler :
     }
     
     func forgetCurrentInterstitial() {
-        if let _ = embeddedInterstitial {
-            embeddedInterstitial = nil
-        }  else if let _ = proxyInterstitial {
-            proxyInterstitial = nil
-        }
+        embeddedInterstitial = nil
+        proxyInterstitial = nil
     }
     
     func primaryAdReceived() {

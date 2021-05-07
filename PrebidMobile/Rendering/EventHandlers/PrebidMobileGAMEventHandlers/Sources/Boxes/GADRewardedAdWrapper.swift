@@ -38,13 +38,8 @@ class GADRewardedAdWrapper {
     }
     
     public var adMetadataDelegate: GADAdMetadataDelegate? {
-        set {
-            rewardedAd?.adMetadataDelegate = newValue
-        }
-        
-        get {
-            rewardedAd?.adMetadataDelegate
-        }
+        get { rewardedAd?.adMetadataDelegate }
+        set {  rewardedAd?.adMetadataDelegate = newValue  }
     }
     
     public var reward: GADAdReward? {

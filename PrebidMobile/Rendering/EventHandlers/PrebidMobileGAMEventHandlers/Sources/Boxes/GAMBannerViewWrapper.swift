@@ -32,82 +32,43 @@ class GAMBannerViewWrapper {
     // MARK: - Public Wrappers (Properties)
 
     public var adUnitID: String? {
-        set {
-            banner.adUnitID = newValue
-        }
-        
-        get {
-            banner.adUnitID
-        }
+        get { banner.adUnitID }
+        set { banner.adUnitID = newValue  }
     }
     
     public var validAdSizes: [NSValue]? {
-        set {
-            banner.validAdSizes = newValue
-        }
-        
-        get {
-            banner.validAdSizes
-        }
+        get { banner.validAdSizes }
+        set { banner.validAdSizes = newValue }
     }
+    
     public var rootViewController: UIViewController? {
-        set {
-            banner.rootViewController = newValue
-        }
-        
-        get {
-            banner.rootViewController
-        }
+        get { banner.rootViewController }
+        set { banner.rootViewController = newValue }
     }
     
     public var delegate: GADBannerViewDelegate? {
-        set {
-            banner.delegate = newValue
-        }
-        
-        get {
-            banner.delegate
-        }
+        get { banner.delegate }
+        set { banner.delegate = newValue }
     }
     
     public var appEventDelegate: GADAppEventDelegate? {
-        set {
-            banner.appEventDelegate = newValue
-        }
-        
-        get {
-            banner.appEventDelegate
-        }
+        get { banner.appEventDelegate }
+        set { banner.appEventDelegate = newValue }
     }
     
     public var adSizeDelegate: GADAdSizeDelegate? {
-        set {
-            banner.adSizeDelegate = newValue
-        }
-        
-        get {
-            banner.adSizeDelegate
-        }
+        get { banner.adSizeDelegate }
+        set { banner.adSizeDelegate = newValue }
     }
     
     public var enableManualImpressions: Bool {
-        set  {
-            banner.enableManualImpressions = newValue
-        }
-        
-        get {
-            banner.enableManualImpressions
-        }
+        get { banner.enableManualImpressions }
+        set { banner.enableManualImpressions = newValue }
     }
     
     public var adSize : GADAdSize {
-        set {
-            banner.adSize = newValue
-        }
-        
-        get {
-            banner.adSize
-        }
+        get { banner.adSize }
+        set { banner.adSize = newValue }
     }
         
     // MARK: - Public Wrappers (Properties)

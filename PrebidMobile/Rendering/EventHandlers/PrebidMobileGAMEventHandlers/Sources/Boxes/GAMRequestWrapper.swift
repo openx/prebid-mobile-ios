@@ -41,13 +41,8 @@ class GAMRequestWrapper {
     // MARK: - Public Wrappers (Properties)
 
     var customTargeting: [String : String]? {
-        set {
-            request.customTargeting = newValue
-        }
-        
-        get {
-            request.customTargeting
-        }
+        get { request.customTargeting }
+        set { request.customTargeting = newValue }
     }
  
     // MARK: - Private Methods

@@ -34,23 +34,13 @@ class GAMInterstitialAdWrapper {
     // MARK: - Public Wrappers (Properties)
     
     public var fullScreenContentDelegate: GADFullScreenContentDelegate? {
-        set {
-            interstitialAd?.fullScreenContentDelegate = newValue
-        }
-        
-        get {
-            interstitialAd?.fullScreenContentDelegate
-        }
+        get { interstitialAd?.fullScreenContentDelegate }
+        set { interstitialAd?.fullScreenContentDelegate = newValue }
     }
     
     public var appEventDelegate: GADAppEventDelegate? {
-        set {
-            interstitialAd?.appEventDelegate = newValue
-        }
-        
-        get {
-            interstitialAd?.appEventDelegate
-        }
+        get { interstitialAd?.appEventDelegate }
+        set { interstitialAd?.appEventDelegate = newValue }
     }
     
     // MARK: - Public Wrappers (Methods)

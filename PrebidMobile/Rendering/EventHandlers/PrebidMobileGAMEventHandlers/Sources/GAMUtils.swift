@@ -16,7 +16,7 @@ public class GAMUtils {
     
     // MARK: - Private Properties
     
-    private let localCache: PBMLocalResponseInfoCache!
+    private let localCache: PBMLocalResponseInfoCache
     
     private init() {
         localCache = PBMLocalResponseInfoCache(expirationInterval: localCacheExpirationInterval)
@@ -94,7 +94,7 @@ public class GAMUtils {
                               localCacheIDExtractor: () -> String?,
                               nativeAdDetectionListener: PBMNativeAdDetectionListener) {
         
-        if flagLookupClosure() == false {
+        if !flagLookupClosure() {
             nativeAdDetectionListener.onPrimaryAdWin?()
             return
         }

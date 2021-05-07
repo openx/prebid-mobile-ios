@@ -29,7 +29,7 @@ class NativeAssetsArrayController : FormViewController {
             .onCellSelection { [weak self] cell, row in
                 print("Edit -- \(try! asset.toJsonString())")
                 guard let self = self, let navigator = self.navigationController, let editor: UIViewController = {
-                    if let data = asset as? PBMNativeAssetData {
+                    if let data = asset as? NativeAssetData {
                         let editor = NativeAssetDataController()
                         editor.nativeAsset = data
                         return editor
@@ -85,7 +85,7 @@ class NativeAssetsArrayController : FormViewController {
             +++ Section()
             <<< makeAddAssetRow(title: "Add Title", asset: NativeAssetTitle(length: 25))
             <<< makeAddAssetRow(title: "Add Image", asset: PBMNativeAssetImage())
-            <<< makeAddAssetRow(title: "Add Data", asset: PBMNativeAssetData(dataType: .desc))
+            <<< makeAddAssetRow(title: "Add Data", asset: NativeAssetData(dataType: .desc))
             <<< makeAddAssetRow(title: "Add Video", asset: PBMNativeAssetVideo(mimeTypes: [],
                                                                                minDuration: 0,
                                                                                maxDuration: 60,

@@ -13,7 +13,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
     private let defVer = "1.2"
     
     func testMarkupRequestObjectInitToJson() {
-        let desc = PBMNativeAssetData(dataType: .desc)
+        let desc = NativeAssetData(dataType: .desc)
         let markupObject = PBMNativeMarkupRequestObject.init(assets:[desc])
         
         XCTAssertEqual(markupObject.version, defVer)
@@ -71,7 +71,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
     }
     
     func testMarkupRequestCopyToJsonString() {
-        let desc = PBMNativeAssetData(dataType: .desc)
+        let desc = NativeAssetData(dataType: .desc)
         let markupObject = PBMNativeMarkupRequestObject.init(assets:[desc])
         
         let title = NativeAssetTitle(length: 25)

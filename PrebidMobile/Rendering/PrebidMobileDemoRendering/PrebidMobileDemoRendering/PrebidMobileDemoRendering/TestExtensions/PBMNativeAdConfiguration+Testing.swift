@@ -31,17 +31,17 @@ extension Array where Self.Element == PBMNativeAsset {
             return image
         }(),
         {
-            let desc = PBMNativeAssetData(dataType: .desc)
+            let desc = NativeAssetData(dataType: .desc)
             desc.required = true
             return desc
         }(),
         {
-            let cta = PBMNativeAssetData(dataType: .ctaText)
+            let cta = NativeAssetData(dataType: .ctaText)
             cta.required = true
             return cta
         }(),
         {
-            let sponsored = PBMNativeAssetData(dataType: .sponsored)
+            let sponsored = NativeAssetData(dataType: .sponsored)
             sponsored.required = true
             return sponsored
         }(),

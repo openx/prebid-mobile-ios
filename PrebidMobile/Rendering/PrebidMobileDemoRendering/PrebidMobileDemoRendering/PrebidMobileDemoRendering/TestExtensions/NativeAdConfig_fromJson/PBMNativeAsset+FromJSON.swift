@@ -12,7 +12,7 @@ extension PBMNativeAsset {
         var asset: PBMNativeAsset!
         var childDic: [String: Any]!
         let parsers: [String: ([String: Any])->PBMNativeAsset?] = [
-            "data": PBMNativeAssetData.init(childJson:),
+            "data": NativeAssetData.init(childJson:),
             "img": PBMNativeAssetImage.init(childJson:),
             "title": NativeAssetTitle.init(childJson:),
             "video": PBMNativeAssetVideo.init(childJson:),
@@ -41,7 +41,7 @@ fileprivate extension NativeAssetTitle {
     }
 }
 
-fileprivate extension PBMNativeAssetData {
+fileprivate extension NativeAssetData {
     convenience init?(childJson: [String: Any]) {
         guard let rawDataType = childJson["type"] as? NSNumber,
               let dataType = PBMDataAssetType(rawValue: rawDataType.intValue)

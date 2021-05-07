@@ -77,7 +77,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdConfiguration.h"
     header "PBMNativeAdUnit.h"
     header "PBMNativeAsset.h"
-    header "PBMNativeAssetData.h"
     header "PBMNativeAssetImage.h"
     header "PBMNativeAssetVideo.h"
     header "PBMNativeContextType.h"
@@ -159,4 +158,5 @@ framework module PrebidMobileRendering {
     
     // PBM Native Ads (response)
     header "PBMNativeAsset+Protected.h"
+    header "NSNumber+PBMORTBNative.h"
 }

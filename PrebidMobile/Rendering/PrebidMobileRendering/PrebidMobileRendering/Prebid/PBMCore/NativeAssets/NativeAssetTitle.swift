@@ -22,8 +22,8 @@ public class NativeAssetTitle: PBMNativeAsset {
     // MARK: - Lifecycle
     
     @objc public required init(length: Int) {
-        super.init(childType: "title")
         self.length = length
+        super.init(childType: "title")
     }
 
     // MARK: - NSCopying

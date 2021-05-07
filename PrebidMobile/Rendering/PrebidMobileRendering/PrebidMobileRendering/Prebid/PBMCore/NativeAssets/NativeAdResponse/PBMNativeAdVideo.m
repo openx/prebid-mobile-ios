@@ -9,6 +9,7 @@
 #import "PBMAdViewManagerDelegate.h"
 #import "PBMNativeAsset.h"
 #import "PBMConstants.h"
+#import "PBMDataAssetType.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

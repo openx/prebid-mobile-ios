@@ -32,6 +32,8 @@
 		5B36182326384C7D00AFA1C2 /* GAMRewardedEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */; };
 		5B6967702642993B0042372E /* GAMEventHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69676F2642993B0042372E /* GAMEventHandlerError.swift */; };
 		5B6967802642A56A0042372E /* PrebidMobileGAMEventHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B69677F2642A56A0042372E /* PrebidMobileGAMEventHandlers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B7B133F26455C9600EBF42A /* GADCustomNativeAdWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B133E26455C9600EBF42A /* GADCustomNativeAdWrapperTest.swift */; };
+		5B7B134C26455E5400EBF42A /* GADNativeAdWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B134B26455E5400EBF42A /* GADNativeAdWrapperTest.swift */; };
 		5BF8E65B26396DB900341EE4 /* GADRewardedAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */; };
 		5BF8E6B7263AC32800341EE4 /* GAMInterstitialEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */; };
 		5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */; };
@@ -74,7 +76,6 @@
 		3405F945250A555800268A77 /* PrebidMobileGAMEventHandlersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrebidMobileGAMEventHandlersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3405F949250A555800268A77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3405F950250A55AE00268A77 /* GAMBannerViewWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMBannerViewWrapperTest.swift; sourceTree = "<group>"; };
-		3405F952250A5A5800268A77 /* PrebidMobileGAMEventHandlersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrebidMobileGAMEventHandlersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		344A7F08250B73FA00743A93 /* PropertyTestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTestModels.swift; sourceTree = "<group>"; };
 		344A7F0B250B744D00743A93 /* GADAdSize+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GADAdSize+Equatable.swift"; sourceTree = "<group>"; };
 		344A7F0D250B749600743A93 /* GAMRequestWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMRequestWrapperTest.swift; sourceTree = "<group>"; };
@@ -103,6 +104,8 @@
 		5B36182226384C7D00AFA1C2 /* GAMRewardedEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMRewardedEventHandler.swift; sourceTree = "<group>"; };
 		5B69676F2642993B0042372E /* GAMEventHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMEventHandlerError.swift; sourceTree = "<group>"; };
 		5B69677F2642A56A0042372E /* PrebidMobileGAMEventHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrebidMobileGAMEventHandlers.h; path = PrebidMobileGAMEventHandlers/PrebidMobileGAMEventHandlers.h; sourceTree = SOURCE_ROOT; };
+		5B7B133E26455C9600EBF42A /* GADCustomNativeAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADCustomNativeAdWrapperTest.swift; sourceTree = "<group>"; };
+		5B7B134B26455E5400EBF42A /* GADNativeAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADNativeAdWrapperTest.swift; sourceTree = "<group>"; };
 		5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADRewardedAdWrapper.swift; sourceTree = "<group>"; };
 		5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMInterstitialEventHandler.swift; sourceTree = "<group>"; };
 		5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAMInterstitialAdWrapper.swift; sourceTree = "<group>"; };
@@ -182,7 +185,6 @@
 				344A7F07250B73BA00743A93 /* TestModels */,
 				344A7F06250B73A700743A93 /* BoxTests */,
 				3405F949250A555800268A77 /* Info.plist */,
-				3405F952250A5A5800268A77 /* PrebidMobileGAMEventHandlersTests-Bridging-Header.h */,
 			);
 			path = PrebidMobileGAMEventHandlersTests;
 			sourceTree = "<group>";
@@ -194,6 +196,8 @@
 				344A7F0D250B749600743A93 /* GAMRequestWrapperTest.swift */,
 				344A7F13250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift */,
 				344A7F19250B8E5400743A93 /* GADRewardedAdWrapperTest.swift */,
+				5B7B133E26455C9600EBF42A /* GADCustomNativeAdWrapperTest.swift */,
+				5B7B134B26455E5400EBF42A /* GADNativeAdWrapperTest.swift */,
 			);
 			path = BoxTests;
 			sourceTree = "<group>";
@@ -627,7 +631,9 @@
 			files = (
 				344A7F09250B73FA00743A93 /* PropertyTestModels.swift in Sources */,
 				344A7F0E250B749600743A93 /* GAMRequestWrapperTest.swift in Sources */,
+				5B7B133F26455C9600EBF42A /* GADCustomNativeAdWrapperTest.swift in Sources */,
 				344A7F1A250B8E5400743A93 /* GADRewardedAdWrapperTest.swift in Sources */,
+				5B7B134C26455E5400EBF42A /* GADNativeAdWrapperTest.swift in Sources */,
 				344A7F14250B823F00743A93 /* GAMInterstitialAdWrapperTest.swift in Sources */,
 				344A7F0C250B744D00743A93 /* GADAdSize+Equatable.swift in Sources */,
 				3405F951250A55AE00268A77 /* GAMBannerViewWrapperTest.swift in Sources */,

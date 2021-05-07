@@ -38,7 +38,7 @@ class GADCustomNativeAdWrapper {
     // MARK: - Private Methods
     
     static func findClasses() -> Bool {
-        guard let _ = NSClassFromString("GADNativeCustomTemplateAd") else {
+        guard let _ = NSClassFromString("GADCustomNativeAd") else {
             return false;
         }
         

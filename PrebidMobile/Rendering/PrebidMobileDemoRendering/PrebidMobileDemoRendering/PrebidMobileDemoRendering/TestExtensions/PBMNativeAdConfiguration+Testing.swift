@@ -15,7 +15,7 @@ extension Array where Self.Element == PBMNativeAsset {
             return title
         }(),
         {
-            let icon = PBMNativeAssetImage()
+            let icon = NativeAssetImage()
             icon.widthMin = 50
             icon.heightMin = 50
             icon.required = true
@@ -23,7 +23,7 @@ extension Array where Self.Element == PBMNativeAsset {
             return icon
         }(),
         {
-            let image = PBMNativeAssetImage()
+            let image = NativeAssetImage()
             image.widthMin = 150
             image.heightMin = 50
             image.required = true

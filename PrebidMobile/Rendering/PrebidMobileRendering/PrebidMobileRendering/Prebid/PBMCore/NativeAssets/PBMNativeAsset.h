@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Lifecycle
 
 /// PBMNativeAsset class should not be instantialted directly, instantiate subclasses instead.
-- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

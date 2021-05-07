@@ -34,7 +34,7 @@ class NativeAssetsArrayController : FormViewController {
                         editor.nativeAsset = data
                         return editor
                     }
-                    if let image = asset as? PBMNativeAssetImage {
+                    if let image = asset as? NativeAssetImage {
                         let editor = NativeAssetImageController()
                         editor.nativeAsset = image
                         return editor
@@ -84,7 +84,7 @@ class NativeAssetsArrayController : FormViewController {
             
             +++ Section()
             <<< makeAddAssetRow(title: "Add Title", asset: NativeAssetTitle(length: 25))
-            <<< makeAddAssetRow(title: "Add Image", asset: PBMNativeAssetImage())
+            <<< makeAddAssetRow(title: "Add Image", asset: NativeAssetImage())
             <<< makeAddAssetRow(title: "Add Data", asset: NativeAssetData(dataType: .desc))
             <<< makeAddAssetRow(title: "Add Video", asset: PBMNativeAssetVideo(mimeTypes: [],
                                                                                minDuration: 0,

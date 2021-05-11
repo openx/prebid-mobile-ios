@@ -7,7 +7,7 @@
 
 @import Foundation;
 
-#import <MoPub.h>
+#import <MoPubSDK/MoPub.h>
 
 #import <PrebidMobileRendering/PBMNativeAdDetectionListener.h>
 

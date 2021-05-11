@@ -5,7 +5,7 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 
-#import <MoPub/MoPub.h>
+#import <MoPub.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -77,7 +77,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdConfiguration.h"
     header "PBMNativeAdUnit.h"
     header "PBMNativeAsset.h"
-    header "PBMNativeAssetVideo.h"
     header "PBMNativeContextType.h"
     header "PBMNativeContextSubtype.h"
     header "PBMNativeEventTracker.h"

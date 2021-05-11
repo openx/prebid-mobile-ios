@@ -9,9 +9,9 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class PBMNativeAssetVideoTest: XCTestCase {
+class NativeAssetVideoTest: XCTestCase {
     func testDesignatedInitAndToJsonString() {
-        let title = PBMNativeAssetVideo(mimeTypes: ["image/png","image/jpeg"],
+        let title = NativeAssetVideo(mimeTypes: ["image/png","image/jpeg"],
                                         minDuration: 29,
                                         maxDuration: 42,
                                         protocols: [1,2,5])
@@ -19,7 +19,7 @@ class PBMNativeAssetVideoTest: XCTestCase {
         try! title.setAssetExt(["topKey": "topVal"])
         try! title.setVideoExt(["boxedKey": "boxedVal"])
         title.assetID = 42
-        let clone = title.copy() as! PBMNativeAssetVideo
+        let clone = title.copy() as! NativeAssetVideo
         XCTAssertEqual(clone.jsonDictionary as NSDictionary?, [
             "id": 42,
             "required": 1,

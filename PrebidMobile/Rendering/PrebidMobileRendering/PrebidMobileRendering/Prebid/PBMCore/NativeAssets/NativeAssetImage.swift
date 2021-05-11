@@ -77,7 +77,7 @@ public class NativeAssetImage: PBMNativeAsset {
     
     // MARK: - Image Ext
     
-    func setImageExt(_ imageExt: [String : Any]?) throws {
+    @objc public func setImageExt(_ imageExt: [String : Any]?) throws {
         try setChildExt(imageExt)
     }
     

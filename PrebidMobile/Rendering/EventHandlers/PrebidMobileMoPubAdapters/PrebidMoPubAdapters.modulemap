@@ -17,6 +17,5 @@ framework module PrebidMobileMoPubAdapters {
     
     header "PrebidMoPubNativeAdRenderer.h"
     header "PrebidMoPubNativeAdAdapter.h"
-    header "PrebidMoPubNativeCustomEvent.h"
     header "PrebidMoPubNativeAdUtils.h"
 }

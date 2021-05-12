@@ -7,11 +7,11 @@
 #import <MoPub.h>
 
 #import <PrebidMobileRendering/PBMNativeAd.h>
+#import <PrebidMobileMoPubAdapters/PrebidMobileMoPubAdapters-Swift.h>
 
 #import "PrebidMoPubNativeAdRenderer.h"
 
 #import "PrebidMoPubNativeAdAdapter.h"
-#import "PrebidMoPubNativeCustomEvent.h"
 
 @interface PrebidMoPubNativeAdRenderer() <MPNativeAdRendererImageHandlerDelegate>
 

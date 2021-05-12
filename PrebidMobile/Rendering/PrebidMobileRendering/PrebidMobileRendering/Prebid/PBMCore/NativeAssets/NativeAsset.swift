@@ -17,7 +17,7 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     
     /// [Integer]
     /// Set to 1 if asset is required (exchange will not accept a bid without it)
-    @objc public var `required`: NSNumber?
+    @objc public var required: NSNumber?
     
     /// This object is a placeholder that may contain custom JSON agreed to by the parties
     /// to support flexibility beyond the standard defined in this specification
@@ -38,9 +38,9 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     }
 
     @objc public func setAssetExt(_ assetExt: [String : Any]?) throws {
-//        let newExt = try assetExt?.unserializedCopy()
-//        self.assetExt = newExt
-        self.assetExt = assetExt
+        let nsExt = assetExt as NSDictionary?
+        let newExt = try nsExt?.unserializedCopy()
+        self.assetExt = newExt
     }
     
     // MARK: - NSCopying
@@ -77,9 +77,9 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     // MARK: - Protected
     
     @objc public func setChildExt(_ childExt: [String : Any]?) throws {
-//        let newExt = try childExt?.unserializedCopy()
-//        self.childExt = newExt
-        self.childExt = childExt
+        let nsExt = childExt as NSDictionary?
+        let newExt = try nsExt?.unserializedCopy()
+        self.childExt = newExt
     }
     
     func appendAssetProperties(_ jsonDictionary: MutableJsonDictionary) {

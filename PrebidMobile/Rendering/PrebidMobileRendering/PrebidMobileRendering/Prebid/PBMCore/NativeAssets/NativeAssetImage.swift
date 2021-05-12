@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAssetImage: PBMNativeAsset {
+public class NativeAssetImage: NativeAsset {
     
     /// [Integer]
     /// Type ID of the image element supported by the publisher. The publisher can display
@@ -51,7 +51,8 @@ public class NativeAssetImage: PBMNativeAsset {
 
     // MARK: - Lifecycle
     
-    @objc public required override init() {
+    @objc public required init(imageType: NSNumber? = nil) {
+        self.imageType = imageType
         super.init(childType: "img")
     }
     
@@ -63,7 +64,7 @@ public class NativeAssetImage: PBMNativeAsset {
         return result
     }
 
-    public override func copyOptionalProperties(into clone: PBMNativeAsset) {
+    public override func copyOptionalProperties(into clone: NativeAsset) {
         super.copyOptionalProperties(into: clone)
         if let imageClone = clone as? NativeAssetImage {
             imageClone.imageType = imageType

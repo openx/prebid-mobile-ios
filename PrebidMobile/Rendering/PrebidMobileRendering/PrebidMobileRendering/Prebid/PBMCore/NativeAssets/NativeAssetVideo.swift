@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAssetVideo: PBMNativeAsset {
+public class NativeAssetVideo: NativeAsset {
     
     /// [Required]
     /// Content MIME types supported.

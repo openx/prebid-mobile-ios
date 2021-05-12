@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAssetTitle: PBMNativeAsset {
+public class NativeAssetTitle: NativeAsset {
     /// [Required]
     /// [Integer]
     /// Maximum length of the text in the title element.

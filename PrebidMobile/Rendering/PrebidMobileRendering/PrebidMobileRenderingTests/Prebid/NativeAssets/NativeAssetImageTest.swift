@@ -18,7 +18,7 @@ class NativeAssetImageTest: XCTestCase {
         image.widthMin = 96
         image.heightMin = 128
         image.mimeTypes = ["image/png","image/jpeg"]
-        image.required = true
+        image.required = 1
         try! image.setAssetExt(["topKey": "topVal"])
         try! image.setImageExt(["boxedKey": "boxedVal"])
         image.assetID = 42

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAssetData : PBMNativeAsset {
+public class NativeAssetData : NativeAsset {
     /// [Required]
     /// [Integer]
     /// Type ID of the element supported by the publisher.
@@ -38,7 +38,7 @@ public class NativeAssetData : PBMNativeAsset {
         return result
     }
 
-    public override func copyOptionalProperties(into clone: PBMNativeAsset) {
+    public override func copyOptionalProperties(into clone: NativeAsset) {
         super.copyOptionalProperties(into: clone)
         if let dataClone = clone as? NativeAssetData {
             dataClone.length = length

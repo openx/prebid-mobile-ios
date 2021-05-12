@@ -1,5 +1,5 @@
 //
-//  PBMNativeAssetDataTest.swift
+//  NativeAssetDataTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2020 OpenX. All rights reserved.

@@ -21,10 +21,10 @@ class NativeAssetsArrayController : FormViewController {
     }
     
     func buildForm() {
-        let makeAssetRow: (PBMNativeAsset) -> ButtonRowOf<PBMNativeAsset> = { [weak self] asset in
-            return ButtonRowOf<PBMNativeAsset> { row in
+        let makeAssetRow: (NativeAsset) -> ButtonRowOf<NativeAsset> = { [weak self] asset in
+            return ButtonRowOf<NativeAsset> { row in
                 row.value = asset
-                row.title = asset.childType
+                row.title = EditorUtils.assetName(asset)
             }
             .onCellSelection { [weak self] cell, row in
                 print("Edit -- \(try! asset.toJsonString())")
@@ -68,14 +68,14 @@ class NativeAssetsArrayController : FormViewController {
             }
         }
         
-        func makeAddAssetRow(title: String, asset: PBMNativeAsset) -> ButtonRowOf<PBMNativeAsset> {
-            return ButtonRowOf<PBMNativeAsset>() { row in
+        func makeAddAssetRow(title: String, asset: NativeAsset) -> ButtonRowOf<NativeAsset> {
+            return ButtonRowOf<NativeAsset>() { row in
                 row.title = title
                 row.value = asset
             }
             .onCellSelection { [weak self] cell, row in
                 cell.isSelected = false
-                self?.assetsSection.append(makeAssetRow(row.value!.copy() as! PBMNativeAsset))
+                self?.assetsSection.append(makeAssetRow(row.value!.copy() as! NativeAsset))
             }
         }
         
@@ -94,6 +94,6 @@ class NativeAssetsArrayController : FormViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        nativeAdConfig.assets = assetsSection.values().compactMap { $0 as? PBMNativeAsset }
+        nativeAdConfig.assets = assetsSection.values().compactMap { $0 as? NativeAsset }
     }
 }

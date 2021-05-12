@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension PBMNativeAsset {
-    class func parse(json: [String:Any]) -> PBMNativeAsset? {
-        var asset: PBMNativeAsset!
+extension NativeAsset {
+    class func parse(json: [String:Any]) -> NativeAsset? {
+        var asset: NativeAsset!
         var childDic: [String: Any]!
-        let parsers: [String: ([String: Any])->PBMNativeAsset?] = [
+        let parsers: [String: ([String: Any])->NativeAsset?] = [
             "data": NativeAssetData.init(childJson:),
             "img": NativeAssetImage.init(childJson:),
             "title": NativeAssetTitle.init(childJson:),

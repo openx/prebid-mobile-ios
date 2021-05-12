@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Array where Self.Element == PBMNativeAsset {
-    static let defaultNativeRequestAssets: [PBMNativeAsset] = [
+extension Array where Self.Element == NativeAsset {
+    static let defaultNativeRequestAssets: [NativeAsset] = [
         {
             let title = NativeAssetTitle(length: 90)
             title.required = true
@@ -50,7 +50,7 @@ extension Array where Self.Element == PBMNativeAsset {
 
 // TODO: additional parameters for trackers, context, etc. (?)
 extension PBMNativeAdConfiguration {
-    convenience init(testConfigWithAssets assets: [PBMNativeAsset]) {
+    convenience init(testConfigWithAssets assets: [NativeAsset]) {
         self.init(assets: assets)
         
         self.eventtrackers = [

@@ -15,7 +15,7 @@ class NativeAssetVideoTest: XCTestCase {
                                         minDuration: 29,
                                         maxDuration: 42,
                                         protocols: [1,2,5])
-        title.required = true
+        title.required = 1
         try! title.setAssetExt(["topKey": "topVal"])
         try! title.setVideoExt(["boxedKey": "boxedVal"])
         title.assetID = 42

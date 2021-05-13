@@ -42,7 +42,7 @@ public class PrebidMoPubNativeCustomEvent : MPNativeCustomEvent {
     
     func nativeAdDidLoad(_ nativeAd: PBMNativeAd) {
         
-        let adAdapter = PrebidMoPubNativeAdAdapter(pbmNativeAd: nativeAd)
+        let adAdapter = PrebidMoPubNativeAdAdapter(nativeAd: nativeAd)
         let interfaceAd = MPNativeAd(adAdapter: adAdapter)
         
         MPLogging.logEvent(MPLogEvent.adLoadSuccess(forAdapter: String(describing: PrebidMoPubNativeCustomEvent.self)), source: nil, from: nil)

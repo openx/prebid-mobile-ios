@@ -107,6 +107,7 @@ framework module PrebidMobileRendering {
     
     // ======================
     //Temp. for converting
+    header "PBMLog.h"
     header "PBMNativeAdMediaHooks.h"
     header "PBMViewControllerProvider.h"
     header "PBMCreativeClickHandlerBlock.h"

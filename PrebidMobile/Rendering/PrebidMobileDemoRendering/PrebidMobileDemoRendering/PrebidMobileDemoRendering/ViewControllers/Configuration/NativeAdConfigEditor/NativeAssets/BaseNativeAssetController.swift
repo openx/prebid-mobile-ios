@@ -28,7 +28,7 @@ class BaseNativeAssetController<T: NativeAsset> : FormViewController, RowBuildHe
         buildForm()
         
         addExtRow(field: "assetExt", src: \.assetExt, dst: NativeAsset.setAssetExt)
-        addExtRow(field: "\(EditorUtils.assetName(nativeAsset))Ext",
+        addExtRow(field: "\(nativeAsset.name)Ext",
                   src: \.childExt,
                   dst: NativeAsset.setChildExt)
     }

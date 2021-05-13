@@ -65,8 +65,8 @@ public class NativeAssetVideo: NativeAsset {
 
     // MARK: - Protected
 
-    public override func appendChildProperties(_ jsonDictionary: MutableJsonDictionary) {
-        super.appendChildProperties(jsonDictionary)
+    public override func appendChildProperties(to jsonDictionary: MutableJsonDictionary) {
+        super.appendChildProperties(to: jsonDictionary)
         jsonDictionary["mimes"] = mimeTypes
         jsonDictionary["minDuration"] = NSNumber(value: minDuration)
         jsonDictionary["maxDuration"] = NSNumber(value: maxDuration)

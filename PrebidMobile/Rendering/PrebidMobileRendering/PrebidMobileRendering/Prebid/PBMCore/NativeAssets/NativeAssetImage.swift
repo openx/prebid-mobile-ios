@@ -84,8 +84,8 @@ public class NativeAssetImage: NativeAsset {
     
     // MARK: - Protected
 
-    public override func appendChildProperties(_ jsonDictionary: MutableJsonDictionary) {
-        super.appendChildProperties(jsonDictionary)
+    public override func appendChildProperties(to jsonDictionary: MutableJsonDictionary) {
+        super.appendChildProperties(to: jsonDictionary)
         jsonDictionary["type"] = imageType
         jsonDictionary["w"] = width
         jsonDictionary["h"] = height

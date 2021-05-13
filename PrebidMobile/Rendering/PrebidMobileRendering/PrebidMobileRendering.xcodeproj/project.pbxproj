@@ -380,7 +380,7 @@
 		34D7105D24E580620048CC78 /* PBMEventTrackerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B80F698211D7F6F00C8A20F /* PBMEventTrackerProtocol.h */; };
 		34D7105E24E580620048CC78 /* PBMModalViewController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC50D21CCDAC50039DCA0 /* PBMModalViewController+Private.h */; };
 		34D7105F24E580620048CC78 /* PBMBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34BF11DF2476C2E5007A09F1 /* PBMBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34D7106124E580620048CC78 /* PBMLog.h in Headers */ = {isa = PBXBuildFile; fileRef = D5460777204936060079ACE1 /* PBMLog.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		34D7106124E580620048CC78 /* PBMLog.h in Headers */ = {isa = PBXBuildFile; fileRef = D5460777204936060079ACE1 /* PBMLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7106224E580620048CC78 /* PBMTransactionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1C15532260AA140043C0D2 /* PBMTransactionDelegate.h */; };
 		34D7106324E580620048CC78 /* PBMGeoLocationParameterBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 10199C5F202B44810026B02A /* PBMGeoLocationParameterBuilder.h */; };
 		34D7106424E580620048CC78 /* PBMVideoCreative.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BFEF2062032F14C00DCEBCE /* PBMVideoCreative.h */; };

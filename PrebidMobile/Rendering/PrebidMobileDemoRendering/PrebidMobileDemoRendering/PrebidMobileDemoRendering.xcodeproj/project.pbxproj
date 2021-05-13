@@ -130,11 +130,11 @@
 		ACC41ACA2444E50B00B9A3A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC41AC92444E50B00B9A3A7 /* SettingsViewController.swift */; };
 		ACC41ACD2444EADB00B9A3A7 /* AppSettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC41ACC2444EADB00B9A3A7 /* AppSettingsKeys.swift */; };
 		ACD76C78251A37E900F34589 /* PrebidBannerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD76C77251A37E900F34589 /* PrebidBannerUITest.swift */; };
+		ACE6E80D264D121A009324AC /* NativeAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E80C264D121A009324AC /* NativeAsset+Extensions.swift */; };
 		ACF3558025CD8C3000B9C8E5 /* PrebidNativeAdFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3557F25CD8C3000B9C8E5 /* PrebidNativeAdFeedController.swift */; };
 		ACF3823125ED058F000A071B /* PrebidMoPubNativeAdFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3823025ED058E000A071B /* PrebidMoPubNativeAdFeedController.swift */; };
 		ACF3823725ED47E4000A071B /* MoPubNativeVideoAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3823625ED47E4000A071B /* MoPubNativeVideoAdView.swift */; };
 		ACF7155725B08A80008A0186 /* TestCaseManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF7155625B08A80008A0186 /* TestCaseManagerTest.swift */; };
-		ACF9409C264BBEA0008E43D1 /* EditorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9409B264BBE9F008E43D1 /* EditorUtils.swift */; };
 		C71564551FDB496300EBCD91 /* XCTestCaseExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71564521FDB496300EBCD91 /* XCTestCaseExt.swift */; };
 		D08680742398088A00E70E60 /* OpenXMockServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D086806B2398088A00E70E60 /* OpenXMockServer.framework */; };
 		D086807B2398088A00E70E60 /* OpenXMockServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086807A2398088A00E70E60 /* OpenXMockServerTests.swift */; };
@@ -347,11 +347,11 @@
 		ACC41AC92444E50B00B9A3A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ACC41ACC2444EADB00B9A3A7 /* AppSettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsKeys.swift; sourceTree = "<group>"; };
 		ACD76C77251A37E900F34589 /* PrebidBannerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidBannerUITest.swift; sourceTree = "<group>"; };
+		ACE6E80C264D121A009324AC /* NativeAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeAsset+Extensions.swift"; sourceTree = "<group>"; };
 		ACF3557F25CD8C3000B9C8E5 /* PrebidNativeAdFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidNativeAdFeedController.swift; sourceTree = "<group>"; };
 		ACF3823025ED058E000A071B /* PrebidMoPubNativeAdFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidMoPubNativeAdFeedController.swift; sourceTree = "<group>"; };
 		ACF3823625ED47E4000A071B /* MoPubNativeVideoAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubNativeVideoAdView.swift; sourceTree = "<group>"; };
 		ACF7155625B08A80008A0186 /* TestCaseManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseManagerTest.swift; sourceTree = "<group>"; };
-		ACF9409B264BBE9F008E43D1 /* EditorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorUtils.swift; sourceTree = "<group>"; };
 		BEA57206B9513930E41DB0CD /* Pods-OpenXMockServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenXMockServer.release.xcconfig"; path = "Target Support Files/Pods-OpenXMockServer/Pods-OpenXMockServer.release.xcconfig"; sourceTree = "<group>"; };
 		C71564521FDB496300EBCD91 /* XCTestCaseExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseExt.swift; sourceTree = "<group>"; };
 		D086806B2398088A00E70E60 /* OpenXMockServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenXMockServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				341CC3132562C9D000186F29 /* FormViewController+RowBuildHelpers.swift */,
+				ACE6E80C264D121A009324AC /* NativeAsset+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -566,7 +567,6 @@
 				341CC2F52562B97600186F29 /* NativeEventTrackersArrayController.swift */,
 				341CC3042562BD2300186F29 /* NativeEventTrackerController.swift */,
 				341CC2E42562B04800186F29 /* NativeAssetsArrayController.swift */,
-				ACF9409B264BBE9F008E43D1 /* EditorUtils.swift */,
 				341CC3102562C8D700186F29 /* NativeAssets */,
 			);
 			path = NativeAdConfigEditor;
@@ -1207,6 +1207,7 @@
 				ACF3558025CD8C3000B9C8E5 /* PrebidNativeAdFeedController.swift in Sources */,
 				5B3EEDE52101FB8800BAA0C4 /* TestCase.swift in Sources */,
 				34C9AED32564191100EB6F72 /* PBMNativeAsset+FromJSON.swift in Sources */,
+				ACE6E80D264D121A009324AC /* NativeAsset+Extensions.swift in Sources */,
 				34BA9602249CC164006AE372 /* PrebidMoPubInterstitialController.swift in Sources */,
 				34FC0CF424ADD3A80045553E /* PrebidInterstitialController.swift in Sources */,
 				34930E122420E899007A0DBA /* GlobalVars.swift in Sources */,
@@ -1256,7 +1257,6 @@
 				3493021C2473F408004A6086 /* PrebidGAMBannerController.swift in Sources */,
 				D551B96F21491AAA00FFF51D /* AppConfiguration.swift in Sources */,
 				AC812BEF2600E57100370A33 /* FeedGAMAdTableViewCell.swift in Sources */,
-				ACF9409C264BBEA0008E43D1 /* EditorUtils.swift in Sources */,
 				346C6F5725DFAB7E00457DD3 /* ReactiveSdkInitFlag.swift in Sources */,
 				AC23A0CD251B932000983ABF /* PrebidBannerConfigurationController.swift in Sources */,
 				5B3EEDE22101EDA200BAA0C4 /* TestCasesSectionsViewController.swift in Sources */,

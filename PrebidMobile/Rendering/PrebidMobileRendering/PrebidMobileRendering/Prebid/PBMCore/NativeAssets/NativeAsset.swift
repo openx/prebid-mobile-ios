@@ -28,7 +28,7 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     var childType: String
     
     private override init() {
-        NSLog("NativeAsset class should not be instantialted directly, instantiate subclasses instead.")
+        PBMLog.warn("NativeAsset class should not be instantialted directly, instantiate subclasses instead.")
         self.childType = ""
     }
     
@@ -62,9 +62,9 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     
     @objc public var jsonDictionary: [String : Any]? {
         let assetProperties = MutableJsonDictionary()
-        appendAssetProperties(assetProperties)
+        appendAssetProperties(to: assetProperties)
         let childProperties = MutableJsonDictionary()
-        appendChildProperties(childProperties)
+        appendChildProperties(to: childProperties)
         assetProperties[self.childType] = childProperties.count != 0 ? childProperties : nil;
         
         return assetProperties as? [String : Any]
@@ -82,13 +82,13 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
         self.childExt = newExt
     }
     
-    func appendAssetProperties(_ jsonDictionary: MutableJsonDictionary) {
+    func appendAssetProperties(to jsonDictionary: MutableJsonDictionary) {
         jsonDictionary["id"] = assetID
         jsonDictionary["required"] = required
         jsonDictionary["ext"] = assetExt
     }
 
-    func appendChildProperties(_ jsonDictionary: MutableJsonDictionary) {
+    func appendChildProperties(to jsonDictionary: MutableJsonDictionary) {
         jsonDictionary["ext"] = childExt
     }
 }

@@ -51,8 +51,8 @@ public class NativeAssetData : NativeAsset {
 
     // MARK: - Protected
 
-    public override func appendChildProperties(_ jsonDictionary: MutableJsonDictionary) {
-        super.appendChildProperties(jsonDictionary)
+    public override func appendChildProperties(to jsonDictionary: MutableJsonDictionary) {
+        super.appendChildProperties(to: jsonDictionary)
         jsonDictionary["type"] = NSNumber(value: dataType.rawValue)
         jsonDictionary["len"] = length
     }

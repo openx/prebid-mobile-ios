@@ -24,7 +24,7 @@ class NativeAssetsArrayController : FormViewController {
         let makeAssetRow: (NativeAsset) -> ButtonRowOf<NativeAsset> = { [weak self] asset in
             return ButtonRowOf<NativeAsset> { row in
                 row.value = asset
-                row.title = EditorUtils.assetName(asset)
+                row.title = asset.name
             }
             .onCellSelection { [weak self] cell, row in
                 print("Edit -- \(try! asset.toJsonString())")

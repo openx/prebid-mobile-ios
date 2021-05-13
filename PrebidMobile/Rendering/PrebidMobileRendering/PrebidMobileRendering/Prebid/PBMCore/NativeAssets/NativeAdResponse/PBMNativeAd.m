@@ -9,11 +9,11 @@
 #import "PBMNativeAd+Testing.h"
 #import "PBMNativeAd+FromMarkup.h"
 #import "PBMNativeAdAsset+FromMarkup.h"
-#import "PBMNativeAdVideo+Internal.h"
 
 // impression tracking {
 #import "NSTimer+PBMScheduledTimerFactory.h"
 #import "PBMNativeAdImpressionReporting.h"
+#import "PBMNativeAdMediaHooks.h"
 #import "PBMNativeImpressionsTracker.h"
 // }
 
@@ -242,8 +242,8 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
     return image ?: @"";
 }
 
-- (nullable PBMNativeAdVideo *)videoAd {
-    NSArray<PBMNativeAdVideo *> * const videoAds = self.videoAds;
+- (nullable NativeAdVideo *)videoAd {
+    NSArray<NativeAdVideo *> * const videoAds = self.videoAds;
     if (videoAds.count > 0) {
         return videoAds[0];
     } else {
@@ -301,11 +301,11 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
     return result;
 }
 
-- (NSArray<PBMNativeAdVideo *> *)videoAds {
+- (NSArray<NativeAdVideo *> *)videoAds {
     if (!self.nativeAdMarkup.assets) {
         return @[];
     }
-    NSMutableArray<PBMNativeAdVideo *> * const result = [[NSMutableArray alloc] init];
+    NSMutableArray<NativeAdVideo *> * const result = [[NSMutableArray alloc] init];
     @weakify(self);
     PBMViewControllerProvider const viewControllerProvider = ^UIViewController * _Nullable{
         @strongify(self);
@@ -322,7 +322,7 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
         PBMNativeAdMediaHooks * const
         nativeAdHooks = [[PBMNativeAdMediaHooks alloc] initWithViewControllerProvider:viewControllerProvider
                                                                  clickHandlerOverride:clickHandlerOverride];
-        PBMNativeAdVideo * const nextVideo = [[PBMNativeAdVideo alloc] initWithNativeAdMarkupAsset:nextAsset
+        NativeAdVideo * const nextVideo = [[NativeAdVideo alloc] initWithNativeAdMarkupAsset:nextAsset
                                                                                      nativeAdHooks:nativeAdHooks
                                                                                              error:nil];
         if (nextVideo) {

@@ -59,7 +59,7 @@ class PBMNativeAdTest: XCTestCase {
                 Decoding.ArrayPropertyCheck(value: try! images.map(NativeAdImage.init),
                                             writer: appendAssets,
                                             reader: { $0.images(of: .main) }),
-                Decoding.ArrayPropertyCheck(value: try! videos.map(PBMNativeAdVideo.init),
+                Decoding.ArrayPropertyCheck(value: try! videos.map(NativeAdVideo.init),
                                             writer: appendAssets,
                                             reader: { $0.videoAds }),
                 
@@ -93,7 +93,7 @@ class PBMNativeAdTest: XCTestCase {
                 Decoding.ArrayPropertyCheck(value: try! (icons + images).map(NativeAdImage.init),
                                             writer: appendAssets,
                                             reader: { $0.images }),
-                Decoding.ArrayPropertyCheck(value: try! videos.map(PBMNativeAdVideo.init),
+                Decoding.ArrayPropertyCheck(value: try! videos.map(NativeAdVideo.init),
                                             writer: appendAssets,
                                             reader: { $0.videoAds }),
                 
@@ -138,7 +138,7 @@ class PBMNativeAdTest: XCTestCase {
                                                    defaultValue: "",
                                                    writer: { markup, str in appendMarkupAssets(markup, images) },
                                                    reader: { $0.imageURL }),
-                Decoding.DefaultValuePropertyCheck(value: try! PBMNativeAdVideo(nativeAdMarkupAsset: videos[0]),
+                Decoding.DefaultValuePropertyCheck(value: try! NativeAdVideo(nativeAdMarkupAsset: videos[0]),
                                                    defaultValue: nil,
                                                    writer: { markup, str in appendMarkupAssets(markup, videos) },
                                                    reader: { $0.videoAd }),

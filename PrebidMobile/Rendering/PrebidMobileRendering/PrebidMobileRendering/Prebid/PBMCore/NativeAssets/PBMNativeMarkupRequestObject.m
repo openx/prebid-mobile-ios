@@ -10,6 +10,8 @@
 #import "PBMDataAssetType.h"
 #import "PBMJsonCodable.h"
 
+#import "PBMNativeAdAsset.h"
+
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #import "PBMNativeMarkupRequestObject.h"

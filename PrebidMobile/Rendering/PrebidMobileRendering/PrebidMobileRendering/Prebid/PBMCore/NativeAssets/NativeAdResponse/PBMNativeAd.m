@@ -39,6 +39,7 @@
 
 #import "PBMAdViewManagerDelegate.h"
 #import "PBMPlayable.h"
+#import "PBMJsonCodable.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

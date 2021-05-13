@@ -225,7 +225,7 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 }
 
 - (NSString *)text {
-    NSArray<PBMNativeAdData *> * const descriptions = [self dataObjectsOfType:PBMDataAssetType_Desc];
+    NSArray<NativeAdData *> * const descriptions = [self dataObjectsOfType:PBMDataAssetType_Desc];
     NSString * const description = (descriptions.count > 0) ? descriptions[0].value : nil;
     return description ?: @"";
 }
@@ -252,7 +252,7 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 }
 
 - (NSString *)callToAction {
-    NSArray<PBMNativeAdData *> * const callToActions = [self dataObjectsOfType:PBMDataAssetType_CTAText];
+    NSArray<NativeAdData *> * const callToActions = [self dataObjectsOfType:PBMDataAssetType_CTAText];
     NSString * const callToAction = (callToActions.count > 0) ? callToActions[0].value : nil;
     return callToAction ?: @"";
 }
@@ -273,13 +273,13 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
     return result;
 }
 
-- (NSArray<PBMNativeAdData *> *)dataObjects {
+- (NSArray<NativeAdData *> *)dataObjects {
     if (!self.nativeAdMarkup.assets) {
         return @[];
     }
-    NSMutableArray<PBMNativeAdData *> * const result = [[NSMutableArray alloc] init];
+    NSMutableArray<NativeAdData *> * const result = [[NSMutableArray alloc] init];
     for (PBMNativeAdMarkupAsset *nextAsset in self.nativeAdMarkup.assets) {
-        PBMNativeAdData * const nextData = [[PBMNativeAdData alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
+        NativeAdData * const nextData = [[NativeAdData alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
         if (nextData) {
             [result addObject:nextData];
         }
@@ -338,9 +338,9 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 
 // MARK: - Public API (Filtered array getters)
 
-- (NSArray<PBMNativeAdData *> *)dataObjectsOfType:(PBMDataAssetType)dataType {
-    NSMutableArray<PBMNativeAdData *> * const result = [[NSMutableArray alloc] init];
-    for (PBMNativeAdData *nextData in self.dataObjects) {
+- (NSArray<NativeAdData *> *)dataObjectsOfType:(PBMDataAssetType)dataType {
+    NSMutableArray<NativeAdData *> * const result = [[NSMutableArray alloc] init];
+    for (NativeAdData *nextData in self.dataObjects) {
         if (nextData.dataType.integerValue == dataType) {
             [result addObject:nextData];
         }

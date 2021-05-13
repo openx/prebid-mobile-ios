@@ -13,13 +13,14 @@
 #import "PBMNativeAdData.h"
 #import "PBMNativeAdEventTracker.h"
 #import "PBMNativeAdImage.h"
-#import "PBMNativeAdTitle.h"
 #import "PBMNativeAdVideo.h"
 
 #import "PBMDataAssetType.h"
 #import "PBMImageAssetType.h"
 
 #import "PBMNativeAdElementType.h"
+
+@class NativeAdTitle;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -42,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Array getters
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdData *> *dataObjects;
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdImage *> *images;
-@property (nonatomic, strong, readonly) NSArray<PBMNativeAdTitle *> *titles;
+@property (nonatomic, strong, readonly) NSArray<NativeAdTitle *> *titles;
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdVideo *> *videoAds;
 
 @property (nonatomic, strong, readonly) NSArray<NSString *> *imptrackers;

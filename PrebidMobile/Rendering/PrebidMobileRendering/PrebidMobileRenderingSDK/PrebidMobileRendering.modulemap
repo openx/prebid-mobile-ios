@@ -90,7 +90,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdEventTracker.h"
     header "PBMNativeAdHandler.h"
     header "PBMNativeAdImage.h"
-    header "PBMNativeAdTitle.h"
     header "PBMNativeAdVideo.h"
 
     // PBM Native Ads (for Primary SDK Utils)
@@ -112,8 +111,9 @@ framework module PrebidMobileRendering {
     header "PBMViewControllerProvider.h"
     header "PBMCreativeClickHandlerBlock.h"
     header "PBMVoidBlock.h"
-    header "PBMNativeAdMarkupAsset.h"
     
+    // PBM Native Ads (markup)
+    header "PBMNativeAdMarkupAsset.h"
     header "PBMNativeAdMarkupData.h"
     header "PBMNativeAdMarkupImage.h"
     header "PBMNativeAdMarkupLink.h"
@@ -154,7 +154,6 @@ framework module PrebidMobileRendering {
     header "PBMViewabilityPlaybackBinder.h"
     header "PBMViewExposureProviders.h"
     
-    // PBM Native Ads (response)
     header "NSNumber+PBMORTBNative.h"
     
     header "PBMJsonCodable.h"
@@ -162,4 +161,10 @@ framework module PrebidMobileRendering {
     header "PBMFunctions+Private.h"
     header "PBMUIApplicationProtocol.h"
     header "NSDictionary+PBMORTBNativeExt.h"
+    
+    // PBM Native Ads (response)
+    header "PBMNativeAdAssetBoxingError.h"
+    header "PBMNativeAdAsset+Protected.h"
+    header "PBMNativeAdAsset+Protected.h"
+    header "PBMNativeAdAsset+FromMarkup.h"
 }

@@ -37,6 +37,11 @@
 
 #import "PBMMacros.h"
 
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMPlayable.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 
 static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 
@@ -213,7 +218,7 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 // MARK: - Public API (Convenience getters)
 
 - (NSString *)title {
-    NSArray<PBMNativeAdTitle *> * const titles = self.titles;
+    NSArray<NativeAdTitle *> * const titles = self.titles;
     NSString * const title = (titles.count > 0) ? titles[0].text : nil;
     return title ?: @"";
 }
@@ -253,13 +258,13 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 
 // MARK: - Public API (Array getters)
 
-- (NSArray<PBMNativeAdTitle *> *)titles {
+- (NSArray<NativeAdTitle *> *)titles {
     if (!self.nativeAdMarkup.assets) {
         return @[];
     }
-    NSMutableArray<PBMNativeAdTitle *> * const result = [[NSMutableArray alloc] init];
+    NSMutableArray<NativeAdTitle *> * const result = [[NSMutableArray alloc] init];
     for (PBMNativeAdMarkupAsset *nextAsset in self.nativeAdMarkup.assets) {
-        PBMNativeAdTitle * const nextTitle = [[PBMNativeAdTitle alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
+        NativeAdTitle * const nextTitle = [[NativeAdTitle alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
         if (nextTitle) {
             [result addObject:nextTitle];
         }

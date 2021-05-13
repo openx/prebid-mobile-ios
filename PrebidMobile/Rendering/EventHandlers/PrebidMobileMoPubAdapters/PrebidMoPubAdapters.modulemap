@@ -14,6 +14,4 @@ framework module PrebidMobileMoPubAdapters {
     header "PrebidMoPubInterstitialAdapter.h"
     header "PrebidMoPubRewardedVideoAdapter.h"
     header "PrebidMoPubVideoInterstitialAdapter.h"
-    
-    header "PrebidMoPubNativeAdUtils.h"
 }

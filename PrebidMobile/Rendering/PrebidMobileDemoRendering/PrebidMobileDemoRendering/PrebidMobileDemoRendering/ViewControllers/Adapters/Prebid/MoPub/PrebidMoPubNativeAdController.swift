@@ -134,7 +134,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
             let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
             
             
-            PrebidMoPubNativeAdUtils.shared().prepareAdObject(targeting!)
+            PrebidMoPubAdaptersUtils.shared.prepareAdObject(targeting!)
             
             let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId, rendererConfigurations: [prebidConfig, mopubConfig!])
             adRequest?.targeting = targeting
@@ -170,8 +170,8 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
                     self?.nativeAdInvalidButton.isEnabled = true
                 }
                 
-                PrebidMoPubNativeAdUtils.shared().findNativeAd(in: moPubNativeAd,
-                                                            nativeAdDetectionListener: nativeAdDetectionListener)
+                PrebidMoPubAdaptersUtils.shared.find(nativeAd: moPubNativeAd,
+                                       nativeAdDetectionListener: nativeAdDetectionListener)
             }
         }
     }

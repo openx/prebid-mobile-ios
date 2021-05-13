@@ -87,7 +87,7 @@
         UILabel * const sponsoredLabel = self.adView.nativeSponsoredByCompanyTextLabel;
         sponsoredLabel.text = adapter.properties[kAdSponsoredByCompanyKey];
         
-        PBMNativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject;
+        NativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject;
         [self.adapter.nativeAd registerClickView:sponsoredLabel nativeAdAsset:brandAsset];
     }
     

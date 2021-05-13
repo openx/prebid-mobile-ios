@@ -85,7 +85,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdTrackingDelegate.h"
     header "PBMNativeAdUIDelegate.h"
     header "PBMNativeAdAsset.h"
-    header "PBMNativeAdData.h"
     header "PBMNativeAdElementType.h"
     header "PBMNativeAdEventTracker.h"
     header "PBMNativeAdHandler.h"

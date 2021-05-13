@@ -10,7 +10,6 @@
 #import "PBMNativeAdTrackingDelegate.h"
 #import "PBMNativeAdUIDelegate.h"
 
-#import "PBMNativeAdData.h"
 #import "PBMNativeAdEventTracker.h"
 #import "PBMNativeAdVideo.h"
 
@@ -19,8 +18,9 @@
 
 #import "PBMNativeAdElementType.h"
 
-@class NativeAdTitle;
+@class NativeAdData;
 @class NativeAdImage;
+@class NativeAdTitle;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *callToAction;
 
 // MARK: - Array getters
-@property (nonatomic, strong, readonly) NSArray<PBMNativeAdData *> *dataObjects;
+@property (nonatomic, strong, readonly) NSArray<NativeAdData *> *dataObjects;
 @property (nonatomic, strong, readonly) NSArray<NativeAdImage *> *images;
 @property (nonatomic, strong, readonly) NSArray<NativeAdTitle *> *titles;
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdVideo *> *videoAds;
@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSArray<NSString *> *imptrackers;
 
 // MARK: - Filtered array getters
-- (NSArray<PBMNativeAdData *> *)dataObjectsOfType:(PBMDataAssetType)dataType;
+- (NSArray<NativeAdData *> *)dataObjectsOfType:(PBMDataAssetType)dataType;
 - (NSArray<NativeAdImage *> *)imagesOfType:(PBMImageAssetType)imageType;
 
 // MARK: - Overrides

@@ -1,5 +1,5 @@
 //
-//  PBMNativeAdTitleTest.swift
+//  NativeAdTitleTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -9,7 +9,7 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class PBMNativeAdTitleTest: XCTestCase {
+class NativeAdTitleTest: XCTestCase {
     func testInitFromMarkup_withText() {
         testInitFromMarkup(titleText: "Some Title value")
     }

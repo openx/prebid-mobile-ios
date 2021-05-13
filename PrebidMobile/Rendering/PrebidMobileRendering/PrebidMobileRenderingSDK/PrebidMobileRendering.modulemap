@@ -89,7 +89,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdElementType.h"
     header "PBMNativeAdEventTracker.h"
     header "PBMNativeAdHandler.h"
-    header "PBMNativeAdImage.h"
     header "PBMNativeAdVideo.h"
 
     // PBM Native Ads (for Primary SDK Utils)

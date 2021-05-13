@@ -12,7 +12,6 @@
 
 #import "PBMNativeAdData.h"
 #import "PBMNativeAdEventTracker.h"
-#import "PBMNativeAdImage.h"
 #import "PBMNativeAdVideo.h"
 
 #import "PBMDataAssetType.h"
@@ -21,6 +20,7 @@
 #import "PBMNativeAdElementType.h"
 
 @class NativeAdTitle;
+@class NativeAdImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Array getters
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdData *> *dataObjects;
-@property (nonatomic, strong, readonly) NSArray<PBMNativeAdImage *> *images;
+@property (nonatomic, strong, readonly) NSArray<NativeAdImage *> *images;
 @property (nonatomic, strong, readonly) NSArray<NativeAdTitle *> *titles;
 @property (nonatomic, strong, readonly) NSArray<PBMNativeAdVideo *> *videoAds;
 
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Filtered array getters
 - (NSArray<PBMNativeAdData *> *)dataObjectsOfType:(PBMDataAssetType)dataType;
-- (NSArray<PBMNativeAdImage *> *)imagesOfType:(PBMImageAssetType)imageType;
+- (NSArray<NativeAdImage *> *)imagesOfType:(PBMImageAssetType)imageType;
 
 // MARK: - Overrides
 - (instancetype)init NS_UNAVAILABLE;

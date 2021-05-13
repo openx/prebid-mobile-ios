@@ -21,7 +21,7 @@ public class NativeAdTitle: PBMNativeAdAsset {
     /// flexibility beyond the standard defined in this specification
     @objc public var titleExt: [String : Any]? { nativeAdMarkupAsset.title?.ext }
 
-    @objc public override init( nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
+    @objc public override init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard let _ = nativeAdMarkupAsset.title else {
             throw PBMNativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset
         }

@@ -231,13 +231,13 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 }
 
 - (NSString *)iconURL {
-    NSArray<PBMNativeAdImage *> * const icons = [self imagesOfType:PBMImageAssetType_Icon];
+    NSArray<NativeAdImage *> * const icons = [self imagesOfType:PBMImageAssetType_Icon];
     NSString * const icon = (icons.count > 0) ? icons[0].url : nil;
     return icon ?: @"";
 }
 
 - (NSString *)imageURL {
-    NSArray<PBMNativeAdImage *> * const images = [self imagesOfType:PBMImageAssetType_Main];
+    NSArray<NativeAdImage *> * const images = [self imagesOfType:PBMImageAssetType_Main];
     NSString * const image = (images.count > 0) ? images[0].url : nil;
     return image ?: @"";
 }
@@ -287,13 +287,13 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
     return result;
 }
 
-- (NSArray<PBMNativeAdImage *> *)images {
+- (NSArray<NativeAdImage *> *)images {
     if (!self.nativeAdMarkup.assets) {
         return @[];
     }
-    NSMutableArray<PBMNativeAdImage *> * const result = [[NSMutableArray alloc] init];
+    NSMutableArray<NativeAdImage *> * const result = [[NSMutableArray alloc] init];
     for (PBMNativeAdMarkupAsset *nextAsset in self.nativeAdMarkup.assets) {
-        PBMNativeAdImage * const nextImage = [[PBMNativeAdImage alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
+        NativeAdImage * const nextImage = [[NativeAdImage alloc] initWithNativeAdMarkupAsset:nextAsset error:nil];
         if (nextImage) {
             [result addObject:nextImage];
         }
@@ -348,9 +348,9 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
     return result;
 }
 
-- (NSArray<PBMNativeAdImage *> *)imagesOfType:(PBMImageAssetType)imageType {
-    NSMutableArray<PBMNativeAdImage *> * const result = [[NSMutableArray alloc] init];
-    for (PBMNativeAdImage *nextImage in self.images) {
+- (NSArray<NativeAdImage *> *)imagesOfType:(PBMImageAssetType)imageType {
+    NSMutableArray<NativeAdImage *> * const result = [[NSMutableArray alloc] init];
+    for (NativeAdImage *nextImage in self.images) {
         if (nextImage.imageType.integerValue == imageType) {
             [result addObject:nextImage];
         }

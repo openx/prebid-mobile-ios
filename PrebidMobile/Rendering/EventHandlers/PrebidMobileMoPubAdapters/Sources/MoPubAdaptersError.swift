@@ -10,6 +10,8 @@ import Foundation
 enum MoPubAdaptersError : Error {
     
     case emptyLocalExtras
+    case noBidInLocalExtras
+    case noConfigIDInLocalExtras
     case unknown
     
     case gamClassesNotFound
@@ -32,6 +34,8 @@ fileprivate let MoPubAdaptersErrorDomain = "org.prebid.mobile.rendering.ErrorDom
 
 
 fileprivate let errDescrEmptyLocalExtras = "The local extras is empty"
+fileprivate let errDescrNoBidInLocalExtras = "The Bid object is absent in the extras"
+fileprivate let errDescrNoConfigIDInLocalExtras = "The Config ID absent in the extras"
 fileprivate let errDescrUnknown          = "Unknown error has been received."
 
 fileprivate let errDescrClassNotFound   = "GoogleMobileAds SDK does not provide the required classes."
@@ -43,13 +47,15 @@ extension MoPubAdaptersError : LocalizedError {
     public var errorDescription: String? {
         switch self {
     
-            case .emptyLocalExtras      : return errDescrEmptyLocalExtras
-            case .unknown               : return errDescrUnknown
+            case .emptyLocalExtras          : return errDescrEmptyLocalExtras
+            case .noBidInLocalExtras        : return errDescrNoBidInLocalExtras
+            case .noConfigIDInLocalExtras   : return errDescrNoConfigIDInLocalExtras
+            case .unknown                   : return errDescrUnknown
                 
-            case .gamClassesNotFound    : return errDescrClassNotFound
-            case .noLocalCacheID        : return errDescrNoCacheID
-            case .invalidLocalCacheID   : return errDescrInvalidCacheID
-            case .invalidNativeAd       : return errDescrInvalidNativeAd
+            case .gamClassesNotFound        : return errDescrClassNotFound
+            case .noLocalCacheID            : return errDescrNoCacheID
+            case .invalidLocalCacheID       : return errDescrInvalidCacheID
+            case .invalidNativeAd           : return errDescrInvalidNativeAd
         }
     }
 }
@@ -61,13 +67,15 @@ extension MoPubAdaptersError :  CustomNSError {
     
     public var errorCode: Int {
         switch self {
-            case .emptyLocalExtras      : return MoPubAdaptersErrorCodes.general.rawValue
-            case .unknown               : return MoPubAdaptersErrorCodes.undefined.rawValue
+            case .emptyLocalExtras          : return MoPubAdaptersErrorCodes.general.rawValue
+            case .noBidInLocalExtras        : return MoPubAdaptersErrorCodes.general.rawValue
+            case .noConfigIDInLocalExtras   : return MoPubAdaptersErrorCodes.general.rawValue
+            case .unknown                   : return MoPubAdaptersErrorCodes.undefined.rawValue
 
-            case .gamClassesNotFound    : return MoPubAdaptersErrorCodes.undefined.rawValue
-            case .noLocalCacheID        : return MoPubAdaptersErrorCodes.undefined.rawValue
-            case .invalidLocalCacheID   : return MoPubAdaptersErrorCodes.undefined.rawValue
-            case .invalidNativeAd       : return MoPubAdaptersErrorCodes.undefined.rawValue
+            case .gamClassesNotFound        : return MoPubAdaptersErrorCodes.undefined.rawValue
+            case .noLocalCacheID            : return MoPubAdaptersErrorCodes.undefined.rawValue
+            case .invalidLocalCacheID       : return MoPubAdaptersErrorCodes.undefined.rawValue
+            case .invalidNativeAd           : return MoPubAdaptersErrorCodes.undefined.rawValue
         }
     }
 

@@ -7,11 +7,12 @@
 
 @import UIKit;
 
+#import "PBMNativeAdAsset.h"
+
 #import "PBMNativeAdTrackingDelegate.h"
 #import "PBMNativeAdUIDelegate.h"
 
 #import "PBMNativeAdEventTracker.h"
-#import "PBMNativeAdVideo.h"
 
 #import "PBMDataAssetType.h"
 #import "PBMImageAssetType.h"
@@ -21,6 +22,7 @@
 @class NativeAdData;
 @class NativeAdImage;
 @class NativeAdTitle;
+@class NativeAdVideo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,14 +39,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *text;
 @property (nonatomic, strong, readonly) NSString *iconURL;
 @property (nonatomic, strong, readonly) NSString *imageURL;
-@property (nonatomic, strong, nullable, readonly) PBMNativeAdVideo *videoAd;
+@property (nonatomic, strong, nullable, readonly) NativeAdVideo *videoAd;
 @property (nonatomic, strong, readonly) NSString *callToAction;
 
 // MARK: - Array getters
 @property (nonatomic, strong, readonly) NSArray<NativeAdData *> *dataObjects;
 @property (nonatomic, strong, readonly) NSArray<NativeAdImage *> *images;
 @property (nonatomic, strong, readonly) NSArray<NativeAdTitle *> *titles;
-@property (nonatomic, strong, readonly) NSArray<PBMNativeAdVideo *> *videoAds;
+@property (nonatomic, strong, readonly) NSArray<NativeAdVideo *> *videoAds;
 
 @property (nonatomic, strong, readonly) NSArray<NSString *> *imptrackers;
 

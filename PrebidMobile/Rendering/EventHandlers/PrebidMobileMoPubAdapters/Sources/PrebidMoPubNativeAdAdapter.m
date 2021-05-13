@@ -69,6 +69,10 @@
     return self;
 }
 
+-(void)dealloc {
+    NSLog(@"Bye");
+}
+
 #pragma mark - MPNativeAdAdapter
 
 - (NSURL *)defaultActionURL {

@@ -36,6 +36,7 @@
 		5B7B134C26455E5400EBF42A /* GADNativeAdWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B134B26455E5400EBF42A /* GADNativeAdWrapperTest.swift */; };
 		5B7B1498264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B1497264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift */; };
 		5B7B149D264BC27000EBF42A /* MoPubAdaptersError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B149C264BC27000EBF42A /* MoPubAdaptersError.swift */; };
+		5B7B14A8264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B14A7264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift */; };
 		5BF8E65B26396DB900341EE4 /* GADRewardedAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */; };
 		5BF8E6B7263AC32800341EE4 /* GAMInterstitialEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */; };
 		5BF8E6C2263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */; };
@@ -45,9 +46,7 @@
 		5BF8E789263C3B4000341EE4 /* GADNativeAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E788263C3B4000341EE4 /* GADNativeAdWrapper.swift */; };
 		5BF8E791263C400F00341EE4 /* GADCustomNativeAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8E790263C400F00341EE4 /* GADCustomNativeAdWrapper.swift */; };
 		92F182B3E3AC2C869402CDEE /* Pods_PrebidMobileGAMEventHandlersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E16D3B90411A699792B3D /* Pods_PrebidMobileGAMEventHandlersTests.framework */; };
-		AC4733B025D55BD70041EEBA /* PrebidMoPubNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4733AF25D55BD70041EEBA /* PrebidMoPubNativeAdRenderer.m */; };
 		AC4733B125D55BD70041EEBA /* PrebidMoPubNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4733AE25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.m */; };
-		AC4733CB25D56A400041EEBA /* PrebidMoPubNativeAdRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = AC4733AC25D55BD50041EEBA /* PrebidMoPubNativeAdRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC4733D225D56A5D0041EEBA /* PrebidMoPubNativeAdAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = AC4733AD25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACF3824225EFBD8A000A071B /* PrebidMoPubConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF3824025EFBD89000A071B /* PrebidMoPubConstants.h */; };
 		ACF3824325EFBD8A000A071B /* PrebidMoPubConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF3824125EFBD89000A071B /* PrebidMoPubConstants.m */; };
@@ -108,6 +107,7 @@
 		5B7B134B26455E5400EBF42A /* GADNativeAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADNativeAdWrapperTest.swift; sourceTree = "<group>"; };
 		5B7B1497264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidMoPubNativeCustomEvent.swift; sourceTree = "<group>"; };
 		5B7B149C264BC27000EBF42A /* MoPubAdaptersError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoPubAdaptersError.swift; sourceTree = "<group>"; };
+		5B7B14A7264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidMoPubNativeAdRenderer.swift; sourceTree = "<group>"; };
 		5BF8E65A26396DB900341EE4 /* GADRewardedAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADRewardedAdWrapper.swift; sourceTree = "<group>"; };
 		5BF8E6B6263AC32800341EE4 /* GAMInterstitialEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMInterstitialEventHandler.swift; sourceTree = "<group>"; };
 		5BF8E6C1263AE1B400341EE4 /* GAMInterstitialAdWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAMInterstitialAdWrapper.swift; sourceTree = "<group>"; };
@@ -118,10 +118,8 @@
 		5BF8E790263C400F00341EE4 /* GADCustomNativeAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADCustomNativeAdWrapper.swift; sourceTree = "<group>"; };
 		914C447D75BBE960CE43225D /* Pods-PrebidMobileGAMEventHandlers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; path = "Target Support Files/Pods-PrebidMobileGAMEventHandlers/Pods-PrebidMobileGAMEventHandlers.debug.xcconfig"; sourceTree = "<group>"; };
 		9258904A9C1DF637C07F290B /* Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig"; path = "Target Support Files/Pods-PrebidMobileGAMEventHandlersTests/Pods-PrebidMobileGAMEventHandlersTests.release.xcconfig"; sourceTree = "<group>"; };
-		AC4733AC25D55BD50041EEBA /* PrebidMoPubNativeAdRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubNativeAdRenderer.h; sourceTree = "<group>"; };
 		AC4733AD25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubNativeAdAdapter.h; sourceTree = "<group>"; };
 		AC4733AE25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrebidMoPubNativeAdAdapter.m; sourceTree = "<group>"; };
-		AC4733AF25D55BD70041EEBA /* PrebidMoPubNativeAdRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrebidMoPubNativeAdRenderer.m; sourceTree = "<group>"; };
 		ACF3824025EFBD89000A071B /* PrebidMoPubConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubConstants.h; sourceTree = "<group>"; };
 		ACF3824125EFBD89000A071B /* PrebidMoPubConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrebidMoPubConstants.m; sourceTree = "<group>"; };
 		ACF3824A25EFC147000A071B /* PrebidMoPubNativeAdUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMoPubNativeAdUtils.h; sourceTree = "<group>"; };
@@ -300,9 +298,8 @@
 				34B64D9B24F7EF2E00FDD9F4 /* PrebidMoPubVideoInterstitialAdapter.m */,
 				AC4733AD25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.h */,
 				AC4733AE25D55BD60041EEBA /* PrebidMoPubNativeAdAdapter.m */,
-				AC4733AC25D55BD50041EEBA /* PrebidMoPubNativeAdRenderer.h */,
-				AC4733AF25D55BD70041EEBA /* PrebidMoPubNativeAdRenderer.m */,
 				5B7B1497264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift */,
+				5B7B14A7264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 				34B64DA024F7EF2E00FDD9F4 /* PrebidMoPubBannerAdapter.h in Headers */,
 				34B64DA724F7EF2E00FDD9F4 /* PrebidMoPubRewardedVideoAdapter.h in Headers */,
 				346A9C9824F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.h in Headers */,
-				AC4733CB25D56A400041EEBA /* PrebidMoPubNativeAdRenderer.h in Headers */,
 				ACF3824C25EFC147000A071B /* PrebidMoPubNativeAdUtils.h in Headers */,
 				34B64DA524F7EF2E00FDD9F4 /* PrebidMoPubInterstitialAdapter.h in Headers */,
 				ACF3826925EFCAD9000A071B /* PrebidMoPubNativeAdUtils+Internal.h in Headers */,
@@ -667,12 +663,12 @@
 				34B64DA324F7EF2E00FDD9F4 /* PrebidMoPubVideoInterstitialAdapter.m in Sources */,
 				34B64DA124F7EF2E00FDD9F4 /* PrebidMoPubInterstitialAdapter.m in Sources */,
 				ACF3831D25F0F91D000A071B /* PrebidMoPubError.m in Sources */,
+				5B7B14A8264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift in Sources */,
 				34B64DA624F7EF2E00FDD9F4 /* PrebidMoPubRewardedVideoAdapter.m in Sources */,
 				5B7B149D264BC27000EBF42A /* MoPubAdaptersError.swift in Sources */,
 				AC4733B125D55BD70041EEBA /* PrebidMoPubNativeAdAdapter.m in Sources */,
 				346A9C9924F8F4CF002892BC /* PrebidMoPubAdapterConfiguration.m in Sources */,
 				34B64DA424F7EF2E00FDD9F4 /* PrebidMoPubBannerAdapter.m in Sources */,
-				AC4733B025D55BD70041EEBA /* PrebidMoPubNativeAdRenderer.m in Sources */,
 				5B7B1498264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift in Sources */,
 				ACF3824325EFBD8A000A071B /* PrebidMoPubConstants.m in Sources */,
 			);

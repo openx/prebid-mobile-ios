@@ -44,7 +44,7 @@ class PBMNativeAdTest: XCTestCase {
                                                    writeKeyPath: \.version,
                                                    readKeyPath: \.version,
                                                    defaultValue: ""),
-                Decoding.ArrayPropertyCheck(value: try! titles.map(PBMNativeAdTitle.init),
+                Decoding.ArrayPropertyCheck(value: try! titles.map(NativeAdTitle.init),
                                             writer: appendAssets,
                                             reader: { $0.titles }),
                 Decoding.ArrayPropertyCheck(value: try! descs.map(PBMNativeAdData.init),
@@ -84,7 +84,7 @@ class PBMNativeAdTest: XCTestCase {
                                                    readKeyPath: \.version,
                                                    defaultValue: ""),
                 
-                Decoding.ArrayPropertyCheck(value: try! titles.map(PBMNativeAdTitle.init),
+                Decoding.ArrayPropertyCheck(value: try! titles.map(NativeAdTitle.init),
                                             writer: appendAssets,
                                             reader: { $0.titles }),
                 Decoding.ArrayPropertyCheck(value: try! (descs + ctas).map(PBMNativeAdData.init),

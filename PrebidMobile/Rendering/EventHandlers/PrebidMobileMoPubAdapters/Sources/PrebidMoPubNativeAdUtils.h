@@ -9,7 +9,7 @@
 
 #import <MoPubSDK/MoPub.h>
 
-#import <PrebidMobileRendering/PBMNativeAdDetectionListener.h>
+@import PrebidMobileRendering;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)prepareAdObject:(id)adObject;
 
-- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener;
+- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(NativeAdDetectionListener *)nativeAdDetectionListener;
 
 @end
 

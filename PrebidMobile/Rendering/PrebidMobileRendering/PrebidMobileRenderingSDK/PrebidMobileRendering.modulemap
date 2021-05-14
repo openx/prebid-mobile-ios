@@ -90,7 +90,6 @@ framework module PrebidMobileRendering {
 
     // PBM Native Ads (for Primary SDK Utils)
     header "PBMLocalResponseInfoCache.h"
-    header "PBMNativeAdDetectionListener.h"
     
     // PBM Integration MoPub
     header "PBMMoPubBannerAdUnit.h"

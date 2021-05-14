@@ -5,14 +5,15 @@
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 #import <MoPub.h>
-#import <PrebidMobileRendering/PBMMoPubUtils.h>
 
-//#import "NSTimer+PBMScheduledTimerFactory.h"
+#import <PrebidMobileRendering/PBMMoPubUtils.h>
 
 #import "PrebidMoPubConstants.h"
 #import "PrebidMoPubError.h"
 #import "PrebidMoPubNativeAdUtils.h"
 #import "PrebidMoPubNativeAdUtils+Internal.h"
+
+typedef void (^PBMInvalidNativeAdHandler)(NSError *error);
 
 static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
 
@@ -64,7 +65,7 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
     mopubAdObject.keywords = keywords;
 }
 
-- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(PBMNativeAdDetectionListener *)nativeAdDetectionListener {
+- (void)findNativeAdIn:(MPNativeAd *)nativeAd nativeAdDetectionListener:(NativeAdDetectionListener *)nativeAdDetectionListener {
     
     if (![self isPrebidAd:nativeAd]) {
         if (nativeAdDetectionListener.onPrimaryAdWin != nil) {

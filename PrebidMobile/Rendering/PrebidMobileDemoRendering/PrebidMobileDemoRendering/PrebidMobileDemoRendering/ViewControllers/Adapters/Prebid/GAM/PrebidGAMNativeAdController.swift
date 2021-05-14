@@ -181,7 +181,7 @@ extension PrebidGAMNativeAdController: GADCustomNativeAdLoaderDelegate {
         customAdRequestSuccessful.isEnabled = true
         customTemplateAd = nil
         
-        let nativeAdDetectionListener = PBMNativeAdDetectionListener { [weak self] nativeAd in
+        let nativeAdDetectionListener = NativeAdDetectionListener { [weak self] nativeAd in
             guard let self = self else {
                 return
             }
@@ -229,7 +229,7 @@ extension PrebidGAMNativeAdController: GADNativeAdLoaderDelegate {
         unifiedAdRequestSuccessful.isEnabled = true
         customTemplateAd = nil
         
-        let nativeAdDetectionListener = PBMNativeAdDetectionListener { [weak self] prebidNativeAd in
+        let nativeAdDetectionListener = NativeAdDetectionListener { [weak self] prebidNativeAd in
             guard let self = self else {
                 return
             }

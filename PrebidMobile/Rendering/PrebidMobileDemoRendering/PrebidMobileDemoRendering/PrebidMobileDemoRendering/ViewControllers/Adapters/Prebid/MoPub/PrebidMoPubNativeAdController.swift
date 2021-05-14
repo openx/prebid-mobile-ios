@@ -156,7 +156,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
                 
                 self.getNativeAdSuccessButton.isEnabled = true
                 
-                let nativeAdDetectionListener = PBMNativeAdDetectionListener { [weak self] nativeAd in
+                let nativeAdDetectionListener = NativeAdDetectionListener { [weak self] nativeAd in
                     guard let self = self else {
                         return
                     }

@@ -10,7 +10,6 @@
 #import "PBMDataAssetType.h"
 #import "PBMJsonCodable.h"
 
-#import "PBMNativeAdAsset.h"
 #import "PBMNativeEventType.h"
 #import "PBMNativeEventTrackingMethod.h"
 

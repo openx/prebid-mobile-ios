@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAdVideo: PBMNativeAdAsset {
+public class NativeAdVideo: NativeAdAsset {
     
     /// Media data describing this asset
     @objc private(set) public var mediaData: MediaData!
@@ -22,7 +22,7 @@ public class NativeAdVideo: PBMNativeAdAsset {
         try super.init(nativeAdMarkupAsset: nativeAdMarkupAsset)
     }
     
-    private override init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
+    internal required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         try super.init(nativeAdMarkupAsset: nativeAdMarkupAsset)
     }
 }

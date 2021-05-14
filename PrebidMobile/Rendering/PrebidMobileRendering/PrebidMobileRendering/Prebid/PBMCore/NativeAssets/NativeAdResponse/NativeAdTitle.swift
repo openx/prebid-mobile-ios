@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAdTitle: PBMNativeAdAsset {
+public class NativeAdTitle: NativeAdAsset {
 
     /// The text associated with the text element.
     @objc public var text: String { nativeAdMarkupAsset.title?.text ?? "" }
@@ -21,7 +21,7 @@ public class NativeAdTitle: PBMNativeAdAsset {
     /// flexibility beyond the standard defined in this specification
     @objc public var titleExt: [String : Any]? { nativeAdMarkupAsset.title?.ext }
 
-    @objc public override init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
+    @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard let _ = nativeAdMarkupAsset.title else {
             throw PBMNativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset
         }

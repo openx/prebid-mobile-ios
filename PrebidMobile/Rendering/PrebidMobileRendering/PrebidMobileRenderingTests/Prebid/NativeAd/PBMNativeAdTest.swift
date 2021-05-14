@@ -31,7 +31,7 @@ class PBMNativeAdTest: XCTestCase {
         
         let videos = twoStrings.map{"\($0) VAST xml"}.map(PBMNativeAdMarkupVideo.init).map(PBMNativeAdMarkupAsset.init)
         
-        func appendAssets<T: PBMNativeAdAsset>(adMarkup: PBMNativeAdMarkup, assets: [T]) {
+        func appendAssets<T: NativeAdAsset>(adMarkup: PBMNativeAdMarkup, assets: [T]) {
             adMarkup.assets = (adMarkup.assets ?? []) + assets.map { x in x.nativeAdMarkupAsset }
         }
         func appendMarkupAssets<T: PBMNativeAdMarkupAsset>(_ adMarkup: PBMNativeAdMarkup, _ assets: [T]) {

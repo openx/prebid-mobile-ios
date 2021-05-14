@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAdImage: PBMNativeAdAsset {
+public class NativeAdImage: NativeAdAsset {
 
     /// [Integer]
     /// The type of image element being submitted from the Image Asset Types table.
@@ -33,7 +33,7 @@ public class NativeAdImage: PBMNativeAdAsset {
     /// flexibility beyond the standard defined in this specification
     @objc public var imageExt: [String : Any]? { nativeAdMarkupAsset.img?.ext }
 
-    @objc public override init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
+    @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard let _ = nativeAdMarkupAsset.img else {
             throw PBMNativeAdAssetBoxingError.noImageInsideNativeAdMarkupAsset
         }

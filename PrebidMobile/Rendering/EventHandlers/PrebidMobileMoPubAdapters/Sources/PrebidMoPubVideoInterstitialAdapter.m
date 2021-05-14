@@ -107,7 +107,7 @@
     //in this method to ensure correct metrics
 }
 
-- (nonnull UIViewController *)viewControllerForModalPresentationFrom:(nonnull PBMInterstitialController *)interstitialController {
+- (UIViewController *)viewControllerForModalPresentationFrom:(nonnull PBMInterstitialController *)interstitialController {
     return self.rootViewController;
 }
 

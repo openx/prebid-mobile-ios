@@ -12,6 +12,7 @@ enum MoPubAdaptersError : Error {
     case emptyLocalExtras
     case noBidInLocalExtras
     case noConfigIDInLocalExtras
+    case noAd
     case unknown
     
     case gamClassesNotFound
@@ -36,6 +37,7 @@ fileprivate let MoPubAdaptersErrorDomain = "org.prebid.mobile.rendering.ErrorDom
 fileprivate let errDescrEmptyLocalExtras = "The local extras is empty"
 fileprivate let errDescrNoBidInLocalExtras = "The Bid object is absent in the extras"
 fileprivate let errDescrNoConfigIDInLocalExtras = "The Config ID absent in the extras"
+fileprivate let errDescrNoAd                = "The ad hasn’t been loaded"
 fileprivate let errDescrUnknown          = "Unknown error has been received."
 
 fileprivate let errDescrClassNotFound   = "GoogleMobileAds SDK does not provide the required classes."
@@ -50,6 +52,7 @@ extension MoPubAdaptersError : LocalizedError {
             case .emptyLocalExtras          : return errDescrEmptyLocalExtras
             case .noBidInLocalExtras        : return errDescrNoBidInLocalExtras
             case .noConfigIDInLocalExtras   : return errDescrNoConfigIDInLocalExtras
+            case .noAd                      : return errDescrNoAd
             case .unknown                   : return errDescrUnknown
                 
             case .gamClassesNotFound        : return errDescrClassNotFound
@@ -70,6 +73,7 @@ extension MoPubAdaptersError :  CustomNSError {
             case .emptyLocalExtras          : return MoPubAdaptersErrorCodes.general.rawValue
             case .noBidInLocalExtras        : return MoPubAdaptersErrorCodes.general.rawValue
             case .noConfigIDInLocalExtras   : return MoPubAdaptersErrorCodes.general.rawValue
+            case .noAd                      : return MoPubAdaptersErrorCodes.general.rawValue
             case .unknown                   : return MoPubAdaptersErrorCodes.undefined.rawValue
 
             case .gamClassesNotFound        : return MoPubAdaptersErrorCodes.undefined.rawValue

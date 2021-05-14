@@ -211,8 +211,6 @@
 // NativeAds (Response facade)
 #import "PBMNativeAd+FromMarkup.h"
 #import "PBMNativeAd+Testing.h"
-#import "PBMNativeAdAsset+FromMarkup.h"
-#import "PBMNativeAdAsset+Protected.h"
 #import "PBMNativeAdAssetBoxingError.h"
 // NativeAds (Event Tracking)
 #import "PBMNativeAdImpressionReporting.h"

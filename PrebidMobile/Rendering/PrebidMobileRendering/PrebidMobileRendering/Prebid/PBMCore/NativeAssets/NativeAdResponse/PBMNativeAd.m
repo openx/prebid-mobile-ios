@@ -8,7 +8,6 @@
 #import "PBMNativeAd.h"
 #import "PBMNativeAd+Testing.h"
 #import "PBMNativeAd+FromMarkup.h"
-#import "PBMNativeAdAsset+FromMarkup.h"
 
 // impression tracking {
 #import "NSTimer+PBMScheduledTimerFactory.h"
@@ -396,19 +395,19 @@ static NSTimeInterval const VIEWABILITY_POLLING_INTERVAL = 0.2;
 }
 
 - (void)registerClickView:(UIView *)adView nativeAdElementType:(PBMNativeAdElementType)nativeAdElementType {
-    PBMNativeAdAsset * const relevantAsset = [self findAssetForElementType:nativeAdElementType];
+    NativeAdAsset * const relevantAsset = [self findAssetForElementType:nativeAdElementType];
     [self registerClickView:adView nativeAdAsset:relevantAsset];
 }
 
-- (void)registerClickView:(UIView *)adView nativeAdAsset:(PBMNativeAdAsset *)nativeAdAsset {
+- (void)registerClickView:(UIView *)adView nativeAdAsset:(NativeAdAsset *)nativeAdAsset {
     PBMNativeAdMarkupLink * const relevantLink = nativeAdAsset.link ?: self.nativeAdMarkup.link;
     [self.clickableViewRegistry registerLink:relevantLink forView:adView];
 }
 
 // MARK: - Private Helpers
 
-- (nullable PBMNativeAdAsset *)findAssetForElementType:(PBMNativeAdElementType)nativeAdElementType {
-    NSArray<PBMNativeAdAsset *> *assets = nil;
+- (nullable NativeAdAsset *)findAssetForElementType:(PBMNativeAdElementType)nativeAdElementType {
+    NSArray<NativeAdAsset *> *assets = nil;
     switch (nativeAdElementType) {
         case PBMNativeAdElementType_Title:
             assets = self.titles;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NativeAdData: PBMNativeAdAsset {
+public class NativeAdData: NativeAdAsset {
 
     /// The type of data element being submitted from the Data Asset Types table.
     /// Required for assetsurl/dcourl responses, not required for embedded asset responses.
@@ -27,7 +27,7 @@ public class NativeAdData: PBMNativeAdAsset {
     /// flexibility beyond the standard defined in this specification
     @objc public var dataExt: [String : Any]? { nativeAdMarkupAsset.data?.ext }
 
-    @objc public override init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
+    @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard  let _ = nativeAdMarkupAsset.data else {
             throw PBMNativeAdAssetBoxingError.noDataInsideNativeAdMarkupAsset
         }

@@ -147,8 +147,6 @@
 		34D0AA5F258BBD2C001D5447 /* Equality_Tester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA5E258BBD2C001D5447 /* Equality_Tester.swift */; };
 		34D0AA67258CAC1F001D5447 /* PBMNativeAdMarkupEventTrackerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA66258CAC1F001D5447 /* PBMNativeAdMarkupEventTrackerTest.swift */; };
 		34D0AA6C258CAFC6001D5447 /* PBMNativeAdMarkupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA6B258CAFC6001D5447 /* PBMNativeAdMarkupTest.swift */; };
-		34D0AA75258CB885001D5447 /* PBMNativeAdAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D0AA73258CB885001D5447 /* PBMNativeAdAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34D0AA76258CB885001D5447 /* PBMNativeAdAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AA74258CB885001D5447 /* PBMNativeAdAsset.m */; };
 		34D0AAAB258CBEE0001D5447 /* PBMNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D0AAA9258CBEE0001D5447 /* PBMNativeAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D0AAAC258CBEE0001D5447 /* PBMNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D0AAAA258CBEE0001D5447 /* PBMNativeAd.m */; };
 		34D0AAB9258CCA32001D5447 /* PBMNativeAdAssetBoxingError.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D0AAB7258CCA32001D5447 /* PBMNativeAdAssetBoxingError.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -588,7 +586,7 @@
 		34E545932546C7CF00E1681E /* PBMDataAssetType.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E5457D2546C2DC00E1681E /* PBMDataAssetType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34E5459E2546C97B00E1681E /* NativeAssetDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5459D2546C97B00E1681E /* NativeAssetDataTest.swift */; };
 		34E5465B25470A4400E1681E /* NativeAssetVideoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5465A25470A4400E1681E /* NativeAssetVideoTest.swift */; };
-		34EB5690259081730042CB12 /* PBMNativeAdAssetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB568F259081730042CB12 /* PBMNativeAdAssetTest.swift */; };
+		34EB5690259081730042CB12 /* NativeAdAssetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB568F259081730042CB12 /* NativeAdAssetTest.swift */; };
 		34EF29DF258B4150000E8404 /* JSONDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF29DE258B4150000E8404 /* JSONDecoding.swift */; };
 		34EF29E7258B4178000E8404 /* JSONDecoding_PropertyCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF29E6258B4178000E8404 /* JSONDecoding_PropertyCheck.swift */; };
 		34EF29EC258B419B000E8404 /* JSONDecoding_BaseOptionalCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF29EB258B419B000E8404 /* JSONDecoding_BaseOptionalCheck.swift */; };
@@ -810,13 +808,12 @@
 		ACE5AFE0256BDCFE004121BA /* PBMNativeMarkupRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = ACE5AFDE256BDCFE004121BA /* PBMNativeMarkupRequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACE5AFE1256BDCFE004121BA /* PBMNativeMarkupRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5AFDF256BDCFE004121BA /* PBMNativeMarkupRequestObject.m */; };
 		ACE6E81E264D26DE009324AC /* NativeAdTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E81D264D26DE009324AC /* NativeAdTitle.swift */; };
-		ACE6E822264D2A08009324AC /* PBMNativeAdAsset+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D0AA7B258CB989001D5447 /* PBMNativeAdAsset+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ACE6E829264D2A1A009324AC /* PBMNativeAdAsset+FromMarkup.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D0AA7A258CB914001D5447 /* PBMNativeAdAsset+FromMarkup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACE6E859264D3DF5009324AC /* NativeAdImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E858264D3DF5009324AC /* NativeAdImage.swift */; };
 		ACE6E867264D42B9009324AC /* NativeAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E866264D42B9009324AC /* NativeAdData.swift */; };
 		ACE6E890264D5A10009324AC /* NativeAdVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E88F264D5A0F009324AC /* NativeAdVideo.swift */; };
 		ACE6E89B264D7317009324AC /* NativeAdEventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E89A264D7317009324AC /* NativeAdEventTracker.swift */; };
 		ACE6E8A9264E6B1A009324AC /* NativeAdDetectionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E8A8264E6B1A009324AC /* NativeAdDetectionListener.swift */; };
+		ACE6E974264E9D0E009324AC /* NativeAdAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6E973264E9D0D009324AC /* NativeAdAsset.swift */; };
 		ACF6F0992281B36D00FB22F4 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1C155A2260ACB80043C0D2 /* images.xcassets */; };
 		ACF93E03264434DA008E43D1 /* NativeAssetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF93E02264434DA008E43D1 /* NativeAssetTitle.swift */; };
 		ACF93F0326454A31008E43D1 /* NativeAssetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF93F0226454A31008E43D1 /* NativeAssetData.swift */; };
@@ -1205,10 +1202,6 @@
 		34D0AA5E258BBD2C001D5447 /* Equality_Tester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equality_Tester.swift; sourceTree = "<group>"; };
 		34D0AA66258CAC1F001D5447 /* PBMNativeAdMarkupEventTrackerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdMarkupEventTrackerTest.swift; sourceTree = "<group>"; };
 		34D0AA6B258CAFC6001D5447 /* PBMNativeAdMarkupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdMarkupTest.swift; sourceTree = "<group>"; };
-		34D0AA73258CB885001D5447 /* PBMNativeAdAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeAdAsset.h; sourceTree = "<group>"; };
-		34D0AA74258CB885001D5447 /* PBMNativeAdAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeAdAsset.m; sourceTree = "<group>"; };
-		34D0AA7A258CB914001D5447 /* PBMNativeAdAsset+FromMarkup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeAdAsset+FromMarkup.h"; sourceTree = "<group>"; };
-		34D0AA7B258CB989001D5447 /* PBMNativeAdAsset+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeAdAsset+Protected.h"; sourceTree = "<group>"; };
 		34D0AAA9258CBEE0001D5447 /* PBMNativeAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeAd.h; sourceTree = "<group>"; };
 		34D0AAAA258CBEE0001D5447 /* PBMNativeAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeAd.m; sourceTree = "<group>"; };
 		34D0AAB3258CBEF7001D5447 /* PBMNativeAd+FromMarkup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeAd+FromMarkup.h"; sourceTree = "<group>"; };
@@ -1295,7 +1288,7 @@
 		34E5457D2546C2DC00E1681E /* PBMDataAssetType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMDataAssetType.h; sourceTree = "<group>"; };
 		34E5459D2546C97B00E1681E /* NativeAssetDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetDataTest.swift; sourceTree = "<group>"; };
 		34E5465A25470A4400E1681E /* NativeAssetVideoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetVideoTest.swift; sourceTree = "<group>"; };
-		34EB568F259081730042CB12 /* PBMNativeAdAssetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdAssetTest.swift; sourceTree = "<group>"; };
+		34EB568F259081730042CB12 /* NativeAdAssetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdAssetTest.swift; sourceTree = "<group>"; };
 		34EF29DE258B4150000E8404 /* JSONDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoding.swift; sourceTree = "<group>"; };
 		34EF29E6258B4178000E8404 /* JSONDecoding_PropertyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoding_PropertyCheck.swift; sourceTree = "<group>"; };
 		34EF29EB258B419B000E8404 /* JSONDecoding_BaseOptionalCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoding_BaseOptionalCheck.swift; sourceTree = "<group>"; };
@@ -1694,6 +1687,7 @@
 		ACE6E88F264D5A0F009324AC /* NativeAdVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdVideo.swift; sourceTree = "<group>"; };
 		ACE6E89A264D7317009324AC /* NativeAdEventTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdEventTracker.swift; sourceTree = "<group>"; };
 		ACE6E8A8264E6B1A009324AC /* NativeAdDetectionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdDetectionListener.swift; sourceTree = "<group>"; };
+		ACE6E973264E9D0D009324AC /* NativeAdAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdAsset.swift; sourceTree = "<group>"; };
 		ACF6ECCA24E676B40094DE33 /* PBMMoPubBaseInterstitialAdUnit+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubBaseInterstitialAdUnit+Protected.h"; sourceTree = "<group>"; };
 		ACF93E02264434DA008E43D1 /* NativeAssetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetTitle.swift; sourceTree = "<group>"; };
 		ACF93F0226454A31008E43D1 /* NativeAssetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAssetData.swift; sourceTree = "<group>"; };
@@ -1901,10 +1895,7 @@
 				348E116825B1D0A2000085BF /* PBMNativeAdTrackingDelegate.h */,
 				34AB52A425BED63E00AFF95A /* PBMNativeAdUIDelegate.h */,
 				341C0CE425A32E77002A1527 /* PBMNativeAdHandler.h */,
-				34D0AA7A258CB914001D5447 /* PBMNativeAdAsset+FromMarkup.h */,
-				34D0AA7B258CB989001D5447 /* PBMNativeAdAsset+Protected.h */,
-				34D0AA73258CB885001D5447 /* PBMNativeAdAsset.h */,
-				34D0AA74258CB885001D5447 /* PBMNativeAdAsset.m */,
+				ACE6E973264E9D0D009324AC /* NativeAdAsset.swift */,
 				34D0AAB7258CCA32001D5447 /* PBMNativeAdAssetBoxingError.h */,
 				34D0AAB8258CCA32001D5447 /* PBMNativeAdAssetBoxingError.m */,
 				ACE6E866264D42B9009324AC /* NativeAdData.swift */,
@@ -1924,7 +1915,7 @@
 				34EF29DD258B4140000E8404 /* JSONDecoding */,
 				34865D0F258B920A004865BB /* NativeAdMarkup */,
 				34D0AAFB258CFA27001D5447 /* PBMNativeAdTest.swift */,
-				34EB568F259081730042CB12 /* PBMNativeAdAssetTest.swift */,
+				34EB568F259081730042CB12 /* NativeAdAssetTest.swift */,
 				34D0AAC4258CD72B001D5447 /* NativeAdDataTest.swift */,
 				34D0AACC258CF528001D5447 /* NativeAdImageTest.swift */,
 				34D0AAF0258CF74E001D5447 /* NativeAdEventTrackerTest.swift */,
@@ -3555,7 +3546,6 @@
 				34D7109724E580620048CC78 /* PBMOpenMeasurementFriendlyObstructionTypeBridge.h in Headers */,
 				34D7109824E580620048CC78 /* PBMModalViewControllerDelegate.h in Headers */,
 				34D7109924E580620048CC78 /* PBMErrorCode.h in Headers */,
-				34D0AA75258CB885001D5447 /* PBMNativeAdAsset.h in Headers */,
 				34D7109A24E580620048CC78 /* PBMVastTrackingEvents.h in Headers */,
 				34D7109B24E580620048CC78 /* PBMORTBDeviceExtPrebid.h in Headers */,
 				34D7109C24E580620048CC78 /* PBMRewardedAdUnit.h in Headers */,
@@ -3578,7 +3568,6 @@
 				34D710A624E580620048CC78 /* PBMORTB.h in Headers */,
 				34C7963825DD35440072A898 /* PBMCachedResponseInfo.h in Headers */,
 				34C65231257E535600E26ABA /* PBMInterstitialEventLoadingDelegate.h in Headers */,
-				ACE6E822264D2A08009324AC /* PBMNativeAdAsset+Protected.h in Headers */,
 				34D710A724E580620048CC78 /* PBMVastCreativeNonLinearAdsNonLinear.h in Headers */,
 				34D710A824E580620048CC78 /* PBMCreativeFactoryJob.h in Headers */,
 				34C6527C257E62ED00E26ABA /* PBMPrimaryAdRequesterProtocol.h in Headers */,
@@ -3699,7 +3688,6 @@
 				34D7110224E580620048CC78 /* PBMExposureChangeDelegate.h in Headers */,
 				34D7110324E580620048CC78 /* PBMDeviceAccessManager.h in Headers */,
 				34D7110424E580620048CC78 /* PBMLegalButtonDecorator.h in Headers */,
-				ACE6E829264D2A1A009324AC /* PBMNativeAdAsset+FromMarkup.h in Headers */,
 				34D7110524E580620048CC78 /* PBMORTBBanner.h in Headers */,
 				34D7110624E580620048CC78 /* PBMBid+Internal.h in Headers */,
 				34D7110724E580620048CC78 /* PBMVastParser.h in Headers */,
@@ -4088,7 +4076,6 @@
 				34D70FDF24E580620048CC78 /* PBMAdViewManager.m in Sources */,
 				34D70FE024E580620048CC78 /* PBMPathBuilder.m in Sources */,
 				34D9E88A256BE3B200D40497 /* PBMAgeUtils.m in Sources */,
-				34D0AA76258CB885001D5447 /* PBMNativeAdAsset.m in Sources */,
 				340B98F4258A08320051F45D /* PBMNativeAdMarkupEventTracker.m in Sources */,
 				5B2FB0EB2644291800912342 /* MediaViewDelegate.swift in Sources */,
 				340B98BF258A01EC0051F45D /* PBMNativeAdMarkupTitle.m in Sources */,
@@ -4130,6 +4117,7 @@
 				34D70FF724E580620048CC78 /* PBMORTBApp.m in Sources */,
 				34C65162257E0A3600E26ABA /* PBMAdLoadFlowController.m in Sources */,
 				34D9E892256BE5D000D40497 /* PBMGender.m in Sources */,
+				ACE6E974264E9D0E009324AC /* NativeAdAsset.swift in Sources */,
 				34F135C225CAAE49004414D6 /* PBMVastTransactionFactory.m in Sources */,
 				34C652C1257E7AE300E26ABA /* PBMInterstitialAdLoader.m in Sources */,
 				34D70FF824E580620048CC78 /* PBMTouchForwardingView.m in Sources */,
@@ -4356,7 +4344,7 @@
 				34172709247FE41000253F6F /* PBMBidResponseTransformer+TestExtension.swift in Sources */,
 				5CB1E2D42050CB140087E08B /* MRAIDJavascriptCommandsTests.swift in Sources */,
 				5B45D4BE20580AD200CE12F0 /* PBMConstantsTests.swift in Sources */,
-				34EB5690259081730042CB12 /* PBMNativeAdAssetTest.swift in Sources */,
+				34EB5690259081730042CB12 /* NativeAdAssetTest.swift in Sources */,
 				5C45BFBB2086928800DE8112 /* MockServerRuleSlow.m in Sources */,
 				ACE31EC024E2B3F5003E5508 /* PBMMoPubInterstitialAdUnitTest.swift in Sources */,
 				3488056F23D887780069847D /* OXMOpenMeasurementFriendlyObstructionTypeBridgeTest.swift in Sources */,

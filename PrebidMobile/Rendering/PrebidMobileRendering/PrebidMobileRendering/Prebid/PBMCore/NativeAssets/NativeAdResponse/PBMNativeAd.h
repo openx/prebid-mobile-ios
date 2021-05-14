@@ -7,8 +7,6 @@
 
 @import UIKit;
 
-#import "PBMNativeAdAsset.h"
-
 #import "PBMNativeAdTrackingDelegate.h"
 #import "PBMNativeAdUIDelegate.h"
 
@@ -17,6 +15,7 @@
 
 #import "PBMNativeAdElementType.h"
 
+@class NativeAdAsset;
 @class NativeAdData;
 @class NativeAdImage;
 @class NativeAdEventTracker;
@@ -59,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - View handling
 - (void)registerView:(UIView *)adView clickableViews:(nullable NSArray<UIView *> *)clickableViews;
 - (void)registerClickView:(UIView *)adView nativeAdElementType:(PBMNativeAdElementType)nativeAdElementType;
-- (void)registerClickView:(UIView *)adView nativeAdAsset:(PBMNativeAdAsset *)nativeAdAsset;
+- (void)registerClickView:(UIView *)adView nativeAdAsset:(NativeAdAsset *)nativeAdAsset;
 
 @end
 

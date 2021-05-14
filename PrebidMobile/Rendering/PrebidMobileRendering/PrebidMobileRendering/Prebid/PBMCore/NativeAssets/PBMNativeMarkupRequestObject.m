@@ -11,6 +11,8 @@
 #import "PBMJsonCodable.h"
 
 #import "PBMNativeAdAsset.h"
+#import "PBMNativeEventType.h"
+#import "PBMNativeEventTrackingMethod.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

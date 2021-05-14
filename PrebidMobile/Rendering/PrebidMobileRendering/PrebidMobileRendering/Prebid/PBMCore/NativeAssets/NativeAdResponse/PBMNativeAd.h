@@ -12,8 +12,6 @@
 #import "PBMNativeAdTrackingDelegate.h"
 #import "PBMNativeAdUIDelegate.h"
 
-#import "PBMNativeAdEventTracker.h"
-
 #import "PBMDataAssetType.h"
 #import "PBMImageAssetType.h"
 
@@ -21,6 +19,7 @@
 
 @class NativeAdData;
 @class NativeAdImage;
+@class NativeAdEventTracker;
 @class NativeAdTitle;
 @class NativeAdVideo;
 

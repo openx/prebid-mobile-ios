@@ -21,7 +21,7 @@ class NativeAdTitleTest: XCTestCase {
         let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkupAsset, NativeAdTitle>, Error)] = [
             (.init(saver: { $0.title = .init(text: titleText)},
                    checker: { XCTAssertEqual($0.text, titleText ?? "") }),
-             PBMNativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset),
+             NativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset),
         ]
 
         let optionalTitleProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkupAsset, NativeAdTitle>] = [

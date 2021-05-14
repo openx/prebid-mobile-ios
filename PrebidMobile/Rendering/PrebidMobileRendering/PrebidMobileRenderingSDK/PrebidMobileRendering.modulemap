@@ -103,6 +103,7 @@ framework module PrebidMobileRendering {
     header "PBMViewControllerProvider.h"
     header "PBMCreativeClickHandlerBlock.h"
     header "PBMVoidBlock.h"
+    header "PBMErrorFamily.h"
     
     // PBM Native Ads (markup)
     header "PBMNativeAdMarkupAsset.h"
@@ -160,7 +161,4 @@ framework module PrebidMobileRendering {
     header "PBMFunctions+Private.h"
     header "PBMUIApplicationProtocol.h"
     header "NSDictionary+PBMORTBNativeExt.h"
-    
-    // PBM Native Ads (response)
-    header "PBMNativeAdAssetBoxingError.h"
 }

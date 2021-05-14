@@ -21,7 +21,7 @@ class NativeAdDataTest: XCTestCase {
         let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkupAsset, NativeAdData>, Error)] = [
             (.init(saver: { $0.data = .init(value: dataValue) },
                    checker: { XCTAssertEqual($0.value, dataValue ?? "") }),
-             PBMNativeAdAssetBoxingError.noDataInsideNativeAdMarkupAsset),
+             NativeAdAssetBoxingError.noDataInsideNativeAdMarkupAsset),
         ]
 
         let optionalDataProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkupAsset, NativeAdData>] = [

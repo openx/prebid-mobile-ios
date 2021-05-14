@@ -29,7 +29,7 @@ public class NativeAdData: NativeAdAsset {
 
     @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard  let _ = nativeAdMarkupAsset.data else {
-            throw PBMNativeAdAssetBoxingError.noDataInsideNativeAdMarkupAsset
+            throw NativeAdAssetBoxingError.noDataInsideNativeAdMarkupAsset
         }
 
         try super.init(nativeAdMarkupAsset: nativeAdMarkupAsset)

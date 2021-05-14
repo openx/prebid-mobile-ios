@@ -14,7 +14,7 @@ public class NativeAdVideo: NativeAdAsset {
 
     @objc public init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset, nativeAdHooks: PBMNativeAdMediaHooks) throws {
         guard let _ = nativeAdMarkupAsset.video else {
-            throw PBMNativeAdAssetBoxingError.noVideoInsideNativeAdMarkupAsset
+            throw NativeAdAssetBoxingError.noVideoInsideNativeAdMarkupAsset
         }
         
         mediaData = MediaData(mediaAsset: nativeAdMarkupAsset, nativeAdHooks: nativeAdHooks)

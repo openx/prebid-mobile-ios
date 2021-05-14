@@ -21,7 +21,7 @@ class NativeAdVideoTest: XCTestCase {
         let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkupAsset, NativeAdVideo>, Error)] = [
             (.init(saver: { $0.video = .init(vastTag: videoVast) },
                    checker: { XCTAssertEqual($0.mediaData.mediaAsset.video?.vasttag, videoVast) }),
-             PBMNativeAdAssetBoxingError.noVideoInsideNativeAdMarkupAsset),
+             NativeAdAssetBoxingError.noVideoInsideNativeAdMarkupAsset),
         ]
 
         let optionalVideoProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkupAsset, NativeAdVideo>] = [

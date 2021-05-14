@@ -35,7 +35,7 @@ public class NativeAdImage: NativeAdAsset {
 
     @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard let _ = nativeAdMarkupAsset.img else {
-            throw PBMNativeAdAssetBoxingError.noImageInsideNativeAdMarkupAsset
+            throw NativeAdAssetBoxingError.noImageInsideNativeAdMarkupAsset
         }
 
         try super.init(nativeAdMarkupAsset: nativeAdMarkupAsset)

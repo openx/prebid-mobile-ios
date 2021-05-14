@@ -23,7 +23,7 @@ public class NativeAdTitle: NativeAdAsset {
 
     @objc public required init(nativeAdMarkupAsset: PBMNativeAdMarkupAsset) throws {
         guard let _ = nativeAdMarkupAsset.title else {
-            throw PBMNativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset
+            throw NativeAdAssetBoxingError.noTitleInsideNativeAdMarkupAsset
         }
         try super.init(nativeAdMarkupAsset: nativeAdMarkupAsset)
     }

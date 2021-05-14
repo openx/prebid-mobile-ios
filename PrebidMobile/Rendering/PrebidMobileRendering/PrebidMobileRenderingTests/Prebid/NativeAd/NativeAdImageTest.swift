@@ -21,7 +21,7 @@ class NativeAdImageTest: XCTestCase {
         let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkupAsset, NativeAdImage>, Error)] = [
             (.init(saver: { $0.img = .init(url: imageUrl) },
                    checker: { XCTAssertEqual($0.url, imageUrl ?? "") }),
-             PBMNativeAdAssetBoxingError.noImageInsideNativeAdMarkupAsset),
+             NativeAdAssetBoxingError.noImageInsideNativeAdMarkupAsset),
         ]
         
         let optionalImageProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkupAsset, NativeAdImage>] = [

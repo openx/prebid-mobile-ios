@@ -1,5 +1,5 @@
 //
-//  PrebidMoPubInterstitialAdapter.swift
+//  PrebidMoPubRewardedVideoAdapter.swift
 //  PrebidMobileMoPubAdapters
 //
 //  Copyright © 2021 Prebid. All rights reserved.
@@ -11,8 +11,8 @@ import MoPubSDK
 
 import PrebidMobileRendering
 
-@objc(PrebidMoPubInterstitialAdapter)
-public class PrebidMoPubInterstitialAdapter :
+@objc(PrebidMoPubRewardedVideoAdapter)
+public class PrebidMoPubRewardedVideoAdapter :
     MPFullscreenAdAdapter,
     PBMInterstitialControllerLoadingDelegate,
     PBMInterstitialControllerInteractionDelegate {
@@ -56,6 +56,8 @@ public class PrebidMoPubInterstitialAdapter :
         interstitialController = PBMInterstitialController(bid: bid, configId: configID)
         interstitialController?.loadingDelegate = self
         interstitialController?.interactionDelegate = self
+        interstitialController?.adFormat = .video
+        interstitialController?.isOptIn = true
         
         interstitialController?.loadAd()
         
@@ -73,6 +75,10 @@ public class PrebidMoPubInterstitialAdapter :
             MPLogging.logEvent(MPLogEvent.adLoadFailed(forAdapter: Self.className(), error: error), source: adUnitId, from: nil)
             delegate?.fullscreenAdAdapter(self, didFailToLoadAdWithError: error)
         }
+    }
+    
+    public override var isRewardExpected: Bool {
+        true
     }
         
     // MARK: - PBMInterstitialControllerLoadingDelegate
@@ -98,7 +104,7 @@ public class PrebidMoPubInterstitialAdapter :
         //unless enableAutomaticImpressionAndClickTracking = NO
         //In this case you have to override the didDisplayAd method
         //and manually call inlineAdAdapterDidTrackImpression
-        //in this method to enspublic ure correct metrics
+        //in this method to ensure correct metrics
     }
     
     public func interstitialControllerDidClickAd(_ interstitialController: PBMInterstitialController) {
@@ -134,5 +140,13 @@ public class PrebidMoPubInterstitialAdapter :
 
         delegate?.fullscreenAdAdapterAdWillAppear(self)
         delegate?.fullscreenAdAdapterAdDidAppear(self)
+    }
+    
+    public func interstitialControllerDidComplete(_ interstitialController: PBMInterstitialController) {
+        adAvailable = false
+        self.interstitialController = nil
+        
+        let reward = MPReward()
+        delegate?.fullscreenAdAdapter(self, willRewardUser: reward)
     }
 }

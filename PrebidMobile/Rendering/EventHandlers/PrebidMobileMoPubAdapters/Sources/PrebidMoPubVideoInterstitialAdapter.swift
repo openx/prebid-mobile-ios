@@ -1,5 +1,5 @@
 //
-//  PrebidMoPubInterstitialAdapter.swift
+//  PrebidMoPubVideoInterstitialAdapter.swift
 //  PrebidMobileMoPubAdapters
 //
 //  Copyright © 2021 Prebid. All rights reserved.
@@ -11,8 +11,8 @@ import MoPubSDK
 
 import PrebidMobileRendering
 
-@objc(PrebidMoPubInterstitialAdapter)
-public class PrebidMoPubInterstitialAdapter :
+@objc(PrebidMoPubVideoInterstitialAdapter)
+public class PrebidMoPubVideoInterstitialAdapter :
     MPFullscreenAdAdapter,
     PBMInterstitialControllerLoadingDelegate,
     PBMInterstitialControllerInteractionDelegate {
@@ -56,6 +56,7 @@ public class PrebidMoPubInterstitialAdapter :
         interstitialController = PBMInterstitialController(bid: bid, configId: configID)
         interstitialController?.loadingDelegate = self
         interstitialController?.interactionDelegate = self
+        interstitialController?.adFormat = .video
         
         interstitialController?.loadAd()
         
@@ -98,7 +99,7 @@ public class PrebidMoPubInterstitialAdapter :
         //unless enableAutomaticImpressionAndClickTracking = NO
         //In this case you have to override the didDisplayAd method
         //and manually call inlineAdAdapterDidTrackImpression
-        //in this method to enspublic ure correct metrics
+        //in this method to ensure correct metrics
     }
     
     public func interstitialControllerDidClickAd(_ interstitialController: PBMInterstitialController) {

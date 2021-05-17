@@ -38,6 +38,4 @@ public class PrebidMoPubAdapterConfiguration : MPBaseAdapterConfiguration {
         
         complete?(nil)
     }
- 
-    
-}
+ }

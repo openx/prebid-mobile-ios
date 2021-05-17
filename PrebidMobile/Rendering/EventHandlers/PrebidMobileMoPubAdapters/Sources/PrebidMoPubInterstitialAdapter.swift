@@ -98,7 +98,7 @@ public class PrebidMoPubInterstitialAdapter :
         //unless enableAutomaticImpressionAndClickTracking = NO
         //In this case you have to override the didDisplayAd method
         //and manually call inlineAdAdapterDidTrackImpression
-        //in this method to enspublic ure correct metrics
+        //in this method to ensure correct metrics
     }
     
     public func interstitialControllerDidClickAd(_ interstitialController: PBMInterstitialController) {

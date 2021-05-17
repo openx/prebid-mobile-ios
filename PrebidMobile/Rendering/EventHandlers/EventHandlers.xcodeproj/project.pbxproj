@@ -252,17 +252,17 @@
 			isa = PBXGroup;
 			children = (
 				5B7B1519264D532D00EBF42A /* Constants.swift */,
-				5B7B149C264BC27000EBF42A /* MoPubAdaptersError.swift */,
 				ACF3825425EFC86D000A071B /* InternalAPIExtensions */,
-				5B7B1497264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift */,
-				5B7B14A7264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift */,
-				5B7B1506264D3D8100EBF42A /* PrebidMoPubNativeAdAdapter.swift */,
+				5B7B149C264BC27000EBF42A /* MoPubAdaptersError.swift */,
+				5B7B1553264EC61C00EBF42A /* PrebidMoPubAdapterConfiguration.swift */,
 				5B7B1511264D4EA500EBF42A /* PrebidMoPubAdaptersUtils.swift */,
 				5B7B1527264D62A100EBF42A /* PrebidMoPubBannerAdapter.swift */,
 				5B7B152F264E5C7200EBF42A /* PrebidMoPubInterstitialAdapter.swift */,
-				5B7B153D264E9FFA00EBF42A /* PrebidMoPubVideoInterstitialAdapter.swift */,
+				5B7B1506264D3D8100EBF42A /* PrebidMoPubNativeAdAdapter.swift */,
+				5B7B14A7264BFE8900EBF42A /* PrebidMoPubNativeAdRenderer.swift */,
+				5B7B1497264BBF5E00EBF42A /* PrebidMoPubNativeCustomEvent.swift */,
 				5B7B1548264EA79700EBF42A /* PrebidMoPubRewardedVideoAdapter.swift */,
-				5B7B1553264EC61C00EBF42A /* PrebidMoPubAdapterConfiguration.swift */,
+				5B7B153D264E9FFA00EBF42A /* PrebidMoPubVideoInterstitialAdapter.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

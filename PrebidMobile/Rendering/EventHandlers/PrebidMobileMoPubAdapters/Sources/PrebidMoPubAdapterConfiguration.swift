@@ -24,6 +24,11 @@ public class PrebidMoPubAdapterConfiguration : MPBaseAdapterConfiguration {
         PBMSDKConfiguration.sdkVersion
     }
     
+    // NOTE: absence of this property may lead to crash
+    public override var moPubNetworkName: String {
+        Constants.mopubNetworkName
+    }
+    
     public override func initializeNetwork(withConfiguration configuration: [String : Any]?, complete: ((Error?) -> Void)? = nil) {
         PBMSDKConfiguration.initializeSDK()
         

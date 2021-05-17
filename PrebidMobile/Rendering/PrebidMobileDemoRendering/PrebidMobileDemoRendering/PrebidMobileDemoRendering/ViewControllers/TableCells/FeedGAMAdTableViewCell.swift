@@ -27,7 +27,7 @@ class FeedGAMAdTableViewCell: UITableViewCell {
     private weak var rootController: UIViewController?
     
     func loadAd(configID: String,
-                nativeAdConfig: PBMNativeAdConfiguration,
+                nativeAdConfig: NativeAdConfiguration,
                 GAMAdUnitID: String,
                 rootViewController: UIViewController,
                 adTypes: [GADAdLoaderAdType]) {

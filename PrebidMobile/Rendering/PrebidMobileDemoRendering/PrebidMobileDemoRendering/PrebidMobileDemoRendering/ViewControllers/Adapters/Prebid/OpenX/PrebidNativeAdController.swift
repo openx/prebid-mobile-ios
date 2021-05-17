@@ -10,7 +10,7 @@ import UIKit
 class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableNativeAdRenderingController {
     
     var prebidConfigId = ""
-    var nativeAdConfig = PBMNativeAdConfiguration?.none
+    var nativeAdConfig = NativeAdConfiguration?.none
     
     var autoPlayOnVisible: Bool {
         get {

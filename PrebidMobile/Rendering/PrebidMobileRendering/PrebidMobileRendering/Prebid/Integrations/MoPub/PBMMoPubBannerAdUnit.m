@@ -108,11 +108,11 @@
     self.adUnitConfig.videoPlacementType = videoPlacementType;
 }
 
-- (PBMNativeAdConfiguration *)nativeAdConfig {
+- (NativeAdConfiguration *)nativeAdConfig {
     return self.adUnitConfig.nativeAdConfig;
 }
 
-- (void)setNativeAdConfig:(PBMNativeAdConfiguration *)nativeAdConfig {
+- (void)setNativeAdConfig:(NativeAdConfiguration *)nativeAdConfig {
     self.adUnitConfig.nativeAdConfig = nativeAdConfig;
 }
 

@@ -1,5 +1,5 @@
 //
-//  PBMNativeAdConfiguration+Testing.swift
+//  NativeAdConfiguration+Testing.swift
 //  OpenXInternalTestApp
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -49,7 +49,7 @@ extension Array where Self.Element == NativeAsset {
 }
 
 // TODO: additional parameters for trackers, context, etc. (?)
-extension PBMNativeAdConfiguration {
+extension NativeAdConfiguration {
     convenience init(testConfigWithAssets assets: [NativeAsset]) {
         self.init(assets: assets)
         

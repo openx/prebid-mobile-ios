@@ -14,7 +14,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
     var gamAdUnitId = ""
     var gamCustomTemplateIDs: [String] = []
     var adTypes: [GADAdLoaderAdType] = []
-    var nativeAdConfig = PBMNativeAdConfiguration?.none
+    var nativeAdConfig = NativeAdConfiguration?.none
     
     
     private weak var rootController: AdapterViewController?

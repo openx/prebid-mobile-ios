@@ -29,7 +29,7 @@
 // MARK: + (public convenience init)
 
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration {
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration {
     return self = [self initWithNativeAdUnit:[[PBMNativeAdUnit alloc] initWithConfigID:configID
                                                                  nativeAdConfiguration:nativeAdConfiguration]];
 }
@@ -53,7 +53,7 @@
     return self.nativeAdUnit.configId;
 }
 
-- (PBMNativeAdConfiguration *)nativeAdConfig {
+- (NativeAdConfiguration *)nativeAdConfig {
     return self.nativeAdUnit.nativeAdConfig;
 }
 

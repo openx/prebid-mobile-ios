@@ -9,7 +9,7 @@ import UIKit
 
 class PrebidNativeAdFeedController: NSObject, PrebidConfigurableNativeAdRenderingController {
     var prebidConfigId = ""
-    var nativeAdConfig = PBMNativeAdConfiguration?.none
+    var nativeAdConfig = NativeAdConfiguration?.none
 
     var autoPlayOnVisible = true
     var showOnlyMediaView = false

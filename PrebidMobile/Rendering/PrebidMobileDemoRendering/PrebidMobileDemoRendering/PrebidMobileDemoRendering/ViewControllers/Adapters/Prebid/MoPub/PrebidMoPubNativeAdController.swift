@@ -14,7 +14,7 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
     
     var prebidConfigId = ""
     var moPubAdUnitId = ""
-    var nativeAdConfig = PBMNativeAdConfiguration?.none
+    var nativeAdConfig = NativeAdConfiguration?.none
     var adRenderingViewClass: AnyClass?
     
     private weak var rootController: AdapterViewController?

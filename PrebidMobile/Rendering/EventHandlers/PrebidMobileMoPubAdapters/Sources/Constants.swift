@@ -18,7 +18,4 @@ enum Constants {
     static let adapterVersion               = "0"
     
     static let mopubNetworkName             = "Prebid"
-//
-//    static let appEventValue                = "PrebidAppEvent"
-//    static let appEventTimeout              = 0.6
 }

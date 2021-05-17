@@ -130,5 +130,4 @@ class PrebidMoPubNativeAdAdapter:
         
         delegate.nativeAdWillLogImpression?(self)
     }
-    
 }

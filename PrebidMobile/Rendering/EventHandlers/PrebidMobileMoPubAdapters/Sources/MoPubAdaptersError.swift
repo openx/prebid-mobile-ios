@@ -13,12 +13,12 @@ enum MoPubAdaptersError : Error {
     case noBidInLocalExtras
     case noConfigIDInLocalExtras
     case noAd
-    case unknown
     
-    case gamClassesNotFound
     case noLocalCacheID
     case invalidLocalCacheID
     case invalidNativeAd
+    
+    case unknown
 }
 
 enum MoPubAdaptersErrorCodes : Int {
@@ -34,16 +34,14 @@ enum MoPubAdaptersErrorCodes : Int {
 fileprivate let MoPubAdaptersErrorDomain = "org.prebid.mobile.rendering.ErrorDomain";
 
 
-fileprivate let errDescrEmptyLocalExtras = "The local extras is empty"
-fileprivate let errDescrNoBidInLocalExtras = "The Bid object is absent in the extras"
+fileprivate let errDescrEmptyLocalExtras        = "The local extras is empty"
+fileprivate let errDescrNoBidInLocalExtras      = "The Bid object is absent in the extras"
 fileprivate let errDescrNoConfigIDInLocalExtras = "The Config ID absent in the extras"
-fileprivate let errDescrNoAd                = "The ad hasn’t been loaded"
-fileprivate let errDescrUnknown          = "Unknown error has been received."
-
-fileprivate let errDescrClassNotFound   = "GoogleMobileAds SDK does not provide the required classes."
-fileprivate let errDescrNoCacheID       = "Failed to find local cache ID (expected in ????."
-fileprivate let errDescrInvalidCacheID  = "Invalid local cache ID or the Ad already expired."
-fileprivate let errDescrInvalidNativeAd = "Failed to load Native Ad from cached bid response."
+fileprivate let errDescrNoAd                    = "The ad hasn’t been loaded"
+fileprivate let errDescrUnknown                 = "Unknown error has been received."
+fileprivate let errDescrNoCacheID               = "Failed to find local cache ID (expected in ????."
+fileprivate let errDescrInvalidCacheID          = "Invalid local cache ID or the Ad already expired."
+fileprivate let errDescrInvalidNativeAd         = "Failed to load Native Ad from cached bid response."
 
 extension MoPubAdaptersError : LocalizedError {
     public var errorDescription: String? {
@@ -53,12 +51,12 @@ extension MoPubAdaptersError : LocalizedError {
             case .noBidInLocalExtras        : return errDescrNoBidInLocalExtras
             case .noConfigIDInLocalExtras   : return errDescrNoConfigIDInLocalExtras
             case .noAd                      : return errDescrNoAd
-            case .unknown                   : return errDescrUnknown
                 
-            case .gamClassesNotFound        : return errDescrClassNotFound
             case .noLocalCacheID            : return errDescrNoCacheID
             case .invalidLocalCacheID       : return errDescrInvalidCacheID
             case .invalidNativeAd           : return errDescrInvalidNativeAd
+                
+            case .unknown                   : return errDescrUnknown
         }
     }
 }
@@ -74,13 +72,12 @@ extension MoPubAdaptersError :  CustomNSError {
             case .noBidInLocalExtras        : return MoPubAdaptersErrorCodes.general.rawValue
             case .noConfigIDInLocalExtras   : return MoPubAdaptersErrorCodes.general.rawValue
             case .noAd                      : return MoPubAdaptersErrorCodes.general.rawValue
-            case .unknown                   : return MoPubAdaptersErrorCodes.undefined.rawValue
 
-            case .gamClassesNotFound        : return MoPubAdaptersErrorCodes.undefined.rawValue
             case .noLocalCacheID            : return MoPubAdaptersErrorCodes.undefined.rawValue
             case .invalidLocalCacheID       : return MoPubAdaptersErrorCodes.undefined.rawValue
             case .invalidNativeAd           : return MoPubAdaptersErrorCodes.undefined.rawValue
+                
+            case .unknown                   : return MoPubAdaptersErrorCodes.undefined.rawValue
         }
     }
-
 }

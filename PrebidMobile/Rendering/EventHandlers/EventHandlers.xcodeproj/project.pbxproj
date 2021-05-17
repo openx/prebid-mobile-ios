@@ -252,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				5B7B1519264D532D00EBF42A /* Constants.swift */,
-				ACF3825425EFC86D000A071B /* InternalAPIExtensions */,
 				5B7B149C264BC27000EBF42A /* MoPubAdaptersError.swift */,
 				5B7B1553264EC61C00EBF42A /* PrebidMoPubAdapterConfiguration.swift */,
 				5B7B1511264D4EA500EBF42A /* PrebidMoPubAdaptersUtils.swift */,
@@ -278,13 +277,6 @@
 				5BF8E790263C400F00341EE4 /* GADCustomNativeAdWrapper.swift */,
 			);
 			path = Boxes;
-			sourceTree = "<group>";
-		};
-		ACF3825425EFC86D000A071B /* InternalAPIExtensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InternalAPIExtensions;
 			sourceTree = "<group>";
 		};
 		C9E3CE99A87F745FB5BFAA17 /* Pods */ = {

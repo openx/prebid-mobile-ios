@@ -83,6 +83,7 @@ public class PrebidMoPubAdaptersUtils : NSObject {
         
         if let isPrebidCreativeFlag = nativeAd.properties?[Constants.creativeDataKeyIsPrebid] as? String,
            isPrebidCreativeFlag == Constants.creativeDataValueIsPrebid {
+            
             return true
         }
         

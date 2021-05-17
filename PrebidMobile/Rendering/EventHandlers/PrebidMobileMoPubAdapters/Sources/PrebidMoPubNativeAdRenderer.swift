@@ -14,7 +14,6 @@ import PrebidMobileRendering
 @objc(PrebidMoPubNativeAdRenderer)
 public class PrebidMoPubNativeAdRenderer : NSObject, MPNativeAdRenderer, MPNativeAdRendererImageHandlerDelegate {
  
-    
     // MARK: - Public Properties
     
     public let viewSizeHandler: MPNativeViewSizeHandler?
@@ -166,7 +165,6 @@ public class PrebidMoPubNativeAdRenderer : NSObject, MPNativeAdRenderer, MPNativ
                 rendererImageHandler?.loadImage(for: url, into: imageView)
             }
         }
-        
     }
     
     // MARK: - MPNativeAdRendererImageHandlerDelegate
@@ -188,5 +186,4 @@ public class PrebidMoPubNativeAdRenderer : NSObject, MPNativeAdRenderer, MPNativ
         
         return false
     }
-
 }

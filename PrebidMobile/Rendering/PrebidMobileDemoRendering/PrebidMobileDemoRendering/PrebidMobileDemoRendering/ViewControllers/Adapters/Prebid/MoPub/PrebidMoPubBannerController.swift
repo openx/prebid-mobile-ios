@@ -102,7 +102,7 @@ class PrebidMoPubBannerController: NSObject, AdaptedController, PrebidConfigurab
             container.addConstraints([widthConstraint, heightConstraint])
             container.layoutSubviews()
             
-            adBannerView.loadAd()
+            adBannerView.loadAd(withMaxAdSize: kMPPresetMaxAdSize280Height)
         }
         
         rootController?.bannerView.addSubview(self.adBannerView!)

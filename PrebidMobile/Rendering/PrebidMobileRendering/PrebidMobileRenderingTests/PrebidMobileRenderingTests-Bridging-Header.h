@@ -193,7 +193,6 @@
 #import "PBMViewabilityEventDetector.h"
 #import "PBMWinNotifier+Private.h"
 // NativeAds (Request)
-#import "PBMNativeAdConfiguration+Internal.h"
 #import "PBMNativeAdUnit+Testing.h"
 #import "PBMNativeEventTracker+Internal.h"
 #import "PBMNativeMarkupRequestObject+Internal.h"

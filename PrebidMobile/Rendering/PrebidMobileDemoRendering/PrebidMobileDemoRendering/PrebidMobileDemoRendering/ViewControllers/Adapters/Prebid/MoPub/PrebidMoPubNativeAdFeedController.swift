@@ -13,7 +13,7 @@ import PrebidMobileMoPubAdapters
 class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCompatibleController {
     var prebidConfigId = ""
     var moPubAdUnitId = ""
-    var nativeAdConfig = PBMNativeAdConfiguration?.none
+    var nativeAdConfig = NativeAdConfiguration?.none
     var adRenderingViewClass: AnyClass?
     
     private var adUnit: MoPubNativeAdUnit?

@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PBMNativeAdUnit ()
 
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration
                 serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
                 sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
                        targeting:(PBMTargeting *)targeting; // convenience(*)
 
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration
              bidRequesterFactory:(PBMBidRequesterFactoryBlock)bidRequesterFactory
                 winNotifierBlock:(PBMWinNotifierBlock)winNotifierBlock; // designated
 

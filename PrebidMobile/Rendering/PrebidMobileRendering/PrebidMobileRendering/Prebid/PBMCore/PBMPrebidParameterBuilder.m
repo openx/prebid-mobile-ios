@@ -9,13 +9,22 @@
 
 #import "PBMAdUnitConfig.h"
 #import "PBMAdUnitConfig+Internal.h"
-#import "PBMNativeAdConfiguration.h"
-#import "PBMNativeAdConfiguration+Internal.h"
 #import "PBMNativeMarkupRequestObject+Internal.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMTargeting+Private.h"
 #import "PBMORTB.h"
 #import "PBMUserAgentService.h"
+
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMPlayable.h"
+#import "PBMJsonCodable.h"
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativePlacementType.h"
+
+#import "PBMDataAssetType.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @interface PBMPrebidParameterBuilder ()
 

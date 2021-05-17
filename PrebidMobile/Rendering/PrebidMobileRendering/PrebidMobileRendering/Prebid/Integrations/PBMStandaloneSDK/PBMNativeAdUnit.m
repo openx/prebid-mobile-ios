@@ -18,6 +18,17 @@
 
 #import "PBMMacros.h"
 
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMPlayable.h"
+#import "PBMJsonCodable.h"
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativeEventTracker.h"
+#import "PBMNativeEventTrackingMethod.h"
+#import "PBMNativePlacementType.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 @interface PBMNativeAdUnit ()
 @property (nonatomic, assign) BOOL hasStartedFetching;
 @end
@@ -29,7 +40,7 @@
 
 // MARK: + (public convenience init)
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration
 {
     return (self = [self initWithConfigID:configID
                     nativeAdConfiguration:nativeAdConfiguration
@@ -40,7 +51,7 @@
 
 // MARK: + (private convenience init)
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration
                 serverConnection:(id<PBMServerConnectionProtocol>)serverConnection
                 sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
                        targeting:(PBMTargeting *)targeting
@@ -55,7 +66,7 @@
 
 // MARK: + (private designated init)
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration
              bidRequesterFactory:(PBMBidRequesterFactoryBlock)bidRequesterFactory
                 winNotifierBlock:(PBMWinNotifierBlock)winNotifierBlock
 {
@@ -81,7 +92,7 @@
     return [super configId];
 }
 
-- (PBMNativeAdConfiguration *)nativeAdConfig {
+- (NativeAdConfiguration *)nativeAdConfig {
     return self.adUnitConfig.nativeAdConfig;
 }
 
@@ -103,8 +114,8 @@
 }
 
 // MARK: - Private methods
-- (void)setupNativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration {
-    PBMNativeAdConfiguration * const nativeAdConfig = [nativeAdConfiguration copy];
+- (void)setupNativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration {
+    NativeAdConfiguration * const nativeAdConfig = [nativeAdConfiguration copy];
     
     NSArray<PBMNativeEventTracker *> *existingTrackers = nativeAdConfig.eventtrackers;
     NSMutableArray<PBMNativeEventTracker *> *eventtrackers = existingTrackers ? [existingTrackers mutableCopy] : [[NSMutableArray<PBMNativeEventTracker *> alloc] init];

@@ -7,9 +7,10 @@
 
 #import "PBMBaseAdUnit.h"
 
-#import "PBMNativeAdConfiguration.h"
 #import "PBMNativeAd.h"
 #import "PBMNativeAdHandler.h"
+
+@class NativeAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,11 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Required properties
 @property (nonatomic, copy, readonly) NSString *configId; // inherited from PBMBaseAdUnit
-@property (atomic, copy, readonly) PBMNativeAdConfiguration *nativeAdConfig;
+@property (atomic, copy, readonly) NativeAdConfiguration *nativeAdConfig;
 
 // MARK: - Lifecycle
 - (instancetype)initWithConfigID:(NSString *)configID
-           nativeAdConfiguration:(PBMNativeAdConfiguration *)nativeAdConfiguration;
+           nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration;
 
 // MARK: - Get Native Ad
 - (void)fetchDemandWithCompletion:(PBMFetchDemandCompletionHandler)completion;  // inherited from PBMBaseAdUnit

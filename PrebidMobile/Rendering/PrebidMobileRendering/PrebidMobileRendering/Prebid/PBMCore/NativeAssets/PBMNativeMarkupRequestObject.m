@@ -13,6 +13,10 @@
 #import "PBMNativeEventType.h"
 #import "PBMNativeEventTrackingMethod.h"
 
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativePlacementType.h"
+
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #import "PBMNativeMarkupRequestObject.h"

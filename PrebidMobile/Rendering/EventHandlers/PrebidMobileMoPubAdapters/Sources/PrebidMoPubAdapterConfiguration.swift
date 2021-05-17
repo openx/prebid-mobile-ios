@@ -29,6 +29,10 @@ public class PrebidMoPubAdapterConfiguration : MPBaseAdapterConfiguration {
         Constants.mopubNetworkName
     }
     
+    public override var biddingToken: String? {
+        nil
+    }
+    
     public override func initializeNetwork(withConfiguration configuration: [String : Any]?, complete: ((Error?) -> Void)? = nil) {
         PBMSDKConfiguration.initializeSDK()
         

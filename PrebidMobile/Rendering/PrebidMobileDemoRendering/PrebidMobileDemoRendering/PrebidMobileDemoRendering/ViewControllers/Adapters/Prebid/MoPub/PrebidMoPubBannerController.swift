@@ -84,7 +84,6 @@ class PrebidMoPubBannerController: NSObject, AdaptedController, PrebidConfigurab
             else {
                 return
             }
-            adBannerView.loadAd()
             adBannerView.translatesAutoresizingMaskIntoConstraints = false
             let widthConstraint  = NSLayoutConstraint(item: adBannerView,
                                                       attribute: .width,
@@ -101,6 +100,9 @@ class PrebidMoPubBannerController: NSObject, AdaptedController, PrebidConfigurab
                                                       multiplier: 1,
                                                       constant: 0)
             container.addConstraints([widthConstraint, heightConstraint])
+            container.layoutSubviews()
+            
+            adBannerView.loadAd()
         }
         
         rootController?.bannerView.addSubview(self.adBannerView!)

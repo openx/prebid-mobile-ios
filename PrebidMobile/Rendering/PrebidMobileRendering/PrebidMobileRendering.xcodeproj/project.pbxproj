@@ -717,6 +717,8 @@
 		5B91DD7F205688A300EBD34F /* PBMLogObjCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B91DD7E205688A300EBD34F /* PBMLogObjCTest.m */; };
 		5B91DD832056A0D400EBD34F /* PBMAdConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91DD822056A0D400EBD34F /* PBMAdConfigurationTest.swift */; };
 		5BA83C39211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA83C38211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift */; };
+		5BBCF72B2653C142006A0356 /* MoPubInterstitialAdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */; };
+		5BBCF72C2653C5F3006A0356 /* PBMMoPubBaseInterstitialAdUnit+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF6ECCA24E676B40094DE33 /* PBMMoPubBaseInterstitialAdUnit+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BBD8DCC2279928D00999BC4 /* MockOXMVideoCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8DCB2279928D00999BC4 /* MockOXMVideoCreative.swift */; };
 		5BE0A33024EA7B7700028EBA /* BasicParameterBuilderPureTargetingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A32F24EA7B7600028EBA /* BasicParameterBuilderPureTargetingTest.swift */; };
 		5BF8E67C26398F7C00341EE4 /* PBMTimerInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E2FF0F25B06FC30003C0EA /* PBMTimerInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1555,6 +1557,7 @@
 		5B91DD7E205688A300EBD34F /* PBMLogObjCTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMLogObjCTest.m; sourceTree = "<group>"; };
 		5B91DD822056A0D400EBD34F /* PBMAdConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMAdConfigurationTest.swift; sourceTree = "<group>"; };
 		5BA83C38211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBMVastLoaderTestOMVerificationOneInline.swift; sourceTree = "<group>"; };
+		5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubInterstitialAdUnit.swift; sourceTree = "<group>"; };
 		5BBD8DCB2279928D00999BC4 /* MockOXMVideoCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOXMVideoCreative.swift; sourceTree = "<group>"; };
 		5BC626D1212D75B600B6E9D0 /* PBMAdLoadManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMAdLoadManagerBase.m; sourceTree = "<group>"; };
 		5BC626D2212D75B600B6E9D0 /* PBMAdLoadManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadManagerDelegate.h; sourceTree = "<group>"; };
@@ -2272,6 +2275,7 @@
 				ACB3361924E58E04009D6357 /* PBMMoPubBaseInterstitialAdUnit.m */,
 				AC92993F25DD45B100CD482E /* PBMMoPubNativeAdUnit.h */,
 				AC92994025DD45B200CD482E /* PBMMoPubNativeAdUnit.m */,
+				5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */,
 			);
 			path = MoPub;
 			sourceTree = "<group>";
@@ -3534,6 +3538,7 @@
 				34D7106F24E580620048CC78 /* PBMORTBBid.h in Headers */,
 				AC92994125DD45B200CD482E /* PBMMoPubNativeAdUnit.h in Headers */,
 				34D7107024E580620048CC78 /* PBMMoPubBannerAdUnit.h in Headers */,
+				5BBCF72C2653C5F3006A0356 /* PBMMoPubBaseInterstitialAdUnit+Protected.h in Headers */,
 				34E2FF1B25B0750E0003C0EA /* NSTimer+PBMScheduledTimerFactory.h in Headers */,
 				34D7107124E580620048CC78 /* PBMTransactionFactory.h in Headers */,
 				34D7107324E580620048CC78 /* PBMAdRequestResponseVAST.h in Headers */,
@@ -4025,6 +4030,7 @@
 				34D70F9724E580620048CC78 /* PBMVastAbstractAd.m in Sources */,
 				34D70F9824E580620048CC78 /* PBMORTBDevice.m in Sources */,
 				34D70F9924E580620048CC78 /* PBMORTBDeviceExtPrebidInterstitial.m in Sources */,
+				5BBCF72B2653C142006A0356 /* MoPubInterstitialAdUnit.swift in Sources */,
 				34D70F9B24E580620048CC78 /* PBMBasicParameterBuilder.m in Sources */,
 				34D70F9C24E580620048CC78 /* PBMModalPresentationController.m in Sources */,
 				34D70F9D24E580620048CC78 /* PBMVastAdsBuilder.m in Sources */,

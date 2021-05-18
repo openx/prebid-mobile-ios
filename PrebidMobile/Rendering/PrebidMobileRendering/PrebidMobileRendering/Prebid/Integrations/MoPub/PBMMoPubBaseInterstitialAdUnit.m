@@ -19,18 +19,6 @@
 #import "PBMMacros.h"
 #import "PBMServerConnection.h"
 
-@interface PBMMoPubBaseInterstitialAdUnit ()
-
-@property (nonatomic, strong, nullable) PBMBidRequester *bidRequester;
-
-//This is an MPInterstitialAdController object
-//But we can't use it inderectly as don't want to have additional MoPub dependency in the SDK core
-@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol>adObject;
-@property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
-
-@end
-
-
 @implementation PBMMoPubBaseInterstitialAdUnit
 
 - (instancetype)initWithConfigId:(NSString *)configId {

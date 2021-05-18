@@ -228,10 +228,8 @@
 
 // MoPub Adapters
 #import "PBMMoPubUtils.h"
-#import "PBMMoPubUtils+Private.h"
 #import "PBMMoPubBannerAdUnit+TestExtension.h"
 #import "PBMMoPubInterstitialAdUnit+TestExtension.h"
-#import "PBMMoPubBaseInterstitialAdUnit+Protected.h"
 #import "PBMMoPubNativeAdUnit+TestExtension.h"
 
 // PBM Native Ads support

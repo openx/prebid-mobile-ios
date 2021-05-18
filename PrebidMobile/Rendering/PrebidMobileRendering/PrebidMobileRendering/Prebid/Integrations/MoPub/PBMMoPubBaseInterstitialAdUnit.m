@@ -6,14 +6,12 @@
 //
 
 #import "PBMMoPubBaseInterstitialAdUnit.h"
-#import "PBMMoPubBaseInterstitialAdUnit+Protected.h"
 
 #import "PBMAdUnitConfig.h"
 #import "PBMBid.h"
 #import "PBMBidRequester.h"
 #import "PBMBidResponse.h"
 #import "PBMError.h"
-#import "PBMMoPubUtils+Private.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMTargeting.h"
 #import "PBMMacros.h"

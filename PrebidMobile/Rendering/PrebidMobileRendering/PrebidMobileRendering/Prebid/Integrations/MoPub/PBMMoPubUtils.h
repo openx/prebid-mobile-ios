@@ -41,6 +41,24 @@ typedef void(^PBMFindNativeAdHandler)(PBMNativeAd * _Nullable, NSError * _Nullab
  */
 + (void)findNativeAd:(NSDictionary *_Nullable)extras callback:(nonnull PBMFindNativeAdHandler)completion;
 
+
+/**
+ Removes an bid info from ad object's localExtra
+ and prebid-specific keywords from ad object's keywords
+ */
++ (void)cleanUpAdObject:(id<PBMMoPubAdObjectProtocol>)adObject;
+
+/**
+ Puts to ad object's localExtra the ad object (winning bid or native ad) and configId
+ and populates adObject's keywords by targeting info
+ @return YES on success and NO otherwise (when the passed ad has wrong type)
+ */
++ (BOOL)setUpAdObject:(id<PBMMoPubAdObjectProtocol>)adObject
+         withConfigId:(NSString *)configId
+        targetingInfo:(NSDictionary<NSString *,NSString *> *)targetingInfo
+          extraObject:(id)anObject forKey:(NSString *)aKey;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

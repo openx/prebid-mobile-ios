@@ -9,12 +9,16 @@
 
 #import "PBMFetchDemandResult.h"
 #import "PBMMoPubUtils.h"
+#import "PBMAdUnitConfig.h"
+
 
 @class PBMBidRequester;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMMoPubBaseInterstitialAdUnit : NSObject
+
+@property (nonatomic, strong, nonnull, readonly) PBMAdUnitConfig *adUnitConfig;
 
 @property (nonatomic, copy, readonly) NSString *configId;
 

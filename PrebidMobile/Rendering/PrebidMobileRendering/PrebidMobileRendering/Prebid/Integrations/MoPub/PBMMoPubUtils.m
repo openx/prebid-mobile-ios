@@ -5,7 +5,6 @@
 //  Copyright © 2020 OpenX. All rights reserved.
 //
 #import "PBMMoPubUtils.h"
-#import "PBMMoPubUtils+Private.h"
 
 #import "PBMDemandResponseInfo.h"
 #import "PBMErrorCode.h"

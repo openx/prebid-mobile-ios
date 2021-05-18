@@ -9,7 +9,6 @@
 
 #import "PBMNativeAdUnit.h"
 #import "PBMMoPubUtils.h"
-#import "PBMMoPubUtils+Private.h"
 
 #import "PBMMacros.h"
 

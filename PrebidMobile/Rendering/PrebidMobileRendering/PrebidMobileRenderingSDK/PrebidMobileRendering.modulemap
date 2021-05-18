@@ -156,5 +156,6 @@ framework module PrebidMobileRendering {
     header "PBMViewabilityPlaybackBinder.h"
     header "PBMViewExposureProviders.h"
     
-    header "PBMMoPubBaseInterstitialAdUnit+Protected.h"
+    header "PBMBidRequester.h"
+    header "PBMLog.h"
 }

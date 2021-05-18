@@ -16,7 +16,7 @@
 #import "PBMBidResponse.h"
 #import "PBMBid.h"
 #import "PBMError.h"
-#import "PBMMoPubUtils+Private.h"
+#import "PBMMoPubUtils.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMTargeting.h"
 #import "PBMServerConnection.h"

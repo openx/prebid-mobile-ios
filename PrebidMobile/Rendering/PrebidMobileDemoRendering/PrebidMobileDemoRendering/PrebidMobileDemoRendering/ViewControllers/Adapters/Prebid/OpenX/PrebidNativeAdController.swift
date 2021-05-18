@@ -34,7 +34,7 @@ class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableN
     
     private var nativeAdViewBox: NativeAdViewBoxProtocol?
     
-    private var adUnit: PBMNativeAdUnit?
+    private var adUnit: NativeAdUnit?
     private var theNativeAd: PBMNativeAd?
     
     private let fetchDemandSuccessButton = EventReportContainer()
@@ -146,7 +146,7 @@ class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableN
         guard let nativeAdConfig = nativeAdConfig else {
             return
         }
-        adUnit = PBMNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        adUnit = NativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
         
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {

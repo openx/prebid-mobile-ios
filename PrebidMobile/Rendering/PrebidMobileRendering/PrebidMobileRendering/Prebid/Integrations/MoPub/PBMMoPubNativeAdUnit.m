@@ -7,11 +7,26 @@
 
 #import "PBMMoPubNativeAdUnit.h"
 
-#import "PBMNativeAdUnit.h"
 #import "PBMMoPubUtils.h"
 #import "PBMMoPubUtils+Private.h"
 
 #import "PBMMacros.h"
+
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMDataAssetType.h"
+#import "PBMPlayable.h"
+#import "PBMJsonCodable.h"
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativeEventType.h"
+#import "PBMNativeEventTrackingMethod.h"
+#import "PBMNativePlacementType.h"
+
+#import "PBMBaseAdUnit.h"
+#import "PBMBidRequesterFactoryBlock.h"
+#import "PBMWinNotifierBlock.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @interface PBMMoPubNativeAdUnit ()
 
@@ -20,7 +35,7 @@
 @property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> adObject;
 @property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
 
-@property (nonatomic, strong) PBMNativeAdUnit *nativeAdUnit;
+@property (nonatomic, strong) NativeAdUnit *nativeAdUnit;
 
 @end
 
@@ -30,11 +45,11 @@
 
 - (instancetype)initWithConfigID:(NSString *)configID
            nativeAdConfiguration:(NativeAdConfiguration *)nativeAdConfiguration {
-    return self = [self initWithNativeAdUnit:[[PBMNativeAdUnit alloc] initWithConfigID:configID
+    return self = [self initWithNativeAdUnit:[[NativeAdUnit alloc] initWithConfigID:configID
                                                                  nativeAdConfiguration:nativeAdConfiguration]];
 }
 
-- (instancetype)initWithNativeAdUnit:(PBMNativeAdUnit *)nativeAdUnit {
+- (instancetype)initWithNativeAdUnit:(NativeAdUnit *)nativeAdUnit {
     if (nativeAdUnit == nil) {
         return nil;
     }

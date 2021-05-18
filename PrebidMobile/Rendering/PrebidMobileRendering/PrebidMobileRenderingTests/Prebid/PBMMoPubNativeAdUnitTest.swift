@@ -32,7 +32,8 @@ class PBMMoPubNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         let bidPrice = 0.42
         let bidResponse = makeWinningBidResponse(bidPrice: bidPrice)
         
-        let adUnit = PBMNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
+        let adUnit = NativeAdUnit(configID: configID,
+                                  nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
             return MockBidRequester(expectedCalls: [
                 { responseHandler in
                     responseHandler(bidResponse, nil)

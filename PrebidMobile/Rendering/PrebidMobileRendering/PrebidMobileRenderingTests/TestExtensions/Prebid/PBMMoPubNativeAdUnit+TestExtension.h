@@ -7,10 +7,10 @@
 
 #import "PBMMoPubNativeAdUnit.h"
 
-@class PBMNativeAdUnit;
+@class NativeAdUnit;
 
 @interface PBMMoPubNativeAdUnit ()
 
-- (instancetype)initWithNativeAdUnit:(PBMNativeAdUnit *)nativeAdUnit;
+- (instancetype)initWithNativeAdUnit:(NativeAdUnit *)nativeAdUnit;
 
 @end

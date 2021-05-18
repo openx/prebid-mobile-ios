@@ -24,7 +24,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
     /// The native ad view that is being presented.
     private var nativeAdView: GADNativeAdView?
     
-    private var adUnit: PBMNativeAdUnit?
+    private var adUnit: NativeAdUnit?
     private var theNativeAd: PBMNativeAd?
     
     private var adLoader: GADAdLoader?
@@ -113,7 +113,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
         guard let nativeAdConfig = nativeAdConfig else {
             return
         }
-        adUnit = PBMNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        adUnit = NativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
         
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {

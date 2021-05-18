@@ -23,6 +23,9 @@
 #import "PBMNativePlacementType.h"
 
 #import "PBMDataAssetType.h"
+#import "PBMBaseAdUnit.h"
+#import "PBMBidRequesterFactoryBlock.h"
+#import "PBMWinNotifierBlock.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

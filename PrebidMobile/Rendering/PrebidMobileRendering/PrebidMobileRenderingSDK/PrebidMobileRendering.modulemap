@@ -51,8 +51,10 @@ framework module PrebidMobileRendering {
     header "PBMBannerView.h"
     
     header "PBMBaseAdUnit.h"
+    header "PBMBaseAdUnit+Protected.h"
     header "PBMBaseInterstitialAdUnit.h"
     header "PBMDemandResponseInfo.h"
+    header "PBMDemandResponseInfo+Internal.h"
     
     header "PBMInterstitialAdUnit.h"
     header "PBMInterstitialAdUnitDelegate.h"
@@ -74,7 +76,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeEventTrackingMethod.h"
     header "PBMNativeEventType.h"
     // PBM Native Ads (request)
-    header "PBMNativeAdUnit.h"
     header "PBMNativeContextType.h"
     header "PBMNativeContextSubtype.h"
     header "PBMNativeEventTracker.h"
@@ -159,4 +160,11 @@ framework module PrebidMobileRendering {
     header "PBMFunctions+Private.h"
     header "PBMUIApplicationProtocol.h"
     header "NSDictionary+PBMORTBNativeExt.h"
+    
+    header "PBMBidRequesterFactoryBlock.h"
+    header "PBMWinNotifierBlock.h"
+    header "PBMAdMarkupStringHandler.h"
+    header "PBMBidRequesterFactory.h"
+    header "PBMWinNotifier.h"
+    header "PBMWinNotifierFactoryBlock.h"
 }

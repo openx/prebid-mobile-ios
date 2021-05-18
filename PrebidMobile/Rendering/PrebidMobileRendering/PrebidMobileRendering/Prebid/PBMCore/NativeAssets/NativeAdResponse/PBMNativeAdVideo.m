@@ -12,7 +12,7 @@
 #import "PBMJsonCodable.h"
 
 // Fix Build
-#import "PBMMoPubBaseInterstitialAdUnit.h"
+#import "PBMMoPubUtils.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

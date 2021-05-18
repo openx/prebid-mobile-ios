@@ -53,7 +53,7 @@ typedef void(^PBMFindNativeAdHandler)(PBMNativeAd * _Nullable, NSError * _Nullab
  and populates adObject's keywords by targeting info
  @return YES on success and NO otherwise (when the passed ad has wrong type)
  */
-+ (BOOL)setUpAdObject:(id<PBMMoPubAdObjectProtocol>)adObject
++ (BOOL)setUpAdObject:adObject
          withConfigId:(NSString *)configId
         targetingInfo:(NSDictionary<NSString *,NSString *> *)targetingInfo
           extraObject:(id)anObject forKey:(NSString *)aKey;

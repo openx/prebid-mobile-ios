@@ -104,7 +104,6 @@ framework module PrebidMobileRendering {
     
     // PBM Integration MoPub
     header "PBMMoPubBannerAdUnit.h"
-    header "PBMMoPubBaseInterstitialAdUnit.h"
     header "PBMMoPubUtils.h"
     header "PBMMoPubNativeAdUnit.h"
     

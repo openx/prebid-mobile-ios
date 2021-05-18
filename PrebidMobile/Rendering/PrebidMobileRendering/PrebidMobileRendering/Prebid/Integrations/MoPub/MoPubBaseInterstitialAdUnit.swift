@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MoPubBaseInterstitialAdUnit : NSObject {
+public class MoPubBaseInterstitialAdUnit : NSObject {
     
     let adUnitConfig: PBMAdUnitConfig
     
@@ -63,7 +63,7 @@ class MoPubBaseInterstitialAdUnit : NSObject {
                              sdkConfiguration: PBMSDKConfiguration,
                              targeting: PBMTargeting,
                              completion: ((PBMFetchDemandResult)->Void)?) {
-        guard bidRequester != nil else {
+        guard bidRequester == nil else {
             // Request in progress
             return
         }
@@ -100,10 +100,9 @@ class MoPubBaseInterstitialAdUnit : NSObject {
         var demandResult = PBMFetchDemandResult.demandNoBids
         
         if let winningBid = bidResponse.winningBid,
-           let mopubObject = adObject as? PBMMoPubAdObjectProtocol,
            let targetingInfo = winningBid.targetingInfo {
             
-            if PBMMoPubUtils.setUpAdObject(mopubObject,
+            if PBMMoPubUtils.setUpAdObject(adObject,
                                            withConfigId: configId,
                                            targetingInfo: targetingInfo,
                                            extraObject: winningBid,

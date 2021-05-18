@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MoPubRewardedAdUnit : PBMMoPubBaseInterstitialAdUnit {
+public class MoPubRewardedAdUnit : MoPubBaseInterstitialAdUnit {
     
     // - MARK: Public Methods
     

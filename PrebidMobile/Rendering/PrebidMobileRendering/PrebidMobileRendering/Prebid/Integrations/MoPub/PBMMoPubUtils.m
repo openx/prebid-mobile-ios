@@ -50,17 +50,20 @@ static NSString * HBKeywordPrefix = @"hb_";
  }
  */
 
-+ (BOOL)setUpAdObject:(id<PBMMoPubAdObjectProtocol>)adObject
++ (BOOL)setUpAdObject:adObject
          withConfigId:(NSString *)configId
         targetingInfo:(NSDictionary<NSString *,NSString *> *)targetingInfo
           extraObject:(id)anObject forKey:(NSString *)aKey {
     
-    NSDictionary *extras = adObject.localExtras;
+    // FIXME: use more reliable type casting on rewriting to Swift
+    id<PBMMoPubAdObjectProtocol> mopubObject = adObject;
+    
+    NSDictionary *extras = mopubObject.localExtras;
     if (extras && ![extras isKindOfClass:[NSDictionary class]]) {
         return NO;
     }
     
-    NSString *adKeywords = adObject.keywords;
+    NSString *adKeywords = mopubObject.keywords;
     if (adKeywords && ![adKeywords isKindOfClass:[NSString class]]) {
         return NO;
     }
@@ -69,13 +72,13 @@ static NSString * HBKeywordPrefix = @"hb_";
     NSMutableDictionary *mutableExtras = extras ? [extras mutableCopy] : [NSMutableDictionary new];
     mutableExtras[aKey] = anObject;
     mutableExtras[PBMMoPubConfigIdKey] = configId;
-    adObject.localExtras = mutableExtras;
+    mopubObject.localExtras = mutableExtras;
     
     //Setup bid targeting keyword
     if (targetingInfo.count > 0) {
         NSString *bidKeywords = [PBMMoPubUtils keywordsFrom:targetingInfo];
         adKeywords = adKeywords.length > 0 ? [NSString stringWithFormat:@"%@,%@", adKeywords, bidKeywords] : bidKeywords;
-        adObject.keywords = adKeywords;
+        mopubObject.keywords = adKeywords;
     }
     
     return YES;

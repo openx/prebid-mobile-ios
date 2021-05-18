@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class MoPubInterstitialAdUnit : PBMMoPubBaseInterstitialAdUnit {
+public class MoPubInterstitialAdUnit : MoPubBaseInterstitialAdUnit {
     
     // MARK: - Public Properties
     

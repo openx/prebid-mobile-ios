@@ -6,7 +6,6 @@
 //
 
 #import "PBMMoPubBaseInterstitialAdUnit.h"
-#import "PBMMoPubInterstitialAdUnit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

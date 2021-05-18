@@ -6,7 +6,6 @@
 //
 
 #import "PBMMoPubRewardedAdUnit.h"
-#import "PBMMoPubInterstitialAdUnit+Protected.h"
 #import "PBMMoPubBaseInterstitialAdUnit+Protected.h"
 
 @implementation PBMMoPubBidInfoWrapper

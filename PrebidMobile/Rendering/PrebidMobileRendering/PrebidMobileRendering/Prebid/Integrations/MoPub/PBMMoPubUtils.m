@@ -21,6 +21,7 @@ static NSString * HBKeywordPrefix = @"hb_";
 @implementation PBMMoPubUtils
 
 + (BOOL)isCorrectAdObject:(NSObject *)adObject {
+        // TODO: use Swift's selecors
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wundeclared-selector"
     return  [adObject respondsToSelector:@selector(setLocalExtras:)] &&
@@ -28,6 +29,7 @@ static NSString * HBKeywordPrefix = @"hb_";
             [adObject respondsToSelector:@selector(setKeywords:)] &&
             [adObject respondsToSelector:@selector(keywords)];
     #pragma GCC diagnostic pop
+//    return YES;
 }
 
 /**

@@ -22,6 +22,7 @@ typedef void(^PBMFindNativeAdHandler)(PBMNativeAd * _Nullable, NSError * _Nullab
  (MPAdView, MPInterstitialAdController, MPNativeAdRequestTargeting)
  */
 @protocol PBMMoPubAdObjectProtocol <NSObject>
+@required
 @property (nonatomic, nullable, copy) NSString *keywords;
 @property (nonatomic, nullable, copy) NSDictionary *localExtras;
 @end

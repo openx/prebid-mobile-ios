@@ -1,5 +1,5 @@
 //
-//  PBMNativeAdUnitTest.swift
+//  NativeAdUnitTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2021 OpenX. All rights reserved.
@@ -9,7 +9,7 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class PBMNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
+class NativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
     func testDesignatedInit_noBlockCalled() {
         let configID = "some-base-config-ID"
         
@@ -17,8 +17,8 @@ class PBMNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         
         let noRequesterCreated = expectation(description: "no requester created")
         noRequesterCreated.isInverted = true
-        
-        let adUnit = PBMNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
+
+        let adUnit = NativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
             XCTFail()
             return MockBidRequester(expectedCalls: [])
         } winNotifierBlock: { (bid, adMarkupStringHandler) in
@@ -31,7 +31,7 @@ class PBMNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         XCTAssertNotEqual(adUnit.nativeAdConfig, nativeAdConfig) // copy; 'isEqual' not overridden
         
         //NOTE: temporary disabled as PBS doesnt support OM event trackers
-        //OMID event tracker which is set by PBMNativeAdUnit
+        //OMID event tracker which is set by NativeAdUnit
 //        nativeAdConfig.eventtrackers = [PBMNativeEventTracker(event: .OMID,
 //                                                              methods:
 //                                                                [NSNumber(value:PBMNativeEventTrackingMethod.JS.rawValue)])]
@@ -73,7 +73,7 @@ class PBMNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
             
             let winNotification = NSMutableArray(object: winNotNotified)
             
-            let adUnit = PBMNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
+            let adUnit = NativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
                 requesterCreated.fulfill()
                 return MockBidRequester(expectedCalls: [
                     { responseHandler in
@@ -136,7 +136,7 @@ class PBMNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         
         let winNotification = NSMutableArray(object: winNotNotified)
         
-        let adUnit = PBMNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
+        let adUnit = NativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig) { adUnitConfig in
             (requesterCreatedNotification[0] as! XCTestExpectation).fulfill()
             return MockBidRequester(expectedCalls: [
                 { responseHandler in

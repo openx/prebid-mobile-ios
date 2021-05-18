@@ -15,7 +15,7 @@ class FeedGAMAdTableViewCell: UITableViewCell {
     
     var gamCustomTemplateIDs: [String] = []
     
-    private var adUnit: PBMNativeAdUnit?
+    private var adUnit: NativeAdUnit?
     private var theNativeAd: PBMNativeAd?
     
     private let nativeAdViewBox = NativeAdViewBox()
@@ -33,7 +33,7 @@ class FeedGAMAdTableViewCell: UITableViewCell {
                 adTypes: [GADAdLoaderAdType]) {
         
         self.rootController = rootViewController
-        self.adUnit = PBMNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig)
+        self.adUnit = NativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig)
         
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {

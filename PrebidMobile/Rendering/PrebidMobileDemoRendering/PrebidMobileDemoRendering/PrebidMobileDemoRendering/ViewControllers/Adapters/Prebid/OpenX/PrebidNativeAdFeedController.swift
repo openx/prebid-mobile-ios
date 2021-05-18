@@ -17,7 +17,7 @@ class PrebidNativeAdFeedController: NSObject, PrebidConfigurableNativeAdRenderin
     private var adLoadingAllowed = false
     private var onAdLoadingAllowed: (()->())?
     
-    private var adUnit: PBMNativeAdUnit?
+    private var adUnit: NativeAdUnit?
     
     private weak var rootTableViewController: PrebidFeedTableViewController?
     
@@ -82,7 +82,7 @@ class PrebidNativeAdFeedController: NSObject, PrebidConfigurableNativeAdRenderin
         
         self.cleanUp(cell: cell)
         
-        let adUnit = PBMNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        let adUnit = NativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
         self.adUnit = adUnit
         if let adUnitContext = AppConfiguration.shared.adUnitContext {
             for dataPair in adUnitContext {

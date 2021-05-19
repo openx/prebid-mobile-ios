@@ -12,6 +12,7 @@
 #import "PBMAdFormat.h"
 #import "PBMAdPosition.h"
 #import "PBMVideoPlacementType.h"
+#import "PBMAdUnitConfig.h"
 
 @class PBMNativeAdConfiguration;
 
@@ -26,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (atomic) PBMAdPosition adPosition;
 @property (atomic, assign) PBMVideoPlacementType videoPlacementType;
 @property (nonatomic, copy, nullable) PBMNativeAdConfiguration *nativeAdConfig;
+
+@property (nonatomic, strong, nonnull, readonly) PBMAdUnitConfig *adUnitConfig;
 
 - (instancetype)initWithConfigId:(NSString *)configId size:(CGSize)size;
 

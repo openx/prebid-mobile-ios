@@ -15,7 +15,7 @@ public class MoPubNativeAdUnit : NSObject {
     
     // MARK: - Public Properties
     
-    var configId: String {
+    var configID: String {
         nativeAdUnit.configId
     }
     
@@ -25,10 +25,10 @@ public class MoPubNativeAdUnit : NSObject {
     
     // MARK: - Public Methods
     
-    init(configId: String,
-         nativeAdConfiguration: PBMNativeAdConfiguration) {
+    public init(configID: String,
+                nativeAdConfiguration: PBMNativeAdConfiguration) {
         
-        nativeAdUnit = PBMNativeAdUnit(configID: configId,
+        nativeAdUnit = PBMNativeAdUnit(configID: configID,
                                        nativeAdConfiguration: nativeAdConfiguration)
     }
     
@@ -60,7 +60,7 @@ public class MoPubNativeAdUnit : NSObject {
             var fetchDemandResult: PBMFetchDemandResult = .wrongArguments
             
             if PBMMoPubUtils.setUpAdObject(self.adObject,
-                                           withConfigId: self.configId,
+                                           withConfigId: self.configID,
                                            targetingInfo: fetchDemandInfo.bid?.targetingInfo ?? [:],
                                            extraObject: fetchDemandInfo,
                                            forKey: PBMMoPubAdNativeResponseKey) {

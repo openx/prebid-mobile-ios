@@ -502,7 +502,6 @@
 		34D710E724E580620048CC78 /* PBMAdUnitConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E3F25F246E7ECE00ADBFC6 /* PBMAdUnitConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D710E824E580620048CC78 /* PBMParameterBuilderService.h in Headers */ = {isa = PBXBuildFile; fileRef = 105D9439202C5B31004157F4 /* PBMParameterBuilderService.h */; };
 		34D710EA24E580620048CC78 /* PBMMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = D5A7A75A21020405000F5284 /* PBMMacros.h */; };
-		34D710EC24E580620048CC78 /* PBMMoPubBannerAdUnit+InternalState.h in Headers */ = {isa = PBXBuildFile; fileRef = 34BF11E82476C2F6007A09F1 /* PBMMoPubBannerAdUnit+InternalState.h */; };
 		34D710ED24E580620048CC78 /* PBMORTBParameterBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 105D9431202C3624004157F4 /* PBMORTBParameterBuilder.h */; };
 		34D710EE24E580620048CC78 /* PBMSDKConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DF8FEB247C0C890091D6E5 /* PBMSDKConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D710EF24E580620048CC78 /* PBMBannerEventLoadingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3470AD1124892F510086F7A2 /* PBMBannerEventLoadingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -818,8 +817,6 @@
 		AC61D15A25419ED900741392 /* UIViewExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC61D15925419ED900741392 /* UIViewExtensionsTest.swift */; };
 		AC79DA5A24912BA400398F95 /* PBMTargetingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC79DA5924912BA400398F95 /* PBMTargetingTest.swift */; };
 		AC8D701B256E580700979B69 /* PBMNativeFunctionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7CE88D256403EA0048475F /* PBMNativeFunctionsTest.swift */; };
-		AC92994125DD45B200CD482E /* PBMMoPubNativeAdUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = AC92993F25DD45B100CD482E /* PBMMoPubNativeAdUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC92994225DD45B200CD482E /* PBMMoPubNativeAdUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92994025DD45B200CD482E /* PBMMoPubNativeAdUnit.m */; };
 		ACB62E5324FE8EFE009B25B3 /* PBMSKAdNetworksParameterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB62E4F24FE8810009B25B3 /* PBMSKAdNetworksParameterBuilder.m */; };
 		ACB62E5824FFBAC6009B25B3 /* PBMORTBImpExtSkadn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB62E5524FFB08F009B25B3 /* PBMORTBImpExtSkadn.m */; };
 		ACB6F7742472BCA500EDBEC3 /* PBMCreativeViewabilityTrackerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6F7732472BCA500EDBEC3 /* PBMCreativeViewabilityTrackerTest.swift */; };
@@ -1173,7 +1170,6 @@
 		34BF11E02476C2E5007A09F1 /* PBMBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMBannerViewDelegate.h; sourceTree = "<group>"; };
 		34BF11E62476C2F6007A09F1 /* PBMMoPubBannerAdUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMMoPubBannerAdUnit.m; sourceTree = "<group>"; };
 		34BF11E72476C2F6007A09F1 /* PBMMoPubBannerAdUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMMoPubBannerAdUnit.h; sourceTree = "<group>"; };
-		34BF11E82476C2F6007A09F1 /* PBMMoPubBannerAdUnit+InternalState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubBannerAdUnit+InternalState.h"; sourceTree = "<group>"; };
 		34BF11EE2476C6DF007A09F1 /* PBMBannerViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMBannerViewTest.swift; sourceTree = "<group>"; };
 		34BF11F02476CA0C007A09F1 /* PBMMoPubBannerAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubBannerAdUnitTest.swift; sourceTree = "<group>"; };
 		34C48AAD24E148D600B86664 /* PBMAdFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMAdFormat.h; path = AdTypes/AdView/PBMAdFormat.h; sourceTree = "<group>"; };
@@ -1696,8 +1692,6 @@
 		AC7CE88D256403EA0048475F /* PBMNativeFunctionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeFunctionsTest.swift; sourceTree = "<group>"; };
 		AC8ABA94249111DE00C69171 /* PBMTargeting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMTargeting.h; sourceTree = "<group>"; };
 		AC8ABA95249111DE00C69171 /* PBMTargeting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMTargeting.m; sourceTree = "<group>"; };
-		AC92993F25DD45B100CD482E /* PBMMoPubNativeAdUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMMoPubNativeAdUnit.h; sourceTree = "<group>"; };
-		AC92994025DD45B200CD482E /* PBMMoPubNativeAdUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMMoPubNativeAdUnit.m; sourceTree = "<group>"; };
 		ACB62E4E24FE8810009B25B3 /* PBMSKAdNetworksParameterBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMSKAdNetworksParameterBuilder.h; path = Networking/Parameters/PBMSKAdNetworksParameterBuilder.h; sourceTree = "<group>"; };
 		ACB62E4F24FE8810009B25B3 /* PBMSKAdNetworksParameterBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PBMSKAdNetworksParameterBuilder.m; path = Networking/Parameters/PBMSKAdNetworksParameterBuilder.m; sourceTree = "<group>"; };
 		ACB62E5224FE8968009B25B3 /* PBMBundleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMBundleProtocol.h; path = Networking/Parameters/PBMBundleProtocol.h; sourceTree = "<group>"; };
@@ -2261,13 +2255,10 @@
 		34BF11D32476C2B2007A09F1 /* MoPub */ = {
 			isa = PBXGroup;
 			children = (
-				34BF11E82476C2F6007A09F1 /* PBMMoPubBannerAdUnit+InternalState.h */,
 				34BF11E72476C2F6007A09F1 /* PBMMoPubBannerAdUnit.h */,
 				34BF11E62476C2F6007A09F1 /* PBMMoPubBannerAdUnit.m */,
 				AC04860D24AB708B000106D4 /* PBMMoPubUtils.h */,
 				AC04860E24AB708B000106D4 /* PBMMoPubUtils.m */,
-				AC92993F25DD45B100CD482E /* PBMMoPubNativeAdUnit.h */,
-				AC92994025DD45B200CD482E /* PBMMoPubNativeAdUnit.m */,
 				5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */,
 				5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */,
 				5BBCF72F2653E233006A0356 /* MoPubRewardedAdUnit.swift */,
@@ -3537,7 +3528,6 @@
 				34D7106D24E580620048CC78 /* PBMViewExposure.h in Headers */,
 				34D7106E24E580620048CC78 /* UIWindow+PBMExtensions.h in Headers */,
 				34D7106F24E580620048CC78 /* PBMORTBBid.h in Headers */,
-				AC92994125DD45B200CD482E /* PBMMoPubNativeAdUnit.h in Headers */,
 				34D7107024E580620048CC78 /* PBMMoPubBannerAdUnit.h in Headers */,
 				34E2FF1B25B0750E0003C0EA /* NSTimer+PBMScheduledTimerFactory.h in Headers */,
 				34D7107124E580620048CC78 /* PBMTransactionFactory.h in Headers */,
@@ -3701,7 +3691,6 @@
 				34D710E824E580620048CC78 /* PBMParameterBuilderService.h in Headers */,
 				34DBD68B255193BF004A07A1 /* PBMNativeContextType.h in Headers */,
 				34D710EA24E580620048CC78 /* PBMMacros.h in Headers */,
-				34D710EC24E580620048CC78 /* PBMMoPubBannerAdUnit+InternalState.h in Headers */,
 				34D710ED24E580620048CC78 /* PBMORTBParameterBuilder.h in Headers */,
 				34D710EE24E580620048CC78 /* PBMSDKConfiguration.h in Headers */,
 				34D710EF24E580620048CC78 /* PBMBannerEventLoadingDelegate.h in Headers */,
@@ -4169,7 +4158,6 @@
 				34D7113924E5834E0048CC78 /* PBMAdConfiguration.m in Sources */,
 				34D70FFE24E580620048CC78 /* PBMMRAIDConstants.m in Sources */,
 				34C65292257E6F2100E26ABA /* PBMBannerAdLoader.m in Sources */,
-				AC92994225DD45B200CD482E /* PBMMoPubNativeAdUnit.m in Sources */,
 				34D7100024E580620048CC78 /* PBMModalViewController.m in Sources */,
 				AC368FE3256C635D000D5E1B /* PBMNativeFunctions.m in Sources */,
 				34D7100124E580620048CC78 /* PBMDeviceAccessManagerKeys.m in Sources */,

@@ -7,7 +7,6 @@
 #import "UIView+PBMExtensions.h"
 
 #import "PBMMoPubBannerAdUnit.h"
-#import "PBMMoPubBannerAdUnit+InternalState.h"
 
 #import "PBMAdUnitConfig+Internal.h"
 #import "PBMBid.h"

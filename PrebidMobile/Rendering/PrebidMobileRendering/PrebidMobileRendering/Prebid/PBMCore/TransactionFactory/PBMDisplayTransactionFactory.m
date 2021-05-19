@@ -31,6 +31,9 @@
 #import "PBMBidRequesterFactoryBlock.h"
 #import "PBMWinNotifierBlock.h"
 
+#import "PBMImageAssetType.h"
+#import "PBMNativeAdElementType.h"
+
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @interface PBMDisplayTransactionFactory() <PBMTransactionDelegate>

@@ -80,8 +80,9 @@ framework module PrebidMobileRendering {
     header "PBMNativeContextSubtype.h"
     header "PBMNativeEventTracker.h"
     header "PBMNativePlacementType.h"
+    
     // PBM Native Ads (response)
-    header "PBMNativeAd.h"
+//    header "PBMNativeAd.h"
     header "PBMNativeAdTrackingDelegate.h"
     header "PBMNativeAdUIDelegate.h"
     header "PBMNativeAdElementType.h"
@@ -106,6 +107,7 @@ framework module PrebidMobileRendering {
     header "PBMErrorFamily.h"
     
     // PBM Native Ads (markup)
+    header "PBMNativeAdMarkup.h"
     header "PBMNativeAdMarkupAsset.h"
     header "PBMNativeAdMarkupData.h"
     header "PBMNativeAdMarkupImage.h"
@@ -116,6 +118,14 @@ framework module PrebidMobileRendering {
     
     header "PBMNativeMarkupRequestObject.h"
     header "PBMNativeMarkupRequestObject+Internal.h"
+    
+    header "PBMNativeClickableViewRegistry.h"
+    header "PBMNativeClickTrackerBinderFactoryBlock.h"
+    header"PBMNativeViewClickHandlerBlock.h"
+    header "PBMNativeClickTrackerBinderBlock.h"
+    
+    header "PBMNativeAdImpressionReporting.h"
+    header "PBMNativeClickTrackerBinders.h"
 
     header "PBMJsonDecodable.h"
     header "PBMConstants.h"
@@ -171,4 +181,32 @@ framework module PrebidMobileRendering {
     header "PBMBidRequesterFactory.h"
     header "PBMWinNotifier.h"
     header "PBMWinNotifierFactoryBlock.h"
+    
+    // OM tracking
+    header "PBMOpenMeasurementWrapper.h"
+    header "PBMOpenMeasurementSession.h"
+    header "PBMVideoVerificationParameters.h"
+    header "PBMEventTrackerProtocol.h"
+    header "PBMOpenMeasurementFriendlyObstructionPurpose.h"
+    header "PBMTrackingEvent.h"
+    header "PBMNativeImpressionsTracker.h"
+    header "PBMNativeImpressionDetectionHandler.h"
+    
+    // Urls openers
+    header "PBMExternalURLOpeners.h"
+    header "PBMExternalURLOpenerBlock.h"
+    header "PBMURLOpenResultHandlerBlock.h"
+    header "PBMTrackingURLVisitors.h"
+    header "PBMTrackingURLVisitorBlock.h"
+    header "PBMExternalLinkHandler.h"
+    header "PBMURLOpenAttempterBlock.h"
+    header "PBMExternalURLOpenCallbacks.h"
+    header "PBMClickthroughBrowserOpener.h"
+    header "PBMDeepLinkPlusHelper.h"
+    header "PBMDeepLinkPlusHelper+PBMExternalLinkHandler.h"
+    
+    // ModalManager
+    header "PBMModalManager.h"
+    header "PBMModalState.h"
+    header "PBMModalViewControllerDelegate.h"
 }

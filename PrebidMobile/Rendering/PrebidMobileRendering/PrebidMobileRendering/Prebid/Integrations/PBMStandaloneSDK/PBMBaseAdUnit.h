@@ -6,8 +6,8 @@
 //
 
 #import "PBMDemandResponseInfo.h"
-#import "PBMNativeAd.h"
 
+//@class PBMNativeAd;
 @class NativeAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN

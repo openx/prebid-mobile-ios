@@ -25,7 +25,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
     private var nativeAdView: GADNativeAdView?
     
     private var adUnit: NativeAdUnit?
-    private var theNativeAd: PBMNativeAd?
+    private var theNativeAd: NativeAd?
     
     private var adLoader: GADAdLoader?
     
@@ -147,25 +147,25 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
 }
 
 extension PrebidGAMNativeAdController: PBMNativeAdTrackingDelegate {
-    func nativeAd(_ nativeAd: PBMNativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
+    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }
-    func nativeAdDidLogClick(_ nativeAd: PBMNativeAd) {
+    func nativeAdDidLogClick(_ nativeAd: NativeAd) {
         nativeAdDidClickButton.isEnabled = true
     }
 }
 
 extension PrebidGAMNativeAdController: PBMNativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: PBMNativeAd) -> UIViewController? {
+    func viewPresentationController(for nativeAd: NativeAd) -> UIViewController? {
         return rootController
     }
-    func nativeAdWillLeaveApplication(_ nativeAd: PBMNativeAd) {
+    func nativeAdWillLeaveApplication(_ nativeAd: NativeAd) {
         nativeAdWillLeaveAppButton.isEnabled = true
     }
-    func nativeAdWillPresentModal(_ nativeAd: PBMNativeAd) {
+    func nativeAdWillPresentModal(_ nativeAd: NativeAd) {
         nativeAdWillPresentModalButton.isEnabled = true
     }
-    func nativeAdDidDismissModal(_ nativeAd: PBMNativeAd) {
+    func nativeAdDidDismissModal(_ nativeAd: NativeAd) {
         nativeAdDidDismissModalButton.isEnabled = true
     }
 }

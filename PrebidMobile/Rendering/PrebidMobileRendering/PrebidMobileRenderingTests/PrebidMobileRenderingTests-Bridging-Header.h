@@ -205,9 +205,7 @@
 #import "PBMNativeAdMarkupLink.h"
 #import "PBMNativeAdMarkupTitle.h"
 #import "PBMNativeAdMarkupVideo.h"
-// NativeAds (Response facade)
-#import "PBMNativeAd+FromMarkup.h"
-#import "PBMNativeAd+Testing.h"
+
 // NativeAds (Event Tracking)
 #import "PBMNativeAdImpressionReporting.h"
 #import "PBMNativeClickableViewRegistry.h"

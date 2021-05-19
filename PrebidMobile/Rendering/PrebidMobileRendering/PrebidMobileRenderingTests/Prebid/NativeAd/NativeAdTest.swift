@@ -9,9 +9,9 @@ import XCTest
 
 @testable import PrebidMobileRendering
 
-class PBMNativeAdTest: XCTestCase {
+class NativeAdTest: XCTestCase {
     func testInitFromMarkup() {
-        let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkup, PBMNativeAd>, Error)] = []
+        let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkup, NativeAd>, Error)] = []
 
         let twoStrings = ["first", "second"]
         
@@ -39,7 +39,7 @@ class PBMNativeAdTest: XCTestCase {
         }
         
         func testFilterMethods() {
-            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, PBMNativeAd>] = [
+            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, NativeAd>] = [
                 Decoding.DefaultValuePropertyCheck(value: "0.314",
                                                    writeKeyPath: \.version,
                                                    readKeyPath: \.version,
@@ -69,7 +69,7 @@ class PBMNativeAdTest: XCTestCase {
             ]
             
             let nativeAdTester = Decoding.Tester(template: PBMNativeAdMarkup(link: .init(url: "")),
-                                                 generator: PBMNativeAd.init(nativeAdMarkup:),
+                                                 generator: NativeAd.init(nativeAdMarkup:),
                                                  requiredPropertyChecks: requiredProperties,
                                                  optionalPropertyChecks: optionalAdProperties)
             
@@ -78,7 +78,7 @@ class PBMNativeAdTest: XCTestCase {
         testFilterMethods()
         
         func testBaseArrayMethods() {
-            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, PBMNativeAd>] = [
+            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, NativeAd>] = [
                 Decoding.DefaultValuePropertyCheck(value: "0.314",
                                                    writeKeyPath: \.version,
                                                    readKeyPath: \.version,
@@ -103,7 +103,7 @@ class PBMNativeAdTest: XCTestCase {
             ]
             
             let nativeAdTester = Decoding.Tester(template: PBMNativeAdMarkup(link: .init(url: "")),
-                                                 generator: PBMNativeAd.init(nativeAdMarkup:),
+                                                 generator: NativeAd.init(nativeAdMarkup:),
                                                  requiredPropertyChecks: requiredProperties,
                                                  optionalPropertyChecks: optionalAdProperties)
             
@@ -112,7 +112,7 @@ class PBMNativeAdTest: XCTestCase {
         testBaseArrayMethods()
         
         func testConvenienceGetters() {
-            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, PBMNativeAd>] = [
+            let optionalAdProperties: [Decoding.BaseOptionalCheck<PBMNativeAdMarkup, NativeAd>] = [
                 Decoding.DefaultValuePropertyCheck(value: "0.314",
                                                    writeKeyPath: \.version,
                                                    readKeyPath: \.version,
@@ -149,7 +149,7 @@ class PBMNativeAdTest: XCTestCase {
             ]
             
             let nativeAdTester = Decoding.Tester(template: PBMNativeAdMarkup(link: .init(url: "")),
-                                                 generator: PBMNativeAd.init(nativeAdMarkup:),
+                                                 generator: NativeAd.init(nativeAdMarkup:),
                                                  requiredPropertyChecks: requiredProperties,
                                                  optionalPropertyChecks: optionalAdProperties)
             
@@ -159,15 +159,15 @@ class PBMNativeAdTest: XCTestCase {
     }
     
     func testIsEqual() {
-        XCTAssertNotEqual(PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))), NSObject())
-        XCTAssertEqual(PBMNativeAd(nativeAdMarkup: .init(link: .init())),
-                       PBMNativeAd(nativeAdMarkup: .init(link: .init())))
-        XCTAssertEqual(PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))),
-                       PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))))
-        XCTAssertEqual(PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))),
-                       PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))))
-        XCTAssertNotEqual(PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))),
-                          PBMNativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))))
+        XCTAssertNotEqual(NativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))), NSObject())
+        XCTAssertEqual(NativeAd(nativeAdMarkup: .init(link: .init())),
+                       NativeAd(nativeAdMarkup: .init(link: .init())))
+        XCTAssertEqual(NativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))),
+                       NativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))))
+        XCTAssertEqual(NativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))),
+                       NativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))))
+        XCTAssertNotEqual(NativeAd(nativeAdMarkup: .init(link: .init(url: "v1"))),
+                          NativeAd(nativeAdMarkup: .init(link: .init(url: "w2"))))
     }
     
     func testMeassurementSession() {
@@ -208,13 +208,13 @@ class PBMNativeAdTest: XCTestCase {
                                                            method: .JS,
                                                            url: .init(""))]
         
-        var nativeAd: PBMNativeAd? = PBMNativeAd(nativeAdMarkup: nativeMarkup,
+        var nativeAd: NativeAd? = NativeAd(nativeAdMarkup: nativeMarkup,
                                                  application: application,
                                                  measurementWrapper: measurement,
                                                  serverConnection: connection,
                                                  sdkConfiguration: sdkConfiguration)
         
-        nativeAd?.register(UIView(), clickableViews: nil)
+        nativeAd?.registerView(UIView(), clickableViews: nil)
         
         wait(for: measurementExpectations, timeout: 5, enforceOrder: true)
         
@@ -244,13 +244,13 @@ class PBMNativeAdTest: XCTestCase {
         
         //Without an OMID event tracker a session should not be created
         let nativeMarkup = PBMNativeAdMarkup(link: .init(url: ""))
-        let nativeAd = PBMNativeAd(nativeAdMarkup: nativeMarkup,
+        let nativeAd = NativeAd(nativeAdMarkup: nativeMarkup,
                                    application: application,
                                    measurementWrapper: measurement,
                                    serverConnection: connection,
                                    sdkConfiguration: sdkConfiguration)
         
-        nativeAd.register(UIView(), clickableViews: nil)
+        nativeAd.registerView(UIView(), clickableViews: nil)
         
         wait(for: [expectationInitializeSession], timeout: 2);
     }

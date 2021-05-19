@@ -84,14 +84,15 @@ public class MoPubUtils {
                                      targetingInfo: [String : String],
                                      extraObject:Any?,
                                      forKey:String ) -> Bool {
-        guard MoPubUtils.isCorrectAdObject(adObject),
-              let extras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any],
-              let adKeywords = adObject.value(forKey: "keywords") as? String else {
+        guard MoPubUtils.isCorrectAdObject(adObject) else {
             return false
         }
         
+        let extras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any]
+        let adKeywords = (adObject.value(forKey: "keywords") as? String) ?? ""
+        
         //Pass our objects via the localExtra property
-        var mutableExtras = extras
+        var mutableExtras = extras ?? [:]
         mutableExtras[forKey] = extraObject
         mutableExtras[PBMMoPubConfigIdKey] = configID
         

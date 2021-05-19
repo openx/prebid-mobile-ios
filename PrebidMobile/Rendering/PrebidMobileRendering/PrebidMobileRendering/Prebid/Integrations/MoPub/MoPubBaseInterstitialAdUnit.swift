@@ -68,7 +68,7 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
             return
         }
         
-        if !PBMMoPubUtils.isCorrectAdObject(adObject) {
+        if !MoPubUtils.isCorrectAdObject(adObject) {
             completion?(.wrongArguments)
             return
         }
@@ -76,9 +76,7 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
         self.adObject = adObject
         self.completion = completion
         
-        if let moPubObject = self.adObject as? PBMMoPubAdObjectProtocol {
-            PBMMoPubUtils.cleanUpAdObject(moPubObject)
-        }
+        MoPubUtils.cleanUpAdObject(adObject)
         
         bidRequester = PBMBidRequester(connection: connection,
                                        sdkConfiguration: sdkConfiguration,
@@ -99,14 +97,15 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
     private func handleBidResponse(_ bidResponse: PBMBidResponse) {
         var demandResult = PBMFetchDemandResult.demandNoBids
         
-        if let winningBid = bidResponse.winningBid,
+        if let adObject = self.adObject,
+           let winningBid = bidResponse.winningBid,
            let targetingInfo = winningBid.targetingInfo {
             
-            if PBMMoPubUtils.setUpAdObject(adObject,
-                                           withConfigId: configId,
-                                           targetingInfo: targetingInfo,
-                                           extraObject: winningBid,
-                                           forKey: PBMMoPubAdUnitBidKey) {
+            if MoPubUtils.setUpAdObject(adObject,
+                                        configID: configId,
+                                        targetingInfo: targetingInfo,
+                                        extraObject: winningBid,
+                                        forKey: PBMMoPubAdUnitBidKey) {
                 demandResult = .ok
             } else {
                 demandResult = .wrongArguments

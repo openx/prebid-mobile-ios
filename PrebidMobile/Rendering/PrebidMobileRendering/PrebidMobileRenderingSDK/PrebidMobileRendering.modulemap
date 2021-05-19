@@ -102,9 +102,6 @@ framework module PrebidMobileRendering {
     header "PBMLocalResponseInfoCache.h"
     header "PBMNativeAdDetectionListener.h"
     
-    // PBM Integration MoPub
-    header "PBMMoPubUtils.h"
-    
     // ===
     //Temp. for converting
     header "PBMNativeAdMediaHooks.h"

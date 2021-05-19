@@ -26,20 +26,21 @@ public class PrebidMoPubAdaptersUtils : NSObject {
     // MARK: - Public Methods
     
     public func prepareAdObject(_ adObject: NSObject) {
-        guard PBMMoPubUtils.isCorrectAdObject(adObject),
-              let mopubAdObject = adObject as? PBMMoPubAdObjectProtocol,
-              let demandResponseInfo = mopubAdObject.localExtras?[PBMMoPubAdNativeResponseKey] as? PBMDemandResponseInfo else {
+        guard MoPubUtils.isCorrectAdObject(adObject),
+              let localExtras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any],
+              let demandResponseInfo = localExtras[PBMMoPubAdNativeResponseKey] as? PBMDemandResponseInfo else {
             return
         }
         
         let localCacheID = localCache.store(demandResponseInfo)
         let cacheKeyword = "\(Constants.targetingKeyLocalCacheID):\(localCacheID)"
         
-        if let kyewords = mopubAdObject.keywords,
+        if let keywords = adObject.value(forKey: "keywords") as? String,
            !cacheKeyword.isEmpty {
-            mopubAdObject.keywords = "\(kyewords),\(cacheKeyword)"
+            let newKeywords =  keywords + "," + cacheKeyword
+            adObject.setValue(newKeywords, forKey: "keywords")
         } else {
-            mopubAdObject.keywords = cacheKeyword
+            adObject.setValue(cacheKeyword, forKey: "keywords")
         }
     }
     

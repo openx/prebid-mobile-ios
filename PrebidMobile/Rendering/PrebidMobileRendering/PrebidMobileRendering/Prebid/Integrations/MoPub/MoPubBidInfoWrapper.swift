@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MoPubBidInfoWrapper : NSObject, PBMMoPubAdObjectProtocol {
+public class MoPubBidInfoWrapper : NSObject {
     public var keywords: String?
     public var localExtras: [AnyHashable : Any]?
 }

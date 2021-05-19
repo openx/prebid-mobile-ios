@@ -7,9 +7,9 @@
 
 import Foundation
 
-let PBMMoPubAdUnitBidKey        = "PBM_BID"
-let PBMMoPubConfigIdKey         = "PBM_CONFIG_ID"
-let PBMMoPubAdNativeResponseKey = "PBM_NATIVE_RESPONSE"
+public let PBMMoPubAdUnitBidKey        = "PBM_BID"
+public let PBMMoPubConfigIdKey         = "PBM_CONFIG_ID"
+public let PBMMoPubAdNativeResponseKey = "PBM_NATIVE_RESPONSE"
 
 fileprivate let keywordsSeparator = ","
 fileprivate let HBKeywordPrefix = "hb_"
@@ -31,8 +31,8 @@ public class MoPubUtils {
      Finds an native ad object in the given extra dictionary.
      Calls the provided callback with the finded native ad object or error
      */
-    public static func findNativeAd(extras: [AnyHashable : Any],
-                                    completion: @escaping PBMFindNativeAdHandler) {
+    public static func findNativeAd(_ extras: [AnyHashable : Any],
+                                    completion: @escaping (PBMNativeAd?, Error?) -> Void) {
     
         guard let response = extras[PBMMoPubAdNativeResponseKey] as? PBMDemandResponseInfo else {
             let error = PBMError.error(description: "The Response object is absent in the extras")
@@ -55,7 +55,7 @@ public class MoPubUtils {
      Removes an bid info from ad object's localExtra
      and prebid-specific keywords from ad object's keywords
      */
-    public static func cleanUpAdObject(adObject: NSObject) {
+    public static func cleanUpAdObject(_ adObject: NSObject) {
         guard MoPubUtils.isCorrectAdObject(adObject),
               let adExtras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any],
               let adKeywords = adObject.value(forKey: "keywords") as? String else {

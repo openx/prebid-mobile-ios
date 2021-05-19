@@ -163,9 +163,7 @@ public class MoPubBannerAdUnit : NSObject {
         lastCompletion = nil
         adRequestError = nil
         
-        if let moPubObject = self.adObject as? PBMMoPubAdObjectProtocol {
-            PBMMoPubUtils.cleanUpAdObject(moPubObject)
-        }
+        MoPubUtils.cleanUpAdObject(adObject)
         
         bidRequester = PBMBidRequester(connection: connection,
                                        sdkConfiguration: sdkConfiguration,

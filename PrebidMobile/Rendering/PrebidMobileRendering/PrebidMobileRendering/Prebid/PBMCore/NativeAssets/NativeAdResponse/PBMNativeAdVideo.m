@@ -12,8 +12,6 @@
 #import "PBMJsonCodable.h"
 
 // Fix Build
-#import "PBMMoPubUtils.h"
-
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #import "PBMNativeAdVideo.h"

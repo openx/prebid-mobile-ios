@@ -35,7 +35,7 @@ public class MoPubNativeAdUnit : NSObject {
     public func fetchDemand(with adObject: NSObject,
                             completion: ((PBMFetchDemandResult)->Void)?) {
         
-        if !PBMMoPubUtils.isCorrectAdObject(adObject) {
+        if !MoPubUtils.isCorrectAdObject(adObject) {
             completion?(.wrongArguments)
             return
         }
@@ -43,9 +43,7 @@ public class MoPubNativeAdUnit : NSObject {
         self.completion = completion
         self.adObject = adObject
         
-        if let moPubObject = self.adObject as? PBMMoPubAdObjectProtocol {
-            PBMMoPubUtils.cleanUpAdObject(moPubObject)
-        }
+        MoPubUtils.cleanUpAdObject(adObject)
         
         nativeAdUnit.fetchDemand { [weak self] fetchDemandInfo in
             guard let self = self else {
@@ -59,11 +57,11 @@ public class MoPubNativeAdUnit : NSObject {
             
             var fetchDemandResult: PBMFetchDemandResult = .wrongArguments
             
-            if PBMMoPubUtils.setUpAdObject(self.adObject,
-                                           withConfigId: self.configID,
-                                           targetingInfo: fetchDemandInfo.bid?.targetingInfo ?? [:],
-                                           extraObject: fetchDemandInfo,
-                                           forKey: PBMMoPubAdNativeResponseKey) {
+            if MoPubUtils.setUpAdObject(adObject,
+                                        configID: self.configID,
+                                        targetingInfo: fetchDemandInfo.bid?.targetingInfo ?? [:],
+                                        extraObject: fetchDemandInfo,
+                                        forKey: PBMMoPubAdNativeResponseKey) {
                 fetchDemandResult = .ok
             }
             

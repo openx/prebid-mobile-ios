@@ -26,7 +26,7 @@ public class PrebidMoPubNativeCustomEvent : MPNativeCustomEvent {
             return
         }
         
-        PBMMoPubUtils.findNativeAd(localExtras) { [weak self] (ad, error) in
+        MoPubUtils.findNativeAd(localExtras) { [weak self] (ad, error) in
             if let nativeAd = ad {
                 self?.nativeAdDidLoad(nativeAd)
             } else {

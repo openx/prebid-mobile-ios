@@ -145,7 +145,7 @@ public class MoPubBannerAdUnit : NSObject {
             return
         }
         
-        guard PBMMoPubUtils.isCorrectAdObject(adObject) else {
+        guard MoPubUtils.isCorrectAdObject(adObject) else {
             completion?(.wrongArguments)
             return;
         }
@@ -205,12 +205,13 @@ public class MoPubBannerAdUnit : NSObject {
     private func handlePrebidResponse(response: PBMBidResponse) {
         var demandResult = PBMFetchDemandResult.demandNoBids
         
-        if  let winningBid = response.winningBid {
-            if PBMMoPubUtils.setUpAdObject(adObject,
-                                           withConfigId: configID,
-                                           targetingInfo: winningBid.targetingInfo ?? [:],
-                                           extraObject: winningBid,
-                                           forKey: PBMMoPubAdUnitBidKey) {
+        if  let adObject = self.adObject,
+            let winningBid = response.winningBid {
+            if MoPubUtils.setUpAdObject(adObject,
+                                        configID: configID,
+                                        targetingInfo: winningBid.targetingInfo ?? [:],
+                                        extraObject: winningBid,
+                                        forKey: PBMMoPubAdUnitBidKey) {
                 demandResult = .ok
             } else {
                 demandResult = .wrongArguments

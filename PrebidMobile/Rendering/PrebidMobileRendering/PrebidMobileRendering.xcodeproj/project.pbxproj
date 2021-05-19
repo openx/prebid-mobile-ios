@@ -724,6 +724,7 @@
 		5BBCF72E2653E1B7006A0356 /* MoPubBidInfoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */; };
 		5BBCF7302653E233006A0356 /* MoPubRewardedAdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF72F2653E233006A0356 /* MoPubRewardedAdUnit.swift */; };
 		5BBCF7322653EDAE006A0356 /* MoPubBaseInterstitialAdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF7312653EDAE006A0356 /* MoPubBaseInterstitialAdUnit.swift */; };
+		5BBCF7342654E92C006A0356 /* MoPubNativeAdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF7332654E92C006A0356 /* MoPubNativeAdUnit.swift */; };
 		5BBD8DCC2279928D00999BC4 /* MockOXMVideoCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8DCB2279928D00999BC4 /* MockOXMVideoCreative.swift */; };
 		5BE0A33024EA7B7700028EBA /* BasicParameterBuilderPureTargetingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A32F24EA7B7600028EBA /* BasicParameterBuilderPureTargetingTest.swift */; };
 		5BF8E67526398F5900341EE4 /* PBMScheduledTimerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E2FF1625B071070003C0EA /* PBMScheduledTimerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1567,6 +1568,7 @@
 		5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubBidInfoWrapper.swift; sourceTree = "<group>"; };
 		5BBCF72F2653E233006A0356 /* MoPubRewardedAdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubRewardedAdUnit.swift; sourceTree = "<group>"; };
 		5BBCF7312653EDAE006A0356 /* MoPubBaseInterstitialAdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubBaseInterstitialAdUnit.swift; sourceTree = "<group>"; };
+		5BBCF7332654E92C006A0356 /* MoPubNativeAdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubNativeAdUnit.swift; sourceTree = "<group>"; };
 		5BBD8DCB2279928D00999BC4 /* MockOXMVideoCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOXMVideoCreative.swift; sourceTree = "<group>"; };
 		5BC626D1212D75B600B6E9D0 /* PBMAdLoadManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMAdLoadManagerBase.m; sourceTree = "<group>"; };
 		5BC626D2212D75B600B6E9D0 /* PBMAdLoadManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadManagerDelegate.h; sourceTree = "<group>"; };
@@ -2270,6 +2272,7 @@
 				5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */,
 				5BBCF72F2653E233006A0356 /* MoPubRewardedAdUnit.swift */,
 				5BBCF7312653EDAE006A0356 /* MoPubBaseInterstitialAdUnit.swift */,
+				5BBCF7332654E92C006A0356 /* MoPubNativeAdUnit.swift */,
 			);
 			path = MoPub;
 			sourceTree = "<group>";
@@ -3981,6 +3984,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBCF7342654E92C006A0356 /* MoPubNativeAdUnit.swift in Sources */,
 				5BBCF7302653E233006A0356 /* MoPubRewardedAdUnit.swift in Sources */,
 				34D70F6E24E580620048CC78 /* PBMDeepLinkPlusHelper.m in Sources */,
 				34E2FE3C25AF29BA0003C0EA /* PBMViewabilityEventDetector.m in Sources */,

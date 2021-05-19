@@ -8,12 +8,21 @@
 @import Foundation;
 
 #import "PBMFetchDemandResult.h"
+#import "PBMNativeAdUnit.h"
+#import "PBMMoPubUtils.h"
 
 @class PBMNativeAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMMoPubNativeAdUnit : NSObject
+
+//This is an MPNativeAdRequestTargeting object with properties keywords and localExtra
+//But we can't use it indirectly as don't want to have additional MoPub dependency in the SDK core
+@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> adObject;
+@property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
+
+@property (nonatomic, strong) PBMNativeAdUnit *nativeAdUnit;
 
 @property (nonatomic, copy, readonly) NSString *configId;
 @property (atomic, copy, readonly) PBMNativeAdConfiguration *nativeAdConfig;

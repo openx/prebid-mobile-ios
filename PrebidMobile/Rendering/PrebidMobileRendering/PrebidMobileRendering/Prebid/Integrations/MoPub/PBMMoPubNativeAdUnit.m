@@ -12,17 +12,6 @@
 
 #import "PBMMacros.h"
 
-@interface PBMMoPubNativeAdUnit ()
-
-//This is an MPNativeAdRequestTargeting object with properties keywords and localExtra
-//But we can't use it inderectly as don't want to have additional MoPub dependency in the SDK core
-@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> adObject;
-@property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
-
-@property (nonatomic, strong) PBMNativeAdUnit *nativeAdUnit;
-
-@end
-
 @implementation PBMMoPubNativeAdUnit
 
 // MARK: + (public convenience init)

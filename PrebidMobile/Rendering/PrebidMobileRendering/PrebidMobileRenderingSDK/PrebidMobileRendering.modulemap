@@ -103,7 +103,6 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdDetectionListener.h"
     
     // PBM Integration MoPub
-    header "PBMMoPubBannerAdUnit.h"
     header "PBMMoPubUtils.h"
     
     // ===

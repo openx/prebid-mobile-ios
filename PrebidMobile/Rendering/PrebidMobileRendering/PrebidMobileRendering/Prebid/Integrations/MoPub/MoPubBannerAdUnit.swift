@@ -28,43 +28,61 @@ public class MoPubBannerAdUnit : NSObject {
     
     // MARK: - Computed properties
 
-    var configID: String {
+    public var configID: String {
         adUnitConfig.configId;
     }
 
-    var adFormat: PBMAdFormat {
+    public var adFormat: PBMAdFormat {
         get { adUnitConfig.adFormat }
         set { adUnitConfig.adFormat = newValue }
     }
 
-    var adPosition: PBMAdPosition {
+    public var adPosition: PBMAdPosition {
         get { adUnitConfig.adPosition }
         set { adUnitConfig.adPosition = newValue }
     }
     
-    var videoPlacementType: PBMVideoPlacementType {
+    public var videoPlacementType: PBMVideoPlacementType {
         get { adUnitConfig.videoPlacementType }
         set { adUnitConfig.videoPlacementType = newValue }
     }
 
-    var nativeAdConfig: PBMNativeAdConfiguration? {
+    public var nativeAdConfig: PBMNativeAdConfiguration? {
         get { adUnitConfig.nativeAdConfig }
         set { adUnitConfig.nativeAdConfig = newValue }
     }
 
-    var refreshInterval: TimeInterval {
+    public var refreshInterval: TimeInterval {
         get { adUnitConfig.refreshInterval }
         set { adUnitConfig.refreshInterval = newValue }
     }
 
-    var additionalSizes: [NSValue]? {
+    public var additionalSizes: [NSValue]? {
         get { adUnitConfig.additionalSizes }
         set { adUnitConfig.additionalSizes = newValue }
     }
     
+    // MARK: - Context Data
+
+    public func addContextData(_ data: String, forKey key: String) {
+        adUnitConfig.addContextData(data, forKey: key)
+    }
+    
+    public func updateContextData(_ data: Set<String>, forKey key: String) {
+        adUnitConfig.updateContextData(data, forKey: key)
+    }
+    
+    public func removeContextDate(forKey key: String) {
+        adUnitConfig.removeContextData(forKey: key)
+    }
+    
+    public func clearContextData() {
+        adUnitConfig.clearContextData()
+    }
+    
     // MARK: - Public Methods
     
-    init(configID: String, size: CGSize) {
+    public init(configID: String, size: CGSize) {
         adUnitConfig = PBMAdUnitConfig(configId: configID, size: size)
         
         super.init()
@@ -102,6 +120,17 @@ public class MoPubBannerAdUnit : NSObject {
                     sdkConfiguration: PBMSDKConfiguration.singleton,
                     targeting: PBMTargeting.shared(),
                     completion: completion)
+    }
+    
+    public func stopRefresh() {
+        isRefreshStopped = true
+    }
+
+    public func adObjectDidFailToLoadAd(adObject: NSObject,
+                                        with error: Error) {
+        if adObject === self.adObject || adObject === self.lastAdObject {
+            self.adRequestError = error;
+        }
     }
 
     // MARK: Private functions

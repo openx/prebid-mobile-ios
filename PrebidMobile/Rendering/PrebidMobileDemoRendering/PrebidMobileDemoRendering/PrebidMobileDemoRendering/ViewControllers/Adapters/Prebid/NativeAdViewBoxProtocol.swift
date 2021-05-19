@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NativeAdViewBoxProtocol: class {
+protocol NativeAdViewBoxProtocol: AnyObject {
     func setUpDummyValues()
     func embedIntoView(_ view: UIView)
     func renderNativeAd(_ nativeAd: NativeAd)

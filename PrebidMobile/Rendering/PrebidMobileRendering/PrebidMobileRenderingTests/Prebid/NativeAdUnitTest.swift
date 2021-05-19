@@ -44,7 +44,7 @@ class NativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
     func testGetNativeAd() {
         let someLinkUrl = "some link URL"
         
-        let testBlocks: [(adMarkup: String?, expectedNativeAd: PBMNativeAd?)] = [
+        let testBlocks: [(adMarkup: String?, expectedNativeAd: NativeAd?)] = [
             nil,
             "not a real native ad",
             """
@@ -52,7 +52,7 @@ class NativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
 """,
         ].map { adString in
             if let adString = adString, let nativeAdMarkup = try? PBMNativeAdMarkup(jsonString: adString) {
-                return (adString, PBMNativeAd(nativeAdMarkup: nativeAdMarkup))
+                return (adString, NativeAd(nativeAdMarkup: nativeAdMarkup))
             } else {
                 return (adString, nil)
             }
@@ -120,7 +120,7 @@ class NativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         let expectedAdMarkup = """
 {"link": {"url": "\(someLinkUrl)"}}
 """
-        let expectedNativeAd = PBMNativeAd(nativeAdMarkup: try! PBMNativeAdMarkup(jsonString: expectedAdMarkup))
+        let expectedNativeAd = NativeAd(nativeAdMarkup: try! PBMNativeAdMarkup(jsonString: expectedAdMarkup))
         
         let configID = "the-config-ID"
         let bidPrice = 0.85

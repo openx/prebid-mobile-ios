@@ -14,11 +14,46 @@
 #import "PBMVideoPlacementType.h"
 #import "PBMAdUnitConfig.h"
 
+#import "UIView+PBMExtensions.h"
+
+#import "PBMMoPubBannerAdUnit.h"
+
+#import "PBMAdUnitConfig+Internal.h"
+#import "PBMBid.h"
+#import "PBMBidResponse.h"
+#import "PBMBidRequester.h"
+#import "PBMBidResponse.h"
+#import "PBMBid.h"
+#import "PBMError.h"
+#import "PBMMoPubUtils.h"
+#import "PBMSDKConfiguration.h"
+#import "PBMTargeting.h"
+#import "PBMServerConnection.h"
+#import "PBMAutoRefreshManager.h"
+
+
 @class PBMNativeAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMMoPubBannerAdUnit : NSObject
+
+@property (nonatomic, strong, nullable) PBMBidRequester *bidRequester;
+//This is an MPAdView object
+//But we can't use it inderectly as don't want to have additional MoPub dependency in the SDK core
+@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> adObject;
+@property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
+
+@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> lastAdObject;
+@property (nonatomic, copy, nullable) void (^lastCompletion)(PBMFetchDemandResult);
+
+@property (atomic, assign) BOOL isRefreshStopped;
+@property (nonatomic, strong, nonnull, readonly) PBMAutoRefreshManager *autoRefreshManager;
+
+@property (nonatomic, copy, nullable) NSError *adRequestError;
+
+
+// Public
 
 @property (nonatomic, copy, readonly) NSString *configId;
 @property (nonatomic, assign) NSTimeInterval refreshInterval;

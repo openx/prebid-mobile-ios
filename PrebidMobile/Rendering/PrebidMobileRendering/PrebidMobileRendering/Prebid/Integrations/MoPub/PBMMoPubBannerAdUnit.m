@@ -23,23 +23,6 @@
 
 #import "PBMMacros.h"
 
-@interface PBMMoPubBannerAdUnit ()
-
-@property (nonatomic, strong, nullable) PBMBidRequester *bidRequester;
-//This is an MPAdView object
-//But we can't use it inderectly as don't want to have additional MoPub dependency in the SDK core
-@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> adObject;
-@property (nonatomic, copy, nullable) void (^completion)(PBMFetchDemandResult);
-
-@property (nonatomic, weak, nullable) id<PBMMoPubAdObjectProtocol> lastAdObject;
-@property (nonatomic, copy, nullable) void (^lastCompletion)(PBMFetchDemandResult);
-
-@property (atomic, assign) BOOL isRefreshStopped;
-@property (nonatomic, strong, nonnull, readonly) PBMAutoRefreshManager *autoRefreshManager;
-
-@property (nonatomic, copy, nullable) NSError *adRequestError;
-
-@end
 
 
 @implementation PBMMoPubBannerAdUnit
@@ -57,7 +40,7 @@
     _autoRefreshManager = [[PBMAutoRefreshManager alloc] initWithPrefetchTime:PBMAdPrefetchTime
                                                                  lockingQueue:nil
                                                                  lockProvider:nil
-                                                            refreshDelayBlock:^NSNumber * _Nullable{
+                                                            refreshDelayBlock:^NSNumber * _Nullable {
         @strongify(self);
         return @(self.adUnitConfig.refreshInterval);
     } mayRefreshNowBlock:^BOOL{
@@ -132,6 +115,7 @@
 }
 
 // MARK: - Public Methods
+
 - (void)fetchDemandWithObject:(NSObject *)adObject completion:(void (^)(PBMFetchDemandResult))completion {
     self.isRefreshStopped = NO;
     [self fetchDemandWithObject:adObject

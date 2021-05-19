@@ -180,7 +180,7 @@ class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCom
 }
 
 extension PrebidMoPubNativeAdFeedController: PBMNativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: PBMNativeAd) -> UIViewController? {
+    func viewPresentationController(for nativeAd: NativeAd) -> UIViewController? {
         return rootTableViewController
     }
 }

@@ -9,15 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class PBMNativeAd;
+@class NativeAd;
 
 @interface PrebidMoPubNativeAdAdapter : NSObject <MPNativeAdAdapter>
 
 @property (nonatomic, weak) id<MPNativeAdAdapterDelegate> delegate;
 
-@property (nonatomic, strong, readonly) PBMNativeAd *nativeAd;
+@property (nonatomic, strong, readonly) NativeAd *nativeAd;
 
-- (instancetype)initWithPBMNativeAd:(PBMNativeAd *)nativeAd;
+- (instancetype)initWithPBMNativeAd:(NativeAd *)nativeAd;
 
 @end
 

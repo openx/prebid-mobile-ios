@@ -6,7 +6,7 @@
 //
 #import <MoPub.h>
 
-#import <PrebidMobileRendering/PBMNativeAd.h>
+@import PrebidMobileRendering;
 
 #import "PrebidMoPubNativeAdRenderer.h"
 
@@ -87,7 +87,7 @@
         UILabel * const sponsoredLabel = self.adView.nativeSponsoredByCompanyTextLabel;
         sponsoredLabel.text = adapter.properties[kAdSponsoredByCompanyKey];
         
-        NativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject;
+        NativeAdData *brandAsset = [self.adapter.nativeAd dataObjectsOf:PBMDataAssetType_Sponsored].firstObject;
         [self.adapter.nativeAd registerClickView:sponsoredLabel nativeAdAsset:brandAsset];
     }
     

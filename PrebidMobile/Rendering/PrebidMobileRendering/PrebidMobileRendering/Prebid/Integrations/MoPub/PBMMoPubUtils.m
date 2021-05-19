@@ -124,7 +124,7 @@ static NSString * HBKeywordPrefix = @"hb_";
         return;
     }
     
-    [response getNativeAdWithCompletion:^(PBMNativeAd * nativeAd) {
+    [response getNativeAdWithCompletion:^(NativeAd * nativeAd) {
         if (nativeAd) {
             callback(nativeAd, nil);
         } else {

@@ -7,7 +7,7 @@
 
 #import <MoPub.h>
 
-#import <PrebidMobileRendering/PBMNativeAd.h>
+@import PrebidMobileRendering;
 
 #import "PrebidMoPubNativeAdAdapter.h"
 
@@ -21,7 +21,7 @@
 
 @synthesize properties = _properties;
 
-- (instancetype)initWithPBMNativeAd:(PBMNativeAd *)nativeAd {
+- (instancetype)initWithPBMNativeAd:(NativeAd *)nativeAd {
     if (!(self = [super init])) {
         return nil;
     }
@@ -34,7 +34,8 @@
     
     properties[kAdTitleKey] = nativeAd.title;
     properties[kAdTextKey] = nativeAd.text;
-    NSString * const sponsored = [nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject.value;
+//    NSString * const sponsored = [nativeAd dataObjectsOfType:PBMDataAssetType_Sponsored].firstObject.value;
+    NSString * const sponsored = [nativeAd dataObjectsOf:PBMDataAssetType_Sponsored].firstObject.value;
     properties[kAdSponsoredByCompanyKey] = sponsored;
     properties[kAdCTATextKey] = nativeAd.callToAction;
     
@@ -48,7 +49,8 @@
         properties[kAdMainImageKey] = imageUrl;
     }
     
-    NSString * const ratingString = [nativeAd dataObjectsOfType:PBMDataAssetType_Rating].firstObject.value;
+//    NSString * const ratingString = [nativeAd dataObjectsOfType:PBMDataAssetType_Rating].firstObject.value;
+    NSString * const ratingString = [nativeAd dataObjectsOf:PBMDataAssetType_Sponsored].firstObject.value;
     if (ratingString) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -85,28 +87,28 @@
 
 #pragma mark - PBMNativeAdUIDelegate
 
-- (nullable UIViewController *)viewPresentationControllerForNativeAd:(nonnull PBMNativeAd *)nativeAd {
+- (nullable UIViewController *)viewPresentationControllerForNativeAd:(nonnull NativeAd *)nativeAd {
     return [self.delegate viewControllerForPresentingModalView];
 }
 
-- (void)nativeAdWillLeaveApplication:(PBMNativeAd *)nativeAd {
+- (void)nativeAdWillLeaveApplication:(NativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adWillLeaveApplicationForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdWillLeaveApplicationFromAdapter:self];
 }
 
-- (void)nativeAdWillPresentModal:(PBMNativeAd *)nativeAd {
+- (void)nativeAdWillPresentModal:(NativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adWillPresentModalForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdWillPresentModalForAdapter:self];
 }
 
-- (void)nativeAdDidDismissModal:(PBMNativeAd *)nativeAd {
+- (void)nativeAdDidDismissModal:(NativeAd *)nativeAd {
     MPLogEvent([MPLogEvent adDidDismissModalForAdapter:NSStringFromClass(self.class)]);
     [self.delegate nativeAdDidDismissModalForAdapter:self];
 }
 
 #pragma mark - PBMNativeAdTrackingDelegate
 
-- (void)nativeAdDidLogClick:(PBMNativeAd *)nativeAd {
+- (void)nativeAdDidLogClick:(NativeAd *)nativeAd {
     if ([self.delegate respondsToSelector:@selector(nativeAdDidClick:)]) {
         [self.delegate nativeAdDidClick:self];
         MPLogEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)]);
@@ -115,7 +117,7 @@
     }
 }
 
-- (void)nativeAd:(PBMNativeAd *)nativeAd didLogEvent:(PBMNativeEventType)nativeEvent {
+- (void)nativeAd:(NativeAd *)nativeAd didLogEvent:(PBMNativeEventType)nativeEvent {
     if (nativeEvent == PBMNativeEventType_Impression) {
         if ([self.delegate respondsToSelector:@selector(nativeAdWillLogImpression:)]) {
             MPLogEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)]);

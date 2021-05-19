@@ -6,7 +6,7 @@
 //
 #import <MoPub.h>
 
-#import <PrebidMobileRendering/PBMNativeAd.h>
+@import PrebidMobileRendering;
 
 #import "PrebidMoPubNativeAdAdapter.h"
 #import "PrebidMoPubNativeCustomEvent.h"
@@ -28,7 +28,7 @@
     }
     
     __weak __typeof__(self) weakSelf = self;
-    [PBMMoPubUtils findNativeAd:self.localExtras callback:^(PBMNativeAd *nativeAd, NSError *error){
+    [PBMMoPubUtils findNativeAd:self.localExtras callback:^(NativeAd *nativeAd, NSError *error){
         __typeof__(self) strongSelf = weakSelf;
         if (strongSelf == nil) {
             return;
@@ -45,7 +45,7 @@
 
 #pragma mark - Private methods
 
-- (void)nativeAdDidLoad:(PBMNativeAd *)nativeAd{
+- (void)nativeAdDidLoad:(NativeAd *)nativeAd{
     PrebidMoPubNativeAdAdapter *adAdapter = [[PrebidMoPubNativeAdAdapter alloc] initWithPBMNativeAd:nativeAd];
     
     MPNativeAd *interfaceAd = [[MPNativeAd alloc] initWithAdAdapter:adAdapter];

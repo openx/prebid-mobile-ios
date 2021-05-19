@@ -88,7 +88,7 @@ static NSTimeInterval const MOPUB_LOCAL_CACHE_EXPIRATION_INTERVAL = 3600;
         return;
     }
     
-    [cachedResponse getNativeAdWithCompletion:^(PBMNativeAd * prebidNativeAd) {
+    [cachedResponse getNativeAdWithCompletion:^(NativeAd * prebidNativeAd) {
         if (prebidNativeAd) {
             if (nativeAdDetectionListener.onNativeAdLoaded != nil) {
                 nativeAdDetectionListener.onNativeAdLoaded(prebidNativeAd);

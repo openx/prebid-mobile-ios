@@ -13,9 +13,9 @@ FOUNDATION_EXPORT NSString * const PBMMoPubAdUnitBidKey;
 FOUNDATION_EXPORT NSString * const PBMMoPubConfigIdKey;
 FOUNDATION_EXPORT NSString * const PBMMoPubAdNativeResponseKey;
 
-@class PBMNativeAd;
+@class NativeAd;
 
-typedef void(^PBMFindNativeAdHandler)(PBMNativeAd * _Nullable, NSError * _Nullable);
+typedef void(^PBMFindNativeAdHandler)(NativeAd * _Nullable, NSError * _Nullable);
 
 /**
  A protocol for ad objects supported by Prebid MoPub adunits

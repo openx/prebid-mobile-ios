@@ -14,7 +14,7 @@ class PBMMoPubNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
     let nativeAdConfig = PBMNativeAdConfiguration(assets: [NativeAssetTitle(length: 25)])
 
     func testWrongAdObject() {
-        let adUnit = PBMMoPubNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig)
+        let adUnit = MoPubNativeAdUnit(configID: configID, nativeAdConfiguration: nativeAdConfig)
         let badObjexpectation = expectation(description: "fetchDemand executed")
         
         adUnit.fetchDemand(with: NSString()) { result in
@@ -42,7 +42,7 @@ class PBMMoPubNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
             adMarkupStringHandler(markupString)
         }
         
-        let moPubAdUnit = PBMMoPubNativeAdUnit(nativeAdUnit: adUnit)
+        let moPubAdUnit = MoPubNativeAdUnit(nativeAdUnit: adUnit)
         
         let fetchExpectation = expectation(description: "fetchDemand executed")
         

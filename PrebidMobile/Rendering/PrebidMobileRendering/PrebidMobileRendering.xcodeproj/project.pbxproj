@@ -1672,7 +1672,7 @@
 		AC461878230C2BD100F4E0DE /* PBMMRAIDController+pbmTestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMRAIDController+pbmTestExtension.h"; sourceTree = "<group>"; };
 		AC4A5333244867DD00EFC08D /* PBMCreativeViewabilityTracker+pbmTestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMCreativeViewabilityTracker+pbmTestExtension.h"; sourceTree = "<group>"; };
 		AC4F248525DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubNativeAdUnitTest.swift; sourceTree = "<group>"; };
-		AC4F24C725DFBF620095C601 /* PBMMoPubNativeAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubNativeAdUnit+TestExtension.h"; sourceTree = "<group>"; };
+		AC4F24C725DFBF620095C601 /* MoPubNativeAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoPubNativeAdUnit+TestExtension.h"; sourceTree = "<group>"; };
 		AC616E072588E69A0010DBBB /* PBMFunctions+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PBMFunctions+Testing.h"; path = "Utilities/PBMFunctions+Testing.h"; sourceTree = "<group>"; };
 		AC616E082588E69A0010DBBB /* PBMFunctions+Testing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PBMFunctions+Testing.m"; path = "Utilities/PBMFunctions+Testing.m"; sourceTree = "<group>"; };
 		AC616E5E258A3CF30010DBBB /* PBMVideoPlacementType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMVideoPlacementType.h; path = AdTypes/AdView/PBMVideoPlacementType.h; sourceTree = "<group>"; };
@@ -1701,9 +1701,9 @@
 		ACCC8B3F2577835300F537E7 /* PBMNativeAdConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMNativeAdConfigurationTest.swift; sourceTree = "<group>"; };
 		ACD8FF752611E0EA0068E6D3 /* OMSDK_Openx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Openx.framework; path = Frameworks/OMSDK_Openx.framework; sourceTree = "<group>"; };
 		ACE08B1D2461AB1D00935BF9 /* PBMExposureChangeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBMExposureChangeDelegate.h; path = AdTypes/AdView/PBMExposureChangeDelegate.h; sourceTree = "<group>"; };
-		ACE31EBD24E2AC9F003E5508 /* PBMMoPubBannerAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubBannerAdUnit+TestExtension.h"; sourceTree = "<group>"; };
+		ACE31EBD24E2AC9F003E5508 /* MoPubBannerAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoPubBannerAdUnit+TestExtension.h"; sourceTree = "<group>"; };
 		ACE31EBF24E2B3F5003E5508 /* PBMMoPubInterstitialAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubInterstitialAdUnitTest.swift; sourceTree = "<group>"; };
-		ACE31EC124E2B8CA003E5508 /* PBMMoPubInterstitialAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMMoPubInterstitialAdUnit+TestExtension.h"; sourceTree = "<group>"; };
+		ACE31EC124E2B8CA003E5508 /* MoPubInterstitialAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoPubInterstitialAdUnit+TestExtension.h"; sourceTree = "<group>"; };
 		ACE5AFDE256BDCFE004121BA /* PBMNativeMarkupRequestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeMarkupRequestObject.h; sourceTree = "<group>"; };
 		ACE5AFDF256BDCFE004121BA /* PBMNativeMarkupRequestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMNativeMarkupRequestObject.m; sourceTree = "<group>"; };
 		ACE5AFEA256BDD5F004121BA /* PBMNativeMarkupRequestObject+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMNativeMarkupRequestObject+Internal.h"; sourceTree = "<group>"; };
@@ -1951,9 +1951,9 @@
 		34172705247FD00C00253F6F /* Prebid */ = {
 			isa = PBXGroup;
 			children = (
-				ACE31EBD24E2AC9F003E5508 /* PBMMoPubBannerAdUnit+TestExtension.h */,
-				ACE31EC124E2B8CA003E5508 /* PBMMoPubInterstitialAdUnit+TestExtension.h */,
-				AC4F24C725DFBF620095C601 /* PBMMoPubNativeAdUnit+TestExtension.h */,
+				ACE31EBD24E2AC9F003E5508 /* MoPubBannerAdUnit+TestExtension.h */,
+				ACE31EC124E2B8CA003E5508 /* MoPubInterstitialAdUnit+TestExtension.h */,
+				AC4F24C725DFBF620095C601 /* MoPubNativeAdUnit+TestExtension.h */,
 				34172708247FE41000253F6F /* PBMBidResponseTransformer+TestExtension.swift */,
 				34172703247FC26E00253F6F /* PBMSDKConfiguration+TestExtension.swift */,
 			);

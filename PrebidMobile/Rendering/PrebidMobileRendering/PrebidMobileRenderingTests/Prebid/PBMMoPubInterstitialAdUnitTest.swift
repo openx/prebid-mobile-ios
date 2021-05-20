@@ -39,7 +39,7 @@ class PBMMoPubInterstitialAdUnitTest: XCTestCase {
     }
     
     func testAdObjectSetUpCleanUp() {
-        @objc class MoPubAdObject: NSObject, PBMMoPubAdObjectProtocol  {
+        @objc class MoPubAdObject: NSObject  {
             var keywords: String?
             var localExtras: [AnyHashable : Any]?
         }

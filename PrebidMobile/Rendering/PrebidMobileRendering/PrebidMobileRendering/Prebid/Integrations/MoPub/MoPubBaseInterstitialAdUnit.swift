@@ -58,7 +58,8 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
     
     // MARK: - Internal Methods
     
-    private func fetchDemand(with adObject: NSObject,
+    // NOTE: do not use `private` to expose this method to unit tests
+    func fetchDemand(with adObject: NSObject,
                              connection: PBMServerConnectionProtocol,
                              sdkConfiguration: PBMSDKConfiguration,
                              targeting: PBMTargeting,
@@ -135,6 +136,8 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
     }
     
     private func markLoadingFinished() {
-        
+        adObject = nil
+        completion = nil
+        bidRequester = nil
     }
 }

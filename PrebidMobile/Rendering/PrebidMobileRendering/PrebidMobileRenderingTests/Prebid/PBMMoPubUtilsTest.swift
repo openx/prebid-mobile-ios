@@ -10,9 +10,8 @@ import XCTest
 @testable import PrebidMobileRendering
 
 @objc class MoPubAdObject: NSObject  {
-    var keywords: String?
-    
-    var localExtras: [AnyHashable : Any]?
+    @objc var keywords: String?
+    @objc var localExtras: [AnyHashable : Any]?
 }
 
 class PBMMoPubUtilsTest: XCTestCase, RawWinningBidFabricator {
@@ -68,11 +67,14 @@ class PBMMoPubUtilsTest: XCTestCase, RawWinningBidFabricator {
         let adObject = MoPubAdObject()
         adObject.keywords = initialKeyWords
         
-        MoPubUtils.setUpAdObject(adObject,
+        guard MoPubUtils.setUpAdObject(adObject,
                                  configID: configId,
                                  targetingInfo: targetingInfo,
                                  extraObject: bid,
-                                 forKey: PBMMoPubAdUnitBidKey)
+                                 forKey: PBMMoPubAdUnitBidKey) else {
+            XCTFail()
+            return
+        }
         
         let bidKeywords = adObject.keywords?.components(separatedBy: ",").sorted()
         

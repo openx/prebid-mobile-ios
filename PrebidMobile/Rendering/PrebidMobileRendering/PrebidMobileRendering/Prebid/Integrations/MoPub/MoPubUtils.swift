@@ -67,8 +67,8 @@ public class MoPubUtils {
         
         let HBKeys = [PBMMoPubAdUnitBidKey, PBMMoPubConfigIdKey, PBMMoPubAdNativeResponseKey]
         let extras = adExtras.filter {
-            guard let key = $0.key as? String else { return false }
-            return HBKeys.contains(key)
+            guard let key = $0.key as? String else { return true }
+            return !HBKeys.contains(key)
         }
         
         adObject.setValue(extras, forKey: "localExtras")
@@ -103,7 +103,7 @@ public class MoPubUtils {
             let bidKeywords = MoPubUtils.keywordsFrom(targetingInfo)
             let keywords = adKeywords.isEmpty ?
                 bidKeywords :
-                adKeywords + "," + adKeywords
+                adKeywords + "," + bidKeywords
             
             adObject.setValue(keywords, forKey: "keywords")
         }
@@ -122,7 +122,7 @@ public class MoPubUtils {
     private static func removeHBKeywordsFrom(_ keywords: String) -> String  {
         return keywords
             .components(separatedBy: keywordsSeparator)
-            .filter { $0.hasPrefix(HBKeywordPrefix) }
+            .filter { !$0.hasPrefix(HBKeywordPrefix) }
             .joined(separator: keywordsSeparator)
     }
 

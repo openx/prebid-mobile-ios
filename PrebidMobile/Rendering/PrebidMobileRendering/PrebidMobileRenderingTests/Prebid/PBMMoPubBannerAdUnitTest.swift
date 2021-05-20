@@ -58,8 +58,8 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
     
     func testAdObjectSetUpCleanUp() {
         @objc class MoPubAdObject: NSObject {
-            var keywords: String?
-            var localExtras: [AnyHashable : Any]?
+            @objc var keywords: String?
+            @objc var localExtras: [AnyHashable : Any]?
         }
         
         //a good response with a bid

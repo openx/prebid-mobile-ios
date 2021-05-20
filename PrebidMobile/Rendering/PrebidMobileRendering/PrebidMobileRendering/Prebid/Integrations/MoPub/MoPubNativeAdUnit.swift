@@ -25,11 +25,10 @@ public class MoPubNativeAdUnit : NSObject {
     
     // MARK: - Public Methods
     
-    public init(configID: String,
+    convenience public init(configID: String,
                 nativeAdConfiguration: PBMNativeAdConfiguration) {
-        
-        nativeAdUnit = PBMNativeAdUnit(configID: configID,
-                                       nativeAdConfiguration: nativeAdConfiguration)
+        self.init(nativeAdUnit: PBMNativeAdUnit(configID: configID,
+                                       nativeAdConfiguration: nativeAdConfiguration))
     }
     
     public func fetchDemand(with adObject: NSObject,
@@ -88,6 +87,11 @@ public class MoPubNativeAdUnit : NSObject {
     }
     
     // MARK: - Private Methods
+    
+    // NOTE: do not use `private` to expose this method to unit tests
+    init(nativeAdUnit: PBMNativeAdUnit) {
+        self.nativeAdUnit = nativeAdUnit
+    }
     
     private func completeWithResult(_ fetchDemandResult: PBMFetchDemandResult) {
         guard let completion = self.completion else {

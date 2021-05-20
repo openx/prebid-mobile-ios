@@ -47,7 +47,7 @@ class PBMMoPubNativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         let fetchExpectation = expectation(description: "fetchDemand executed")
         
         let targeting = MoPubAdObject()
-        moPubAdUnit?.fetchDemand(with: targeting) { result in
+        moPubAdUnit.fetchDemand(with: targeting) { result in
             XCTAssertEqual(result, .ok)
             PBMAssertEq(targeting.localExtras?[PBMMoPubAdNativeResponseKey] as? PBMDemandResponseInfo, adUnit.lastDemandResponseInfo)
             fetchExpectation.fulfill()

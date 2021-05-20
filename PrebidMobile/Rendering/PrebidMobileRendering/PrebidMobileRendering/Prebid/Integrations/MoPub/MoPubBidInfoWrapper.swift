@@ -8,6 +8,6 @@
 import Foundation
 
 public class MoPubBidInfoWrapper : NSObject {
-    public var keywords: String?
-    public var localExtras: [AnyHashable : Any]?
+    @objc public var keywords: String?
+    @objc public var localExtras: [AnyHashable : Any]?
 }

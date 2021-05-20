@@ -14,6 +14,13 @@ public let PBMMoPubAdNativeResponseKey = "PBM_NATIVE_RESPONSE"
 fileprivate let keywordsSeparator = ","
 fileprivate let HBKeywordPrefix = "hb_"
 
+fileprivate let MoPubSelector_localExtras = "localExtras"
+fileprivate let MoPubSelector_setLocalExtras = "setLocalExtras:"
+
+fileprivate let MoPubSelector_keywords  = "keywords"
+fileprivate let MoPubSelector_setKeywords  = "setKeywords:"
+
+
 public class MoPubUtils {
     /**
      Checks that a passed object confirms to the PBMMoPubAdObjectProtocol
@@ -21,10 +28,10 @@ public class MoPubUtils {
      */
     public static func isCorrectAdObject(_ adObject: NSObject) -> Bool {
         return
-            adObject.responds(to: Selector(("localExtras")))        &&
-            adObject.responds(to: Selector(("setLocalExtras:")))    &&
-            adObject.responds(to: Selector(("setKeywords:")))       &&
-            adObject.responds(to: Selector(("keywords")))
+            adObject.responds(to: Selector((MoPubSelector_localExtras)))        &&
+            adObject.responds(to: Selector((MoPubSelector_setLocalExtras)))    &&
+            adObject.responds(to: Selector((MoPubSelector_setKeywords)))       &&
+            adObject.responds(to: Selector((MoPubSelector_keywords)))
     }
 
     /**
@@ -57,13 +64,13 @@ public class MoPubUtils {
      */
     public static func cleanUpAdObject(_ adObject: NSObject) {
         guard MoPubUtils.isCorrectAdObject(adObject),
-              let adExtras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any],
-              let adKeywords = adObject.value(forKey: "keywords") as? String else {
+              let adExtras = adObject.value(forKey: MoPubSelector_localExtras) as? [AnyHashable : Any],
+              let adKeywords = adObject.value(forKey: MoPubSelector_keywords) as? String else {
             return
         }
         
         let keywords = MoPubUtils.removeHBKeywordsFrom(adKeywords)
-        adObject.setValue(keywords, forKey: "keywords")
+        adObject.setValue(keywords, forKey: MoPubSelector_keywords)
         
         let HBKeys = [PBMMoPubAdUnitBidKey, PBMMoPubConfigIdKey, PBMMoPubAdNativeResponseKey]
         let extras = adExtras.filter {
@@ -71,7 +78,7 @@ public class MoPubUtils {
             return !HBKeys.contains(key)
         }
         
-        adObject.setValue(extras, forKey: "localExtras")
+        adObject.setValue(extras, forKey: MoPubSelector_localExtras)
     }
 
     /**
@@ -88,15 +95,15 @@ public class MoPubUtils {
             return false
         }
         
-        let extras = adObject.value(forKey: "localExtras") as? [AnyHashable : Any]
-        let adKeywords = (adObject.value(forKey: "keywords") as? String) ?? ""
+        let extras = adObject.value(forKey: MoPubSelector_localExtras) as? [AnyHashable : Any]
+        let adKeywords = (adObject.value(forKey: MoPubSelector_keywords) as? String) ?? ""
         
         //Pass our objects via the localExtra property
         var mutableExtras = extras ?? [:]
         mutableExtras[forKey] = extraObject
         mutableExtras[PBMMoPubConfigIdKey] = configID
         
-        adObject.setValue(mutableExtras, forKey: "localExtras")
+        adObject.setValue(mutableExtras, forKey: MoPubSelector_localExtras)
         
         //Setup bid targeting keyword
         if targetingInfo.count > 0 {
@@ -105,7 +112,7 @@ public class MoPubUtils {
                 bidKeywords :
                 adKeywords + "," + bidKeywords
             
-            adObject.setValue(keywords, forKey: "keywords")
+            adObject.setValue(keywords, forKey: MoPubSelector_keywords)
         }
 
         return true

@@ -84,7 +84,7 @@ public class NativeAsset: NSObject, NSCopying, PBMJsonCodable {
     
     func appendAssetProperties(to jsonDictionary: MutableJsonDictionary) {
         jsonDictionary["id"] = assetID
-        jsonDictionary["required"] = required as? Int ?? 0
+        jsonDictionary["required"] = required as? Int
         jsonDictionary["ext"] = assetExt
     }
 

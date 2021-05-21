@@ -34,14 +34,14 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
     }
     
     func testRewardedAdDelegateCalls_noOptionalMethods() {
-        let adUnit = PBMRewardedAdUnit(configId: configId)
+        let adUnit = RewardedAdUnit(configId: configId)
         let delegate = DummyRewardedAdDelegate()
         adUnit.delegate = delegate
         callRewardedAdDelegateMethods(adUnit: adUnit)
     }
     
     func testRewardedAdDelegateCalls_receiveAllMethods() {
-        let adUnit = PBMRewardedAdUnit(configId: configId)
+        let adUnit = RewardedAdUnit(configId: configId)
         let delegate = RewardedAdProxyDelegate()
         adUnit.delegate = delegate
         callRewardedAdDelegateMethods(adUnit: adUnit, proxyDelegate: delegate)
@@ -74,14 +74,14 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
         
         PBMSDKConfiguration.singleton.accountID = ""
         
-        let rewarded = PBMRewardedAdUnit(configId: testID)
+        let rewarded = RewardedAdUnit(configId: testID)
         let exp = expectation(description: "loading callback called")
         let delegate = RewardedAdProxyDelegate()
         rewarded.delegate = delegate
         delegate.onCall = { selector, args in
             XCTAssertEqual(selector, "rewardedAd:didFailToReceiveAdWithError:")
             XCTAssertEqual(args.count, 2)
-            XCTAssertEqual(args[0] as? PBMRewardedAdUnit, rewarded)
+            XCTAssertEqual(args[0] as? RewardedAdUnit, rewarded)
             XCTAssertEqual(args[1] as? NSError, PBMError.invalidAccountId as NSError?)
             exp.fulfill()
         }
@@ -138,25 +138,25 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
     }
     
     private class RewardedAdProxyDelegate: BaseProxyDelegate, PBMRewardedAdUnitDelegate {
-        func rewardedAdDidReceiveAd(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdDidReceiveAd(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdDidReceiveAd:", args: [rewardedAd])
         }
-        func rewardedAd(_ rewardedAd: PBMRewardedAdUnit, didFailToReceiveAdWithError error: Error?) {
+        func rewardedAd(_ rewardedAd: RewardedAdUnit, didFailToReceiveAdWithError error: Error?) {
             report(selectorName: "rewardedAd:didFailToReceiveAdWithError:", args: [rewardedAd, error as Any])
         }
-        func rewardedAdWillPresentAd(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdWillPresentAd(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdWillPresentAd:", args: [rewardedAd])
         }
-        func rewardedAdDidDismissAd(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdDidDismissAd(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdDidDismissAd:", args: [rewardedAd])
         }
-        func rewardedAdWillLeaveApplication(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdWillLeaveApplication(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdWillLeaveApplication:", args: [rewardedAd])
         }
-        func rewardedAdDidClickAd(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdDidClickAd(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdDidClickAd:", args: [rewardedAd])
         }
-        func rewardedAdUserDidEarnReward(_ rewardedAd: PBMRewardedAdUnit) {
+        func rewardedAdUserDidEarnReward(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdUserDidEarnReward:", args: [rewardedAd])
         }
     }
@@ -255,7 +255,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
                                file: file, line: line)
     }
     
-    private func callRewardedAdDelegateMethods(adUnit: PBMRewardedAdUnit,
+    private func callRewardedAdDelegateMethods(adUnit: RewardedAdUnit,
                                                proxyDelegate: RewardedAdProxyDelegate? = nil,
                                                file: StaticString = #file, line: UInt = #line)
     {

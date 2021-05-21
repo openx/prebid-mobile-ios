@@ -81,28 +81,34 @@
 }
 
 - (BOOL)callEventHandler_isReady {
-    return self.eventHandler.isReady;
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    return eventHandler.isReady;
 }
 
 - (void)callEventHandler_setLoadingDelegate:(id<PBMRewardedEventLoadingDelegate>)loadingDelegate {
-    self.eventHandler.loadingDelegate = loadingDelegate;
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    eventHandler.loadingDelegate = loadingDelegate;
 }
 
 - (void)callEventHandler_setInteractionDelegate {
-    self.eventHandler.interactionDelegate = self;
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    eventHandler.interactionDelegate = self;
 }
 
 - (void)callEventHandler_requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
-    [self.eventHandler requestAdWithBidResponse:bidResponse];
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    [eventHandler requestAdWithBidResponse:bidResponse];
 }
 
 - (void)callEventHandler_showFromViewController:(nullable UIViewController *)controller {
-    [self.eventHandler showFromViewController:controller];
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    [eventHandler showFromViewController:controller];
 }
 
 - (void)callEventHandler_trackImpression {
-    if ([self.eventHandler respondsToSelector:@selector(trackImpression)]) {
-        [self.eventHandler trackImpression];
+    id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)self.eventHandler;
+    if ([eventHandler respondsToSelector:@selector(trackImpression)]) {
+        [eventHandler trackImpression];
     }
 }
 

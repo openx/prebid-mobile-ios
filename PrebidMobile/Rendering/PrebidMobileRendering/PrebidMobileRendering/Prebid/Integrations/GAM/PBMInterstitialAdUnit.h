@@ -15,7 +15,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMInterstitialAdUnit : PBMBaseInterstitialAdUnit<id<PBMInterstitialEventHandler>, id<PBMInterstitialAdUnitDelegate> >
+//@interface PBMInterstitialAdUnit : PBMBaseInterstitialAdUnit<id<PBMInterstitialEventHandler>, id<PBMInterstitialAdUnitDelegate> >
+@interface PBMInterstitialAdUnit : PBMBaseInterstitialAdUnit
 
 @property (nonatomic) PBMAdFormat adFormat;
 

@@ -24,6 +24,7 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// The context in which the ad appears.
     @objc public var context: PBMNativeContextType {
         get {
+            //such lines will be simplified in task https://openxtechinc.atlassian.net/browse/MOBILE-7034
             PBMNativeContextType(rawValue: (markupRequestObject.context?.intValue) ??
                                     PBMNativeContextType.undefined.rawValue) ?? .undefined
         }

@@ -22,7 +22,6 @@
 
 #import "PBMImageAssetType.h"
 #import "PBMNativeAdElementType.h"
-#import "PBMMoPubBaseInterstitialAdUnit.h"
 
 #import "PBMBaseInterstitialAdUnit.h"
 #import "PBMRewardedEventInteractionDelegate.h"

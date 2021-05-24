@@ -18,59 +18,57 @@ public class NativeAd: NSObject {
     
     // MARK: - Root properties
     
-    @objc public var version: String { nativeAdMarkup!.version ?? ""}
+    @objc public var version: String {
+        nativeAdMarkup.version ?? ""
+    }
     
     
     // MARK: - Convenience getters
 
     @objc public var title: String {
         let titles = self.titles
-        let title = (titles.count > 0) ? titles[0].text : nil
-        return title ?? ""
+        return titles.first?.text ?? ""
     }
     
     @objc public var text: String {
         let descriptions = self.dataObjects(of: .desc)
-        let description = (descriptions.count > 0) ? descriptions[0].value : nil
-        return description ?? ""
+        return descriptions.first?.value ?? ""
     }
     
     @objc public var iconURL: String {
         let icons = self.images(of: .icon)
-        let icon = (icons.count > 0) ? icons[0].url : nil
-        return icon ?? ""
+
+        return icons.first?.url ?? ""
     }
     
     @objc public var imageURL: String {
         let images = self.images(of: .main)
-        let image = (images.count > 0) ? images[0].url : nil
-        return image ?? ""
+        return images.first?.url ?? ""
     }
     
     @objc public var videoAd: NativeAdVideo? {
         let videoAds = self.videoAds
-        return videoAds.count > 0 ? videoAds[0] : nil
+        return videoAds.first
     }
     
     @objc public var callToAction: String {
         let callToActions = self.dataObjects(of: .ctaText)
-        let callToAction = (callToActions.count > 0) ? callToActions[0].value : nil
-        return callToAction ?? ""
+        return callToActions.first?.value ?? ""
     }
     
     
     // MARK: - Array getters
     
     @objc public var titles: [NativeAdTitle] {
-        nativeAdMarkup!.assets?.compactMap { try? NativeAdTitle(nativeAdMarkupAsset: $0) } ?? []
+        nativeAdMarkup.assets?.compactMap { try? NativeAdTitle(nativeAdMarkupAsset: $0) } ?? []
     }
     
     @objc public var dataObjects: [NativeAdData] {
-        nativeAdMarkup!.assets?.compactMap { try? NativeAdData(nativeAdMarkupAsset: $0) } ?? []
+        nativeAdMarkup.assets?.compactMap { try? NativeAdData(nativeAdMarkupAsset: $0) } ?? []
     }
     
     @objc public var images: [NativeAdImage] {
-        nativeAdMarkup!.assets?.compactMap { try? NativeAdImage(nativeAdMarkupAsset: $0) } ?? []
+        nativeAdMarkup.assets?.compactMap { try? NativeAdImage(nativeAdMarkupAsset: $0) } ?? []
     }
     
     @objc public var videoAds: [NativeAdVideo] {
@@ -122,7 +120,7 @@ public class NativeAd: NSObject {
     
     // MARK: - Private properties
     
-    private var nativeAdMarkup: PBMNativeAdMarkup!
+    private var nativeAdMarkup: PBMNativeAdMarkup
     
     private var fireEventTrackersBlock: PBMNativeImpressionDetectionHandler!
     private var nativeClickHandlerBlock: PBMNativeViewClickHandlerBlock!
@@ -159,8 +157,7 @@ public class NativeAd: NSObject {
             guard let self = self else {
                 return nil
             }
-            let delegate = self.uiDelegate
-            return delegate?.viewPresentationController(for: self)
+            return self.uiDelegate?.viewPresentationController(for: self)
         },
         measurementSessionProvider: { [weak self] in
             self?.measurementSession
@@ -187,17 +184,10 @@ public class NativeAd: NSObject {
         })
         
         let clickthroughLinkHandler = appUrlLinkHandler.addingUrlOpenAttempter(clickthroughOpener.asUrlOpenAttempter())
+        let externalLinkHandler = PBMDeepLinkPlusHelper.deepLinkPlusHandler(with: clickthroughLinkHandler)
         
-        // TODO: Enable 'deeplink+' support
-        #if DEBUG
-        // Note: keep unused variable to ensure the code compiles for later use
-        let _ = PBMDeepLinkPlusHelper.deepLinkPlusHandler(with: clickthroughLinkHandler)
-        #endif
-        
-        let externalLinkHandler = clickthroughLinkHandler
-        
-        self.fireEventTrackersBlock = PBMNativeAdImpressionReporting.impressionReporter(with: nativeAdMarkup.eventtrackers ?? [],
-                                                                                        urlVisitor: trackingUrlVisitor)
+        fireEventTrackersBlock = PBMNativeAdImpressionReporting.impressionReporter(with: nativeAdMarkup.eventtrackers ?? [],
+                                                                                   urlVisitor: trackingUrlVisitor)
         
         let reportSelfClicked: PBMVoidBlock = { [weak self] in
             guard let self = self else {
@@ -244,9 +234,9 @@ public class NativeAd: NSObject {
         
         let clickBinderFactory = PBMNativeClickTrackerBinders.smartBinder
         
-        self.nativeClickHandlerBlock = nativeClickHandler
-        self.clickableViewRegistry = PBMNativeClickableViewRegistry(binderFactory: clickBinderFactory,
-                                                                    clickHandler: nativeClickHandler)
+        nativeClickHandlerBlock = nativeClickHandler
+        clickableViewRegistry = PBMNativeClickableViewRegistry(binderFactory: clickBinderFactory,
+                                                               clickHandler: nativeClickHandler)
         
         self.measurementWrapper = measurementWrapper
     }
@@ -260,7 +250,9 @@ public class NativeAd: NSObject {
     }
 
     // MARK: - Overrides
-    private override init() {
+    @available(*, unavailable)
+    override init() {
+        fatalError("Init is unavailable. Use init(nativeAdMarkup:) instead.")
     }
     
     @objc public override func isEqual(_ object: Any?) -> Bool {
@@ -274,10 +266,10 @@ public class NativeAd: NSObject {
             return
         }
         
-        self.impressionTracker = PBMNativeImpressionsTracker(view: adView,
-                                                             pollingInterval: viewabilityPollingInterval,
-                                                             scheduledTimerFactory: Timer.pbmScheduledTimerFactory(),
-                                                             impressionDetectionHandler: { [weak self] impressionType in
+        impressionTracker = PBMNativeImpressionsTracker(view: adView,
+                                                        pollingInterval: viewabilityPollingInterval,
+                                                        scheduledTimerFactory: Timer.pbmScheduledTimerFactory(),
+                                                        impressionDetectionHandler: { [weak self] impressionType in
             guard let self = self else {
                 return
             }
@@ -294,23 +286,23 @@ public class NativeAd: NSObject {
         
         if let clickableViews = clickableViews, let link = nativeAdMarkup.link {
             for nextView in clickableViews {
-                self.clickableViewRegistry .register(link, for: nextView)
+                clickableViewRegistry.register(link, for: nextView)
             }
         }
         
-        self.createOpenMeasurementSessionFor(adView)
+        createOpenMeasurementSessionFor(adView)
     }
 
     @objc public func registerClickView(_ adView: UIView, nativeAdElementType: PBMNativeAdElementType) {
         if let relevantAsset = self.findAssetForElementType(nativeAdElementType) {
-            self.registerClickView(adView, nativeAdAsset: relevantAsset)
+            registerClickView(adView, nativeAdAsset: relevantAsset)
         }
     }
 
     @objc public func registerClickView(_ adView: UIView, nativeAdAsset: NativeAdAsset) {
         let relevantLink = nativeAdAsset.link ?? self.nativeAdMarkup.link
         if let relevantLink = relevantLink {
-            self.clickableViewRegistry.register(relevantLink, for: adView)
+            clickableViewRegistry.register(relevantLink, for: adView)
         }
     }
     
@@ -331,10 +323,7 @@ public class NativeAd: NSObject {
             case .callToAction:
                 assets = self.dataObjects(of: .ctaText)
         }
-        if let assets = assets {
-            return assets.count > 0 ? assets[0] : nil
-        }
-        return nil
+        return assets?.first
     }
     
     // MARK: - Private Helpers (OpenMeasurement support)
@@ -345,11 +334,11 @@ public class NativeAd: NSObject {
         }
         
         if let omTracker = self.findOMIDTracker(), let jsUrl = omTracker.url {
-            self.measurementSession = self.measurementWrapper.initializeNativeDisplaySession(adView,
+            measurementSession = measurementWrapper.initializeNativeDisplaySession(adView,
                                                         omidJSUrl: jsUrl,
                                                         vendorKey: omTracker.ext?["vendorKey"] as? String,
                                                         parameters: omTracker.ext?["verification_parameters"]  as? String)
-            self.measurementSession?.start()
+            measurementSession?.start()
         }
     }
     

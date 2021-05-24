@@ -33,7 +33,9 @@ public class NativeAdDetectionListener: NSObject, NSCopying {
     }
     
     // MARK: - Private
+    @available(*, unavailable)
     private override init() {
+        fatalError("Init is unavailable.")
     }
 
 }

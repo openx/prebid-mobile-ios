@@ -20,7 +20,7 @@ class NativeAdConfigurationTest: XCTestCase {
         nativeAdConfig.plcmttype = .feedGridListing
         nativeAdConfig.seq = 1
         
-        let nativeMarkupObject = nativeAdConfig.markupRequestObject!
+        let nativeMarkupObject = nativeAdConfig.markupRequestObject
         
         XCTAssertEqual(nativeMarkupObject.context?.intValue, PBMNativeContextType.socialCentric.rawValue)
         XCTAssertEqual(nativeMarkupObject.contextsubtype?.intValue, PBMNativeContextSubtype.applicationStore.rawValue)

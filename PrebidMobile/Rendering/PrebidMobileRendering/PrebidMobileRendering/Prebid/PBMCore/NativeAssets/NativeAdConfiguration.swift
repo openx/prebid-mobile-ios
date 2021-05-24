@@ -11,8 +11,12 @@ public class NativeAdConfiguration: NSObject, NSCopying {
 
     /// Version of the Native Markup version in use.
     @objc public var version: String? {
-        get { markupRequestObject.version }
-        set { markupRequestObject.version = newValue }
+        get {
+            markupRequestObject.version
+        }
+        set {
+            markupRequestObject.version = newValue
+        }
     }
     
     /// [Recommended]
@@ -64,16 +68,24 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// either you are auctioning multiple identical placements (in which case plcmtcnt>1, seq=0)
     /// or you are holding separate auctions for distinct items in the feed (in which case plcmtcnt=1, seq=>=1)
     @objc public var seq: NSNumber? {
-        get { markupRequestObject.seq }
-        set { markupRequestObject.seq = newValue?.intValue ?? 0 >= 0 ? newValue : nil }
+        get {
+            markupRequestObject.seq
+        }
+        set {
+            markupRequestObject.seq = (newValue?.intValue ?? 0) >= 0 ? newValue : nil
+        }
     }
 
     /// [Required]
     /// An array of Asset Objects. Any objects bid response must comply with the array of elements
     /// expressed in the bid request.
     @objc public var assets: [NativeAsset] {
-        get { markupRequestObject.assets }
-        set { markupRequestObject.assets = newValue }
+        get {
+            markupRequestObject.assets
+        }
+        set {
+            markupRequestObject.assets = newValue
+        }
     }
     
     // NOT SUPPORTED:
@@ -90,8 +102,12 @@ public class NativeAdConfiguration: NSObject, NSCopying {
 
     /// Specifies what type of event objects tracking is supported - see Event Trackers Request Object
     @objc public var eventtrackers: [PBMNativeEventTracker]? {
-        get { markupRequestObject.eventtrackers }
-        set { markupRequestObject.eventtrackers = newValue }
+        get {
+            markupRequestObject.eventtrackers
+        }
+        set {
+            markupRequestObject.eventtrackers = newValue
+        }
     }
 
     /// [Recommended]
@@ -99,13 +115,19 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// Set to 1 when the native ad supports buyer-specific privacy notice. Set to 0 (or field absent)
     /// when the native ad doesn’t support custom privacy links or if support is unknown.
     @objc public var privacy: NSNumber? {
-        get { markupRequestObject.privacy }
-        set { markupRequestObject.privacy = newValue }
+        get {
+            markupRequestObject.privacy
+        }
+        set {
+            markupRequestObject.privacy = newValue
+        }
     }
 
     /// This object is a placeholder that may contain custom JSON agreed to by the parties to support
     /// flexibility beyond the standard defined in this specification
-    @objc public var ext: [String : Any]? { markupRequestObject.ext }
+    @objc public var ext: [String : Any]? {
+        markupRequestObject.ext
+    }
     
     /// A custom template for a native style creative.
     /// This is an html code with a special placeholders and macroses.
@@ -117,7 +139,7 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// See https://docs.prebid.org/dev-docs/show-native-ads.html#how-native-ads-work
     @objc public var nativeStylesCreative: String?
     
-    @objc public var markupRequestObject: PBMNativeMarkupRequestObject!
+    @objc public var markupRequestObject: PBMNativeMarkupRequestObject
 
     @objc public required init(assets: [NativeAsset]) {
         markupRequestObject = PBMNativeMarkupRequestObject(assets: assets)
@@ -128,13 +150,18 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     }
 
     @objc public func copy(with zone: NSZone? = nil) -> Any {
-        let clone = NativeAdConfiguration()
-        clone.markupRequestObject = markupRequestObject.copy() as? PBMNativeMarkupRequestObject
+        let clone = NativeAdConfiguration(markupRequestObject:markupRequestObject)
         clone.nativeStylesCreative = nativeStylesCreative
         return clone
     }
     
     // MARK: - Private
+    @available(*, unavailable)
     private override init() {
+        fatalError("Init is unavailable.")
+    }
+    
+    private init(markupRequestObject: PBMNativeMarkupRequestObject) {
+        self.markupRequestObject = markupRequestObject.copy() as! PBMNativeMarkupRequestObject
     }
 }

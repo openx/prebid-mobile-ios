@@ -10,6 +10,7 @@ import XCTest
 @testable import PrebidMobileRendering
 
 class NativeAdTest: XCTestCase {
+    
     func testInitFromMarkup() {
         let requiredProperties: [(Decoding.PropertyCheck<PBMNativeAdMarkup, NativeAd>, Error)] = []
 

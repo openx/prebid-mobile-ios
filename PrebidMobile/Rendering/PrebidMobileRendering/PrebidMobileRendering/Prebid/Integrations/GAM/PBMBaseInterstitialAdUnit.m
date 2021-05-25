@@ -43,6 +43,7 @@
 #import "PBMAdFormat.h"
 
 #import "PBMInterstitialControllerInteractionDelegate.h"
+#import "PBMRewardedEventInteractionDelegate.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

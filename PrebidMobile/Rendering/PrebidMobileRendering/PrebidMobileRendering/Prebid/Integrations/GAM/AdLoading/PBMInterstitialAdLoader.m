@@ -33,6 +33,7 @@
 #import "PBMImageAssetType.h"
 #import "PBMNativeAdElementType.h"
 
+#import "PBMBaseInterstitialAdUnit.h"
 #import "PBMAdFormat.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>

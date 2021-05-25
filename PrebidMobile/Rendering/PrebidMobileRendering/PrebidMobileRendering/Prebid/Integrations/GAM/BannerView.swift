@@ -54,7 +54,7 @@ public class BannerView: UIView,
         set { adUnitConfig.nativeAdConfig = newValue }
     }
 
-    public var delegate: BannerViewDelegate?
+    public weak var delegate: BannerViewDelegate?
     
     // MARK: - Internal properties
 
@@ -214,6 +214,14 @@ public class BannerView: UIView,
     
     public func didLeaveApp(from displayView: PBMDisplayView) {
         willLeaveApp()
+    }
+    
+    public func displayViewWillPresentModal(_ displayView: PBMDisplayView) {
+        willPresentModal()
+    }
+    
+    public func displayViewDidDismissModal(_ displayView: PBMDisplayView) {
+        didDismissModal()
     }
     
     // MARK: - PBMBannerAdLoaderDelegate

@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)didLeaveAppFromDisplayView:(PBMDisplayView *)displayView;
 
-@optional
-
 /// Called when the user clicks on an ad and a clickthrough is about to occur
 - (void)displayViewWillPresentModal:(PBMDisplayView *)displayView;
 

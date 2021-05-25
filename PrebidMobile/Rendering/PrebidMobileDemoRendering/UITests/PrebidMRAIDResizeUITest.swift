@@ -145,7 +145,7 @@ class PrebidMRAIDResizeUITest: RepeatedUITestCase {
     
     private func closeResizedView() {
         let closeBtn = app.buttons["PBMCloseButton"]
-        waitForHittable(element: closeBtn, waitSeconds: 5)
+        waitForHittable(element: closeBtn, waitSeconds: 10)
         closeBtn.tap()
         waitForEnabled(element: app.buttons["adViewDidDismissScreen called"], waitSeconds: waitingTimeout)
     }

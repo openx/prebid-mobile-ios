@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class PBMInterstitialController: NSObject, PBMAdViewManagerDelegate {
+public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
     
     @objc public var adFormat: PBMAdFormat {
         get { adConfiguration.adFormat }

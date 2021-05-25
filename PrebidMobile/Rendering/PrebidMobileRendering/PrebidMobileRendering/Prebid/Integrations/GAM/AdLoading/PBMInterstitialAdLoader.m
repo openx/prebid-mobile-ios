@@ -69,7 +69,7 @@
                 adObjectSaver:(void (^)(id))adObjectSaver
             loadMethodInvoker:(void (^)(dispatch_block_t))loadMethodInvoker
 {
-    PBMInterstitialController * const controller = [[PBMInterstitialController alloc] initWithBid:bid
+    InterstitialController * const controller = [[InterstitialController alloc] initWithBid:bid
                                                                                   adConfiguration:adUnitConfig];
     adObjectSaver(controller);
     @weakify(self);
@@ -82,8 +82,8 @@
 }
 
 - (void)reportSuccessWithAdObject:(id)adObject adSize:(nullable NSValue *)adSize {
-    if ([adObject isKindOfClass:[PBMInterstitialController class]]) {
-        PBMInterstitialController * const controller = (PBMInterstitialController *)adObject;
+    if ([adObject isKindOfClass:[InterstitialController class]]) {
+        InterstitialController * const controller = (InterstitialController *)adObject;
         [self.delegate interstitialAdLoader:self
                                    loadedAd:^(UIViewController *targetController) {
             [controller show];
@@ -120,11 +120,11 @@
 
 // MARK: - PBMInterstitialControllerLoadingDelegate
 
-- (void)interstitialControllerDidLoadAd:(PBMInterstitialController *)interstitialController {
+- (void)interstitialControllerDidLoadAd:(InterstitialController *)interstitialController {
     [self.flowDelegate adLoaderLoadedPrebidAd:self];
 }
 
-- (void)interstitialController:(PBMInterstitialController *)interstitialController didFailWithError:(NSError *)error {
+- (void)interstitialController:(InterstitialController *)interstitialController didFailWithError:(NSError *)error {
     [self.flowDelegate adLoader:self failedWithPrebidError:error];
 }
 

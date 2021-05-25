@@ -49,7 +49,7 @@ public class BannerView: UIView,
         set { adUnitConfig.videoPlacementType = newValue }
     }
     
-    public var nativeAdConfig: PBMNativeAdConfiguration? {
+    public var nativeAdConfig: NativeAdConfiguration? {
         get { adUnitConfig.nativeAdConfig }
         set { adUnitConfig.nativeAdConfig = newValue }
     }

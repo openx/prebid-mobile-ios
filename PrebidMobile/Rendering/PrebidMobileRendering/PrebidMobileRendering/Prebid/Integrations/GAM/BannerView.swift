@@ -390,7 +390,7 @@ public class BannerView: UIView,
         }
         
         if let nativeStyleCreative = adUnitConfig.nativeAdConfig?.nativeStylesCreative {
-            return nativeStyleCreative.isEmpty
+            return !nativeStyleCreative.isEmpty
         }
         
         return false

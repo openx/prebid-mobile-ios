@@ -14,13 +14,37 @@
 #import "PBMBidResponse.h"
 #import "PBMError.h"
 #import "PBMInterstitialAdLoader.h"
-#import "PBMInterstitialController.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMTargeting.h"
 #import "PBMAdViewManager.h"
 #import "PBMServerConnection.h"
 
 #import "PBMMacros.h"
+
+#import "PBMPlayable.h"
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMConstants.h"
+#import "PBMDataAssetType.h"
+#import "PBMJsonCodable.h"
+
+#import "PBMNativeEventType.h"
+#import "PBMNativeEventTrackingMethod.h"
+
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativePlacementType.h"
+#import "PBMBaseAdUnit.h"
+#import "PBMBidRequesterFactoryBlock.h"
+#import "PBMWinNotifierBlock.h"
+
+#import "PBMImageAssetType.h"
+#import "PBMNativeAdElementType.h"
+
+#import "PBMAdFormat.h"
+
+#import "PBMInterstitialControllerInteractionDelegate.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @interface PBMBaseInterstitialAdUnit () <PBMAdLoadFlowControllerDelegate,
                                          PBMInterstitialAdLoaderDelegate,

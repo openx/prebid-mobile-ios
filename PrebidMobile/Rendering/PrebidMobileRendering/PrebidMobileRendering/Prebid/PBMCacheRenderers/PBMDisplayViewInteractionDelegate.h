@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)trackImpressionForDisplayView:(PBMDisplayView *)displayView;
 
-- (UIViewController *)viewControllerForModalPresentationFrom:(PBMDisplayView *)displayView;
+- (nullable UIViewController *)viewControllerForModalPresentationFrom:(PBMDisplayView *)displayView;
 
 - (void)didLeaveAppFromDisplayView:(PBMDisplayView *)displayView;
 

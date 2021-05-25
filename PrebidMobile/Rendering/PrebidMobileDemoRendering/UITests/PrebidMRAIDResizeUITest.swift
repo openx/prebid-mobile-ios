@@ -138,7 +138,7 @@ class PrebidMRAIDResizeUITest: RepeatedUITestCase {
     }
     
     private func resizeMMRAIDView() {
-        let bannerView = app.descendants(matching: .other)["PBMBannerView"]
+        let bannerView = app.descendants(matching: .other)["PrebidBannerView"]
         bannerView.tap()
         waitForEnabled(element: app.buttons["adViewWillPresentScreen called"], waitSeconds: waitingTimeout)
     }

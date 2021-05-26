@@ -31,6 +31,7 @@ public let refreshIntervalDefault: TimeInterval  = 60
         get { _nativeAdConfiguration }
         set {
             _nativeAdConfiguration = newValue?.copy() as? NativeAdConfiguration
+            adConfiguration.isNative = _nativeAdConfiguration != nil;
             updateAdFormat()
         }
     }

@@ -56,8 +56,6 @@ public class BannerView: UIView,
 
     @objc public weak var delegate: BannerViewDelegate?
     
-    // MARK: - Internal properties
-
     // MARK: Readonly storage
     
     var autoRefreshManager: PBMAutoRefreshManager?

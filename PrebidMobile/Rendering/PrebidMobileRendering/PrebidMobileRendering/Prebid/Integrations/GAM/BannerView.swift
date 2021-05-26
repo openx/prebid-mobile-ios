@@ -20,41 +20,41 @@ public class BannerView: UIView,
     
     // MARK: - Public Properties
     
-    public var configID: String {
+    @objc public var configID: String {
         adUnitConfig.configId
     }
 
-    public var refreshInterval: TimeInterval {
+    @objc public var refreshInterval: TimeInterval {
         get { adUnitConfig.refreshInterval }
         set { adUnitConfig.refreshInterval = newValue }
     }
     
-    public var additionalSizes: [NSValue]? {
+    @objc public var additionalSizes: [NSValue]? {
         get { adUnitConfig.additionalSizes }
         set { adUnitConfig.additionalSizes = newValue }
     }
     
-    public var adFormat: PBMAdFormat {
+    @objc public var adFormat: PBMAdFormat {
         get { adUnitConfig.adFormat }
         set { adUnitConfig.adFormat = newValue }
     }
     
-    public var adPosition: PBMAdPosition {
+    @objc public var adPosition: PBMAdPosition {
         get { adUnitConfig.adPosition }
         set { adUnitConfig.adPosition = newValue }
     }
     
-    public var videoPlacementType: PBMVideoPlacementType {
+    @objc public var videoPlacementType: PBMVideoPlacementType {
         get { adUnitConfig.videoPlacementType }
         set { adUnitConfig.videoPlacementType = newValue }
     }
     
-    public var nativeAdConfig: NativeAdConfiguration? {
+    @objc public var nativeAdConfig: NativeAdConfiguration? {
         get { adUnitConfig.nativeAdConfig }
         set { adUnitConfig.nativeAdConfig = newValue }
     }
 
-    public weak var delegate: BannerViewDelegate?
+    @objc public weak var delegate: BannerViewDelegate?
     
     // MARK: - Internal properties
 
@@ -92,7 +92,7 @@ public class BannerView: UIView,
     
     // MARK: - Public Methods
     
-    public init(frame: CGRect,
+    @objc public init(frame: CGRect,
                 configID: String,
                 adSize: CGSize,
                 eventHandler: PBMBannerEventHandler) {
@@ -141,7 +141,7 @@ public class BannerView: UIView,
             })
     }
     
-    public convenience init(configID: String,
+    @objc public convenience init(configID: String,
                             eventHandler: PBMBannerEventHandler) {
         let size = eventHandler.adSizes.first?.cgSizeValue ?? CGSize()
         let frame = CGRect(origin: CGPoint.zero, size: size)
@@ -156,7 +156,7 @@ public class BannerView: UIView,
         }
     }
     
-    public convenience init(frame: CGRect,
+    @objc public convenience init(frame: CGRect,
                             configID: String,
                             adSize: CGSize) {
         self.init(frame: frame,
@@ -169,11 +169,11 @@ public class BannerView: UIView,
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func loadAd() {
+    @objc public func loadAd() {
         adLoadFlowController?.refresh()
     }
     
-    public func stopRefresh() {
+    @objc public func stopRefresh() {
         adLoadFlowController?.enqueueGatedBlock { [weak self] in
             self?.isRefreshStopped = true
         }
@@ -181,19 +181,19 @@ public class BannerView: UIView,
     
     // MARK: - Context Data
 
-    public func addContextData(_ data: String, forKey key: String) {
+    @objc public func addContextData(_ data: String, forKey key: String) {
         adUnitConfig.addContextData(data, forKey: key)
     }
     
-    public func updateContextData(_ data: Set<String>, forKey key: String) {
+    @objc public func updateContextData(_ data: Set<String>, forKey key: String) {
         adUnitConfig.updateContextData(data, forKey: key)
     }
     
-    public func removeContextDate(forKey key: String) {
+    @objc public func removeContextDate(forKey key: String) {
         adUnitConfig.removeContextData(forKey: key)
     }
     
-    public func clearContextData() {
+    @objc public func clearContextData() {
         adUnitConfig.clearContextData()
     }
     

@@ -30,6 +30,8 @@
 
 #import "PBMBaseInterstitialAdUnit.h"
 #import "PBMRewardedEventInteractionDelegate.h"
+#import "PBMAdPosition.h"
+#import "PBMVideoPlacementType.h"
 
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

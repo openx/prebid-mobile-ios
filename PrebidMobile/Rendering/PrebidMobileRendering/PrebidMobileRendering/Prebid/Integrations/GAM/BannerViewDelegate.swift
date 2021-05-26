@@ -31,7 +31,7 @@ import UIKit
      ad.
      */
     @objc optional func bannerView(_ bannerView: BannerView,
-    didFailToReceiveAdWith error: Error)
+                                   didFailToReceiveAdWith error: Error)
 
     /*!
      @abstract Notifies the delegate whenever current app goes in the background due to user click.

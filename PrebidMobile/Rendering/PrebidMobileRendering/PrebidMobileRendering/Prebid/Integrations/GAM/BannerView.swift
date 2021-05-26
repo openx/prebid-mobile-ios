@@ -29,9 +29,9 @@ public class BannerView: UIView,
         set { adUnitConfig.refreshInterval = newValue }
     }
     
-    @objc public var additionalSizes: [NSValue]? {
-        get { adUnitConfig.additionalSizes?.map { NSValue(cgSize: $0) } }
-        set { adUnitConfig.additionalSizes = newValue?.compactMap { $0.cgSizeValue } }
+    @objc public var additionalSizes: [CGSize]? {
+        get { adUnitConfig.additionalSizes }
+        set { adUnitConfig.additionalSizes = newValue }
     }
     
     @objc public var adFormat: PBMAdFormat {
@@ -150,7 +150,8 @@ public class BannerView: UIView,
                   eventHandler: eventHandler)
         
         if eventHandler.adSizes.count > 1 {
-            self.additionalSizes = Array(eventHandler.adSizes.suffix(from: 1))
+            self.additionalSizes = Array(eventHandler.adSizes.suffix(from: 1)
+                                            .compactMap { $0.cgSizeValue })
         }
     }
     

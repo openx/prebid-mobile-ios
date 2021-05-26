@@ -57,9 +57,9 @@ public class MoPubBannerAdUnit : NSObject {
         set { adUnitConfig.refreshInterval = newValue }
     }
 
-    public var additionalSizes: [NSValue]? {
-        get { adUnitConfig.additionalSizes?.map { NSValue(cgSize: $0) } }
-        set { adUnitConfig.additionalSizes = newValue?.compactMap { $0.cgSizeValue } }
+    public var additionalSizes: [CGSize]? {
+        get { adUnitConfig.additionalSizes }
+        set { adUnitConfig.additionalSizes = newValue }
     }
     
     // MARK: - Context Data

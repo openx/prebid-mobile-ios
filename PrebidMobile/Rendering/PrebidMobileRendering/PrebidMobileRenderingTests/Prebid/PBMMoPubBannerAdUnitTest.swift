@@ -33,7 +33,7 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
             CGSize(width: 728, height: 90),
         ]
         
-        bannerAdUnit.additionalSizes = moreSizes.map(NSValue.init(cgSize:))
+        bannerAdUnit.additionalSizes = moreSizes
         
         XCTAssertEqual(adUnitConfig.additionalSizes?.count, moreSizes.count)
         for i in 0..<moreSizes.count {

@@ -24,12 +24,12 @@ public class MoPubBannerAdUnit : NSObject {
 
     var  adRequestError: Error?
     
-    var adUnitConfig: PBMAdUnitConfig
+    var adUnitConfig: AdUnitConfig
     
     // MARK: - Computed properties
 
     public var configID: String {
-        adUnitConfig.configId;
+        adUnitConfig.configID
     }
 
     public var adFormat: PBMAdFormat {
@@ -48,8 +48,8 @@ public class MoPubBannerAdUnit : NSObject {
     }
 
     public var nativeAdConfig: NativeAdConfiguration? {
-        get { adUnitConfig.nativeAdConfig }
-        set { adUnitConfig.nativeAdConfig = newValue }
+        get { adUnitConfig.nativeAdConfiguration }
+        set { adUnitConfig.nativeAdConfiguration = newValue }
     }
 
     public var refreshInterval: TimeInterval {
@@ -58,8 +58,8 @@ public class MoPubBannerAdUnit : NSObject {
     }
 
     public var additionalSizes: [NSValue]? {
-        get { adUnitConfig.additionalSizes }
-        set { adUnitConfig.additionalSizes = newValue }
+        get { adUnitConfig.additionalSizes?.map { NSValue(cgSize: $0) } }
+        set { adUnitConfig.additionalSizes = newValue?.compactMap { $0.cgSizeValue } }
     }
     
     // MARK: - Context Data
@@ -83,7 +83,7 @@ public class MoPubBannerAdUnit : NSObject {
     // MARK: - Public Methods
     
     public init(configID: String, size: CGSize) {
-        adUnitConfig = PBMAdUnitConfig(configId: configID, size: size)
+        adUnitConfig = AdUnitConfig(configID: configID, size: size)
         
         super.init()
 

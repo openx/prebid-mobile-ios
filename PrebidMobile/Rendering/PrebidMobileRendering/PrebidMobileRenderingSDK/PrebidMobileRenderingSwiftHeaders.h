@@ -1,6 +1,3 @@
-//OpenXApolloSDK Umbrella Header
-
-#import <UIKit/UIKit.h>
 
 #import"PBMPublicConstants.h"
 // Enums
@@ -215,10 +212,3 @@
 
 // Interstitial
 #import"PBMInterstitialDisplayProperties.h"
-
-//! Project version number for OpenXSDKCore.
-FOUNDATION_EXPORT double PrebidMobileRenderingVersionNumber;
-
-//! Project version string for OpenXSDKCore.
-FOUNDATION_EXPORT const unsigned char PrebidMobileRenderingVersionString[];
-

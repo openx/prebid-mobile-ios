@@ -25,8 +25,8 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
         let bannerAdUnit = MoPubBannerAdUnit(configID: testID, size: primarySize)
         let adUnitConfig = bannerAdUnit.adUnitConfig
         
-        XCTAssertEqual(adUnitConfig.configId, testID)
-        XCTAssertEqual(adUnitConfig.adSize?.cgSizeValue, primarySize)
+        XCTAssertEqual(adUnitConfig.configID, testID)
+        XCTAssertEqual(adUnitConfig.adSize, primarySize)
         
         let moreSizes = [
             CGSize(width: 300, height: 250),
@@ -37,7 +37,7 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
         
         XCTAssertEqual(adUnitConfig.additionalSizes?.count, moreSizes.count)
         for i in 0..<moreSizes.count {
-            XCTAssertEqual(adUnitConfig.additionalSizes?[i].cgSizeValue, moreSizes[i])
+            XCTAssertEqual(adUnitConfig.additionalSizes?[i], moreSizes[i])
         }
         
         let refreshInterval: TimeInterval = 40;

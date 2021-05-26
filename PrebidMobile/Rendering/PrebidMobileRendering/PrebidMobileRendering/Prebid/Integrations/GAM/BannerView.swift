@@ -15,13 +15,13 @@ public class BannerView: UIView,
                   PBMBannerEventInteractionDelegate,
                   PBMDisplayViewInteractionDelegate {
 
-    public let adUnitConfig: PBMAdUnitConfig
+    public let adUnitConfig: AdUnitConfig
     public let eventHandler: PBMBannerEventHandler?
     
     // MARK: - Public Properties
     
     @objc public var configID: String {
-        adUnitConfig.configId
+        adUnitConfig.configID
     }
 
     @objc public var refreshInterval: TimeInterval {
@@ -30,8 +30,8 @@ public class BannerView: UIView,
     }
     
     @objc public var additionalSizes: [NSValue]? {
-        get { adUnitConfig.additionalSizes }
-        set { adUnitConfig.additionalSizes = newValue }
+        get { adUnitConfig.additionalSizes?.map { NSValue(cgSize: $0) } }
+        set { adUnitConfig.additionalSizes = newValue?.compactMap { $0.cgSizeValue } }
     }
     
     @objc public var adFormat: PBMAdFormat {
@@ -50,8 +50,8 @@ public class BannerView: UIView,
     }
     
     @objc public var nativeAdConfig: NativeAdConfiguration? {
-        get { adUnitConfig.nativeAdConfig }
-        set { adUnitConfig.nativeAdConfig = newValue }
+        get { adUnitConfig.nativeAdConfiguration }
+        set { adUnitConfig.nativeAdConfiguration = newValue }
     }
 
     @objc public weak var delegate: BannerViewDelegate?
@@ -96,7 +96,7 @@ public class BannerView: UIView,
                 eventHandler: PBMBannerEventHandler) {
         
         
-        adUnitConfig = PBMAdUnitConfig(configId: configID, size: adSize)
+        adUnitConfig = AdUnitConfig(configID: configID, size: adSize)
         self.eventHandler = eventHandler
         
         super.init(frame: frame)
@@ -366,13 +366,13 @@ public class BannerView: UIView,
     // MARK: - Static Helpers
 
     private static func canEventHandler(eventHandler:PBMBannerEventHandler,
-                                        displayAdWithConfiguration adUnitConfig: PBMAdUnitConfig ) -> Bool {
+                                        displayAdWithConfiguration adUnitConfig: AdUnitConfig ) -> Bool {
         if adUnitConfig.adConfiguration.adFormat != .nativeInternal {
             return true;
         }
         
         if eventHandler.isCreativeRequiredForNativeAds {
-            if let nativeStyleCreative = adUnitConfig.nativeAdConfig?.nativeStylesCreative {
+            if let nativeStyleCreative = adUnitConfig.nativeAdConfiguration?.nativeStylesCreative {
                 return !nativeStyleCreative.isEmpty
             } else {
                 return false
@@ -382,12 +382,12 @@ public class BannerView: UIView,
         return true;
     }
 
-    private static func canPrebidDisplayAd(withConfiguration adUnitConfig:PBMAdUnitConfig) -> Bool {
+    private static func canPrebidDisplayAd(withConfiguration adUnitConfig:AdUnitConfig) -> Bool {
         if adUnitConfig.adConfiguration.adFormat != .nativeInternal {
             return true;
         }
         
-        if let nativeStyleCreative = adUnitConfig.nativeAdConfig?.nativeStylesCreative {
+        if let nativeStyleCreative = adUnitConfig.nativeAdConfiguration?.nativeStylesCreative {
             return !nativeStyleCreative.isEmpty
         }
         

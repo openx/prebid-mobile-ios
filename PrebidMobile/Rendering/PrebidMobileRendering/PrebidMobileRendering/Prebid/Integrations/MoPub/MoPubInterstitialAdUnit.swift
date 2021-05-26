@@ -18,8 +18,8 @@ public class MoPubInterstitialAdUnit : MoPubBaseInterstitialAdUnit {
     }
     
     public var additionalSizes: [NSValue]? {
-        get { adUnitConfig.additionalSizes }
-        set { adUnitConfig.additionalSizes  = newValue }
+        get { adUnitConfig.additionalSizes?.map { NSValue(cgSize: $0) } }
+        set { adUnitConfig.additionalSizes = newValue?.compactMap { $0.cgSizeValue } }
     }
     
     // MARK: - Public Methods
@@ -39,6 +39,6 @@ public class MoPubInterstitialAdUnit : MoPubBaseInterstitialAdUnit {
     // MARK: - Computed Properties
     
     public override var configId: String {
-        adUnitConfig.configId
+        adUnitConfig.configID
     }
 }

@@ -12,40 +12,48 @@ public let refreshIntervalMin: TimeInterval  = 15
 public let refreshIntervalMax: TimeInterval = 120
 public let refreshIntervalDefault: TimeInterval  = 60
 
-class AdUnitConfig: NSObject, NSCopying {
+@objc public class AdUnitConfig: NSObject, NSCopying {
     
     // MARK: - Properties
        
-    var configID: String
+    @objc public var configID: String
     
-    var adFormat: PBMAdFormat {
+    @objc public let adConfiguration = PBMAdConfiguration();
+    
+    @objc public var adFormat: PBMAdFormat {
         didSet {
-            self.updateAdFormat()
-        }
-    }
-    
-    var nativeAdConfiguration: NativeAdConfiguration? {
-        get { self.nativeAdConfiguration }
-        set {
-            self.nativeAdConfiguration = newValue?.copy() as? NativeAdConfiguration
             updateAdFormat()
         }
     }
     
-    var adSize: CGSize
-    var minSizePerc: NSValue?
+    var _nativeAdConfiguration: NativeAdConfiguration?
+    @objc public var nativeAdConfiguration: NativeAdConfiguration? {
+        get { _nativeAdConfiguration }
+        set {
+            _nativeAdConfiguration = newValue?.copy() as? NativeAdConfiguration
+            updateAdFormat()
+        }
+    }
     
-    var adPosition = PBMAdPosition.undefined
+    @objc public var adSize: CGSize
+    @objc public var minSizePerc: NSValue?
+    
+    @objc public var adPosition = PBMAdPosition.undefined
+    
+    @objc public var contextDataDictionary: [String : [String]] {
+        extensionData.mapValues { Array($0) }
+    }
         
     // MARK: - Computed Properties
     
-    var additionalSizes: [CGSize]? {
+    @objc public var additionalSizes: [CGSize]? {
         get { sizes }
         set { sizes = newValue }
     }
     
-    var refreshInterval: TimeInterval {
-        get { self.refreshInterval }
+    var _refreshInterval: TimeInterval = refreshIntervalDefault
+    @objc public var refreshInterval: TimeInterval {
+        get { _refreshInterval }
         set {
             if adFormat == .video {
                 PBMLog.warn("'refreshInterval' property is not assignable for Outstream Video ads")
@@ -53,44 +61,44 @@ class AdUnitConfig: NSObject, NSCopying {
             }
             
             if newValue < 0 {
-                self.refreshInterval  = 0
+                _refreshInterval  = 0
             } else {
                 let lowerClamped = max(newValue, refreshIntervalMin);
                 let doubleClamped = min(lowerClamped, refreshIntervalMax);
                 
-                self.refreshInterval = doubleClamped;
+                _refreshInterval = doubleClamped;
                 
                 if self.refreshInterval != newValue {
-                    PBMLog.warn("The value \(newValue) is out of range [\(refreshIntervalMin);\(refreshIntervalMax)]. The value \(self.refreshInterval) will be used")
+                    PBMLog.warn("The value \(newValue) is out of range [\(refreshIntervalMin);\(refreshIntervalMax)]. The value \(_refreshInterval) will be used")
                 }
             }
         }
     }
     
-    var isInterstitial: Bool {
+    @objc public var isInterstitial: Bool {
         get { adConfiguration.isInterstitialAd }
         set { adConfiguration.isInterstitialAd = newValue }
     }
         
-    var isOptIn: Bool {
+    @objc public var isOptIn: Bool {
         get { adConfiguration.isOptIn }
         set { adConfiguration.isOptIn = newValue }
     }
     
-    var videoPlacementType: PBMVideoPlacementType {
+    @objc public var videoPlacementType: PBMVideoPlacementType {
         get { adConfiguration.videoPlacementType }
         set { adConfiguration.videoPlacementType = newValue }
     }
     
     // MARK: - Public Methods
     
-    convenience init(configID: String) {
-        self.init(configID: configID, adSize: CGSize.zero)
+    @objc public convenience init(configID: String) {
+        self.init(configID: configID, size: CGSize.zero)
     }
     
-    init(configID: String, adSize: CGSize) {
+    @objc public init(configID: String, size: CGSize) {
         self.configID = configID
-        self.adSize = adSize
+        self.adSize = size
         
         adFormat = .display
         
@@ -98,7 +106,7 @@ class AdUnitConfig: NSObject, NSCopying {
         adConfiguration.size = adSize
     }
     
-    public func addContextData(_ data: String, forKey key: String) {
+    @objc public func addContextData(_ data: String, forKey key: String) {
         if extensionData[key] == nil {
             extensionData[key] = Set<String>()
         }
@@ -106,15 +114,15 @@ class AdUnitConfig: NSObject, NSCopying {
         extensionData[key]?.insert(data)
     }
     
-    public func updateContextData(_ data: Set<String>, forKey key: String) {
+    @objc public  func updateContextData(_ data: Set<String>, forKey key: String) {
         extensionData[key] = data
     }
     
-    public func removeContextDate(forKey key: String) {
+    @objc public  func removeContextData(forKey key: String) {
         extensionData.removeValue(forKey: key)
     }
     
-    public func clearContextData() {
+    @objc public func clearContextData() {
         extensionData.removeAll()
     }
     
@@ -124,16 +132,10 @@ class AdUnitConfig: NSObject, NSCopying {
     
     var sizes: [CGSize]?
     
-    let adConfiguration = PBMAdConfiguration();
-    
-    var contextDataDictionary: [String : [String]] {
-        extensionData.mapValues { Array($0) }
-    }
-    
     // MARK: - NSCopying
     
-    func copy(with zone: NSZone? = nil) -> Any {
-        let clone = AdUnitConfig(configID: self.configID, adSize: self.adSize)
+    @objc public func copy(with zone: NSZone? = nil) -> Any {
+        let clone = AdUnitConfig(configID: self.configID, size: self.adSize)
         
         clone.adFormat = self.adFormat
         clone.adConfiguration.adFormat = self.adConfiguration.adFormat

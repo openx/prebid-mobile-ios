@@ -105,7 +105,7 @@ class PBMMoPubUtilsTest: XCTestCase, RawWinningBidFabricator {
 """
         let rawBid = makeRawWinningBid(price: 0.75, bidder: "some bidder", cacheID: "some-cache-id")
         let bid = PBMBid(bid: rawBid)!
-        let responseInfo = PBMDemandResponseInfo(fetchDemandResult: .ok, bid: bid, configId: configId) {
+        let responseInfo = DemandResponseInfo(fetchDemandResult: .ok, bid: bid, configId: configId) {
             $1(markupString)
         }
         let targetingInfo = [

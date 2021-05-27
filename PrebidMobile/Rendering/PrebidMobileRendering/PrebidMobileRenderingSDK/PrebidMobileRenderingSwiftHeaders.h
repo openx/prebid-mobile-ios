@@ -21,8 +21,6 @@
 #import "PBMBaseAdUnit+Protected.h"
 #import "PBMBaseInterstitialAdUnit.h"
 #import "PBMBaseInterstitialAdUnit+Protected.h"
-#import "PBMDemandResponseInfo.h"
-#import "PBMDemandResponseInfo+Internal.h"
 
 #import "PBMInterstitialAdUnitDelegate.h"
 #import "PBMInterstitialEventLoadingDelegate.h"
@@ -76,4 +74,6 @@
 #import "PBMAdLoaderProtocol.h"
 #import "PBMBannerAdLoader.h"
 #import "PBMBannerAdLoaderDelegate.h"
+
+#import "PBMBid.h"
 

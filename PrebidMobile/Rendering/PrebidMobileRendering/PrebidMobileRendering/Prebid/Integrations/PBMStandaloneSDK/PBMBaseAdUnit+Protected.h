@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: + (updated on every BidRequester callback)
 @property (atomic, strong, nullable, readonly) PBMBidResponse *lastBidResponse;
-@property (atomic, strong, nullable, readonly) PBMDemandResponseInfo *lastDemandResponseInfo;
+@property (atomic, strong, nullable, readonly) DemandResponseInfo *lastDemandResponseInfo;
 
 // MARK: + (locks)
 @property (nonatomic, strong, nonnull, readonly) NSObject *stateLockToken; /// guards 'bidRequester', 'lastResponse'' etc.

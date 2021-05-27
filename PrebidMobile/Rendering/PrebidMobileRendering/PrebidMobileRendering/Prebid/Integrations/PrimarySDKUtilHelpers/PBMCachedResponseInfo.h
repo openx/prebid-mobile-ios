@@ -5,8 +5,9 @@
 //  Copyright © 2021 OpenX. All rights reserved.
 //
 
-#import "PBMDemandResponseInfo.h"
 #import "PBMTimerInterface.h"
+
+@class PBMDemandResponseInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 

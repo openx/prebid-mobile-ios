@@ -28,7 +28,7 @@ class VideoEventsTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegat
     override func tearDown() {
         MockServer.singleton().reset()
         
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }

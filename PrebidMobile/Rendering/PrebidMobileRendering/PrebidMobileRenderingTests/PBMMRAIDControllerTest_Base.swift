@@ -49,7 +49,7 @@ class PBMMRAIDControllerTest_Base: XCTestCase, PBMCreativeViewDelegate {
             creativeModel: self.mockCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: self.mockWebView,
-               sdkConfiguration: PrebidRenderingConfig()
+               sdkConfiguration: PrebidRenderingConfig.mock
         )
         
         self.mockHtmlCreative.creativeViewDelegate = self

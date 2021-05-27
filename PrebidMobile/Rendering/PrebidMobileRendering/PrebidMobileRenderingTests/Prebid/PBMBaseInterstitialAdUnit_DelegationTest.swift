@@ -12,7 +12,7 @@ import XCTest
 
 class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
     override func tearDown() {
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }

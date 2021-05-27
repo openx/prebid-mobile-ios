@@ -10,7 +10,7 @@ import XCTest
 
 class PrebidParameterBuilderTest: XCTestCase {
     
-    private let sdkConfiguration = PBMSDKConfiguration()
+    private let sdkConfiguration = PrebidRenderingConfig.mock
     private var targeting: PBMTargeting!
     
     override func setUp() {

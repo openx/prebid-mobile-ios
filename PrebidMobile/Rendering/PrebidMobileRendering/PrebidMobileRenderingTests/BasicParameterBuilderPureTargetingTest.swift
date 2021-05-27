@@ -9,7 +9,7 @@ class BasicParameterBuilderPureTargetingTest: XCTestCase {
     func testParameterBuilderNoUserAgeNoCoppa() {
         let targeting = PBMTargeting.withDisabledLock
         let builder = PBMBasicParameterBuilder(adConfiguration:PBMAdConfiguration(),
-                                                  sdkConfiguration:PBMSDKConfiguration(),
+                                                  sdkConfiguration:PrebidRenderingConfig.mock,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         

@@ -60,7 +60,7 @@ class PBMAdViewManagerTest: XCTestCase, PBMAdViewManagerDelegate {
         
         nilExpectations()
         
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }

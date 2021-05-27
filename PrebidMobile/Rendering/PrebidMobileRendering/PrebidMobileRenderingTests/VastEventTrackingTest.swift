@@ -36,7 +36,7 @@ class VastEventTrackingTest : XCTestCase, PBMCreativeViewDelegate {
         self.creativeFactory = nil
         self.expectations.removeAll()
         
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }

@@ -181,7 +181,6 @@
 #import "PBMBidResponseTransformer.h"
 #import "PBMError.h"
 #import "PBMPrebidParameterBuilder.h"
-#import "PBMSDKConfiguration+InternalState.h"
 #import "PBMTargeting+InternalState.h"
 #import "PBMViewabilityEventDetector.h"
 #import "PBMWinNotifier+Private.h"
@@ -217,3 +216,4 @@
 #import "MoPubNativeAdUnit+TestExtension.h"
 #import "MoPubInterstitialAdUnit+TestExtension.h"
 #import "MoPubBannerAdUnit+TestExtension.h"
+#import "PBMLocationManagerProtocol.h"

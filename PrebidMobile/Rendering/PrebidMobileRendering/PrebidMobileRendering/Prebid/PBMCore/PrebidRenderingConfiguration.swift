@@ -91,4 +91,15 @@ public class PrebidRenderingConfig : NSObject {
         bidRequestTimeoutMillis = defaultTimeoutMillis
     }
     
+#if DEBUG
+    func resetSingleton() {
+        prebidServerHost = .appnexus
+        accountID  = ""
+        
+        bidRequestTimeoutMillis = defaultTimeoutMillis
+    }
+#endif
+
+
+    
 }

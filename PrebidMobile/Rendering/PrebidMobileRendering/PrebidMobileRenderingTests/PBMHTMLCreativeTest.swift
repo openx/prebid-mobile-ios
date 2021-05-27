@@ -7,7 +7,7 @@ import UIKit
 
 class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
     override func tearDown() {
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }
@@ -20,7 +20,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: self.mockWebView,
-               sdkConfiguration: PrebidRenderingConfig()
+               sdkConfiguration: PrebidRenderingConfig.mock
         )
         self.htmlCreative.setupView()
         
@@ -33,7 +33,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: self.mockWebView,
-               sdkConfiguration: PrebidRenderingConfig()
+               sdkConfiguration: PrebidRenderingConfig.mock
         )
         self.htmlCreative.setupView()
 
@@ -166,7 +166,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:transaction,
             webView: nil,
-               sdkConfiguration: PrebidRenderingConfig()
+               sdkConfiguration: PrebidRenderingConfig.mock
         )
         
         self.htmlCreative.setupView()
@@ -333,7 +333,7 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
     }
     
     func testClickthroughOpening(useExternalBrowser: Bool) {
-        let sdkConfiguration = PBMSDKConfiguration()
+        let sdkConfiguration = PrebidRenderingConfig.mock
         sdkConfiguration.useExternalClickthroughBrowser = useExternalBrowser
         
         let attemptedToOpenBrowser = expectation(description: "attemptedToOpenBrowser")

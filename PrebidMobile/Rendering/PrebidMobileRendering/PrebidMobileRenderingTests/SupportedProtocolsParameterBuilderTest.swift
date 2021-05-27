@@ -16,7 +16,7 @@ class SupportedProtocolsParameterBuilderTest : XCTestCase {
         adConfiguration.adFormat = .displayInternal
         
         //Run the Builder
-        let sdkConfig = PBMSDKConfiguration()
+        let sdkConfig = PrebidRenderingConfig.mock
         let targeting = PBMTargeting.withDisabledLock
         let builder = PBMBasicParameterBuilder(adConfiguration: adConfiguration,
                                                   sdkConfiguration: sdkConfig,

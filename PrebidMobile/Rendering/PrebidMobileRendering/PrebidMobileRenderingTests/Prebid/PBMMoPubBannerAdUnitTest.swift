@@ -13,10 +13,10 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
     let primarySize = CGSize(width: 320, height: 50)
     
     private let sdkConfiguration: PrebidRenderingConfig = {
-        let config = PBMSDKConfiguration()
-//        config.serverURL = PBMSDKConfiguration.devintServerURL
+        let config = PrebidRenderingConfig.mock
+//        config.serverURL = PrebidRenderingConfig.devintServerURL
         try! config.setCustomPrebidServer(url: PrebidRenderingConfig.devintServerURL)
-        config.accountID = PBMSDKConfiguration.devintAccountID
+        config.accountID = PrebidRenderingConfig.devintAccountID
         return config
     }()
     private let targeting = PBMTargeting.withDisabledLock

@@ -34,7 +34,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         oxbTargeting.userCustomData = "customDataString"
         oxbTargeting.publisherName = publisherName
         
-        let sdkConfiguration = PBMSDKConfiguration()
+        let sdkConfiguration = PrebidRenderingConfig.mock
         
         let mockBundle = MockBundle()
         let mockDeviceAccessManager = MockDeviceAccessManager(rootViewController: nil)

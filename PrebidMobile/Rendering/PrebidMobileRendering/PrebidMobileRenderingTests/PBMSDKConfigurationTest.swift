@@ -15,7 +15,7 @@ class PBMSDKConfigurationTest: XCTestCase {
     override func tearDown() {
         logToFile = nil
         
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         
         super.tearDown()
     }
@@ -39,7 +39,7 @@ class PBMSDKConfigurationTest: XCTestCase {
     func testInitializeSDK() {
         logToFile = .init()
         
-        PBMSDKConfiguration.initializeSDK()
+        PrebidRenderingConfig.initializeRenderingModule()
         
         let log = PBMLog.singleton.getLogFileAsString()
         
@@ -89,7 +89,7 @@ class PBMSDKConfigurationTest: XCTestCase {
     
     func testResetSingleton() {
         let firstConfig = PrebidRenderingConfig.shared
-        PBMSDKConfiguration.resetSingleton()
+        PrebidRenderingConfig.resetSingleton()
         let newConfig = PrebidRenderingConfig.shared
         XCTAssertNotEqual(firstConfig, newConfig)
     }

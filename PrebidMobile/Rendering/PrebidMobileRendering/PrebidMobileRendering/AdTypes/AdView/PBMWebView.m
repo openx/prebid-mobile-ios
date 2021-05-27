@@ -26,7 +26,6 @@
 #import "PBMNSThreadProtocol.h"
 #import "PBMOpenMeasurementSession.h"
 #import "PBMORTB.h"
-#import "PBMSDKConfiguration.h"
 #import "PBMTouchDownRecognizer.h"
 #import "PBMViewExposure.h"
 #import "PBMCreativeViewabilityTracker.h"
@@ -39,6 +38,9 @@
 #import "PBMWebView.h"
 
 #import "PBMAdViewManagerDelegate.h"
+
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #pragma mark - Constants
 
@@ -696,7 +698,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 }
 
 - (void)MRAID_updateLocation {
-    if (PBMSDKConfiguration.singleton.locationUpdatesEnabled && PBMLocationManager.singleton.coordinatesAreValid) {
+    if (PrebidRenderingConfig.shared.locationUpdatesEnabled && PBMLocationManager.singleton.coordinatesAreValid) {
         PBMLocationManager *locationManager = PBMLocationManager.singleton;
         [self evaluateJavaScript:[PBMMRAIDJavascriptCommands updateLocation:locationManager.coordinates
                                                                    accuracy:locationManager.horizontalAccuracy

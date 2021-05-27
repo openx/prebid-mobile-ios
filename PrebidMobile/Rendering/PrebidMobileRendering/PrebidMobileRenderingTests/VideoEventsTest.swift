@@ -35,7 +35,7 @@ class VideoEventsTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDelegat
     
     func testTypes() {
         self.continueAfterFailure = true
-        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        PrebidRenderingConfig.shared.forcedIsViewable = true
 
         self.expectationDownloadCompleted = self.expectation(description: "expectationCreativeReady")
         self.expectationVideoDidComplete = self.expectation(description: "expectationCreativeDidComplete")

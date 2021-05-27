@@ -11,7 +11,7 @@
 #import "PBMBundleProtocol.h"
 #import "PBMParameterBuilderProtocol.h"
 
-@class PBMSDKConfiguration;
+@class PrebidRenderingConfig;
 
 NS_ASSUME_NONNULL_BEGIN
 @interface PBMAppInfoParameterBuilder : NSObject <PBMParameterBuilder>

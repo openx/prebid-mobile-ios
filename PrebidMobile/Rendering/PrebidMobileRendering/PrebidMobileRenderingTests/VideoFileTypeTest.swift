@@ -32,7 +32,7 @@ class VideoFileTypeTest : XCTestCase, PBMCreativeViewDelegate, PBMVideoViewDeleg
     }
     
     func testTypes() {
-        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        PrebidRenderingConfig.shared.forcedIsViewable = true
         self.continueAfterFailure = true
         
         let typesToTest: [(MockServerMimeType, String)] = [

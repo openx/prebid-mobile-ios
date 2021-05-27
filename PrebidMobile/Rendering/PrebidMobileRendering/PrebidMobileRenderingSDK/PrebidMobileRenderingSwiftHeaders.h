@@ -77,3 +77,6 @@
 #import "PBMORTBBid.h"
 #import "PBMORTBBidExt.h"
 #import "PBMRawBidResponse.h"
+#import "PBMLocationManager.h"
+#import "PBMHost.h"
+#import "PBMLogPrivate.h"

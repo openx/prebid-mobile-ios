@@ -9,7 +9,7 @@
 #import "PBMBidRequesterProtocol.h"
 
 @class AdUnitConfig;
-@class PBMSDKConfiguration;
+@class PrebidRenderingConfig;
 @class PBMTargeting;
 @protocol PBMServerConnectionProtocol;
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PBMBidRequester : NSObject <PBMBidRequesterProtocol>
 
 - (instancetype)initWithConnection:(id<PBMServerConnectionProtocol>)connection
-                  sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
+                  sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
                          targeting:(PBMTargeting *)targeting
                adUnitConfiguration:(AdUnitConfig *)adUnitConfiguration;
 

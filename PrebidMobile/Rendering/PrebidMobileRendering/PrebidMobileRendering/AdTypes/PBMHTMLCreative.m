@@ -33,7 +33,6 @@
 #import "PBMModalViewController.h"
 #import "PBMMRAIDCommand.h"
 #import "PBMMRAIDConstants.h"
-#import "PBMSDKConfiguration.h"
 #import "PBMTransaction.h"
 #import "PBMVideoView.h"
 #import "PBMWebView.h"
@@ -41,6 +40,9 @@
 #import "PBMPathBuilder.h"
 #import "PBMMRAIDController.h"
 #import "PBMCreativeViewabilityTracker.h"
+
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #pragma mark - Private Extension
 
@@ -51,7 +53,7 @@
 
 @property (nonatomic, strong) NSURL *baseURL;
 @property (nonatomic, strong) PBMWebView *prebidWebView;
-@property (nonatomic, strong) PBMSDKConfiguration *sdkConfiguration;
+@property (nonatomic, strong) PrebidRenderingConfig *sdkConfiguration;
 @property (nonatomic, strong) PBMMRAIDController *MRAIDController;
 @property (nonatomic, assign) BOOL isAdChoicesOpened;
 
@@ -68,7 +70,7 @@
     self = [self initWithCreativeModel:creativeModel
                            transaction:transaction
                                webView:nil
-                      sdkConfiguration:PBMSDKConfiguration.singleton];
+                      sdkConfiguration:PrebidRenderingConfig.shared];
     
     return self;
 }
@@ -76,7 +78,7 @@
 - (nonnull instancetype)initWithCreativeModel:(PBMCreativeModel *)creativeModel
                                   transaction:(PBMTransaction *)transaction
                                       webView:(PBMWebView *)webView
-                             sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration {
+                             sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration {
     self = [super initWithCreativeModel:creativeModel transaction:transaction];
     if (self) {
         self.sdkConfiguration = sdkConfiguration;
@@ -362,7 +364,7 @@
 #pragma mark - Helper Methods
 
 - (void)handleClickthrough:(NSURL*)url
-          sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
+          sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
          completionHandler:(void (^)(BOOL success))completion
                     onExit:(PBMVoidBlock)onClickthroughExitBlock {
     @weakify(self);

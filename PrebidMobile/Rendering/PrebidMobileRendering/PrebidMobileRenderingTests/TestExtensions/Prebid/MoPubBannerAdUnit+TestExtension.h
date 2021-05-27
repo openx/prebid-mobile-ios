@@ -10,7 +10,7 @@
 @interface MoPubBannerAdUnit ()
 - (void)fetchDemandWithObject:(NSObject *)adObject
                    connection:(id<PBMServerConnectionProtocol>)connection
-             sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
+             sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
                     targeting:(PBMTargeting *)targeting
                    completion:(void (^)(PBMFetchDemandResult))completion;
 @end

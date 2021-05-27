@@ -10,10 +10,10 @@ import XCTest
 @testable import PrebidMobileRendering
 
 class PBMMoPubInterstitialAdUnitTest: XCTestCase {
-    private let sdkConfiguration: PBMSDKConfiguration = {
+    private let sdkConfiguration: PrebidRenderingConfig = {
         let config = PBMSDKConfiguration()
 //        config.serverURL = PBMSDKConfiguration.devintServerURL
-        try! config.setCustomPrebidServer(url: PBMSDKConfiguration.devintServerURL)
+        try! config.setCustomPrebidServer(url: PrebidRenderingConfig.devintServerURL)
         config.accountID = PBMSDKConfiguration.devintAccountID
         return config
     }()

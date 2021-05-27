@@ -10,7 +10,6 @@
 #import "PBMMacros.h"
 #import "PBMORTB.h"
 #import "PBMORTBBidRequest.h"
-#import "PBMSDKConfiguration.h"
 
 #import "PBMAppInfoParameterBuilder.h"
 

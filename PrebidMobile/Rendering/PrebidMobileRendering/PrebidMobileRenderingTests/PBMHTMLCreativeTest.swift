@@ -20,7 +20,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: self.mockWebView,
-               sdkConfiguration: PBMSDKConfiguration()
+               sdkConfiguration: PrebidRenderingConfig()
         )
         self.htmlCreative.setupView()
         
@@ -33,7 +33,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:UtilitiesForTesting.createEmptyTransaction(),
             webView: self.mockWebView,
-               sdkConfiguration: PBMSDKConfiguration()
+               sdkConfiguration: PrebidRenderingConfig()
         )
         self.htmlCreative.setupView()
 
@@ -75,7 +75,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
     }
 
     func testDisplay_triggersImpression() {
-        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        PrebidRenderingConfig.shared.forcedIsViewable = true
         let impressionExpectation = self.expectation(description: "Should have triggered an impression")
         var expectedEvents = [PBMTrackingEvent.loaded, .impression]
         self.mockEventTracker.mock_trackEvent = { (event) in
@@ -166,7 +166,7 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
             creativeModel: self.mockCreativeModel,
             transaction:transaction,
             webView: nil,
-               sdkConfiguration: PBMSDKConfiguration()
+               sdkConfiguration: PrebidRenderingConfig()
         )
         
         self.htmlCreative.setupView()

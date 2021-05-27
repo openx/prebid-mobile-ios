@@ -5,9 +5,10 @@
 //  Copyright © 2019 OpenX. All rights reserved.
 //
 
-#import "PBMSDKConfiguration.h"
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
-@interface PBMSDKConfiguration (Private)
+@interface PrebidRenderingConfig (Private)
 
 //If true, forces viewabilityManager to return positive value.
 @property (nonatomic, assign) BOOL forcedIsViewable;

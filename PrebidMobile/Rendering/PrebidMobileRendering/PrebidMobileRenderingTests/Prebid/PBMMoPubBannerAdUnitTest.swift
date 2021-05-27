@@ -12,10 +12,10 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
     let testID = "auid"
     let primarySize = CGSize(width: 320, height: 50)
     
-    private let sdkConfiguration: PBMSDKConfiguration = {
+    private let sdkConfiguration: PrebidRenderingConfig = {
         let config = PBMSDKConfiguration()
 //        config.serverURL = PBMSDKConfiguration.devintServerURL
-        try! config.setCustomPrebidServer(url: PBMSDKConfiguration.devintServerURL)
+        try! config.setCustomPrebidServer(url: PrebidRenderingConfig.devintServerURL)
         config.accountID = PBMSDKConfiguration.devintAccountID
         return config
     }()

@@ -33,7 +33,7 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
         
         fetchDemand(with: adObject,
                     connection: PBMServerConnection.singleton(),
-                    sdkConfiguration: PBMSDKConfiguration.singleton,
+                    sdkConfiguration: PrebidRenderingConfig.shared,
                     targeting: PBMTargeting.shared(),
                     completion: completion)
     }
@@ -61,7 +61,7 @@ public class MoPubBaseInterstitialAdUnit : NSObject {
     // NOTE: do not use `private` to expose this method to unit tests
     func fetchDemand(with adObject: NSObject,
                              connection: PBMServerConnectionProtocol,
-                             sdkConfiguration: PBMSDKConfiguration,
+                             sdkConfiguration: PrebidRenderingConfig,
                              targeting: PBMTargeting,
                              completion: ((PBMFetchDemandResult)->Void)?) {
         guard bidRequester == nil else {

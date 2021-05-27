@@ -8,7 +8,6 @@
 #import "PBMPrebidParameterBuilder.h"
 
 #import "PBMNativeMarkupRequestObject+Internal.h"
-#import "PBMSDKConfiguration.h"
 #import "PBMTargeting+Private.h"
 #import "PBMORTB.h"
 #import "PBMUserAgentService.h"
@@ -34,7 +33,7 @@
 @interface PBMPrebidParameterBuilder ()
 
 @property (nonatomic, strong, nonnull, readonly) AdUnitConfig *adConfiguration;
-@property (nonatomic, strong, nonnull, readonly) PBMSDKConfiguration *sdkConfiguration;
+@property (nonatomic, strong, nonnull, readonly) PrebidRenderingConfig *sdkConfiguration;
 @property (nonatomic, strong, nonnull, readonly) PBMTargeting *targeting;
 @property (nonatomic, strong, nonnull, readonly) PBMUserAgentService *userAgentService;
 
@@ -43,7 +42,7 @@
 @implementation PBMPrebidParameterBuilder
 
 - (instancetype)initWithAdConfiguration:(AdUnitConfig *)adConfiguration
-                       sdkConfiguration:(PBMSDKConfiguration *)sdkConfiguration
+                       sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
                               targeting:(PBMTargeting *)targeting
                        userAgentService:(PBMUserAgentService *)userAgentService
 {

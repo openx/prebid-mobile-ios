@@ -9,6 +9,7 @@
 
 #import "PBMBidRequesterFactoryBlock.h"
 #import "PBMSDKConfiguration.h"
+#import "PBMBidResponse.h"
 #import "PBMWinNotifierBlock.h"
 #import "PBMServerConnectionProtocol.h"
 

@@ -22,7 +22,6 @@
 #import "PBMNetworkParameterBuilder.h"
 #import "PBMORTBParameterBuilder.h"
 #import "PBMParameterBuilderProtocol.h"
-#import "PBMSDKConfiguration.h"
 #import "PBMSupportedProtocolsParameterBuilder.h"
 #import "PBMSKAdNetworksParameterBuilder.h"
 #import "PBMUserConsentDataManager.h"
@@ -30,6 +29,9 @@
 #import "PBMORTB.h"
 
 #import "PBMParameterBuilderService.h"
+
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @implementation PBMParameterBuilderService
 
@@ -46,7 +48,7 @@
                              pbmDeviceAccessManager:[[PBMDeviceAccessManager alloc] initWithRootViewController: nil]
                              ctTelephonyNetworkInfo:[CTTelephonyNetworkInfo new]
                                        reachability:[PBMReachability reachabilityForInternetConnection]
-                                   sdkConfiguration:PBMSDKConfiguration.singleton
+                                   sdkConfiguration:PrebidRenderingConfig.shared
                                          sdkVersion:[PBMFunctions sdkVersion]
                               pbmUserConsentManager:[PBMUserConsentDataManager singleton]
                                           targeting:targetingClone
@@ -61,7 +63,7 @@
                                                               pbmDeviceAccessManager:(nonnull PBMDeviceAccessManager *)pbmDeviceAccessManager
                                                               ctTelephonyNetworkInfo:(nonnull CTTelephonyNetworkInfo *)ctTelephonyNetworkInfo
                                                                         reachability:(nonnull PBMReachability *)reachability
-                                                                    sdkConfiguration:(nonnull PBMSDKConfiguration *)sdkConfiguration
+                                                                    sdkConfiguration:(nonnull PrebidRenderingConfig *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
                                                                pbmUserConsentManager:(nonnull PBMUserConsentDataManager *) pbmUserConsentManager
                                                                            targeting:(nonnull PBMTargeting *)targeting

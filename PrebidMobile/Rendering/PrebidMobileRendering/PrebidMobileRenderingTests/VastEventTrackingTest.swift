@@ -42,7 +42,7 @@ class VastEventTrackingTest : XCTestCase, PBMCreativeViewDelegate {
     }
     
     func testEvents() {
-        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        PrebidRenderingConfig.shared.forcedIsViewable = true
         modalManager.modalViewControllerClass = MockPBMModalViewController.self
     
         //Make an PBMServerConnection and redirect its network requests to the Mock Server

@@ -46,7 +46,7 @@ class RewardedVideoEventsTest : XCTestCase, PBMCreativeViewDelegate {
     
     func testEvents() {
         self.initExpectations()
-        PBMSDKConfiguration.singleton.forcedIsViewable = true
+        PrebidRenderingConfig.shared.forcedIsViewable = true
 
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
         let adConfiguration = self.initAdConfiguration()

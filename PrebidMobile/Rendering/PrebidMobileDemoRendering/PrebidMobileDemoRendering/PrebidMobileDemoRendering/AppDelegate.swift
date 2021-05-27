@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         //Set up SDK.
-        PBMSDKConfiguration.initializeSDK()
+        PrebidRenderingConfig.initializeRenderingModule()
                 
         // Set up MockServer
         processArgumentsParser.addOption("useMockServer", fireOnce: true) { params in
@@ -97,13 +97,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GlobalVars.reactiveGAMInitFlag.markSdkInitialized()
         };
         
-        PBMSDKConfiguration.singleton.logLevel = PBMLogLevel.info
-        PBMSDKConfiguration.singleton.debugLogFileEnabled = true
+        PrebidRenderingConfig.shared.logLevel = PBMLogLevel.info
+        PrebidRenderingConfig.shared.debugLogFileEnabled = true
         
         // OpenX's ads include Open Measurement scripts that sometime require additional time for loading.
-        PBMSDKConfiguration.singleton.creativeFactoryTimeout = 20;
+        PrebidRenderingConfig.shared.creativeFactoryTimeout = 20;
         
-        PBMSDKConfiguration.singleton.locationUpdatesEnabled = false
+        PrebidRenderingConfig.shared.locationUpdatesEnabled = false
         
 		return true
 	}

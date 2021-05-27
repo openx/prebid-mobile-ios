@@ -9,8 +9,8 @@ import Foundation
 
 public class PBMBidResponse: NSObject {
     
-    @objc public private(set) var allBids: [PBMBid]?
-    @objc public private(set) var winningBid: PBMBid?
+    @objc public private(set) var allBids: [Bid]?
+    @objc public private(set) var winningBid: Bid?
     @objc public private(set) var targetingInfo: [String : String]?
     
     @objc public var tmaxrequest: NSNumber? {
@@ -47,21 +47,20 @@ public class PBMBidResponse: NSObject {
             return
         }
 
-        var allBids: [PBMBid] = []
+        var allBids: [Bid] = []
         var targetingInfo: [String : String] = [:]
-        var winningBid: PBMBid? = nil
+        var winningBid: Bid? = nil
 
         if let seatbid = rawBidResponse.seatbid {
             for nextSeatBid in seatbid {
                 for nextBid in nextSeatBid.bid {
-                    if let bid = PBMBid(bid: nextBid) {
-                        allBids.append(bid)
-                        
-                        if winningBid == nil && bid.price > 0 && bid.isWinning {
-                            winningBid = bid
-                        } else if let bidTargetingInfo = bid.targetingInfo {
-                            targetingInfo.merge(bidTargetingInfo) { $1 }
-                        }
+                    let bid = Bid(bid: nextBid)
+                    allBids.append(bid)
+                    
+                    if winningBid == nil && bid.price > 0 && bid.isWinning {
+                        winningBid = bid
+                    } else if let bidTargetingInfo = bid.targetingInfo {
+                        targetingInfo.merge(bidTargetingInfo) { $1 }
                     }
                 }
             }

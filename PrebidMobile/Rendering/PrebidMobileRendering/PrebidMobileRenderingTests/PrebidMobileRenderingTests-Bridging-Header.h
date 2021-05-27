@@ -178,7 +178,6 @@
 #import "PBMAdLoadFlowController+PrivateState.h"
 #import "PBMBaseAdUnit+Protected.h"
 #import "PBMBaseInterstitialAdUnit+Protected.h"
-#import "PBMBid+Internal.h"
 #import "PBMBidResponseTransformer.h"
 #import "PBMError.h"
 #import "PBMPrebidParameterBuilder.h"

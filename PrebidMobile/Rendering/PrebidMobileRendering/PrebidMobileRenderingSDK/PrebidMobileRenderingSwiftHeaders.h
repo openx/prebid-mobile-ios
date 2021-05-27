@@ -75,5 +75,6 @@
 #import "PBMBannerAdLoader.h"
 #import "PBMBannerAdLoaderDelegate.h"
 
-#import "PBMBid.h"
-
+// Bid
+#import "PBMORTBBid.h"
+#import "PBMORTBBidExt.h"

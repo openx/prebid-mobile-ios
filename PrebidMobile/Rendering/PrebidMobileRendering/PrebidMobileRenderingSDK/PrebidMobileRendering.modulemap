@@ -20,7 +20,6 @@ framework module PrebidMobileRendering {
     header "PBMVideoPlacementType.h"
     
     // PBMCore
-    header "PBMBid.h"
     header "PBMBidRequester.h"
     header "PBMBidRequesterProtocol.h"
     header "PBMGender.h"
@@ -232,7 +231,9 @@ framework module PrebidMobileRendering {
     header "PBMORTBBid.h"
     header "PBMORTBBidExt.h"
     header "PBMORTBSeatBid.h"
-    header "PBMBid+Internal.h"
+    header "PBMORTBBidExtPrebid.h"
+    header "PBMORTBBidExtSkadn.h"
+    header "PBMORTBMacrosHelper.h"
 
     header "NSDictionary+PBMExtensions.h"
     header "NSMutableDictionary+PBMExtensions.h"

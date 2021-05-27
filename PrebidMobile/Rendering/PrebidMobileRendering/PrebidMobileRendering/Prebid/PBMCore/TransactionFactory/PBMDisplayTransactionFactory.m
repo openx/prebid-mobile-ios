@@ -7,7 +7,6 @@
 
 #import "PBMDisplayTransactionFactory.h"
 
-#import "PBMBid.h"
 #import "PBMNativeFunctions.h"
 #import "PBMCreativeModel.h"
 #import "PBMLog.h"
@@ -21,7 +20,7 @@
 
 @interface PBMDisplayTransactionFactory() <PBMTransactionDelegate>
 
-@property (nonatomic, strong, readonly, nonnull) PBMBid *bid;
+@property (nonatomic, strong, readonly, nonnull) Bid *bid;
 @property (nonatomic, strong, readonly, nonnull) AdUnitConfig *adConfiguration;
 @property (nonatomic, strong, readonly, nonnull) id<PBMServerConnectionProtocol> connection;
 
@@ -40,7 +39,7 @@
 
 // MARK: - Public API
 
-- (instancetype)initWithBid:(PBMBid *)bid
+- (instancetype)initWithBid:(Bid *)bid
             adConfiguration:(AdUnitConfig *)adConfiguration
                  connection:(id<PBMServerConnectionProtocol>)connection
                    callback:(PBMTransactionFactoryCallback)callback
@@ -98,7 +97,7 @@
     [self.transaction startCreativeFactory];
 }
 
-- (PBMCreativeModel *)htmlCreativeModelFromBid:(PBMBid *)bid
+- (PBMCreativeModel *)htmlCreativeModelFromBid:(Bid *)bid
                                       adMarkup:(NSString *)adMarkup
                                adConfiguration:(AdUnitConfig *)adConfiguration {
     PBMCreativeModel * const model = [[PBMCreativeModel alloc] init];

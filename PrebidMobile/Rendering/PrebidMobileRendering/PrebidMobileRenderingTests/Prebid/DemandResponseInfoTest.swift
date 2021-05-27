@@ -10,9 +10,9 @@ import XCTest
 @testable import PrebidMobileRendering
 
 class DemandResponseInfoTest: XCTestCase, RawWinningBidFabricator {
-    private func makeWinningBid() -> PBMBid {
+    private func makeWinningBid() -> Bid {
         let rawBid = makeRawWinningBid(price: 0.75, bidder: "some bidder", cacheID: "some-cache-id")
-        let bid = PBMBid(bid: rawBid)!
+        let bid = Bid(bid: rawBid)
         XCTAssert(bid.isWinning)
         return bid
     }
@@ -20,9 +20,9 @@ class DemandResponseInfoTest: XCTestCase, RawWinningBidFabricator {
     func testInit() {
         let winningBid = makeWinningBid()
         
-        let testBlocks: [(fetchDemandResult: PBMFetchDemandResult, bid: PBMBid?, configId: String?)] = [
+        let testBlocks: [(fetchDemandResult: PBMFetchDemandResult, bid: Bid?, configId: String?)] = [
             (.demandNoBids, nil, nil),
-            (.ok, PBMBid(bid: PBMORTBBid<PBMORTBBidExt>()), "configID-1"),
+            (.ok, Bid(bid: PBMORTBBid<PBMORTBBidExt>()), "configID-1"),
             (.ok, winningBid, "configID-2"),
         ]
         

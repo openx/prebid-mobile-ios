@@ -12,12 +12,12 @@ public class DemandResponseInfo: NSObject {
     @objc public private(set) var fetchDemandResult: PBMFetchDemandResult
     
     private(set) var configId: String?
-    @objc public private(set) var bid: PBMBid?
+    @objc public private(set) var bid: Bid?
     
     var winNotifierBlock: PBMWinNotifierBlock
 
     @objc public required init(fetchDemandResult: PBMFetchDemandResult,
-                  bid: PBMBid?,
+                  bid: Bid?,
                   configId: String?,
                   winNotifierBlock: @escaping PBMWinNotifierBlock
     ) {

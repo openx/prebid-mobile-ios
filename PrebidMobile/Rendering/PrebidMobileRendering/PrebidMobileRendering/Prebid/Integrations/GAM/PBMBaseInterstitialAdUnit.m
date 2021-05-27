@@ -322,7 +322,7 @@ createdInterstitialController:(InterstitialController *)interstitialController
     // to be overridden in subclass
 }
 
-- (void)callEventHandler_requestAdWithBidResponse:(nullable PBMBidResponse *)bidResponse {
+- (void)callEventHandler_requestAdWithBidResponse:(nullable BidResponse *)bidResponse {
     // to be overridden in subclass
 }
 

@@ -13,7 +13,7 @@
 #import "PBMBannerEventLoadingDelegate.h"
 #import "PBMDisplayViewLoadingDelegate.h"
 
-@class PBMBidResponse;
+@class BidResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSError *bidRequestError;
 
 // State: DemandReceived
-@property (nonatomic, strong, nullable) PBMBidResponse *bidResponse;
+@property (nonatomic, strong, nullable) BidResponse *bidResponse;
 
 // State: PrimaryAdRequest
 // _(no relevant properties)_

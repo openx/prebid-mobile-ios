@@ -78,3 +78,4 @@
 // Bid
 #import "PBMORTBBid.h"
 #import "PBMORTBBidExt.h"
+#import "PBMRawBidResponse.h"

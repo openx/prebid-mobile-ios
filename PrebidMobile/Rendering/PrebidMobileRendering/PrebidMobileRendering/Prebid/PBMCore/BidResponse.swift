@@ -7,18 +7,14 @@
 
 import Foundation
 
-public class PBMBidResponse: NSObject {
+public class BidResponse: NSObject {
     
     @objc public private(set) var allBids: [Bid]?
     @objc public private(set) var winningBid: Bid?
     @objc public private(set) var targetingInfo: [String : String]?
     
-    @objc public var tmaxrequest: NSNumber? {
-        //TODO use a separate var for storing this value instead of rawResponse
-        rawResponse?.ext.tmaxrequest;
-    }
+    @objc public private(set) var tmaxrequest: NSNumber?
     
-    //TODO: do we need this??
     private(set) var rawResponse: RawBidResponse<PBMORTBBidResponseExt, NSDictionary, PBMORTBBidExt>?
 
     @objc public convenience init(jsonDictionary: JsonDictionary) {
@@ -37,9 +33,7 @@ public class PBMBidResponse: NSObject {
         self.init(rawBidResponse: rawResponse)
     }
     
-    //TODO: make it visible only for test extensions
-    //use rawResponse?.toJsonString() to convert JSON and init(jsonDictionary:)
-    public required init(rawBidResponse: RawBidResponse<PBMORTBBidResponseExt, NSDictionary, PBMORTBBidExt>?) {
+    required init(rawBidResponse: RawBidResponse<PBMORTBBidResponseExt, NSDictionary, PBMORTBBidExt>?) {
 
         rawResponse = rawBidResponse
         
@@ -73,6 +67,7 @@ public class PBMBidResponse: NSObject {
         self.winningBid = winningBid
         self.allBids = allBids
         self.targetingInfo = targetingInfo.count > 0 ? targetingInfo : nil
+        tmaxrequest = rawBidResponse.ext.tmaxrequest
     }
  
 }

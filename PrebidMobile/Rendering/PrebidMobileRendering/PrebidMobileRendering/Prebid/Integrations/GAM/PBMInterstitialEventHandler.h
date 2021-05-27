@@ -10,7 +10,7 @@
 #import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMPrimaryAdRequesterProtocol.h"
 
-@class PBMBidResponse;
+@class BidResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 

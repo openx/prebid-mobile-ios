@@ -7,7 +7,6 @@
 
 #import "PBMBidRequester.h"
 #import "PBMBidResponseTransformer.h"
-#import "PBMBidResponse+Internal.h"
 #import "PBMError.h"
 #import "PBMORTBPrebid.h"
 #import "PBMPrebidParameterBuilder.h"
@@ -22,6 +21,39 @@
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 #import "PBMMacros.h"
+
+// Fix Build
+#import "PBMPlayable.h"
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMConstants.h"
+#import "PBMDataAssetType.h"
+#import "PBMJsonCodable.h"
+
+#import "PBMNativeEventType.h"
+#import "PBMNativeEventTrackingMethod.h"
+
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativePlacementType.h"
+#import "PBMBaseAdUnit.h"
+#import "PBMBidRequesterFactoryBlock.h"
+#import "PBMWinNotifierBlock.h"
+
+#import "PBMImageAssetType.h"
+#import "PBMNativeAdElementType.h"
+
+#import "PBMAdLoadFlowControllerDelegate.h"
+#import "PBMBannerAdLoaderDelegate.h"
+#import "PBMBannerEventInteractionDelegate.h"
+#import "PBMDisplayViewInteractionDelegate.h"
+
+#import "PBMBaseInterstitialAdUnit.h"
+#import "PBMRewardedEventInteractionDelegate.h"
+#import "PBMAdPosition.h"
+#import "PBMVideoPlacementType.h"
+#import "PBMAdFormat.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 @interface PBMBidRequester ()
 
@@ -111,7 +143,7 @@
         PBMBidResponse * const bidResponse = [PBMBidResponseTransformer transformResponse:serverResponse error:&trasformationError];
         
         if (bidResponse && !trasformationError) {
-            NSNumber * const tmaxrequest = bidResponse.rawResponse.ext.tmaxrequest;
+            NSNumber * const tmaxrequest = bidResponse.tmaxrequest;
             if (tmaxrequest) {
                 NSDate * const responseDate = [NSDate date];
 

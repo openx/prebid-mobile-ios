@@ -8,10 +8,11 @@
 #import "PBMBaseAdUnit.h"
 
 #import "PBMBidRequesterFactoryBlock.h"
-#import "PBMBidResponse.h"
 #import "PBMSDKConfiguration.h"
 #import "PBMWinNotifierBlock.h"
 #import "PBMServerConnectionProtocol.h"
+
+@class PBMBidResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 

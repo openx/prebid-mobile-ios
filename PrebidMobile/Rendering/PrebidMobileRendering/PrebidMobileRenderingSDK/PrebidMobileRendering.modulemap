@@ -21,7 +21,6 @@ framework module PrebidMobileRendering {
     
     // PBMCore
     header "PBMBid.h"
-    header "PBMBidResponse.h"
     header "PBMBidRequester.h"
     header "PBMBidRequesterProtocol.h"
     header "PBMGender.h"
@@ -222,4 +221,21 @@ framework module PrebidMobileRendering {
     header "PBMInterstitialDisplayProperties.h"
     header "PBMCachedResponseInfo.h"
     header "PBMWeakTimerTargetBox.h"
+    
+    // Bid
+    header "PBMORTBAbstract.h"
+    header "PBMORTBAbstract+Protected.h"
+    header "PBMORTBAbstractResponse.h"
+    header "PBMORTBAbstractResponse+Protected.h"
+    header "PBMRawBidResponse.h"
+    header "PBMORTBBidResponse.h"
+    header "PBMORTBBidResponse+Internal.h"
+    header "PBMORTBBidResponseExt.h"
+    header "PBMORTBBid.h"
+    header "PBMORTBBidExt.h"
+    header "PBMORTBSeatBid.h"
+    header "PBMBid+Internal.h"
+
+    header "NSDictionary+PBMExtensions.h"
+    header "NSMutableDictionary+PBMExtensions.h"
 }

@@ -12,7 +12,6 @@
 
 #import "PBMBidRequester.h"
 #import "PBMBidRequesterFactory.h"
-#import "PBMBidResponse.h"
 #import "PBMDemandResponseInfo+Internal.h"
 #import "PBMError.h"
 #import "PBMWinNotifier.h"
@@ -23,6 +22,33 @@
 
 #import "PBMConstants.h"
 #import "PBMMacros.h"
+
+//Fix Build
+#import "PBMAdViewManagerDelegate.h"
+#import "PBMDataAssetType.h"
+#import "PBMPlayable.h"
+#import "PBMJsonCodable.h"
+#import "PBMNativeContextType.h"
+#import "PBMNativeContextSubtype.h"
+#import "PBMNativeEventType.h"
+#import "PBMNativeEventTrackingMethod.h"
+#import "PBMNativePlacementType.h"
+
+#import "PBMBaseAdUnit.h"
+#import "PBMBidRequesterFactoryBlock.h"
+#import "PBMWinNotifierBlock.h"
+
+#import "PBMImageAssetType.h"
+#import "PBMNativeAdElementType.h"
+
+#import "PBMAdLoadFlowControllerDelegate.h"
+#import "PBMBannerAdLoaderDelegate.h"
+#import "PBMBannerEventInteractionDelegate.h"
+#import "PBMDisplayViewInteractionDelegate.h"
+#import "PBMBaseInterstitialAdUnit.h"
+#import "PBMRewardedEventInteractionDelegate.h"
+
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 
 @interface PBMBaseAdUnit ()

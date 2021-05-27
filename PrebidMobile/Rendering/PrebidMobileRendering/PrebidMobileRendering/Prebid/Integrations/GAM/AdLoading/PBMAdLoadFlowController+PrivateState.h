@@ -8,11 +8,12 @@
 #import "PBMAdLoadFlowController.h"
 
 #import "PBMBidRequester.h"
-#import "PBMBidResponse.h"
 #import "PBMAdLoadFlowState.h"
 #import "PBMAdLoaderFlowDelegate.h"
 #import "PBMBannerEventLoadingDelegate.h"
 #import "PBMDisplayViewLoadingDelegate.h"
+
+@class PBMBidResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 

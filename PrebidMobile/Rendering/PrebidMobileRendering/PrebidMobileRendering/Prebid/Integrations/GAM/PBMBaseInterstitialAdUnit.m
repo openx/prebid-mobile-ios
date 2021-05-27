@@ -10,7 +10,6 @@
 
 #import "PBMAdLoadFlowController.h"
 #import "PBMBidRequester.h"
-#import "PBMBidResponse.h"
 #import "PBMError.h"
 #import "PBMInterstitialAdLoader.h"
 #import "PBMSDKConfiguration.h"

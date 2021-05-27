@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PBMBidResponse.h"
+@class PBMBidResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 

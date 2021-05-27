@@ -180,8 +180,6 @@
 #import "PBMBaseInterstitialAdUnit+Protected.h"
 #import "PBMBid+Internal.h"
 #import "PBMBidResponseTransformer.h"
-#import "PBMBidResponse+Internal.h"
-#import "PBMBidResponse+Testing.h"
 #import "PBMDemandResponseInfo+Internal.h"
 #import "PBMError.h"
 #import "PBMPrebidParameterBuilder.h"

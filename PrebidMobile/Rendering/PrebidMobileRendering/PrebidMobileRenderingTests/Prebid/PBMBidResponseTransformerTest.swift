@@ -96,7 +96,7 @@ class PBMBidResponseTransformerTest: XCTestCase {
         
         let serverResponse = PBMBidResponseTransformer.buildResponse(realResponseBody)
         let response = try! PBMBidResponseTransformer.transform(serverResponse)
-        let serializedResponse = try! response.rawResponse.toJsonString()
+        let serializedResponse = try! response.rawResponse?.toJsonString()
         
         XCTAssertEqual(realResponseBodyAbc, serializedResponse)
     }

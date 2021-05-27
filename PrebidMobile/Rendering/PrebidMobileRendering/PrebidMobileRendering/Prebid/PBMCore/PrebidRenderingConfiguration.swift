@@ -21,7 +21,7 @@ public class PrebidRenderingConfig : NSObject {
     
     // MARK: - Public Properties (Prebid)
     
-    @objc public var prebidServerHost: PBMPrebidHost {
+    @objc public var prebidServerHost: PBMPrebidHost = .custom {
         didSet {
             bidRequestTimeoutDynamic = nil
         }
@@ -85,21 +85,8 @@ public class PrebidRenderingConfig : NSObject {
     // MARK: - Private Methods
     
     override init() {
-        prebidServerHost = .appnexus
         accountID  = ""
         
         bidRequestTimeoutMillis = defaultTimeoutMillis
     }
-    
-#if DEBUG
-    func resetSingleton() {
-        prebidServerHost = .appnexus
-        accountID  = ""
-        
-        bidRequestTimeoutMillis = defaultTimeoutMillis
-    }
-#endif
-
-
-    
 }

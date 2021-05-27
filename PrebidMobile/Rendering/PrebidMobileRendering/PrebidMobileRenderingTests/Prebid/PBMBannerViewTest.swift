@@ -12,7 +12,7 @@ import XCTest
 
 class PBMBannerViewTest: XCTestCase {
     override func tearDown() {
-        PrebidRenderingConfig.resetSingleton()
+        PrebidRenderingConfig.reset()
         
         super.tearDown()
     }

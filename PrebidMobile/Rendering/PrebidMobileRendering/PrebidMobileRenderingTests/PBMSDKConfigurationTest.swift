@@ -15,7 +15,7 @@ class PBMSDKConfigurationTest: XCTestCase {
     override func tearDown() {
         logToFile = nil
         
-        PrebidRenderingConfig.resetSingleton()
+        PrebidRenderingConfig.reset()
         
         super.tearDown()
     }
@@ -23,17 +23,7 @@ class PBMSDKConfigurationTest: XCTestCase {
     func testInitialValues() {
         let sdkConfiguration = PrebidRenderingConfig.shared
         
-        // PBMSDKConfiguration
-        
-        XCTAssertEqual(sdkConfiguration.creativeFactoryTimeout, 6.0)
-        XCTAssertEqual(sdkConfiguration.creativeFactoryTimeoutPreRenderContent, 30.0)
-
-        XCTAssertFalse(sdkConfiguration.useExternalClickthroughBrowser)
-        
-        // Prebid-specific
-        
-        XCTAssertEqual(sdkConfiguration.accountID, "")
-        XCTAssertEqual(sdkConfiguration.prebidServerHost, .custom)
+        checkInitialValue(sdkConfiguration: sdkConfiguration)
     }
     
     func testInitializeSDK() {
@@ -89,9 +79,10 @@ class PBMSDKConfigurationTest: XCTestCase {
     
     func testResetSingleton() {
         let firstConfig = PrebidRenderingConfig.shared
-        PrebidRenderingConfig.resetSingleton()
-        let newConfig = PrebidRenderingConfig.shared
-        XCTAssertNotEqual(firstConfig, newConfig)
+        firstConfig.accountID = "test"
+        PrebidRenderingConfig.reset()
+        
+        checkInitialValue(sdkConfiguration: firstConfig)
     }
     
     func testPrebidHost() {
@@ -103,10 +94,25 @@ class PBMSDKConfigurationTest: XCTestCase {
         
         let _ = try! PrebidRenderingConfig.shared.setCustomPrebidServer(url: "https://10.0.2.2:8000/openrtb2/auction")
         XCTAssertEqual(sdkConfig.prebidServerHost, .custom)
-        
     }
     
     func testServerHostCustomInvalid() throws {
         XCTAssertThrowsError(try PrebidRenderingConfig.shared.setCustomPrebidServer(url: "wrong url"))
+    }
+    
+    // MARK: - Private Methods
+    
+    private func checkInitialValue(sdkConfiguration: PrebidRenderingConfig, file: StaticString = #file, line: UInt = #line) {
+        // PBMSDKConfiguration
+        
+        XCTAssertEqual(sdkConfiguration.creativeFactoryTimeout, 6.0)
+        XCTAssertEqual(sdkConfiguration.creativeFactoryTimeoutPreRenderContent, 30.0)
+
+        XCTAssertFalse(sdkConfiguration.useExternalClickthroughBrowser)
+        
+        // Prebid-specific
+        
+        XCTAssertEqual(sdkConfiguration.accountID, "")
+        XCTAssertEqual(sdkConfiguration.prebidServerHost, .custom)
     }
 }

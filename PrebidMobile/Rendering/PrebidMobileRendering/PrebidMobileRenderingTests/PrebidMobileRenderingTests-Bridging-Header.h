@@ -171,7 +171,6 @@
 #import "PBMBasicParameterBuilder+PBMTestExtension.h"
 #import "PBMJSLibraryManager+PBMTestExtension.h"
 #import "PBMMRAIDController+PBMTestExtension.h"
-#import "PBMSDKConfiguration+PBMTestExtension.h"
 #import "PBMCreativeViewabilityTracker+PBMTestExtension.h"
 
 // Prebid

@@ -11,7 +11,7 @@
 #import "UIView+PBMExtensions.h"
 
 #ifdef DEBUG
-    #import "PBMSDKConfiguration+pbmTestExtension.h"
+    #import "PrebidRenderingConfig+TestExtension.h"
 #endif
 
 #import "PrebidMobileRenderingSwiftHeaders.h"

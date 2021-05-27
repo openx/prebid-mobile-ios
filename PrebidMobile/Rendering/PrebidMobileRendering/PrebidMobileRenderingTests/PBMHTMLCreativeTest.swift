@@ -6,8 +6,9 @@ import UIKit
 
 
 class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
+    
     override func tearDown() {
-        PrebidRenderingConfig.resetSingleton()
+        PrebidRenderingConfig.reset()
         
         super.tearDown()
     }
@@ -75,7 +76,10 @@ class PBMHTMLCreativeTest_PublicAPI: PBMHTMLCreativeTest_Base {
     }
 
     func testDisplay_triggersImpression() {
-        PrebidRenderingConfig.shared.forcedIsViewable = true
+        
+        PrebidRenderingConfig.forcedIsViewable = true
+        defer { PrebidRenderingConfig.reset() }
+        
         let impressionExpectation = self.expectation(description: "Should have triggered an impression")
         var expectedEvents = [PBMTrackingEvent.loaded, .impression]
         self.mockEventTracker.mock_trackEvent = { (event) in
@@ -261,6 +265,8 @@ class PBMHTMLCreativeTest : XCTestCase, PBMCreativeResolutionDelegate, PBMCreati
         self.htmlCreative = MockPBMHTMLCreative(creativeModel:pbmCreativeModel, transaction:UtilitiesForTesting.createEmptyTransaction())
         self.htmlCreative.creativeResolutionDelegate = self
         self.htmlCreative.creativeViewDelegate = self
+        
+        PrebidRenderingConfig.forcedIsViewable = false
     }
     
     override func tearDown() {

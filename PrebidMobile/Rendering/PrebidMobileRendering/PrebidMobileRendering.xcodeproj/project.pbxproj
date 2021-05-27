@@ -665,6 +665,8 @@
 		5BBD8DCC2279928D00999BC4 /* MockOXMVideoCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8DCB2279928D00999BC4 /* MockOXMVideoCreative.swift */; };
 		5BD2C319265E42B2005D3337 /* AdUnitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2C318265E42B2005D3337 /* AdUnitConfig.swift */; };
 		5BD2C31C265F7675005D3337 /* PrebidRenderingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2C31B265F7675005D3337 /* PrebidRenderingConfiguration.swift */; };
+		5BD2C328265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BD2C326265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h */; };
+		5BD2C329265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2C327265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.m */; };
 		5BD5D4B32656CFF500DFB8B2 /* NativeAssetVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4AE2656CFF400DFB8B2 /* NativeAssetVideo.swift */; };
 		5BD5D4B42656CFF500DFB8B2 /* NativeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4AF2656CFF400DFB8B2 /* NativeAsset.swift */; };
 		5BD5D4B52656CFF500DFB8B2 /* NativeAssetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4B02656CFF400DFB8B2 /* NativeAssetData.swift */; };
@@ -1495,6 +1497,8 @@
 		5BD2C318265E42B2005D3337 /* AdUnitConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdUnitConfig.swift; sourceTree = "<group>"; };
 		5BD2C31A265E80B3005D3337 /* PrebidMobileRenderingSwiftHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMobileRenderingSwiftHeaders.h; sourceTree = "<group>"; };
 		5BD2C31B265F7675005D3337 /* PrebidRenderingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidRenderingConfiguration.swift; sourceTree = "<group>"; };
+		5BD2C326265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrebidRenderingConfig+TestExtension.h"; sourceTree = "<group>"; };
+		5BD2C327265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PrebidRenderingConfig+TestExtension.m"; sourceTree = "<group>"; };
 		5BD5D4AE2656CFF400DFB8B2 /* NativeAssetVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAssetVideo.swift; sourceTree = "<group>"; };
 		5BD5D4AF2656CFF400DFB8B2 /* NativeAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAsset.swift; sourceTree = "<group>"; };
 		5BD5D4B02656CFF400DFB8B2 /* NativeAssetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAssetData.swift; sourceTree = "<group>"; };
@@ -1682,7 +1686,6 @@
 		D0802BF522EEF78300F13C15 /* PBMCreativeFactoryJob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMCreativeFactoryJob.h; sourceTree = "<group>"; };
 		D0802BF622EEF78300F13C15 /* PBMCreativeFactoryJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMCreativeFactoryJob.m; sourceTree = "<group>"; };
 		D09C8D0522FD7AC000D62CC6 /* PBMCreativeFactoryJobTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMCreativeFactoryJobTest.swift; sourceTree = "<group>"; };
-		D0CA4B06237ACE0A0008A5CB /* PBMSDKConfiguration+pbmTestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMSDKConfiguration+pbmTestExtension.h"; sourceTree = "<group>"; };
 		D0D31003229BDE5A0070B231 /* PBMJSLibraryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMJSLibraryManager.h; sourceTree = "<group>"; };
 		D0D31004229BDE5A0070B231 /* PBMJSLibraryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMJSLibraryManager.m; sourceTree = "<group>"; };
 		D0DDABEB22B12E6A00B89E7B /* PBMJSLibraryManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMJSLibraryManagerTest.swift; sourceTree = "<group>"; };
@@ -2659,7 +2662,6 @@
 				5C90DF3320E2DD8B00A02A33 /* UIDevice+TestExtension.swift */,
 				AC628A4122899E5700A58966 /* PBMBasicParameterBuilder+pbmTestExtension.h */,
 				AC461878230C2BD100F4E0DE /* PBMMRAIDController+pbmTestExtension.h */,
-				D0CA4B06237ACE0A0008A5CB /* PBMSDKConfiguration+pbmTestExtension.h */,
 				AC4A5333244867DD00EFC08D /* PBMCreativeViewabilityTracker+pbmTestExtension.h */,
 				ACC43B9F249D039E0097AB46 /* PBMTargeting+TestExtension.swift */,
 			);
@@ -3015,6 +3017,8 @@
 				5B48920F225600A6003BD266 /* PBMWKScriptMessageHandlerLeakAvoider.m */,
 				AC7CE8852563FF3A0048475F /* PBMNativeFunctions.h */,
 				AC7CE8862563FF3A0048475F /* PBMNativeFunctions.m */,
+				5BD2C326265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h */,
+				5BD2C327265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -3622,6 +3626,7 @@
 				34D710FA24E580620048CC78 /* PBMDisplayViewLoadingDelegate.h in Headers */,
 				34D710FB24E580620048CC78 /* PBMRewardedEventHandler.h in Headers */,
 				34D710FD24E580620048CC78 /* PBMCreativeModelMakerResult.h in Headers */,
+				5BD2C328265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h in Headers */,
 				34D710FF24E580620048CC78 /* PBMORTBRegs.h in Headers */,
 				5B2FB14726442CC800912342 /* PBMNativeAdMarkupData.h in Headers */,
 				34D7110024E580620048CC78 /* PBMAdLoadManagerVAST.h in Headers */,
@@ -3944,6 +3949,7 @@
 				34D70F9D24E580620048CC78 /* PBMVastAdsBuilder.m in Sources */,
 				34D70F9E24E580620048CC78 /* PBMWindowLocker.m in Sources */,
 				34D70F9F24E580620048CC78 /* PBMLegalButtonDecorator.m in Sources */,
+				5BD2C329265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.m in Sources */,
 				34D70FA024E580620048CC78 /* PBMORTBBid.m in Sources */,
 				34D70FA124E580620048CC78 /* PBMCreativeFactory.m in Sources */,
 				34D70FA224E580620048CC78 /* PBMGeoLocationParameterBuilder.m in Sources */,

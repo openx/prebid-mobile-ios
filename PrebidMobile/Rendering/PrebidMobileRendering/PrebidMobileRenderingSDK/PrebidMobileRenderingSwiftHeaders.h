@@ -44,8 +44,6 @@
 #import "PBMNativeAdElementType.h"
 #import "PBMNativeAdHandler.h"
 
-#import "PBMLocalResponseInfoCache.h"
-
 #import "PBMNativeAdMarkup.h"
 #import "PBMNativeAdMarkupAsset.h"
 #import "PBMNativeAdMarkupData.h"

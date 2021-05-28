@@ -7,12 +7,12 @@ class PBMBasicParameterBuilderTest: XCTestCase {
     
     private var logToFile: LogToFileLock?
     
-    private var targeting: PBMTargeting!
+    private var targeting: PrebidRenderingTargeting!
     
     override func setUp() {
         super.setUp()
         
-        targeting = .withDisabledLock
+        targeting = .shared
         targeting.parameterDictionary["foo"] = "bar"
         targeting.userAge = 10
     }

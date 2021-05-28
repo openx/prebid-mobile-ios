@@ -11,12 +11,12 @@ import XCTest
 class PrebidParameterBuilderTest: XCTestCase {
     
     private let sdkConfiguration = PrebidRenderingConfig.mock
-    private var targeting: PBMTargeting!
+    private var targeting: PrebidRenderingTargeting!
     
     override func setUp() {
         super.setUp()
         
-        targeting = PBMTargeting.withDisabledLock
+        targeting = PrebidRenderingTargeting.shared
     }
     
     func testAdPositionHeader() {

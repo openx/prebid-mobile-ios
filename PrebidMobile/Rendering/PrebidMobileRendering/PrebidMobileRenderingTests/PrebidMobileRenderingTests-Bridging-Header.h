@@ -96,9 +96,7 @@
 #import "PBMAdRequesterVAST.h"
 #import "PBMCreativeModelCollectionMakerVAST.h"
 #import "PBMTransaction.h"
-#import "PBMTargeting.h"
 #import "PBMAgeUtils.h"
-#import "PBMTargeting+Private.h"
 #import "PBMVideoCreative.h"
 #import "PBMVideoView.h"
 #import "PBMVideoViewDelegate.h"
@@ -180,7 +178,6 @@
 #import "PBMBidResponseTransformer.h"
 #import "PBMError.h"
 #import "PBMPrebidParameterBuilder.h"
-#import "PBMTargeting+InternalState.h"
 #import "PBMViewabilityEventDetector.h"
 #import "PBMWinNotifier+Private.h"
 // NativeAds (Request)

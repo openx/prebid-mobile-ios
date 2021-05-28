@@ -20,7 +20,7 @@ class PBMMoPubBannerAdUnitTest: XCTestCase {
         return config
     }
     
-    private let targeting = PBMTargeting.withDisabledLock
+    private let targeting = PrebidRenderingTargeting.shared
     
     func testConfigSetup() {
         let bannerAdUnit = MoPubBannerAdUnit(configID: testID, size: primarySize)

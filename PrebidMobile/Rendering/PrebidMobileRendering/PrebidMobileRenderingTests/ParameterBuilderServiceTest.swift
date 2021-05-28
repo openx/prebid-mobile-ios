@@ -22,8 +22,8 @@ class ParameterBuilderServiceTest : XCTestCase {
     
         let adConfiguration = PBMAdConfiguration()
         
-        let oxbTargeting = PBMTargeting.withDisabledLock
-        oxbTargeting.parameterDictionary.removeAllObjects()
+        let oxbTargeting = PrebidRenderingTargeting.shared
+        oxbTargeting.parameterDictionary.removeAll()
         oxbTargeting.parameterDictionary["foo"] = "bar"
         oxbTargeting.userAge = 10
         oxbTargeting.coppa = 1
@@ -116,7 +116,7 @@ class ParameterBuilderServiceTest : XCTestCase {
             return
         }
 
-        let yob = PBMAgeUtils.yob(forAge:oxbTargeting.userAge)
+        let yob = PBMAgeUtils.yob(forAge:oxbTargeting.userAge as! Int)
         let omidVersion = PBMFunctions.omidVersion()
         var deviceExt = ""
         if #available(iOS 14.0, *) {

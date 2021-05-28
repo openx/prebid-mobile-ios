@@ -38,7 +38,6 @@
 }
 
 + (nonnull NSDictionary<NSString* , NSString *> *)buildParamsDictWithAdConfiguration:(nonnull PBMAdConfiguration *)adConfiguration extraParameterBuilders:(nullable NSArray<id<PBMParameterBuilder> > *)extraParameterBuilders {
-    PrebidRenderingTargeting * const targetingClone = [PrebidRenderingTargeting.shared copy];
     return [self buildParamsDictWithAdConfiguration:adConfiguration
                                              bundle:NSBundle.mainBundle
                                  pbmLocationManager:PBMLocationManager.singleton
@@ -48,7 +47,7 @@
                                    sdkConfiguration:PrebidRenderingConfig.shared
                                          sdkVersion:[PBMFunctions sdkVersion]
                               pbmUserConsentManager:[PBMUserConsentDataManager singleton]
-                                          targeting:targetingClone
+                                          targeting:PrebidRenderingTargeting.shared
                              extraParameterBuilders:extraParameterBuilders];
 }
 

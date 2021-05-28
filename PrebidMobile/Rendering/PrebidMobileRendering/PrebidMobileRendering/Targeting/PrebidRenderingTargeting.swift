@@ -119,7 +119,7 @@ public class PrebidRenderingTargeting: NSObject {
     /**
      Placeholder for exchange-specific extensions to OpenRTB.
      */
-    @objc public var userExt: [String : AnyObject]?
+    @objc public var userExt: [String : AnyHashable]?
 
     
     // MARK: - Application Information
@@ -291,10 +291,10 @@ public class PrebidRenderingTargeting: NSObject {
     @objc public var contextDataDictionary: [String : [String]] {
         rawContextDataDictionary.mapValues { Array($0) }
     }
-    
+        
     // MARK: - Internal Properties
     
-    private var parameterDictionary = [String : String]()
+    public var parameterDictionary = [String : String]()
     
     private var rawAccessControlList = Set<String>()
     private var rawUserDataDictionary = [String : Set<String>]()

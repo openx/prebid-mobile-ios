@@ -11,7 +11,7 @@ import XCTest
 
 class PBMBidRequesterTest: XCTestCase {
     private var sdkConfiguration: PrebidRenderingConfig!
-    private let targeting = PBMTargeting.withDisabledLock
+    private let targeting = PrebidRenderingTargeting.shared
     
     override func setUp() {
         super.setUp()

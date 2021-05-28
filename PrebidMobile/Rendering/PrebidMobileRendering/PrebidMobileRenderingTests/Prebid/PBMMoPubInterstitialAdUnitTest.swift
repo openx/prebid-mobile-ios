@@ -17,7 +17,7 @@ class PBMMoPubInterstitialAdUnitTest: XCTestCase {
         config.accountID = PrebidRenderingConfig.devintAccountID
         return config
     }()
-    private let targeting = PBMTargeting.withDisabledLock
+    private let targeting = PrebidRenderingTargeting.shared
     
     func testDefaultSettings() {
         let adUnit = MoPubInterstitialAdUnit(configId: "prebidConfigId", minSizePercentage: CGSize(width: 30, height: 30))

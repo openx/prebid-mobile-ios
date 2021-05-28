@@ -10,7 +10,7 @@
 
 @class AdUnitConfig;
 @class PrebidRenderingConfig;
-@class PBMTargeting;
+@class PrebidRenderingTargeting;
 @protocol PBMServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithConnection:(id<PBMServerConnectionProtocol>)connection
                   sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
-                         targeting:(PBMTargeting *)targeting
+                         targeting:(PrebidRenderingTargeting *)targeting
                adUnitConfiguration:(AdUnitConfig *)adUnitConfiguration;
 
 - (void)requestBidsWithCompletion:(void (^)(BidResponse * _Nullable, NSError * _Nullable))completion;

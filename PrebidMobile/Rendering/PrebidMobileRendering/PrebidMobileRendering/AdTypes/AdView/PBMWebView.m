@@ -29,7 +29,6 @@
 #import "PBMTouchDownRecognizer.h"
 #import "PBMViewExposure.h"
 #import "PBMCreativeViewabilityTracker.h"
-#import "PBMTargeting.h"
 #import "PBMAgeUtils.h"
 #import "PBMWKScriptMessageHandlerLeakAvoider.h"
 #import "UIView+PBMExtensions.h"
@@ -77,7 +76,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 @property (nonatomic, assign) BOOL isPollingForDocumentReady;
 
 
-@property (nonatomic, strong, readonly, nonnull) PBMTargeting *targeting;
+@property (nonatomic, strong, readonly, nonnull) PrebidRenderingTargeting *targeting;
 
 @end
 
@@ -88,13 +87,13 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 #pragma mark - Initialization
  
 - (nonnull instancetype)initWithFrame:(CGRect)frame {
-    self = [self initWithFrame:frame creativeModel:nil targeting:[PBMTargeting shared]];
+    self = [self initWithFrame:frame creativeModel:nil targeting:PrebidRenderingTargeting.shared];
     return self;
 }
  
 - (nonnull instancetype)initWithFrame:(CGRect)frame
                         creativeModel:(PBMCreativeModel *)creativeModel
-                            targeting:(PBMTargeting *)targeting
+                            targeting:(PrebidRenderingTargeting *)targeting
 {
     if (!(self = [super initWithFrame:frame])) {
         return nil;

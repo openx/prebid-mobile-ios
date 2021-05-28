@@ -10,7 +10,6 @@
 #import "PBMError.h"
 #import "PBMORTBPrebid.h"
 #import "PBMPrebidParameterBuilder.h"
-#import "PBMTargeting.h"
 #import "PBMParameterBuilderService.h"
 #import "PBMServerConnectionProtocol.h"
 #import "PBMServerResponse.h"
@@ -24,7 +23,7 @@
 
 @property (nonatomic, strong, nonnull, readonly) id<PBMServerConnectionProtocol> connection;
 @property (nonatomic, strong, nonnull, readonly) PrebidRenderingConfig *sdkConfiguration;
-@property (nonatomic, strong, nonnull, readonly) PBMTargeting *targeting;
+@property (nonatomic, strong, nonnull, readonly) PrebidRenderingTargeting *targeting;
 @property (nonatomic, strong, nonnull, readonly) AdUnitConfig *adUnitConfiguration;
 
 @property (nonatomic, copy, nullable) void (^completion)(BidResponse *, NSError *);
@@ -35,7 +34,7 @@
 
 - (instancetype)initWithConnection:(id<PBMServerConnectionProtocol>)connection
                   sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
-                         targeting:(PBMTargeting *)targeting
+                         targeting:(PrebidRenderingTargeting *)targeting
                adUnitConfiguration:(AdUnitConfig *)adUnitConfiguration {
     if (!(self = [super init])) {
         return nil;

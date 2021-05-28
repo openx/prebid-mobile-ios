@@ -192,9 +192,9 @@ struct TestCaseManager {
     EXTRA_OPEN_RTB "[ { "auid":"537454411","openRtb":{ "auid":"537454411", "age":23, "url":"https://url.com", "crr":"carrier",  "ip":"127.0.0.1", "xid":"007", "gen":"MALE", "buyerid":"buyerid", "publisherName": "publisherName", "customdata":"customdata", "keywords":"keyword1,keyword2", "geo":{ "lat":1.0, "lon":2.0 }, "ext":{ "key1":"string", "key2":1, "object":{ "inner":"value" } } } } ]"
     */
     static func updateUserData(_ openRtb: [String: Any]) {
-        let targeting = PBMTargeting.shared()
+        let targeting = PrebidRenderingTargeting.shared
         
-        if let age = openRtb["age"] as? Int {
+        if let age = openRtb["age"] as? NSNumber {
             targeting.userAge = age
         }
         
@@ -234,8 +234,8 @@ struct TestCaseManager {
                 targeting.setLatitude(lat, longitude: lon)
             }
         }
-        if let dictExt = openRtb["ext"] as? NSDictionary {
-            targeting.userExt = NSMutableDictionary(dictionary: dictExt)
+        if let dictExt = openRtb["ext"] as? [String : AnyObject] {
+            targeting.userExt = dictExt
         }
     }
     
@@ -425,8 +425,10 @@ struct TestCaseManager {
                 guard let adapterVC = vc as? AdapterViewController else {
                     return
                 }
-                                                
-                PBMTargeting.shared().eids = [
+                        
+                       
+                                       
+                PrebidRenderingTargeting.shared.eids = [
                     [
                         "source" : "liveramp.com",
                         "uids" : [
@@ -436,6 +438,7 @@ struct TestCaseManager {
                         ]
                     ]
                 ]
+                        
                 let oxbBannerController = PrebidBannerController(rootController: adapterVC)
                 oxbBannerController.prebidConfigId = "mock-banner-320-50"
                 oxbBannerController.adSizes = [CGSize(width: 320, height: 50)]

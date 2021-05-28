@@ -13,12 +13,15 @@
 
 #import "PBMAppInfoParameterBuilder.h"
 
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 #pragma mark - Internal Extension
 
 @interface PBMAppInfoParameterBuilder ()
 
 @property (nonatomic, strong, readonly) id<PBMBundleProtocol> bundle;
-@property (nonatomic, strong, readonly) PBMTargeting *targeting;
+@property (nonatomic, strong, readonly) PrebidRenderingTargeting *targeting;
 
 @end
 
@@ -39,7 +42,7 @@
 
 #pragma mark - Initialization
 
-- (nonnull instancetype)initWithBundle:(id<PBMBundleProtocol>)bundle targeting:(PBMTargeting *)targeting {
+- (nonnull instancetype)initWithBundle:(id<PBMBundleProtocol>)bundle targeting:(PrebidRenderingTargeting *)targeting {
     if (!(self = [super init])) {
         return nil;
     }

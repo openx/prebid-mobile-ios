@@ -26,7 +26,6 @@ framework module PrebidMobileRendering {
     header "PBMFetchDemandResult.h"
     header "PBMHost.h"
     header "PBMNetworkType.h"
-    header "PBMTargeting.h"
     
     // PBMCacheRenderers
     header "PBMDisplayView.h"

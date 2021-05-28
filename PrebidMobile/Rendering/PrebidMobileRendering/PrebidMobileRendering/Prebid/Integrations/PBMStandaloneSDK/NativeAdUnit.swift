@@ -22,7 +22,7 @@ public class NativeAdUnit: PBMBaseAdUnit {
                   nativeAdConfiguration: nativeAdConfiguration,
                   serverConnection: PBMServerConnection.singleton(),
                   sdkConfiguration: PrebidRenderingConfig.shared,
-                  targeting: PBMTargeting.shared())
+                  targeting: PrebidRenderingTargeting.shared)
     }
     
     // MARK: - Get Native Ad
@@ -47,7 +47,7 @@ public class NativeAdUnit: PBMBaseAdUnit {
                      nativeAdConfiguration: NativeAdConfiguration,
                      serverConnection: PBMServerConnectionProtocol,
                      sdkConfiguration: PrebidRenderingConfig,
-                     targeting: PBMTargeting) {
+                     targeting: PrebidRenderingTargeting) {
         
         self.init(configID: configID,
                   nativeAdConfiguration: nativeAdConfiguration,

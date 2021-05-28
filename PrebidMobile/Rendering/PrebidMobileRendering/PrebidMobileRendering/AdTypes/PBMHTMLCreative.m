@@ -15,7 +15,6 @@
 #import "NSString+PBMExtensions.h"
 #import "UIView+PBMExtensions.h"
 
-#import "PBMTargeting.h"
 #import "PBMAdConfiguration.h"
 #import "PBMClickthroughBrowserView.h"
 #import "PBMConstants.h"
@@ -124,8 +123,8 @@
     CGRect rect = CGRectMake(0.0, 0.0, self.creativeModel.width, self.creativeModel.height);
     if (!self.prebidWebView) {
         self.prebidWebView = [[PBMWebView alloc] initWithFrame:rect
-                                                creativeModel:self.creativeModel
-                                                    targeting:[PBMTargeting shared]];
+                                                 creativeModel:self.creativeModel
+                                                     targeting:PrebidRenderingTargeting.shared];
         
         BOOL isCompanionAdForBuiltInVideo = self.creativeModel.adConfiguration.isBuiltInVideo && self.creativeModel.isCompanionAd;
         

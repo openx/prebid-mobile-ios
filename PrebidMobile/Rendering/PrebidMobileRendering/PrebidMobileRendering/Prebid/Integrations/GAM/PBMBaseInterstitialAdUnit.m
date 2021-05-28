@@ -12,7 +12,6 @@
 #import "PBMBidRequester.h"
 #import "PBMError.h"
 #import "PBMInterstitialAdLoader.h"
-#import "PBMTargeting.h"
 #import "PBMAdViewManager.h"
 #import "PBMServerConnection.h"
 
@@ -67,7 +66,7 @@
                              initWithBidRequesterFactory:^id<PBMBidRequesterProtocol> (AdUnitConfig * adUnitConfig) {
         return [[PBMBidRequester alloc] initWithConnection:[PBMServerConnection singleton]
                                           sdkConfiguration:[PrebidRenderingConfig shared]
-                                                 targeting:[PBMTargeting shared]
+                                                 targeting:PrebidRenderingTargeting.shared
                                        adUnitConfiguration:adUnitConfig];
     }
                              adLoader:interstitialAdLoader

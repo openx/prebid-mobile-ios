@@ -8,7 +8,6 @@
 #import "PBMBidRequesterFactory.h"
 
 #import "PBMBidRequester.h"
-#import "PBMTargeting.h"
 #import "PBMServerConnection.h"
 
 #import "PrebidMobileRenderingSwiftHeaders.h"
@@ -19,12 +18,12 @@
 + (PBMBidRequesterFactoryBlock)requesterFactoryWithSingletons {
     return [self requesterFactoryWithConnection:[PBMServerConnection singleton]
                                sdkConfiguration:[PrebidRenderingConfig shared]
-                                      targeting:[PBMTargeting shared]];
+                                      targeting:[PrebidRenderingTargeting shared]];
 }
 
 + (PBMBidRequesterFactoryBlock)requesterFactoryWithConnection:(id<PBMServerConnectionProtocol>)connection
                                              sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
-                                                    targeting:(PBMTargeting *)targeting
+                                                    targeting:(PrebidRenderingTargeting *)targeting
 {
     return ^id<PBMBidRequesterProtocol> (AdUnitConfig * adUnitConfig) {
         return [[PBMBidRequester alloc] initWithConnection:connection

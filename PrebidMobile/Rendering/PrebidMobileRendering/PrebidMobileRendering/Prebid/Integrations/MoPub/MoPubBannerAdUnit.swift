@@ -106,7 +106,7 @@ public class MoPubBannerAdUnit : NSObject {
                                                     self.fetchDemand(with: adObject,
                                                                      connection: PBMServerConnection.singleton(),
                                                                      sdkConfiguration: PrebidRenderingConfig.shared,
-                                                                     targeting: PBMTargeting.shared(),
+                                                                     targeting: PrebidRenderingTargeting.shared,
                                                                      completion: completion)
                                                     
                                                    })
@@ -118,7 +118,7 @@ public class MoPubBannerAdUnit : NSObject {
         fetchDemand(with: adObject,
                     connection: PBMServerConnection.singleton(),
                     sdkConfiguration: PrebidRenderingConfig.shared,
-                    targeting: PBMTargeting.shared(),
+                    targeting: PrebidRenderingTargeting.shared,
                     completion: completion)
     }
     
@@ -139,7 +139,7 @@ public class MoPubBannerAdUnit : NSObject {
     func fetchDemand(with adObject: NSObject,
                              connection: PBMServerConnectionProtocol,
                              sdkConfiguration: PrebidRenderingConfig,
-                             targeting: PBMTargeting,
+                             targeting: PrebidRenderingTargeting,
                              completion: ((PBMFetchDemandResult)->Void)?) {
         guard bidRequester == nil else {
             // Request in progress

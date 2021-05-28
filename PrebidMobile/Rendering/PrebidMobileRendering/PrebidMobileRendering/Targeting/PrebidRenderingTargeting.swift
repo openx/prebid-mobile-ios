@@ -51,7 +51,6 @@ public class PrebidRenderingTargeting: NSObject {
      */
     @objc public var coppa: NSNumber?
     
-    
     /**
      Indicates the end-user's gender.
      */
@@ -88,7 +87,7 @@ public class PrebidRenderingTargeting: NSObject {
     /**
      Indicates the customer-provided user ID, if different from the Device ID.
      */
-    @objc var userID: String? {
+    @objc public var userID: String? {
         get { parameterDictionary[PrebidTargetingKey_USER_ID] }
         set { parameterDictionary[PrebidTargetingKey_USER_ID] = newValue }
     }
@@ -115,7 +114,7 @@ public class PrebidRenderingTargeting: NSObject {
      Placeholder for User Identity Links.
      The data from this property will be added to usr.ext.eids
      */
-    @objc public var eids: [[String:AnyObject]]?
+    @objc public var eids: [[String : AnyHashable]]?
     
     /**
      Placeholder for exchange-specific extensions to OpenRTB.
@@ -128,9 +127,9 @@ public class PrebidRenderingTargeting: NSObject {
     /**
      This is the deep-link URL for the app screen that is displaying the ad. This can be an iOS universal link.
      */
-    @objc var contentUrl: String?
+    @objc public var contentUrl: String?
     
-    @objc var appStoreMarketURL: String? {
+    @objc public var appStoreMarketURL: String? {
         get { parameterDictionary[PBMParameterKeys.APP_STORE_URL.rawValue] }
         set { parameterDictionary[PBMParameterKeys.APP_STORE_URL.rawValue] = newValue }
     }
@@ -148,12 +147,12 @@ public class PrebidRenderingTargeting: NSObject {
     
     // MARK: - Location and connection information
     
-    @objc var IP: String? {
+    @objc public var IP: String? {
         get { parameterDictionary[PrebidTargetingKey_IP_ADDRESS] }
         set { parameterDictionary[PrebidTargetingKey_IP_ADDRESS] = newValue }
     }
     
-    @objc var carrier: String? {
+    @objc public var carrier: String? {
         get { parameterDictionary[PrebidTargetingKey_CARRIER] }
         set { parameterDictionary[PrebidTargetingKey_CARRIER] = newValue }
     }
@@ -227,11 +226,11 @@ public class PrebidRenderingTargeting: NSObject {
     
     // MARK: - Access Control List
     
-    @objc public func addBidderToAccessControlList(_ bidderName: String) {
+    @objc public func addBidder(toAccessControlList bidderName: String) {
         rawAccessControlList.insert(bidderName)
     }
     
-    @objc public func removeBidderFromAccessControlList(bidderName: String) {
+    @objc public func removeBidder(fromAccessControlList bidderName: String) {
         rawAccessControlList.remove(bidderName)
     }
 
@@ -289,8 +288,8 @@ public class PrebidRenderingTargeting: NSObject {
         rawContextDataDictionary.removeAll()
     }
     
-    @objc public var contextDataDictionary: [String : Set<String>] {
-        rawContextDataDictionary
+    @objc public var contextDataDictionary: [String : [String]] {
+        rawContextDataDictionary.mapValues { Array($0) }
     }
     
     // MARK: - Internal Properties
@@ -312,4 +311,3 @@ public class PrebidRenderingTargeting: NSObject {
         return PrebidTargetingKey_PUB_PROVIDED_PREFIX + name
     }
 }
-

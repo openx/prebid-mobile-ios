@@ -11,6 +11,6 @@
 - (void)fetchDemandWithObject:(NSObject *)adObject
                    connection:(id<PBMServerConnectionProtocol>)connection
              sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
-                    targeting:(PBMTargeting *)targeting
+                    targeting:(PrebidRenderingTargeting *)targeting
                    completion:(void (^)(PBMFetchDemandResult))completion;
 @end

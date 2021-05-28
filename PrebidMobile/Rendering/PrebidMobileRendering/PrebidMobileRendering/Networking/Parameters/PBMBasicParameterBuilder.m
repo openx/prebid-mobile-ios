@@ -5,7 +5,6 @@
 //  Copyright © 2018 OpenX. All rights reserved.
 //
 
-#import "PBMTargeting+Private.h"
 #import "PBMConstants.h"
 #import "PBMMacros.h"
 #import "PBMORTB.h"
@@ -24,7 +23,7 @@
 
 @property (nonatomic, strong, readwrite) PBMAdConfiguration *adConfiguration;
 @property (nonatomic, strong, readwrite) PrebidRenderingConfig *sdkConfiguration;
-@property (nonatomic, strong, readwrite) PBMTargeting *targeting;
+@property (nonatomic, strong, readwrite) PrebidRenderingTargeting *targeting;
 @property (nonatomic, copy, readwrite) NSString *sdkVersion;
 
 @end
@@ -72,7 +71,7 @@
 - (instancetype)initWithAdConfiguration:(PBMAdConfiguration *)adConfiguration
                        sdkConfiguration:(PrebidRenderingConfig *)sdkConfiguration
                              sdkVersion:(NSString *)sdkVersion
-                              targeting:(PBMTargeting *)targeting
+                              targeting:(PrebidRenderingTargeting *)targeting
 {
     if (!(self = [super init])) {
         return nil;

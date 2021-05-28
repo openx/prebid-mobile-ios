@@ -8,8 +8,6 @@
 #import <MapKit/MapKit.h>
 
 #import "PBMAgeUtils.h"
-#import "PBMTargeting.h"
-#import "PBMTargeting+Private.h"
 #import "PBMAdConfiguration.h"
 #import "PBMAppInfoParameterBuilder.h"
 #import "PBMBasicParameterBuilder.h"
@@ -40,8 +38,7 @@
 }
 
 + (nonnull NSDictionary<NSString* , NSString *> *)buildParamsDictWithAdConfiguration:(nonnull PBMAdConfiguration *)adConfiguration extraParameterBuilders:(nullable NSArray<id<PBMParameterBuilder> > *)extraParameterBuilders {
-    PBMTargeting * const targetingClone = [[PBMTargeting shared] copy];
-    targetingClone.disableLockUsage = YES;
+    PrebidRenderingTargeting * const targetingClone = [PrebidRenderingTargeting.shared copy];
     return [self buildParamsDictWithAdConfiguration:adConfiguration
                                              bundle:NSBundle.mainBundle
                                  pbmLocationManager:PBMLocationManager.singleton
@@ -66,7 +63,7 @@
                                                                     sdkConfiguration:(nonnull PrebidRenderingConfig *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
                                                                pbmUserConsentManager:(nonnull PBMUserConsentDataManager *) pbmUserConsentManager
-                                                                           targeting:(nonnull PBMTargeting *)targeting
+                                                                           targeting:(nonnull PrebidRenderingTargeting *)targeting
                                                               extraParameterBuilders:(nullable NSArray<id<PBMParameterBuilder> > *)extraParameterBuilders{
   
     PBMORTBBidRequest *bidRequest = [PBMParameterBuilderService createORTBBidRequestWithTargeting:targeting];
@@ -97,7 +94,7 @@
     return [PBMORTBParameterBuilder buildOpenRTBFor:bidRequest];
 }
 
-+ (nonnull PBMORTBBidRequest *)createORTBBidRequestWithTargeting:(nonnull PBMTargeting *)targeting {
++ (nonnull PBMORTBBidRequest *)createORTBBidRequestWithTargeting:(nonnull PrebidRenderingTargeting *)targeting {
     PBMORTBBidRequest *bidRequest = [PBMORTBBidRequest new];
     
     bidRequest.user.yob = targeting.userAge > 0 ?

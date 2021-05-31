@@ -10,69 +10,6 @@ import MapKit
 
 @testable import PrebidMobileRendering
 
-class PrebidRenderingTargetingTest: XCTestCase {
-    func testShared() {
-        testInitialValues(targeting: .shared)
-    }
-    
-    func testInitialValues(targeting: PrebidRenderingTargeting) {
-        XCTAssertEqual(targeting.userAge, 0)
-        XCTAssertEqual(targeting.userGender, .unknown)
-        XCTAssertNil(targeting.userID)
-        XCTAssertNil(targeting.buyerUID)
-        XCTAssertNil(targeting.publisherName)
-        XCTAssertNil(targeting.appStoreMarketURL)
-        XCTAssertNil(targeting.userCustomData)
-        XCTAssertNil(targeting.userExt)
-        XCTAssertNil(targeting.eids)
-        XCTAssertNil(targeting.IP)
-        XCTAssertEqual(targeting.networkType, .unknown)
-        XCTAssert(targeting.parameterDictionary == [:])
-    }
-    
-    func testYobForAge() {
-        let age = 42
-        let date = Date()
-        let calendar = Calendar.current
-        let yob = calendar.component(.year, from: date) - age
-        
-        XCTAssertEqual(PBMAgeUtils.yob(forAge:age), yob)
-    }
-    
-    func testUserAge() {
-        //Init
-        let PrebidRenderingTargeting = PrebidRenderingTargeting.shared
-        XCTAssert(PrebidRenderingTargeting.userAge == 0)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary == [:], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
-        
-        //Set
-        let age = 30
-        PrebidRenderingTargeting.userAge = age as NSNumber
-        XCTAssert(PrebidRenderingTargeting.userAge as! Int == age)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
-        
-        //Unset
-        PrebidRenderingTargeting.userAge = 0
-        XCTAssert(PrebidRenderingTargeting.userAge == 0)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary == ["age":"0"], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
-    }
-    
-    func testUserAgeReset() {
-        //Init
-        let age = 42
-        let PrebidRenderingTargeting = PrebidRenderingTargeting.shared
-        PrebidRenderingTargeting.userAge = age as NSNumber
-
-        XCTAssert(PrebidRenderingTargeting.userAge as! Int == age)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
-        
-        // Test reset
-        PrebidRenderingTargeting.resetUserAge()
-        XCTAssert(PrebidRenderingTargeting.userAge == 0)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary["age"] == nil)
-    }
-}
-
 extension PBMGender: CaseIterable {
     public static let allCases: [Self] = [
         .unknown,
@@ -93,18 +30,74 @@ extension PBMGender: CaseIterable {
         }
     }
 }
- 
-extension PrebidRenderingTargetingTest {
+
+class PrebidRenderingTargetingTest: XCTestCase {
+    
+    override func setUp() {
+        UtilitiesForTesting.resetTargeting(.shared)
+    }
+    
+    override func tearDown() {
+        UtilitiesForTesting.resetTargeting(.shared)
+    }
+    
+    func testShared() {
+        UtilitiesForTesting.checkInitialValues(.shared)
+    }
+    
+    func testYobForAge() {
+        let age = 42
+        let date = Date()
+        let calendar = Calendar.current
+        let yob = calendar.component(.year, from: date) - age
+        
+        XCTAssertEqual(PBMAgeUtils.yob(forAge:age), yob)
+    }
+    
+    func testUserAge() {
+        //Init
+        let targeting = PrebidRenderingTargeting.shared
+        
+        XCTAssertNil(targeting.userAge)
+        XCTAssert(targeting.parameterDictionary == [:], "Dict is \(targeting.parameterDictionary)")
+        
+        //Set
+        let age = 30
+        targeting.userAge = age as NSNumber
+        XCTAssert(targeting.userAge as! Int == age)
+        XCTAssert(targeting.parameterDictionary == ["age":"\(age)"], "Dict is \(targeting.parameterDictionary)")
+        
+        //Unset
+        targeting.userAge = 0
+        XCTAssert(targeting.userAge == 0)
+        XCTAssert(targeting.parameterDictionary == ["age":"0"], "Dict is \(targeting.parameterDictionary)")
+    }
+    
+    func testUserAgeReset() {
+        //Init
+        let age = 42
+        let PrebidRenderingTargeting = PrebidRenderingTargeting.shared
+        PrebidRenderingTargeting.userAge = age as NSNumber
+
+        XCTAssert(PrebidRenderingTargeting.userAge as! Int == age)
+        XCTAssert(PrebidRenderingTargeting.parameterDictionary == ["age":"\(age)"], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
+        
+        // Test reset
+        PrebidRenderingTargeting.resetUserAge()
+        XCTAssertNil(PrebidRenderingTargeting.userAge)
+        XCTAssertNil(PrebidRenderingTargeting.parameterDictionary["age"])
+    }
+
     func testUserGender() {
         
         //Init
-        let PrebidRenderingTargeting = PrebidRenderingTargeting.shared
-        XCTAssert(PrebidRenderingTargeting.userGender == .unknown)
+        let targeting = PrebidRenderingTargeting.shared
+        XCTAssert(targeting.userGender == .unknown)
         
         //Set
         for gender in PBMGender.allCases {
-            PrebidRenderingTargeting.userGender = gender
-            XCTAssertEqual(PrebidRenderingTargeting.userGender, gender)
+            targeting.userGender = gender
+            XCTAssertEqual(targeting.userGender, gender)
             
             let expectedDic: [String: String]
             if let letter = gender.paramsDicLetter {
@@ -112,13 +105,13 @@ extension PrebidRenderingTargetingTest {
             } else {
                 expectedDic = [:]
             }
-            XCTAssertEqual(PrebidRenderingTargeting.parameterDictionary, expectedDic, "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
+            XCTAssertEqual(targeting.parameterDictionary, expectedDic, "Dict is \(targeting.parameterDictionary)")
         }
         
         //Unset
-        PrebidRenderingTargeting.userGender = .unknown
-        XCTAssert(PrebidRenderingTargeting.userGender == .unknown)
-        XCTAssert(PrebidRenderingTargeting.parameterDictionary == [:], "Dict is \(PrebidRenderingTargeting.parameterDictionary)")
+        targeting.userGender = .unknown
+        XCTAssert(targeting.userGender == .unknown)
+        XCTAssert(targeting.parameterDictionary == [:], "Dict is \(targeting.parameterDictionary)")
     }
 
     func testUserID() {
@@ -365,44 +358,5 @@ extension PrebidRenderingTargetingTest {
         let keywords = "Key, words"
         PrebidRenderingTargeting.keywords = keywords
         XCTAssertEqual(PrebidRenderingTargeting.keywords, keywords)
-    }
-    
-    func testCopy() {
-        let buyerUID = "buyerID"
-        let keywords = "word1, word2"
-        let userCustomData = "customData"
-        let sourceApp = "openx.InternalApp"
-        let contentUrl = "https://openx.com"
-        let publisherName = "OpenX"
-        let eids: [[String : AnyHashable]] = [["key" : "value"], ["key" : "value"]]
-        let userExt = ["consent": "dummyConsentString"]
-        
-        
-        let PrebidRenderingTargeting = PrebidRenderingTargeting.shared
-        PrebidRenderingTargeting.buyerUID = buyerUID
-        PrebidRenderingTargeting.coppa = NSNumber(value: 1)
-        PrebidRenderingTargeting.keywords = keywords
-        PrebidRenderingTargeting.userCustomData = userCustomData
-        PrebidRenderingTargeting.contentUrl = contentUrl
-        PrebidRenderingTargeting.publisherName = publisherName
-        PrebidRenderingTargeting.networkType = .wifi
-        PrebidRenderingTargeting.sourceapp = sourceApp
-        
-        PrebidRenderingTargeting.eids = eids
-        PrebidRenderingTargeting.userExt = userExt
-        XCTAssertEqual(PrebidRenderingTargeting.coppa, 1)
-        XCTAssertEqual(PrebidRenderingTargeting.sourceapp, sourceApp)
-        
-        let copyTargering = PrebidRenderingTargeting.copy() as! PrebidRenderingTargeting
-        XCTAssertEqual(copyTargering.networkType, .wifi)
-        XCTAssertEqual(copyTargering.coppa, 1)
-        XCTAssertEqual(copyTargering.sourceapp, sourceApp)
-        XCTAssertEqual(copyTargering.buyerUID, buyerUID)
-        XCTAssertEqual(copyTargering.keywords, keywords)
-        XCTAssertEqual(copyTargering.userCustomData, userCustomData)
-        XCTAssertEqual(copyTargering.contentUrl, contentUrl)
-        XCTAssertEqual(copyTargering.publisherName, publisherName)
-        XCTAssertEqual(copyTargering.eids?.count, 2)
-        XCTAssertEqual(copyTargering.userExt?["consent"] as? String, "dummyConsentString")
     }
 }

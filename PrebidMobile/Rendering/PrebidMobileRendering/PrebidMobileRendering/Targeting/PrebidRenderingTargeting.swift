@@ -64,11 +64,9 @@ public class PrebidRenderingTargeting: NSObject {
         }
         
         set {
-            guard let value = pbmDescriptionOfGender(newValue) else {
-                return
-            }
+            let value = pbmDescriptionOfGender(newValue)
             
-            parameterDictionary[PrebidTargetingKey_GENDER] = value.rawValue
+            parameterDictionary[PrebidTargetingKey_GENDER] = value?.rawValue
         }
     }
     
@@ -167,12 +165,12 @@ public class PrebidRenderingTargeting: NSObject {
         }
         
         set {
-            guard let value = pbmDescriptionOfNetworkType(newValue) else {
-                parameterDictionary[PrebidTargetingKey_NETWORK_TYPE] = nil
-                return
+            if newValue == .unknown {
+                parameterDictionary.removeValue(forKey: PrebidTargetingKey_NETWORK_TYPE)
             }
-            
-            parameterDictionary[PrebidTargetingKey_NETWORK_TYPE] = value.rawValue
+            else {
+                parameterDictionary[PrebidTargetingKey_NETWORK_TYPE] = pbmDescriptionOfNetworkType(newValue)?.rawValue
+            }
         }
     }
     
@@ -186,7 +184,7 @@ public class PrebidRenderingTargeting: NSObject {
     // MARK: - Public Methods
     
     @objc public func resetUserAge() {
-        userAge = 0
+        userAge = nil
     }
     
     @objc public func addParam(_ value: String, withName: String?) {
@@ -207,7 +205,11 @@ public class PrebidRenderingTargeting: NSObject {
             return
         }
         
-        parameterDictionary = parameterDictionary.merging(params) { return $1 }
+        params.keys.forEach { key in
+            if let value = params[key] {
+                addCustomParam(value, withName: key)
+            }
+        }
     }
     
     @objc public func addCustomParam(_ value: String, withName: String?) {

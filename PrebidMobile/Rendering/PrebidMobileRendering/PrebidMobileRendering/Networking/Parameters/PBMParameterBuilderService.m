@@ -97,7 +97,7 @@
     PBMORTBBidRequest *bidRequest = [PBMORTBBidRequest new];
     
     bidRequest.user.yob = targeting.userAge > 0 ?
-        @([PBMAgeUtils yobForAge:targeting.userAge])
+        @([PBMAgeUtils yobForAge:targeting.userAge.intValue])
         : nil;
     
     bidRequest.user.gender      = targeting.userGenderDescription;
@@ -106,7 +106,7 @@
     bidRequest.user.customdata  = targeting.userCustomData;
    
     if (targeting.userExt) {
-        bidRequest.user.ext = targeting.userExt;
+        bidRequest.user.ext = [targeting.userExt mutableCopy];
     }
     
     if (targeting.eids) {

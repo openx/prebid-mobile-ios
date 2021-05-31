@@ -234,7 +234,7 @@ struct TestCaseManager {
                 targeting.setLatitude(lat, longitude: lon)
             }
         }
-        if let dictExt = openRtb["ext"] as? [String : AnyObject] {
+        if let dictExt = openRtb["ext"] as? [String : AnyHashable] {
             targeting.userExt = dictExt
         }
     }

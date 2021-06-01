@@ -10,13 +10,13 @@
 
 @class PBMBannerAdLoader;
 @class PBMDisplayView;
-@protocol PBMBannerEventHandler;
+@protocol BannerEventHandler;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol PBMBannerAdLoaderDelegate <NSObject>
 
-@property (nonatomic, strong, nullable, readonly) id<PBMBannerEventHandler> eventHandler;
+@property (nonatomic, strong, nullable, readonly) id<BannerEventHandler> eventHandler;
 
 // Loading callbacks
 - (void)bannerAdLoader:(PBMBannerAdLoader *)bannerAdLoader loadedAdView:(UIView *)adView adSize:(CGSize)adSize;

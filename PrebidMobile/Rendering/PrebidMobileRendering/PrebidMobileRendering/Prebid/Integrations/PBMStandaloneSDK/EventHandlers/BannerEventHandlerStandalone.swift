@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
-public class BannerEventHandlerStandalone: NSObject, PBMBannerEventHandler {
+public class BannerEventHandlerStandalone: NSObject, BannerEventHandler {
     
     public var loadingDelegate: BannerEventLoadingDelegate?
     public var interactionDelegate: BannerEventInteractionDelegate?
     
-    public var adSizes: [NSValue] = []
+    public var adSizes: [CGSize] = []
     
     public var isCreativeRequiredForNativeAds: Bool {
         true
@@ -22,5 +23,6 @@ public class BannerEventHandlerStandalone: NSObject, PBMBannerEventHandler {
         loadingDelegate?.prebidDidWin()
     }
     
-    
+    public func trackImpression() {
+    }
 }

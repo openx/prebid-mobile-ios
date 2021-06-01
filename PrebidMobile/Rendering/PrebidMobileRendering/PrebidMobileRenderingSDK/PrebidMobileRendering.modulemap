@@ -34,9 +34,7 @@ framework module PrebidMobileRendering {
     // OXB Integration GAM
     
     header "PBMPrimaryAdRequesterProtocol.h"
-    
-    header "PBMBannerEventHandler.h"
-    
+        
     header "PBMBaseAdUnit.h"
     header "PBMBaseAdUnit+Protected.h"
     header "PBMBaseInterstitialAdUnit.h"

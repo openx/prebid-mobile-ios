@@ -8,7 +8,6 @@
 #import "PBMAdLoadFlowController.h"
 #import "PBMAdLoadFlowController+PrivateState.h"
 
-#import "PBMBannerEventHandler.h"
 #import "PBMDisplayView.h"
 #import "PBMDisplayView+InternalState.h"
 #import "PBMError.h"

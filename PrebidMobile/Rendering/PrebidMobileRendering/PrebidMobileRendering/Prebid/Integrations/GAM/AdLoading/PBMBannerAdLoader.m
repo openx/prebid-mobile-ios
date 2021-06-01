@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 
 #import "PBMAdLoaderFlowDelegate.h"
-#import "PBMBannerEventHandler.h"
 #import "PBMDisplayView.h"
 #import "PBMDisplayView+InternalState.h"
 
@@ -43,7 +42,7 @@
 // MARK: - PBMAdLoaderProtocol
 
 - (id<PBMPrimaryAdRequesterProtocol>)primaryAdRequester {
-    id<PBMBannerEventHandler> const eventHandler = self.delegate.eventHandler;
+    id<BannerEventHandler> const eventHandler = self.delegate.eventHandler;
     eventHandler.loadingDelegate = self;
     return eventHandler;
 }

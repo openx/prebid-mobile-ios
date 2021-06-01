@@ -16,7 +16,7 @@ public class BannerView: UIView,
                   DisplayViewInteractionDelegate {
     
     public let adUnitConfig: AdUnitConfig
-    public let eventHandler: PBMBannerEventHandler?
+    public let eventHandler: BannerEventHandler?
     
     // MARK: - Public Properties
     
@@ -97,8 +97,7 @@ public class BannerView: UIView,
     @objc public init(frame: CGRect,
                 configID: String,
                 adSize: CGSize,
-                eventHandler: PBMBannerEventHandler) {
-        
+                eventHandler: BannerEventHandler) {
         
         adUnitConfig = AdUnitConfig(configID: configID, size: adSize)
         self.eventHandler = eventHandler
@@ -144,8 +143,9 @@ public class BannerView: UIView,
     }
     
     @objc public convenience init(configID: String,
-                            eventHandler: PBMBannerEventHandler) {
-        let size = eventHandler.adSizes.first?.cgSizeValue ?? CGSize()
+                                  eventHandler: BannerEventHandler) {
+        
+        let size = eventHandler.adSizes.first ?? CGSize()
         let frame = CGRect(origin: CGPoint.zero, size: size)
         
         self.init(frame: frame,
@@ -154,8 +154,7 @@ public class BannerView: UIView,
                   eventHandler: eventHandler)
         
         if eventHandler.adSizes.count > 1 {
-            self.additionalSizes = Array(eventHandler.adSizes.suffix(from: 1)
-                                            .compactMap { $0.cgSizeValue })
+            self.additionalSizes = Array(eventHandler.adSizes.suffix(from: 1))
         }
     }
     
@@ -204,11 +203,11 @@ public class BannerView: UIView,
     
     public func trackImpression(for displayView: PBMDisplayView) {
         guard let eventHandler = self.eventHandler,
-              eventHandler.responds(to: #selector(PBMBannerEventHandler.trackImpression)) else {
+              eventHandler.responds(to: #selector(BannerEventHandler.trackImpression)) else {
             return
         }
         
-        eventHandler.trackImpression?()
+        eventHandler.trackImpression()
     }
     
     public func viewControllerForModalPresentation(from displayView: PBMDisplayView) -> UIViewController? {
@@ -370,7 +369,7 @@ public class BannerView: UIView,
 
     // MARK: - Static Helpers
 
-    private static func canEventHandler(eventHandler:PBMBannerEventHandler,
+    private static func canEventHandler(eventHandler:BannerEventHandler,
                                         displayAdWithConfiguration adUnitConfig: AdUnitConfig ) -> Bool {
         if adUnitConfig.adConfiguration.adFormat != .nativeInternal {
             return true;

@@ -105,7 +105,7 @@
     [self.flowDelegate adLoader:self failedWithPrebidError:error];
 }
 
-// MARK: - PBMInterstitialEventLoadingDelegate
+// MARK: - InterstitialEventLoadingDelegate
 
 - (void)prebidDidWin {
     [self.flowDelegate adLoaderDidWinPrebid:self];

@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc public protocol RewardedEventLoadingDelegate : PBMInterstitialEventLoadingDelegate {
+@objc public protocol RewardedEventLoadingDelegate : InterstitialEventLoadingDelegate {
 
     /*!
      @abstract The reward to be given to the user. May be assigned on successful loading.

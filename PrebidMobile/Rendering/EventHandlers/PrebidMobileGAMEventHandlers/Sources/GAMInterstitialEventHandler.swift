@@ -38,7 +38,7 @@ public class GAMInterstitialEventHandler :
     
     // MARK: - PBMInterstitialAd
     
-    public var loadingDelegate: PBMInterstitialEventLoadingDelegate?
+    public var loadingDelegate: InterstitialEventLoadingDelegate?
     
     public var interactionDelegate: PBMInterstitialEventInteractionDelegate?
     

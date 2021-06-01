@@ -6,8 +6,6 @@
 //
 #import <UIKit/UIKit.h>
 
-#import "PBMInterstitialEventLoadingDelegate.h"
-#import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMPrimaryAdRequesterProtocol.h"
 
 @class BidResponse;

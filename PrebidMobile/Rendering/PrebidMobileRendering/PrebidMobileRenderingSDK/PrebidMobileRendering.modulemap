@@ -45,7 +45,6 @@ framework module PrebidMobileRendering {
     header "PBMBaseInterstitialAdUnit+Protected.h"
     
     header "PBMInterstitialAdUnitDelegate.h"
-    header "PBMInterstitialEventLoadingDelegate.h"
     header "PBMInterstitialEventInteractionDelegate.h"
     header "PBMInterstitialEventHandler.h"
     

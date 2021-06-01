@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "PBMBaseInterstitialAdUnit.h"
 
-#import "PBMInterstitialEventLoadingDelegate.h"
 #import "PBMInterstitialEventInteractionDelegate.h"
 
 @class AdUnitConfig;

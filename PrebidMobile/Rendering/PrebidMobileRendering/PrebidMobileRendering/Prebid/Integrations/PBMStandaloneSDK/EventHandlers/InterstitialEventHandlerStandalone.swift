@@ -12,7 +12,7 @@ public class InterstitialEventHandlerStandalone: NSObject, InterstitialEventHand
     
     // MARK: Public Methods
     
-    public var loadingDelegate: PBMInterstitialEventLoadingDelegate?
+    public var loadingDelegate: InterstitialEventLoadingDelegate?
     
     public var interactionDelegate: PBMInterstitialEventInteractionDelegate?
     

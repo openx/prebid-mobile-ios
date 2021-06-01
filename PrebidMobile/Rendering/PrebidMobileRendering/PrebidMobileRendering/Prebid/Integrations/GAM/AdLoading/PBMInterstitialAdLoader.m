@@ -119,21 +119,4 @@
     [self.flowDelegate adLoader:self failedWithPrimarySDKError:error];
 }
 
-// MARK: - PBMRewardedEventLoadingDelegate
-
-- (NSObject *)reward {
-    id<PBMInterstitialAdLoaderDelegate> const delegate = self.delegate;
-    if ([delegate respondsToSelector:@selector(reward)]) {
-        return [delegate reward];
-    }
-    return nil;
-}
-
-- (void)setReward:(NSObject *)reward {
-    id<PBMInterstitialAdLoaderDelegate> const delegate = self.delegate;
-    if ([delegate respondsToSelector:@selector(setReward:)]) {
-        return [delegate setReward:reward];
-    }
-}
-
 @end

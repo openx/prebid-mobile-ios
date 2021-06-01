@@ -9,11 +9,10 @@
 
 #import "PBMAdLoaderProtocol.h"
 #import "PBMInterstitialAdLoaderDelegate.h"
-#import "PBMRewardedEventLoadingDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PBMInterstitialAdLoader : NSObject <PBMAdLoaderProtocol, PBMRewardedEventLoadingDelegate>
+@interface PBMInterstitialAdLoader : NSObject <PBMAdLoaderProtocol>
 
 - (instancetype)initWithDelegate:(id<PBMInterstitialAdLoaderDelegate>)delegate;
 

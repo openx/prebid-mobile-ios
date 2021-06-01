@@ -8,7 +8,7 @@
 import UIKit
 
 public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
-                         PBMRewardedEventInteractionDelegate {
+                             RewardedEventInteractionDelegate {
    
     @objc public private(set) var reward: NSObject?
     
@@ -99,7 +99,7 @@ public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
         }
     }
 
-    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: PBMRewardedEventLoadingDelegate) {
+    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: RewardedEventLoadingDelegate) {
         if let eventHandler = self.eventHandler as? RewardedEventHandlerProtocol {
             eventHandler.loadingDelegate = loadingDelegate
         }

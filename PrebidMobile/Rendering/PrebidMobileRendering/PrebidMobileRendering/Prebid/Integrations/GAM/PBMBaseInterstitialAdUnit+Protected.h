@@ -9,12 +9,12 @@
 #import "PBMBaseInterstitialAdUnit.h"
 
 #import "PBMInterstitialEventLoadingDelegate.h"
-#import "PBMRewardedEventLoadingDelegate.h"
 #import "PBMInterstitialEventInteractionDelegate.h"
 
 @class AdUnitConfig;
 @class BidResponse;
 @class InterstitialController;
+@protocol RewardedEventLoadingDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)callDelegate_didClickAd;
 
 - (BOOL)callEventHandler_isReady;
-- (void)callEventHandler_setLoadingDelegate:(id<PBMRewardedEventLoadingDelegate>)loadingDelegate;
+- (void)callEventHandler_setLoadingDelegate:(id<RewardedEventLoadingDelegate>)loadingDelegate;
 - (void)callEventHandler_setInteractionDelegate;
 - (void)callEventHandler_requestAdWithBidResponse:(nullable BidResponse *)bidResponse;
 - (void)callEventHandler_showFromViewController:(nullable UIViewController *)controller;

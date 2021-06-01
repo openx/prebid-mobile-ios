@@ -327,7 +327,7 @@ createdInterstitialController:(InterstitialController *)interstitialController
     // to be overridden in subclass
 }
 
-- (void)callEventHandler_setLoadingDelegate:(id<PBMRewardedEventLoadingDelegate>)loadingDelegate {
+- (void)callEventHandler_setLoadingDelegate:(id<RewardedEventLoadingDelegate>)loadingDelegate {
     // to be overridden in subclass
 }
 

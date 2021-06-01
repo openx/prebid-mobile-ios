@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 public class RewardedEventHandlerStandalone: NSObject, RewardedEventHandlerProtocol {
-   
-    public var loadingDelegate: PBMRewardedEventLoadingDelegate?
-    public var interactionDelegate: PBMRewardedEventInteractionDelegate?
+    
+    public var loadingDelegate: RewardedEventLoadingDelegate?
+    public var interactionDelegate: RewardedEventInteractionDelegate?
     
     public var isReady: Bool {
         false

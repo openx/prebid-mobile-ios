@@ -83,7 +83,7 @@ public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
         }
     }
 
-    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: PBMRewardedEventLoadingDelegate?) {
+    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: RewardedEventLoadingDelegate?) {
         if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.loadingDelegate = loadingDelegate
         }

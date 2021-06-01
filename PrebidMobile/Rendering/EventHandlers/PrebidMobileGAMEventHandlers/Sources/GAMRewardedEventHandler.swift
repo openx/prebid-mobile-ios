@@ -46,9 +46,9 @@ public class GAMRewardedAdEventHandler :
     
     // MARK: - RewardedEventHandlerProtocol
     
-    public var loadingDelegate: PBMRewardedEventLoadingDelegate?
+    public var loadingDelegate: RewardedEventLoadingDelegate?
     
-    public var interactionDelegate: PBMRewardedEventInteractionDelegate?
+    public var interactionDelegate: RewardedEventInteractionDelegate?
     
     // MARK: - Public Methods
     

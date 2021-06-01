@@ -76,7 +76,7 @@ public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
     
     
     @objc public override func callEventHandler_isReady() -> Bool {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             return eventHandler.isReady
         } else {
             return false
@@ -84,31 +84,31 @@ public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
     }
 
     @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: PBMRewardedEventLoadingDelegate?) {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.loadingDelegate = loadingDelegate
         }
     }
 
     @objc public override func callEventHandler_setInteractionDelegate() {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.interactionDelegate = self
         }
     }
 
     @objc public override func callEventHandler_requestAd(with bidResponse: BidResponse?) {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.requestAd(with: bidResponse)
         }
     }
 
     @objc public override func callEventHandler_show(from controller: UIViewController?) {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.show(from: controller)
         }
     }
 
     @objc public override func callEventHandler_trackImpression() {
-        if let eventHandler = self.eventHandler as? PBMInterstitialEventHandler {
+        if let eventHandler = self.eventHandler as? InterstitialEventHandlerProtocol {
             eventHandler.trackImpression?()
         }
     }

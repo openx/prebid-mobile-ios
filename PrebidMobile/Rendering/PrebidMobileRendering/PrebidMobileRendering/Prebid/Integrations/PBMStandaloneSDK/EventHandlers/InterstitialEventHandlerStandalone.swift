@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class InterstitialEventHandlerStandalone: NSObject, PBMInterstitialEventHandler {
+public class InterstitialEventHandlerStandalone: NSObject, InterstitialEventHandlerProtocol {
     
     // MARK: Public Methods
     

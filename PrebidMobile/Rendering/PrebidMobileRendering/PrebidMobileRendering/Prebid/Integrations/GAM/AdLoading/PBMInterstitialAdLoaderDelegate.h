@@ -10,7 +10,7 @@
 
 @class PBMInterstitialAdLoader;
 @class InterstitialController;
-@protocol PBMInterstitialEventHandler;
+@protocol InterstitialEventHandlerProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
-@property (nonatomic, strong, nullable, readonly) id<PBMInterstitialEventHandler> eventHandler;
+@property (nonatomic, strong, nullable, readonly) id<InterstitialEventHandlerProtocol> eventHandler;
 
 // Loading callbacks
 - (void)interstitialAdLoader:(PBMInterstitialAdLoader *)interstitialAdLoader

@@ -70,8 +70,8 @@
         }];
         return;
     }
-    if ([adObject conformsToProtocol:@protocol(PBMInterstitialEventHandler)]) {
-        id<PBMInterstitialEventHandler> const eventHandler = (id<PBMInterstitialEventHandler>)adObject;
+    if ([adObject conformsToProtocol:@protocol(InterstitialEventHandlerProtocol)]) {
+        id<PBMInterstitialAd> const eventHandler = (id<PBMInterstitialAd>)adObject;
         [self.delegate interstitialAdLoader:self
                                    loadedAd:^(UIViewController *targetController) {
             [eventHandler showFromViewController:targetController];

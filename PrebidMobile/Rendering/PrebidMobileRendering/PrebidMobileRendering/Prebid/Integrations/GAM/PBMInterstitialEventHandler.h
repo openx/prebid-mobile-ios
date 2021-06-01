@@ -38,16 +38,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol PBMInterstitialEventHandler <PBMInterstitialAd>
-
-@required
-
-/// Delegate for custom event handler to inform the PBM SDK about the events related to the ad server communication.
-@property (nonatomic, weak, nullable) id<PBMInterstitialEventLoadingDelegate> loadingDelegate;
-
-/// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
-@property (nonatomic, weak, nullable) id<PBMInterstitialEventInteractionDelegate> interactionDelegate;
-
-@end
-
 NS_ASSUME_NONNULL_END

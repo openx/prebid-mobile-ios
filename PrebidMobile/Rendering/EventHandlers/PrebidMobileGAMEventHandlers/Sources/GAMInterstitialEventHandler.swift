@@ -11,7 +11,7 @@ import PrebidMobileRendering
 
 public class GAMInterstitialEventHandler :
     NSObject,
-    PBMInterstitialEventHandler,
+    InterstitialEventHandlerProtocol,
     GADFullScreenContentDelegate,
     GADAppEventDelegate {
     

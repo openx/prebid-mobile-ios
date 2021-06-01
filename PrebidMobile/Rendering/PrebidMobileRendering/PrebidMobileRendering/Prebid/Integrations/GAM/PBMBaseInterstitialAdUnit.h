@@ -9,8 +9,6 @@
 
 #import "PBMAdFormat.h"
 
-@protocol PBMInterstitialEventHandler;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMBaseInterstitialAdUnit : NSObject

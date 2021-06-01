@@ -1,0 +1,32 @@
+//
+//  InterstitialEventHandlerStandalone.swift
+//  PrebidMobileRendering
+//
+//  Copyright © 2021 Prebid. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+public class InterstitialEventHandlerStandalone: NSObject, PBMInterstitialEventHandler {
+    
+    // MARK: Public Methods
+    
+    public var loadingDelegate: PBMInterstitialEventLoadingDelegate?
+    
+    public var interactionDelegate: PBMInterstitialEventInteractionDelegate?
+    
+    public var isReady: Bool {
+        false
+    }
+    
+    public func show(from controller: UIViewController?) {
+        assertionFailure("should never be called, as PBM SDK always wins")
+    }
+    
+    public func requestAd(with bidResponse: BidResponse?) {
+        loadingDelegate?.prebidDidWin()
+    }
+    
+    
+}

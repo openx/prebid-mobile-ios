@@ -26,7 +26,7 @@ public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
     @objc public override convenience init(configId: String) {
         self.init(
             configId: configId,
-            eventHandler: PBMRewardedEventHandlerStandalone())
+            eventHandler: RewardedEventHandlerStandalone())
     }
     
     override init(configId:String, minSizePerc: NSValue?, eventHandler:Any?) {

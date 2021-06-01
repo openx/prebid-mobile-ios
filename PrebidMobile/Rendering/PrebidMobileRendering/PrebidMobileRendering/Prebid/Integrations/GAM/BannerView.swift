@@ -165,7 +165,7 @@ public class BannerView: UIView,
         self.init(frame: frame,
                   configID: configID,
                   adSize: adSize,
-                  eventHandler: PBMBannerEventHandlerStandalone())
+                  eventHandler: BannerEventHandlerStandalone())
     }
     
     required init?(coder: NSCoder) {

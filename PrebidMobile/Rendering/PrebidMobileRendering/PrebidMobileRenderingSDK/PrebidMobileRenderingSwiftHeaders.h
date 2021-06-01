@@ -22,13 +22,11 @@
 #import "PBMInterstitialEventLoadingDelegate.h"
 #import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMInterstitialEventHandler.h"
-#import "PBMInterstitialEventHandlerStandalone.h"
 
 #import "PBMRewardedAdUnitDelegate.h"
 #import "PBMRewardedEventLoadingDelegate.h"
 #import "PBMRewardedEventInteractionDelegate.h"
 #import "PBMRewardedEventHandler.h"
-#import "PBMRewardedEventHandlerStandalone.h"
 
 #import "PBMNativeContextType.h"
 #import "PBMNativeContextSubtype.h"

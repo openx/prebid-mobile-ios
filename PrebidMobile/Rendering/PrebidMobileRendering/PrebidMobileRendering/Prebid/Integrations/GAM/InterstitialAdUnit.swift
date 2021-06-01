@@ -10,14 +10,14 @@ import UIKit
 public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
 
     @objc public override init(configId: String) {
-        super.init(configId: configId, eventHandler: PBMInterstitialEventHandlerStandalone())
+        super.init(configId: configId, eventHandler: InterstitialEventHandlerStandalone())
     }
 
     @objc public override init(configId: String, minSizePercentage: CGSize) {
         super.init(
             configId: configId,
             minSizePercentage: minSizePercentage,
-            eventHandler: PBMInterstitialEventHandlerStandalone())
+            eventHandler: InterstitialEventHandlerStandalone())
     }
 
     @objc public override init(configId: String, minSizePercentage:CGSize, eventHandler: Any) {

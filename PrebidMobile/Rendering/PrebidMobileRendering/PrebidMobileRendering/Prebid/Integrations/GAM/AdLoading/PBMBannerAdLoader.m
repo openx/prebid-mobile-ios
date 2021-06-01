@@ -14,7 +14,6 @@
 #import "PBMBannerEventLoadingDelegate.h"
 #import "PBMDisplayView.h"
 #import "PBMDisplayView+InternalState.h"
-#import "PBMDisplayViewLoadingDelegate.h"
 
 #import "PBMMacros.h"
 
@@ -22,7 +21,7 @@
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 
-@interface PBMBannerAdLoader () <PBMDisplayViewLoadingDelegate, PBMBannerEventLoadingDelegate>
+@interface PBMBannerAdLoader () <DisplayViewLoadingDelegate, PBMBannerEventLoadingDelegate>
 @property (nonatomic, weak, nullable, readonly) id<PBMBannerAdLoaderDelegate> delegate;
 @end
 
@@ -73,7 +72,7 @@
     [self.delegate bannerAdLoader:self loadedAdView:adObject adSize:adSize.CGSizeValue];
 }
 
-// MARK: - PBMDisplayViewLoadingDelegate
+// MARK: - DisplayViewLoadingDelegate
 
 - (void)displayViewDidLoadAd:(PBMDisplayView *)displayView {
     [self.flowDelegate adLoaderLoadedPrebidAd:self];

@@ -18,7 +18,7 @@ import PrebidMobileRendering
 @objc(PrebidMoPubBannerAdapter)
 public class PrebidMoPubBannerAdapter :
     MPInlineAdAdapter,
-    PBMDisplayViewLoadingDelegate,
+    DisplayViewLoadingDelegate,
     DisplayViewInteractionDelegate {
    
     // MARK: - Internal Properties
@@ -65,7 +65,7 @@ public class PrebidMoPubBannerAdapter :
         MPLogging.logEvent(MPLogEvent.adLoadAttempt(forAdapter: Self.className(), dspCreativeId: nil, dspName: nil), source: adUnitId, from: nil)
     }
     
-    // MARK: - PBMDisplayViewLoadingDelegate
+    // MARK: - DisplayViewLoadingDelegate
     
     public func displayViewDidLoadAd(_ displayView: PBMDisplayView) {
         MPLogging.logEvent(MPLogEvent.adLoadSuccess(forAdapter: Self.className()), source: adUnitId, from: nil)

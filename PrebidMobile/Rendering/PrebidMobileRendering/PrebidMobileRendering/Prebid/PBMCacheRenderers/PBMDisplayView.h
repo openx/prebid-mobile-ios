@@ -6,16 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PBMDisplayViewLoadingDelegate.h"
 
 @class Bid;
+@protocol DisplayViewLoadingDelegate;
 @protocol DisplayViewInteractionDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBMDisplayView : UIView
 
-@property (atomic, weak, nullable) id<PBMDisplayViewLoadingDelegate> loadingDelegate;
+@property (atomic, weak, nullable) NSObject<DisplayViewLoadingDelegate> *loadingDelegate;
 @property (atomic, weak, nullable) NSObject<DisplayViewInteractionDelegate> *interactionDelegate;
 @property (nonatomic, readonly) BOOL isCreativeOpened;
 

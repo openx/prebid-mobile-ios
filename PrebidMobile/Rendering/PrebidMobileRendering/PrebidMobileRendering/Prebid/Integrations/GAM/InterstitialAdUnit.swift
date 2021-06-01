@@ -38,37 +38,37 @@ public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
     // MARK: - Protected overrides
 
     @objc public override func callDelegate_didReceiveAd() {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitialDidReceiveAd?(self)
         }
     }
     
     @objc public override func callDelegate_didFailToReceiveAdWithError(_ error: Error?) {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitial?(self, didFailToReceiveAdWithError: error)
         }
     }
 
     @objc public override func callDelegate_willPresentAd() {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitialWillPresentAd?(self)
         }
     }
 
     @objc public override func callDelegate_didDismissAd() {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitialDidDismissAd?(self)
         }
     }
 
     @objc public override func callDelegate_willLeaveApplication() {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitialWillLeaveApplication?(self)
         }
     }
 
     @objc public override func callDelegate_didClickAd() {
-        if let delegate = self.delegate as? PBMInterstitialAdUnitDelegate {
+        if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitialDidClickAd?(self)
         }
     }

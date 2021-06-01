@@ -9,7 +9,7 @@ import UIKit
 import GoogleMobileAds
 import PrebidMobileGAMEventHandlers
 
-class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfigurableController, PBMInterstitialAdUnitDelegate {
+class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfigurableController, InterstitialAdUnitDelegate {
     
     var prebidConfigId = ""
     var gamAdUnitId = ""

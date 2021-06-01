@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMobileAds
 
-class PrebidInterstitialController: NSObject, AdaptedController, PrebidConfigurableController, PBMInterstitialAdUnitDelegate {
+class PrebidInterstitialController: NSObject, AdaptedController, PrebidConfigurableController, InterstitialAdUnitDelegate {
     
     var prebidConfigId = ""
     var adFormat: PBMAdFormat?

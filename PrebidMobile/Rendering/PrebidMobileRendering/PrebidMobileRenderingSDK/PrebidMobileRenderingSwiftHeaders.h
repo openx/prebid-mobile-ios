@@ -14,7 +14,6 @@
 #import "PBMBaseInterstitialAdUnit.h"
 #import "PBMBaseInterstitialAdUnit+Protected.h"
 
-#import "PBMInterstitialAdUnitDelegate.h"
 #import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMInterstitialEventHandler.h"
 

@@ -309,7 +309,6 @@
 		34D7103F24E580620048CC78 /* PBMCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 358DF51B206D88450041963D /* PBMCircularProgressBarView.h */; };
 		34D7104024E580620048CC78 /* PBMModalPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC54B21CCDD6A0039DCA0 /* PBMModalPresentationController.h */; };
 		34D7104224E580620048CC78 /* PBMCreativeViewabilityTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = D016891223631FED00139680 /* PBMCreativeViewabilityTracker.h */; };
-		34D7104324E580620048CC78 /* PBMInterstitialControllerInteractionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 34BA9607249CD2DF006AE372 /* PBMInterstitialControllerInteractionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7104524E580620048CC78 /* PBMDeviceInfoParameterBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 10199C5B202B30F40026B02A /* PBMDeviceInfoParameterBuilder.h */; };
 		34D7104624E580620048CC78 /* PBMDeepLinkPlusHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FF2BC3236303D7008D9638 /* PBMDeepLinkPlusHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7104724E580620048CC78 /* PBMVastWrapperAd.h in Headers */ = {isa = PBXBuildFile; fileRef = D5B68A46202C317700F85809 /* PBMVastWrapperAd.h */; };
@@ -661,6 +660,7 @@
 		5BC0A5502666351D005EFEFB /* DisplayViewInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A54F2666351D005EFEFB /* DisplayViewInteractionDelegate.swift */; };
 		5BC0A55226663F5B005EFEFB /* DisplayViewLoadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A55126663F5B005EFEFB /* DisplayViewLoadingDelegate.swift */; };
 		5BC0A5542666446B005EFEFB /* InterstitialControllerLoadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A5532666446B005EFEFB /* InterstitialControllerLoadingDelegate.swift */; };
+		5BC0A55626664723005EFEFB /* InterstitialControllerInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A55526664723005EFEFB /* InterstitialControllerInteractionDelegate.swift */; };
 		5BD2C319265E42B2005D3337 /* AdUnitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2C318265E42B2005D3337 /* AdUnitConfig.swift */; };
 		5BD2C31C265F7675005D3337 /* PrebidRenderingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2C31B265F7675005D3337 /* PrebidRenderingConfiguration.swift */; };
 		5BD2C328265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BD2C326265FA8F4005D3337 /* PrebidRenderingConfig+TestExtension.h */; };
@@ -1125,7 +1125,6 @@
 		34BA95F1249CB04B006AE372 /* PBMInterstitialEventInteractionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInterstitialEventInteractionDelegate.h; sourceTree = "<group>"; };
 		34BA95F2249CB21B006AE372 /* PBMInterstitialEventHandlerStandalone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInterstitialEventHandlerStandalone.h; sourceTree = "<group>"; };
 		34BA95F3249CB21B006AE372 /* PBMInterstitialEventHandlerStandalone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMInterstitialEventHandlerStandalone.m; sourceTree = "<group>"; };
-		34BA9607249CD2DF006AE372 /* PBMInterstitialControllerInteractionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInterstitialControllerInteractionDelegate.h; sourceTree = "<group>"; };
 		34BA9609249CF9CE006AE372 /* PBMORTBDeviceExtPrebid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMORTBDeviceExtPrebid.h; sourceTree = "<group>"; };
 		34BA960A249CF9CE006AE372 /* PBMORTBDeviceExtPrebid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMORTBDeviceExtPrebid.m; sourceTree = "<group>"; };
 		34BA960D249CF9F1006AE372 /* PBMORTBDeviceExtPrebidInterstitial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMORTBDeviceExtPrebidInterstitial.h; sourceTree = "<group>"; };
@@ -1487,6 +1486,7 @@
 		5BC0A54F2666351D005EFEFB /* DisplayViewInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewInteractionDelegate.swift; sourceTree = "<group>"; };
 		5BC0A55126663F5B005EFEFB /* DisplayViewLoadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewLoadingDelegate.swift; sourceTree = "<group>"; };
 		5BC0A5532666446B005EFEFB /* InterstitialControllerLoadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialControllerLoadingDelegate.swift; sourceTree = "<group>"; };
+		5BC0A55526664723005EFEFB /* InterstitialControllerInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialControllerInteractionDelegate.swift; sourceTree = "<group>"; };
 		5BC626D1212D75B600B6E9D0 /* PBMAdLoadManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMAdLoadManagerBase.m; sourceTree = "<group>"; };
 		5BC626D2212D75B600B6E9D0 /* PBMAdLoadManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadManagerDelegate.h; sourceTree = "<group>"; };
 		5BC626D3212D75B600B6E9D0 /* PBMAdLoadManagerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadManagerBase.h; sourceTree = "<group>"; };
@@ -2432,11 +2432,11 @@
 				34204CC924990E1A0080BBC7 /* PBMDisplayView+InternalState.h */,
 				34E3F26D246EB17500ADBFC6 /* PBMDisplayView.h */,
 				34E3F26E246EB17500ADBFC6 /* PBMDisplayView.m */,
-				34BA9607249CD2DF006AE372 /* PBMInterstitialControllerInteractionDelegate.h */,
 				AC5CAE3C265D1A1900E422A3 /* InterstitialController.swift */,
 				5BC0A54F2666351D005EFEFB /* DisplayViewInteractionDelegate.swift */,
 				5BC0A55126663F5B005EFEFB /* DisplayViewLoadingDelegate.swift */,
 				5BC0A5532666446B005EFEFB /* InterstitialControllerLoadingDelegate.swift */,
+				5BC0A55526664723005EFEFB /* InterstitialControllerInteractionDelegate.swift */,
 			);
 			path = PBMCacheRenderers;
 			sourceTree = "<group>";
@@ -3387,7 +3387,6 @@
 				34D7104024E580620048CC78 /* PBMModalPresentationController.h in Headers */,
 				34D7104224E580620048CC78 /* PBMCreativeViewabilityTracker.h in Headers */,
 				5B2FB11D26442C7600912342 /* PBMNativeAdMarkupEventTracker.h in Headers */,
-				34D7104324E580620048CC78 /* PBMInterstitialControllerInteractionDelegate.h in Headers */,
 				34D7104524E580620048CC78 /* PBMDeviceInfoParameterBuilder.h in Headers */,
 				34D7104624E580620048CC78 /* PBMDeepLinkPlusHelper.h in Headers */,
 				34D7104724E580620048CC78 /* PBMVastWrapperAd.h in Headers */,
@@ -4074,6 +4073,7 @@
 				34D7100424E580620048CC78 /* UIView+PBMViewExposure.m in Sources */,
 				ACF5AC3D2657FAA500821B1C /* InterstitialAdUnit.swift in Sources */,
 				ACB62E5324FE8EFE009B25B3 /* PBMSKAdNetworksParameterBuilder.m in Sources */,
+				5BC0A55626664723005EFEFB /* InterstitialControllerInteractionDelegate.swift in Sources */,
 				34F135B325CAA66C004414D6 /* PBMDisplayTransactionFactory.m in Sources */,
 				5BD5D4B32656CFF500DFB8B2 /* NativeAssetVideo.swift in Sources */,
 				34D42CBE25CD6037008EE1D3 /* PBMExternalURLOpenCallbacks.m in Sources */,

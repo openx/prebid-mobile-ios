@@ -22,7 +22,7 @@
 
 @interface PBMBaseInterstitialAdUnit () <PBMAdLoadFlowControllerDelegate,
                                          PBMInterstitialAdLoaderDelegate,
-                                         PBMInterstitialControllerInteractionDelegate>
+                                         InterstitialControllerInteractionDelegate>
 
 @property (nonatomic, strong, nonnull, readonly) PBMAdLoadFlowController *adLoadFlowController;
 @property (nonatomic, strong, nonnull, readonly) NSObject *blocksLockToken;
@@ -232,7 +232,7 @@ createdInterstitialController:(InterstitialController *)interstitialController
     });
 }
 
-// MARK: - PBMInterstitialControllerInteractionDelegate protocol
+// MARK: - InterstitialControllerInteractionDelegate protocol
 
 - (void)trackImpressionForInterstitialController:(InterstitialController *)interstitialController {
     @weakify(self);
@@ -263,6 +263,21 @@ createdInterstitialController:(InterstitialController *)interstitialController
 - (UIViewController *)viewControllerForModalPresentationFrom:(InterstitialController *)interstitialController {
     return self.targetController;
 }
+
+- (void)interstitialControllerDidComplete:(InterstitialController * _Nonnull)interstitialController {
+    
+}
+
+
+- (void)interstitialControllerDidDisplay:(InterstitialController * _Nonnull)interstitialController {
+    
+}
+
+
+- (void)trackImpressionFor:(InterstitialController * _Nonnull)interstitialController {
+    
+}
+
 
 // MARK: - Private methods
 

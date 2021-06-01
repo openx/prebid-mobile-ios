@@ -22,7 +22,7 @@ public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
     }
     
     @objc public weak var loadingDelegate: InterstitialControllerLoadingDelegate?
-    @objc public weak var interactionDelegate: PBMInterstitialControllerInteractionDelegate?
+    @objc public weak var interactionDelegate: InterstitialControllerInteractionDelegate?
     
     var bid: Bid
     var adConfiguration: AdUnitConfig
@@ -99,13 +99,13 @@ public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
 
     @objc public func adDidComplete() {
         if let delegate = interactionDelegate {
-            delegate.interstitialControllerDidComplete?(self)
+            delegate.interstitialControllerDidComplete(self)
         }
     }
     
     @objc public func adDidDisplay() {
         if let delegate = interactionDelegate {
-            delegate.interstitialControllerDidDisplay?(self)
+            delegate.interstitialControllerDidDisplay(self)
         }
     }
     

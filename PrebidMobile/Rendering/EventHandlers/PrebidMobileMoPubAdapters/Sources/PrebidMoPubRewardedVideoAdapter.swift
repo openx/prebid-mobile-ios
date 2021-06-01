@@ -15,7 +15,7 @@ import PrebidMobileRendering
 public class PrebidMoPubRewardedVideoAdapter :
     MPFullscreenAdAdapter,
     InterstitialControllerLoadingDelegate,
-    PBMInterstitialControllerInteractionDelegate {
+    InterstitialControllerInteractionDelegate {
     
     // MARK: - Private Properties
     
@@ -97,7 +97,7 @@ public class PrebidMoPubRewardedVideoAdapter :
         delegate?.fullscreenAdAdapter(self, didFailToLoadAdWithError: error)
     }
     
-    // MARK: - PBMInterstitialControllerInteractionDelegate
+    // MARK: - InterstitialControllerInteractionDelegate
     
     public func trackImpression(for interstitialController: InterstitialController) {
         //Impressions will be tracked automatically

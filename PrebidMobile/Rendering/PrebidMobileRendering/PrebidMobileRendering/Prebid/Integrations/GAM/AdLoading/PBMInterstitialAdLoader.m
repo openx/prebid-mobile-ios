@@ -15,7 +15,7 @@
 #import "PrebidMobileRenderingSwiftHeaders.h"
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
-@interface PBMInterstitialAdLoader () <InterstitialControllerLoadingDelegate>
+@interface PBMInterstitialAdLoader () <InterstitialControllerLoadingDelegate, RewardedEventLoadingDelegate>
 @property (nonatomic, weak, nullable, readonly) id<PBMInterstitialAdLoaderDelegate> delegate;
 @end
 
@@ -118,5 +118,7 @@
 - (void)failedWithError:(nullable NSError *)error {
     [self.flowDelegate adLoader:self failedWithPrimarySDKError:error];
 }
+
+@synthesize reward;
 
 @end

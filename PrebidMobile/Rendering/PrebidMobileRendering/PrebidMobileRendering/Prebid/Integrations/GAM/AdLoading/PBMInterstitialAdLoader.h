@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDelegate:(id<PBMInterstitialAdLoaderDelegate>)delegate;
 
+@property (nonatomic, strong) NSObject *reward;
 @end
 
 NS_ASSUME_NONNULL_END

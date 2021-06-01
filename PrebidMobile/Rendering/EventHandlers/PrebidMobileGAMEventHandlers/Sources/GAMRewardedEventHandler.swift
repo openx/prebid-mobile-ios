@@ -46,6 +46,8 @@ public class GAMRewardedAdEventHandler :
     
     // MARK: - RewardedEventHandlerProtocol
     
+    // This is  a very dirty hack based on dynamic properties of Objc Object.
+    // Need to rewrite Interstitial ad loader to swift and find out how to pass the reward
     public var loadingDelegate: RewardedEventLoadingDelegate?
     
     public var interactionDelegate: RewardedEventInteractionDelegate?

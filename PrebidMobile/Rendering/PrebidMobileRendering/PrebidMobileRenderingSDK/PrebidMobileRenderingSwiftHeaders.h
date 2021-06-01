@@ -5,7 +5,6 @@
 #import "PBMAdPosition.h"
 
 #import "PBMDisplayView.h"
-#import "PBMInterstitialControllerLoadingDelegate.h"
 #import "PBMInterstitialControllerInteractionDelegate.h"
 
     

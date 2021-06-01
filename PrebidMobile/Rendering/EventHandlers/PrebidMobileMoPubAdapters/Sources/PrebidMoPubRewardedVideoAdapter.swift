@@ -14,7 +14,7 @@ import PrebidMobileRendering
 @objc(PrebidMoPubRewardedVideoAdapter)
 public class PrebidMoPubRewardedVideoAdapter :
     MPFullscreenAdAdapter,
-    PBMInterstitialControllerLoadingDelegate,
+    InterstitialControllerLoadingDelegate,
     PBMInterstitialControllerInteractionDelegate {
     
     // MARK: - Private Properties
@@ -81,7 +81,7 @@ public class PrebidMoPubRewardedVideoAdapter :
         true
     }
         
-    // MARK: - PBMInterstitialControllerLoadingDelegate
+    // MARK: - InterstitialControllerLoadingDelegate
     
     public func interstitialControllerDidLoadAd(_ interstitialController: InterstitialController) {
         adAvailable = true

@@ -9,7 +9,6 @@
 
 #import "PBMAdLoaderFlowDelegate.h"
 #import "PBMInterstitialEventHandler.h"
-#import "PBMInterstitialControllerLoadingDelegate.h"
 #import "PBMRewardedEventHandler.h"
 
 #import "PBMMacros.h"
@@ -17,7 +16,7 @@
 #import "PrebidMobileRenderingSwiftHeaders.h"
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
-@interface PBMInterstitialAdLoader () <PBMInterstitialControllerLoadingDelegate>
+@interface PBMInterstitialAdLoader () <InterstitialControllerLoadingDelegate>
 @property (nonatomic, weak, nullable, readonly) id<PBMInterstitialAdLoaderDelegate> delegate;
 @end
 
@@ -97,7 +96,7 @@
     }];
 }
 
-// MARK: - PBMInterstitialControllerLoadingDelegate
+// MARK: - InterstitialControllerLoadingDelegate
 
 - (void)interstitialControllerDidLoadAd:(InterstitialController *)interstitialController {
     [self.flowDelegate adLoaderLoadedPrebidAd:self];

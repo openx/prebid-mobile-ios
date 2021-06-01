@@ -21,7 +21,7 @@ public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
         set { adConfiguration.isOptIn = newValue }
     }
     
-    @objc public weak var loadingDelegate: PBMInterstitialControllerLoadingDelegate?
+    @objc public weak var loadingDelegate: InterstitialControllerLoadingDelegate?
     @objc public weak var interactionDelegate: PBMInterstitialControllerInteractionDelegate?
     
     var bid: Bid

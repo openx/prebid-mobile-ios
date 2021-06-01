@@ -29,7 +29,6 @@ framework module PrebidMobileRendering {
     
     // PBMCacheRenderers
     header "PBMDisplayView.h"
-    header "PBMInterstitialControllerLoadingDelegate.h"
     header "PBMInterstitialControllerInteractionDelegate.h"
     
     

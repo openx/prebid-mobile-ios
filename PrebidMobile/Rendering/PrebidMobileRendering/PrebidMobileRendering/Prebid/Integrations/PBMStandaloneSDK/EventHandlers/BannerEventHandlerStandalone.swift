@@ -9,7 +9,7 @@ import Foundation
 
 public class BannerEventHandlerStandalone: NSObject, PBMBannerEventHandler {
     
-    public var loadingDelegate: PBMBannerEventLoadingDelegate?
+    public var loadingDelegate: BannerEventLoadingDelegate?
     public var interactionDelegate: PBMBannerEventInteractionDelegate?
     
     public var adSizes: [NSValue] = []

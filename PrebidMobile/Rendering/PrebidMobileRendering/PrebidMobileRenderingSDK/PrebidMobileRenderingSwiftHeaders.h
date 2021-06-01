@@ -9,7 +9,6 @@
     
 #import "PBMPrimaryAdRequesterProtocol.h"
 
-#import "PBMBannerEventLoadingDelegate.h"
 #import "PBMBannerEventInteractionDelegate.h"
 #import "PBMBannerEventHandler.h"
 

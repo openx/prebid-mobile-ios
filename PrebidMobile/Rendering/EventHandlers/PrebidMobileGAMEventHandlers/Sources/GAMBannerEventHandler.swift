@@ -42,7 +42,7 @@ public class GAMBannerEventHandler :
     
     // MARK: - PBMBannerEventHandler
     
-    public var loadingDelegate: PBMBannerEventLoadingDelegate?
+    public var loadingDelegate: BannerEventLoadingDelegate?
     
     public var interactionDelegate: PBMBannerEventInteractionDelegate?
     

@@ -10,7 +10,6 @@
 #import "PBMBidRequester.h"
 #import "PBMAdLoadFlowState.h"
 #import "PBMAdLoaderFlowDelegate.h"
-#import "PBMBannerEventLoadingDelegate.h"
 
 @class BidResponse;
 

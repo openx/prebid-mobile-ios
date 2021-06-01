@@ -9,8 +9,9 @@
 
 #import "PBMPrimaryAdRequesterProtocol.h"
 
-#import "PBMBannerEventLoadingDelegate.h"
 #import "PBMBannerEventInteractionDelegate.h"
+
+@protocol BannerEventLoadingDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 
 /// Delegate for custom event handler to inform the PBM SDK about the events related to the ad server communication.
-@property (nonatomic, weak, readwrite, nullable) id<PBMBannerEventLoadingDelegate> loadingDelegate;
+@property (nonatomic, weak, readwrite, nullable) id<BannerEventLoadingDelegate> loadingDelegate;
 
 /// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
 @property (nonatomic, weak, readwrite, nullable) id<PBMBannerEventInteractionDelegate> interactionDelegate;

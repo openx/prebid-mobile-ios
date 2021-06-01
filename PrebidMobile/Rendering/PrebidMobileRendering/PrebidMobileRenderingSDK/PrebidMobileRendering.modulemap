@@ -35,7 +35,6 @@ framework module PrebidMobileRendering {
     
     header "PBMPrimaryAdRequesterProtocol.h"
     
-    header "PBMBannerEventLoadingDelegate.h"
     header "PBMBannerEventInteractionDelegate.h"
     header "PBMBannerEventHandler.h"
     

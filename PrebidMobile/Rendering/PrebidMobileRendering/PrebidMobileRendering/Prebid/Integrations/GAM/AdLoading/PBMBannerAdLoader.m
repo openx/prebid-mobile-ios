@@ -11,7 +11,6 @@
 
 #import "PBMAdLoaderFlowDelegate.h"
 #import "PBMBannerEventHandler.h"
-#import "PBMBannerEventLoadingDelegate.h"
 #import "PBMDisplayView.h"
 #import "PBMDisplayView+InternalState.h"
 
@@ -21,7 +20,7 @@
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 
 
-@interface PBMBannerAdLoader () <DisplayViewLoadingDelegate, PBMBannerEventLoadingDelegate>
+@interface PBMBannerAdLoader () <DisplayViewLoadingDelegate, BannerEventLoadingDelegate>
 @property (nonatomic, weak, nullable, readonly) id<PBMBannerAdLoaderDelegate> delegate;
 @end
 
@@ -82,7 +81,7 @@
     [self.flowDelegate adLoader:self failedWithPrebidError:error];
 }
 
-// MARK: - PBMBannerEventLoadingDelegate
+// MARK: - BannerEventLoadingDelegate
 
 - (void)prebidDidWin {
     [self.flowDelegate adLoaderDidWinPrebid:self];

@@ -9,7 +9,6 @@
 
 #import "PBMAdLoaderFlowDelegate.h"
 #import "PBMInterstitialEventHandler.h"
-#import "PBMRewardedEventHandler.h"
 
 #import "PBMMacros.h"
 
@@ -79,8 +78,8 @@
             return eventHandler.isReady;
         }];
         return;
-    } else if ([adObject conformsToProtocol:@protocol(PBMRewardedEventHandler)]) {
-        id<PBMRewardedEventHandler> const eventHandler = (id<PBMRewardedEventHandler>)adObject;
+    } else if ([adObject conformsToProtocol:@protocol(RewardedEventHandlerProtocol)]) {
+        id<PBMInterstitialAd> const eventHandler = (id<PBMInterstitialAd>)adObject;
         [self.delegate interstitialAdLoader:self
                                    loadedAd:^(UIViewController *targetController) {
             [eventHandler showFromViewController:targetController];

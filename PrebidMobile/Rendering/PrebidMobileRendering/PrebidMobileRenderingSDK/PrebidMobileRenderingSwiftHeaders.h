@@ -26,7 +26,6 @@
 #import "PBMRewardedAdUnitDelegate.h"
 #import "PBMRewardedEventLoadingDelegate.h"
 #import "PBMRewardedEventInteractionDelegate.h"
-#import "PBMRewardedEventHandler.h"
 
 #import "PBMNativeContextType.h"
 #import "PBMNativeContextSubtype.h"

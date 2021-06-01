@@ -51,9 +51,7 @@ framework module PrebidMobileRendering {
     
     header "PBMRewardedAdUnitDelegate.h"
     header "PBMRewardedEventLoadingDelegate.h"
-    header "PBMRewardedEventInteractionDelegate.h"
-    header "PBMRewardedEventHandler.h"
-    
+    header "PBMRewardedEventInteractionDelegate.h"    
     
     // PBM Native Ads (enums)
     header "PBMDataAssetType.h"

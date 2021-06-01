@@ -11,7 +11,7 @@ import PrebidMobileRendering
 
 public class GAMRewardedAdEventHandler :
     NSObject,
-    PBMRewardedEventHandler,
+    RewardedEventHandlerProtocol,
     GADFullScreenContentDelegate,
     GADAdMetadataDelegate {
     
@@ -44,7 +44,7 @@ public class GAMRewardedAdEventHandler :
         }
     }
     
-    // MARK: - PBMRewardedEventHandler
+    // MARK: - RewardedEventHandlerProtocol
     
     public var loadingDelegate: PBMRewardedEventLoadingDelegate?
     

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class RewardedEventHandlerStandalone: NSObject, PBMRewardedEventHandler {
+public class RewardedEventHandlerStandalone: NSObject, RewardedEventHandlerProtocol {
    
     public var loadingDelegate: PBMRewardedEventLoadingDelegate?
     public var interactionDelegate: PBMRewardedEventInteractionDelegate?

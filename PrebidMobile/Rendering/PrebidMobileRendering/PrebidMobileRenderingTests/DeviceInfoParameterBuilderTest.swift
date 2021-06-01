@@ -20,6 +20,7 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
     }
 
     override func tearDown() {
+        MockDeviceAccessManager.reset()
         cleanUpUserDefaults()
     }
 

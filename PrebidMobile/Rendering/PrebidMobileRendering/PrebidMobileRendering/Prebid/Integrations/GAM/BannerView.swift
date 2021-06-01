@@ -13,8 +13,8 @@ public class BannerView: UIView,
                   PBMBannerAdLoaderDelegate,
                   PBMAdLoadFlowControllerDelegate,
                   PBMBannerEventInteractionDelegate,
-                  PBMDisplayViewInteractionDelegate {
-
+                  DisplayViewInteractionDelegate {
+    
     public let adUnitConfig: AdUnitConfig
     public let eventHandler: PBMBannerEventHandler?
     
@@ -200,7 +200,7 @@ public class BannerView: UIView,
         adUnitConfig.clearContextData()
     }
     
-    // MARK: - PBMDisplayViewInteractionDelegate
+    // MARK: - DisplayViewInteractionDelegate
     
     public func trackImpression(for displayView: PBMDisplayView) {
         guard let eventHandler = self.eventHandler,
@@ -219,11 +219,11 @@ public class BannerView: UIView,
         willLeaveApp()
     }
     
-    public func displayViewWillPresentModal(_ displayView: PBMDisplayView) {
+    public func willPresentModal(from displayView: PBMDisplayView) {
         willPresentModal()
     }
     
-    public func displayViewDidDismissModal(_ displayView: PBMDisplayView) {
+    public func didDismissModal(from displayView: PBMDisplayView) {
         didDismissModal()
     }
     

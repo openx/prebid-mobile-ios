@@ -19,7 +19,7 @@ import PrebidMobileRendering
 public class PrebidMoPubBannerAdapter :
     MPInlineAdAdapter,
     PBMDisplayViewLoadingDelegate,
-    PBMDisplayViewInteractionDelegate {
+    DisplayViewInteractionDelegate {
    
     // MARK: - Internal Properties
     
@@ -87,25 +87,20 @@ public class PrebidMoPubBannerAdapter :
         //in this method to ensure correct metrics
     }
     
-    public func viewControllerForModalPresentation(from displayView: PBMDisplayView) -> UIViewController {
-        if let controller = delegate?.inlineAdAdapterViewController(forPresentingModalView: self) {
-            return controller
-        }
-        
-        // FIXME
-        return UIViewController()
+    public func viewControllerForModalPresentation(from displayView: PBMDisplayView) -> UIViewController? {
+        delegate?.inlineAdAdapterViewController(forPresentingModalView: self)
     }
     
     public func didLeaveApp(from displayView: PBMDisplayView) {
         // There is no appropriate methods
     }
     
-    public func displayViewWillPresentModal(_ displayView: PBMDisplayView) {
+    public func willPresentModal(from displayView: PBMDisplayView) {
         MPLogging.logEvent(MPLogEvent.adTapped(forAdapter: Self.className()), source: adUnitId, from: nil)
         delegate?.inlineAdAdapterWillBeginUserAction(self)
     }
     
-    public func displayViewDidDismissModal(_ displayView: PBMDisplayView) {
+    public func didDismissModal(from displayView: PBMDisplayView) {
         MPLogging.logEvent(MPLogEvent.adDidDismissModal(forAdapter: Self.className()), source: adUnitId, from: nil)
         delegate?.inlineAdAdapterDidEndUserAction(self)
     }

@@ -6,7 +6,6 @@
 
 #import "PBMDisplayView.h"
 #import "PBMDisplayViewLoadingDelegate.h"
-#import "PBMDisplayViewInteractionDelegate.h"
 #import "PBMInterstitialControllerLoadingDelegate.h"
 #import "PBMInterstitialControllerInteractionDelegate.h"
 

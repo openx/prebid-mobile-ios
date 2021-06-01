@@ -105,7 +105,7 @@
 }
 
 - (void)adDidDisplay {
-    [self.interactionDelegate trackImpressionForDisplayView:self];
+    [self.interactionDelegate trackImpressionFor:self];
 }
 
 - (void)adWasClicked {
@@ -129,7 +129,7 @@
 }
 
 - (void)adDidLeaveApp {
-    [self.interactionDelegate didLeaveAppFromDisplayView:self];
+    [self.interactionDelegate didLeaveAppFrom:self];
 }
 
 - (void)adClickthroughDidClose {
@@ -149,16 +149,16 @@
 // MARK: - PBMModalManagerDelegate
 
 - (void)modalManagerWillPresentModal {
-    id<PBMDisplayViewInteractionDelegate> const delegate = self.interactionDelegate;
-    if ([delegate respondsToSelector:@selector(displayViewWillPresentModal:)]) {
-        [delegate displayViewWillPresentModal:self];
+    NSObject<DisplayViewInteractionDelegate> const *delegate = self.interactionDelegate;
+    if ([delegate respondsToSelector:@selector(willPresentModalFrom:)]) {
+        [delegate willPresentModalFrom:self];
     }
 }
 
 - (void)modalManagerDidDismissModal {
-    id<PBMDisplayViewInteractionDelegate> const delegate = self.interactionDelegate;
-    if ([delegate respondsToSelector:@selector(displayViewDidDismissModal:)]) {
-        [delegate displayViewDidDismissModal:self];
+    NSObject<DisplayViewInteractionDelegate> const *delegate = self.interactionDelegate;
+    if ([delegate respondsToSelector:@selector(didDismissModalFrom:)]) {
+        [delegate didDismissModalFrom:self];
     }
 }
 

@@ -44,7 +44,7 @@ public class GAMBannerEventHandler :
     
     public var loadingDelegate: BannerEventLoadingDelegate?
     
-    public var interactionDelegate: PBMBannerEventInteractionDelegate?
+    public var interactionDelegate: BannerEventInteractionDelegate?
     
     public var adSizes: [NSValue]
     

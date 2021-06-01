@@ -9,8 +9,7 @@
 
 #import "PBMPrimaryAdRequesterProtocol.h"
 
-#import "PBMBannerEventInteractionDelegate.h"
-
+@protocol BannerEventInteractionDelegate;
 @protocol BannerEventLoadingDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, readwrite, nullable) id<BannerEventLoadingDelegate> loadingDelegate;
 
 /// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
-@property (nonatomic, weak, readwrite, nullable) id<PBMBannerEventInteractionDelegate> interactionDelegate;
+@property (nonatomic, weak, readwrite, nullable) id<BannerEventInteractionDelegate> interactionDelegate;
 
 /// The array of the CGRect entries for each valid ad sizes.
 /// The first size is treated as a frame for related ad unit.

@@ -12,7 +12,7 @@ fileprivate let assertionMessageMainThread = "Expected to only be called on the 
 public class BannerView: UIView,
                   PBMBannerAdLoaderDelegate,
                   PBMAdLoadFlowControllerDelegate,
-                  PBMBannerEventInteractionDelegate,
+                  BannerEventInteractionDelegate,
                   DisplayViewInteractionDelegate {
     
     public let adUnitConfig: AdUnitConfig
@@ -258,7 +258,7 @@ public class BannerView: UIView,
         !isRefreshStopped
     }
     
-    // MARK: - PBMBannerEventInteractionDelegate
+    // MARK: - BannerEventInteractionDelegate
     
     public func willPresentModal() {
         assert(Thread.isMainThread, assertionMessageMainThread)

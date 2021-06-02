@@ -16,7 +16,7 @@ class PrebidMoPubNativeAdAdapter:
     NSObject,
     MPNativeAdAdapter,
     PBMNativeAdUIDelegate,
-    PBMNativeAdTrackingDelegate
+    NativeAdTrackingDelegate
 {
     
     // MARK: - Public Properties

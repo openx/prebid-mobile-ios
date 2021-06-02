@@ -14,7 +14,7 @@ fileprivate let viewabilityPollingInterval : TimeInterval = 0.2
 public class NativeAd: NSObject {
     
     @objc public weak var uiDelegate: PBMNativeAdUIDelegate?
-    @objc public weak var trackingDelegate: PBMNativeAdTrackingDelegate?
+    @objc public weak var trackingDelegate: NativeAdTrackingDelegate?
     
     // MARK: - Root properties
     

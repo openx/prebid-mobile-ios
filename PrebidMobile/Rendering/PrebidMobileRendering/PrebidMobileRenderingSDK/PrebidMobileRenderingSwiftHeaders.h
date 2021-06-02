@@ -22,7 +22,6 @@
 #import "PBMNativeEventTracker.h"
 #import "PBMNativePlacementType.h"
 
-#import "PBMNativeAdTrackingDelegate.h"
 #import "PBMNativeAdUIDelegate.h"
 #import "PBMNativeAdElementType.h"
 #import "PBMNativeAdHandler.h"

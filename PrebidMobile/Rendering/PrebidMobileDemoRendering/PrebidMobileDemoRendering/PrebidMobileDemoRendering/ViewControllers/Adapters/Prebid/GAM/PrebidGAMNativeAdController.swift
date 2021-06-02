@@ -146,7 +146,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
     }
 }
 
-extension PrebidGAMNativeAdController: PBMNativeAdTrackingDelegate {
+extension PrebidGAMNativeAdController: NativeAdTrackingDelegate {
     func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }

@@ -94,7 +94,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
     // MARK: - Helper classes
     
     private class DummyInterstitialDelegate: NSObject, InterstitialAdUnitDelegate {}
-    private class DummyRewardedAdDelegate: NSObject, PBMRewardedAdUnitDelegate {}
+    private class DummyRewardedAdDelegate: NSObject, RewardedAdUnitDelegate {}
     
     private class BaseProxyDelegate: NSObject {
         let file: StaticString
@@ -137,7 +137,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
         }
     }
     
-    private class RewardedAdProxyDelegate: BaseProxyDelegate, PBMRewardedAdUnitDelegate {
+    private class RewardedAdProxyDelegate: BaseProxyDelegate, RewardedAdUnitDelegate {
         func rewardedAdDidReceiveAd(_ rewardedAd: RewardedAdUnit) {
             report(selectorName: "rewardedAdDidReceiveAd:", args: [rewardedAd])
         }

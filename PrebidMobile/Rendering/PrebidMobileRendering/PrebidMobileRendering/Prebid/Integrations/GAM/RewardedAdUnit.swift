@@ -56,37 +56,37 @@ public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
     // MARK: - Protected overrides
     
     @objc public override func callDelegate_didReceiveAd() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdDidReceiveAd?(self)
         }
     }
 
     @objc public override func callDelegate_didFailToReceiveAdWithError(_ error: Error?) {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAd?(self, didFailToReceiveAdWithError: error)
         }
     }
     
     @objc public override func callDelegate_willPresentAd() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdWillPresentAd?(self)
         }
     }
 
     @objc public override func callDelegate_didDismissAd() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdDidDismissAd?(self)
         }
     }
 
     @objc public override func callDelegate_willLeaveApplication() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdWillLeaveApplication?(self)
         }
     }
 
     @objc public override func callDelegate_didClickAd() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdDidClickAd?(self)
         }
     }
@@ -132,7 +132,7 @@ public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
     // MARK: - Private helpers
     
     func callDelegate_rewardedAdUserDidEarnReward() {
-        if let delegate = self.delegate as? PBMRewardedAdUnitDelegate {
+        if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAdUserDidEarnReward?(self)
         }
     }

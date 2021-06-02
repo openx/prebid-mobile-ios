@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMobileAds
 
-class PrebidRewardedController: NSObject, AdaptedController, PBMRewardedAdUnitDelegate {
+class PrebidRewardedController: NSObject, AdaptedController, RewardedAdUnitDelegate {
     
     var prebidConfigId = ""
     

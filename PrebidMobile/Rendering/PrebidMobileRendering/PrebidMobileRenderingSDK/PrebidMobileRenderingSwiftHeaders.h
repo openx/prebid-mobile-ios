@@ -17,8 +17,6 @@
 #import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMInterstitialEventHandler.h"
 
-#import "PBMRewardedAdUnitDelegate.h"
-
 #import "PBMNativeContextType.h"
 #import "PBMNativeContextSubtype.h"
 #import "PBMNativeEventTracker.h"

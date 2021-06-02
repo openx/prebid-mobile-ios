@@ -12,7 +12,7 @@
 
 + (NSError *)pbmErrorWithDescription:(NSString *)description NS_SWIFT_NAME(pbmError(description:)) {
     
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:PBMErrorCodeGeneral
                            userInfo:@{
                                NSLocalizedDescriptionKey: NSLocalizedString(description, nil)

@@ -24,7 +24,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
                                NSLocalizedDescriptionKey: NSLocalizedString(description, nil)
                                };
     
-    return [PBMError errorWithDomain:pbmErrorDomain
+    return [PBMError errorWithDomain:PrebidRenderingErrorDomain
                                 code:code
                             userInfo:userInfo];
 }
@@ -32,7 +32,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 + (PBMError *)errorWithMessage:(NSString *)message type:(PBMErrorType)type {
     NSString *desc = [NSString stringWithFormat:@"%@: %@", type, message];
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey:desc};
-    return [PBMError errorWithDomain:pbmErrorDomain code:0 userInfo:userInfo];
+    return [PBMError errorWithDomain:PrebidRenderingErrorDomain code:0 userInfo:userInfo];
 }
 
 + (BOOL)createError:(NSError *__autoreleasing  _Nullable *)error description:(NSString *)description {
@@ -64,7 +64,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 
 
 + (NSError *)requestInProgress {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:1
                                           forFamily:kPBMErrorFamily_SetupErrors]
                            userInfo:@{
@@ -77,7 +77,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 // MARK: - Known server text errors
 
 + (NSError *)invalidAccountId {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:1
                                           forFamily:kPBMErrorFamily_KnownServerErrors]
                            userInfo:@{
@@ -87,7 +87,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)invalidConfigId {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:2
                                           forFamily:kPBMErrorFamily_KnownServerErrors]
                            userInfo:@{
@@ -97,7 +97,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)invalidSize {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:3
                                           forFamily:kPBMErrorFamily_KnownServerErrors]
                            userInfo:@{
@@ -107,7 +107,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)prebidServerURLInvalid:(NSString *)url {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:4
                                           forFamily:kPBMErrorFamily_KnownServerErrors]
                            userInfo:@{
@@ -119,7 +119,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 // MARK: - Unknown server text errors
 
 + (NSError *)serverError:(NSString *)errorBody {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:1
                                           forFamily:kPBMErrorFamily_UnknownServerErrors]
                            userInfo:@{
@@ -132,7 +132,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 // MARK: - Response processing errors
 
 + (NSError *)jsonDictNotFound {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:1
                                           forFamily:kPBMErrorFamily_ResponseProcessingErrors]
                            userInfo:@{
@@ -142,7 +142,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)responseDeserializationFailed {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:2
                                           forFamily:kPBMErrorFamily_ResponseProcessingErrors]
                            userInfo:@{
@@ -152,7 +152,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)noEventForNativeAdMarkupEventTracker {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:3
                                           forFamily:kPBMErrorFamily_ResponseProcessingErrors]
                            userInfo:@{
@@ -162,7 +162,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)noMethodForNativeAdMarkupEventTracker {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:4
                                           forFamily:kPBMErrorFamily_ResponseProcessingErrors]
                            userInfo:@{
@@ -172,7 +172,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)noUrlForNativeAdMarkupEventTracker {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:5
                                           forFamily:kPBMErrorFamily_ResponseProcessingErrors]
                            userInfo:@{
@@ -184,7 +184,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 // MARK: - Integration layer errors
 
 + (NSError *)noWinningBid {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:1
                                           forFamily:kPBMErrorFamily_IntegrationLayerErrors]
                            userInfo:@{
@@ -194,7 +194,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)noNativeCreative {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:2
                                           forFamily:kPBMErrorFamily_IntegrationLayerErrors]
                            userInfo:@{
@@ -204,7 +204,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 }
 
 + (NSError *)noVastTagInMediaData {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:3
                                           forFamily:kPBMErrorFamily_IntegrationLayerErrors]
                            userInfo:@{
@@ -216,7 +216,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 // MARK: - SDK Misuse Errors
 
 + (NSError *)replacingMediaDataInMediaView {
-    return [NSError errorWithDomain:pbmErrorDomain
+    return [NSError errorWithDomain:PrebidRenderingErrorDomain
                                code:[self errorCode:(PBMFetchDemandResult_SDKMisuse_AttemptedToReplaceMediaDataInMediaView - PBMFetchDemandResult_SDKMisuse)
                                           forFamily:kPBMErrorFamily_SDKMisuseErrors]
                            userInfo:@{
@@ -231,7 +231,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
     if (!error) {
         return PBMFetchDemandResult_Ok;
     }
-    if ([error.domain isEqualToString:pbmErrorDomain]) {
+    if ([error.domain isEqualToString:PrebidRenderingErrorDomain]) {
         NSNumber * const demandCode = error.userInfo[oxbFetchDemandResultKey];
         return demandCode ? (PBMFetchDemandResult)demandCode.integerValue : PBMFetchDemandResult_InternalSDKError;
     }
@@ -246,7 +246,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
                                NSLocalizedDescriptionKey: NSLocalizedString(msg, nil)
                                };
     
-    self = [super initWithDomain:PBMErrorDomain code:PBMErrorCodeGeneral userInfo:userInfo];
+    self = [super initWithDomain:PrebidRenderingErrorDomain code:PBMErrorCodeGeneral userInfo:userInfo];
     if (self) {
         self.message = msg;
     }

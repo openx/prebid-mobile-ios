@@ -268,7 +268,6 @@
 		34D7101324E580620048CC78 /* PBMVastCreativeNonLinearAdsNonLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B68A42202C317600F85809 /* PBMVastCreativeNonLinearAdsNonLinear.m */; };
 		34D7101424E580620048CC78 /* PBMReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1021280C201874650080AD00 /* PBMReachability.m */; };
 		34D7101524E580620048CC78 /* PBMTrackingRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D540B0972022F218003222C5 /* PBMTrackingRecord.m */; };
-		34D7101624E580620048CC78 /* PBMPublicConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D70F6024E537220048CC78 /* PBMPublicConstants.m */; };
 		34D7101724E580620048CC78 /* PBMJSLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D31004229BDE5A0070B231 /* PBMJSLibraryManager.m */; };
 		34D7101824E580620048CC78 /* PBMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 445C70552021001800DA67F7 /* PBMLocationManager.m */; };
 		34D7101924E580620048CC78 /* PBMAbstractCreative.m in Sources */ = {isa = PBXBuildFile; fileRef = 449C00D0201A7F07001B34A3 /* PBMAbstractCreative.m */; };
@@ -350,7 +349,6 @@
 		34D7108124E580620048CC78 /* PBMORTBBidResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FBBCCC24813F1500BC7B0A /* PBMORTBBidResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7108224E580620048CC78 /* PBMInterstitialDisplayProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC53521CCDB930039DCA0 /* PBMInterstitialDisplayProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7108424E580620048CC78 /* UIView+PBMViewExposure.h in Headers */ = {isa = PBXBuildFile; fileRef = 346C533B23EAEE5D0028385D /* UIView+PBMViewExposure.h */; };
-		34D7108524E580620048CC78 /* PBMPublicConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D70F5F24E537220048CC78 /* PBMPublicConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7108724E580620048CC78 /* PBMModalAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC54721CCDC970039DCA0 /* PBMModalAnimator.h */; };
 		34D7108824E580620048CC78 /* PBMCreativeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0802BEF22EEF76A00F13C15 /* PBMCreativeFactory.h */; };
 		34D7108B24E580620048CC78 /* PBMNonModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC50E21CCDAC50039DCA0 /* PBMNonModalViewController.h */; };
@@ -1163,8 +1161,6 @@
 		34D42CBB25CD6037008EE1D3 /* PBMExternalURLOpenCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMExternalURLOpenCallbacks.h; sourceTree = "<group>"; };
 		34D42CBC25CD6037008EE1D3 /* PBMExternalURLOpenCallbacks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMExternalURLOpenCallbacks.m; sourceTree = "<group>"; };
 		34D42CC825CD610B008EE1D3 /* PBMURLOpenResultHandlerBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMURLOpenResultHandlerBlock.h; sourceTree = "<group>"; };
-		34D70F5F24E537220048CC78 /* PBMPublicConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMPublicConstants.h; path = PrebidMobileRendering/PBMPublicConstants.h; sourceTree = SOURCE_ROOT; };
-		34D70F6024E537220048CC78 /* PBMPublicConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PBMPublicConstants.m; path = PrebidMobileRendering/PBMPublicConstants.m; sourceTree = SOURCE_ROOT; };
 		34D70F6624E53C850048CC78 /* PBMErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMErrorCode.h; path = Utilities/PBMErrorCode.h; sourceTree = "<group>"; };
 		34D70F6724E53C950048CC78 /* PBMErrorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMErrorType.h; sourceTree = "<group>"; };
 		34D7113424E580620048CC78 /* PrebidMobileRendering.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileRendering.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2961,8 +2957,6 @@
 			isa = PBXGroup;
 			children = (
 				5B80F697211D7F6F00C8A20F /* EventTracker */,
-				34D70F5F24E537220048CC78 /* PBMPublicConstants.h */,
-				34D70F6024E537220048CC78 /* PBMPublicConstants.m */,
 				1031B6E9201238010099EE4E /* PBMConstants.h */,
 				102370ED201672D900F4C9FC /* PBMConstants.m */,
 				D5A7A75A21020405000F5284 /* PBMMacros.h */,
@@ -3443,7 +3437,6 @@
 				34F135C125CAAE49004414D6 /* PBMVastTransactionFactory.h in Headers */,
 				34D7108224E580620048CC78 /* PBMInterstitialDisplayProperties.h in Headers */,
 				34D7108424E580620048CC78 /* UIView+PBMViewExposure.h in Headers */,
-				34D7108524E580620048CC78 /* PBMPublicConstants.h in Headers */,
 				ACE6EB6F2653EC1A009324AC /* PBMNativeImpressionDetectionHandler.h in Headers */,
 				ACE6EA3A26528CF4009324AC /* PBMBidRequesterFactoryBlock.h in Headers */,
 				34D7108724E580620048CC78 /* PBMModalAnimator.h in Headers */,
@@ -4083,7 +4076,6 @@
 				34D7101324E580620048CC78 /* PBMVastCreativeNonLinearAdsNonLinear.m in Sources */,
 				34D7101424E580620048CC78 /* PBMReachability.m in Sources */,
 				34D7101524E580620048CC78 /* PBMTrackingRecord.m in Sources */,
-				34D7101624E580620048CC78 /* PBMPublicConstants.m in Sources */,
 				ACE5AFE1256BDCFE004121BA /* PBMNativeMarkupRequestObject.m in Sources */,
 				5BBCF7382655491C006A0356 /* MoPubUtils.swift in Sources */,
 				AC24DA962508F3E10060D6D9 /* PBMORTBDeviceExtAtts.m in Sources */,

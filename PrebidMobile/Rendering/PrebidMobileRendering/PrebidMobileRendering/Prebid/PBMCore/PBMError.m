@@ -6,7 +6,6 @@
 //
 
 #import "PBMError.h"
-#import "PBMPublicConstants.h"
 #import "PBMErrorFamily.h"
 #import "PBMLog.h"
 
@@ -25,7 +24,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
                                NSLocalizedDescriptionKey: NSLocalizedString(description, nil)
                                };
     
-    return [PBMError errorWithDomain:PBMErrorDomain
+    return [PBMError errorWithDomain:pbmErrorDomain
                                 code:code
                             userInfo:userInfo];
 }
@@ -33,7 +32,7 @@ static NSString * const oxbFetchDemandResultKey = @"oxbFetchDemandResultKey";
 + (PBMError *)errorWithMessage:(NSString *)message type:(PBMErrorType)type {
     NSString *desc = [NSString stringWithFormat:@"%@: %@", type, message];
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey:desc};
-    return [PBMError errorWithDomain:PBMErrorDomain code:0 userInfo:userInfo];
+    return [PBMError errorWithDomain:pbmErrorDomain code:0 userInfo:userInfo];
 }
 
 + (BOOL)createError:(NSError *__autoreleasing  _Nullable *)error description:(NSString *)description {

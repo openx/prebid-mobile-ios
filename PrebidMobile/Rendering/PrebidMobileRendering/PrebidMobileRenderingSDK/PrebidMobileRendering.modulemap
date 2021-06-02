@@ -9,8 +9,6 @@ framework module PrebidMobileRendering {
     
     // Versions
     header "PrebidMobileRendering.h"
-    // Constants
-    header "PBMPublicConstants.h"
     // Enums
     header "PBMAdFormat.h"
     header "PBMErrorCode.h"

@@ -9,8 +9,8 @@ import Foundation
 
 @objc public protocol DisplayViewLoadingDelegate where Self : NSObject {
 
-    @objc func displayViewDidLoadAd(_ displayView: PBMDisplayView)
+    func displayViewDidLoadAd(_ displayView: PBMDisplayView)
     
-    @objc func displayView(_ displayView: PBMDisplayView,
-                           didFailWithError error: Error)
+    func displayView(_ displayView: PBMDisplayView,
+                     didFailWithError error: Error)
 }

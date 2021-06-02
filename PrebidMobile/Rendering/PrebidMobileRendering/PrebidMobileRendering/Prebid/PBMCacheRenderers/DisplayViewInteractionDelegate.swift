@@ -11,13 +11,13 @@ import UIKit
 
 @objc public protocol DisplayViewInteractionDelegate where Self: NSObject {
 
-    @objc func trackImpression(for displayView:PBMDisplayView)
+    func trackImpression(for displayView:PBMDisplayView)
     
-    @objc func viewControllerForModalPresentation(from displayView: PBMDisplayView) -> UIViewController?
+    func viewControllerForModalPresentation(from displayView: PBMDisplayView) -> UIViewController?
     
-    @objc func didLeaveApp(from displayView: PBMDisplayView)
+    func didLeaveApp(from displayView: PBMDisplayView)
     
-    @objc func willPresentModal(from displayView: PBMDisplayView)
+    func willPresentModal(from displayView: PBMDisplayView)
     
-    @objc func didDismissModal(from displayView: PBMDisplayView)
+    func didDismissModal(from displayView: PBMDisplayView)
 }

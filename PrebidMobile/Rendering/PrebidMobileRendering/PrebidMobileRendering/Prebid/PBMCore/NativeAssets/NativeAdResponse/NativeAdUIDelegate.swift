@@ -15,7 +15,7 @@ import UIKit
      as a result of user interaction on an ad. Usual implementation may simply return self,
      if it is view controller class.
      */
-    @objc func viewPresentationControllerForNativeAd(_ nativeAd: NativeAd) -> UIViewController?
+    func viewPresentationControllerForNativeAd(_ nativeAd: NativeAd) -> UIViewController?
 
     /*!
      @abstract Notifies the delegate whenever current app goes in the background due to user click.

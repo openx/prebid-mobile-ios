@@ -12,5 +12,5 @@ import Foundation
     /*!
      @abstract The reward to be given to the user. May be assigned on successful loading.
      */
-    @objc weak var reward: NSObject? { get set }
+    weak var reward: NSObject? { get set }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 @objc public protocol InterstitialControllerLoadingDelegate where Self: NSObject {
 
-    @objc func interstitialControllerDidLoadAd(_ interstitialController: InterstitialController)
-    @objc func interstitialController(_ interstitialController: InterstitialController,
-                                      didFailWithError error: Error)
+    func interstitialControllerDidLoadAd(_ interstitialController: InterstitialController)
+    func interstitialController(_ interstitialController: InterstitialController,
+                                didFailWithError error: Error)
 }

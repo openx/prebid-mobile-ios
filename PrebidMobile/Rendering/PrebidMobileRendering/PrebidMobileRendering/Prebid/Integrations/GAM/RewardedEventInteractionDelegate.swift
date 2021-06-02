@@ -12,6 +12,6 @@ import Foundation
     /*!
      @abstract Call this when the ad server SDK decides the use has earned reward
      */
-    @objc func userDidEarnReward(_ reward: NSObject?)
+    func userDidEarnReward(_ reward: NSObject?)
 }
 

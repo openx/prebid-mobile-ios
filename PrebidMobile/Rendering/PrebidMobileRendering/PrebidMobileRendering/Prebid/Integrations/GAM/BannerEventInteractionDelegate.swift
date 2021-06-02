@@ -16,21 +16,21 @@ import UIKit
     /*!
      @abstract Call this when the ad server SDK is about to present a modal
      */
-    @objc func willPresentModal()
+    func willPresentModal()
 
     /*!
      @abstract Call this when the ad server SDK dissmisses a modal
      */
-    @objc func didDismissModal()
+    func didDismissModal()
 
     /*!
      @abstract Call this when the ad server SDK informs about app leave event as a result of user interaction.
      */
-    @objc func willLeaveApp()
+    func willLeaveApp()
 
     /*!
      @abstract Returns a view controller instance to be used by ad server SDK for showing modals
      @result a UIViewController instance for showing modals
      */
-    @objc var viewControllerForPresentingModal: UIViewController? { get }
+    var viewControllerForPresentingModal: UIViewController? { get }
 }

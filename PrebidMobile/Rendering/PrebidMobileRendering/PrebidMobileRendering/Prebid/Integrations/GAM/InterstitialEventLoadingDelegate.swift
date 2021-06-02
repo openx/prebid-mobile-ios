@@ -15,16 +15,16 @@ import Foundation
     /*!
      @abstract Call this when the ad server SDK signals about partner bid win
      */
-    @objc func prebidDidWin()
+    func prebidDidWin()
 
     /*!
      @abstract Call this when the ad server SDK renders its own ad
      */
-    @objc func adServerDidWin()
+    func adServerDidWin()
 
     /*!
      @abstract Call this when the ad server SDK fails to load the ad
      @param error detailed error object describing the cause of ad failure
      */
-    @objc func failedWithError(_ error: Error?)
+    func failedWithError(_ error: Error?)
 }

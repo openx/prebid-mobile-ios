@@ -59,7 +59,6 @@ framework module PrebidMobileRendering {
 //    header "PBMNativeAd.h"
     header "PBMNativeAdUIDelegate.h"
     header "PBMNativeAdElementType.h"
-    header "PBMNativeAdHandler.h"
     
     // ===
     //Temp. for converting

@@ -24,7 +24,6 @@
 
 #import "PBMNativeAdUIDelegate.h"
 #import "PBMNativeAdElementType.h"
-#import "PBMNativeAdHandler.h"
 
 #import "PBMNativeAdMarkup.h"
 #import "PBMNativeAdMarkupAsset.h"

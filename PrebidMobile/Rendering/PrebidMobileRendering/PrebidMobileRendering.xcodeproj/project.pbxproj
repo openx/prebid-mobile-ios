@@ -43,7 +43,6 @@
 		34172709247FE41000253F6F /* PBMBidResponseTransformer+TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34172708247FE41000253F6F /* PBMBidResponseTransformer+TestExtension.swift */; };
 		34199A952522D1E600E69023 /* LogToFileLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34199A942522D1E600E69023 /* LogToFileLock.swift */; };
 		341C0D1F25A46418002A1527 /* PBMBaseAdUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 348AB3BE2595F7990066F33E /* PBMBaseAdUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		341C0D2925A46512002A1527 /* PBMNativeAdHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 341C0CE425A32E77002A1527 /* PBMNativeAdHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		341C0D3125A46631002A1527 /* DemandResponseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3025A46631002A1527 /* DemandResponseInfoTest.swift */; };
 		341C0D3625A4B53B002A1527 /* PBMBaseAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3525A4B53A002A1527 /* PBMBaseAdUnitTest.swift */; };
 		341C0D3E25A4D208002A1527 /* NativeAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3D25A4D208002A1527 /* NativeAdUnitTest.swift */; };
@@ -944,7 +943,6 @@
 		34172708247FE41000253F6F /* PBMBidResponseTransformer+TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PBMBidResponseTransformer+TestExtension.swift"; sourceTree = "<group>"; };
 		34199A942522D1E600E69023 /* LogToFileLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToFileLock.swift; sourceTree = "<group>"; };
 		341C0CE025A32829002A1527 /* PBMAdMarkupStringHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdMarkupStringHandler.h; sourceTree = "<group>"; };
-		341C0CE425A32E77002A1527 /* PBMNativeAdHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMNativeAdHandler.h; sourceTree = "<group>"; };
 		341C0D1225A3627F002A1527 /* PBMWinNotifierBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMWinNotifierBlock.h; sourceTree = "<group>"; };
 		341C0D1325A36310002A1527 /* PBMWinNotifierFactoryBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMWinNotifierFactoryBlock.h; sourceTree = "<group>"; };
 		341C0D1825A37137002A1527 /* PBMRawBidResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMRawBidResponse.h; sourceTree = "<group>"; };
@@ -1856,7 +1854,6 @@
 				34865CFF258B9113004865BB /* NativeAdMarkup */,
 				ACE6EB472653C1D5009324AC /* NativeAd.swift */,
 				34AB52A425BED63E00AFF95A /* PBMNativeAdUIDelegate.h */,
-				341C0CE425A32E77002A1527 /* PBMNativeAdHandler.h */,
 				ACE6E973264E9D0D009324AC /* NativeAdAsset.swift */,
 				ACE6E981264EB20F009324AC /* NativeAdAssetBoxingError.swift */,
 				ACE6E866264D42B9009324AC /* NativeAdData.swift */,
@@ -3489,7 +3486,6 @@
 				5BD5D4B82656D07800DFB8B2 /* PBMJsonCodable.h in Headers */,
 				34E2FE3B25AF29BA0003C0EA /* PBMViewabilityEventDetector.h in Headers */,
 				5B2FB16726442D2B00912342 /* PBMAutoRefreshCountConfig.h in Headers */,
-				341C0D2925A46512002A1527 /* PBMNativeAdHandler.h in Headers */,
 				34D710A624E580620048CC78 /* PBMORTB.h in Headers */,
 				5BF8E67526398F5900341EE4 /* PBMScheduledTimerFactory.h in Headers */,
 				34C7963825DD35440072A898 /* PBMCachedResponseInfo.h in Headers */,

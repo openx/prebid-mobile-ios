@@ -27,7 +27,7 @@ public class DemandResponseInfo: NSObject {
         self.winNotifierBlock = winNotifierBlock
     }
     
-    @objc public func getNativeAd(withCompletion completion: @escaping PBMNativeAdHandler) {
+    @objc public func getNativeAd(withCompletion completion: @escaping (NativeAd?) -> Void) {
         getAdMarkupString(withCompletion: { adMarkupString in
             
             guard let adMarkupString = adMarkupString else {

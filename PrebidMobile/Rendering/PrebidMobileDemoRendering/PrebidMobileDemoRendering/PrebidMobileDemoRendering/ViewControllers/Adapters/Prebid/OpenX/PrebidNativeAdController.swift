@@ -197,8 +197,8 @@ extension PrebidNativeAdController: NativeAdTrackingDelegate {
     }
 }
 
-extension PrebidNativeAdController: PBMNativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: NativeAd) -> UIViewController? {
+extension PrebidNativeAdController: NativeAdUIDelegate {
+    func viewPresentationControllerForNativeAd(_ nativeAd: NativeAd) -> UIViewController? {
         return rootController
     }
     func nativeAdWillLeaveApplication(_ nativeAd: NativeAd) {

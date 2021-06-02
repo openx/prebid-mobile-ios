@@ -15,7 +15,7 @@ import PrebidMobileRendering
 class PrebidMoPubNativeAdAdapter:
     NSObject,
     MPNativeAdAdapter,
-    PBMNativeAdUIDelegate,
+    NativeAdUIDelegate,
     NativeAdTrackingDelegate
 {
     
@@ -87,7 +87,7 @@ class PrebidMoPubNativeAdAdapter:
     
     // MARK: - NativeAdUIDelegate
     
-    func viewPresentationController(for nativeAd: NativeAd) -> UIViewController? {
+    func viewPresentationControllerForNativeAd(_ nativeAd: NativeAd) -> UIViewController? {
         delegate?.viewControllerForPresentingModalView()
     }
     

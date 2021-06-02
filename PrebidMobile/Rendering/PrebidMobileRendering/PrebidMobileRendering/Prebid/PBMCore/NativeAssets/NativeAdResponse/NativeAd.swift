@@ -13,7 +13,7 @@ fileprivate let viewabilityPollingInterval : TimeInterval = 0.2
 
 public class NativeAd: NSObject {
     
-    @objc public weak var uiDelegate: PBMNativeAdUIDelegate?
+    @objc public weak var uiDelegate: NativeAdUIDelegate?
     @objc public weak var trackingDelegate: NativeAdTrackingDelegate?
     
     // MARK: - Root properties
@@ -79,7 +79,7 @@ public class NativeAd: NSObject {
         
         let viewControllerProvider: PBMViewControllerProvider = { [weak self] in
             if let self = self {
-                return self.uiDelegate?.viewPresentationController(for: self)
+                return self.uiDelegate?.viewPresentationControllerForNativeAd(self)
             } else {
                 return nil
             }
@@ -157,7 +157,7 @@ public class NativeAd: NSObject {
             guard let self = self else {
                 return nil
             }
-            return self.uiDelegate?.viewPresentationController(for: self)
+            return self.uiDelegate?.viewPresentationControllerForNativeAd(self)
         },
         measurementSessionProvider: { [weak self] in
             self?.measurementSession

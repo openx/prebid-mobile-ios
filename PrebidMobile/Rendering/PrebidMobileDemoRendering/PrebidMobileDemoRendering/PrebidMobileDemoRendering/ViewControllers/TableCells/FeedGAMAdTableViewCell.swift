@@ -124,8 +124,8 @@ extension FeedGAMAdTableViewCell: GADCustomNativeAdLoaderDelegate {
     }
 }
 
-extension FeedGAMAdTableViewCell: PBMNativeAdUIDelegate {
-    func viewPresentationController(for nativeAd: NativeAd) -> UIViewController? {
+extension FeedGAMAdTableViewCell: NativeAdUIDelegate {
+    func viewPresentationControllerForNativeAd(_ nativeAd: NativeAd) -> UIViewController? {
         return rootController
     }
 }

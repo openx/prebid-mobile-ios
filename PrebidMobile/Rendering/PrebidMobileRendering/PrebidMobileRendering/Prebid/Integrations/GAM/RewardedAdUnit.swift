@@ -7,33 +7,35 @@
 
 import UIKit
 
-public class RewardedAdUnit: PBMBaseInterstitialAdUnit,
+public class RewardedAdUnit: BaseInterstitialAdUnit,
                              RewardedEventInteractionDelegate {
    
     @objc public private(set) var reward: NSObject?
     
     // MARK: - Lifecycle
     
-    @objc public override init(configId: String, eventHandler: Any) {
+    @objc public init(configID: String, eventHandler: AnyObject) {
         super.init(
-            configId: configId,
+            configID: configID,
+            minSizePerc: nil,
             eventHandler: eventHandler)
             
         adUnitConfig.isOptIn = true
         adFormat = .video
     }
 
-    @objc public override convenience init(configId: String) {
+    @objc public convenience init(configID: String) {
         self.init(
-            configId: configId,
+            configID: configID,
+            minSizePerc: nil,
             eventHandler: RewardedEventHandlerStandalone())
     }
     
-    override init(configId:String, minSizePerc: NSValue?, eventHandler:Any?) {
+    @objc required init(configID:String, minSizePerc: NSValue?, eventHandler: AnyObject?) {
         super.init(
-            configId: configId,
-            minSizePerc:minSizePerc,
-            eventHandler:eventHandler)
+            configID: configID,
+            minSizePerc: minSizePerc,
+            eventHandler: eventHandler)
         
     }
     

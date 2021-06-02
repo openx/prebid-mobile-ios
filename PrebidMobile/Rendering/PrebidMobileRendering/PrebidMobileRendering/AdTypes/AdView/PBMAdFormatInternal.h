@@ -17,8 +17,8 @@
  - PBMAdFormatVideoInternal: use vastURL
  */
 typedef NS_ENUM(NSInteger, PBMAdFormatInternal) {
-    PBMAdFormatDisplayInternal = PBMAdFormatDisplay,
-    PBMAdFormatVideoInternal = PBMAdFormatVideo,
+    PBMAdFormatDisplayInternal,// = PBMAdFormatDisplay,
+    PBMAdFormatVideoInternal,// = PBMAdFormatVideo,
     PBMAdFormatNativeInternal,
     //PBMAdFormatMultiformatInternal,
 };

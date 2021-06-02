@@ -10,7 +10,7 @@ import UIKit
 
 public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
     
-    @objc public var adFormat: PBMAdFormat {
+    @objc public var adFormat: AdFormat {
         get { adConfiguration.adFormat }
         set { adConfiguration.adFormat = newValue }
     }

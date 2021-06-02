@@ -13,7 +13,7 @@ class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfig
     
     var prebidConfigId = ""
     var gamAdUnitId = ""
-    var adFormat: PBMAdFormat?
+    var adFormat: AdFormat?
     
     private var interstitialController : InterstitialAdUnit?
     
@@ -46,9 +46,9 @@ class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfig
         configIdLabel.text = "Config ID: \(prebidConfigId)"
         
         let eventHandler = GAMInterstitialEventHandler(adUnitID: gamAdUnitId)
-        interstitialController = InterstitialAdUnit(configId: prebidConfigId,
-                                                       minSizePercentage: CGSize(width: 30, height: 30),
-                                                       eventHandler: eventHandler)
+        interstitialController = InterstitialAdUnit(configID: prebidConfigId,
+                                                    minSizePercentage: CGSize(width: 30, height: 30),
+                                                    eventHandler: eventHandler)
         interstitialController?.delegate = self
         if let adFormat = adFormat {
             interstitialController?.adFormat = adFormat

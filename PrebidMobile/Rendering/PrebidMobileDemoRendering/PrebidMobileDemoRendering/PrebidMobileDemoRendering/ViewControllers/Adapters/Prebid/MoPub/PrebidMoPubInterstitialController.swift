@@ -12,7 +12,7 @@ class PrebidMoPubInterstitialController: NSObject, AdaptedController, PrebidConf
     
     var prebidConfigId = ""
     var moPubAdUnitId = ""
-    var adFormat: PBMAdFormat?
+    var adFormat: AdFormat?
 
     private var interstitialController : MPInterstitialAdController?
     

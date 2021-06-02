@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PBMBaseInterstitialAdUnit.h"
 
 #import "PBMInterstitialEventInteractionDelegate.h"
 
@@ -37,25 +36,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-@interface PBMBaseInterstitialAdUnit()  <PBMBaseInterstitialAdUnitProtocol, PBMInterstitialEventInteractionDelegate>
-
-@property (nonatomic, strong, nonnull, readonly) AdUnitConfig *adUnitConfig;
-@property (nonatomic, strong, nullable, readonly) id eventHandler;
-
-@property (nonatomic) PBMAdFormat adFormat;
-
-- (instancetype)initWithConfigId:(NSString *)configId
-               minSizePercentage:(CGSize)minSizePercentage
-                    eventHandler:(id)eventHandler;
-
-- (instancetype)initWithConfigId:(NSString *)configId
-               minSizePercentage:(CGSize)minSizePercentage;
-
-- (instancetype)initWithConfigId:(NSString *)configId
-                     minSizePerc:(nullable NSValue *)minSizePerc
-                    eventHandler:(nullable id)eventHandler;
-
-@end
 
 NS_ASSUME_NONNULL_END

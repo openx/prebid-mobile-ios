@@ -32,7 +32,7 @@ public class MoPubBannerAdUnit : NSObject {
         adUnitConfig.configID
     }
 
-    public var adFormat: PBMAdFormat {
+    public var adFormat: AdFormat {
         get { adUnitConfig.adFormat }
         set { adUnitConfig.adFormat = newValue }
     }

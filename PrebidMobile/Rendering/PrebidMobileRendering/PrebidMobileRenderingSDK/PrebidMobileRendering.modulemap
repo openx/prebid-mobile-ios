@@ -35,8 +35,6 @@ framework module PrebidMobileRendering {
         
     header "PBMBaseAdUnit.h"
     header "PBMBaseAdUnit+Protected.h"
-    header "PBMBaseInterstitialAdUnit.h"
-    header "PBMBaseInterstitialAdUnit+Protected.h"
     
     header "PBMInterstitialEventInteractionDelegate.h"
     header "PBMInterstitialEventHandler.h"
@@ -213,4 +211,8 @@ framework module PrebidMobileRendering {
     header "NSMutableDictionary+PBMExtensions.h"
     header "PBMLocationManager.h"
     header "PBMUserConsentDataManager.h"
+    
+    header "PBMInterstitialAdLoader.h"
+    header "PBMInterstitialAdLoaderDelegate.h"
+    header "PBMBaseInterstitialAdUnitProtocol.h"
 }

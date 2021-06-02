@@ -10,8 +10,6 @@
 
 #import "PBMBaseAdUnit.h"
 #import "PBMBaseAdUnit+Protected.h"
-#import "PBMBaseInterstitialAdUnit.h"
-#import "PBMBaseInterstitialAdUnit+Protected.h"
 
 #import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMInterstitialEventHandler.h"
@@ -62,3 +60,5 @@
 
 #import "PBMGender.h"
 #import "PBMNetworkType.h"
+
+#import "PBMInterstitialAdLoaderDelegate.h"

@@ -9,6 +9,7 @@
 
 #import "PBMAdLoaderFlowDelegate.h"
 #import "PBMInterstitialEventHandler.h"
+#import "PBMInterstitialAdLoaderDelegate.h"
 
 #import "PBMMacros.h"
 

@@ -20,7 +20,7 @@ public class AdUnitConfig: NSObject, NSCopying {
     
     @objc public let adConfiguration = PBMAdConfiguration();
     
-    @objc public var adFormat: PBMAdFormat {
+    @objc public var adFormat: AdFormat {
         didSet {
             updateAdFormat()
         }

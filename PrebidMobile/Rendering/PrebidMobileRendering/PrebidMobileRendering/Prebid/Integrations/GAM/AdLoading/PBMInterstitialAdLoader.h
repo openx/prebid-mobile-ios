@@ -8,7 +8,8 @@
 #import <Foundation/Foundation.h>
 
 #import "PBMAdLoaderProtocol.h"
-#import "PBMInterstitialAdLoaderDelegate.h"
+
+@protocol PBMInterstitialAdLoaderDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,31 +7,33 @@
 
 import UIKit
 
-public class InterstitialAdUnit: PBMBaseInterstitialAdUnit {
+public class InterstitialAdUnit: BaseInterstitialAdUnit {
 
-    @objc public override init(configId: String) {
-        super.init(configId: configId, eventHandler: InterstitialEventHandlerStandalone())
+    @objc public init(configID: String) {
+        super.init(configID: configID,
+                   minSizePerc: nil,
+                   eventHandler: InterstitialEventHandlerStandalone())
     }
 
-    @objc public override init(configId: String, minSizePercentage: CGSize) {
+    @objc public init(configID: String, minSizePercentage: CGSize) {
         super.init(
-            configId: configId,
-            minSizePercentage: minSizePercentage,
+            configID: configID,
+            minSizePerc: NSValue(cgSize: minSizePercentage),
             eventHandler: InterstitialEventHandlerStandalone())
     }
 
-    @objc public override init(configId: String, minSizePercentage:CGSize, eventHandler: Any) {
+    @objc public init(configID: String, minSizePercentage:CGSize, eventHandler: AnyObject) {
         super.init(
-            configId: configId,
-            minSizePercentage: minSizePercentage,
+            configID: configID,
+            minSizePerc: NSValue(cgSize: minSizePercentage),
             eventHandler: eventHandler)
     }
     
-    override init(configId:String, minSizePerc: NSValue?, eventHandler:Any?) {
+    @objc required init(configID:String, minSizePerc: NSValue?, eventHandler:AnyObject?) {
         super.init(
-            configId: configId,
-            minSizePerc:minSizePerc,
-            eventHandler:eventHandler)
+            configID: configID,
+            minSizePerc: minSizePerc,
+            eventHandler: eventHandler)
     }
     
     

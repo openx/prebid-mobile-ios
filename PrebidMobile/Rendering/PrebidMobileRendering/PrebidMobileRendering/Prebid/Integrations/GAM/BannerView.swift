@@ -34,7 +34,7 @@ public class BannerView: UIView,
         set { adUnitConfig.additionalSizes = newValue }
     }
     
-    @objc public var adFormat: PBMAdFormat {
+    @objc public var adFormat: AdFormat {
         get { adUnitConfig.adFormat }
         set { adUnitConfig.adFormat = newValue }
     }

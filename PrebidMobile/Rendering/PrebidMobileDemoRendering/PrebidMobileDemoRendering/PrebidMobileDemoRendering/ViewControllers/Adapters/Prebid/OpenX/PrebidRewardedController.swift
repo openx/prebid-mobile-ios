@@ -39,7 +39,7 @@ class PrebidRewardedController: NSObject, AdaptedController, RewardedAdUnitDeleg
         configIdLabel.isHidden = false
         configIdLabel.text = "Config ID: \(prebidConfigId)"
         
-        rewardedAdController = RewardedAdUnit(configId: prebidConfigId)
+        rewardedAdController = RewardedAdUnit(configID: prebidConfigId)
         rewardedAdController?.delegate = self
         
         if let adUnitContext = AppConfiguration.shared.adUnitContext {

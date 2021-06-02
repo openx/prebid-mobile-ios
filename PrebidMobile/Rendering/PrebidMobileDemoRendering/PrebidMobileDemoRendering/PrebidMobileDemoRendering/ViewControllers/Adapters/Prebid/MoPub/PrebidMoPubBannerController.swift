@@ -16,7 +16,7 @@ class PrebidMoPubBannerController: NSObject, AdaptedController, PrebidConfigurab
     var moPubAdUnitId = ""
     var adUnitSize = CGSize()
     var additionalAdSizes = [CGSize]()
-    var adFormat: PBMAdFormat?
+    var adFormat: AdFormat?
     var nativeAdConfig: NativeAdConfiguration?
     
     private var adBannerView : MPAdView?

@@ -13,7 +13,6 @@ framework module PrebidMobileRendering {
     header "PBMErrorCode.h"
     header "PBMErrorType.h"
     header "PBMLogLevel.h"
-    header "PBMAdPosition.h"
     header "PBMVideoPlacementType.h"
     
     // PBMCore

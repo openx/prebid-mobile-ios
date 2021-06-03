@@ -37,7 +37,7 @@ public class MoPubBannerAdUnit : NSObject {
         set { adUnitConfig.adFormat = newValue }
     }
 
-    public var adPosition: PBMAdPosition {
+    public var adPosition: AdPosition {
         get { adUnitConfig.adPosition }
         set { adUnitConfig.adPosition = newValue }
     }

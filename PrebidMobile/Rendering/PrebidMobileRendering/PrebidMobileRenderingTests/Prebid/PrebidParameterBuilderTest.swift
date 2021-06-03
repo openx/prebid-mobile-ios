@@ -63,7 +63,7 @@ class PrebidParameterBuilderTest: XCTestCase {
                                   userAgentService: MockUserAgentService())
             .build(bidRequest)
         
-        XCTAssertEqual(banner.pos?.intValue, PBMAdPosition.header.rawValue)
+        XCTAssertEqual(banner.pos?.intValue, AdPosition.header.rawValue)
     }
     
     func testAdPositionFullScreen() {
@@ -95,7 +95,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             XCTFail("No Banner object!")
             return
         }
-        XCTAssertEqual(banner.pos?.intValue, PBMAdPosition.fullScreen.rawValue)
+        XCTAssertEqual(banner.pos?.intValue, AdPosition.fullScreen.rawValue)
     }
     
     func testAdditionalSizes() {
@@ -166,7 +166,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         PBMAssertEq(video.linearity, 1)
         PBMAssertEq(video.w, 320)
         PBMAssertEq(video.h, 50)
-        XCTAssertEqual(video.pos.intValue, PBMAdPosition.header.rawValue)
+        XCTAssertEqual(video.pos.intValue, AdPosition.header.rawValue)
     }
     
     func testNative() {

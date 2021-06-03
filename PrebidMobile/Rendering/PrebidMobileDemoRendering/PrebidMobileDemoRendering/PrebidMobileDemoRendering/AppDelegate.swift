@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         processArgumentsParser.addOption("AD_POSITION", paramsCount: 1, fireOnce: true) { params in
-            if let adPositionInt = Int(params[0]), let adPosition = PBMAdPosition(rawValue: adPositionInt) {
+            if let adPositionInt = Int(params[0]), let adPosition = AdPosition(rawValue: adPositionInt) {
                 AppConfiguration.shared.adPosition = adPosition
             }
         }

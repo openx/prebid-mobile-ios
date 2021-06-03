@@ -39,7 +39,7 @@ public class BannerView: UIView,
         set { adUnitConfig.adFormat = newValue }
     }
     
-    @objc public var adPosition: PBMAdPosition {
+    @objc public var adPosition: AdPosition {
         get { adUnitConfig.adPosition }
         set { adUnitConfig.adPosition = newValue }
     }

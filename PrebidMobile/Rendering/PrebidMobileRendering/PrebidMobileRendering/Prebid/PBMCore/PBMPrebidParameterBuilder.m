@@ -116,7 +116,7 @@
                 if (formats) {
                     nextBanner.format = formats;
                 }
-                if (self.adConfiguration.adPosition != PBMAdPosition_Undefined) {
+                if (self.adConfiguration.adPosition != AdPositionUndefined) {
                     nextBanner.pos = @(self.adConfiguration.adPosition);
                 }
                 break;
@@ -130,7 +130,7 @@
                     nextVideo.w = primarySize.w;
                     nextVideo.h = primarySize.h;
                 }
-                if (self.adConfiguration.adPosition != PBMAdPosition_Undefined) {
+                if (self.adConfiguration.adPosition != AdPositionUndefined) {
                     nextVideo.pos = @(self.adConfiguration.adPosition);
                 }
                 break;

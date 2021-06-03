@@ -156,7 +156,8 @@ public class InterstitialController: NSObject, PBMAdViewManagerDelegate {
     
     func reportFailureWithError(_ error: Error?) {
         transactionFactory = nil
-        if let error = error, let loadingDelegate = loadingDelegate {
+        if let error = error,
+           let loadingDelegate = loadingDelegate {
             loadingDelegate.interstitialController(self, didFailWithError: error)
         }
     }

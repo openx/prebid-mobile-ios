@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)interstitialControllerDidCloseAd:(InterstitialController *)interstitialController;
 
 - (void)callDelegate_didReceiveAd;
-- (void)callDelegate_didFailToReceiveAdWithError:(NSError *)error;
+- (void)callDelegate_didFailToReceiveAdWithError:(nullable NSError *)error;
 - (void)callDelegate_willPresentAd;
 - (void)callDelegate_didDismissAd;
 - (void)callDelegate_willLeaveApplication;

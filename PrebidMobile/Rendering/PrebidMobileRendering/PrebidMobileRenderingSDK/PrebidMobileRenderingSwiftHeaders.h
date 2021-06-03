@@ -62,3 +62,4 @@
 #import "PBMNetworkType.h"
 
 #import "PBMInterstitialAdLoaderDelegate.h"
+#import "PBMBaseInterstitialAdUnitProtocol.h"

@@ -70,7 +70,7 @@ public class BaseInterstitialAdUnit :
         adUnitConfig.videoPlacementType = .sliderOrFloating
         blocksLockToken = NSObject()
 
-        self.eventHandler = eventHandler as? InterstitialEventHandlerProtocol;
+        self.eventHandler = eventHandler
 
         super.init()
         
@@ -181,9 +181,8 @@ public class BaseInterstitialAdUnit :
                                      createdInterstitialController interstitialController: InterstitialController) {
         interstitialController.interactionDelegate = self
     }
-    
    
-    public var eventHandler: InterstitialEventHandlerProtocol?
+    public var eventHandler: Any?
     
     
     // MARK: - PBMAdLoadFlowControllerDelegate

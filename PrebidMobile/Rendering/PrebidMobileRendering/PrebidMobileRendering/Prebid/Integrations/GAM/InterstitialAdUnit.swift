@@ -78,26 +78,30 @@ public class InterstitialAdUnit: BaseInterstitialAdUnit {
     
     
     @objc public override func callEventHandler_isReady() -> Bool {
-        eventHandler?.isReady ?? false
+        interstitialEventHandler?.isReady ?? false
     }
 
     @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: NSObject?) {
-        eventHandler?.loadingDelegate = loadingDelegate as? RewardedEventLoadingDelegate
+        interstitialEventHandler?.loadingDelegate = loadingDelegate as? RewardedEventLoadingDelegate
     }
 
     @objc public override func callEventHandler_setInteractionDelegate() {
-        eventHandler?.interactionDelegate = self
+        interstitialEventHandler?.interactionDelegate = self
     }
 
     @objc public override func callEventHandler_requestAd(with bidResponse: BidResponse?) {
-        eventHandler?.requestAd(with: bidResponse)
+        interstitialEventHandler?.requestAd(with: bidResponse)
     }
 
     @objc public override func callEventHandler_show(from controller: UIViewController?) {
-        eventHandler?.show(from: controller)
+        interstitialEventHandler?.show(from: controller)
     }
 
     @objc public override func callEventHandler_trackImpression() {
-        eventHandler?.trackImpression?()
+        interstitialEventHandler?.trackImpression?()
+    }
+    
+    private var interstitialEventHandler: InterstitialEventHandlerProtocol?  {
+        eventHandler as? InterstitialEventHandlerProtocol
     }
 }

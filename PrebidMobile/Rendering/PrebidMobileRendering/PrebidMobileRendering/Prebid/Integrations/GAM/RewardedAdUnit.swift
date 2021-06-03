@@ -14,14 +14,11 @@ public class RewardedAdUnit: BaseInterstitialAdUnit,
     
     // MARK: - Lifecycle
     
-    @objc public init(configID: String, eventHandler: AnyObject) {
-        super.init(
+    @objc public convenience init(configID: String, eventHandler: AnyObject) {
+        self.init(
             configID: configID,
             minSizePerc: nil,
             eventHandler: eventHandler)
-            
-        adUnitConfig.isOptIn = true
-        adFormat = .video
     }
 
     @objc public convenience init(configID: String) {
@@ -37,6 +34,8 @@ public class RewardedAdUnit: BaseInterstitialAdUnit,
             minSizePerc: minSizePerc,
             eventHandler: eventHandler)
         
+        adUnitConfig.isOptIn = true
+        adFormat = .video
     }
     
     // MARK: - PBMRewardedEventDelegate

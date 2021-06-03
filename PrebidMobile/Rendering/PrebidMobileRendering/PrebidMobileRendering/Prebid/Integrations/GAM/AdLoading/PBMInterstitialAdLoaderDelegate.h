@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
-@property (nonatomic, strong, nullable, readonly) id<InterstitialEventHandlerProtocol> eventHandler;
+@property (nonatomic, strong, nullable, readonly) id eventHandler;
 
 // Loading callbacks
 - (void)interstitialAdLoader:(PBMInterstitialAdLoader *)interstitialAdLoader

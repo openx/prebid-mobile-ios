@@ -20,7 +20,7 @@ class PBMNativeAdImpressionReportingTest: XCTestCase {
         .init(event: .MRC50, method: .img, url: "MRC50-ImgQ"),
         .init(event: .MRC50, method: PBMNativeEventTrackingMethod(rawValue: 555)!, url: "MRC50-OM"),
         
-        .init(event: PBMNativeEventType(rawValue: 700)!, method: .img, url: "700-Img"),
+        .init(event: NativeEventType(rawValue: 700)!, method: .img, url: "700-Img"),
     ]
     
     func testSingleTracker() {
@@ -72,7 +72,7 @@ class PBMNativeAdImpressionReportingTest: XCTestCase {
             urlsTracked.fulfill()
             XCTAssertEqual(urlStrings, ["700-Img"])
         }
-        detectionHandler(PBMNativeEventType(rawValue: 700)!)
+        detectionHandler(NativeEventType(rawValue: 700)!)
         waitForExpectations(timeout: 1)
         let additionalTimeout = expectation(description: "no more new events")
         additionalTimeout.isInverted = true

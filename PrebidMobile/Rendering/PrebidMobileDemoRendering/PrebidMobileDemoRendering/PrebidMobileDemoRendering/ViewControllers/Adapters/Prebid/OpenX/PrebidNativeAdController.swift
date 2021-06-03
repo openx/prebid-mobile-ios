@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PrebidMobileRendering
 
 class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableNativeAdRenderingController {
     
@@ -51,10 +52,10 @@ class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableN
     private let mediaPlaybackUnmutedButton = EventReportContainer()
     private let mediaLoadingFinishedButton = EventReportContainer()
     
-    private let nativeAdDidLogEventButtons: [(event: PBMNativeEventType, name: String, button: EventReportContainer)] = [
+    private let nativeAdDidLogEventButtons: [(event: NativeEventType, name: String, button: EventReportContainer)] = [
         (.impression, "impression", .init()),
-        (.MRC50, "MRC50", .init()),
-        (.MRC100, "MRC100", .init()),
+        (.mrc50, "MRC50", .init()),
+        (.mrc100, "MRC/Users/yuriy/PROJECTS/OPENX/PREBID/FORK_IOS_PREBID/PrebidMobile/Rendering/PrebidMobileDemoRendering/PrebidMobileDemoRendering/PrebidMobileDemoRendering/ViewControllers/Adapters/Prebid/GAM/PrebidGAMNativeAdController.swift:46:54: Cannot find type 'NativeEventType' in scope100", .init()),
         (.video50, "video50", .init()),
     ]
     private let nativeAdWillPresentModalButton = EventReportContainer()
@@ -189,7 +190,7 @@ class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableN
 }
 
 extension PrebidNativeAdController: NativeAdTrackingDelegate {
-    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
+    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: NativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }
     func nativeAdDidLogClick(_ nativeAd: NativeAd) {

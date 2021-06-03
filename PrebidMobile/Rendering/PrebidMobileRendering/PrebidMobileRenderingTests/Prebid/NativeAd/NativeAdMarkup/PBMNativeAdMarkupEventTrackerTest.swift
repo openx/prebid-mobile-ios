@@ -12,7 +12,7 @@ import XCTest
 class PBMNativeAdMarkupEventTrackerTest: XCTestCase {
     func testInitFromJson() {
         let requiredProperties: [(JSONDecoding.PropertyCheck<PBMNativeAdMarkupEventTracker>, Error)] = [
-            (.init(saver: { $0["event"] = PBMNativeEventType.impression.rawValue },
+            (.init(saver: { $0["event"] = NativeEventType.impression.rawValue },
                    checker: { XCTAssertEqual($0.event, .impression) }),
              PBMError.noEventForNativeAdMarkupEventTracker),
             (.init(saver: { $0["method"] = PBMNativeEventTrackingMethod.img.rawValue },
@@ -40,7 +40,7 @@ class PBMNativeAdMarkupEventTrackerTest: XCTestCase {
         
         let tester: Equality.Tester<PBMNativeAdMarkupEventTracker> =
             Equality.Tester(factory: templateFactory, checks: [
-                Equality.Check(values: PBMNativeEventType.impression, .MRC100, keyPath: \.event),
+                Equality.Check(values: NativeEventType.impression, .MRC100, keyPath: \.event),
                 Equality.Check(values: PBMNativeEventTrackingMethod.img, .exchangeSpecific, keyPath: \.method),
                 Equality.Check(values: "some url", "other url", keyPath: \.url),
                 Equality.Check(values: ["q":1], ["R":"TjHy;"], keyPath: \.customdata),

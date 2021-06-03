@@ -82,8 +82,8 @@ public class NativeAdUnit: PBMBaseAdUnit {
         }
 
         var eventtrackers = nativeAdConfig.eventtrackers ?? []
-        let omidEventTracker = PBMNativeEventTracker(event: .OMID,
-                                                     methods: [NSNumber(value: PBMNativeEventTrackingMethod.JS.rawValue)])
+        let omidEventTracker = NativeEventTracker(event: .omid,
+                                                     methods: [PBMNativeEventTrackingMethod.JS.rawValue])
         eventtrackers.append(omidEventTracker)
         nativeAdConfig.eventtrackers = eventtrackers
 

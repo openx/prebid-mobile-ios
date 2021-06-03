@@ -7,6 +7,7 @@
 
 import UIKit
 import Eureka
+import PrebidMobileRendering
 
 class NativeAdConfigController : FormViewController, RowBuildHelpConsumer {
     var nativeAdConfig: NativeAdConfiguration?

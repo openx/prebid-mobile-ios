@@ -274,13 +274,13 @@ public class NativeAd: NSObject {
                 return
             }
             
-            if impressionType == .impression {
+                                                            if impressionType == NativeEventType.impression.rawValue {
                 self.trackOMEvent(.impression)
             }
                                                                 
             self.fireEventTrackersBlock(impressionType)
             if let delegate = self.trackingDelegate {
-                delegate.nativeAd?(self, didLogEvent: impressionType)
+                delegate.nativeAd?(self, didLogEvent: NativeEventType(rawValue: impressionType) ?? .exchangeSpecific)
             }
         })
         
@@ -343,7 +343,7 @@ public class NativeAd: NSObject {
     }
     
     func findOMIDTracker() -> PBMNativeAdMarkupEventTracker? {
-        nativeAdMarkup.eventtrackers?.first {$0.event == .OMID && $0.method == .JS && $0.url != nil}
+        nativeAdMarkup.eventtrackers?.first {$0.event == NativeEventType.omid.rawValue && $0.method == .JS && $0.url != nil}
     }
     
     func trackOMEvent(_ event: PBMTrackingEvent) {

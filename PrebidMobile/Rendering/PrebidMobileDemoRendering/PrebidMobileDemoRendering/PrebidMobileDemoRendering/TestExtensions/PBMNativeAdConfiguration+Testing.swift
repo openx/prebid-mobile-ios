@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PrebidMobileRendering
 
 extension Array where Self.Element == NativeAsset {
     static let defaultNativeRequestAssets: [NativeAsset] = [
@@ -54,11 +55,11 @@ extension NativeAdConfiguration {
         self.init(assets: assets)
         
         self.eventtrackers = [
-            PBMNativeEventTracker(event: .impression,
+            NativeEventTracker(event: .impression,
                                   methods: [
                                     PBMNativeEventTrackingMethod.img,
                                     .JS,
-                                  ].map { NSNumber(value: $0.rawValue) }),
+                                  ].map { $0.rawValue }),
         ]
         
         self.context = .socialCentric

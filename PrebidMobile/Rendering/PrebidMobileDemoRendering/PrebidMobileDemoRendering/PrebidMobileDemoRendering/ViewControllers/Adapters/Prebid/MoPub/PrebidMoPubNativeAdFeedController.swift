@@ -8,6 +8,7 @@
 import UIKit
 import MoPubSDK
 
+import PrebidMobileRendering
 import PrebidMobileMoPubAdapters
 
 class PrebidMoPubNativeAdFeedController: NSObject, PrebidConfigurableNativeAdCompatibleController {

@@ -12,7 +12,7 @@
 
 @implementation PBMNativeAdMarkupEventTracker
 
-- (instancetype)initWithEvent:(PBMNativeEventType)event method:(PBMNativeEventTrackingMethod)method url:(NSString *)url
+- (instancetype)initWithEvent:(NSInteger)event method:(PBMNativeEventTrackingMethod)method url:(NSString *)url
 {
     if (!(self = [super init])) {
         return nil;

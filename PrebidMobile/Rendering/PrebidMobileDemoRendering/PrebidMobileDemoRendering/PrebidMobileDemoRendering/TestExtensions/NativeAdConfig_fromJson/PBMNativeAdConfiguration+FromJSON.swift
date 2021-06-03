@@ -7,6 +7,8 @@
 
 import Foundation
 
+import PrebidMobileRendering
+
 extension NativeAdConfiguration {
     convenience init?(json: [String: Any]) {
         guard let rawAssets = json["assets"] as? [[String: Any]] else {
@@ -24,7 +26,7 @@ extension NativeAdConfiguration {
 //        aurlsupport = json["aurlsupport"] as? NSNumber
 //        durlsupport = json["durlsupport"] as? NSNumber
         if let rawTrackers = json["eventtrackers"] as? [[String: Any]] {
-            eventtrackers = rawTrackers.compactMap(PBMNativeEventTracker.init(json:))
+            eventtrackers = rawTrackers.compactMap(NativeEventTracker.init(json:))
         }
         privacy = json["privacy"] as? NSNumber
         try? setExt(json["ext"] as? [String: Any])

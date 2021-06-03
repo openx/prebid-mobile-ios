@@ -102,7 +102,7 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     //var durlsupport: NSNumber?
 
     /// Specifies what type of event objects tracking is supported - see Event Trackers Request Object
-    @objc public var eventtrackers: [PBMNativeEventTracker]? {
+    @objc public var eventtrackers: [NativeEventTracker]? {
         get {
             markupRequestObject.eventtrackers
         }

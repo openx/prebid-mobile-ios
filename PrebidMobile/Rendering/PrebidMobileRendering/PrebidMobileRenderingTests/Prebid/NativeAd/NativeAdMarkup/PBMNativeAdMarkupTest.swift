@@ -39,7 +39,7 @@ class PBMNativeAdMarkupTest: XCTestCase {
             "ext": ["aa": "ba"]
         ]
         let eventTrackerDic: [String: Any] = [
-            "event": PBMNativeEventType.impression.rawValue,
+            "event": NativeEventType.impression.rawValue,
             "method": PBMNativeEventTrackingMethod.img.rawValue,
             "url": "event tracker url",
             "customdata": ["g": "h"],

@@ -13,7 +13,7 @@
                                                                 urlVisitor:(PBMTrackingURLVisitorBlock)urlVisitor
                                                           
 {
-    return ^(PBMNativeEventType impressionType) {
+    return ^(NSInteger impressionType) {
         if (eventTrackers.count <= 0) {
             return;
         }

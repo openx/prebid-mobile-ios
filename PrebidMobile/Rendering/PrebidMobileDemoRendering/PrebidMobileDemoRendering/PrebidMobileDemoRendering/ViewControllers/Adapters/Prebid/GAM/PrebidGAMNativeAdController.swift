@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMobileAds
+import PrebidMobileRendering
 import PrebidMobileGAMEventHandlers
 
 class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurableNativeAdCompatibleController {
@@ -42,10 +43,10 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
     private let nativeAdInvalidButton = EventReportContainer()
     private let nativeAdDidClickButton = EventReportContainer()
     
-    private let nativeAdDidLogEventButtons: [(event: PBMNativeEventType, name: String, button: EventReportContainer)] = [
+    private let nativeAdDidLogEventButtons: [(event: NativeEventType, name: String, button: EventReportContainer)] = [
         (.impression, "impression", .init()),
-        (.MRC50, "MRC50", .init()),
-        (.MRC100, "MRC100", .init()),
+        (.mrc50, "MRC50", .init()),
+        (.mrc100, "MRC100", .init()),
         (.video50, "video50", .init()),
     ]
     private let nativeAdWillPresentModalButton = EventReportContainer()
@@ -147,7 +148,7 @@ class PrebidGAMNativeAdController: NSObject, AdaptedController, PrebidConfigurab
 }
 
 extension PrebidGAMNativeAdController: NativeAdTrackingDelegate {
-    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
+    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: NativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }
     func nativeAdDidLogClick(_ nativeAd: NativeAd) {

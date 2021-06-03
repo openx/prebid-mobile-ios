@@ -11,6 +11,6 @@ import Foundation
     
     @objc optional func nativeAdDidLogClick(_ nativeAd: NativeAd)
     @objc optional func nativeAd(_ nativeAd: NativeAd,
-                                 didLogEvent event: PBMNativeEventType)
+                                 didLogEvent event: NativeEventType)
 
 }

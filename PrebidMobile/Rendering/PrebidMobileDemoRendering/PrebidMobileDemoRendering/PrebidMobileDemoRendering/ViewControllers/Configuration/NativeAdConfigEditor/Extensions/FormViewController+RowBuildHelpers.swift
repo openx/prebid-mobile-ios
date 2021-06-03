@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import Eureka
 
+import PrebidMobileRendering
+
 protocol RowBuildHelpConsumer: FormViewController {
     associatedtype DataContainer
     var dataContainer: DataContainer? { get }

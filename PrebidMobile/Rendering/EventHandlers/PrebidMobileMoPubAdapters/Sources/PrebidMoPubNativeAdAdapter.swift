@@ -118,7 +118,7 @@ class PrebidMoPubNativeAdAdapter:
         delegate.nativeAdDidClick?(self)
     }
     
-    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
+    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: NativeEventType) {
         guard nativeEvent == .impression,
               let delegate = delegate,
               delegate.responds(to: #selector(MPNativeAdAdapterDelegate.nativeAdWillLogImpression)) else {

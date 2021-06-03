@@ -238,7 +238,6 @@
 		34B10A2F255017DE00B5FE09 /* ThreadCheckingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCheckingButton.swift; sourceTree = "<group>"; };
 		34B5CEE025D2D05C008C0CBC /* PrebidNativeAdRenderingConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidNativeAdRenderingConfigurationController.swift; sourceTree = "<group>"; };
 		34B64D7224F7EA0F00FDD9F4 /* PrebidMobileGAMEventHandlers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrebidMobileGAMEventHandlers.framework; path = ../../Products/PrebidMobileGAMEventHandlers.framework; sourceTree = "<group>"; };
-		34B64DA924F7FD3900FDD9F4 /* PBMSDKConfiguration+InternalState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PBMSDKConfiguration+InternalState.h"; path = "../../../../PrebidMobileRendering/PrebidMobileRendering/Prebid/PBMCore/PBMSDKConfiguration+InternalState.h"; sourceTree = "<group>"; };
 		34B64DAA24F7FD6000FDD9F4 /* PrebidMobileMoPubAdapters.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrebidMobileMoPubAdapters.framework; path = ../../Products/PrebidMobileMoPubAdapters.framework; sourceTree = "<group>"; };
 		34BA95FD249CBF05006AE372 /* PrebidGAMInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidGAMInterstitialController.swift; sourceTree = "<group>"; };
 		34BA95FF249CC118006AE372 /* PrebidRewardedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidRewardedController.swift; sourceTree = "<group>"; };
@@ -601,7 +600,6 @@
 				34D70F6424E53B920048CC78 /* NSError+pbmError.m */,
 				34DB0D32255ED58000970F9E /* PBMNativeAdConfiguration+Internal.h */,
 				341CC2FF2562BA1800186F29 /* PBMNativeEventTracker+InternalState.h */,
-				34B64DA924F7FD3900FDD9F4 /* PBMSDKConfiguration+InternalState.h */,
 				34C9AECD256418D700EB6F72 /* NativeAdConfig_fromJson */,
 			);
 			path = TestExtensions;

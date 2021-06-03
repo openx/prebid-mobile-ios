@@ -8,6 +8,7 @@
 import UIKit
 import MoPubSDK
 
+import PrebidMobileRendering
 import PrebidMobileMoPubAdapters
 
 class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigurableNativeAdCompatibleController {
@@ -36,10 +37,10 @@ class PrebidMoPubNativeAdController: NSObject, AdaptedController, PrebidConfigur
     private let nativeAdDidDismissModalButton = EventReportContainer()
     private let nativeAdWillLeaveAppButton = EventReportContainer()
     private let nativeAdDidTrackImpressionButton = EventReportContainer()
-    private let nativeAdDidLogEventButtons: [(event: PBMNativeEventType, name: String, button: EventReportContainer)] = [
+    private let nativeAdDidLogEventButtons: [(event: NativeEventType, name: String, button: EventReportContainer)] = [
         (.impression, "impression", .init()),
-        (.MRC50, "MRC50", .init()),
-        (.MRC100, "MRC100", .init()),
+        (.mrc50, "MRC50", .init()),
+        (.mrc100, "MRC100", .init()),
         (.video50, "video50", .init()),
     ]
     
@@ -245,7 +246,7 @@ extension PrebidMoPubNativeAdController: MPNativeAdDelegate {
 }
 
 extension PrebidMoPubNativeAdController: NativeAdTrackingDelegate {
-    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: PBMNativeEventType) {
+    func nativeAd(_ nativeAd: NativeAd, didLogEvent nativeEvent: NativeEventType) {
         nativeAdDidLogEventButtons.first{$0.event == nativeEvent}?.button.isEnabled = true
     }
     func nativeAdDidLogClick(_ nativeAd: NativeAd) {

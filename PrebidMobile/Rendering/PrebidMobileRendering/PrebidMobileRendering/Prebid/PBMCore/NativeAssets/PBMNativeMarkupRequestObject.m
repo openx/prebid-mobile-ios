@@ -9,7 +9,6 @@
 #import "PBMConstants.h"
 #import "PBMJsonCodable.h"
 
-#import "PBMNativeEventType.h"
 #import "PBMNativeEventTrackingMethod.h"
 
 #import "PBMNativeContextType.h"
@@ -27,18 +26,19 @@
 #import "PBMNativeMarkupRequestObject.h"
 #import "PBMNativeMarkupRequestObject+Internal.h"
 
-#import "PBMNativeEventTracker+Internal.h"
-
 #import "PBMFunctions.h"
 #import "PBMFunctions+Private.h"
 
 #import "NSNumber+PBMORTBNative.h"
 #import "NSDictionary+PBMORTBNativeExt.h"
 
+#import "PrebidMobileRenderingSwiftHeaders.h"
+#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+
 @interface PBMNativeMarkupRequestObject ()
 @property (nonatomic, strong) NSArray<NativeAsset *> *rawAssets;
 @property (nonatomic, strong, nullable) NSString *rawVersion;
-@property (nonatomic, strong, nullable) NSArray<PBMNativeEventTracker *> *rawEventTrackers;
+@property (nonatomic, strong, nullable) NSArray<NativeEventTracker *> *rawEventTrackers;
 @end
 
 
@@ -75,11 +75,11 @@
     return _version;
 }
 
-- (void)setRawEventTrackers:(NSArray<PBMNativeEventTracker *> *)rawEventTrackers {
+- (void)setRawEventTrackers:(NSArray<NativeEventTracker *> *)rawEventTrackers {
     _eventtrackers = rawEventTrackers;
 }
 
-- (NSArray<PBMNativeEventTracker *> *)rawEventTrackers {
+- (NSArray<NativeEventTracker *> *)rawEventTrackers {
     return _eventtrackers;
 }
 
@@ -119,7 +119,7 @@
         return nil;
     }
     NSMutableArray<PBMJsonDictionary *> * const serializedTrackers = [[NSMutableArray alloc] initWithCapacity:self.eventtrackers.count];
-    for(PBMNativeEventTracker *nextTracker in self.eventtrackers) {
+    for(NativeEventTracker *nextTracker in self.eventtrackers) {
         [serializedTrackers addObject:nextTracker.jsonDictionary];
     }
     return serializedTrackers;

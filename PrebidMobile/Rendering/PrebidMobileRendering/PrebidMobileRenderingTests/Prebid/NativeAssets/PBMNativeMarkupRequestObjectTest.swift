@@ -75,8 +75,8 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
         let markupObject = PBMNativeMarkupRequestObject.init(assets:[desc])
         
         let title = NativeAssetTitle(length: 25)
-        let impTraker = PBMNativeEventTracker(event: .impression,
-                                              methods: [NSNumber(value: PBMNativeEventTrackingMethod.JS.rawValue)])
+        let impTraker = NativeEventTracker(event: .impression,
+                                              methods: [PBMNativeEventTrackingMethod.JS.rawValue])
         
         let testVer = "7.13"
         XCTAssertNotEqual(markupObject.version, testVer)

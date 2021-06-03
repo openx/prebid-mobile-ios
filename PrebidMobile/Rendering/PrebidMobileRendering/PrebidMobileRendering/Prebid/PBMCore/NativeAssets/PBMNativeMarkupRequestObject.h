@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PBMNativeEventTracker.h"
 
 @class NativeAsset;
+@class NativeEventTracker;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 // @property (nonatomic, strong, nullable) NSNumber *durlsupport;
 
 /// Specifies what type of event objects tracking is supported - see Event Trackers Request Object
-@property (nonatomic, copy, nullable) NSArray<PBMNativeEventTracker *> *eventtrackers;
+@property (nonatomic, copy, nullable) NSArray<NativeEventTracker *> *eventtrackers;
 
 /// [Recommended]
 /// [Integer]

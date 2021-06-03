@@ -10,7 +10,6 @@ framework module PrebidMobileRendering {
     // Versions
     header "PrebidMobileRendering.h"
     // Enums
-    header "PBMAdFormat.h"
     header "PBMErrorCode.h"
     header "PBMErrorType.h"
     header "PBMLogLevel.h"

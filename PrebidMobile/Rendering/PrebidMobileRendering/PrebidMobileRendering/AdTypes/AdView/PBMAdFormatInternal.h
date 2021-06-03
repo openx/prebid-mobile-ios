@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PrebidMobileRendering/PBMAdFormat.h>
 
 #pragma mark - PBMAdFormatInternal
 

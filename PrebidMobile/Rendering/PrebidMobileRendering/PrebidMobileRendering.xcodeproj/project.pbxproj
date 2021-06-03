@@ -468,7 +468,6 @@
 		34D7112424E580620048CC78 /* PBMORTBSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 342988BA24B8872100362A8C /* PBMORTBSource.h */; };
 		34D7112524E580620048CC78 /* PBMModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2BC50C21CCDAC50039DCA0 /* PBMModalViewController.h */; };
 		34D7112624E580620048CC78 /* PBMTouchDownRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B238948203D5AB100DFB7B3 /* PBMTouchDownRecognizer.h */; };
-		34D7112724E580620048CC78 /* PBMAdFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C48AAD24E148D600B86664 /* PBMAdFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7112924E580620048CC78 /* PBMDisplayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E3F26D246EB17500ADBFC6 /* PBMDisplayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D7112B24E580620048CC78 /* omsdk.js in Resources */ = {isa = PBXBuildFile; fileRef = 5B4792222124147300F9B08A /* omsdk.js */; };
 		34D7112C24E580620048CC78 /* mraid.js in Resources */ = {isa = PBXBuildFile; fileRef = 5B1C15572260ACB80043C0D2 /* mraid.js */; };
@@ -1120,7 +1119,6 @@
 		34BCCA612497CF7900691007 /* PBMTransactionFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMTransactionFactory.m; sourceTree = "<group>"; };
 		34BF11EE2476C6DF007A09F1 /* PBMBannerViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMBannerViewTest.swift; sourceTree = "<group>"; };
 		34BF11F02476CA0C007A09F1 /* PBMMoPubBannerAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubBannerAdUnitTest.swift; sourceTree = "<group>"; };
-		34C48AAD24E148D600B86664 /* PBMAdFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMAdFormat.h; path = AdTypes/AdView/PBMAdFormat.h; sourceTree = "<group>"; };
 		34C48AAF24E14B9100B86664 /* PBMInterstitialLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMInterstitialLayout.h; path = AdTypes/AdView/PBMInterstitialLayout.h; sourceTree = "<group>"; };
 		34C6515F257E0A3600E26ABA /* PBMAdLoadFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadFlowController.h; sourceTree = "<group>"; };
 		34C65160257E0A3600E26ABA /* PBMAdLoadFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMAdLoadFlowController.m; sourceTree = "<group>"; };
@@ -2887,7 +2885,6 @@
 				5BC626D0212D75B600B6E9D0 /* AdLoadManager */,
 				1024D0AF2024563F008F0E40 /* PBMAdConfiguration.h */,
 				1024D0B02024563F008F0E40 /* PBMAdConfiguration.m */,
-				34C48AAD24E148D600B86664 /* PBMAdFormat.h */,
 				34DFF3592552EFEA00385A40 /* PBMAdFormatInternal.h */,
 				AC616E72258B9CAF0010DBBB /* PBMAdPosition.h */,
 				AC616E5E258A3CF30010DBBB /* PBMVideoPlacementType.h */,
@@ -3634,7 +3631,6 @@
 				34D7112424E580620048CC78 /* PBMORTBSource.h in Headers */,
 				34D7112524E580620048CC78 /* PBMModalViewController.h in Headers */,
 				34D7112624E580620048CC78 /* PBMTouchDownRecognizer.h in Headers */,
-				34D7112724E580620048CC78 /* PBMAdFormat.h in Headers */,
 				34D7112924E580620048CC78 /* PBMDisplayView.h in Headers */,
 				ACE60BE4265544B500F58C3B /* PBMClickthroughBrowserOpener.h in Headers */,
 				34C652C0257E7AE300E26ABA /* PBMInterstitialAdLoader.h in Headers */,

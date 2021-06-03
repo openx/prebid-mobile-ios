@@ -20,28 +20,28 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
     private let configId = "someConfigId"
     
     func testInterstitialDelegateCalls_noOptionalMethods() {
-        let adUnit = InterstitialAdUnit(configId: configId)
+        let adUnit = InterstitialAdUnit(configID: configId)
         let delegate = DummyInterstitialDelegate()
         adUnit.delegate = delegate
         callInterstitialDelegateMethods(adUnit: adUnit)
     }
     
     func testInterstitialDelegateCalls_receiveAllMethods() {
-        let adUnit = InterstitialAdUnit(configId: configId)
+        let adUnit = InterstitialAdUnit(configID: configId)
         let delegate = InterstitialProxyDelegate()
         adUnit.delegate = delegate
         callInterstitialDelegateMethods(adUnit: adUnit, proxyDelegate: delegate)
     }
     
     func testRewardedAdDelegateCalls_noOptionalMethods() {
-        let adUnit = RewardedAdUnit(configId: configId)
+        let adUnit = RewardedAdUnit(configID: configId)
         let delegate = DummyRewardedAdDelegate()
         adUnit.delegate = delegate
         callRewardedAdDelegateMethods(adUnit: adUnit)
     }
     
     func testRewardedAdDelegateCalls_receiveAllMethods() {
-        let adUnit = RewardedAdUnit(configId: configId)
+        let adUnit = RewardedAdUnit(configID: configId)
         let delegate = RewardedAdProxyDelegate()
         adUnit.delegate = delegate
         callRewardedAdDelegateMethods(adUnit: adUnit, proxyDelegate: delegate)
@@ -52,7 +52,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
         
         PrebidRenderingConfig.shared.accountID = ""
         
-        let interstitial = InterstitialAdUnit(configId: testID)
+        let interstitial = InterstitialAdUnit(configID: testID)
         let exp = expectation(description: "loading callback called")
         let delegate = InterstitialProxyDelegate()
         interstitial.delegate = delegate
@@ -74,7 +74,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
         
         PrebidRenderingConfig.shared.accountID = ""
         
-        let rewarded = RewardedAdUnit(configId: testID)
+        let rewarded = RewardedAdUnit(configID: testID)
         let exp = expectation(description: "loading callback called")
         let delegate = RewardedAdProxyDelegate()
         rewarded.delegate = delegate

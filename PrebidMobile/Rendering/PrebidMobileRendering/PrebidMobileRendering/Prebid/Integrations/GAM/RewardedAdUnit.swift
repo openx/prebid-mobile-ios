@@ -101,9 +101,9 @@ public class RewardedAdUnit: BaseInterstitialAdUnit,
         }
     }
 
-    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: RewardedEventLoadingDelegate) {
+    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: NSObject?) {
         if let eventHandler = self.eventHandler as? RewardedEventHandlerProtocol {
-            eventHandler.loadingDelegate = loadingDelegate
+            eventHandler.loadingDelegate = loadingDelegate as? RewardedEventLoadingDelegate
         }
     }
 

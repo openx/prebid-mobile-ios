@@ -81,8 +81,8 @@ public class InterstitialAdUnit: BaseInterstitialAdUnit {
         eventHandler?.isReady ?? false
     }
 
-    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: RewardedEventLoadingDelegate?) {
-        eventHandler?.loadingDelegate = loadingDelegate
+    @objc public override func callEventHandler_setLoadingDelegate(_ loadingDelegate: NSObject?) {
+        eventHandler?.loadingDelegate = loadingDelegate as? RewardedEventLoadingDelegate
     }
 
     @objc public override func callEventHandler_setInteractionDelegate() {

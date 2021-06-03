@@ -70,10 +70,13 @@ public class BaseInterstitialAdUnit :
         adUnitConfig.videoPlacementType = .sliderOrFloating
         blocksLockToken = NSObject()
 
+        self.eventHandler = eventHandler as? InterstitialEventHandlerProtocol;
+
         super.init()
         
         let adLoader = PBMInterstitialAdLoader(delegate: self)
-
+        callEventHandler_setLoadingDelegate(adLoader)
+        
         adLoadFlowController =  PBMAdLoadFlowController(bidRequesterFactory: { adUnitConfig in
             return PBMBidRequester(connection: PBMServerConnection.singleton(),
                                    sdkConfiguration: PrebidRenderingConfig.shared,
@@ -83,8 +86,6 @@ public class BaseInterstitialAdUnit :
         adLoader: adLoader,
         delegate: self,
         configValidationBlock: { _,_ in true } )
-        
-        self.eventHandler = eventHandler as? InterstitialEventHandlerProtocol;
     }
     
     public convenience init(configID: String,
@@ -205,7 +206,9 @@ public class BaseInterstitialAdUnit :
     
     // MARK: - InterstitialControllerInteractionDelegate
     
-    public func interstitialAdLoader(_ interstitialAdLoader: PBMInterstitialAdLoader, loadedAd showBlock: @escaping (UIViewController) -> Void, isReadyBlock: @escaping () -> Bool) {
+    public func interstitialAdLoader(_ interstitialAdLoader: PBMInterstitialAdLoader,
+                                     loadedAd showBlock: @escaping (UIViewController) -> Void,
+                                     isReadyBlock: @escaping () -> Bool) {
         
     }
     
@@ -326,7 +329,7 @@ public class BaseInterstitialAdUnit :
         // to be overridden in subclass
     }
 
-    public func callEventHandler_setLoadingDelegate(_ loadingDelegate: RewardedEventLoadingDelegate) {
+    public func callEventHandler_setLoadingDelegate(_ loadingDelegate: NSObject?) {
         // to be overridden in subclass
     }
 

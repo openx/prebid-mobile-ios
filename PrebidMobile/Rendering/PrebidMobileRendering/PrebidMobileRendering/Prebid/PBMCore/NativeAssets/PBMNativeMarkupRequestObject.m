@@ -7,7 +7,6 @@
 #import "PBMPlayable.h"
 #import "PBMAdViewManagerDelegate.h"
 #import "PBMConstants.h"
-#import "PBMDataAssetType.h"
 #import "PBMJsonCodable.h"
 
 #import "PBMNativeEventType.h"

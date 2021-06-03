@@ -10,10 +10,7 @@ import CoreLocation
 import MapKit
 
 fileprivate let PrebidTargetingKey_AGE = "age"
-fileprivate let PrebidTargetingKey_CARRIER = "crr"
 fileprivate let PrebidTargetingKey_GENDER = "gen"
-fileprivate let PrebidTargetingKey_IP_ADDRESS = "ip"
-fileprivate let PrebidTargetingKey_NETWORK_TYPE = "net"
 fileprivate let PrebidTargetingKey_USER_ID = "xid"
 fileprivate let PrebidTargetingKey_PUB_PROVIDED_PREFIX = "c."
 
@@ -144,35 +141,6 @@ public class PrebidRenderingTargeting: NSObject {
 
     
     // MARK: - Location and connection information
-    
-    @objc public var IP: String? {
-        get { parameterDictionary[PrebidTargetingKey_IP_ADDRESS] }
-        set { parameterDictionary[PrebidTargetingKey_IP_ADDRESS] = newValue }
-    }
-    
-    @objc public var carrier: String? {
-        get { parameterDictionary[PrebidTargetingKey_CARRIER] }
-        set { parameterDictionary[PrebidTargetingKey_CARRIER] = newValue }
-    }
-    
-    @objc public var networkType: PBMNetworkType {
-        get {
-            guard let currentValue = parameterDictionary[PrebidTargetingKey_NETWORK_TYPE]  else {
-                return .unknown
-            }
-                        
-            return pbmNetworkTypeFromDescription(PBMNetworkTypeDescription(currentValue))
-        }
-        
-        set {
-            if newValue == .unknown {
-                parameterDictionary.removeValue(forKey: PrebidTargetingKey_NETWORK_TYPE)
-            }
-            else {
-                parameterDictionary[PrebidTargetingKey_NETWORK_TYPE] = pbmDescriptionOfNetworkType(newValue)?.rawValue
-            }
-        }
-    }
     
     /**
      CLLocationCoordinate2D.

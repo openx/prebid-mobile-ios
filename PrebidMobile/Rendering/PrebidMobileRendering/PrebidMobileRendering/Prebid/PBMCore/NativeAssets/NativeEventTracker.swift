@@ -47,7 +47,7 @@ public class NativeEventTracker : NSObject, NSCopying, PBMJsonCodable {
     
     public var jsonDictionary: [String : Any]? {
         var result = [String : Any]()
-        result["event"] = event
+        result["event"] = event.rawValue
         result["ext"] = ext
         result["methods"] = methods
         

@@ -202,12 +202,6 @@ struct TestCaseManager {
             targeting.appStoreMarketURL = value
         }
         
-        if let value = openRtb["crr"] as? String {
-            targeting.carrier = value
-        }
-        if let value = openRtb["ip"] as? String {
-            targeting.IP = value
-        }
         if let value = openRtb["gen"] as? String {
             targeting.userGender = TestCaseManager.strToGender(value)
         }

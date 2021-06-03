@@ -110,7 +110,7 @@ public class NativeAd: NSObject {
     
     // MARK: - Filtered array getters
     
-    @objc public func dataObjects(of dataType: PBMDataAssetType) -> [NativeAdData] {
+    @objc public func dataObjects(of dataType: NativeDataAssetType) -> [NativeAdData] {
         dataObjects.filter { $0.dataType?.intValue == dataType.rawValue }
     }
 

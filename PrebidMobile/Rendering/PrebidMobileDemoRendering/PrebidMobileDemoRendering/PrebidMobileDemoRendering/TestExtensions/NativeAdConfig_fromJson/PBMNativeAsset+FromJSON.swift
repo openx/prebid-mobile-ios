@@ -44,7 +44,7 @@ fileprivate extension NativeAssetTitle {
 fileprivate extension NativeAssetData {
     convenience init?(childJson: [String: Any]) {
         guard let rawDataType = childJson["type"] as? NSNumber,
-              let dataType = PBMDataAssetType(rawValue: rawDataType.intValue)
+              let dataType = NativeDataAssetType(rawValue: rawDataType.intValue)
         else {
             return nil
         }

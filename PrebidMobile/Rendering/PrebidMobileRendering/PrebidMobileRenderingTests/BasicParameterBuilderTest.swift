@@ -257,7 +257,7 @@ class PBMBasicParameterBuilderTest: XCTestCase {
                                        expectedPlacement: 5)
     }
     
-    func testParameterBuilderVideo(placement: PBMVideoPlacementType,
+    func testParameterBuilderVideo(placement: VideoPlacementType,
                                    isInterstitial: Bool,
                                    expectedPlacement:Int) {
         

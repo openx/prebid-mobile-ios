@@ -28,6 +28,6 @@ final class AppConfiguration: NSObject {
     }
     var nativeAdConfig: NativeAdConfiguration?
     var adPosition: AdPosition?
-    var videoPlacementType: PBMVideoPlacementType?
+    var videoPlacementType: VideoPlacementType?
     var adUnitContext: [(key: String, value: String)]?
 }

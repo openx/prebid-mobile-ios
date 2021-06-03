@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         processArgumentsParser.addOption("VIDEO_PLACEMENT_TYPE", paramsCount: 1, fireOnce: true) { params in
-            if let placementTypeInt = Int(params[0]), let placementType = PBMVideoPlacementType(rawValue: placementTypeInt) {
+            if let placementTypeInt = Int(params[0]), let placementType = VideoPlacementType(rawValue: placementTypeInt) {
                 AppConfiguration.shared.videoPlacementType = placementType
             }
         }

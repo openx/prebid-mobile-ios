@@ -26,7 +26,7 @@ class PBMNativeAdMarkupTest: XCTestCase {
             "img": [
                 "w": 320,
                 "h": 240,
-                "type": PBMImageAssetType.main.rawValue,
+                "type": NativeImageAssetType.main.rawValue,
                 "url": "image url",
                 "ext": ["ia": "ib"],
             ],

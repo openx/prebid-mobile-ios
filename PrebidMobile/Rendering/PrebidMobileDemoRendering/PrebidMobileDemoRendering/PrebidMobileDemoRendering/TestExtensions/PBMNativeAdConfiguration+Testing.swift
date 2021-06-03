@@ -19,7 +19,7 @@ extension Array where Self.Element == NativeAsset {
             icon.widthMin = 50
             icon.heightMin = 50
             icon.required = 1
-            icon.imageType = NSNumber(value: PBMImageAssetType.icon.rawValue)
+            icon.imageType = NSNumber(value: NativeImageAssetType.icon.rawValue)
             return icon
         }(),
         {
@@ -27,7 +27,7 @@ extension Array where Self.Element == NativeAsset {
             image.widthMin = 150
             image.heightMin = 50
             image.required = 1
-            image.imageType = NSNumber(value: PBMImageAssetType.main.rawValue)
+            image.imageType = NSNumber(value: NativeImageAssetType.main.rawValue)
             return image
         }(),
         {

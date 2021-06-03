@@ -25,10 +25,10 @@ class NativeAdTest: XCTestCase {
         ctas.forEach { $0.data?.dataType = NSNumber(value: NativeDataAssetType.ctaText.rawValue) }
         
         let icons = twoStrings.map{"\($0) icon URL"}.map(PBMNativeAdMarkupImage.init).map(PBMNativeAdMarkupAsset.init)
-        icons.forEach { $0.img?.imageType = NSNumber(value: PBMImageAssetType.icon.rawValue) }
+        icons.forEach { $0.img?.imageType = NSNumber(value: NativeImageAssetType.icon.rawValue) }
         
         let images = twoStrings.map{"\($0) image URL"}.map(PBMNativeAdMarkupImage.init).map(PBMNativeAdMarkupAsset.init)
-        images.forEach { $0.img?.imageType = NSNumber(value: PBMImageAssetType.main.rawValue) }
+        images.forEach { $0.img?.imageType = NSNumber(value: NativeImageAssetType.main.rawValue) }
         
         let videos = twoStrings.map{"\($0) VAST xml"}.map(PBMNativeAdMarkupVideo.init).map(PBMNativeAdMarkupAsset.init)
         

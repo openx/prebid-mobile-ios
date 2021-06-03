@@ -20,7 +20,7 @@ class PBMNativeAdMarkupAssetTest: XCTestCase {
         let imageDic: [String: Any] = [
             "w": 320,
             "h": 240,
-            "type": PBMImageAssetType.main.rawValue,
+            "type": NativeImageAssetType.main.rawValue,
             "url": "image url",
             "ext": ["ia": "ib"],
         ]

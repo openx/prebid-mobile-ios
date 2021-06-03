@@ -114,7 +114,7 @@ public class NativeAd: NSObject {
         dataObjects.filter { $0.dataType?.intValue == dataType.rawValue }
     }
 
-    @objc public func images(of imageType: PBMImageAssetType) -> [NativeAdImage] {
+    @objc public func images(of imageType: NativeImageAssetType) -> [NativeAdImage] {
         images.filter { $0.imageType?.intValue == imageType.rawValue }
     }
     

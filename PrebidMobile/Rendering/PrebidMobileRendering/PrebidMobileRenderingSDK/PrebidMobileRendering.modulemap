@@ -38,7 +38,6 @@ framework module PrebidMobileRendering {
     header "PBMInterstitialEventHandler.h"
         
     // PBM Native Ads (enums)
-    header "PBMImageAssetType.h"
     header "PBMNativeEventTrackingMethod.h"
     header "PBMNativeEventType.h"
     // PBM Native Ads (request)

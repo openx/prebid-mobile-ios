@@ -19,7 +19,6 @@
 #import "PBMBidRequesterFactoryBlock.h"
 #import "PBMWinNotifierBlock.h"
 
-#import "PBMImageAssetType.h"
 #import "PBMNativeAdElementType.h"
 
 #import "PrebidMobileRenderingSwiftHeaders.h"

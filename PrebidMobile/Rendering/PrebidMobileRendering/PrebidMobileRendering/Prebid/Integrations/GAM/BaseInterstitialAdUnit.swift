@@ -130,8 +130,8 @@ public class BaseInterstitialAdUnit :
        
         objc_sync_enter(blocksLockToken)
 
-            guard let _ = self.showBlock,
-                  let _ = self.currentAdBlock else {
+            guard self.showBlock != nil,
+                  self.currentAdBlock == nil else {
                 objc_sync_exit(blocksLockToken)
                 return;
             }
@@ -205,12 +205,6 @@ public class BaseInterstitialAdUnit :
     }
     
     // MARK: - InterstitialControllerInteractionDelegate
-    
-    public func interstitialAdLoader(_ interstitialAdLoader: PBMInterstitialAdLoader,
-                                     loadedAd showBlock: @escaping (UIViewController) -> Void,
-                                     isReadyBlock: @escaping () -> Bool) {
-        
-    }
     
     public func trackImpression(for interstitialController: InterstitialController) {
         DispatchQueue.main.async {

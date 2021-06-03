@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Loading callbacks
 - (void)interstitialAdLoader:(PBMInterstitialAdLoader *)interstitialAdLoader
-                    loadedAd:(void (^)(UIViewController *))showBlock
+                    loadedAd:(void (^)(UIViewController * _Nullable))showBlock
                 isReadyBlock:(BOOL (^)(void))isReadyBlock;
 
 // Hook to insert interaction delegate

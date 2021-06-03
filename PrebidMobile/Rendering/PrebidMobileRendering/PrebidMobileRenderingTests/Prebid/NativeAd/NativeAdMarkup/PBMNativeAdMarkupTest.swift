@@ -89,9 +89,9 @@ class PBMNativeAdMarkupTest: XCTestCase {
                 Equality.Check(values: ["only"], ["first", "last"], keyPath: \.imptrackers),
                 Equality.Check(values: "u://i.o/p", "s://d.f:v/", keyPath: \.jstracker),
                 Equality.Check(values: [
-                    PBMNativeAdMarkupEventTracker(event: .MRC50, method: .JS, url: "event url 1"),
+                    PBMNativeAdMarkupEventTracker(event: NativeEventType.mrc50.rawValue, method: .JS, url: "event url 1"),
                 ], [
-                    PBMNativeAdMarkupEventTracker(event: .impression, method: .img, url: "event-2 url"),
+                    PBMNativeAdMarkupEventTracker(event: NativeEventType.impression.rawValue, method: .img, url: "event-2 url"),
                 ], keyPath: \.eventtrackers),
                 Equality.Check(values: "some privacy", "we are watching you", keyPath: \.privacy),
                 Equality.Check(values: ["a":"b"], ["c":1]) { $0.ext = $1 },

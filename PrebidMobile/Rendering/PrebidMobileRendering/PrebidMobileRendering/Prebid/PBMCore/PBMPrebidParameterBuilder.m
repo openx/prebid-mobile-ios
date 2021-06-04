@@ -22,8 +22,6 @@
 #import "PBMBidRequesterFactoryBlock.h"
 #import "PBMWinNotifierBlock.h"
 
-#import "PBMNativeAdElementType.h"
-
 #import "PrebidMobileRenderingSwiftHeaders.h"
 #import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
 

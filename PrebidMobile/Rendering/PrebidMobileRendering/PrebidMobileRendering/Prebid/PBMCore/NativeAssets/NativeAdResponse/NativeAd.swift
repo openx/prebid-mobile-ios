@@ -293,7 +293,7 @@ public class NativeAd: NSObject {
         createOpenMeasurementSessionFor(adView)
     }
 
-    @objc public func registerClickView(_ adView: UIView, nativeAdElementType: PBMNativeAdElementType) {
+    @objc public func registerClickView(_ adView: UIView, nativeAdElementType: NativeAdElementType) {
         if let relevantAsset = self.findAssetForElementType(nativeAdElementType) {
             registerClickView(adView, nativeAdAsset: relevantAsset)
         }
@@ -307,7 +307,7 @@ public class NativeAd: NSObject {
     }
     
     // MARK: - Private Helpers
-    func findAssetForElementType(_ nativeAdElementType: PBMNativeAdElementType) -> NativeAdAsset? {
+    func findAssetForElementType(_ nativeAdElementType: NativeAdElementType) -> NativeAdAsset? {
         var assets: [NativeAdAsset]? = nil
         switch(nativeAdElementType) {
             case .title:
@@ -343,7 +343,10 @@ public class NativeAd: NSObject {
     }
     
     func findOMIDTracker() -> PBMNativeAdMarkupEventTracker? {
-        nativeAdMarkup.eventtrackers?.first {$0.event == NativeEventType.omid.rawValue && $0.method == .JS && $0.url != nil}
+        nativeAdMarkup.eventtrackers?.first { tracker in
+            print("\(tracker)")
+            return tracker.event == NativeEventType.omid.rawValue && tracker.method == .JS && tracker.url != nil
+        }
     }
     
     func trackOMEvent(_ event: PBMTrackingEvent) {

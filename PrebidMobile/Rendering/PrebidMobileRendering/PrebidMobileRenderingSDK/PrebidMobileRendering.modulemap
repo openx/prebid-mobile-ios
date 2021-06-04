@@ -46,7 +46,6 @@ framework module PrebidMobileRendering {
     
     // PBM Native Ads (response)
 //    header "PBMNativeAd.h"
-    header "PBMNativeAdElementType.h"
     
     // ===
     //Temp. for converting

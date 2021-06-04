@@ -15,8 +15,6 @@
 #import "PBMNativeContextSubtype.h"
 #import "PBMNativePlacementType.h"
 
-#import "PBMNativeAdElementType.h"
-
 #import "PBMNativeAdMarkup.h"
 #import "PBMNativeAdMarkupAsset.h"
 #import "PBMNativeAdMarkupData.h"

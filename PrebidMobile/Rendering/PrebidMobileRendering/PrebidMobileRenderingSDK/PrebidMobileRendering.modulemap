@@ -20,7 +20,6 @@ framework module PrebidMobileRendering {
     header "PBMBidRequesterProtocol.h"
     header "PBMFetchDemandResult.h"
     header "PBMHost.h"
-    header "PBMNetworkType.h"
     
     // PBMCacheRenderers
     header "PBMDisplayView.h"

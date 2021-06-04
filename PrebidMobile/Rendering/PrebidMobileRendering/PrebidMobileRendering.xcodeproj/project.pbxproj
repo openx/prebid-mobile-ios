@@ -46,7 +46,7 @@
 		341C0D3125A46631002A1527 /* DemandResponseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3025A46631002A1527 /* DemandResponseInfoTest.swift */; };
 		341C0D3625A4B53B002A1527 /* PBMBaseAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3525A4B53A002A1527 /* PBMBaseAdUnitTest.swift */; };
 		341C0D3E25A4D208002A1527 /* NativeAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C0D3D25A4D208002A1527 /* NativeAdUnitTest.swift */; };
-		3424B5C9256C0AE600B95643 /* PBMNetworkType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3424B5C7256C0AE600B95643 /* PBMNetworkType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3424B5C9256C0AE600B95643 /* PBMNetworkType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3424B5C7256C0AE600B95643 /* PBMNetworkType.h */; };
 		3424B5CA256C0AE600B95643 /* PBMNetworkType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424B5C8256C0AE600B95643 /* PBMNetworkType.m */; };
 		34257BDF2577D18B0005958A /* PBMModalManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 34257BDE2577D18B0005958A /* PBMModalManagerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		342BF98F258BA55B00745F96 /* PBMNativeAdMarkupImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342BF98E258BA55B00745F96 /* PBMNativeAdMarkupImageTest.swift */; };

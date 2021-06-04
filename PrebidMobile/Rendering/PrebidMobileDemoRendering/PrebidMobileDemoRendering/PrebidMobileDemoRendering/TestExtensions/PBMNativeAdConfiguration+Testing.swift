@@ -55,15 +55,15 @@ extension NativeAdConfiguration {
         self.init(assets: assets)
         
         self.eventtrackers = [
-            NativeEventTracker(event: .impression,
+            NativeEventTracker(event: NativeEventType.impression.rawValue,
                                   methods: [
-                                    PBMNativeEventTrackingMethod.img,
-                                    .JS,
+                                    NativeEventTrackingMethod.img,
+                                    .js,
                                   ].map { $0.rawValue }),
         ]
         
-        self.context = .socialCentric
-        self.contextsubtype = .social
-        self.plcmttype = .feedGridListing
+        self.context = NativeContextType.socialCentric.rawValue
+        self.contextsubtype = NativeContextSubtype.social.rawValue
+        self.plcmttype = NativePlacementType.feedGridListing.rawValue
     }
 }

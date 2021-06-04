@@ -12,15 +12,15 @@ import XCTest
 
 class PBMNativeAdImpressionReportingTest: XCTestCase {
     private let trackers: [PBMNativeAdMarkupEventTracker] = [
-        .init(event: NativeEventType.impression.rawValue, method: .img, url: "Imp-Img"),
+        .init(event: NativeEventType.impression.rawValue, method: NativeEventTrackingMethod.img.rawValue, url: "Imp-Img"),
         
-        .init(event: NativeEventType.mrc50.rawValue, method: .img, url: "MRC50-ImgA"),
-        .init(event: NativeEventType.mrc50.rawValue, method: .img, url: "MRC50-ImgZ"),
-        .init(event: NativeEventType.mrc50.rawValue, method: .JS, url: "MRC50-JS"),
-        .init(event: NativeEventType.mrc50.rawValue, method: .img, url: "MRC50-ImgQ"),
-        .init(event: NativeEventType.mrc50.rawValue, method: PBMNativeEventTrackingMethod(rawValue: 555)!, url: "MRC50-OM"),
+        .init(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod.img.rawValue, url: "MRC50-ImgA"),
+        .init(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod.img.rawValue, url: "MRC50-ImgZ"),
+        .init(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod.js.rawValue, url: "MRC50-JS"),
+        .init(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod.img.rawValue, url: "MRC50-ImgQ"),
+        .init(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod(rawValue: 555)?.rawValue ?? 42, url: "MRC50-OM"),
         
-        .init(event: 700, method: .img, url: "700-Img"),
+        .init(event: 700, method: NativeEventTrackingMethod.img.rawValue, url: "700-Img"),
     ]
     
     func testSingleTracker() {

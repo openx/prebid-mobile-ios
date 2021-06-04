@@ -12,9 +12,9 @@ public class InterstitialEventHandlerStandalone: NSObject, InterstitialEventHand
     
     // MARK: Public Methods
     
-    public var loadingDelegate: InterstitialEventLoadingDelegate?
+    public weak var loadingDelegate: InterstitialEventLoadingDelegate?
     
-    public var interactionDelegate: PBMInterstitialEventInteractionDelegate?
+    public weak var interactionDelegate: PBMInterstitialEventInteractionDelegate?
     
     public var isReady: Bool {
         false

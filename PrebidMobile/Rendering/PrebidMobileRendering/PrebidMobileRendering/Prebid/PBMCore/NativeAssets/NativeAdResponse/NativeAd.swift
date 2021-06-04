@@ -345,7 +345,7 @@ public class NativeAd: NSObject {
     func findOMIDTracker() -> PBMNativeAdMarkupEventTracker? {
         nativeAdMarkup.eventtrackers?.first { tracker in
             print("\(tracker)")
-            return tracker.event == NativeEventType.omid.rawValue && tracker.method == .JS && tracker.url != nil
+            return tracker.event == NativeEventType.omid.rawValue && tracker.method == NativeEventTrackingMethod.js.rawValue && tracker.url != nil
         }
     }
     

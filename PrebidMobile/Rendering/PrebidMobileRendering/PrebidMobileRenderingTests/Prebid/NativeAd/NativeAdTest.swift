@@ -206,8 +206,8 @@ class NativeAdTest: XCTestCase {
         
         let nativeMarkup = PBMNativeAdMarkup(link: .init(url: ""))
         nativeMarkup.eventtrackers = [PBMNativeAdMarkupEventTracker(event: NativeEventType.omid.rawValue,
-                                                           method: .JS,
-                                                           url: .init(""))]
+                                                                    method: NativeEventTrackingMethod.js.rawValue,
+                                                                    url: .init(""))]
         
         var nativeAd: NativeAd? = NativeAd(nativeAdMarkup: nativeMarkup,
                                                  application: application,

@@ -11,9 +11,9 @@ import XCTest
 
 class PBMNativeEventTrackerTest: XCTestCase {
     func testNativeEventTracker() {
-        let tracker = NativeEventTracker(event: .impression,
-                                            methods: [PBMNativeEventTrackingMethod.JS.rawValue])
-        XCTAssertEqual(tracker.event, .impression)
+        let tracker = NativeEventTracker(event: NativeEventType.impression.rawValue,
+                                         methods: [NativeEventTrackingMethod.js.rawValue])
+        XCTAssertEqual(tracker.event, NativeEventType.impression.rawValue)
         XCTAssertEqual(tracker.methods, [2])
         XCTAssertNil(tracker.ext)
         
@@ -22,8 +22,8 @@ class PBMNativeEventTrackerTest: XCTestCase {
             "methods": [2],
         ] as NSDictionary)
         
-        tracker.event = NativeEventType.mrc100
-        tracker.methods = [PBMNativeEventTrackingMethod.JS, .img].map { $0.rawValue }
+        tracker.event = NativeEventType.mrc100.rawValue
+        tracker.methods = [NativeEventTrackingMethod.js, NativeEventTrackingMethod.img].map { $0.rawValue }
         try? tracker.setExt([
             "someStringKey": "someValue",
             "someIntKey": 42,

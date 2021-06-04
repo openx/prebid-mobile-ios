@@ -17,7 +17,7 @@ public class NativeAdEventTracker: NSObject {
 
     /// Type of tracking requested.
     /// See Event Tracking Methods table.
-    @objc public var method: PBMNativeEventTrackingMethod {
+    @objc public var method: Int {
         nativeAdMarkupEventTracker.method
     }
 

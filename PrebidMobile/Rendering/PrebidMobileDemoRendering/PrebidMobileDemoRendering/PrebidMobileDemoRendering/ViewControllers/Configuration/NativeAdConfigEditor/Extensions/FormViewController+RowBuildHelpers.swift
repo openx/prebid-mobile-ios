@@ -166,6 +166,11 @@ extension RowBuildHelpConsumer {
             }
     }
     
+    func addInt(_ field:String, keyPath: ReferenceWritableKeyPath<DataContainer, Int>) {
+        let valueRow = makeRequiredIntRow(field, keyPath: keyPath)
+        requiredPropertiesSection <<< valueRow
+    }
+    
     func addEnum<T: RawRepresentable>(_ field:String, keyPath: ReferenceWritableKeyPath<DataContainer, T>, defVal: T) where T.RawValue == Int {
         let valueRow = makeRequiredEnumRow(field, keyPath: keyPath, defVal: defVal)
         optionalPropertiesValuesSection <<< valueRow

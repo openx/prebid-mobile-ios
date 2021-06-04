@@ -18,24 +18,27 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// [Recommended]
     /// [Integer]
     /// The context in which the ad appears.
-    @objc public var context: PBMNativeContextType {
-        get { markupRequestObject.context ?? .undefined }
-        set { markupRequestObject.context = newValue == .undefined ? nil : newValue }
+    /// See NativeContextType
+    @objc public var context: Int {
+        get { markupRequestObject.context ?? NativeContextType.undefined.rawValue }
+        set { markupRequestObject.context = newValue == NativeContextType.undefined.rawValue ? nil : newValue}
     }
 
     /// [Integer]
     /// A more detailed context in which the ad appears.
-    @objc public var contextsubtype: PBMNativeContextSubtype {
-        get { markupRequestObject.contextsubtype ?? .undefined }
-        set { markupRequestObject.contextsubtype = newValue == .undefined ? nil : newValue }
+    /// See NativeContextSubtype
+    @objc public var contextsubtype: Int {
+        get { markupRequestObject.contextsubtype ?? NativeContextSubtype.undefined.rawValue }
+        set { markupRequestObject.contextsubtype = newValue == NativeContextSubtype.undefined.rawValue ? nil : newValue }
     }
     
     /// [Recommended]
     /// [Integer]
     /// The design/format/layout of the ad unit being offered.
-    @objc public var plcmttype: PBMNativePlacementType {
-        get { markupRequestObject.plcmttype ?? .undefined }
-        set { markupRequestObject.plcmttype = newValue == .undefined ? nil : newValue }
+    /// NativePlacementType
+    @objc public var plcmttype: Int {
+        get { markupRequestObject.plcmttype ?? NativePlacementType.undefined.rawValue }
+        set { markupRequestObject.plcmttype = newValue == NativePlacementType.undefined.rawValue ? nil : newValue }
     }
     
     // NOT SUPPORTED:

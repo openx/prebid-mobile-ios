@@ -15,8 +15,8 @@ class PBMNativeAdMarkupEventTrackerTest: XCTestCase {
             (.init(saver: { $0["event"] = NativeEventType.impression.rawValue },
                    checker: { XCTAssertEqual($0.event, NativeEventType.impression.rawValue) }),
              PBMError.noEventForNativeAdMarkupEventTracker),
-            (.init(saver: { $0["method"] = PBMNativeEventTrackingMethod.img.rawValue },
-                   checker: { XCTAssertEqual($0.method, .img) }),
+            (.init(saver: { $0["method"] = NativeEventTrackingMethod.img.rawValue },
+                   checker: { XCTAssertEqual($0.method, NativeEventTrackingMethod.img.rawValue) }),
              PBMError.noMethodForNativeAdMarkupEventTracker),
             (.init(saver: { $0["url"] = "Some Link value" },
                    checker: { XCTAssertEqual($0.url, "Some Link value") }),
@@ -36,12 +36,12 @@ class PBMNativeAdMarkupEventTrackerTest: XCTestCase {
     }
     
     func testIsEqual() {
-        let templateFactory = { PBMNativeAdMarkupEventTracker(event: NativeEventType.mrc50.rawValue, method: .JS, url: "") }
+        let templateFactory = { PBMNativeAdMarkupEventTracker(event: NativeEventType.mrc50.rawValue, method: NativeEventTrackingMethod.js.rawValue, url: "") }
         
         let tester: Equality.Tester<PBMNativeAdMarkupEventTracker> =
             Equality.Tester(factory: templateFactory, checks: [
                 Equality.Check(values: NativeEventType.impression.rawValue, NativeEventType.mrc50.rawValue, keyPath: \.event),
-                Equality.Check(values: PBMNativeEventTrackingMethod.img, .exchangeSpecific, keyPath: \.method),
+                Equality.Check(values: NativeEventTrackingMethod.img.rawValue, NativeEventType.exchangeSpecific.rawValue, keyPath: \.method),
                 Equality.Check(values: "some url", "other url", keyPath: \.url),
                 Equality.Check(values: ["q":1], ["R":"TjHy;"], keyPath: \.customdata),
                 Equality.Check(values: ["a":"b"], ["c":1]) { $0.ext = $1 },

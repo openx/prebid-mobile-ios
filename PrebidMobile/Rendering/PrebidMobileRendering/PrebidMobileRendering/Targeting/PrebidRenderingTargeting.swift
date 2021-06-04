@@ -51,19 +51,18 @@ public class PrebidRenderingTargeting: NSObject {
     /**
      Indicates the end-user's gender.
      */
-    @objc public var userGender: PBMGender {
+    @objc public var userGender: Gender {
         get {
-            guard let currentValue = parameterDictionary[PrebidTargetingKey_GENDER]  else {
+            guard let currentValue = parameterDictionary[PrebidTargetingKey_GENDER],
+                  let descr = GenderDescription(rawValue: currentValue) else {
                 return .unknown
             }
                         
-            return pbmGenderFromDescription(PBMGenderDescription(currentValue))
+            return GenderFromDescription(descr)
         }
         
         set {
-            let value = pbmDescriptionOfGender(newValue)
-            
-            parameterDictionary[PrebidTargetingKey_GENDER] = value?.rawValue
+            parameterDictionary[PrebidTargetingKey_GENDER] = DescriptionOfGender(newValue).rawValue
         }
     }
     
@@ -71,12 +70,13 @@ public class PrebidRenderingTargeting: NSObject {
      String representation of the users gender,
      where “M” = male, “F” = female, “O” = known to be other (i.e., omitted is unknown)
      */
-    @objc public func userGenderDescription() -> PBMGenderDescription {
-        guard let currentValue = parameterDictionary[PrebidTargetingKey_GENDER] else {
-            return PBMGenderDescription.unknown
+    @objc public func userGenderDescription() -> String {
+        guard let currentValue = parameterDictionary[PrebidTargetingKey_GENDER],
+              let descr = GenderDescription(rawValue: currentValue) else {
+            return GenderDescription.unknown.rawValue
         }
         
-        return PBMGenderDescription(currentValue)
+        return descr.rawValue
     }
     
     /**

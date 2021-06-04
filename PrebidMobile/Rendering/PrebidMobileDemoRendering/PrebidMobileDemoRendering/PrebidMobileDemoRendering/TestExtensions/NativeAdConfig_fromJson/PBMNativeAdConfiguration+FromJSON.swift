@@ -17,9 +17,9 @@ extension NativeAdConfiguration {
         self.init(assets: rawAssets.compactMap(NativeAsset.parse(json:)))
         version = json["ver"] as? String
         
-        context = enumValue(json["context"])
-        contextsubtype = enumValue(json["contextsubtype"])
-        plcmttype = enumValue(json["plcmttype"])
+        context = json["context"] as? Int ?? 0
+        contextsubtype = json["contextsubtype"] as? Int ?? 0
+        plcmttype = json["plcmttype"] as? Int ?? 0
 
 //        plcmtcnt = json["plcmtcnt"] as? NSNumber
         seq = json["seq"] as? NSNumber

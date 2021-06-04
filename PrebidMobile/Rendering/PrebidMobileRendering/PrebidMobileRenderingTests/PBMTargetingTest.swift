@@ -10,7 +10,7 @@ import MapKit
 
 @testable import PrebidMobileRendering
 
-extension PBMGender: CaseIterable {
+extension Gender: CaseIterable {
     public static let allCases: [Self] = [
         .unknown,
         .male,
@@ -95,7 +95,7 @@ class PrebidRenderingTargetingTest: XCTestCase {
         XCTAssert(targeting.userGender == .unknown)
         
         //Set
-        for gender in PBMGender.allCases {
+        for gender in Gender.allCases {
             targeting.userGender = gender
             XCTAssertEqual(targeting.userGender, gender)
             

@@ -173,7 +173,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         let nativeVer = "1.2"
         let desc = NativeAssetData(dataType: .desc)
         let nativeAdConfig = NativeAdConfiguration.init(assets:[desc])
-        nativeAdConfig.context = .socialCentric
+        nativeAdConfig.context = NativeContextType.socialCentric.rawValue
         
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
         let adUnitConfig = AdUnitConfig(configID: configId, size: CGSize(width: 320, height: 50))

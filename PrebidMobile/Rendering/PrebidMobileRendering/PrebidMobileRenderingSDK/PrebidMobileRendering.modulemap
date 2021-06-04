@@ -18,7 +18,6 @@ framework module PrebidMobileRendering {
     // PBMCore
     header "PBMBidRequester.h"
     header "PBMBidRequesterProtocol.h"
-    header "PBMGender.h"
     header "PBMFetchDemandResult.h"
     header "PBMHost.h"
     header "PBMNetworkType.h"
@@ -38,11 +37,7 @@ framework module PrebidMobileRendering {
     header "PBMInterstitialEventHandler.h"
         
     // PBM Native Ads (enums)
-    header "PBMNativeEventTrackingMethod.h"
     // PBM Native Ads (request)
-    header "PBMNativeContextType.h"
-    header "PBMNativeContextSubtype.h"
-    header "PBMNativePlacementType.h"
     
     // PBM Native Ads (response)
 //    header "PBMNativeAd.h"

@@ -43,7 +43,7 @@ class NativeEventTrackersArrayController : FormViewController {
                 }
             }
             section.multivaluedRowToInsertAt = { _ in
-                makeEventTrackerRow(eventTracker: NativeEventTracker(event: .impression, methods: []))
+                makeEventTrackerRow(eventTracker: NativeEventTracker(event: NativeEventType.impression.rawValue, methods: []))
             }
             for nextEventTracker in nativeAdConfig.eventtrackers! {
                 section <<< makeEventTrackerRow(eventTracker: nextEventTracker)

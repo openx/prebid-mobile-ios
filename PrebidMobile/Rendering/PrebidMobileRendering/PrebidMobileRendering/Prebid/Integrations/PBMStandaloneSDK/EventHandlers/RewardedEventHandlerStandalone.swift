@@ -10,8 +10,8 @@ import UIKit
 
 public class RewardedEventHandlerStandalone: NSObject, RewardedEventHandlerProtocol {
     
-    public var loadingDelegate: RewardedEventLoadingDelegate?
-    public var interactionDelegate: RewardedEventInteractionDelegate?
+    public weak var loadingDelegate: RewardedEventLoadingDelegate?
+    public weak var interactionDelegate: RewardedEventInteractionDelegate?
     
     public var isReady: Bool {
         false

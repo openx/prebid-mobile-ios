@@ -38,9 +38,9 @@ public class GAMInterstitialEventHandler :
     
     // MARK: - PBMInterstitialAd
     
-    public var loadingDelegate: InterstitialEventLoadingDelegate?
+    public weak var loadingDelegate: InterstitialEventLoadingDelegate?
     
-    public var interactionDelegate: PBMInterstitialEventInteractionDelegate?
+    public weak var interactionDelegate: PBMInterstitialEventInteractionDelegate?
     
     public var isReady: Bool {
         if let _ = requestInterstitial {

@@ -2945,7 +2945,7 @@ struct TestCaseManager {
     }
     
     // MALE, FEMALE, OTHER to PBMGender {
-    private static func strToGender(_ gender: String) -> PBMGender {
+    private static func strToGender(_ gender: String) -> Gender {
         switch gender {
             case "MALE":
                 return .male

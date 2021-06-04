@@ -42,9 +42,9 @@ public class GAMBannerEventHandler :
     
     // MARK: - BannerEventHandler
     
-    public var loadingDelegate: BannerEventLoadingDelegate?
+    public weak var loadingDelegate: BannerEventLoadingDelegate?
     
-    public var interactionDelegate: BannerEventInteractionDelegate?
+    public weak var interactionDelegate: BannerEventInteractionDelegate?
     
     public var adSizes: [CGSize]
     
@@ -108,7 +108,7 @@ public class GAMBannerEventHandler :
     // MARK: - GADBannerViewDelegate
     
     public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        if requestBanner?.banner == bannerView {
+        if requestBanner?.banner === bannerView {
             primaryAdReceived()
         }
     }

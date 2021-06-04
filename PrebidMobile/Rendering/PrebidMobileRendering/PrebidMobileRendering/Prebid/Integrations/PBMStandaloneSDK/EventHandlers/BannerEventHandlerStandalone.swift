@@ -10,8 +10,8 @@ import UIKit
 
 public class BannerEventHandlerStandalone: NSObject, BannerEventHandler {
     
-    public var loadingDelegate: BannerEventLoadingDelegate?
-    public var interactionDelegate: BannerEventInteractionDelegate?
+    public weak var loadingDelegate: BannerEventLoadingDelegate?
+    public weak var interactionDelegate: BannerEventInteractionDelegate?
     
     public var adSizes: [CGSize] = []
     

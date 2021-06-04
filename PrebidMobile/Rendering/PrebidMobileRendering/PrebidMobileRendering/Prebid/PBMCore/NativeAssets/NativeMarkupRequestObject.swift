@@ -15,19 +15,19 @@ public class NativeMarkupRequestObject : NSObject, NSCopying, PBMJsonCodable {
     /// [Recommended]
     /// [Integer]
     /// The context in which the ad appears.
-    /// See PBMNativeContextType
-    public var context: PBMNativeContextType?
+    /// See NativeContextType
+    public var context: Int?
 
     /// [Integer]
     /// A more detailed context in which the ad appears.
-    /// See PBMNativeContextSubtype
-    public var contextsubtype: PBMNativeContextSubtype?
+    /// See NativeContextSubtype
+    public var contextsubtype: Int?
 
     /// [Recommended]
     /// [Integer]
     /// The design/format/layout of the ad unit being offered.
-    /// See PBMNativePlacementType
-    public var plcmttype: PBMNativePlacementType?
+    /// See NativePlacementType
+    public var plcmttype: Int?
 
     // NOT SUPPORTED:
     // /// [Integer]
@@ -114,15 +114,15 @@ public class NativeMarkupRequestObject : NSObject, NSCopying, PBMJsonCodable {
         var json = [String : Any]()
         
         json["ver"]             = version
-        json["context"]         = context?.rawValue
-        json["contextsubtype"]  = contextsubtype?.rawValue
-        json["plcmttype"]       = plcmttype?.rawValue
+        json["context"]         = context
+        json["contextsubtype"]  = contextsubtype
+        json["plcmttype"]       = plcmttype
         json["seq"]             = seq
-        json["assets"]          = jsonAssets
+        json["assets"]          = jsonAssets()
         json["plcmtcnt"]        = plcmtcnt
         json["aurlsupport"]     = aurlsupport
         json["durlsupport"]     = durlsupport
-        json["eventtrackers"]   = jsonTrackers
+        json["eventtrackers"]   = jsonTrackers()
         json["privacy"]         = privacy
         json["ext"]             = ext
         
@@ -140,6 +140,10 @@ public class NativeMarkupRequestObject : NSObject, NSCopying, PBMJsonCodable {
     }
 
     func jsonTrackers() -> [[String : Any]]? {
-        eventtrackers?.compactMap { $0.jsonDictionary };
+        let res = eventtrackers?
+                .filter { $0.event != NativeEventType.omid.rawValue }
+                .compactMap { $0.jsonDictionary }
+        
+        return  res?.count == 0 ? nil : res
     }
 }

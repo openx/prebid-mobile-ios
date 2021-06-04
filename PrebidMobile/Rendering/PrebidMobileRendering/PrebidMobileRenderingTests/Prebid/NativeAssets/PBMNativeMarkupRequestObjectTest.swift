@@ -75,15 +75,15 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
         let markupObject = NativeMarkupRequestObject.init(assets:[desc])
         
         let title = NativeAssetTitle(length: 25)
-        let impTraker = NativeEventTracker(event: .impression,
-                                              methods: [PBMNativeEventTrackingMethod.JS.rawValue])
+        let impTraker = NativeEventTracker(event: NativeEventType.impression.rawValue,
+                                           methods: [NativeEventTrackingMethod.js.rawValue])
         
         let testVer = "7.13"
         XCTAssertNotEqual(markupObject.version, testVer)
         markupObject.version = testVer
-        markupObject.context = PBMNativeContextType.product
-        markupObject.contextsubtype = PBMNativeContextSubtype.applicationStore
-        markupObject.plcmttype = PBMNativePlacementType.outsideCoreContent
+        markupObject.context = NativeContextType.product.rawValue
+        markupObject.contextsubtype = NativeContextSubtype.applicationStore.rawValue
+        markupObject.plcmttype = NativePlacementType.outsideCoreContent.rawValue
         markupObject.plcmtcnt = 13
         markupObject.seq = 7
         markupObject.assets = [desc, title]
@@ -97,9 +97,9 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
         
         XCTAssertEqual(clone.jsonDictionary as NSDictionary?, [
             "ver": testVer,
-            "context": PBMNativeContextType.product.rawValue,
-            "contextsubtype": PBMNativeContextSubtype.applicationStore.rawValue,
-            "plcmttype": PBMNativePlacementType.outsideCoreContent.rawValue,
+            "context": NativeContextType.product.rawValue,
+            "contextsubtype": NativeContextSubtype.applicationStore.rawValue,
+            "plcmttype": NativePlacementType.outsideCoreContent.rawValue,
             "plcmtcnt": 13,
             "seq": 7,
             "assets": [
@@ -118,7 +118,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
         ] as NSDictionary)
         
         XCTAssertEqual(try? clone.toJsonString(), """
-{"assets":[\(try! desc.toJsonString()),\(try! title.toJsonString())],"aurlsupport":1,"context":\(PBMNativeContextType.product.rawValue),"contextsubtype":\(PBMNativeContextSubtype.applicationStore.rawValue),"durlsupport":1,"eventtrackers":[\(try! impTraker.toJsonString())],"ext":{"theKey":"theValue"},"plcmtcnt":13,"plcmttype":\(PBMNativePlacementType.outsideCoreContent.rawValue),"privacy":1,"seq":7,"ver":"\(testVer)"}
+{"assets":[\(try! desc.toJsonString()),\(try! title.toJsonString())],"aurlsupport":1,"context":\(NativeContextType.product.rawValue),"contextsubtype":\(NativeContextSubtype.applicationStore.rawValue),"durlsupport":1,"eventtrackers":[\(try! impTraker.toJsonString())],"ext":{"theKey":"theValue"},"plcmtcnt":13,"plcmttype":\(NativePlacementType.outsideCoreContent.rawValue),"privacy":1,"seq":7,"ver":"\(testVer)"}
 """)
         
     }

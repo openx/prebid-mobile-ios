@@ -22,7 +22,7 @@ class PrebidServerUITests: AdsLoaderUITestCase {
         checkBannerLoadResult(exampleName: "Banner 320x50 (In-App)")
     }
     
-    func testPPMBanner_noBids() {
+    func testInAppBanner_noBids() {
         checkBannerLoadResult(exampleName: "Banner 320x50 (In-App) [noBids]",
                               expectFailure: true)
     }
@@ -79,7 +79,7 @@ class PrebidServerUITests: AdsLoaderUITestCase {
         checkInterstitialLoadResult(exampleName: "Display Interstitial 320x480 (In-App)")
     }
     
-    func testPPMInterstitial_Display_320x480_noBids() {
+    func testInAppInterstitial_Display_320x480_noBids() {
         checkInterstitialLoadResult(exampleName: "Display Interstitial 320x480 (In-App) [noBids]",
                                     expectFailure: true)
     }
@@ -117,7 +117,7 @@ class PrebidServerUITests: AdsLoaderUITestCase {
         checkBannerLoadResult(exampleName: "Video Outstream with End Card (In-App)", video: true)
     }
     
-    func testPPMVideo_noBids() {
+    func testInAppVideo_noBids() {
         checkBannerLoadResult(exampleName: "Video Outstream (In-App) [noBids]",
                               video: true,
                               expectFailure: true)
@@ -133,11 +133,11 @@ class PrebidServerUITests: AdsLoaderUITestCase {
     
     // MARK: - Video Interstitials
     
-    func testPPMInterstitial_Video_320x480_with_EndCard() {
+    func testInAppInterstitial_Video_320x480_with_EndCard() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 with End Card (In-App)")
     }
     
-    func testPPMInterstitial_Video_noBids() {
+    func testInAppInterstitial_Video_noBids() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 (In-App) [noBids]",
                                     expectFailure: true)
     }
@@ -175,7 +175,7 @@ class PrebidServerUITests: AdsLoaderUITestCase {
         checkRewardedLoadResult(exampleName: "Video Rewarded 320x480 (In-App)")
     }
     
-    func testPPMRewarded_noBids() {
+    func testInAppRewarded_noBids() {
         checkRewardedLoadResult(exampleName: "Video Rewarded 320x480 (In-App) [noBids]",
                                 expectFailure: true)
     }

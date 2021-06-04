@@ -18,28 +18,28 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Banners (In-App)
     
-    func testPPMBanner_Small_OK() {
+    func testInAppBanner_Small_OK() {
         checkBannerLoadResult(exampleName: "Banner 320x50 (In-App)")
     }
     
-    func testPPMBanner_Small_noBids() {
+    func testInAppBanner_Small_noBids() {
         checkBannerLoadResult(exampleName: "Banner 320x50 (In-App) [noBids]",
                               expectFailure: true)
     }
     
-    func testPPMBanner_Medium() {
+    func testInAppBanner_Medium() {
         checkBannerLoadResult(exampleName: "Banner 300x250 (In-App)")
     }
     
-    func testPPMBanner_Large() {
+    func testInAppBanner_Large() {
         checkBannerLoadResult(exampleName: "Banner 728x90 (In-App)")
     }
     
-    func testPPMBanner_Multisize() {
+    func testInAppBanner_Multisize() {
         checkBannerLoadResult(exampleName: "Banner Multisize (In-App)")
     }
     
-    func testPPMBanner_Small_SKAdN() {
+    func testInAppBanner_Small_SKAdN() {
         checkBannerLoadResult(exampleName: "Banner 320x50 (In-App) [SKAdN]")
     }
     
@@ -113,59 +113,59 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Interstitials (In-App)
     
-    func testPPMInterstitial_Display_320x480() {
+    func testInAppInterstitial_Display_320x480() {
         checkInterstitialLoadResult(exampleName: "Display Interstitial 320x480 (In-App)")
     }
     
-    func testPPMInterstitial_Display_320x480_noBids() {
+    func testInAppInterstitial_Display_320x480_noBids() {
         checkInterstitialLoadResult(exampleName: "Display Interstitial 320x480 (In-App) [noBids]",
                                     expectFailure: true)
     }
     
-    func testPPMInterstitial_Display_Multisize() {
+    func testInAppInterstitial_Display_Multisize() {
         checkInterstitialLoadResult(exampleName: "Display Interstitial Multisize (In-App)")
     }
     
-    func testPPMInterstitial_Display_320x480_SKAdN() {
+    func testInAppInterstitial_Display_320x480_SKAdN() {
         checkInterstitialLoadResult(exampleName: "Display Interstitial 320x480 (In-App) [SKAdN]")
     }
     
     // MARK: - Video Interstitials (In-App)
     
-    func testPPMInterstitial_Video_320x480() {
+    func testInAppInterstitial_Video_320x480() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 (In-App)")
     }
     
-    func testPPMInterstitial_Video_320x480_with_EndCard() {
+    func testInAppInterstitial_Video_320x480_with_EndCard() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 with End Card (In-App)")
     }
     
-    func testPPMInterstitial_Video_noBids() {
+    func testInAppInterstitial_Video_noBids() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 (In-App) [noBids]",
                                     expectFailure: true)
     }
     
-    func testPPMInterstitial_Video_Vertical() {
+    func testInAppInterstitial_Video_Vertical() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial Vertical (In-App)")
     }
     
-    func testPPMInterstitial_Video_SkipOffset() {
+    func testInAppInterstitial_Video_SkipOffset() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 SkipOffset (In-App)")
     }
     
-    func testPPMInterstitial_Video_MP4() {
+    func testInAppInterstitial_Video_MP4() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 .mp4 (In-App)")
     }
     
-    func testPPMInterstitial_Video_M4V() {
+    func testInAppInterstitial_Video_M4V() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 .m4v (In-App)")
     }
     
-    func testPPMInterstitial_Video_MOV() {
+    func testInAppInterstitial_Video_MOV() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 .mov (In-App)")
     }
     
-    func testPPMInterstitial_Video_320x480_SKAdN() {
+    func testInAppInterstitial_Video_320x480_SKAdN() {
         checkInterstitialLoadResult(exampleName: "Video Interstitial 320x480 (In-App) [SKAdN]")
     }
     
@@ -242,21 +242,21 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Video
     
-    func testPPMVideo() {
+    func testInAppVideo() {
         checkBannerLoadResult(exampleName: "Video Outstream (In-App)", video: true)
     }
     
-    func testPPMVideoWithEndCard() {
+    func testInAppVideoWithEndCard() {
         checkBannerLoadResult(exampleName: "Video Outstream with End Card (In-App)", video: true)
     }
     
-    func testPPMVideo_noBids() {
+    func testInAppVideo_noBids() {
         checkBannerLoadResult(exampleName: "Video Outstream (In-App) [noBids]",
                               video: true,
                               expectFailure: true)
     }
     
-    func testPPMVideo_SKAdN() {
+    func testInAppVideo_SKAdN() {
         checkBannerLoadResult(exampleName: "Video Outstream (In-App) [SKAdN]", video: true)
     }
     
@@ -273,20 +273,20 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Rewarded Video
     
-    func testPPMRewarded_320x480() {
+    func testInAppRewarded_320x480() {
         checkRewardedLoadResult(exampleName: "Video Rewarded 320x480 (In-App)")
     }
     
-    func testPPMRewarded_320x480_noBids() {
+    func testInAppRewarded_320x480_noBids() {
         checkRewardedLoadResult(exampleName: "Video Rewarded 320x480 (In-App) [noBids]",
                                 expectFailure: true)
     }
     
-    func testPPMRewarded_320x480_noEndCard() {
+    func testInAppRewarded_320x480_noEndCard() {
         checkRewardedLoadResult(exampleName: "Video Rewarded 320x480 without End Card (In-App)")
     }
     
-    func testPPMRewarded_480x320() {
+    func testInAppRewarded_480x320() {
         checkRewardedLoadResult(exampleName: "Video Rewarded 480x320 (In-App)")
     }
     
@@ -348,11 +348,11 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - MRAID
     
-    func testMRAID_Resize_PPM() {
+    func testMRAID_Resize_InApp() {
         checkBannerLoadResult(exampleName: "MRAID 2.0: Resize (In-App)")
     }
     
-    func testMRAID_Expand_PPM() {
+    func testMRAID_Expand_InApp() {
         checkBannerLoadResult(exampleName: "MRAID 2.0: Expand - 1 Part (In-App)")
     }
     
@@ -378,7 +378,7 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - MRAID Video
     
-    func testMRAID_Video_Interstitial_PPM() {
+    func testMRAID_Video_Interstitial_InApp() {
         checkInterstitialLoadResult(exampleName: "MRAID 2.0: Video Interstitial (In-App)")
     }
     
@@ -393,15 +393,15 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Banner Native Styles
     
-    func testPPMBannerNativeStyleMap_OK() {
+    func testInAppBannerNativeStyleMap_OK() {
         checkBannerLoadResult(exampleName: "Banner Native Styles (In-App) [MAP]")
     }
     
-    func testPPMBannerNativeStyleKeys_OK() {
+    func testInAppBannerNativeStyleKeys_OK() {
         checkBannerLoadResult(exampleName: "Banner Native Styles (In-App) [KEYS]")
     }
     
-    func testPPMBannerNativeStyle_NoAssets() {
+    func testInAppBannerNativeStyle_NoAssets() {
         checkBannerLoadResult(exampleName: "Banner Native Styles No Assets (In-App)",
                               expectFailure: true)
     }
@@ -434,11 +434,11 @@ class PrebidExamplesUITest: AdsLoaderUITestCase {
     
     // MARK: - Native Ads
     
-    func testPPMNativeAd_OK() {
+    func testInAppNativeAd_OK() {
         checkNativeAdLoadResult(exampleName: "Native Ad (In-App)", successCallback: "getNativeAd success")
     }
     
-    func testPPMNativeAd_Links() {
+    func testInAppNativeAd_Links() {
         checkNativeAdLoadResult(exampleName: "Native Ad Links (In-App)", successCallback: "getNativeAd success")
     }
     

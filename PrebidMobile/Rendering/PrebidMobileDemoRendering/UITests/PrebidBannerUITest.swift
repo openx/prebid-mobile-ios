@@ -171,7 +171,7 @@ class PrebidBannerUITest: RepeatedUITestCase {
         }
     }
     
-    func testPPMBannerNativeStyle_NoCreative() {
+    func testInAppBannerNativeStyle_NoCreative() {
         repeatTesting(times: 7) {
             navigateToExamplesSection()
             navigateToExample("Banner Native Styles No Creative (In-App)")

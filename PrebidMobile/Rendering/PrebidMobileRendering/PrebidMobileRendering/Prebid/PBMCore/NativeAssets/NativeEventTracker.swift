@@ -19,7 +19,7 @@ public class NativeEventTracker : NSObject, NSCopying, PBMJsonCodable {
     @objc public var methods: [Int]
     
     /// This object is a placeholder that may contain custom JSON agreed to by the parties to support flexibility beyond the standard defined in this specification
-    @objc public var ext: [String : AnyHashable]?
+    @objc public var ext: [String : Any]?
     
     // MARK: - Private Properties
     
@@ -28,8 +28,12 @@ public class NativeEventTracker : NSObject, NSCopying, PBMJsonCodable {
         self.methods = methods
     }
     
-    @objc public func setExt(_ ext: [String : AnyHashable]) throws {
-        self.ext = try NSDictionary(dictionary: ext).unserializedCopy() as? [String : AnyHashable]
+    @objc public func setExt(_ ext: [String : Any]?) throws {
+        guard let ext = ext else {
+            self.ext = nil
+            return
+        }
+        self.ext = try NSDictionary(dictionary: ext).unserializedCopy()
     }
     
     private override init()  {

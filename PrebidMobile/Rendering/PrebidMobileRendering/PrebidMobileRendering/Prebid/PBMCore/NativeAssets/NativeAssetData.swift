@@ -45,7 +45,7 @@ public class NativeAssetData : NativeAsset {
         }
     }
     
-    @objc public func setDataExt(_ dataExt: [String : Any]?) throws {
+    @objc public func setDataExt(_ dataExt: [String : Any]) throws {
         try setChildExt(dataExt)
     }
 

@@ -22,10 +22,10 @@ class NativeAdConfigurationTest: XCTestCase {
         
         let nativeMarkupObject = nativeAdConfig.markupRequestObject
         
-        XCTAssertEqual(nativeMarkupObject.context?.intValue, PBMNativeContextType.socialCentric.rawValue)
-        XCTAssertEqual(nativeMarkupObject.contextsubtype?.intValue, PBMNativeContextSubtype.applicationStore.rawValue)
-        XCTAssertEqual(nativeMarkupObject.plcmttype?.intValue, PBMNativePlacementType.feedGridListing.rawValue)
-        XCTAssertEqual(nativeMarkupObject.seq?.intValue, 1)
+        XCTAssertEqual(nativeMarkupObject.context, PBMNativeContextType.socialCentric)
+        XCTAssertEqual(nativeMarkupObject.contextsubtype, PBMNativeContextSubtype.applicationStore)
+        XCTAssertEqual(nativeMarkupObject.plcmttype, PBMNativePlacementType.feedGridListing)
+        XCTAssertEqual(nativeMarkupObject.seq, 1)
         
         nativeAdConfig.context = .undefined
         nativeAdConfig.contextsubtype = .undefined

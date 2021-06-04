@@ -304,7 +304,7 @@ extension RowBuildHelpConsumer {
                     try? dst(dataContainer)([:])
                     valueRow.value = "{}"
                 } else {
-                    try? dst(dataContainer)(nil)
+                    try? dst(dataContainer)([:])
                     valueRow.value = nil
                 }
                 valueRow.updateCell()

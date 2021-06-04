@@ -1,5 +1,5 @@
 //
-//  PBMNativeMarkupRequestObjectTest.swift
+//  NativeMarkupRequestObjectTest.swift
 //  OpenXSDKCoreTests
 //
 //  Copyright © 2020 OpenX. All rights reserved.
@@ -14,7 +14,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
     
     func testMarkupRequestObjectInitToJson() {
         let desc = NativeAssetData(dataType: .desc)
-        let markupObject = PBMNativeMarkupRequestObject.init(assets:[desc])
+        let markupObject = NativeMarkupRequestObject.init(assets:[desc])
         
         XCTAssertEqual(markupObject.version, defVer)
         XCTAssertNil(markupObject.context)
@@ -53,7 +53,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
 """)
         
         let title = NativeAssetTitle(length: 25)
-        let markupObject2 = PBMNativeMarkupRequestObject(assets: [desc, title])
+        let markupObject2 = NativeMarkupRequestObject(assets: [desc, title])
         
         XCTAssertEqual(markupObject2.assets as NSArray, [desc, title] as NSArray)
         
@@ -72,7 +72,7 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
     
     func testMarkupRequestCopyToJsonString() {
         let desc = NativeAssetData(dataType: .desc)
-        let markupObject = PBMNativeMarkupRequestObject.init(assets:[desc])
+        let markupObject = NativeMarkupRequestObject.init(assets:[desc])
         
         let title = NativeAssetTitle(length: 25)
         let impTraker = NativeEventTracker(event: .impression,
@@ -81,19 +81,19 @@ class PBMNativeMarkupRequestObjectTest: XCTestCase {
         let testVer = "7.13"
         XCTAssertNotEqual(markupObject.version, testVer)
         markupObject.version = testVer
-        markupObject.context = NSNumber(value: PBMNativeContextType.product.rawValue)
-        markupObject.contextsubtype = NSNumber(value: PBMNativeContextSubtype.applicationStore.rawValue)
-        markupObject.plcmttype = NSNumber(value: PBMNativePlacementType.outsideCoreContent.rawValue)
+        markupObject.context = PBMNativeContextType.product
+        markupObject.contextsubtype = PBMNativeContextSubtype.applicationStore
+        markupObject.plcmttype = PBMNativePlacementType.outsideCoreContent
         markupObject.plcmtcnt = 13
         markupObject.seq = 7
         markupObject.assets = [desc, title]
-        markupObject.aurlsupport = true
-        markupObject.durlsupport = true
+        markupObject.aurlsupport = 1
+        markupObject.durlsupport = 1
         markupObject.eventtrackers = [impTraker]
-        markupObject.privacy = true
+        markupObject.privacy = 1
         try! markupObject.setExt(["theKey": "theValue"])
         
-        let clone = markupObject.copy() as! PBMNativeMarkupRequestObject
+        let clone = markupObject.copy() as! NativeMarkupRequestObject
         
         XCTAssertEqual(clone.jsonDictionary as NSDictionary?, [
             "ver": testVer,

@@ -73,10 +73,7 @@ framework module PrebidMobileRendering {
     header "PBMNativeAdMarkupTitle.h"
     header "PBMNativeAdMarkupVideo.h"
     header "PBMNativeAdMarkupEventTracker.h"
-    
-    header "PBMNativeMarkupRequestObject.h"
-    header "PBMNativeMarkupRequestObject+Internal.h"
-    
+        
     header "PBMNativeClickableViewRegistry.h"
     header "PBMNativeClickTrackerBinderFactoryBlock.h"
     header"PBMNativeViewClickHandlerBlock.h"

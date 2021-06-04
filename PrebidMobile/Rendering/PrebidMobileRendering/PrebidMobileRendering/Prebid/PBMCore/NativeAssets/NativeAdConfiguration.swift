@@ -11,51 +11,31 @@ public class NativeAdConfiguration: NSObject, NSCopying {
 
     /// Version of the Native Markup version in use.
     @objc public var version: String? {
-        get {
-            markupRequestObject.version
-        }
-        set {
-            markupRequestObject.version = newValue
-        }
+        get { markupRequestObject.version }
+        set { markupRequestObject.version = newValue }
     }
     
     /// [Recommended]
     /// [Integer]
     /// The context in which the ad appears.
     @objc public var context: PBMNativeContextType {
-        get {
-            //such lines will be simplified in task https://openxtechinc.atlassian.net/browse/MOBILE-7034
-            PBMNativeContextType(rawValue: (markupRequestObject.context?.intValue) ??
-                                    PBMNativeContextType.undefined.rawValue) ?? .undefined
-        }
-        set {
-            markupRequestObject.context = newValue == .undefined ? nil : NSNumber(value: newValue.rawValue)
-        }
+        get { markupRequestObject.context ?? .undefined }
+        set { markupRequestObject.context = newValue == .undefined ? nil : newValue }
     }
 
     /// [Integer]
     /// A more detailed context in which the ad appears.
     @objc public var contextsubtype: PBMNativeContextSubtype {
-        get {
-            PBMNativeContextSubtype(rawValue: (markupRequestObject.contextsubtype?.intValue) ??
-                                        PBMNativeContextSubtype.undefined.rawValue) ?? .undefined
-        }
-        set {
-            markupRequestObject.contextsubtype = newValue == .undefined ? nil : NSNumber(value: newValue.rawValue)
-        }
+        get { markupRequestObject.contextsubtype ?? .undefined }
+        set { markupRequestObject.contextsubtype = newValue == .undefined ? nil : newValue }
     }
     
     /// [Recommended]
     /// [Integer]
     /// The design/format/layout of the ad unit being offered.
     @objc public var plcmttype: PBMNativePlacementType {
-        get {
-            PBMNativePlacementType(rawValue: markupRequestObject.plcmttype?.intValue ??
-                                    PBMNativePlacementType.undefined.rawValue) ?? .undefined
-        }
-        set {
-            markupRequestObject.plcmttype = newValue == .undefined ? nil : NSNumber(value: newValue.rawValue)
-        }
+        get { markupRequestObject.plcmttype ?? .undefined }
+        set { markupRequestObject.plcmttype = newValue == .undefined ? nil : newValue }
     }
     
     // NOT SUPPORTED:
@@ -70,10 +50,20 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// or you are holding separate auctions for distinct items in the feed (in which case plcmtcnt=1, seq=>=1)
     @objc public var seq: NSNumber? {
         get {
-            markupRequestObject.seq
+            guard let value = markupRequestObject.seq else {
+                return nil
+            }
+            
+            return NSNumber(value: value)
         }
         set {
-            markupRequestObject.seq = (newValue?.intValue ?? 0) >= 0 ? newValue : nil
+            guard let value = newValue?.intValue,
+                  value >= 0 else {
+                markupRequestObject.seq = nil
+                return
+            }
+            
+            markupRequestObject.seq = value
         }
     }
 
@@ -81,12 +71,8 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// An array of Asset Objects. Any objects bid response must comply with the array of elements
     /// expressed in the bid request.
     @objc public var assets: [NativeAsset] {
-        get {
-            markupRequestObject.assets
-        }
-        set {
-            markupRequestObject.assets = newValue
-        }
+        get { markupRequestObject.assets }
+        set { markupRequestObject.assets = newValue }
     }
     
     // NOT SUPPORTED:
@@ -103,12 +89,8 @@ public class NativeAdConfiguration: NSObject, NSCopying {
 
     /// Specifies what type of event objects tracking is supported - see Event Trackers Request Object
     @objc public var eventtrackers: [NativeEventTracker]? {
-        get {
-            markupRequestObject.eventtrackers
-        }
-        set {
-            markupRequestObject.eventtrackers = newValue
-        }
+        get { markupRequestObject.eventtrackers }
+        set { markupRequestObject.eventtrackers = newValue }
     }
 
     /// [Recommended]
@@ -117,11 +99,13 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// when the native ad doesn’t support custom privacy links or if support is unknown.
     @objc public var privacy: NSNumber? {
         get {
-            markupRequestObject.privacy
+            guard let value = markupRequestObject.privacy else {
+                return nil
+            }
+            
+            return NSNumber(value: value)
         }
-        set {
-            markupRequestObject.privacy = newValue
-        }
+        set { markupRequestObject.privacy = newValue?.intValue }
     }
 
     /// This object is a placeholder that may contain custom JSON agreed to by the parties to support
@@ -140,10 +124,10 @@ public class NativeAdConfiguration: NSObject, NSCopying {
     /// See https://docs.prebid.org/dev-docs/show-native-ads.html#how-native-ads-work
     @objc public var nativeStylesCreative: String?
     
-    @objc public var markupRequestObject: PBMNativeMarkupRequestObject
+    @objc public var markupRequestObject: NativeMarkupRequestObject
 
     @objc public required init(assets: [NativeAsset]) {
-        markupRequestObject = PBMNativeMarkupRequestObject(assets: assets)
+        markupRequestObject = NativeMarkupRequestObject(assets: assets)
     }
 
     @objc public func setExt(_ ext: [String : Any]?) throws {
@@ -162,7 +146,7 @@ public class NativeAdConfiguration: NSObject, NSCopying {
         fatalError("Init is unavailable.")
     }
     
-    private init(markupRequestObject: PBMNativeMarkupRequestObject) {
-        self.markupRequestObject = markupRequestObject.copy() as! PBMNativeMarkupRequestObject
+    private init(markupRequestObject: NativeMarkupRequestObject) {
+        self.markupRequestObject = markupRequestObject.copy() as! NativeMarkupRequestObject
     }
 }

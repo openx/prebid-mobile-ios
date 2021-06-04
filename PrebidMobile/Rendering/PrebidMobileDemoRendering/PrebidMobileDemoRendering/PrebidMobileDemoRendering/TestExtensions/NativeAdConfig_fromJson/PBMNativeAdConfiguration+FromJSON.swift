@@ -29,7 +29,7 @@ extension NativeAdConfiguration {
             eventtrackers = rawTrackers.compactMap(NativeEventTracker.init(json:))
         }
         privacy = json["privacy"] as? NSNumber
-        try? setExt(json["ext"] as? [String: Any])
+        try? setExt((json["ext"] as? [String: AnyHashable])!)
     }
     
     private func enumValue<T: RawRepresentable>(_ value: Any?) -> T! where T.RawValue == Int {

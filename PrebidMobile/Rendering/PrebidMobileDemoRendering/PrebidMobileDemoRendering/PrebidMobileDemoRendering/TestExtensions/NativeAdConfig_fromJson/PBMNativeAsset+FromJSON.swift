@@ -28,8 +28,8 @@ extension NativeAsset {
         }
         asset.assetID = json["id"] as? NSNumber
         asset.required = json["required"] as? NSNumber
-        try? asset.setAssetExt(json["ext"] as? [String: Any])
-        try? asset.setChildExt(childDic["ext"] as? [String: Any])
+        try? asset.setAssetExt(json["ext"] as! [String: Any])
+        try? asset.setChildExt(childDic["ext"] as! [String: Any])
         return asset
     }
 }

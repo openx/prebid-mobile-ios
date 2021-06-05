@@ -15,28 +15,30 @@ import Foundation
 }
 
 enum GenderDescription : String {
-    case unknown    = ""
     case male       = "M"
     case female     = "F"
     case other      = "O"
 }
 
 
-func GenderFromDescription(_ genderDescription: GenderDescription) -> Gender {
-    switch genderDescription {
-        case .unknown:   return .unknown
+func GenderFromDescription(_ genderDescription: String) -> Gender {
+    guard let knownGender = GenderDescription(rawValue: genderDescription) else {
+        return .unknown
+    }
+    
+    switch knownGender {
         case .male:      return .male
         case .female:    return .female
         case .other:     return .other
     }
 }
 
-func DescriptionOfGender(_ gender: Gender) -> GenderDescription {
+func DescriptionOfGender(_ gender: Gender) -> String? {
     switch gender {
-        case .unknown:   return .unknown
-        case .male:      return .male
-        case .female:    return .female
-        case .other:     return .other
+        case .unknown:   return nil
+        case .male:      return GenderDescription.male.rawValue
+        case .female:    return GenderDescription.female.rawValue
+        case .other:     return GenderDescription.other.rawValue
     }
 }
 

@@ -23,7 +23,6 @@ framework module PrebidMobileRendering {
     // PBMCacheRenderers
     header "PBMDisplayView.h"
     
-    
     // OXB Integration GAM
     
     header "PBMPrimaryAdRequesterProtocol.h"
@@ -32,12 +31,6 @@ framework module PrebidMobileRendering {
     header "PBMBaseAdUnit+Protected.h"
     
     header "PBMInterstitialEventHandler.h"
-        
-    // PBM Native Ads (enums)
-    // PBM Native Ads (request)
-    
-    // PBM Native Ads (response)
-//    header "PBMNativeAd.h"
     
     // ===
     //Temp. for converting

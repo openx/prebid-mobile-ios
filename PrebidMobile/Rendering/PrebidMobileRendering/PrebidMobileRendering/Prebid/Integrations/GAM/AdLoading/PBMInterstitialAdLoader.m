@@ -70,16 +70,7 @@
         }];
         return;
     }
-    if ([adObject conformsToProtocol:@protocol(InterstitialEventHandlerProtocol)]) {
-        id<PBMInterstitialAd> const eventHandler = (id<PBMInterstitialAd>)adObject;
-        [self.delegate interstitialAdLoader:self
-                                   loadedAd:^(UIViewController *targetController) {
-            [eventHandler showFromViewController:targetController];
-        } isReadyBlock:^BOOL{
-            return eventHandler.isReady;
-        }];
-        return;
-    } else if ([adObject conformsToProtocol:@protocol(RewardedEventHandlerProtocol)]) {
+    if ([adObject conformsToProtocol:@protocol(PBMInterstitialAd)]) {
         id<PBMInterstitialAd> const eventHandler = (id<PBMInterstitialAd>)adObject;
         [self.delegate interstitialAdLoader:self
                                    loadedAd:^(UIViewController *targetController) {
@@ -89,6 +80,7 @@
         }];
         return;
     }
+    
     [self.delegate interstitialAdLoader:self
                                loadedAd:^(UIViewController *targetController) { } // nop
                            isReadyBlock:^BOOL{ return NO;

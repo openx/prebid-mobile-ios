@@ -229,7 +229,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
             baseAdUnit.callDelegate_didReceiveAd()
         }
         testCall("\(prefix):didFailToReceiveAdWithError:", args: [baseAdUnit, FakeError.someFakeError]) {
-            baseAdUnit.callDelegate_didFailToReceiveAdWithError(FakeError.someFakeError)
+            baseAdUnit.callDelegate_didFailToReceiveAd(with: FakeError.someFakeError)
         }
         testCall("\(prefix)WillPresentAd:", args: [baseAdUnit]) {
             baseAdUnit.callDelegate_willPresentAd()

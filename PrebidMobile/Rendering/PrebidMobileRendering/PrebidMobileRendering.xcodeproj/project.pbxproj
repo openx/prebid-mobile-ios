@@ -678,7 +678,6 @@
 		5BD5D4C12657D6B100DFB8B2 /* PBMAdLoadFlowControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C65166257E0BE600E26ABA /* PBMAdLoadFlowControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C22657D6C500DFB8B2 /* PBMAdLoaderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C65276257E5EE800E26ABA /* PBMAdLoaderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C32657D6D600DFB8B2 /* PBMBannerAdLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C6528C257E659800E26ABA /* PBMBannerAdLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BD5D4C42657D6DB00DFB8B2 /* PBMBannerAdLoaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C6528E257E6A3E00E26ABA /* PBMBannerAdLoaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C62657D6FF00DFB8B2 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4C52657D6FF00DFB8B2 /* BannerView.swift */; };
 		5BD5D4C82657E91400DFB8B2 /* BannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4C72657E91400DFB8B2 /* BannerViewDelegate.swift */; };
 		5BE0A33024EA7B7700028EBA /* BasicParameterBuilderPureTargetingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A32F24EA7B7600028EBA /* BasicParameterBuilderPureTargetingTest.swift */; };
@@ -1120,7 +1119,6 @@
 		34C6527B257E62BA00E26ABA /* PBMPrimaryAdRequesterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMPrimaryAdRequesterProtocol.h; sourceTree = "<group>"; };
 		34C6528C257E659800E26ABA /* PBMBannerAdLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMBannerAdLoader.h; sourceTree = "<group>"; };
 		34C6528D257E659800E26ABA /* PBMBannerAdLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMBannerAdLoader.m; sourceTree = "<group>"; };
-		34C6528E257E6A3E00E26ABA /* PBMBannerAdLoaderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMBannerAdLoaderDelegate.h; sourceTree = "<group>"; };
 		34C652BE257E7AE300E26ABA /* PBMInterstitialAdLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInterstitialAdLoader.h; sourceTree = "<group>"; };
 		34C652BF257E7AE300E26ABA /* PBMInterstitialAdLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMInterstitialAdLoader.m; sourceTree = "<group>"; };
 		34C652CB257E7B0400E26ABA /* PBMInterstitialAdLoaderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMInterstitialAdLoaderDelegate.h; sourceTree = "<group>"; };
@@ -2214,7 +2212,6 @@
 				34C65160257E0A3600E26ABA /* PBMAdLoadFlowController.m */,
 				34C65277257E5F2900E26ABA /* PBMAdLoaderFlowDelegate.h */,
 				34C65276257E5EE800E26ABA /* PBMAdLoaderProtocol.h */,
-				34C6528E257E6A3E00E26ABA /* PBMBannerAdLoaderDelegate.h */,
 				34C6528C257E659800E26ABA /* PBMBannerAdLoader.h */,
 				34C6528D257E659800E26ABA /* PBMBannerAdLoader.m */,
 				34C652CB257E7B0400E26ABA /* PBMInterstitialAdLoaderDelegate.h */,
@@ -3516,7 +3513,6 @@
 				34431EB125B5DA4400596FA7 /* PBMNativeClickableViewRegistry.h in Headers */,
 				34C65161257E0A3600E26ABA /* PBMAdLoadFlowController.h in Headers */,
 				34DBD67F25518CBC004A07A1 /* NSNumber+PBMORTBNative.h in Headers */,
-				5BD5D4C42657D6DB00DFB8B2 /* PBMBannerAdLoaderDelegate.h in Headers */,
 				348AB3D5259601140066F33E /* PBMBidRequesterFactory.h in Headers */,
 				34D710CC24E580620048CC78 /* PBMCreativeModel.h in Headers */,
 				34D710CD24E580620048CC78 /* PBMORTBAppExtPrebid.h in Headers */,

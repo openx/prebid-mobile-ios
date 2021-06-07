@@ -10,7 +10,7 @@ import UIKit
 fileprivate let assertionMessageMainThread = "Expected to only be called on the main thread"
 
 public class BannerView: UIView,
-                  PBMBannerAdLoaderDelegate,
+                  BannerAdLoaderDelegate,
                   PBMAdLoadFlowControllerDelegate,
                   BannerEventInteractionDelegate,
                   DisplayViewInteractionDelegate {
@@ -226,7 +226,7 @@ public class BannerView: UIView,
         didDismissModal()
     }
     
-    // MARK: - PBMBannerAdLoaderDelegate
+    // MARK: - BannerAdLoaderDelegate
     
     public func bannerAdLoader(_ bannerAdLoader: PBMBannerAdLoader, loadedAdView adView: UIView, adSize: CGSize) {
         deployView(adView)

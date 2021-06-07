@@ -37,7 +37,6 @@
 #import "PBMAdLoadFlowControllerDelegate.h"
 #import "PBMAdLoaderProtocol.h"
 #import "PBMBannerAdLoader.h"
-#import "PBMBannerAdLoaderDelegate.h"
 
 // Bid
 #import "PBMORTBBid.h"

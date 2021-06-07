@@ -11,7 +11,7 @@ import UIKit
 public class BaseInterstitialAdUnit :
     NSObject,
     PBMInterstitialAdLoaderDelegate,
-    PBMAdLoadFlowControllerDelegate,
+    AdLoadFlowControllerDelegate,
     InterstitialControllerInteractionDelegate,
     InterstitialEventInteractionDelegate,
     BaseInterstitialAdUnitProtocol {
@@ -185,7 +185,7 @@ public class BaseInterstitialAdUnit :
     public var eventHandler: Any?
     
     
-    // MARK: - PBMAdLoadFlowControllerDelegate
+    // MARK: - AdLoadFlowControllerDelegate
     
     public func adLoadFlowControllerWillSendBidRequest(_ adLoadFlowController: PBMAdLoadFlowController) {
         // nop

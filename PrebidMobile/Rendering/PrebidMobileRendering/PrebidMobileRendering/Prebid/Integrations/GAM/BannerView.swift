@@ -11,7 +11,7 @@ fileprivate let assertionMessageMainThread = "Expected to only be called on the 
 
 public class BannerView: UIView,
                   BannerAdLoaderDelegate,
-                  PBMAdLoadFlowControllerDelegate,
+                  AdLoadFlowControllerDelegate,
                   BannerEventInteractionDelegate,
                   DisplayViewInteractionDelegate {
     

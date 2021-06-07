@@ -34,7 +34,6 @@
 
 #import "PBMAutoRefreshManager.h"
 #import "PBMAdLoadFlowController.h"
-#import "PBMAdLoadFlowControllerDelegate.h"
 #import "PBMAdLoaderProtocol.h"
 #import "PBMBannerAdLoader.h"
 

@@ -26,7 +26,7 @@
 
 - (instancetype)initWithBidRequesterFactory:(id<PBMBidRequesterProtocol> (^)(AdUnitConfig *))bidRequesterFactory
                                    adLoader:(id<PBMAdLoaderProtocol>)adLoader
-                                   delegate:(id<PBMAdLoadFlowControllerDelegate>)delegate
+                                   delegate:(id<AdLoadFlowControllerDelegate>)delegate
                       configValidationBlock:(PBMAdUnitConfigValidationBlock)configValidationBlock
 {
     if (!(self = [super init])) {

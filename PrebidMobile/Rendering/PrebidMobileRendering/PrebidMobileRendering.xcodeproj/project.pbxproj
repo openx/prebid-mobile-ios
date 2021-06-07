@@ -615,6 +615,7 @@
 		5BA8093C266E1791007DB351 /* InterstitialEventInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8093B266E1791007DB351 /* InterstitialEventInteractionDelegate.swift */; };
 		5BA8093E266E1CB0007DB351 /* BaseInterstitialAdUnitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8093D266E1CB0007DB351 /* BaseInterstitialAdUnitProtocol.swift */; };
 		5BA80940266E2035007DB351 /* BannerAdLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8093F266E2035007DB351 /* BannerAdLoaderDelegate.swift */; };
+		5BA80942266E238D007DB351 /* AdLoadFlowControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA80941266E238D007DB351 /* AdLoadFlowControllerDelegate.swift */; };
 		5BA83C39211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA83C38211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift */; };
 		5BBCF72B2653C142006A0356 /* MoPubInterstitialAdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */; };
 		5BBCF72E2653E1B7006A0356 /* MoPubBidInfoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */; };
@@ -675,7 +676,6 @@
 		5BD5D4BE2656D6FA00DFB8B2 /* NativeAssetDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4BA2656D6FA00DFB8B2 /* NativeAssetDataTest.swift */; };
 		5BD5D4BF2656D6FA00DFB8B2 /* NativeAssetTitleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4BB2656D6FA00DFB8B2 /* NativeAssetTitleTest.swift */; };
 		5BD5D4C02656D6FA00DFB8B2 /* NativeAssetImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4BC2656D6FA00DFB8B2 /* NativeAssetImageTest.swift */; };
-		5BD5D4C12657D6B100DFB8B2 /* PBMAdLoadFlowControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C65166257E0BE600E26ABA /* PBMAdLoadFlowControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C22657D6C500DFB8B2 /* PBMAdLoaderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C65276257E5EE800E26ABA /* PBMAdLoaderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C32657D6D600DFB8B2 /* PBMBannerAdLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C6528C257E659800E26ABA /* PBMBannerAdLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BD5D4C62657D6FF00DFB8B2 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5D4C52657D6FF00DFB8B2 /* BannerView.swift */; };
@@ -1111,7 +1111,6 @@
 		34C48AAF24E14B9100B86664 /* PBMInterstitialLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMInterstitialLayout.h; path = AdTypes/AdView/PBMInterstitialLayout.h; sourceTree = "<group>"; };
 		34C6515F257E0A3600E26ABA /* PBMAdLoadFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadFlowController.h; sourceTree = "<group>"; };
 		34C65160257E0A3600E26ABA /* PBMAdLoadFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMAdLoadFlowController.m; sourceTree = "<group>"; };
-		34C65166257E0BE600E26ABA /* PBMAdLoadFlowControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadFlowControllerDelegate.h; sourceTree = "<group>"; };
 		34C6516A257E0D1000E26ABA /* PBMAdLoadFlowState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdLoadFlowState.h; sourceTree = "<group>"; };
 		34C6516E257E0D5A00E26ABA /* PBMAdLoadFlowController+PrivateState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMAdLoadFlowController+PrivateState.h"; sourceTree = "<group>"; };
 		34C65276257E5EE800E26ABA /* PBMAdLoaderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAdLoaderProtocol.h; sourceTree = "<group>"; };
@@ -1431,6 +1430,7 @@
 		5BA8093B266E1791007DB351 /* InterstitialEventInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialEventInteractionDelegate.swift; sourceTree = "<group>"; };
 		5BA8093D266E1CB0007DB351 /* BaseInterstitialAdUnitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterstitialAdUnitProtocol.swift; sourceTree = "<group>"; };
 		5BA8093F266E2035007DB351 /* BannerAdLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdLoaderDelegate.swift; sourceTree = "<group>"; };
+		5BA80941266E238D007DB351 /* AdLoadFlowControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLoadFlowControllerDelegate.swift; sourceTree = "<group>"; };
 		5BA83C38211C6B290046578A /* PBMVastLoaderTestOMVerificationOneInline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBMVastLoaderTestOMVerificationOneInline.swift; sourceTree = "<group>"; };
 		5BBCF72A2653C142006A0356 /* MoPubInterstitialAdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubInterstitialAdUnit.swift; sourceTree = "<group>"; };
 		5BBCF72D2653E1B7006A0356 /* MoPubBidInfoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubBidInfoWrapper.swift; sourceTree = "<group>"; };
@@ -2138,26 +2138,26 @@
 		34BF11D22476C2A9007A09F1 /* GAM */ = {
 			isa = PBXGroup;
 			children = (
-				5BD5D4C52657D6FF00DFB8B2 /* BannerView.swift */,
 				34C6515E257E0A1200E26ABA /* AdLoading */,
-				34C6527B257E62BA00E26ABA /* PBMPrimaryAdRequesterProtocol.h */,
-				ACF5AC3C2657FAA500821B1C /* InterstitialAdUnit.swift */,
-				34BA95F0249CB021006AE372 /* PBMInterstitialEventHandler.h */,
-				ACCF1FCF26567C270019B523 /* RewardedAdUnit.swift */,
-				5BD5D4C72657E91400DFB8B2 /* BannerViewDelegate.swift */,
-				5BC0A55D2666569D005EFEFB /* InterstitialEventHandlerProtocol.swift */,
-				5BC0A55F26665A65005EFEFB /* RewardedEventHandlerProtocol.swift */,
-				5BC0A56126665DCB005EFEFB /* RewardedEventLoadingDelegate.swift */,
-				5BC0A56326666111005EFEFB /* RewardedEventInteractionDelegate.swift */,
-				5BC0A56826666F59005EFEFB /* InterstitialEventLoadingDelegate.swift */,
-				5BC0A56A266675EC005EFEFB /* BannerEventLoadingDelegate.swift */,
-				5BC0A56C266677B3005EFEFB /* BannerEventInteractionDelegate.swift */,
 				5BC0A56E26667A63005EFEFB /* BannerEventHandler.swift */,
-				5BC0A57026667ED3005EFEFB /* InterstitialAdUnitDelegate.swift */,
-				5BC0A57226676DF4005EFEFB /* RewardedAdUnitDelegate.swift */,
+				5BC0A56C266677B3005EFEFB /* BannerEventInteractionDelegate.swift */,
+				5BC0A56A266675EC005EFEFB /* BannerEventLoadingDelegate.swift */,
+				5BD5D4C52657D6FF00DFB8B2 /* BannerView.swift */,
+				5BD5D4C72657E91400DFB8B2 /* BannerViewDelegate.swift */,
 				5BC0A57D2667B50A005EFEFB /* BaseInterstitialAdUnit.swift */,
-				5BA8093B266E1791007DB351 /* InterstitialEventInteractionDelegate.swift */,
 				5BA8093D266E1CB0007DB351 /* BaseInterstitialAdUnitProtocol.swift */,
+				ACF5AC3C2657FAA500821B1C /* InterstitialAdUnit.swift */,
+				5BC0A57026667ED3005EFEFB /* InterstitialAdUnitDelegate.swift */,
+				5BC0A55D2666569D005EFEFB /* InterstitialEventHandlerProtocol.swift */,
+				5BA8093B266E1791007DB351 /* InterstitialEventInteractionDelegate.swift */,
+				5BC0A56826666F59005EFEFB /* InterstitialEventLoadingDelegate.swift */,
+				34BA95F0249CB021006AE372 /* PBMInterstitialEventHandler.h */,
+				34C6527B257E62BA00E26ABA /* PBMPrimaryAdRequesterProtocol.h */,
+				ACCF1FCF26567C270019B523 /* RewardedAdUnit.swift */,
+				5BC0A57226676DF4005EFEFB /* RewardedAdUnitDelegate.swift */,
+				5BC0A55F26665A65005EFEFB /* RewardedEventHandlerProtocol.swift */,
+				5BC0A56326666111005EFEFB /* RewardedEventInteractionDelegate.swift */,
+				5BC0A56126665DCB005EFEFB /* RewardedEventLoadingDelegate.swift */,
 			);
 			path = GAM;
 			sourceTree = "<group>";
@@ -2206,7 +2206,6 @@
 			isa = PBXGroup;
 			children = (
 				34C6516A257E0D1000E26ABA /* PBMAdLoadFlowState.h */,
-				34C65166257E0BE600E26ABA /* PBMAdLoadFlowControllerDelegate.h */,
 				34C6516E257E0D5A00E26ABA /* PBMAdLoadFlowController+PrivateState.h */,
 				34C6515F257E0A3600E26ABA /* PBMAdLoadFlowController.h */,
 				34C65160257E0A3600E26ABA /* PBMAdLoadFlowController.m */,
@@ -2218,6 +2217,7 @@
 				34C652BE257E7AE300E26ABA /* PBMInterstitialAdLoader.h */,
 				34C652BF257E7AE300E26ABA /* PBMInterstitialAdLoader.m */,
 				5BA8093F266E2035007DB351 /* BannerAdLoaderDelegate.swift */,
+				5BA80941266E238D007DB351 /* AdLoadFlowControllerDelegate.swift */,
 			);
 			path = AdLoading;
 			sourceTree = "<group>";
@@ -3472,7 +3472,6 @@
 				ACE60BE326553CD500F58C3B /* PBMURLOpenAttempterBlock.h in Headers */,
 				34E2FF3125B08AF30003C0EA /* PBMPollingTimer.h in Headers */,
 				5B2FB0FE264429AD00912342 /* PBMNativeAdMediaHooks.h in Headers */,
-				5BD5D4C12657D6B100DFB8B2 /* PBMAdLoadFlowControllerDelegate.h in Headers */,
 				34D710AA24E580620048CC78 /* PBMInterstitialLayoutConfigurator.h in Headers */,
 				AC616E092588E69A0010DBBB /* PBMFunctions+Testing.h in Headers */,
 				34D710AD24E580620048CC78 /* PBMORTBDevice.h in Headers */,
@@ -4048,6 +4047,7 @@
 				34D7100B24E580620048CC78 /* NSMutableDictionary+PBMExtensions.m in Sources */,
 				34E2FF3225B08AF30003C0EA /* PBMPollingTimer.m in Sources */,
 				34A023B025822CE0004EBB0C /* PBMWinNotifier.m in Sources */,
+				5BA80942266E238D007DB351 /* AdLoadFlowControllerDelegate.swift in Sources */,
 				34D7100C24E580620048CC78 /* PBMError.m in Sources */,
 				5BC0A56D266677B3005EFEFB /* BannerEventInteractionDelegate.swift in Sources */,
 				34D7100D24E580620048CC78 /* PBMURLComponents.m in Sources */,

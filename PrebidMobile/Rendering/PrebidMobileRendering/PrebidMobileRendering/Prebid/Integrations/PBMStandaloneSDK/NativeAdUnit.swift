@@ -30,7 +30,7 @@ public class NativeAdUnit: PBMBaseAdUnit {
         //@synchronized (self.stateLockToken) {..}
         objc_sync_enter(self.stateLockToken)
         if hasStartedFetching {
-            completion(DemandResponseInfo(fetchDemandResult: .sdkMisuse_NativeAdUnitFetchedAgain,
+            completion(DemandResponseInfo(fetchDemandResult: .sdkMisuseNativeAdUnitFetchedAgain,
                                              bid: nil,
                                              configId: nil,
                                              winNotifierBlock: winNotifierBlock))

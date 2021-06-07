@@ -184,7 +184,7 @@ class NativeAdUnitTest: XCTestCase, WinningBidResponseFabricator {
         adUnit.fetchDemand { demandResponseInfo in
             fetchDemandFailed.fulfill()
             XCTAssertTrue(Thread.isMainThread)
-            XCTAssertEqual(demandResponseInfo.fetchDemandResult, .sdkMisuse_NativeAdUnitFetchedAgain)
+            XCTAssertEqual(demandResponseInfo.fetchDemandResult, .sdkMisuseNativeAdUnitFetchedAgain)
         }
 
         waitForExpectations(timeout: 1)

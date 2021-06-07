@@ -27,6 +27,8 @@ FOUNDATION_EXPORT NSString * const PBM_ORIGINAL_ADUNIT_KEY;
 FOUNDATION_EXPORT NSString * const PBM_MOPUB_INITIALIZATION_OPTIONS_KEY;
 FOUNDATION_EXPORT NSString * const PBM_PRECACHE_CONFIGURATION_KEY;
 
+FOUNDATION_EXPORT NSString * const PBM_FETCH_DEMAND_RESULT_KEY;
+
 typedef NS_ENUM(NSInteger, PBMLocationSourceValues) {
     PBMLocationSourceValuesGPS NS_SWIFT_NAME(GPS) = 1,                              //From Location Service
     PBMLocationSourceValuesIPAddress NS_SWIFT_NAME(IPAddress) = 2,                  //Unused by SDK

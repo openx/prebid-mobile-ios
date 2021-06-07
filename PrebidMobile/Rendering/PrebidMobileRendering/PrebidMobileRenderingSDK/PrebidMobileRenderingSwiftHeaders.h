@@ -8,7 +8,6 @@
 #import "PBMBaseAdUnit.h"
 #import "PBMBaseAdUnit+Protected.h"
 
-#import "PBMInterstitialEventInteractionDelegate.h"
 #import "PBMInterstitialEventHandler.h"
 
 #import "PBMNativeAdMarkup.h"
@@ -49,4 +48,3 @@
 #import "PBMLogPrivate.h"
 
 #import "PBMInterstitialAdLoaderDelegate.h"
-#import "PBMBaseInterstitialAdUnitProtocol.h"

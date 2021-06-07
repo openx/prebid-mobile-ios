@@ -45,7 +45,7 @@ public class InterstitialAdUnit: BaseInterstitialAdUnit {
         }
     }
     
-    @objc public override func callDelegate_didFailToReceiveAdWithError(_ error: Error?) {
+    @objc public override func callDelegate_didFailToReceiveAd(with error: Error?) {
         if let delegate = self.delegate as? InterstitialAdUnitDelegate {
             delegate.interstitial?(self, didFailToReceiveAdWithError: error)
         }

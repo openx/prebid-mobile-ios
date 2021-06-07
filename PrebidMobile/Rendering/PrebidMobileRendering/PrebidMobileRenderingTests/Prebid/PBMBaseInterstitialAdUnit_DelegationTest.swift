@@ -206,7 +206,7 @@ class PBMBaseInterstitialAdUnit_DelegationTest: XCTestCase {
         XCTAssertEqual(called, proxyDelegate != nil, "delegate method [\(expectedSelector)] not called", file: file, line: line)
     }
     
-    private func callProtectedSelectors(baseAdUnit: PBMBaseInterstitialAdUnitProtocol,
+    private func callProtectedSelectors(baseAdUnit: BaseInterstitialAdUnitProtocol,
                                         proxyDelegate: BaseProxyDelegate?,
                                         selectorPrefix: String?,
                                         file: StaticString = #file, line: UInt = #line)

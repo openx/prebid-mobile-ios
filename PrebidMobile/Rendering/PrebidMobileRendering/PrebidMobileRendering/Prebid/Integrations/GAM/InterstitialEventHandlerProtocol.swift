@@ -14,5 +14,5 @@ import Foundation
     weak var loadingDelegate: InterstitialEventLoadingDelegate? { get set }
 
     /// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
-    weak var interactionDelegate: PBMInterstitialEventInteractionDelegate? { get set }
+    weak var interactionDelegate: InterstitialEventInteractionDelegate? { get set }
 }

@@ -13,8 +13,8 @@ public class BaseInterstitialAdUnit :
     PBMInterstitialAdLoaderDelegate,
     PBMAdLoadFlowControllerDelegate,
     InterstitialControllerInteractionDelegate,
-    PBMInterstitialEventInteractionDelegate,
-    PBMBaseInterstitialAdUnitProtocol {
+    InterstitialEventInteractionDelegate,
+    BaseInterstitialAdUnitProtocol {
     
     
     // MARK: - Public Properties
@@ -248,11 +248,11 @@ public class BaseInterstitialAdUnit :
 
     private func reportLoadingFailed(with error: Error?) {
         DispatchQueue.main.async {
-            self.callDelegate_didFailToReceiveAdWithError(error)
+            self.callDelegate_didFailToReceiveAd(with: error)
         }
     }
     
-    // MARK: - PBMInterstitialEventInteractionDelegate
+    // MARK: - InterstitialEventInteractionDelegate
     
     public func willPresentAd() {
         DispatchQueue.main.async {
@@ -282,7 +282,7 @@ public class BaseInterstitialAdUnit :
         }
     }
 
-    // MARK: - PBMBaseInterstitialAdUnitProtocol
+    // MARK: - BaseInterstitialAdUnitProtocol
     
     public func callEventHandler_requestAd(with bidResponse: BidResponse?) {
         
@@ -302,7 +302,7 @@ public class BaseInterstitialAdUnit :
         // to be overridden in subclass
     }
 
-    public func callDelegate_didFailToReceiveAdWithError(_ error: Error?) {
+    public func callDelegate_didFailToReceiveAd(with: Error?) {
         // to be overridden in subclass
     }
 

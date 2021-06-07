@@ -40,7 +40,7 @@ public class GAMInterstitialEventHandler :
     
     public weak var loadingDelegate: InterstitialEventLoadingDelegate?
     
-    public weak var interactionDelegate: PBMInterstitialEventInteractionDelegate?
+    public weak var interactionDelegate: InterstitialEventInteractionDelegate?
     
     public var isReady: Bool {
         if let _ = requestInterstitial {

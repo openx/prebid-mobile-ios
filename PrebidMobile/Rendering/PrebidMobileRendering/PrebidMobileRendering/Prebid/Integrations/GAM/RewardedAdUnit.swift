@@ -47,7 +47,7 @@ public class RewardedAdUnit: BaseInterstitialAdUnit,
         
     }
     
-    // MARK: - PBMBaseInterstitialAdUnitProtocol protocol
+    // MARK: - BaseInterstitialAdUnitProtocol protocol
     
     @objc public override func interstitialControllerDidCloseAd(_ interstitialController: InterstitialController) {
         callDelegate_rewardedAdUserDidEarnReward()
@@ -62,7 +62,7 @@ public class RewardedAdUnit: BaseInterstitialAdUnit,
         }
     }
 
-    @objc public override func callDelegate_didFailToReceiveAdWithError(_ error: Error?) {
+    @objc public override func callDelegate_didFailToReceiveAd(with error: Error?) {
         if let delegate = self.delegate as? RewardedAdUnitDelegate {
             delegate.rewardedAd?(self, didFailToReceiveAdWithError: error)
         }

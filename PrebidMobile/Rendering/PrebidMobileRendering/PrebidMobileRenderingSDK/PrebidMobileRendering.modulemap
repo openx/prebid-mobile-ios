@@ -31,7 +31,6 @@ framework module PrebidMobileRendering {
     header "PBMBaseAdUnit.h"
     header "PBMBaseAdUnit+Protected.h"
     
-    header "PBMInterstitialEventInteractionDelegate.h"
     header "PBMInterstitialEventHandler.h"
         
     // PBM Native Ads (enums)
@@ -196,5 +195,4 @@ framework module PrebidMobileRendering {
     
     header "PBMInterstitialAdLoader.h"
     header "PBMInterstitialAdLoaderDelegate.h"
-    header "PBMBaseInterstitialAdUnitProtocol.h"
 }

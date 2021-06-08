@@ -1,5 +1,3 @@
-//
-//  PBMOpenMeasurementVideoVerificationParameters.m
 /*   Copyright 2018-2021 Prebid.org, Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");

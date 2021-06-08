@@ -40,11 +40,11 @@ class NativeEventTrackerController : FormViewController, RowBuildHelpConsumer {
             +++ optionalPropertiesListSection
             +++ optionalPropertiesValuesSection
         
-//        requiredPropertiesSection
-//            <<< makeRequiredEnumRow("event", keyPath: \.event, defVal: .impression)
-//        
-//        addRequiredIntArrayField(field: "methods", keyPath: \.methods)
-//        addExtRow(field: "ext", src: \.ext, dst: NativeEventTracker.setExt(_:))
+        requiredPropertiesSection
+            <<< makeRequiredIntRow("event", keyPath: \.event)
+        
+        addRequiredIntArrayField(field: "methods", keyPath: \.methods)
+        addExtRow(field: "ext", src: \.ext, dst: NativeEventTracker.setExt(_:))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

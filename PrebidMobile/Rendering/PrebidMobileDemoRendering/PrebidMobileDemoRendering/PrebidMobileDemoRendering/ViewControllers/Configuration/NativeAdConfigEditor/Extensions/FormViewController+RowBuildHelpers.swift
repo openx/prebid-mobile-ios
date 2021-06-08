@@ -271,6 +271,15 @@ extension RowBuildHelpConsumer {
                                        defVal: 0)
     }
     
+    func addRequiredIntArrayField(field: String, keyPath: ReferenceWritableKeyPath<DataContainer, [Int]>) {
+        form
+            +++ makeMultiValuesSection(field: field,
+                                       getter: { [weak self] in self?.dataContainer?[keyPath: keyPath].map { $0 } },
+                                       setter: { [weak self] in self?.dataContainer?[keyPath: keyPath] = ($0 ?? []) },
+                                       rowGen: IntRow.init,
+                                       defVal: 0)
+    }
+    
     func addRequiredStringArrayField(field: String, keyPath: ReferenceWritableKeyPath<DataContainer, [String]>) {
         form
             +++ makeMultiValuesSection(field: field,

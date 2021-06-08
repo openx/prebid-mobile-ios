@@ -55,7 +55,7 @@ class PrebidNativeAdController: NSObject, AdaptedController, PrebidConfigurableN
     private let nativeAdDidLogEventButtons: [(event: NativeEventType, name: String, button: EventReportContainer)] = [
         (.impression, "impression", .init()),
         (.mrc50, "MRC50", .init()),
-        (.mrc100, "MRC/Users/yuriy/PROJECTS/OPENX/PREBID/FORK_IOS_PREBID/PrebidMobile/Rendering/PrebidMobileDemoRendering/PrebidMobileDemoRendering/PrebidMobileDemoRendering/ViewControllers/Adapters/Prebid/GAM/PrebidGAMNativeAdController.swift:46:54: Cannot find type 'NativeEventType' in scope100", .init()),
+        (.mrc100, "MRC100", .init()),
         (.video50, "video50", .init()),
     ]
     private let nativeAdWillPresentModalButton = EventReportContainer()

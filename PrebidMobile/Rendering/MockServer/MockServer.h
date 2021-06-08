@@ -21,8 +21,8 @@
 +(nonnull instancetype) singleton;
 @property BOOL useNotFoundRule;
 
-// The key in the header of NSURLRequest added by OXMServerConnection.
-// This property must be initilized before all tests by OXMServerConnection.internalIDKey.
+// The key in the header of NSURLRequest added by ServerConnection.
+// This property must be initilized before all tests by ServerConnection.internalIDKey.
 // MockServer checks the value for this key in a request - ConnectionID, to select a proper rule.
 @property NSString* _Nonnull connectionIDHeaderKey;
 

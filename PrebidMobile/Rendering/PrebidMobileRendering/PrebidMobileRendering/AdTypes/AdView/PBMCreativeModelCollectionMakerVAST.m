@@ -164,7 +164,7 @@
     }
     
     // LEGACY: Sounds weird. Need to use the same ad configuration
-    // Create a new config using it's default: OXMAdFormat = OXMAdFormatDisplay
+    // Create a new config using it's default: AdFormat = .display
     PBMAdConfiguration *adConfiguration = [[PBMAdConfiguration alloc] init];
     
     adConfiguration.isInterstitialAd = YES;

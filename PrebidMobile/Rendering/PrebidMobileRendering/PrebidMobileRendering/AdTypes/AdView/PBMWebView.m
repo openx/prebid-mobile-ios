@@ -368,16 +368,20 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
     }];
 }
 
+static PBMError *extracted(NSString *errorMessage) {
+    return [PBMError errorWithMessage:PBMErrorTypeInternalError type:errorMessage];
+}
+
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     PBMLogWhereAmI();
     self.state = PBMWebViewStateUnloaded;
     NSString *errorMessage = [NSString stringWithFormat:@"WebView failed to load. Error description: %@, domain: %@, code: %li, userInfo: %@", error.localizedDescription, error.domain, (long)error.code, error.userInfo];
-    PBMError *oxmError = [PBMError errorWithMessage:PBMErrorTypeInternalError type:errorMessage];
+    PBMError *prebidError = extracted(errorMessage);
     
     @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
         @strongify(self);
-        [self.delegate webView:self failedToLoadWithError:oxmError];
+        [self.delegate webView:self failedToLoadWithError:prebidError];
     });
 }
 

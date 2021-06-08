@@ -15,7 +15,7 @@
 
 #import "PBMLocationManager.h"
 
-@interface PBMLocationManager (oxmTestExtension)
+@interface PBMLocationManager (prebidTestExtension)
 
 - (BOOL)locationIsValid:(CLLocation *)location;
 

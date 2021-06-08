@@ -16,11 +16,11 @@
 #import <XCTest/XCTest.h>
 #import "PrebidMobileRenderingTests-Swift.h"
 
-@interface OXMMacrosTest : XCTestCase
+@interface PBMMacrosTest : XCTestCase
 
 @end
 
-@implementation OXMMacrosTest
+@implementation PBMMacrosTest
 
 - (void)testWeakifyUnsafeifyStrongify {
     void (^verifyMemoryManagement)(void);

@@ -21,7 +21,7 @@
 + (nonnull NSException *)pbmException:(nonnull NSString*)message {
     NSString *desc = [NSString stringWithFormat:@"%@: %@", PBMErrorTypeInternalError, message];
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey:desc};
-    return [NSException exceptionWithName:@"com.openx" reason:message userInfo:userInfo];
+    return [NSException exceptionWithName:@"com.prebid" reason:message userInfo:userInfo];
 }
 
 

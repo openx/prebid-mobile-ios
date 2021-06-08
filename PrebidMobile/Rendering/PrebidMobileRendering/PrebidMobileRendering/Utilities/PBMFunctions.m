@@ -226,7 +226,7 @@ static NSString * const PBMPlistExt = @"plist";
     //getting the SDK bundle.
 
     NSBundle * mainBundle = [NSBundle bundleForClass:[self class]];
-    NSString * pathToResourcesBundle = [mainBundle pathForResource:@"OpenXSDKCoreResources" ofType:@"bundle"];
+    NSString * pathToResourcesBundle = [mainBundle pathForResource:@"PrebidSDKCoreResources" ofType:@"bundle"];
     if (pathToResourcesBundle) {
         return [NSBundle bundleWithPath:pathToResourcesBundle];
     }

@@ -255,7 +255,7 @@ static NSString * const PBMOpenMeasurementCustomRefId   = @"";
     BOOL sdkStarted = [[OMIDPrebidorgSDK sharedInstance] activate];
     
     if (!sdkStarted) {
-        PBMLogError(@"OpenXSDK can't initialize Open Measurement SDK with error: %@", [error localizedDescription]);
+        PBMLogError(@"Prebid SDK can't initialize Open Measurement SDK with error: %@", [error localizedDescription]);
     }
     
     self.partner = [[OMIDPrebidorgPartner alloc] initWithName:self.partnerName

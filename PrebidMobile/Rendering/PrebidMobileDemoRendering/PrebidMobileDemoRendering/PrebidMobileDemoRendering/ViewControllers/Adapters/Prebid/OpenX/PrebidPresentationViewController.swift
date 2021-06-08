@@ -37,9 +37,9 @@ class PrebidPresentationViewController: UIViewController {
                                                                                target: self,
                                                                                action: #selector(backAction))
             
-            let oxbInterstitialController = PrebidInterstitialController(rootController: adapterVC!)
-            oxbInterstitialController.prebidConfigId = prebidConfigId
-            adapterVC?.setup(adapter: oxbInterstitialController)
+            let interstitialController = PrebidInterstitialController(rootController: adapterVC!)
+            interstitialController.prebidConfigId = prebidConfigId
+            adapterVC?.setup(adapter: interstitialController)
             
             navigationVC = UINavigationController(rootViewController: adapterVC!)
             navigationVC?.isNavigationBarHidden = false

@@ -92,7 +92,6 @@ class PrebidBannerUITest: RepeatedUITestCase {
      which shows either normal banner (when the prebid server returns a bid)
      or just an HTML-banner with the text "No Bids Banner"
      It runs with the 'random no bids' mock-server mode:
-     https://github.com/openx/mobile-mock-server#set-random-no-bids
      */
     func testRandomNoBidsMoPub() {
         repeatTesting(times: 7) {

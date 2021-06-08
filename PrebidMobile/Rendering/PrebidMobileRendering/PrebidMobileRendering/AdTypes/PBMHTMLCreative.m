@@ -122,7 +122,6 @@
     }
     
     //check if we receive vast data instead of banner
-    //https://openxtechinc.atlassian.net/browse/MOBILE-5783
     if (html && [self hasVastTag:html]) {
         [self onResolutionFailed:[PBMError errorWithDescription:@"Wrong data format (VAST) detected for display ad request"]];
         return;

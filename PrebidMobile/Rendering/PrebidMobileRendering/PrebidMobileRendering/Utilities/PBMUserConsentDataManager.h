@@ -32,9 +32,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, PBMIABConsentSubjectToGDPR) {
  Platform (CMP) is responsible for storing user consent applicability and data
  in @c NSUserDefaults. All advertising SDKs are to query this data regularly for
  updates and pass that data downstream and act accordingly.
-
- This class adds an observer to user defaults and passes consent related data
- to OpenX servers where usage determination is handled.
  */
 @interface PBMUserConsentDataManager : NSObject
 

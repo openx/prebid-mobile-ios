@@ -31,7 +31,7 @@ framework module PrebidMobileRendering {
     // PBMCacheRenderers
     header "PBMDisplayView.h"
     
-    // OXB Integration GAM
+    // Integration GAM
     
     header "PBMPrimaryAdRequesterProtocol.h"
         

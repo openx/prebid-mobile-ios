@@ -108,7 +108,7 @@ NS_ASSUME_NONNULL_BEGIN
 //4) ORMMA
 //5) MRAID-2
 //6) MRAID-3
-//Note: OpenXSDKCore supports MRAID 1 and MRAID 2
+//Note: SDK supports MRAID 1 and MRAID 2
 //Also note that since this is not settable by pub, we can use [Int] instead of NSNumber
 @property (nonatomic, copy) NSArray<NSNumber *> *api;
 

@@ -24,7 +24,7 @@
 @implementation UIView (PBMExtensions)
 
 
-#pragma mark - OxmExtensions
+#pragma mark - Extensions
 
 - (void)PBMAddFillSuperviewConstraints {
     if (!self.superview) {

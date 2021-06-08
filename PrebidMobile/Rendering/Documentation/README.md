@@ -1,13 +1,11 @@
 # Prebid Rendering Module iOS
-The current SDK version is **x.x.x**.
-Go to [release notes]() for all SDK versions.
 
 
 ## Quick Start
 
 #### CocoaPods integration
 
-To download and integrate the SDK into your project using CocoaPods, add the following line to your project’s podfile:
+To download and integrate the Rendering module into your project using CocoaPods, add the following line to your project’s podfile:
 
 ```
 pod 'prebid-mobile-sdk-rendering'
@@ -27,7 +25,7 @@ pod 'prebid-mobile-sdk-mopub-adapters'
 
 For the overview of the In-App Bidding technology, see [Getting started with In-App Bidding](info/ios-in-app-bidding-getting-started.md).
 
-Here are key capabilities of the iOS Rendering Module:
+Here are the key capabilities of the iOS Rendering Module:
 
 -   **Integration Scenarios**
     - [Pure In-App Bidding](info/integration-prebid/ios-in-app-bidding-pb-info.md)

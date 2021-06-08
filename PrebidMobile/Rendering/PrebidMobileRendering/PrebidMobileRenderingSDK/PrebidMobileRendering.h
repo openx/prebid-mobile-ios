@@ -1,4 +1,4 @@
-//OpenXApolloSDK Umbrella Header
+// PrebidRendering Module Umbrella Header
 
 #import <UIKit/UIKit.h>
 

@@ -253,7 +253,7 @@ public class NativeAd: NSObject {
         self.init(nativeAdMarkup: nativeAdMarkup,
                   application: UIApplication.shared,
                   measurementWrapper: PBMOpenMeasurementWrapper.shared,
-                  serverConnection: PBMServerConnection.singleton(),
+                  serverConnection: PBMServerConnection.shared,
                   sdkConfiguration: PrebidRenderingConfig.shared)
     }
 

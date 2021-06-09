@@ -47,15 +47,15 @@ static NSString *PBMInternalIDKey = @"PBMConnectionID";
 static NSString *PBMIsPBMRequestKey = @"PBMIsPBMRequest";
 
 #pragma mark - Class properties
-+ (instancetype)singleton {
-    static PBMServerConnection *singleton = nil;
++ (nonnull instancetype)shared {
+    static PBMServerConnection *shared = nil;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        singleton = [PBMServerConnection new];
+        shared = [[PBMServerConnection alloc] init];
     });
 
-    return singleton;
+    return shared;
 }
 
 + (NSString *)userAgentHeaderKey {

@@ -82,7 +82,7 @@ public class PrebidRenderingConfig : NSObject {
     }
     
     @objc public static func initializeRenderingModule() {
-        PBMServerConnection.singleton()
+        let _ = PBMServerConnection.shared
         let _ = PBMLocationManager.shared
         let _ = PBMUserConsentDataManager.shared
         PBMOpenMeasurementWrapper.shared.initializeJSLib(with: PBMFunctions.bundleForSDK())

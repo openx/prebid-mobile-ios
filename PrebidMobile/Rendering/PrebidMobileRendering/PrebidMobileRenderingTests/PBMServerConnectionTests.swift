@@ -39,10 +39,10 @@ class PBMServerConnectionTest : XCTestCase {
     }
     
     func testSingletonCreation() {
-        let serverConnectionSingleton = PBMServerConnection.singleton()
+        let serverConnectionSingleton = PBMServerConnection.shared
         XCTAssertNotNil(serverConnectionSingleton)
         
-        XCTAssert(serverConnectionSingleton === PBMServerConnection.singleton())
+        XCTAssert(serverConnectionSingleton === PBMServerConnection.shared)
 
         let serverConnectionInstance = PBMServerConnection()
         XCTAssert(serverConnectionSingleton !== serverConnectionInstance)

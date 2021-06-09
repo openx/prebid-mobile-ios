@@ -6,15 +6,53 @@ The general integration scenario requires these steps from publishers:
 
 1. Prepare the ad layout.
 2. Create Native Ad Unit.
-3. Configure the Native Ad unit using [NativeAdConfiguration](../native/ios-native-ad-configuration.md).
-    * Provide the list of **[Native Assets](../ios-in-app-bidding-native-guidelines-info.md#components)** representing the ad's structure.
+3. Configure the Native Ad unit using [NativeAdConfiguration](../../info-modules/native/in-app-bidding-native-ad-configuration.md).
+    * Provide the list of **[Native Assets](../../info-modules/in-app-bidding-native-guidelines-info.md#components)** representing the ad's structure.
     * Tune other general properties of the ad.
 4. Make a bid request.
 5. Extract NativeAd using `NativeUtils.findNativeAd`
 7. Bind the data from the native ad with the layout.
 
+
 ``` swift
-TODO
+    func loadAd() {
+        guard let nativeAdConfig = nativeAdConfig else {
+            return
+        }
+        adUnit = NativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        
+        if let adUnitContext = AppConfiguration.shared.adUnitContext {
+            for dataPair in adUnitContext {
+                adUnit?.addContextData(dataPair.value, forKey: dataPair.key)
+            }
+        }
+        
+        adUnit?.fetchDemand { [weak self] demandResponseInfo in
+            guard let self = self,
+                  demandResponseInfo.fetchDemandResult == .ok else {
+                return
+            }
+            
+            demandResponseInfo.getNativeAd { [weak self] nativeAd in
+                guard let self = self,
+                      let nativeAd = nativeAd else {
+                    return
+                }
+                                
+                self?.renderNativeAd(nativeAd)
+
+                self.theNativeAd = nativeAd // Note: RETAIN! or the tracking will not occur!
+                nativeAd.trackingDelegate = self
+                nativeAd.uiDelegate = self
+                
+                if let _ = nativeAd.videoAd?.mediaData {
+                    self.nativeAdViewBox?.mediaViewDelegate = self
+                    self.setupMediaPlaybackTrackers(isVisible: true)
+                }
+            }
+        }
+    }
+}
 ```
 
 ## Native Styles

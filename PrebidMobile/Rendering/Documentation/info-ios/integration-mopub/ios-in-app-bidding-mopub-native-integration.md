@@ -2,13 +2,91 @@
 
 ## Native Ads
 
-TODO Add content
+There are two ways to integrate Native ads with MoPub:
+
+ - using custom native ad renderer from MoPub adapters
+ - bind the UI components with data from the winning bid manualy in the app
+
+### Antive Ad Renderer
+
+The integration with native ad renere is the same as wi any other adpater. See the [MoPub docs](https://developers.mopub.com/publishers/mediation/integrate-android/#set-up-ad-renderers-for-native-ads) for the details. 
+
+### Manual binding
+
+Integration Example: 
+
+```swift
+
+    func loadAd() {
+        guard let nativeAdConfig = nativeAdConfig, let adRenderingViewClass = adRenderingViewClass else {
+            return
+        }
+        
+        adUnit = MoPubNativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+        if let adUnitContext = AppConfiguration.shared.adUnitContext {
+            for dataPair in adUnitContext {
+                adUnit?.addContextData(dataPair.value, forKey: dataPair.key)
+            }
+        }
+        
+        let targeting = MPNativeAdRequestTargeting()
+        
+        adUnit?.fetchDemand(with: targeting!) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+                        
+            let settings = MPStaticNativeAdRendererSettings();
+            settings.renderingViewClass = adRenderingViewClass
+            let prebidConfig = PrebidMoPubNativeAdRenderer.rendererConfiguration(with: settings);
+            let mopubConfig = MPStaticNativeAdRenderer.rendererConfiguration(with: settings);
+            
+            
+            PrebidMoPubAdaptersUtils.shared.prepareAdObject(targeting!)
+            
+            let adRequest = MPNativeAdRequest.init(adUnitIdentifier: self.moPubAdUnitId, rendererConfigurations: [prebidConfig, mopubConfig!])
+            adRequest?.targeting = targeting
+            
+            adRequest?.start { [weak self] request, response , error in
+                guard let self = self else {
+                    return
+                }
+                
+                guard error == nil else {
+                    return
+                }
+                
+                guard let moPubNativeAd = response else {
+                    return
+                }
+                                
+                let nativeAdDetectionListener = NativeAdDetectionListener { [weak self] nativeAd in
+                    guard let self = self else {
+                        return
+                    }
+                    self.setupPrebidNativeAd(nativeAd)
+                } onPrimaryAdWin: { [weak self] in
+                    guard let self = self else {
+                        return
+                    }
+                    self.setupMoPubNativeAd(moPubNativeAd)
+                } onNativeAdInvalid: { [weak self] error in
+                    self?.nativeAdInvalidButton.isEnabled = true
+                }
+                
+                PrebidMoPubAdaptersUtils.shared.find(nativeAd: moPubNativeAd,
+                                       nativeAdDetectionListener: nativeAdDetectionListener)
+            }
+        }
+    }
+
+```
 
 ## Native Styles 
 
-[See MoPub Integration page](../integration-mopub/ios-in-app-bidding-mopub-info.md) for more info about MoPub order setup and Adapter integration.
+The Native Styles ads are integrated with Baner API.
 
-To display an ad you need to implement these easy steps:
+Integration Example:
 
 ``` swift
 // 1. Create a MoPub AdView
@@ -16,7 +94,7 @@ banner = MPAdView(adUnitId: MOPUB_AD_UNIT_ID)
 banner.delegate = self
 
 // 2. Create an Prebid Ad Unit
-adUnit = MoPubBannerAdUnit(configId: CONFIG_ID, size: adSize)
+adUnit = MoPubBannerAdUnit(configID: CONFIG_ID, size: adSize)
 
 // 3. Provide NativeAdConfiguration
 adUnit.nativeAdConfig = NativeAdConfiguration(testConfigWithAssets: assets)
@@ -38,7 +116,7 @@ You have to create and place MoPub's Ad View into the app page.
 
 Create the **MoPubBannerAdUnit** object with parameters:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **size** - the size of the ad unit which will be used in the bid request.
 
 
@@ -87,7 +165,7 @@ let assets = [
 ]
 ```
 
-See more NativeAdConfiguration options [here](../native/ios-native-ad-configuration.md).
+See the full description of NativeAdConfiguration options [here](../../info-modules/native/in-app-bidding-native-ad-configuration.md).
 
 ### Step 4: Fetch Demand
 

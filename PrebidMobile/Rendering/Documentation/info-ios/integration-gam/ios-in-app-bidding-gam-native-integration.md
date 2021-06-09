@@ -6,12 +6,12 @@ The general integration scenario requires these steps from publishers:
 
 1. Prepare the ad layout.
 2. Create Native Ad Unit and appropriate GAM ad loader.
-3. Configure the Native Ad unit using [NativeAdConfiguration](../native/ios-native-ad-configuration.md).
-    * Provide the list of **[Native Assets](../ios-in-app-bidding-native-guidelines-info.md#components)** representing the ad's structure.
+3. Configure the Native Ad unit using [NativeAdConfiguration](../../info-modules/native/in-app-bidding-native-ad-configuration.md).
+    * Provide the list of **[Native Assets](../../info-modules/in-app-bidding-native-guidelines-info.md#components)** representing the ad's structure.
     * Tune other general properties of the ad.
 4. Make a bid request.
-5. Prepare publisherAdRequest using `GamUtils.prepare`
-6. After receiving response from GAM  - check if prebid has won and find native ad using `GamUtils`
+5. Prepare publisherAdRequest using `GAMUtils.shared.prepareRequest`
+6. After receiving response from GAM  - check if prebid has won and find native ad using `GAMUtils`
 7. Bind the winner data from the native ad response with the layout.
 
 ``` swift
@@ -19,7 +19,7 @@ func loadAd() {
     guard let nativeAdConfig = nativeAdConfig else {
         return
     }
-    adUnit = NativeAdUnit(configID: prebidConfigId, nativeAdConfiguration: nativeAdConfig)
+    adUnit = NativeAdUnit(configID: prebidconfigID, nativeAdConfiguration: nativeAdConfig)
     
     if let adUnitContext = AppConfiguration.shared.adUnitContext {
         for dataPair in adUnitContext {
@@ -31,6 +31,7 @@ func loadAd() {
         guard let self = self else {
             return
         }
+        
         let dfpRequest = GAMRequest()
         GAMUtils.shared.prepareRequest(dfpRequest, demandResponseInfo: demandResponseInfo)
         
@@ -38,32 +39,71 @@ func loadAd() {
                                     rootViewController: self.rootController,
                                     adTypes: self.adTypes,
                                     options: [])
+                                    
         self.adLoader?.delegate = self
         self.adLoader?.load(dfpRequest)
     }
 }
 ```
 
-Example of handling NativeAd response (the same applies to Custom):
+Example of handling NativeAd response (the same applies to Custom Native Ads):
 
 ``` swift
-GAMUtils.shared.findNativeAd(for: nativeAd, nativeAdDetectionListener: nativeAdDetectionListener)
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
+        unifiedAdRequestSuccessful.isEnabled = true
+        customTemplateAd = nil
+        
+        let nativeAdDetectionListener = NativeAdDetectionListener { [weak self] prebidNativeAd in
+            guard let self = self else {
+                return
+            }
+            self.nativeAdLoadedButton.isEnabled = true
+            self.nativeAdViewBox.renderNativeAd(prebidNativeAd)
+            self.nativeAdViewBox.registerViews(prebidNativeAd)
+            self.theNativeAd = prebidNativeAd // Note: RETAIN! or the tracking will not occur!
+            prebidNativeAd.trackingDelegate = self
+            prebidNativeAd.uiDelegate = self
+        } onPrimaryAdWin: { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.unifiedAdWinButton.isEnabled = true
+            
+            self.nativeAdView?.removeFromSuperview()
+            
+            guard
+                let nibObjects = Bundle.main.loadNibNamed("UnifiedNativeAdView", owner: nil, options: nil),
+                let adView = nibObjects.first as? UnifiedNativeAdView
+            else {
+                assert(false, "Could not load nib file for adView")
+            }
+            
+            self.setAdView(adView)
+            
+            adView.renderUnifiedNativeAd(nativeAd)
+        } onNativeAdInvalid: { [weak self] error in
+            self?.nativeAdInvalidButton.isEnabled = true
+        }
+
+        GAMUtils.shared.findNativeAd(for: nativeAd,
+                                     nativeAdDetectionListener: nativeAdDetectionListener)
+    }
 ```
 
 ## Native Styles 
 
-[See Google Ad Manager Integration page](ios-in-app-bidding-gam-info.md) for more info about GAM order setup and GAM Event Handler integration.
+The Native Styles ads are integrated with Baner API. 
 
-To integrate a banner ad you need to implement three easy steps:
+Integration Example:
 
 ``` swift
 // 1. Create an Event Handler
-let eventHandler = PBMBannerEventHandler(adUnitID: GAM_AD_UNIT_ID,
+let eventHandler = BannerEventHandler(adUnitID: GAM_AD_UNIT_ID,
                                             validGADAdSizes: [NSValueFromGADAdSize(adSize)])
        
 // 2. Create a Banner View
-let banner = BannerView(configId: CONFIG_ID,
-                           eventHandler: eventHandler)
+let banner = BannerView(configID: CONFIG_ID,
+                        eventHandler: eventHandler)
 banner.delegate = self
 
 // 3. Setup Native Ad Configuration
@@ -73,12 +113,7 @@ banner.nativeAdConfig = NativeAdConfiguration(testConfigWithAssets: assets)
 banner.loadAd()
 ```
 
-
 #### Step 1: Create Event Handler
-
-GAM's event handlers are special containers that wrap GAM Ad Views and help to manage collaboration between GAM and Prebid views.
-
-**Important:** you should create and use a unique event handler for each ad view.
 
 To create the event handler you should provide a GAM Ad Unit Id and the list of available sizes for this ad unit.
 
@@ -87,14 +122,14 @@ To create the event handler you should provide a GAM Ad Unit Id and the list of 
 
 **BannerView** - is a view that will display the particular ad. It should be added to the UI. To create it you should provide:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **eventHandler** - the instance of the banner event handler
 
 Also, you should add the instance of `BannerView` to the UI.
 
 #### Step 3: Create and provide Native Assets
 
-The make a proper bid request publishers should provide the needed assets to the NativeAdConfiguration class. Each asset describes the UI element of the ad according to the [OpenRTB standarts](https://www.iab.com/wp-content/uploads/2018/03/OpenRTB-Native-Ads-Specification-Final-1.2.pdf).
+To make a proper bid request publishers should provide the needed assets to the NativeAdConfiguration class. Each asset describes the UI element of the ad according to the [OpenRTB standarts](https://www.iab.com/wp-content/uploads/2018/03/OpenRTB-Native-Ads-Specification-Final-1.2.pdf).
 
 ``` swift
 let assets = [
@@ -137,8 +172,8 @@ let assets = [
 ]
 ```
 
-See the full description of NativeAdConfiguration options [here](../native/ios-native-ad-configuration.md).
+See the full description of NativeAdConfiguration options [here](../../info-modules/native/in-app-bidding-native-ad-configuration.md).
 
 #### Step 4: Load the Ad
 
-Simply call the `loadAd()` method to start [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow.
+Call the `loadAd()` method in order to make bid request and render the winning bid.

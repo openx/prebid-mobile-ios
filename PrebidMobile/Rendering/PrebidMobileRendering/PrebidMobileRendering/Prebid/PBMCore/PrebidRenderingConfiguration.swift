@@ -84,7 +84,7 @@ public class PrebidRenderingConfig : NSObject {
     @objc public static func initializeRenderingModule() {
         PBMServerConnection.singleton()
         let _ = PBMLocationManager.shared
-        PBMUserConsentDataManager.singleton()
+        let _ = PBMUserConsentDataManager.shared
         PBMOpenMeasurementWrapper.shared.initializeJSLib(with: PBMFunctions.bundleForSDK())
         
         PBMLog.info("prebid-mobile-sdk-rendering \(PBMFunctions.sdkVersion()) Initialized")

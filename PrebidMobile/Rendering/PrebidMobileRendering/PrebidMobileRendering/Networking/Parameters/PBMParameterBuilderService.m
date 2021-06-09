@@ -54,7 +54,7 @@
                                        reachability:[PBMReachability reachabilityForInternetConnection]
                                    sdkConfiguration:PrebidRenderingConfig.shared
                                          sdkVersion:[PBMFunctions sdkVersion]
-                              pbmUserConsentManager:[PBMUserConsentDataManager singleton]
+                              pbmUserConsentManager:PBMUserConsentDataManager.shared
                                           targeting:PrebidRenderingTargeting.shared
                              extraParameterBuilders:extraParameterBuilders];
 }

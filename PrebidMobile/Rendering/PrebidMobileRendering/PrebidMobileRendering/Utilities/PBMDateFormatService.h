@@ -18,7 +18,7 @@
 NS_SWIFT_NAME(DateFormatService)
 @interface PBMDateFormatService : NSObject
 
-+ (instancetype)singleton;
+@property (class, readonly, nonnull) PBMDateFormatService *shared;
 
 - (NSDate *)formatISO8601ForString:(NSString *)strDate
     NS_SWIFT_NAME(formatISO8601(strDate:));

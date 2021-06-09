@@ -18,7 +18,7 @@
 /**
  * Service for retrieving PrebidMobile SDK's User-Agent string.
  *
- * The `singleton` class property should be used rather than instantiating directly.
+ * The `shared` class property should be used rather than instantiating directly.
  */
 @interface PBMUserAgentService : NSObject
 

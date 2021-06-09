@@ -9,15 +9,29 @@ The general integration scenario requires these steps from publishers:
 1. Prepare the ad layout:
     * HTML and CSS for the Native Styles format.
     * Native components for the Unified Ads format.
-1. Configure the Native Ad using [NativeAdConfiguration](native/ios-native-ad-configuration.md).
+1. Configure the Native Ad using [NativeAdConfiguration](native/in-app-bidding-native-ad-configuration.md).
     * Provide the list of **[Native Assets](#components)** representing the ad's structure.
     * Tune other general properties of the ad.
 1. Make a bid request.
-1. **OPTIONAL** Bind the data from the bid response with the layout, if it is needed for particular integration.
+1. **OPTIONAL** Bind the data from the bid response with the layout, if it is needed for the particular integration.
+
+### Unified Native Ads
+
+The general integration scenario requires these steps from publishers:
+
+1. Prepare the ad layout using the native components in the codebase of the app.
+2. Create Native Ad Unit.
+3. Configure the Native Ad unit using [NativeAdConfiguration](native/in-app-bidding-native-ad-configuration.md).
+    * Provide the list of **[Native Assets](#components)** representing the ad's structure.
+    * Tune other general properties of the ad.
+4. Make a bid request.
+5. Find native ad using `GAMUtils.shared.findNativeAd` or `MoPubUtils.findNativeAd`.
+6. Bind the data from the native ad response with the layout.
+
 
 ### Native Styles
 
-Prebid Rendering Module supports the prebid's approach for rendering [native ads](https://docs.prebid.org/prebid-mobile/pbm-api/ios/pbm-nativeadunit-ios.html). It is similar to the Google's [Native Styles](#native-styles) ad format. In this case publisher should preare the layout of the ad using HTML and CSS and add the universal creative to the ad code.
+Prebid Rendering Module supports the original prebid's approach for rendering [native ads](https://docs.prebid.org/prebid-mobile/pbm-api/ios/pbm-nativeadunit-ios.html). It is similar to the Google's [Native Styles](#native-styles) ad format. In this case publisher should preare the layout of the ad using HTML and CSS and add the universal creative to the ad code.
 
 <img src="res/Native-Styles-Primary-Ad-Server.png" alt="Pipeline Screenshot" align="center">
 
@@ -42,22 +56,6 @@ In the case of integration of Native Styles ads without Primary Ad Server publis
 3. The received creative will be rendered in the Web View of Prebid Rendering Module.
  
 
-### Unified Native Ads
-
-The general integration scenario requires these steps from publishers:
-
-1. Prepare the ad layout.
-2. Create Native Ad Unit.
-3. Configure the Native Ad unit using [NativeAdConfiguration](native/ios-native-ad-configuration.md).
-    * Provide the list of **[Native Assets](#components)** representing the ad's structure.
-    * Tune other general properties of the ad.
-4. Make a bid request.
-5. Find native ad using `NativeUtils.findNativeAd`.
-6. Bind the data from the native ad response with the layout.
-
-``` swift
-```
-
 ## Components
 
 Prebid Rendering Module supports all Native Ad components proclaimed by the OpenRTB specification: **title**, **image**, **video**, **data**.
@@ -70,12 +68,3 @@ We strongly recommend to follow the industry best practices and requirements, es
 * [MoPub Guidelines](https://developers.mopub.com/publishers/best-practices/native-ads/)
 
 While preparing the layout for Native Ads, account for the **AdChoices** button placed at the **top right corner** with a size of **20x20** points.
-
-## Integration 
-
-Prebid Rendering Module allows to integrate native ads into all supported scenarios:
-
-* [Google Ad Manager](integration-gam/ios-in-app-bidding-gam-native-integration.md)
-* [MoPub](integration-mopub/ios-in-app-bidding-mopub-native-integration.md)
-* [Pure In-App Bidding](integration-prebid/ios-in-app-bidding-prebid-native-integration.md)
- 

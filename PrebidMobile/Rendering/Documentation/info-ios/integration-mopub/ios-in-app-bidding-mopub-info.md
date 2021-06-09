@@ -27,16 +27,16 @@ Prebid Rendering Module provides ability to integrate header bidding for these a
 - Display Banner
 - Display Interstitial
 - Native
-- Native Styles`
+- Native Styles
 - Video Interstitial 
 - Rewarded Video
 
 They can be integrated using these API categories.
 
-- [**Banner API**](#banner-api) - for **Display Banner**
-- [**Interstitial API**](#interstitial-api) - for **Display** and **Video** Interstitials
-- [**Rewarded API**](#rewarded-api) - for **Rewarded Video**
-- [**Native API**](ios-in-app-bidding-mopub-native-integration.md)
+- [**Banner API**](#banner-api) - for *Display Banner*
+- [**Interstitial API**](#interstitial-api) - for *Display* and *Video* Interstitials
+- [**Rewarded API**](#rewarded-api) - for *Rewarded Video*
+- [**Native API**](ios-in-app-bidding-mopub-native-integration.md) - for *Native* and *Native Styles* ads
 
 ## Banner API
 
@@ -48,7 +48,7 @@ banner = MPAdView(adUnitId: MOPUB_AD_UNIT_ID)
 banner.delegate = self
 
 // 2. Create an In-App Bidding Ad Unit
-adUnit = MoPubBannerAdUnit(configId: CONFIG_ID, size: adSize)
+adUnit = MoPubBannerAdUnit(configID: CONFIG_ID, size: adSize)
     
 // 3. Run an Header Bidding auction on Prebid
 adUnit.fetchDemand(with: banner!) { [weak self] result in
@@ -66,7 +66,7 @@ In the scenario with MoPub integration the MoPub's SDK plays the central role in
 
 Create the **MoPubBannerAdUnit** object with parameters:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **size** - the size of the ad unit which will be used in the bid request.
 
 #### Step 3: Fetch Demand
@@ -96,7 +96,7 @@ interstitialController = MPInterstitialAdController.init(forAdUnitId: MOPUB_AD_U
 interstitialController.delegate = self
 
 // 2. Create an In-App Bidding Interstitial Ad Unit
-interstitialAdUnit = MoPubInterstitialAdUnit(configId: CONFIG_ID,
+interstitialAdUnit = MoPubInterstitialAdUnit(configID: CONFIG_ID,
                                                 minSizePercentage: CGSize(width: 30, height: 30))
     
 // 3. Run an Header Bidding auction on Prebid
@@ -125,7 +125,7 @@ interstitialController = MPInterstitialAdController.init(forAdUnitId: MOPUB_AD_U
 interstitialController.delegate = self
 
 // 2. Create an In-App Bidding Interstitial Ad Unit
-interstitialAdUnit = MoPubInterstitialAdUnit(configId: CONFIG_ID,
+interstitialAdUnit = MoPubInterstitialAdUnit(configID: CONFIG_ID,
                                                 minSizePercentage: CGSize(width: 30, height: 30))
 interstitialAdUnit.adFormat = .video
     
@@ -151,7 +151,7 @@ In the scenario with MoPub integration the MoPub SDK plays the central role in m
 
 Create the **MoPubInterstitialAdUnit** object with parameters:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 
 #### Step 3: Fetch Demand
 
@@ -178,7 +178,7 @@ To display an ad you need to implement these easy steps:
 
 ``` swift
 // 1. Create an In-App Bidding Interstitial Ad Unit
-rewardedAdUnit = MoPubRewardedAdUnit(configId: CONFIG_ID)
+rewardedAdUnit = MoPubRewardedAdUnit(configID: CONFIG_ID)
     
 // 2. Run an Header Bidding auction on Prebid
 let bidInfoWrapper = MoPubBidInfoWrapper()
@@ -215,7 +215,7 @@ if MPRewardedVideo.hasAdAvailable(forAdUnitID: MOPUB_AD_UNIT_ID) {
 
 Create the **RewardedAdUnit** object with parameter:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 
 #### Step 2: Fetch Demand
 

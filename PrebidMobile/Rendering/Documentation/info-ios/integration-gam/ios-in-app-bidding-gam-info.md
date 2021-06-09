@@ -29,7 +29,7 @@ Prebid Rendering Module supports these ad formats:
 - Rewarded Video
 - Outstream Video
 
-They can be integrated using these API categories.
+They can be integrated using these API categories:
 
 - [**Banner API**](#banner-api) - for *Display Banner* and *Outstream Video*
 - [**Interstitial API**](#interstitial-api) - for *Display* and *Video* Interstitials
@@ -43,12 +43,13 @@ Integration example:
 
 ``` swift
 // 1. Create an Event Handler
-let eventHandler = PBMBannerEventHandler(adUnitID: GAM_AD_UNIT_ID,
-                                            validGADAdSizes: [NSValueFromGADAdSize(adSize)])
+let eventHandler = GAMBannerEventHandler(adUnitID: GAM_AD_UNIT_ID,
+                                         validGADAdSizes: [NSValueFromGADAdSize(adSize)])
        
 // 2. Create a Banner View
-let banner = BannerView(configId: CONFIG_ID,
-                           eventHandler: eventHandler)
+let banner = BannerView(configID: CONFIG_ID,
+                        eventHandler: eventHandler)
+
 banner.delegate = self
 
 addBannerToUI(banner: banner)
@@ -69,7 +70,7 @@ To create the event handler you should provide:
 
 **BannerView** - is a view that will display the particular ad. It should be added to the UI. To create it you should provide:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **eventHandler** - the instance of the banner event handler
 
 Also, you should add the instance of `BannerView` to the UI.
@@ -101,9 +102,9 @@ Integration example:
 let eventHandler = GAMInterstitialEventHandler(adUnitID: GAM_AD_UNIT_ID)
     
 // 2. Create Interstitial Ad Unit
-interstitial = InterstitialAdUnit(configId: CONFIG_ID,
-                                     minSizePercentage: CGSize(width: 30, height: 30),
-                                     eventHandler: eventHandler)
+interstitial = InterstitialAdUnit(configID: CONFIG_ID,
+                                  minSizePercentage: CGSize(width: 30, height: 30),
+                                  eventHandler: eventHandler)
     
 interstitial.delegate = self
     
@@ -129,8 +130,8 @@ The way of displaying **Video Interstitial Ad** is almost the same with two diff
 let eventHandler = GAMInterstitialEventHandler(adUnitID: GAM_AD_UNIT_ID)
     
 // 2. Create Interstitial Ad Unit
-interstitial = InterstitialAdUnit(configId: CONFIG_ID,
-                                     eventHandler: eventHandler)
+interstitial = InterstitialAdUnit(configID: CONFIG_ID,
+                                  eventHandler: eventHandler)
     
 interstitial.adFormat = .video
 interstitial.delegate = self
@@ -155,7 +156,7 @@ To create an event handler you should provide a **GAM Ad Unit**.
 
 Initialize the Interstitial Ad Unit with properties:
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **minSizePercentage** - specifies the minimum width and height percent an ad may occupy of a device’s real estate.
 - **eventHandler** - the instance of the interstitial event handler
 
@@ -172,7 +173,7 @@ Wait until the ad will be loaded and present it to the user in any suitable time
 
 
 ``` swift
-// MARK: PBMInterstitialAdUnitDelegate
+// MARK: InterstitialAdUnitDelegate
     
 func interstitialDidReceiveAd(_ interstitial: InterstitialAdUnit) {
     // Now the ad is ready for display
@@ -188,7 +189,7 @@ Integration example:
 let eventHandler = GAMRewardedEventHandler(adUnitID: GAM_AD_UNIT_ID)
     
 // 2. Create an Ad Unit
-rewardedAd = RewardedAdUnit(configId: CONFIG_ID,
+rewardedAd = RewardedAdUnit(configID: CONFIG_ID,
                                eventHandler: eventHandler)
     
 rewardedAd.delegate = self
@@ -208,7 +209,7 @@ if rewardedAd.isReady {
 The way of displaying the **Rewarded Ad** is totally the same as for the Interstitial Ad. 
 
 
-To be notified when user earns a reward - implement the method of `PBMRewardedAdUnitDelegate`:
+To be notified when user earns a reward - implement the method of `RewardedAdUnitDelegate`:
 
 ``` swift
 - (void)rewardedAdUserDidEarnReward:(RewardedAdUnit *)rewardedAd;
@@ -232,7 +233,7 @@ To create an event handler you should provide a **GAM Ad Unit ID**.
 Create the **RewardedAdUnit** object with parameters:
 
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **eventHandler** - the instance of rewarded event handler
 
 #### Step 3: Load the Ad
@@ -246,7 +247,7 @@ Wait until the ad will be loaded and present it to the user in any suitable time
 
 
 ``` swift
-// MARK: PBMRewardedAdUnitDelegate
+// MARK: RewardedAdUnitDelegate
     
 func rewardedAdDidReceiveAd(_ rewardedAd: RewardedAdUnit) {
     // Now the ad is ready for display

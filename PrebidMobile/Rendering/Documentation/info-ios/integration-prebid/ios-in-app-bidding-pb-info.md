@@ -21,13 +21,14 @@ Prebid Rendering Module provides ability to integrate  these ad formats:
 - Video Interstitial
 - Rewarded Video
 - Outstream Video
-- [Native](ios-in-app-bidding-prebid-native-integration.md)
+- Native
 
-However, the  Rendering Module provides only three kinds of API classes for these ads:
+They can be integrated using these API categories:
 
-- **Banner API** - for **Display Banner** 
-- **Interstitial API** - for **Display** and **Video** Interstitials
-- **Rewarded API** - for **Rewarded Video**
+- [**Banner API**](#banner-api) - for *Display Banner* and *Outstream Video*
+- [**Interstitial API**](#interstitial-api) - for *Display* and *Video* Interstitials
+- [**Rewarded API**](#rewarded-api) - for *Rewarded Video*
+- [**Native API**](ios-in-app-bidding-prebid-native-integration.md) - for *Native Ads*
 
 ### Banner API
 
@@ -36,8 +37,8 @@ Integration example:
 ``` swift
 // 1. Create an Ad View
 let banner = BannerView(frame: CGRect(origin: .zero, size: adSize),
-                           configId: CONFIG_ID,
-                           adSize: adSize)
+                        configID: CONFIG_ID,
+                        adSize: adSize)
     
 banner.delegate = self
     
@@ -50,7 +51,7 @@ banner.loadAd()
 Initialize the Banner Ad View with properties:
 
 - **frame** - the frame rectangle for the view
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **size** - the size of the ad unit which will be used in the bid request.
 
 #### Step 2: Load the Ad
@@ -74,8 +75,8 @@ Integration example:
 
 ``` swift
 // 1. Create an Interstitial Ad Unit
-interstitial = InterstitialAdUnit(configId: CONFIG_ID,
-                                     minSizePercentage: CGSize(width: 30, height: 30))
+interstitial = InterstitialAdUnit(configID: CONFIG_ID,
+                                  minSizePercentage: CGSize(width: 30, height: 30))
     
 interstitial.delegate = self
     
@@ -99,7 +100,7 @@ The way of displaying **Video Interstitial Ad** is almost the same with two diff
 ``` swift
 
 // 1. Create an Interstitial Ad Unit
-let interstitial = InterstitialAdUnit(configId: CONFIG_ID)
+let interstitial = InterstitialAdUnit(configID: CONFIG_ID)
     
 interstitial.adFormat = .video
 interstitial.delegate = self
@@ -122,7 +123,7 @@ if interstitial.isReady {
 Initialize the Interstitial Ad Unit with properties:
 
 
-- **configId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 - **minSizePercentage** - specifies the minimum width and height percent an ad may occupy of a device’s real estate.
 
 > **NOTE:** minSizePercentage - plays an important role in a bidding process for display ads. If provided space is not enough demand partners won't respond with the bids.
@@ -151,7 +152,7 @@ Integration example:
 
 ``` swift
 // 1. Create an Ad Unit
-rewardedAd = RewardedAdUnit(configId: CONFIG_ID)
+rewardedAd = RewardedAdUnit(configID: CONFIG_ID)
 rewardedAd.delegate = self
     
 // 2. Load an Ad
@@ -170,7 +171,7 @@ if rewardedAd.isReady {
 
 Create the **RewardedAdUnit** object with parameter:
 
-- **adUnitId** - an ID of Stored Impression on the Prebid server
+- **configID** - an ID of Stored Impression on the Prebid server
 
 #### Step 2: Load the Ad
 

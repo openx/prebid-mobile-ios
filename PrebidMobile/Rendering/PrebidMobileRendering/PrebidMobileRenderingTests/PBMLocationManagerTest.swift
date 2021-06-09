@@ -36,9 +36,9 @@ class PBMLocationManagerTest: XCTestCase {
     }
 
     func testSingletonCreation() {
-        let locationManagerSingleton = PBMLocationManager.singleton
+        let locationManagerSingleton = PBMLocationManager.shared
         XCTAssertNotNil(locationManagerSingleton)
-        XCTAssert(locationManagerSingleton === PBMLocationManager.singleton)
+        XCTAssert(locationManagerSingleton === PBMLocationManager.shared)
     }
     
     func testInitializationFromBackground() {
@@ -256,7 +256,7 @@ class PBMLocationManagerTest: XCTestCase {
     
     func testValidLocation() {
         let invalidLocation = CLLocation(latitude: 0, longitude: 0)
-        let locationManagerSingleton = PBMLocationManager.singleton
+        let locationManagerSingleton = PBMLocationManager.shared
         XCTAssertTrue(locationManagerSingleton.locationIsValid(location))
         XCTAssertFalse(locationManagerSingleton.locationIsValid(invalidLocation))
         XCTAssertFalse(locationManagerSingleton.locationIsValid(nil))

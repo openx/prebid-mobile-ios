@@ -66,8 +66,8 @@ public class PrebidRenderingConfig : NSObject {
 
     //If true, the SDK will periodically try to listen for location updates in order to request location-based ads.
     @objc public var locationUpdatesEnabled: Bool {
-        get { PBMLocationManager.singleton.locationUpdatesEnabled }
-        set { PBMLocationManager.singleton.locationUpdatesEnabled = newValue }
+        get { PBMLocationManager.shared.locationUpdatesEnabled }
+        set { PBMLocationManager.shared.locationUpdatesEnabled = newValue }
     }
     
     // MARK: - Public Methods
@@ -83,7 +83,7 @@ public class PrebidRenderingConfig : NSObject {
     
     @objc public static func initializeRenderingModule() {
         PBMServerConnection.singleton()
-        let _ = PBMLocationManager.singleton
+        let _ = PBMLocationManager.shared
         PBMUserConsentDataManager.singleton()
         PBMOpenMeasurementWrapper.shared.initializeJSLib(with: PBMFunctions.bundleForSDK())
         

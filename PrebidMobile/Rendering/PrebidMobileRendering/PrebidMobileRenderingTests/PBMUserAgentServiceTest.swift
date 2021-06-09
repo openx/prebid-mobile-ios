@@ -65,13 +65,13 @@ class PBMUserAgentServiceTest: XCTestCase {
         PBMUserAgentService.shared.sdkVersion = PBMFunctions.sdkVersion()
     }
 
-    func testSingletonCreation() {
-        let uaServiceSingleton = PBMUserAgentService.shared
-        XCTAssertNotNil(uaServiceSingleton)
-        XCTAssert(uaServiceSingleton === PBMUserAgentService.shared)
+    func testSharedCreation() {
+        let uaServiceShared = PBMUserAgentService.shared
+        XCTAssertNotNil(uaServiceShared)
+        XCTAssert(uaServiceShared === PBMUserAgentService.shared)
     }
 
-    func testSingletonSDKVersion() {
+    func testSharedSDKVersion() {
         let userAgentString = PBMUserAgentService.shared.getFullUserAgent()
         let didFindDefaultSDKVersion = userAgentString.PBMdoesMatch("PrebidMobileRendering/\(sdkVersion)")
         XCTAssert(didFindDefaultSDKVersion)

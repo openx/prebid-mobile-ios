@@ -38,14 +38,14 @@ class PBMServerConnectionTest : XCTestCase {
         self.responseHandledExpectation = nil
     }
     
-    func testSingletonCreation() {
-        let serverConnectionSingleton = PBMServerConnection.shared
-        XCTAssertNotNil(serverConnectionSingleton)
+    func testSharedCreation() {
+        let serverConnectionShared = PBMServerConnection.shared
+        XCTAssertNotNil(serverConnectionShared)
         
-        XCTAssert(serverConnectionSingleton === PBMServerConnection.shared)
+        XCTAssert(serverConnectionShared === PBMServerConnection.shared)
 
         let serverConnectionInstance = PBMServerConnection()
-        XCTAssert(serverConnectionSingleton !== serverConnectionInstance)
+        XCTAssert(serverConnectionShared !== serverConnectionInstance)
     }
     
     func testFireAndForget() {

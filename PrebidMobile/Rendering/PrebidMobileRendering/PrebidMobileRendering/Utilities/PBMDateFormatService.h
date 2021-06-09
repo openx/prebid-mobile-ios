@@ -20,7 +20,6 @@ NS_SWIFT_NAME(DateFormatService)
 
 @property (class, readonly, nonnull) PBMDateFormatService *shared;
 
-- (NSDate *)formatISO8601ForString:(NSString *)strDate
-    NS_SWIFT_NAME(formatISO8601(strDate:));
+- (NSDate * _Nullable)formatISO8601ForString:(NSString * _Nullable)strDate NS_SWIFT_NAME(formatISO8601(strDate:));
 
 @end

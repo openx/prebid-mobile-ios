@@ -79,13 +79,13 @@ class PBMSDKConfigurationTest: XCTestCase {
         XCTAssertFalse(sdkConfiguration.locationUpdatesEnabled)
     }
     
-    func testSingleton() {
+    func testShared() {
         let firstConfig = PrebidRenderingConfig.shared
         let newConfig = PrebidRenderingConfig.shared
         XCTAssertEqual(firstConfig, newConfig)
     }
     
-    func testResetSingleton() {
+    func testResetShared() {
         let firstConfig = PrebidRenderingConfig.shared
         firstConfig.accountID = "test"
         PrebidRenderingConfig.reset()

@@ -4,7 +4,7 @@
 
 ### CocoaPods integration
 
-To download and integrate the Rendering module into your project using CocoaPods, add the following line to your project’s podfile:
+To download and integrate the Rendering Module into your project using CocoaPods, add the following line to your project’s podfile:
 
 ```
 pod 'prebid-mobile-sdk-rendering'
@@ -45,11 +45,11 @@ Now you are ready to add ad units respectively to your integration scenario:
 
 ## Prebid Rendering Module Overview
 
-For the overview of Rendering Module integration approaces see the [In-App Bidding With Rendering Module](info-modules/in-app-bidding-overview.md) doc.
+For the overview of how Rendering Module works see the [In-App Bidding With Rendering Module](info-modules/in-app-bidding-overview.md) doc.
 
 Here are the key capabilities of the iOS Rendering Module:
 
-- **Support of these ad formats:**
+- **Support of the next ad formats:**
     -   Banner
     -   Display Interstitial
     -   Video Interstitial

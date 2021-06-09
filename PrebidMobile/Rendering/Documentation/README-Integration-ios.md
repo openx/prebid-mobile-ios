@@ -39,9 +39,9 @@ PrebidRenderingConfig.shared.bidServerHost = HOST
 
 Now you are ready to add ad units respectively to your integration scenario:
 
-- [Pure In-App Bidding](info/integration-prebid/ios-in-app-bidding-pb-info.md)
-- [Google Ad Manager](info/integration-gam/ios-in-app-bidding-gam-info.md)
-- [MoPub](info/integration-mopub/ios-in-app-bidding-mopub-info.md)
+- [Pure In-App Bidding](info-ios/integration-prebid/ios-in-app-bidding-pb-info.md)
+- [Google Ad Manager](info-ios/integration-gam/ios-in-app-bidding-gam-info.md)
+- [MoPub](info-ios/integration-mopub/ios-in-app-bidding-mopub-info.md)
 
 ## Prebid Rendering Module Overview
 
@@ -62,7 +62,7 @@ Here are the key capabilities of the iOS Rendering Module:
     user data, device data, and location data.
 -   **Privacy Regulation Compliance**. The In-App Bidding SDK meets **GDPR**, **CCPA**, **COPPA** requirements according to the IAB specifications.
 -   **App targeting campaigns**. With the [support of deeplink+](info-modules/in-app-bidding-deeplinkplus.md) SDK is able to manage the ads with premium UX for retargeting campaigns.
--    **Targeting**. Use [custom ad parameters](info/ios-sdk-parameters.md) to increase the chance to win an impression and to improve ad views' UX.
+-    **Targeting**. Use [custom ad parameters](info-ios/ios-sdk-parameters.md) to increase the chance to win an impression and to improve ad views' UX.
 -   **Tracking of render impression**. Prebid Rendering Module tracks [render impressions](info-modules/in-app-bidding-impression-tracking.md) according to the IAB Measurement Guidelines for all managed ads. Ads rendered by Primary Ad Server SDK track an impression beacon according to the internal algorithms.
 -   **Fast and seamless integration.**
 

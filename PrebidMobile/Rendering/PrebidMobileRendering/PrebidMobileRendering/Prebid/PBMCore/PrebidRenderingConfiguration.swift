@@ -54,14 +54,14 @@ public class PrebidRenderingConfig : NSObject {
 
     //Controls the verbosity of PrebidMobileRendering's internal logger. Options are (from most to least noisy) .info, .warn, .error and .none. Defaults to .info.
     @objc public var logLevel: PBMLogLevel {
-        get { PBMLog.singleton.logLevel }
-        set { PBMLog.singleton.logLevel = newValue }
+        get { PBMLog.shared.logLevel }
+        set { PBMLog.shared.logLevel = newValue }
     }
 
     //If set to true, the output of PrebidMobileRendering's internal logger is written to a text file. This can be helpful for debugging. Defaults to false.
     @objc public var debugLogFileEnabled: Bool {
-        get { PBMLog.singleton.logToFile }
-        set { PBMLog.singleton.logToFile = newValue }
+        get { PBMLog.shared.logToFile }
+        set { PBMLog.shared.logToFile = newValue }
     }
 
     //If true, the SDK will periodically try to listen for location updates in order to request location-based ads.

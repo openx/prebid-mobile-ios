@@ -9,7 +9,7 @@
 
 ## Mobile API
 
-The [Integration](../../README.md) of Pure In-App Bidding is similar to the integration of any other regular Ad SDK.
+The Pure In-App Bidding integration is similar to the integration of any other regular Ad SDK.
 
 <img src="../res/Pure-In-App-Bidding-Integration.png" alt="Pipeline Screenshot" align="center">
 
@@ -21,7 +21,7 @@ Prebid Rendering Module provides ability to integrate  these ad formats:
 - Video Interstitial
 - Rewarded Video
 - Outstream Video
-- [Native Styles](ios-in-app-bidding-prebid-native-integration.md)
+- [Native](ios-in-app-bidding-prebid-native-integration.md)
 
 However, the  Rendering Module provides only three kinds of API classes for these ads:
 
@@ -31,8 +31,7 @@ However, the  Rendering Module provides only three kinds of API classes for thes
 
 ### Banner API
 
-To display an ad you need to implement three easy steps:
-
+Integration example:
 
 ``` swift
 // 1. Create an Ad View
@@ -48,7 +47,7 @@ banner.loadAd()
 
 #### Step 1: Create Ad View
 
-In the Pure In-App Bidding scenario you just need to initialize the Banner Ad View with correct properties:
+Initialize the Banner Ad View with properties:
 
 - **frame** - the frame rectangle for the view
 - **configId** - an ID of Stored Impression on the Prebid server
@@ -56,7 +55,7 @@ In the Pure In-App Bidding scenario you just need to initialize the Banner Ad Vi
 
 #### Step 2: Load the Ad
 
-Simply call `loadAd()` and SDK will:
+Call the method `loadAd()` which will:
 
 - make a bid request to Prebid server.
 - render the winning bid on display.
@@ -71,8 +70,7 @@ banner.adFormat = .video
 
 ### Interstitial API
 
-To display an ad you need to implement these easy steps:
-
+Integration example:
 
 ``` swift
 // 1. Create an Interstitial Ad Unit
@@ -95,7 +93,7 @@ if interstitial.isReady {
 
 The way of displaying **Video Interstitial Ad** is almost the same with two differences:
 
-- Need customize the ad unit kind
+- Need to customize the ad unit kind
 - No need to set up `minSizePercentage`
 
 ``` swift
@@ -118,11 +116,11 @@ if interstitial.isReady {
 
 ```
 
-
 #### Step 1: Create an Ad Unit
 
 
-In the Pure In-App Bidding scenario you just need to initialize the Banner Ad View with correct properties:
+Initialize the Interstitial Ad Unit with properties:
+
 
 - **configId** - an ID of Stored Impression on the Prebid server
 - **minSizePercentage** - specifies the minimum width and height percent an ad may occupy of a device’s real estate.
@@ -131,26 +129,25 @@ In the Pure In-App Bidding scenario you just need to initialize the Banner Ad Vi
 
 #### Step 2: Load the Ad
 
-Simply call the `loadAd()` method to start [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow.
+Call the method `loadAd()` which will make a bid request to Prebid server.
 
 
 #### Step 3: Show the Ad when it is ready
 
+Wait until the ad will be loaded and present it to the user in any suitable time.
+
 ``` swift
-// MARK: PBMInterstitialAdUnitDelegate
+// MARK: InterstitialAdUnitDelegate
     
 func interstitialDidReceiveAd(_ interstitial: InterstitialAdUnit) {
     // Now the ad is ready for display
 }
 ```
 
-However, due to the expiration, the ad could become invalid with time. So it is always useful to check it with `interstitial?.isReady` before display.
-
 
 ### Rewarded API
 
-To display an ad you need to implement these easy steps:
-
+Integration example:
 
 ``` swift
 // 1. Create an Ad Unit
@@ -168,13 +165,6 @@ if rewardedAd.isReady {
 }
 ```
 
-To be notified when a user earns a reward - implement the method of `PBMRewardedAdUnitDelegate`. Now this method will be called when the ad is completed.
-
-``` swift
-func rewardedAdUserDidEarnReward(_ rewardedAd: RewardedAdUnit) {
-}
-```
-
 
 #### Step 1: Create Rewarded Ad Unit
 
@@ -184,10 +174,11 @@ Create the **RewardedAdUnit** object with parameter:
 
 #### Step 2: Load the Ad
 
-Simply call the `loadAd()` method to start [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow.
-
+Call the `loadAd()` method which will make a bid request to Prebid server.
 
 #### Step 3: Show the Ad when it is ready
+
+Wait until the ad will be loaded and present it to the user in any suitable time.
 
 ``` swift
 // MARK: PBMRewardedAdUnitDelegate

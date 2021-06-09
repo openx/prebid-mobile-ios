@@ -1,4 +1,4 @@
-# Getting started with In-App Bidding
+# In-App Bidding with Rendering Module
 
 ## Integration Scenarios
 
@@ -44,37 +44,6 @@ Prebid Rendering Module supports next ad formats:
  - Native Styles Ads
  - Native Ads
 
-## Prebid Setup
-
-To start running header bidding auction you should have hosted Prebid Server with predefined auction configurations - **Stored Request** and **Stored Impression**.
-
-Before integrating the Prebid Rendering Module you will need next keys:
-
-- **Prebid Account ID** - an identifier of the **Stored Request**.
-- **Configuration ID** - an identifier of the **Stored Impression** which contains information about bidders for a particular ad unit. You need as many ids as many different ad units you want to integrate.
-
-## Init Prebid Rendering Module
-
-Firstly import Rendering Module:
-
-```
-import PrebidMobileRenderingSdk
-```
-
-Then provide the **Prebid Account ID** of your organization. The best place to do it is the `application:didFinishLaunchingWithOptions` method.
- 
-```
-PrebidRenderingConfig.shared.accountID = YOUR_ACCOUNT_ID
-PrebidRenderingConfig.shared.bidServerHost = HOST
-```
-
-Now you are ready to integrate ad units.
 
 
-## Integration Scenarios and Tips
 
-Depending on Primary Ad Server used, In-App Bidding SDK supports these kinds of integration:
-
-- With [Google Ad Manager (GAM)](integration-gam/ios-in-app-bidding-gam-info.md) as a Primary Ad Server
-- With [MoPub](integration-mopub/ios-in-app-bidding-mopub-info.md) as a Primary Ad Server
-- [Pure In-App Bidding](integration-prebid/ios-in-app-bidding-pb-info.md) as an integration without Primary Ad Server

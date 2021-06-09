@@ -24,7 +24,7 @@ Prebid Rendering Module supports these ad formats:
 - Display Banner
 - Display Interstitial
 - Native
-- [Native Styles](ios-in-app-bidding-gam-native-integration.md)
+- Native Styles
 - Video Interstitial 
 - Rewarded Video
 - Outstream Video
@@ -36,37 +36,9 @@ They can be integrated using these API categories.
 - [**Rewarded API**](#rewarded-api) - for *Rewarded Video*
 - [**Native API**](ios-in-app-bidding-gam-native-integration.md) - for *Native Ads*
 
-
-## Init Prebid Rendering Module
-
-Add the following line to your project’s podfile and install the pod:
-
-```
-pod 'prebid-mobile-sdk-rendering'
-```
-
-Provide an **Account Id** of your organization on Prebid server:
-
-```
-PrebidRenderingConfig.shared.accountID = YOUR_ACCOUNT_ID
-PrebidRenderingConfig.shared.bidServerHost = HOST
-```
-
-The best place to do it is the `application:didFinishLaunchingWithOptions` method. 
-
-> **NOTE:** The account ID is an identifier of the **Stored Request**.
-
-### Event Handlers
-
-GAM Event Handlers is a set of classes that wrap the GAM Ad Units and manage them respectively to the In-App Bidding flow. These classes are provided in the form of framework that could be added to the app via CocoaPods:
-
-```
-pod 'prebid-mobile-sdk-gam-event-handlers'
-```
-
 ## Banner API
 
-To integrate a banner ad you have to implement three easy steps:
+Integration example:
 
 
 ``` swift
@@ -87,11 +59,10 @@ banner.loadAd()
 
 #### Step 1: Create Event Handler
 
-GAM event handlers are special containers that wrap GAM Ad Views and help to manage collaboration between GAM and Prebid views.
+To create the event handler you should provide:
 
-**Important:** you should create and use a unique event handler for each ad view.
-
-To create the event handler you should provide a GAM Ad Unit Id and the list of available sizes for this ad unit.
+- a **GAM Ad Unit Id** 
+- the list of available **sizes** for this ad unit.
 
 
 #### Step 2: Create Ad View
@@ -105,7 +76,10 @@ Also, you should add the instance of `BannerView` to the UI.
 
 #### Step 3: Load the Ad
 
-Simply call the `loadAd()` method to start the [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow. Prebid Rendering Module will start the bidding process right away.
+Call the method `loadAd()` which will:
+
+- make a bid request to Prebid server.
+- render the winning bid on display.
 
 ### Outstream Video
 
@@ -120,8 +94,7 @@ And all the rest code will be the same as for integration of display banner.
 
 ## Interstitial API
 
-To integrate interstitial ad you need to implement four easy steps:
-
+Integration example:
 
 ``` swift
 // 1. Create Event Handler
@@ -174,18 +147,13 @@ if interstitial.isReady {
 
 ```
 
-
 #### Step 1: Create Event Handler
 
-GAM's event handlers are special containers that wrap the GAM Ad Views and help to manage collaboration between GAM and Prebid views.
-
-**Important:** you should create and use a unique event handler for each ad view.
-
-To create an event handler you should provide a GAM Ad Unit.
+To create an event handler you should provide a **GAM Ad Unit**.
 
 #### Step 2: Create Interstitial Ad Unit
 
-**InterstitialAdUnit** - is an object that will load and display the particular ad. To create it you should provide:
+Initialize the Interstitial Ad Unit with properties:
 
 - **configId** - an ID of Stored Impression on the Prebid server
 - **minSizePercentage** - specifies the minimum width and height percent an ad may occupy of a device’s real estate.
@@ -196,10 +164,12 @@ To create an event handler you should provide a GAM Ad Unit.
 
 #### Step 3: Load the Ad
 
-Simply call the `loadAd()` method to start [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow. The ad unit will load an ad and will wait for explicit instructions to display the Interstitial Ad.
-
+Call the method loadAd() which will make a bid request to Prebid server.
 
 #### Step 4: Show the Ad when it is ready
+
+Wait until the ad will be loaded and present it to the user in any suitable time.
+
 
 ``` swift
 // MARK: PBMInterstitialAdUnitDelegate
@@ -211,8 +181,7 @@ func interstitialDidReceiveAd(_ interstitial: InterstitialAdUnit) {
 
 ## Rewarded API
 
-To display an Rewarded Ad need to implement four easy steps:
-
+Integration example:
 
 ``` swift
  // 1. Create an Event Handler
@@ -255,26 +224,26 @@ if let reward = rewardedAd.reward as? GADAdReward {
 
 #### Step 1: Create Event Handler
 
-GAM's event handlers are special containers that wrap the GAM Ad Views and help to manage collaboration between GAM and Prebid views.
-
-**Important:** you should create and use a unique event handler for each ad view.
-
-To create an event handler you should provide a GAM Ad Unit.
+To create an event handler you should provide a **GAM Ad Unit ID**.
 
 
 #### Step 2: Create Rewarded Ad Unit
 
-**RewardedAdUnit** - is an object that will load and display the particular ad. To create it you should provide:
+Create the **RewardedAdUnit** object with parameters:
+
 
 - **configId** - an ID of Stored Impression on the Prebid server
 - **eventHandler** - the instance of rewarded event handler
 
 #### Step 3: Load the Ad
 
-Simply call the `loadAd()` method to start [In-App Bidding](../ios-in-app-bidding-getting-started.md) flow. The ad unit will load an ad and will wait for explicit instructions to display the Interstitial Ad.
+Call the loadAd() method which will make a bid request to Prebid server.
 
 
 #### Step 4: Show the Ad when it is ready
+
+Wait until the ad will be loaded and present it to the user in any suitable time.
+
 
 ``` swift
 // MARK: PBMRewardedAdUnitDelegate

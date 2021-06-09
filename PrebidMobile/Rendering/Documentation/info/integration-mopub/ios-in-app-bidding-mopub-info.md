@@ -1,14 +1,14 @@
 # MoPub Integration
 
-The integration of Prebid Rendering Module with MoPub assumes that publisher has an account on MoPub and has already integrated the MoPub SDK into the app project.
+The integration of Prebid Rendering Module with MoPub assumes that publisher has an account on MoPub and has already integrated the MoPub SDK into the app.
 
 If you do not have MoPub SDK in the app yet, refer the [MoPub's Documentation](https://github.com/mopub/mopub-ios-sdk).
 
-⚠️⚠️⚠️ **WARNING**: MoPub Adapters for the Prebid Rendering Module are compatible with **MoPub 5.13** and above. The ads won't be shown with earlier versions of MoPub SDK.
+⚠️⚠️⚠️ **WARNING**: MoPub Adapters for the Prebid Rendering Module are compatible with **MoPub 5.16** and above. The ads won't be shown with earlier versions of MoPub SDK.
 
 ## MoPub Integration Overview
 
-The integration of header bidding into MoPub monetization is based on MoPub's Mediation feature. 
+The integration of Prebid Rendering Module into MoPub monetization flow is based on MoPub's Mediation feature. 
 
 <img src="../res/Prebid-In-App-Bidding-Overview-MoPub.png" alt="Pipeline Screenshot" align="center">
 
@@ -18,7 +18,7 @@ The integration of header bidding into MoPub monetization is based on MoPub's Me
 
 **Step 4** MoPub SDK makes an ad request. MoPub returns the winner of the waterfall.
 
-**Step 5** If Prebid's creative won then the MoPub SDK will instantiate respective Prebid Adapter which will render the winning bid.
+**Step 5** If Prebid's creative won then the MoPub SDK will instantiate respective Prebid Adapter which will render the winning bid.For more details about Mediation and Adapters read the [MoPub's Documentation](https://developers.mopub.com/networks/integrate/mopub-network-mediation-guidelines/).
 
 **Step 6** The winner is displayed in the App with the respective rendering engine.
 
@@ -27,7 +27,7 @@ Prebid Rendering Module provides ability to integrate header bidding for these a
 - Display Banner
 - Display Interstitial
 - Native
-- [Native Styles](../integration-mopub/ios-in-app-bidding-mopub-native-integration.md)
+- Native Styles`
 - Video Interstitial 
 - Rewarded Video
 
@@ -38,40 +38,9 @@ They can be integrated using these API categories.
 - [**Rewarded API**](#rewarded-api) - for **Rewarded Video**
 - [**Native API**](ios-in-app-bidding-mopub-native-integration.md)
 
-
-## Init Prebid Rendering Module
-
-Add the following line to your project’s podfile and install the pod:
-
-```
-pod 'prebid-mobile-sdk-rendering'
-```
-
-Provide an **Account Id** of your organization on Prebid server:
-
-```
-PrebidRenderingConfig.shared.accountID = YOUR_ACCOUNT_ID
-PrebidRenderingConfig.shared.bidServerHost = HOST
-```
-
-The best place to do it is the `application:didFinishLaunchingWithOptions` method.
-
-
-The account ID is an identifier of the **Stored Request**.
-
-### Prebid Adapters
-
-Adapters for Prebid Rendering Module are classes that serve like proxies between MoPub SDK and any other one. For more details about Mediation and Adapters read the [MoPub's Documentation](https://developers.mopub.com/networks/integrate/mopub-network-mediation-guidelines/).
-
-The framework could be added to the app via CocoaPods:
-
-```
-pod 'prebid-mobile-sdk-mopub-adapters'
-```
-
 ## Banner API
 
-To display an ad you need to implement three easy steps:
+Integration example:
 
 ``` swift
 // 1. Create an AdView
@@ -119,7 +88,7 @@ If the Prebid bid wins on MoPub it will be rendered by `PrebidBannerAdapter`. Yo
 
 ## Interstitial API
 
-To display an ad you need to implement these easy steps:
+Integration example:
 
 ``` swift
 // 1. Create an MoPub's Interstitial Controller

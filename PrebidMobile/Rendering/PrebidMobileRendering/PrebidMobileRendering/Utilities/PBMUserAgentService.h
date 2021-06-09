@@ -25,7 +25,7 @@
 /**
  * Entry point for accessing official SDK User-Agent.
  */
-+ (nonnull instancetype)singleton;
+@property (class, readonly, nonnull) PBMUserAgentService *shared;
 
 /**
  * Returns the `WKWebView`'s User-Agent with the SDK version appened.

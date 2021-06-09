@@ -84,7 +84,7 @@ static NSString *PBMIsPBMRequestKey = @"PBMIsPBMRequest";
 
 #pragma mark - Init
 - (instancetype)init {
-    return (self = [self init:[PBMUserAgentService singleton]]);
+    return (self = [self init:[PBMUserAgentService shared]]);
 }
 
 - (instancetype)init:(PBMUserAgentService *)userAgentService {

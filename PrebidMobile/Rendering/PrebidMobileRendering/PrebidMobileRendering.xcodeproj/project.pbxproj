@@ -590,7 +590,6 @@
 		5B45D4BE20580AD200CE12F0 /* PBMConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45D4BD20580AD200CE12F0 /* PBMConstantsTests.swift */; };
 		5B45D4C020581D7100CE12F0 /* PBMMRAIDConstantsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45D4BF20581D7100CE12F0 /* PBMMRAIDConstantsTest.swift */; };
 		5B481A3820EBB62C00A860C7 /* PBMOpenMeasurementWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B481A3720EBB62C00A860C7 /* PBMOpenMeasurementWrapperTest.swift */; };
-		5B4B29B5213D445D00FD7481 /* TransactionsCacheFileForTests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B29B4213D445D00FD7481 /* TransactionsCacheFileForTests.plist */; };
 		5B4D1C2F204FF35B00696F07 /* PBMUIWindowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1C2E204FF35B00696F07 /* PBMUIWindowTest.swift */; };
 		5B4D1C3120501C0B00696F07 /* PBMVastIconTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1C3020501C0B00696F07 /* PBMVastIconTest.swift */; };
 		5B4D1C33205020BA00696F07 /* PBMTrackingRecordTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1C32205020BA00696F07 /* PBMTrackingRecordTest.swift */; };
@@ -1373,7 +1372,6 @@
 		5B481A3920EBB86F00A860C7 /* PBMOpenMeasurementWrapper+pbmTestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMOpenMeasurementWrapper+pbmTestExtension.h"; sourceTree = "<group>"; };
 		5B48920E225600A6003BD266 /* PBMWKScriptMessageHandlerLeakAvoider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMWKScriptMessageHandlerLeakAvoider.h; path = Utilities/PBMWKScriptMessageHandlerLeakAvoider.h; sourceTree = "<group>"; };
 		5B48920F225600A6003BD266 /* PBMWKScriptMessageHandlerLeakAvoider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PBMWKScriptMessageHandlerLeakAvoider.m; path = Utilities/PBMWKScriptMessageHandlerLeakAvoider.m; sourceTree = "<group>"; };
-		5B4B29B4213D445D00FD7481 /* TransactionsCacheFileForTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TransactionsCacheFileForTests.plist; sourceTree = "<group>"; };
 		5B4D1C2E204FF35B00696F07 /* PBMUIWindowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMUIWindowTest.swift; sourceTree = "<group>"; };
 		5B4D1C3020501C0B00696F07 /* PBMVastIconTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMVastIconTest.swift; sourceTree = "<group>"; };
 		5B4D1C32205020BA00696F07 /* PBMTrackingRecordTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMTrackingRecordTest.swift; sourceTree = "<group>"; };
@@ -3017,7 +3015,6 @@
 				358586572044DECD0002CF95 /* Plist_NSCalendarsUsageDescription_Without.plist */,
 				5C7E8CA31F8D86EA00005D61 /* PlistWith_NSPhotoLibraryUsageDescription.plist */,
 				5C7E8CA41F8D86EA00005D61 /* PlistWithout_NSPhotoLibraryUsageDescription.plist */,
-				5B4B29B4213D445D00FD7481 /* TransactionsCacheFileForTests.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -3730,7 +3727,6 @@
 				5C7E8CC91F8D86EB00005D61 /* vast.3.0.xml in Resources */,
 				5C7E8CBD1F8D86EB00005D61 /* ACJPublisherRevenue500.json in Resources */,
 				5B24E2B72046B2C3003F8233 /* mraid.js in Resources */,
-				5B4B29B5213D445D00FD7481 /* TransactionsCacheFileForTests.plist in Resources */,
 				5C8DEA4A1F8EC19C0075736E /* small.mov in Resources */,
 				5C7E8CC31F8D86EB00005D61 /* document_with_one_wrapper_ad.xml in Resources */,
 				5C7E8CC41F8D86EB00005D61 /* inline_with_padding_on_urls.xml in Resources */,
@@ -3772,7 +3768,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "echo Plist update for testing.\nset -x -e\n/usr/libexec/PlistBuddy -c 'Delete :NSDummyUsageDescription' $CODESIGNING_FOLDER_PATH/Info.plist || true\n/usr/libexec/PlistBuddy -c 'Add :NSDummyUsageDescription string Testing' $CODESIGNING_FOLDER_PATH/Info.plist";
+			shellScript = "echo Plist update for testing.\nset -x -e\n/usr/libexec/PlistBuddy -c 'Delete :NSDummyUsageDescription' $CODESIGNING_FOLDER_PATH/Info.plist || true\n/usr/libexec/PlistBuddy -c 'Add :NSDummyUsageDescription string Testing' $CODESIGNING_FOLDER_PATH/Info.plist\n";
 		};
 		D0F90EF9223FEEA9001C1167 /* OCLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3790,7 +3786,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\ncd {$SCROOT}\nrm xcodebuild.log compile_commands.json \nxcodebuild clean build -target OpenXSDKCore -configuration Debug -scheme OpenXSDKCore | tee xcodebuild.log\noclint-xcodebuild\noclint-json-compilation-database -- -report-type xcode\nrm xcodebuild.log compile_commands.json\n";
+			shellScript = "source ~/.bash_profile\ncd {$SCROOT}\nrm xcodebuild.log compile_commands.json \nxcodebuild clean build -target PrebidMobileRendering -configuration Debug -scheme PrebidMobileRendering | tee xcodebuild.log\noclint-xcodebuild\noclint-json-compilation-database -- -report-type xcode\nrm xcodebuild.log compile_commands.json\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

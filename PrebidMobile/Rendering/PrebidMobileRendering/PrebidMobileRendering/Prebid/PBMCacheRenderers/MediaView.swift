@@ -64,6 +64,7 @@ public class MediaView: UIView, PBMPlayable, PBMAdViewManagerDelegate {
         get {
             viewabilityPlaybackBinder != nil
         }
+        
         set(bindPlaybackToViewability) {
             if !bindPlaybackToViewability {
                 // -> turn OFF
@@ -84,7 +85,7 @@ public class MediaView: UIView, PBMPlayable, PBMAdViewManagerDelegate {
         }
     }
     
-     var shouldBindPlaybackToViewability: Bool {
+    var shouldBindPlaybackToViewability: Bool {
         autoPlayOnVisible && mediaData != nil
     }
     

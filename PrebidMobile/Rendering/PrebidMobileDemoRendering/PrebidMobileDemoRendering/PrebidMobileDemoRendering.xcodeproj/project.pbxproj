@@ -65,7 +65,7 @@
 		5B209B4A21075E0A00C0F5CE /* BaseConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B209B4921075E0A00C0F5CE /* BaseConfigurationController.swift */; };
 		5B3621E52122CC4F0030F196 /* TestCaseTagTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621E42122CC4F0030F196 /* TestCaseTagTest.swift */; };
 		5B3C2AC52100BC4900BD733C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C2AAE2100BC4900BD733C /* AppDelegate.swift */; };
-		5B3EEDC12101D1AF00BAA0C4 /* OpenXSDKConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EEDB42101D1AF00BAA0C4 /* OpenXSDKConfigurationViewController.swift */; };
+		5B3EEDC12101D1AF00BAA0C4 /* PrebidMobileRenderingConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EEDB42101D1AF00BAA0C4 /* PrebidMobileRenderingConfigurationViewController.swift */; };
 		5B3EEDCB2101D1AF00BAA0C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EEDBE2101D1AF00BAA0C4 /* AboutViewController.swift */; };
 		5B3EEDD12101D2A100BAA0C4 /* UtilitiesForTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EEDCF2101D2A100BAA0C4 /* UtilitiesForTesting.swift */; };
 		5B3EEDD32101D2CF00BAA0C4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EEDD22101D2CF00BAA0C4 /* StringExtensions.swift */; };
@@ -274,7 +274,7 @@
 		5B3C2AAE2100BC4900BD733C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B3C2AE52100C22900BD733C /* PrebidMobileDemoRenderingUITests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PrebidMobileDemoRenderingUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5B3DC7B62074AF3400F3CAB9 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = ../../Other/UnityAdsCreative/UnityAds.framework; sourceTree = "<group>"; };
-		5B3EEDB42101D1AF00BAA0C4 /* OpenXSDKConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenXSDKConfigurationViewController.swift; sourceTree = "<group>"; };
+		5B3EEDB42101D1AF00BAA0C4 /* PrebidMobileRenderingConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrebidMobileRenderingConfigurationViewController.swift; sourceTree = "<group>"; };
 		5B3EEDBE2101D1AF00BAA0C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B3EEDCF2101D2A100BAA0C4 /* UtilitiesForTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitiesForTesting.swift; sourceTree = "<group>"; };
 		5B3EEDD22101D2CF00BAA0C4 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -676,7 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				5B209B4921075E0A00C0F5CE /* BaseConfigurationController.swift */,
-				5B3EEDB42101D1AF00BAA0C4 /* OpenXSDKConfigurationViewController.swift */,
+				5B3EEDB42101D1AF00BAA0C4 /* PrebidMobileRenderingConfigurationViewController.swift */,
 				3461834925A5FE7100783A2C /* PrebidNativeAdCompatibleConfigurationController.swift */,
 				34B5CEE025D2D05C008C0CBC /* PrebidNativeAdRenderingConfigurationController.swift */,
 				AC23A0CC251B932000983ABF /* PrebidBannerConfigurationController.swift */,
@@ -1216,7 +1216,7 @@
 				5B3EEDDC2101DB7900BAA0C4 /* TabViewController.swift in Sources */,
 				ACC41ACA2444E50B00B9A3A7 /* SettingsViewController.swift in Sources */,
 				5B3EEDD32101D2CF00BAA0C4 /* StringExtensions.swift in Sources */,
-				5B3EEDC12101D1AF00BAA0C4 /* OpenXSDKConfigurationViewController.swift in Sources */,
+				5B3EEDC12101D1AF00BAA0C4 /* PrebidMobileRenderingConfigurationViewController.swift in Sources */,
 				5B209B4A21075E0A00C0F5CE /* BaseConfigurationController.swift in Sources */,
 				34C9AF022564286E00EB6F72 /* PBMNativeEventTracker+FromJSON.swift in Sources */,
 				5BCCA3D62136D2E800DA3B5A /* ConfigurableViewController.swift in Sources */,

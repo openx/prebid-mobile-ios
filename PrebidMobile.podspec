@@ -47,4 +47,8 @@ Pod::Spec.new do |s|
     core.source_files = 'PrebidMobile/**/*.{h,m,swift}'
   end
 
+  s.subspec 'Rendering' do |rendering|
+    rendering.source_files = 'PrebidMobile/Rendering/**/*.{h,m,swift}'
+  end
+
 end

@@ -3613,7 +3613,7 @@
 			dependencies = (
 			);
 			name = PrebidMobileRendering;
-			productName = OpenXSDKCore;
+			productName = PrebidMobileRendering;
 			productReference = 34D7113424E580620048CC78 /* PrebidMobileRendering.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -3632,7 +3632,7 @@
 				347E72142565855400EC5CC3 /* PBXTargetDependency */,
 			);
 			name = PrebidMobileRenderingTests;
-			productName = OpenXSDKCoreTests;
+			productName = PrebidMobileRenderingTests;
 			productReference = 9319862519A7DD8D007ED468 /* PrebidMobileRenderingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};

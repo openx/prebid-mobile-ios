@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PrebidRenderingConfig.shared.logLevel = PBMLogLevel.info
         PrebidRenderingConfig.shared.debugLogFileEnabled = true
         
-        // OpenX's ads include Open Measurement scripts that sometime require additional time for loading.
+        // Ads may include Open Measurement scripts that sometime require additional time for loading.
         PrebidRenderingConfig.shared.creativeFactoryTimeout = 20;
         
         PrebidRenderingConfig.shared.locationUpdatesEnabled = false

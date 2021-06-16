@@ -39,9 +39,9 @@
 #import "PBMAgeUtils.h"
 #import "PBMWKScriptMessageHandlerLeakAvoider.h"
 #import "UIView+PBMExtensions.h"
-#import "PBMWebView+pbmTestExtension.h"
 
 #import "PBMWebView.h"
+#import "PBMWebView+Internal.h"
 
 #import "PBMAdViewManagerDelegate.h"
 

@@ -760,6 +760,7 @@
 		AC461875230ADE3C00F4E0DE /* PBMMRAIDControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC461874230ADE3C00F4E0DE /* PBMMRAIDControllerTest.swift */; };
 		AC461877230C0A9800F4E0DE /* PBMMRAIDControllerObjCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC461876230C0A9800F4E0DE /* PBMMRAIDControllerObjCTest.m */; };
 		AC4F248625DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F248525DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift */; };
+		AC5A999B267A2BD10064A2CA /* PBMWebView+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5A999A267A2BD10064A2CA /* PBMWebView+Internal.h */; };
 		AC5CAE3D265D1A1900E422A3 /* InterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CAE3C265D1A1900E422A3 /* InterstitialController.swift */; };
 		AC5CAE8A265D4C2300E422A3 /* LocalResponseInfoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CAE89265D4C2300E422A3 /* LocalResponseInfoCache.swift */; };
 		AC616E092588E69A0010DBBB /* PBMFunctions+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = AC616E072588E69A0010DBBB /* PBMFunctions+Testing.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1596,6 +1597,7 @@
 		AC4A5333244867DD00EFC08D /* PBMCreativeViewabilityTracker+pbmTestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMCreativeViewabilityTracker+pbmTestExtension.h"; sourceTree = "<group>"; };
 		AC4F248525DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubNativeAdUnitTest.swift; sourceTree = "<group>"; };
 		AC4F24C725DFBF620095C601 /* MoPubNativeAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoPubNativeAdUnit+TestExtension.h"; sourceTree = "<group>"; };
+		AC5A999A267A2BD10064A2CA /* PBMWebView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMWebView+Internal.h"; sourceTree = "<group>"; };
 		AC5CAE3C265D1A1900E422A3 /* InterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialController.swift; sourceTree = "<group>"; };
 		AC5CAE89265D4C2300E422A3 /* LocalResponseInfoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalResponseInfoCache.swift; sourceTree = "<group>"; };
 		AC616E072588E69A0010DBBB /* PBMFunctions+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PBMFunctions+Testing.h"; path = "Utilities/PBMFunctions+Testing.h"; sourceTree = "<group>"; };
@@ -1777,6 +1779,7 @@
 				AC461870230ADB9800F4E0DE /* PBMMRAIDController.h */,
 				AC461871230ADB9800F4E0DE /* PBMMRAIDController.m */,
 				5B23893B203D596F00DFB7B3 /* PBMWebView.h */,
+				AC5A999A267A2BD10064A2CA /* PBMWebView+Internal.h */,
 				5B23893A203D596F00DFB7B3 /* PBMWebView.m */,
 				5B23893D203D596F00DFB7B3 /* PBMWebViewDelegate.h */,
 				ACE08B1D2461AB1D00935BF9 /* PBMExposureChangeDelegate.h */,
@@ -3591,6 +3594,7 @@
 				34D7112624E580620048CC78 /* PBMTouchDownRecognizer.h in Headers */,
 				34D7112924E580620048CC78 /* PBMDisplayView.h in Headers */,
 				ACE60BE4265544B500F58C3B /* PBMClickthroughBrowserOpener.h in Headers */,
+				AC5A999B267A2BD10064A2CA /* PBMWebView+Internal.h in Headers */,
 				34C652C0257E7AE300E26ABA /* PBMInterstitialAdLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

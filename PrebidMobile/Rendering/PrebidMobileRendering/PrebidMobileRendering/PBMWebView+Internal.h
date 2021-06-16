@@ -1,3 +1,4 @@
+//
 /*   Copyright 2018-2021 Prebid.org, Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,23 +14,13 @@
  limitations under the License.
  */
 
-#ifdef DEBUG
 
-#import "PrebidRenderingConfig+TestExtension.h"
+#import "PBMWebView.h"
 
-@implementation PrebidRenderingConfig (Test)
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic forcedIsViewable;
-
-- (BOOL)forcedIsViewable {
-    return [NSUserDefaults.standardUserDefaults boolForKey:@"forcedIsViewable"];
-}
-
-- (void)setForcedIsViewable:(BOOL) value {
-    [NSUserDefaults.standardUserDefaults setBool:value forKey:@"forcedIsViewable"];
-}
-
-
+@interface PBMWebView ()
+@property (nonatomic, assign, readwrite) PBMWebViewState state;
 @end
 
-#endif
+NS_ASSUME_NONNULL_END

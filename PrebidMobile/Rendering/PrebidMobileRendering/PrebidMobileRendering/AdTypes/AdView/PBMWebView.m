@@ -46,7 +46,8 @@
 #import "PBMAdViewManagerDelegate.h"
 
 #import "PrebidMobileRenderingSwiftHeaders.h"
-#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+//#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+#import <PrebidMobile/PrebidMobile-Swift.h>
 
 #pragma mark - Constants
 

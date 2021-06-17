@@ -38,17 +38,37 @@ Pod::Spec.new do |s|
 :HEADER_SEARCH_PATHS => '$(inherited)',
 :FRAMEWORK_SEARCH_PATHS => '$(inherited)'
 }
-  s.framework  = ['CoreTelephony', 'SystemConfiguration', 'UIKit', 'Foundation']
+#s.framework  = ['CoreTelephony', 'SystemConfiguration', 'UIKit', 'Foundation']
+
+  s.requires_arc  = true
+  
+  s.frameworks = [ 'UIKit', 'Foundation', 'MapKit', 'SafariServices', 'AVFoundation', 'CoreGraphics', 
+                   'CoreLocation', 'CoreMedia', 'MediaPlayer', 'QuartzCore' ]
+  s.weak_frameworks  = [ 'AdSupport', 'StoreKit', 'WebKit' ]
+
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s'}
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s'}
+
 
   # Support previous intagration
   s.default_subspec = 'core'
 
   s.subspec 'core' do |core|
-    core.source_files = 'PrebidMobile/**/*.{h,m,swift}'
+    core.source_files = 'PrebidMobile/*.{h,m,swift}','PrebidMobile/AdUnits/**/*.{h,m,swift}','PrebidMobile/Addendum/**/*.{h,m,swift}'
   end
 
   s.subspec 'Rendering' do |rendering|
-    rendering.source_files = 'PrebidMobile/Rendering/**/*.{h,m,swift}'
+    rendering.platform     = :ios, "9.0"
+    rendering.source_files = 'PrebidMobile/Rendering/PrebidMobileRendering/PrebidMobileRendering/**/*.{h,m,swift}', 
+                             'PrebidMobile/Rendering/PrebidMobileRendering/PrebidMobileRenderingSDK/**/*.{h,m,swift}'
+    rendering.resources    = 'PrebidMobile/Rendering/PrebidMobileRendering/PrebidMobileRendering/Assets/**/*.{json,png,js,html,xib}'
+    rendering.vendored_frameworks = 'PrebidMobile/Rendering/PrebidMobileRendering/Frameworks/OMSDK_Prebidorg.framework'
+  end
+
+  s.subspec 'MoPubAdapters' do |ma|
+    ma.source_files = 'PrebidMobile/Rendering/EventHandlers/PrebidMobileMoPubAdapters/**/*.{h,m,swift}'
+    ma.dependency 'PrebidMobile/Rendering'
+    ma.dependency 'mopub-ios-sdk', '5.16.2'
   end
 
 end

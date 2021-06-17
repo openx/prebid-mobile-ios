@@ -17,7 +17,8 @@
 #import <Foundation/Foundation.h>
 
 #import "PrebidMobileRenderingSwiftHeaders.h"
-#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+//#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+#import <PrebidMobile/PrebidMobile-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

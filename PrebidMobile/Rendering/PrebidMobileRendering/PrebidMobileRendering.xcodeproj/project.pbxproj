@@ -761,6 +761,7 @@
 		AC461877230C0A9800F4E0DE /* PBMMRAIDControllerObjCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC461876230C0A9800F4E0DE /* PBMMRAIDControllerObjCTest.m */; };
 		AC4F248625DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F248525DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift */; };
 		AC5A999B267A2BD10064A2CA /* PBMWebView+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5A999A267A2BD10064A2CA /* PBMWebView+Internal.h */; };
+		AC5A99A5267B5E680064A2CA /* PrebidMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5A99A4267B5E680064A2CA /* PrebidMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CAE3D265D1A1900E422A3 /* InterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CAE3C265D1A1900E422A3 /* InterstitialController.swift */; };
 		AC5CAE8A265D4C2300E422A3 /* LocalResponseInfoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CAE89265D4C2300E422A3 /* LocalResponseInfoCache.swift */; };
 		AC616E092588E69A0010DBBB /* PBMFunctions+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = AC616E072588E69A0010DBBB /* PBMFunctions+Testing.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1146,7 +1147,7 @@
 		34D42CC825CD610B008EE1D3 /* PBMURLOpenResultHandlerBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMURLOpenResultHandlerBlock.h; sourceTree = "<group>"; };
 		34D70F6624E53C850048CC78 /* PBMErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PBMErrorCode.h; path = Utilities/PBMErrorCode.h; sourceTree = "<group>"; };
 		34D70F6724E53C950048CC78 /* PBMErrorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMErrorType.h; sourceTree = "<group>"; };
-		34D7113424E580620048CC78 /* PrebidMobileRendering.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileRendering.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D7113424E580620048CC78 /* PrebidMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D7113524E580630048CC78 /* PrebidMobileRendering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrebidMobileRendering-Info.plist"; sourceTree = "<group>"; };
 		34D9E887256BE3B200D40497 /* PBMAgeUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBMAgeUtils.h; sourceTree = "<group>"; };
 		34D9E888256BE3B200D40497 /* PBMAgeUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBMAgeUtils.m; sourceTree = "<group>"; };
@@ -1598,6 +1599,7 @@
 		AC4F248525DFB29A0095C601 /* PBMMoPubNativeAdUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMMoPubNativeAdUnitTest.swift; sourceTree = "<group>"; };
 		AC4F24C725DFBF620095C601 /* MoPubNativeAdUnit+TestExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoPubNativeAdUnit+TestExtension.h"; sourceTree = "<group>"; };
 		AC5A999A267A2BD10064A2CA /* PBMWebView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBMWebView+Internal.h"; sourceTree = "<group>"; };
+		AC5A99A4267B5E680064A2CA /* PrebidMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrebidMobile.h; sourceTree = "<group>"; };
 		AC5CAE3C265D1A1900E422A3 /* InterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialController.swift; sourceTree = "<group>"; };
 		AC5CAE89265D4C2300E422A3 /* LocalResponseInfoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalResponseInfoCache.swift; sourceTree = "<group>"; };
 		AC616E072588E69A0010DBBB /* PBMFunctions+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PBMFunctions+Testing.h"; path = "Utilities/PBMFunctions+Testing.h"; sourceTree = "<group>"; };
@@ -2270,6 +2272,7 @@
 		34D7113624E580A40048CC78 /* PrebidMobileRenderingSDK */ = {
 			isa = PBXGroup;
 			children = (
+				AC5A99A4267B5E680064A2CA /* PrebidMobile.h */,
 				5BD2C31A265E80B3005D3337 /* PrebidMobileRenderingSwiftHeaders.h */,
 				5B2FB0F32644294500912342 /* PrebidMobileRendering.h */,
 				34D7113524E580630048CC78 /* PrebidMobileRendering-Info.plist */,
@@ -3261,7 +3264,7 @@
 			isa = PBXGroup;
 			children = (
 				9319862519A7DD8D007ED468 /* PrebidMobileRenderingTests.xctest */,
-				34D7113424E580620048CC78 /* PrebidMobileRendering.framework */,
+				34D7113424E580620048CC78 /* PrebidMobile.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3439,6 +3442,7 @@
 				5B2FB13226442C8800912342 /* PBMNativeAdMarkupTitle.h in Headers */,
 				34D7109D24E580620048CC78 /* PBMBasicParameterBuilder.h in Headers */,
 				ACE60BE126553BB800F58C3B /* PBMURLOpenResultHandlerBlock.h in Headers */,
+				AC5A99A5267B5E680064A2CA /* PrebidMobile.h in Headers */,
 				5B2FB12426442C7D00912342 /* PBMNativeAdMarkupImage.h in Headers */,
 				34D7109E24E580620048CC78 /* PBMDisplayView+InternalState.h in Headers */,
 				34D7109F24E580620048CC78 /* PBMORTBBidExtPrebidCacheBids.h in Headers */,
@@ -3618,7 +3622,7 @@
 			);
 			name = PrebidMobileRendering;
 			productName = PrebidMobileRendering;
-			productReference = 34D7113424E580620048CC78 /* PrebidMobileRendering.framework */;
+			productReference = 34D7113424E580620048CC78 /* PrebidMobile.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9319862419A7DD8D007ED468 /* PrebidMobileRenderingTests */ = {
@@ -4361,7 +4365,7 @@
 				MODULEMAP_FILE = PrebidMobileRenderingSDK/PrebidMobileRendering.modulemap;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.prebid.mobile.rendering;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PrebidMobile;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/PrebidMobileRendering/ProjectModule";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -4402,7 +4406,7 @@
 				MODULEMAP_FILE = PrebidMobileRenderingSDK/PrebidMobileRendering.modulemap;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.prebid.mobile.rendering;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PrebidMobile;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/PrebidMobileRendering/ProjectModule";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

@@ -24,7 +24,8 @@
 #import "PBMMacros.h"
 
 #import "PrebidMobileRenderingSwiftHeaders.h"
-#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+//#import <PrebidMobileRendering/PrebidMobileRendering-Swift.h>
+#import <PrebidMobile/PrebidMobile-Swift.h>
 
 @interface PBMDisplayTransactionFactory() <PBMTransactionDelegate>
 

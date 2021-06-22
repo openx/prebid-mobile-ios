@@ -70,7 +70,7 @@
 		344A7F19250B8E5400743A93 /* GADRewardedAdWrapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADRewardedAdWrapperTest.swift; sourceTree = "<group>"; };
 		34B64D5C24F7E41600FDD9F4 /* PrebidMobileGAMEventHandlers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileGAMEventHandlers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B64D5F24F7E41600FDD9F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34B64D7024F7E8A100FDD9F4 /* PrebidMobileRendering.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrebidMobileRendering.framework; path = ../Products/PrebidMobileRendering.framework; sourceTree = "<group>"; };
+		34B64D7024F7E8A100FDD9F4 /* PrebidMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrebidMobile.framework; path = ../Products/PrebidMobile.framework; sourceTree = "<group>"; };
 		34B64D7E24F7ED9600FDD9F4 /* PrebidMobileMoPubAdapters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrebidMobileMoPubAdapters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B64D8024F7ED9600FDD9F4 /* PrebidMobileMoPubAdapters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrebidMobileMoPubAdapters.h; sourceTree = "<group>"; };
 		34B64D8124F7ED9600FDD9F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		34B64D4224F7D95800FDD9F4 = {
 			isa = PBXGroup;
 			children = (
-				34B64D7024F7E8A100FDD9F4 /* PrebidMobileRendering.framework */,
+				34B64D7024F7E8A100FDD9F4 /* PrebidMobile.framework */,
 				34B64D5D24F7E41600FDD9F4 /* PrebidMobileGAMEventHandlers */,
 				34B64D7F24F7ED9600FDD9F4 /* PrebidMobileMoPubAdapters */,
 				3405F946250A555800268A77 /* PrebidMobileGAMEventHandlersTests */,

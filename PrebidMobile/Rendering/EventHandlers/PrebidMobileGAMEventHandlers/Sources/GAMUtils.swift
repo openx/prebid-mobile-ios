@@ -15,7 +15,6 @@
 
 import Foundation
 import GoogleMobileAds
-//import PrebidMobileRendering
 import PrebidMobileRendering
 
 fileprivate let localCacheExpirationInterval: TimeInterval = 3600

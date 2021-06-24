@@ -15,7 +15,7 @@
 
 import UIKit
 import GoogleMobileAds
-//import PrebidMobileRendering
+
 import PrebidMobileRendering
 
 class NativeAdViewBox: NativeAdViewBoxProtocol {

@@ -15,7 +15,7 @@
 
 import XCTest
 
-@testable import PrebidMobileRenderingDemoRendering
+@testable import PrebidMobileDemoRendering
 
 class TestCaseManagerTest: XCTestCase {
 

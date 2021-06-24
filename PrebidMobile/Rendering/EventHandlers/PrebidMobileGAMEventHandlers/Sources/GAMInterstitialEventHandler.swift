@@ -15,7 +15,7 @@
 
 import Foundation
 import GoogleMobileAds
-//import PrebidMobileRendering
+
 import PrebidMobileRendering
 
 public class GAMInterstitialEventHandler :

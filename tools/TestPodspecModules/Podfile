@@ -5,6 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'TestPodspecModules' do
     use_frameworks!
 
+    pod 'PrebidMobileRendering', :path => '../..'
+    pod 'PrebidMobileMoPubAdapters', :path => '../..'
+    pod 'PrebidMobileGAMEventHandlers', :path => '../..'
+
     pod 'Google-Mobile-Ads-SDK'
     pod 'mopub-ios-sdk', '5.16.2'
 end

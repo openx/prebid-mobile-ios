@@ -10,6 +10,10 @@ import UIKit
 import GoogleMobileAds
 import MoPubSDK
 
+import PrebidMobileRendering
+import PrebidMobileMoPubAdapters
+import PrebidMobileGAMEventHandlers
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var projectVersionLabel: UILabel!
@@ -21,10 +25,12 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        self.projectVersionLabel.text = version
+        projectVersionLabel.text = version
         
-        self.gamVersionLabel.text = GADMobileAds.sharedInstance().sdkVersion
-        self.mopubVersionLabel.text = MoPub.sharedInstance().version()
+        renderingVersionLabel.text = PrebidRenderingConfig.shared.version
+        
+        gamVersionLabel.text = GADMobileAds.sharedInstance().sdkVersion
+        mopubVersionLabel.text = MoPub.sharedInstance().version()
     }
 }
 

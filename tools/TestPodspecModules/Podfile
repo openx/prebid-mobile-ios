@@ -1,13 +1,14 @@
 platform :ios, '10.0'
 
+source 'https://github.com/openx/mobile-ios-sdk-test-podspec.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'TestPodspecModules' do
     use_frameworks!
 
-    pod 'PrebidMobileRendering', :path => '../..'
-    pod 'PrebidMobileMoPubAdapters', :path => '../..'
-    pod 'PrebidMobileGAMEventHandlers', :path => '../..'
+    pod 'PrebidMobileRendering'
+    pod 'PrebidMobileMoPubAdapters' 
+    pod 'PrebidMobileGAMEventHandlers'
 
     pod 'Google-Mobile-Ads-SDK'
     pod 'mopub-ios-sdk', '5.16.2'

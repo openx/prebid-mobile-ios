@@ -4,7 +4,7 @@ target 'TestPodspecModules' do
     use_frameworks!
 
     pod 'PrebidMobileRendering'
-    pod 'PrebidMobileMoPubAdapters'
+    pod 'PrebidMobileMoPubAdapters' 
     pod 'PrebidMobileGAMEventHandlers'
 
     pod 'Google-Mobile-Ads-SDK'

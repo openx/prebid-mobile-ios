@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "PrebidMobileGAMEventHandlers"
   s.version      = "1.13"
-  s.summary      = "PrebidMobile is a lightweight framework that integrates directly with Prebid Server."
+  s.summary      = "The bridge between Prebid-Mobile-SDK Rendering module and GAM framework."
 
   s.description  = <<-DESC
     Prebid-Mobile-SDK is a lightweight framework that integrates directly with Prebid Server to increase yield for publishers by adding more mobile buyers."
@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.swift_version = '5.0'
   s.source       = { :git => "https://github.com/prebid/prebid-mobile-ios.git", :tag => "#{s.version}" }
-  s.source       = { :git => "https://github.com/openx/prebid-mobile-ios.git", :branch => "feature-rendering-module" }
   s.xcconfig = {
 :LIBRARY_SEARCH_PATHS => '$(inherited)',
 :OTHER_CFLAGS => '$(inherited)',
@@ -40,8 +39,14 @@ Pod::Spec.new do |s|
 :FRAMEWORK_SEARCH_PATHS => '$(inherited)'
 }
 
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s'}
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s'}
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s', 
+                            'VALID_ARCHS[sdk=iphoneos*]': 'arm64 armv7',
+                            'VALID_ARCHS[sdk=iphonesimulator*]': 'x86_64 arm64'
+                          }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e armv7 armv7s', 
+                             'VALID_ARCHS[sdk=iphoneos*]': 'arm64 armv7',
+                             'VALID_ARCHS[sdk=iphonesimulator*]': 'x86_64 arm64'
+                          }
 
   s.source_files = 'PrebidMobile/Rendering/EventHandlers/PrebidMobileGAMEventHandlers/**/*.{h,m,swift}'
   s.static_framework = true

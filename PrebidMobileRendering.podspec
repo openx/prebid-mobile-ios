@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "PrebidMobileRendering"
   s.version      = "1.13"
-  s.summary      = "PrebidMobile is a lightweight framework that integrates directly with Prebid Server."
+  s.summary      = "The Prebid-Mobile-SDK Rendering module allows publishers to monetize their apps by In-App bidding."
 
   s.description  = <<-DESC
     Prebid-Mobile-SDK is a lightweight framework that integrates directly with Prebid Server to increase yield for publishers by adding more mobile buyers."
@@ -63,4 +63,6 @@ Pod::Spec.new do |s|
                    'PrebidMobile/Rendering/PrebidMobileRendering/PrebidMobileRenderingSDK/**/*.{h,m,swift}'
   s.resources    = 'PrebidMobile/Rendering/PrebidMobileRendering/PrebidMobileRendering/Assets/**/*.{json,png,js,html,xib}'
   s.vendored_frameworks = 'PrebidMobile/Rendering/PrebidMobileRendering/Frameworks/OMSDK_Prebidorg.framework'
+
+  s.static_framework = true
 end

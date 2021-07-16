@@ -20,7 +20,7 @@ public class InterstitialAdUnit: BannerBaseAdUnit {
     var minSizePerc: CGSize?
     
     public init(configId: String) {
-        super.init(configId: configId, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        super.init(configId: configId, size: nil)
     }
     
     public convenience init(configId: String, minWidthPerc: Int, minHeightPerc: Int) {

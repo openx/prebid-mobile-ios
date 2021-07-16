@@ -1048,10 +1048,7 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
             let instl = imp0["instl"] as? Int,
 
             let banner = imp0["banner"] as? [String: Any],
-            let formatArr = banner["format"] as? [Any],
-            let format0 = formatArr[0] as? [String: Any],
-            let w = format0["w"] as? Int,
-            let h = format0["h"] as? Int else {
+            let pos = banner["pos"] as? Int else {
 
                 XCTFail("parsing fail")
                 return
@@ -1064,8 +1061,9 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
         XCTAssertEqual(50, minwidthperc)
         XCTAssertEqual(70, minheightperc)
 
-        XCTAssertNotNil(w)
-        XCTAssertNotNil(h)
+        XCTAssertEqual(7, pos)
+        
+        XCTAssertNil(banner["format"])
 
     }
 
@@ -1092,10 +1090,7 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
             let instl = imp0["instl"] as? Int,
 
             let banner = imp0["banner"] as? [String: Any],
-            let formatArr = banner["format"] as? [Any],
-            let format0 = formatArr[0] as? [String: Any],
-            let w = format0["w"] as? Int,
-            let h = format0["h"] as? Int else {
+            let pos = banner["pos"] as? Int else {
 
                 XCTFail("parsing fail")
                 return
@@ -1107,8 +1102,9 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
 
         XCTAssertNil(interstitial)
 
-        XCTAssertNotNil(w)
-        XCTAssertNotNil(h)
+        XCTAssertEqual(7, pos)
+        
+        XCTAssertNil(banner["format"])
     }
 
     func testPostDataWithoutAdvancedBannerInterstitial() throws {

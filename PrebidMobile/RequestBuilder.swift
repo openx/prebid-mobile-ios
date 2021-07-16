@@ -146,6 +146,8 @@ class RequestBuilder: NSObject {
         }
 
         imp["secure"] = 1
+        
+        let isInterstitial = adUnit is InterstitialAdUnit || adUnit is VideoInterstitialAdUnit || adUnit is RewardedVideoAdUnit;
 
         if let nativeRequest = adUnit as? NativeRequest {
             
@@ -153,17 +155,21 @@ class RequestBuilder: NSObject {
             
         } else if let bannerBaseAdUnit = adUnit as? BannerBaseAdUnit {
 
-            var sizeArray = [[String: CGFloat]]()
-            for size: CGSize in (adUnit?.adSizes)! {
-                let sizeDict = [
-                    "w": size.width,
-                    "h": size.height
-                ]
-                sizeArray.append(sizeDict)
-            }
             var banner: [AnyHashable: Any] = [:]
             
-            banner["format"] = sizeArray
+            if (isInterstitial) {
+                banner["pos"] = Signals.AdPosition.FullScreen.value
+            } else {
+                var sizeArray = [[String: CGFloat]]()
+                for size: CGSize in (adUnit?.adSizes)! {
+                    let sizeDict = [
+                        "w": size.width,
+                        "h": size.height
+                    ]
+                    sizeArray.append(sizeDict)
+                }
+                banner["format"] = sizeArray
+            }
             
             if let bannerParameters = bannerBaseAdUnit.parameters {
                 banner["api"] = bannerParameters.api?.toIntArray()
@@ -173,7 +179,7 @@ class RequestBuilder: NSObject {
 
         }
         
-        if (adUnit is InterstitialAdUnit || adUnit is VideoInterstitialAdUnit || adUnit is RewardedVideoAdUnit) {
+        if (isInterstitial) {
             imp["instl"] = 1
         }
         //to be used when openRTB supports storedRequests

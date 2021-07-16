@@ -273,4 +273,35 @@ public class Signals: NSObject {
         public static let Floating = Placement(5)
         
     }
+    
+    /**
+    # OpenRTB - Ad Position Types (see OpenRTB-API-Specification-Version-2-5-FINAL.pdf 5.4, p.45)#
+    ```
+    | Value | Description                  |
+    |-------|------------------------------|
+    | 4     | Header                       |
+    | 5     | Footer                       |
+    | 6     | Sidebar                      |
+    | 7     | Full Screen                  |
+    ```
+    */
+    @objc(PBAdPosition)
+    public class AdPosition: SingleContainerInt {
+        
+        /// Header
+        @objc
+        public static let Header = AdPosition(4)
+        
+        /// Footer
+        @objc
+        public static let Footer = AdPosition(5)
+        
+        /// Sidebar
+        @objc
+        public static let Sidebar = AdPosition(6)
+        
+        /// Full Screen
+        @objc
+        public static let FullScreen = AdPosition(7)
+    }
 }

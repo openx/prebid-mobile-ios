@@ -73,7 +73,8 @@ class AdUnitSuccessorTests: XCTestCase {
         let adUnit = InterstitialAdUnit(configId: Constants.configID1)
         
         //then
-        checkDefault(adUnit: adUnit)
+        XCTAssertEqual(Constants.configID1, adUnit.prebidConfigId)
+        XCTAssertNil(adUnit.dispatcher)
     }
     
     func testInterstitialAdUnitConvenienceCreation() {
